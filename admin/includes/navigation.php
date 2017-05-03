@@ -15,6 +15,7 @@
       <li><a style="color:#fff;" href="roles.php">Roles</a></li>
       <li><a style="color:#fff;" href="clients.php">Clients</a></li>
       <li><a style="color:#fff;" href="archives.php">Archived accounts</a></li>
+      <li><a style="color:#fff;" href="targets.php">Targets</a></li>
     </ul>
   </div>
 </nav>

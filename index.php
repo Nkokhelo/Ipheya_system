@@ -1,5 +1,6 @@
 <?php
-    require('core/controllers/target-controller.php');
+    require('core/init.php');
+    require('core/controllers/target-home-controller.php');
     include('includes/index-head.php');
  ?>
 <body>
