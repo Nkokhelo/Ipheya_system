@@ -184,6 +184,21 @@
       else{
         echo '<<[CREATE TABLE targets FAILED: '.mysqli_error($con).']>>';
       }
+      #CREATE TABLE targets
+      $sql = "CREATE TABLE target_clients
+             (
+               target_id int NOT NULL AUTO_INCREMENT,
+               PRIMARY KEY(target_id),
+               client_id int,
+               FOREIGN KEY(client_id) REFERENCES clients(client_id),
+               address varchar(50)
+             )";
+       if(mysqli_query($con,$sql)){
+         echo '{--TABLE target_clients created--}';
+       }
+       else{
+         echo '<<[CREATE TABLE target_clients FAILED: '.mysqli_error($con).']>>';
+       }
       #CREATE TABLE services
       $sql = "CREATE TABLE services
              (

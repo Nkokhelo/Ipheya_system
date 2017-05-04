@@ -14,7 +14,7 @@
                        </td>
                      </tr>';
     endwhile;
-
+    #delete ip address
     if(isset($_GET['delete'])){
       $del_id  = mysqli_real_escape_string($db,$_GET['delete']);
       $del_id = (int)$del_id;
