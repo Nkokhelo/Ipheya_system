@@ -48,6 +48,7 @@
 		<div class="container-fluid home-bg">
 			<div class="row">
 				<div class="col-md-12 text-center home-page">
+					<div class="col-md-12"> </div>
 					<div class="main-logo">
 						<a href="#"><img src="assets/index/images/logo.gif" alt="" /></a>
 					</div>
