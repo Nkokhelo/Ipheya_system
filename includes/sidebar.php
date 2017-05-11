@@ -1,4 +1,4 @@
-<div class="col-lg-3" id="sidebar">
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 " id="sidebar">
   <div class="row">
     <div class="col-md-12" id="sidebar-header">
       <span class="glyphicon glyphicon-th-list"></span> <span class="text-center ">Navigation</span>

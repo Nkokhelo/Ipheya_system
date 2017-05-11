@@ -1,30 +1,43 @@
 <?php
-    #general requests
-    if(isset($_POST['Request-service'])){
-      $service = sanitize($_POST['service']);
+  // include('../logic.php');
+  $logic = new Logic();
+#general requests
+    if(isset($_POST['Request-service']))
+    {
+      $service_id = sanitize($_POST['service']);
+      // $service_id =$logic->getServiceIdByName($service);
       $description = mysqli_real_escape_string($db,$_POST['description']);
       $description = sanitize($description);
-      $user_id = sanitize($_SESSION['Client']);
-
-      echo $service.$description.$user_id;
-
-      if(empty($service)){
+      $client_id = $logic->getClientIdByEmail($_SESSION['Client']);
+      // echo $service.$description.$user_id;
+      if(empty($service_id))
+      {
         $errors[] .= 'Please select service.';
       }
-      if(!empty($errors)){
+      if(!empty($errors))
+      {
         $gr_display = display_errors($errors);
       }
-      else{
+      else
+      {
         #remember due_date for live server
-        $gr_query = "INSERT INTO general_requests(user_id,service,description,request_date,request_status,duration,warranty,due_date)
-        VALUES('{$user_id}','{$service}','{$description}',NOW(),'0','','',NULL)";
-        mysqli_query($db,$gr_query);
-        header('Location: request.php');
+        $gr_query = "INSERT INTO ServiceRequest(RequestID,ClientID,ServiceID,Description,RequestDate,RequestStatus,SurveyingDate,Duration,Warrant,DueDate,RequestType)
+                                         VALUES(NULL,{$client_id},{$service_id},'{$description}',NOW(),'unread',NOW(),0,0,NOW(),'Service')";
+       if(!mysqli_query($db,$gr_query))
+       {
+         die('Error'.mysqli_error($db));
+       }
+       else
+       {
+          header('Location: home.php');
+          $_SESSION['message'] =" Hy there, Your request is being proccesed!!!<br/> We will call you back within 24 hrs.";
+       }
       }
     }
-    #maintenance requests
-    if(isset($_POST['Request-maintenance'])){
-      $maintenance = sanitize($_POST['maintenance']);
+#maintenance requests
+    if(isset($_POST['Request-maintenance']))
+    {
+      $ServiceID = sanitize($_POST['maintenance']);
       $specify = mysqli_real_escape_string($db,$_POST['specify']);
       $specify = sanitize($specify);
       $frequency = mysqli_real_escape_string($db,$_POST['frequency']);
@@ -33,30 +46,38 @@
       $period = sanitize($period);
       $description = mysqli_real_escape_string($db,$_POST['desc']);
       $description = sanitize($description);
-      $user_id = sanitize($_SESSION['Client']);
-
-
-      if(empty($maintenance)){
+      $user = sanitize($_SESSION['Client']);
+      $user_id = $logic->getClientIdByEmail($user);
+      if(empty($ServiceID))
+      {
         $errors[] .= 'Please select service.';
       }
-      if($service=='other'&&empty($specify)){
+      if($ServiceID==0&&empty($specify))
+      {
         $errors[] .= 'Please specify.';
       }
-      if(empty($frequency)){
+      if(empty($frequency))
+      {
         $errors[] .= 'Please select frequency.';
       }
-      if(empty($period)){
+      if(empty($period))
+      {
         $errors[] .= 'Please select period.';
       }
-      if(!empty($errors)){
+      if(!empty($errors))
+      {
         $mr_display = display_errors($errors);
       }
-      else{
+      else
+      {
         #remember for live server
-        echo  $mr_query = "INSERT INTO maintenance(user_id,maintenance,description,request_date,request_status,frequency,period,end_date)
-        VALUES('{$user_id}','{$maintenance}','{$description}',NOW(),'0','{$frequency}','{$period}',NULL)";
-        mysqli_query($db,$mr_query);
+        $mr_query = "INSERT INTO maintenancerequest(RequestID,ClientID,ServiceID,Description,RequestDate,RequestStatus,MaintenanceFrequency,MaintenancePeriod,EndDate,RequestType)
+        VALUES(NULL,'{$user_id}',{$ServiceID},'{$description}',NOW(),'unread','{$frequency}',{$period},NOW(),'Maintenance')";
+        if(!mysqli_query($db,$mr_query))
+        {
+          die('error'.mysqli_error($db));
+        }
         header('Location: request.php');
       }
     }
- ?>
+?>

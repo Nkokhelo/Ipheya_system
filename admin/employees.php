@@ -1,5 +1,6 @@
 <?php
      require_once('../core/init.php');
+     include('../core/logic.php');
      include('includes/head.php');
      include('includes/navigation.php');
      require_once('../core/controllers/employee-controller.php');

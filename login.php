@@ -1,7 +1,9 @@
 <?php
    require_once('core/init.php');
+   include('core/logic.php');
    include('core/controllers/login-controller.php');
    include('core/controllers/register-controller.php');
+
 ?>
 <!DOCTYPE html>
 <html >
@@ -12,6 +14,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+  <script src="assets/lib/jquery-2.1.3.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.js"></script>  
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -32,8 +37,8 @@
       </div>
       <div class="form">
         <h2>Create an account</h2>
-        <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
-        <form method="post">
+        <div class="" id="errors"><?=((isset($displayR))?$displayR:'');?></div>
+        <form method="post" action="login.php">
           <input type="text" name="name" placeholder="Name"/>
           <input type="text" name="surname" placeholder="Surname"/>
           <input type="email" name="email" placeholder="Email Address"/>

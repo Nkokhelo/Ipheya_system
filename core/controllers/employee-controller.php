@@ -1,6 +1,8 @@
 <?php
-    #add employee
-    if(isset($_POST['Add'])){
+    $log = new Logic();
+#add employee
+    if(isset($_POST['Add']))
+    {
       $department = mysqli_real_escape_string($db, $_POST['department']);
       $department = sanitize($department);
       $name = mysqli_real_escape_string($db, $_POST['name']);
@@ -26,98 +28,118 @@
       $password = 'password01';
       $token = 'e';
 
-      #prepare department for data retention
+#prepare department for data retention
       $depart_query = "SELECT * FROM departments WHERE department_id = '$department'";
       $depart_exe = mysqli_query($db,$depart_query);
       $depart_info = mysqli_fetch_assoc($depart_exe);
       $depart_name = $depart_info['department'];
       $depart_id = $depart_info['department_id'];
 
-      if(empty($department)){
+      if(empty($department))
+      {
         $errors[] .= 'department field is required';
       }
-      if(empty($name)){
+      if(empty($name))
+      {
         $errors[] .= 'name field is required';
       }
-      if(empty($surname)){
+      if(empty($surname))
+      {
         $errors[] .= 'last name field is required';
       }
-      if(empty($title)){
+      if(empty($title))
+      {
         $errors[] .= 'title field is required';
       }
-      if(empty($gender)){
+      if(empty($gender))
+      {
         $errors[] .= 'gender field is required';
       }
-      if($title == 'Mr.' && $gender!='Male' || $title == 'Mrs.' && $gender!='Female' || $title == 'Ms.' && $gender!='Female'){
+      if($title == 'Mr.' && $gender!='Male' || $title == 'Mrs.' && $gender!='Female' || $title == 'Ms.' && $gender!='Female')
+      {
         $errors[] .= 'The title does not correspond with the gender selected';
       }
-      if(empty($number)){
+      if(empty($number))
+      {
         $errors[] .= 'contact number is required';
       }
-      if(empty($email)){
+      if(empty($email))
+      {
         $errors[] .= 'email address is required';
       }
-      if(empty($date)){
+      if(empty($date))
+      {
         $errors[] .= 'date of birth is required';
       }
-      if(empty($identity)){
+      if(empty($identity))
+      {
         $errors[] .= 'indentity number is required';
       }
-      if(!empty($errors)){
+      if($log->getUserIdByEmail($email)>0)
+      {
+          $errors[] .= 'This email already exist on the system';
+      }
+       if(!empty($errors))
+      {
         $display = display_errors($errors);
       }
-      else{
-        echo $ins_employee = "INSERT INTO employees(name,surname,title,date_of_birth,gender,email,phone_number,identity_number,postal_address,residential_address,department,password,token)
-        VALUES('{$name}','{$surname}','{$title}','{$date}','{$gender}','{$email}','{$number}','{$identity}','{$postal}','{$residential}','{$department}','{$password}','{$token}')";
-         mysqli_query($db,$ins_employee);
+      else
+      {
+          $ins_employee = "INSERT INTO employees(name,surname,title,date_of_birth,gender,email,phone_number,identity_number,postal_address,residential_address,department,password,token)
+         VALUES('{$name}','{$surname}','{$title}','{$date}','{$gender}','{$email}','{$number}','{$identity}','{$postal}','{$residential}','{$department}','{$password}','{$token}')";
+         
+         if(mysqli_query($db,$ins_employee))
+         {
+            $addtoUserSQL="INSERT INTO Users VALUES(NULL,'$email','$email',true,'Ipheya@2017')";
+            $addtoUser = mysqli_query($db,$addtoUserSQL);
+            if(!$addtoUser)
+            {
+              die ("Error in add to user at emplyee controller ".mysqli_error($db));
+            }
+         }
+         $addToRole = $log->addUserToRole("$email","Employee");
          header('Location: employees.php');
       }
     }
-    #delete employee
-    if(isset($_GET['delete']) && !empty($_GET['delete'])){
+#delete employee
+    if(isset($_GET['delete']) && !empty($_GET['delete']))
+    {
       $tbl_display = '';
       $delete_id = mysqli_real_escape_string($db, $_GET['delete']);
       $delete_id = (int)$delete_id;
       $delete_id = sanitize($delete_id);
 
-      $admin_query = "SELECT * FROM employees WHERE employee_id = '$delete_id'";
-      $admin_exe = mysqli_query($db, $admin_query);
-      $admin_check = mysqli_fetch_assoc($admin_exe);
-      $emp_id = $admin_check['employee_id'];
-      $emp_email = $admin_check['email'];
-      $roles_query = "SELECT * FROM roles WHERE employee_id = '$emp_id' AND email = '$emp_email'";
-      $roles_exe = mysqli_query($db,$roles_query);
-      while($roles_res = mysqli_fetch_assoc($roles_exe)){
-        if($roles_res['role'] != 'Admin'){
-        }
-        else{
-          $errors[] .= 'Cannot delete admin, please remove role and try again';
-        }
+      $employee = mysqli_fetch_assoc($log->getEmployeeById($delete_id));
+      $empEmail= $employee["email"];
+      $userRole =$log->getUserRoleByUserEmail($empEmail);
+      if($userRole =="Admin")
+      {
+        $error[].="Cannot delete this role employee";
       }
-      if(!empty($errors)){
+      if(!empty($errors))
+      {
         $tbl_display = display_errors($errors);
       }
-      else{
+      else
+      {
         $del_sql = "DELETE FROM employees WHERE employee_id = '$delete_id'";
+        mysqli_query($db, $del_sql);
+        $role_ID = $log->getRoleIdByName($userRole);
+        $del_emp_role = "DELETE FROM userroles WHERE Role_id =$role_ID ";
         mysqli_query($db, $del_sql);
         header('Location: employees.php');
       }
     }
-    #edit employee
-    if(isset($_GET['edit']) && !empty($_GET['edit'])){
+#edit employee
+    if(isset($_GET['edit']) && !empty($_GET['edit']))
+    {
       $edit_id = mysqli_real_escape_string($db, $_GET['edit']);
       $edit_id = (int)($edit_id);
       $edit_id = sanitize($edit_id);
       #retrieve employee
-      $edit_sql = "SELECT * FROM employees WHERE employee_id = '$edit_id'";
-      $edit_result = mysqli_query($db, $edit_sql);
-      $employee_res = mysqli_fetch_assoc($edit_result);
+      $employee_res = mysqli_fetch_assoc($log->getEmployeeById($edit_id));
       #retrieve department corresponding to department field in employee
-      $employee = $employee_name = $employee_res['name'];
-      $depart_id = $employee_res['department'];
-      $department_sql = "SELECT * FROM departments WHERE department_id = '$depart_id'";
-      $department_exe = mysqli_query($db,$department_sql);
-      $department_result = mysqli_fetch_assoc($department_exe);
+      $department_result = $log->getDepartmentById($employee_res['department']);
       #display results
       $depart_name = $department_result['department'];
       $name = $employee_res['name'];
@@ -131,7 +153,8 @@
       $residential = $employee_res['residential_address'];
       $postal = $employee_res['postal_address'];
 
-      if(isset($_POST['Edit'])){
+      if(isset($_POST['Edit']))
+      {
         $department = mysqli_real_escape_string($db, $_POST['department']);
         $department = sanitize($department);
         $name = mysqli_real_escape_string($db, $_POST['name']);
@@ -158,46 +181,51 @@
         $query = "SELECT * FROM employees WHERE email='$email' AND identity_number = '$identity' AND employee_id !='$edit_id'";
         $query_result = mysqli_query($db,$query);
         $rows = mysqli_num_rows($query_result);
-        if($rows>0){
+        if($rows>0)
+        {
           $errors[] .= 'This employee already exists.';
         }
-        if(!empty($errors)){
+        if(!empty($errors))
+        {
           $display = display_errors($errors);
         }
-        else{
+        else
+        {
         $edit_sql = "UPDATE employees SET name = '$name', surname = '$surname',title = '$title', date_of_birth = '$date',email = '$email',phone_number = '$number',identity_number = '$identity',postal_address = '$postal',residential_address = '$residential',department = '$department' WHERE employee_id = '$edit_id'";
         mysqli_query($db,$edit_sql);
         header('Location: employees.php');
         }
       }
     }
+    
     #fetch all departments
-    $sql = "SELECT * FROM departments ORDER BY department";
-    $result = mysqli_query($db, $sql);
+    $result = $log->getallDepartments();
     $allDepartments ='';
     while($department = mysqli_fetch_assoc($result)) :
       $allDepartments .= '<option value="'.$department['department_id'].'" >'.$department['department'].'</option>';
     endwhile;
 
-    #fetch all employees
-    $employee_query = "SELECT * FROM employees ORDER BY name";
-    $employee_exe = mysqli_query($db,$employee_query);
+#fetch all employees
+    $employee_exe = $log->getallEmployees();
     $allEmployees = '';
     while($employees = mysqli_fetch_assoc($employee_exe)) :
       #select employee department
-      $depart_var = $employees['department'];
-      $find_depart = $db->query("SELECT * FROM departments WHERE department_id = '$depart_var'");
-      $depart_result = mysqli_fetch_assoc($find_depart);
+      $depart_result = $log->getDepartmentById($employees['department']);
       #fetch employee roles
-      $emp_id = $employees['employee_id'];
       $emp_email = $employees['email'];
-      $roles_query = "SELECT * FROM roles WHERE employee_id = '$emp_id' AND email = '$emp_email'";
-      $roles_exe = mysqli_query($db,$roles_query);
-      $roles_array = '';
-      while($roles_res = mysqli_fetch_assoc($roles_exe)){
-        $roles_array .= $roles_res['role'].',';
+      $roles =$log->getUserRolesByUserId($log->getUserIdByEmail($emp_email));
+
+      if(!$employee_exe)
+      {
+        die("Error ".mysqli_error($db));
       }
-      $roles_array = rtrim($roles_array,',');
+      $roles_array = '';
+       for($i=0; $i<count($roles);$i++)
+        {
+               $roles_array .= $roles[$i].",";
+        }
+
+       $roles_array = rtrim($roles_array,',');
        $allEmployees .= '<tr>
                             <td>'.$employees['name'].' '.$employees['surname'].'</td>
                             <td>'.$depart_result['department'].'</td>

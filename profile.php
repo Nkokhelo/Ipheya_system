@@ -1,12 +1,14 @@
 <?php
    require_once('core/init.php');
    include('includes/head.php');
-
+   include ('core/logic.php');
    session_start();
-   if(isset($_SESSION['Client'])){
+   if(isset($_SESSION['Client']))
+   {
 
    }
-   else {
+   else 
+   {
      header('Location: login.php');
    }
    include('core/controllers/client-controller.php');

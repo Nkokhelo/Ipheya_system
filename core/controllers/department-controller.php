@@ -14,8 +14,10 @@ while($departments = mysqli_fetch_assoc($query)):
                     </tr>';
 endwhile;
 #insert new department
-if(isset($_POST['Add'])){
-  if($_POST['department'] == ''){
+if(isset($_POST['Add']))
+{
+  if($_POST['department'] == '')
+  {
     $errors[] .= 'You must enter a department!';
   }
   #check if department exists
@@ -26,21 +28,25 @@ if(isset($_POST['Add'])){
   $ver_sql="SELECT * FROM departments WHERE department = '$department'";
   $ver_query = mysqli_query($db, $ver_sql);
   $count = mysqli_num_rows($ver_query);
-  if($count>0){
+  if($count>0)
+  {
     $errors[] .= '<strong>'.$department.'</strong> already exists. Please choose another department name...';
   }
   #display errors
-  if(!empty($errors)){
+  if(!empty($errors))
+  {
     echo display_errors($errors);
   }
-  else{
+  else
+  {
     $write_query="INSERT INTO departments(department,email) VALUES('{$department}','{$email}')";
     mysqli_query($db, $write_query);
     header('Location: departments.php');
   }
 }
 #remove department
-if(isset($_GET['delete']) && !empty($_GET['delete'])){
+if(isset($_GET['delete']) && !empty($_GET['delete']))
+{
   $delete_id= mysqli_real_escape_string($db, $_GET['delete']);
   $delete_id = (int)($delete_id);
   $delete_id = sanitize($delete_id);
@@ -54,7 +60,8 @@ if(isset($_GET['delete']) && !empty($_GET['delete'])){
   header('Location: departments.php');
 }
 #edit department
-if(isset($_GET['edit']) && !empty($_GET['edit'])){
+if(isset($_GET['edit']) && !empty($_GET['edit']))
+{
   $edit_id = mysqli_real_escape_string($db, $_GET['edit']);
   $edit_id = (int)$edit_id;
   $edit_id = sanitize($edit_id);
@@ -65,7 +72,8 @@ if(isset($_GET['edit']) && !empty($_GET['edit'])){
   $department = $edit_res['department'];
   $email = $edit_res['email'];
 
-  if(isset($_POST['Edit'])){
+  if(isset($_POST['Edit']))
+  {
     $department = mysqli_real_escape_string($db, $_POST['department']);
     $department = sanitize($department);
     $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -74,11 +82,13 @@ if(isset($_GET['edit']) && !empty($_GET['edit'])){
     $query = "SELECT * FROM departments WHERE department='$department' AND department_id !='$edit_id'";
     $query_result = mysqli_query($db,$query);
     $rows = mysqli_num_rows($query_result);
-    if($rows>0){
+    if($rows>0)
+    {
       $errors[] .= '<strong>'.$department.'</strong> already exists. Please choose a different name...';
       echo display_errors($errors);
     }
-    else{
+    else
+    {
         $edit_query = "UPDATE departments SET department = '$department', email = '$email' WHERE department_id='$edit_id'";
         $upadte = mysqli_query($db, $edit_query);
         header('Location: departments.php');

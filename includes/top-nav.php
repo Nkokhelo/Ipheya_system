@@ -3,7 +3,7 @@
     <a href="home.php" class="navbar navbar-brand text-uppercase">Ipheya</a>
   </div>
   <div class="col-md-3">
-    <div class="logo">
+    <div class="logo pull-right">
       <a href="#" dat-target="#userconfig" data-toggle="dropdown"><span class="navbar-brand text-right"><?=$_SESSION['Client'];?> <span class="caret"></span></span></a>
     </div>
   </div>

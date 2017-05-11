@@ -1,44 +1,58 @@
 <?php
-  session_start();
-  unset($_SESSION["Client"]);
-  unset($_SESSION['Employee']);
-  session_destroy();
-  $_SESSION["Client"]= $_SESSION['Employee'] = '';
+$log = new Logic();
+session_start();
+unset($_SESSION["Client"]);
+unset($_SESSION['Employee']);
+session_destroy();
+$_SESSION["Client"]= $_SESSION['Employee'] = '';
     #login
-    if(isset($_POST['Login'])){
+    if(isset($_POST['Login']))
+    {
       session_start();
       $_SESSION['Client'] = '';
+      $_SESSION['Employee'] ='';
       $email = mysqli_real_escape_string($db,$_POST['log-email']);
       $password = mysqli_real_escape_string($db,$_POST['log-password']);
 
-      $login = "SELECT * FROM clients WHERE email = '$email' AND password = '$password'";
-      $login_exe = mysqli_query($db,$login);
-      $result = mysqli_fetch_assoc($login_exe);
-      $count_c = mysqli_num_rows($login_exe);
-      if($count_c < 1){
-        $_SESSION['Employee'] = '';
-        $e_login = "SELECT * FROM employees WHERE email = '$email' AND password = '$password'";
-        $e_login_exe = mysqli_query($db,$e_login);
-        $e_result  = mysqli_fetch_assoc($e_login_exe);
-        $count_e = mysqli_num_rows($e_login_exe);
-        $count_e;
-        if($count_e > 0){
-          $_SESSION['Employee'] = $e_result['email'];
-          header('Location: Location: admin/departments.php');
-        }
-        else{
+
+      $login_exe =$log->Login($email,$password);
+      $result = mysqli_fetch_row($login_exe);
+      if(count($result)< 1)
+      {
           $errors[] .= 'Email or password is incorrect';
-          $display = display_errors($errors);
-        }
+          if(!empty($errors))
+          {
+            $display = display_errors($errors);
+          }
+          // echo "Not found";
       }
-      else {
-        if(!empty($errors)){
-          $display = display_errors($errors);
-        }
-        else{
-          $_SESSION['Client'] = $result['email'];
-          header('Location: home.php');
-        }
+      else
+      {
+          $ip = $_SERVER['REMOTE_ADDR'];
+          #$emailpar = $result['email'];
+          $log->AssociateTarget($ip,$email);
+            $_SESSION['Employee'] = 'Employee';
+            $UserRole =$log->getUserRoleByUserId($result[0]);
+          //   echo $UserRole;
+            switch($UserRole)
+            {
+                case 'Admin':
+                $_SESSION['Employee']=$email;
+                header('Location: admin/employees.php');//admin url
+                break;
+                case 'Client':
+                $_SESSION['Client'] = $email;
+                header('Location: home.php');//client url
+                break;
+                case 'Employee':
+                $_SESSION['Employee']=$email;
+                header('Location: /employee/index.php');//employrr url
+                break;
+                case 'Manager':
+                header('Location: /manager/index.php');//manager url
+                break;
+            }
       }
+
     }
 ?>

@@ -1,5 +1,6 @@
 <?php
      require_once('../core/init.php');
+     include('../core/logic.php');
      include('includes/head.php');
      include('includes/navigation.php');
      require_once('../core/controllers/role-controller.php');
@@ -38,10 +39,11 @@
                   <?=((isset($_GET['edit']) || isset($_GET['remove']))?'<a href="roles.php" class="btn btn-warning">Cancel</a>':'');?>
                 </div>
               </form>
-          </div><hr>
+          </div>
+          <hr>
           <table class="table table-bordered table-striped " style="padding:2%;">
             <thead>
-              <th>Employee</th><th>role(s)</th><th>Options</th>
+              <th>Employee</th><th>email</th><th>role(s)</th><th>Options</th>
             </thead>
             <tbody>
               <?=$allEmployees;?>

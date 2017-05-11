@@ -86,3 +86,15 @@ input[disabled="disabled"]{
   opacity: 0.5;
   cursor: not-allowed !important;
 }
+
+/*Nkokhelo new code*/
+#cRequest>tr
+{
+    font-size: 900px;
+    color: #0080c0;
+}
+#cRequest>tr:hover
+{
+    font-size: 900px;
+    color: #0080c0;
+}

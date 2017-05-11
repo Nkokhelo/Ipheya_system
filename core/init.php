@@ -1,6 +1,7 @@
 <?php
     $db = mysqli_connect('localhost','root','','ipheya');
-    if(mysqli_connect_errno()){
+    if(mysqli_connect_errno())
+    {
       echo "Database connection failed with following error(s): ".mysqli_connect_errno();
       die();
     }

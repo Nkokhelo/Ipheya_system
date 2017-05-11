@@ -1,54 +1,65 @@
 <?php
-    #add Service
-    if(isset($_POST['Add']) && !empty($_POST['Add'])){
-      $department = sanitize($_POST['department']);
+    // include('../logic.php');
+    $logic = new Logic();
+#add Service
+    if(isset($_POST['Add']) && !empty($_POST['Add']))
+    {
+      $departmentID = sanitize($_POST['department']);
       $service = mysqli_real_escape_string($db , $_POST['service']);
       $service = $service_name = sanitize($service);
       $num = mysqli_real_escape_string($db , $_POST['number']);
       $type = mysqli_real_escape_string($db , $_POST['type']);
-      $min_duration = $num.':'.$type;
+      $min_duration = sanitize($num);
+      $type = sanitize($type);
       $min_duration = sanitize($min_duration);
       $description = mysqli_real_escape_string($db, $_POST['description']);
       $description = sanitize($description);
 
       #fetch department for data retention
-      $dep_query = "SELECT * FROM departments WHERE department_id = '$department'";
-      $dep_exe = mysqli_query($db,$dep_query);
-      $dep_result = mysqli_fetch_assoc($dep_exe);
+      $dep_result = $logic->getDepartmentById($departmentID);
       $depart_id = $dep_result['department_id'];
       $dep_name = $dep_result['department'];
+
       #form validation
-      if($department==''){
+      if($departmentID=='')
+      {
         $errors[] .= 'Please select a department';
       }
-      if($service==''){
+      if($service=='')
+      {
         $errors[] .= 'Service name cannot be left blank.';
       }
-      if($num==''){
+      if($num=='')
+      {
         $errors[] .= 'Please enter a value for min duration';
       }
-      if($type==''){
+      if($type=='')
+      {
         $errors[] .= 'Please select a type for min duration';
       }
       #if service already exists
-      $services  = "SELECT * FROM services WHERE service='$service' AND department='$department'";
+      $services  = "SELECT * FROM services WHERE service='$service' AND department='$depart_id'";
       $service_query = mysqli_query($db,$services);
       $count = mysqli_num_rows($service_query);
-      if($count>0){
+      if($count>0)
+      {
         $errors[] .= '<strong>'.$service.'</strong> already exists. Please choose another service or change department';
       }
       #display errors or add category
-      if(!empty($errors)){
+      if(!empty($errors))
+      {
         $display  = display_errors($errors);
       }
-      else{
-        $insert_service = "INSERT INTO services(service,min_duration,description,department) VALUES('{$service}','{$min_duration}','{$description}','{$department}')";
+      else
+      {
+        $insert_service = "INSERT INTO services(service,min_duration,durationType,description,department) VALUES('{$service}','{$min_duration}','{$type}','{$description}','{$depart_id}')";
         mysqli_query($db, $insert_service);
         header('Location: services.php');
       }
     }
-    #edit service
-    if(isset($_GET['edit']) && !empty($_GET['edit'])){
+#edit service
+    if(isset($_GET['edit']) && !empty($_GET['edit']))
+    {
       $edit_id = mysqli_real_escape_string($db, $_GET['edit']);
       $edit_id = (int)($edit_id);
       $edit_id = sanitize($edit_id);
@@ -58,10 +69,8 @@
       $service_res = mysqli_fetch_assoc($edit_result);
 
       $description = $service_res['description'];
-      $min_duration = explode(':',$service_res['min_duration']);
-      $num = $min_duration[0];
-      $type = $min_duration[1];
-
+      $num = $service_res['min_duration'];
+      $type = $service_res['durationType'];
       $service = $service_name = $service_res['service'];
       $depart_id = $service_res['department'];
       $department_sql = "SELECT * FROM departments WHERE department_id = '$depart_id'";
@@ -96,8 +105,9 @@
       }
       }
     }
-    #remove services
-    if(isset($_GET['delete']) && !empty($_GET['delete'])){
+#remove services
+    if(isset($_GET['delete']) && !empty($_GET['delete']))
+    {
       $delete_id= mysqli_real_escape_string($db, $_GET['delete']);
       $delete_id = (int)$delete_id;
       $delete_id = sanitize($delete_id);
@@ -105,8 +115,9 @@
       mysqli_query($db, $del_sql);
       header('Location: services.php');
     }
-    #view service
-    if(isset($_GET['view']) && !empty($_GET['view'])){
+#view service
+    if(isset($_GET['view']) && !empty($_GET['view']))
+    {
       $view_id = mysqli_real_escape_string($db, $_GET['view']);
       $view_id = (int)($view_id);
       $view_id = sanitize($view_id);
@@ -116,9 +127,8 @@
       $service_res = mysqli_fetch_assoc($view_result);
 
       $description = $service_res['description'];
-      $min_duration = explode(':',$service_res['min_duration']);
-      $num = $min_duration[0];
-      $type = $min_duration[1];
+      $min_duration = $service_res['min_duration'];
+      $type = $service_res['durationType'];
 
       $service = $service_name = $service_res['service'];
       $depart_id = $service_res['department'];
@@ -164,6 +174,6 @@
     $ddl_service_sql = "SELECT * FROM services ORDER BY service";
     $general_services = mysqli_query($db,$ddl_service_sql);
     while($g_service = mysqli_fetch_assoc($general_services)):
-      $allServicesDDL .= '<option value="'.$g_service['service'].'">'.$g_service['service'].'</option>';
+      $allServicesDDL .= '<option value="'.$g_service['service_id'].'">'.$g_service['service'].'</option>';
     endwhile;
  ?>

@@ -2,13 +2,14 @@
      require_once('../core/init.php');
      include('includes/head.php');
      include('includes/navigation.php');
+     include('../core/logic.php');
      require_once('../core/controllers/service-controller.php');
      include('includes/employee-session.php');
 ?>
 <h2 class="text-center">Services</h2>
 <div class="container-fluid" style="margin:1%;">
   <!-- service form -->
-  <div class="col-md-6" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
+  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
     <form class="form" action="services.php<?=((isset($_GET['edit']))?'?edit='.$_GET['edit']:'');?>" method="post">
       <legend class="text-center"><?=((isset($_GET['edit']))?'Edit':'Add a new');?> service</legend>
       <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
@@ -48,7 +49,7 @@
     </form>
   </div>
   <!-- services table -->
-  <div class="col-md-6">
+  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
     <table class="table table-bordered">
       <thead>
         <th>Name</th>

@@ -1,7 +1,7 @@
 <?php
+    $logic = new Logic();
     #fetch all clients
-    $client_query = "SELECT * FROM clients WHERE archived = 0 ORDER BY name";
-    $client_exe = mysqli_query($db,$client_query);
+    $client_exe = $logic->getUnachivedClients();
     $allClients = '';
     while($clients = mysqli_fetch_assoc($client_exe)) :
       $allClients .= '<tr>
@@ -15,7 +15,8 @@
                         </tr>';
     endwhile;
     #archive account
-    if(isset($_GET['archive'])){
+    if(isset($_GET['archive']))
+    {
       $archive_id = mysqli_real_escape_string($db,$_GET['archive']);
       $archive_id = sanitize($archive_id);
       $archive_emp = "UPDATE clients SET archived = 1 WHERE client_id = '$archive_id'";
@@ -23,10 +24,10 @@
       header('Location: clients.php');
     }
     #fetch client for clientside dashboard
-    if(isset($_SESSION['Client'])){
+    if(isset($_SESSION['Client']))
+    {
         $sess_client = $_SESSION['Client'];
-        $client_q = "SELECT * FROM clients WHERE email = '$sess_client'";
-        $client_q_exe  = mysqli_query($db,$client_q);
+        $client_q_exe  = $logic->getClientByEmail($sess_client);
         $client_info  = mysqli_fetch_assoc($client_q_exe);
         $a_id = $client_info['client_id'];
         $a_name  = $client_info['name'];
@@ -34,7 +35,7 @@
         $a_email = $client_info['email'];
         $a_postal = $client_info['postal_address'];
         $a_number = $client_info['contact_number'];
-        $a_province = $client_info['province'];
+        // $a_province = $client_info['province'];
         #update client
         if(isset($_POST['Update'])){
           $a_name = mysqli_real_escape_string($db,$_POST['name']);
@@ -47,9 +48,9 @@
           $a_number = sanitize($a_number);
           $a_postal = mysqli_real_escape_string($db,$_POST['postal']);
           $a_postal = sanitize($a_postal);
-          $a_province = mysqli_real_escape_string($db,$_POST['province']);
-          $a_province = sanitize($a_province);
-          $client_update = "UPDATE clients SET name = '$a_name', surname = '$a_surname', postal_address = '$a_postal', contact_number = '$a_number', province = '$a_province' WHERE email = '$sess_client'";
+          // $a_province = mysqli_real_escape_string($db,$_POST['province']);
+          // $a_province = sanitize($a_province);
+          $client_update = "UPDATE clients SET name = '$a_name', surname = '$a_surname', postal_address = '$a_postal', contact_number = '$a_number' WHERE email = '$sess_client'";
           mysqli_query($db,$client_update);
           header('Location: profile.php');
         }
