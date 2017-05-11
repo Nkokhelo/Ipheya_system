@@ -1,7 +1,6 @@
 <?php
  include '../core/Libaries/fpdf.php';
  $pdf = new FPDF();
-<<<<<<< HEAD
  
  $pdf->AddPage();
  $pdf->SetFont("Arial","B",20);
