@@ -27,6 +27,7 @@
 
 	<!-- STYLE SWITCH STYLESHEET ONLY FOR DEMO -->
 	<link rel="stylesheet" href="assets/index/demo/demo.css">
+	<link rel="stylesheet" href="css/custom.css">
 
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="assets/index/images/favicon.gif">
@@ -35,7 +36,6 @@
 		<script src="js/html5shiv.js"></script>
 		<script src="js/respond.js"></script>
     <![endif]-->
-
 </head>
 <body>
 	<div id="st-preloader">
@@ -45,24 +45,27 @@
 	</div><!-- /#st-preloader -->
 
 	<section id="home-page">
-		<div class="container-fluid home-bg">
+		<div class="container-fluid home-bg" style="padding-top:10px;">
+
 			<div class="row">
 				<div class="col-md-12 text-center home-page">
+					 <div class="navbar-collapse collapse">
+						<div class="col-lg-offset-4 col-md-6">
+							<ul class="nav navbar-nav">
+								<li><a class="active"  href="#home-page" target="_top">Home</a></li>
+								<li><a  href="#service-page" target="_top">Services</a></li>
+								<li><a  href="#about-page" target="_top">About-us</a></li>
+								<li><a  href="#contact-page" target="_top">Contact-us</a></li>
+							</ul>
+						</div>
+            		</div>
 					<div class="main-logo">
 						<a href="#"><img src="assets/index/images/logo.gif" alt="" /></a>
 					</div>
-					<h1>We are currently working on awesome new site.</h1>
+					<h1>Welcome to Ipheya IT Solution.</h1>
 					<h2>Stay tuned!</h2>
 					<div class="container">
-						<!-- COUNTDOWN -->
-						<!--<div class="row">
-							<div class="col-sm-12 tk-countdown">
-								<div class="row">
 
-								</div>
-							</div>
-						</div>-->
-						<!-- /COUNTDOWN -->
 					</div>
 					<p>Subscribe on newsletter Learn first about the launch</p>
 					<form id="subscribe" class="form-group subscribe-area">
@@ -88,13 +91,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="service-title">Feature</h1>
+					<h1 class="service-title">Who are we?</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
 							<i class="fa fa-gift"></i>
 						<div class="service-aro-right"></div>
 					</div>
-					<h2>Our feature service</h2>
+					<h2>Ipheya IT solution </h2>
 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
 				</div>
 				<div class="col-md-3 col-sm-6 text-center service">
@@ -220,7 +223,38 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 text-center">
-					<p>&copy; <?=date('Y');?> <strong><a href="#">Ipheya</a></strong>. All Rights Reserved.</p>
+					<div class="col-md-12">
+						<div class="col-md-12" id="foot">
+							<div class="col-md-4">
+								<ul>
+									<li>Cloud IT Solution</li>
+									<li>UPN Solution</li>
+									<li>Computing</li>
+									<li>IT Support</li>
+									<li>IP VNP</li>
+								</ul>
+							</div>
+							<div class="col-md-4">
+								<ul>
+									<li>Business Uncapped ADSL</li>
+									<li>E-Learning</li>
+									<li>IT Support</li>
+									<li>Sales</li>
+									<li>WIFI</li>
+								</ul>
+							</div>
+							<div class="col-md-4">
+								<ul>
+									<li>Hardware and Software Maintanance</li>
+									<li>Internet Solution</li>
+									<li>Lease Equipment</li>
+									<li>IT Solution</li>
+									<li>Confrence</li>
+								</ul>
+							</div>
+						</div>
+						<p>&copy; <?=date('Y');?> <strong><a href="#">Ipheya IT Solution</a></strong>. All Rights Reserved.</p>
+					</div>
 				</div>
 			</div>
 		</div>

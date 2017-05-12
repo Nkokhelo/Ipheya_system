@@ -5,6 +5,7 @@
      include('includes/navigation.php');
      require_once('../core/controllers/employee-controller.php');
      include('includes/employee-session.php');
+     
 ?>
 <h2 class="text-center">Employees</h2>
 <div class="container-fluid" style="margin:1%;">

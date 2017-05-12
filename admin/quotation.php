@@ -33,12 +33,12 @@
  <div class="row">
          <div class="col-lg-9 col-md-9  col-sm-9 col-xs-9  ">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-               <form method="" action="">
-			   <div class="col-lg-12">
-							<div class="col-md-push-8 col-md-4">
-								<input class="btn btn-xs btn-default"  type="submit" value="Save To Draft" /> 
-								<a class="btn btn-xs btn-default" href='' >Send Email</a> 
-								<a  class="btn btn-xs btn-default" href='' >Convert to PDF</a> 
+               <form method="POST" action="quotation.php">
+			   			<div class="col-lg-12">
+							<div class="col-md-push-8 col-md-8 btn-group">
+								<input class="btn btn-xs btn-info" name="submit" type="submit" value="Save To Draft"/> 
+								<input class="btn btn-xs btn-info" name="email"  type="submit" value="Send Email"/> 
+								<input class="btn btn-xs btn-info" name="pdf_con"type="submit" value="Convert to PDF"/>
 							</div>
 						</div>
 						<hr/>
@@ -46,7 +46,7 @@
 					<div class="col-md-12">
 						<div class="col-md-12">
 							    <div class="col-lg-6">
-									<h1>Ipheya IT Solution</h1><hr/>
+									<h1>Ipheya IT Solution</h1>
 									<table>
 										<tr><td>05 Wallnut Road</td></tr>
 										<tr><td>Smartxchange</td></tr>
@@ -59,12 +59,13 @@
 								</div>
 								<div class="col-lg-6" style="float:right">
 									<h1 style="float:right">Qoute</h1>
-									<hr style="width:100%" />
 									<table style="width:100%" align="right">
-										<tr><td>Date </td><td><input name="qdate" id="" type="date" value=""/></td></tr>
-										<tr><td>Title</td><td> <input name="title" id="" value=""/></td></tr>
-										<tr><td>Customer </td><td><select name="clientid" href='quotation.php?cid=' id='clients'><option value='0'>Select a client</option><?=$options ?></select></td></tr>
-										<tr><td>Valid Until</td><td> <input name="edate" id="" type="date" value=""/></td></tr>
+										<tr><td>Date </td><td><input name="qdate" id="" type="date" value="" required/></td></tr>
+										<tr><td>Title</td><td> <input name="title" id="" value="" required/></td></tr>
+										<tr><td>Customer </td><td><select name="clientid" href='quotation.php?cid=' id='clients'><option name="clientid" value='0'>Select a client</option><?=$options ?></select></td></tr>
+										<tr><td>Valid Until</td><td> <input name="edate" id="" type="date" value="" required/></td></tr>
+										<tr><td>.</td><td> </td></tr>
+										<tr><td>.</td><td></td></tr>
 									</table>
 								</div>
 						</div>
@@ -74,7 +75,7 @@
 					<div class="col-md-12">
 						<div class="col-md-6">
 							<h3>Customer Information</h3>
-							<div>
+							<div id="result">
 								<?=$client_information?>
 							</div>
 						</div>
@@ -106,17 +107,17 @@
 										</thead> 
 										<tbody id="items">
 											<tr>
-												<td><input type="text" name="IName[]"  id="txtN_0" value="" placeholder="Item Name"></td>
-												<td><input type="text" name="IDescription[]"  id="txtD_0" value="" style="width:350px" placeholder="Description"></td>
-												<td><input type="text" name="IQuantiy[]"  id="txtQ_0" value="" style="width:100px" onkeyup="generateTotals(this)" placeholder="No.of Items"></td>
-												<td><input type="text" name="IUnitPrice[]"  id="txtUP_0"value=""  style="width:80px" onkeyup="generateTotals(this)"  placeholder="Unit Price"></td>
-												<td><input type="text" name="IPQ[]"  id="txtPQ_0"value=""  style="width:100px"></td>
+												<td><input type="text" name="IName[]"  id="txtN_0" value="" placeholder="Item Name" required/></td>
+												<td><input type="text" name="IDescription[]"  id="txtD_0" value="" style="width:350px" placeholder="Description" required/></td>
+												<td><input type="text" name="IQuantiy[]"  id="txtQ_0" value="" style="width:100px" onkeyup="generateTotals(this)" placeholder="No.of Items" required/></td>
+												<td><input type="text" name="IUnitPrice[]"  id="txtUP_0"value=""  style="width:80px" onkeyup="generateTotals(this)"  placeholder="Unit Price" required/></td>
+												<td><input type="text" name="IPQ[]"  id="txtPQ_0"value=""  style="width:100px" required/></td>
 											</tr>
 										</tbody>
 										<tfoot>
 											<tr>
 												<td colspan="4"><b style="float:right"><i>TOTAL PRICE : </i></b></td>
-												<td><input type="text" name="TotalPrice" id="TotalPrice" value="" style="width:100px"/></td>
+												<td><input type="text" name="TotalPrice" id="TotalPrice" value="" style="width:100px" required/></td>
 											</tr>
 										</tfoot>
 									</table>
@@ -126,11 +127,14 @@
 					   </div>
 						<div class="col-lg-12">
 							<hr/>
-							Payment Method <select name="paymentmethod">
-												<option>10 % deposit</option>
-												<option>30 % before the job begins</option>
-												<option>50 % before the job begins</option>
-											</select>
+							Payment Method 
+							<select name="paymentmethod">
+								<option value="1">10 % deposit</option>
+								<option value="2">15 % deposit</option>
+								<option value="3">30 % deposit</option>
+							</select>
+							<br/>
+							<br/>
 						</div>
                     </div>
 
@@ -160,6 +164,7 @@
 						{
 							newInput.name='IName[]';
 							newInput.placeholder="Item Name";
+							newInput.setAttribute('required','required');
 							newInput.id="txtN_"+arraycount;
 						}
 						else if(x ==1)
@@ -168,6 +173,7 @@
 							newInput.placeholder ="Description";
 							newInput.setAttribute('style','width:350px');
 							newInput.id="txtD_"+arraycount;
+							newInput.setAttribute('required','required');
 
 						}
 						else if(x ==2)
@@ -176,6 +182,7 @@
 							newInput.placeholder="No.of Items";
 							newInput.setAttribute('style','width:100px');
 							newInput.setAttribute('onkeyup','generateTotals(this)');
+							newInput.setAttribute('required','required');
 							newInput.id="txtQ_"+arraycount;
 						}
 						else if(x==3)
@@ -184,12 +191,14 @@
 							newInput.placeholder="Unit price";
 							newInput.setAttribute('style','width:80');
 							newInput.setAttribute('onkeyup','generateTotals(this)');
+							newInput.setAttribute('required','required');
 							newInput.id="txtUP_"+arraycount;
 						}
 						else 
 						{
 							newInput.name='IPQ[]';
 							newInput.setAttribute('style','width:100');
+							newInput.setAttribute('required','required');
 							newInput.id="txtPQ_"+arraycount;
 						}
 						newColoum.appendChild(newInput);
@@ -242,8 +251,16 @@
 					  $('#clients').change(function()
 						{
 							var id = $(this).val();
+							$.ajax({
+										type:"get",
+										url:"includes/getclient.php",
+										data:"cid="+id,
+									success:function(data){
+										$("#result").html(data);
+									}
+								});
 							// alert(id);
-							window.location = $(this).attr('href')+id;
+							// window.location = $(this).attr('href')+id;
 							return false;
 						});
 				
