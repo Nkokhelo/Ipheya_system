@@ -1,9 +1,6 @@
 <?php
 #this should be included in clientRequest.php 
-<<<<<<< HEAD
 
-=======
->>>>>>> 12fb090b17c7b0bdab79e4fb96168bc51cc545cb
     $logic = new Logic();
 #find a client for a quotation request 
     $client_information="The client information for a quotation will be here";
@@ -14,7 +11,6 @@
      {
          $id = $allclients['client_id'];
          $name = $allclients['name'];
-<<<<<<< HEAD
          $options.="<option name='clientid' value='$id'>$name</option>";
      }
 
@@ -117,9 +113,8 @@
 
             }*/
         }
-=======
-         $options.="<option value='$id'>$name</option>";
-     }
+        //  $options.="<option value='$id'>$name</option>";
+    //  }
    if(isset($_GET['cid']))
    {
        if($_GET['cid']==0)
@@ -163,5 +158,4 @@
 
     
 
->>>>>>> 12fb090b17c7b0bdab79e4fb96168bc51cc545cb
 ?>
