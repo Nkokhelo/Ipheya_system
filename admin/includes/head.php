@@ -9,6 +9,7 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
     <script src="../assets/lib/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/jquery/jquery-gmaps-latlon-picker.js"></script>
     <script type="text/javascript" src="../assets/lib/angular.min.js"></script>
     <title>Admin</title>
   </head>

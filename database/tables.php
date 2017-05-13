@@ -23,7 +23,7 @@
      }
    }
    #select database
-  mysqli_select_db($con,"ipheya");
+ /* mysqli_select_db($con,"ipheya");
 #CREATE TABLE clients
    $sql = "CREATE TABLE clients
            (
@@ -99,7 +99,7 @@
 
 #CREATE TABLE quotation
 
-	/*$sql = "CREATE TABLE qoutation(
+	$sql = "CREATE TABLE qoutation(
                                 QoutationID int(3) NOT NULL AUTO_INCREMENT,
                                 PRIMARY KEY(QoutationID),
                                 Title varchar(30),
@@ -118,7 +118,7 @@
        else
        {
          echo '<<[CREATE TABLE qoutation FAILED: '.mysqli_error($con).']>>';
-       }*/
+       }
 
 #Create Table Users
      $sql ="CREATE TABLE Users(
@@ -374,7 +374,7 @@
           {
               die('Error'.mysqli_error($con));
           }
-        /*  $sql ="Create Table Ticket
+          $sql ="Create Table Ticket
           (
           Id int(6) unsigned auto_increment primary key,
           Subject varchar(50) not null,
@@ -385,5 +385,48 @@
           if(!mysqli_query($con,$sql))
           {
               die('Error'.mysqli_error($con));
+          }
+
+          
+        $sql="CREATE TABLE test
+        (
+          task_id int(3) NOT NULL AUTO_INCREMENT,
+          PRIMARY KEY(task_id),
+          Name varchar(30),
+          Duration int(3),
+          DurationType varchar(15),
+          Location varchar(50),
+          StartDate date,
+          EndDate date,
+          Description Text,
+          DatePosted DateTime
+        )";
+
+        if(!mysqli_query($con,$sql))
+        {
+          echo "Error Task".mysqli_error($con);
+        }
+        else
+        {
+          echo "Table Task Created Successfully";
+        }
+
+
+         /* $sql="Create Table employeetask
+          (
+            employee_id int(11) NOT NULL,
+            task_id int(11) NOT NULL,
+            PRIMARY KEY(employee_id,task_id),
+            FOREIGN KEY(task_id) references Task(task_id),
+            FOREIGN KEY(employee_id) references employees(employee_id) 
+          )";
+          
+          if(!mysqli_query($con,$sql))
+          {
+            echo "Error Creating table".mysqli_error($con);
+          }
+          else
+          {
+            echo "Table taskEmployee Created Successfully";
           }*/
 ?>
