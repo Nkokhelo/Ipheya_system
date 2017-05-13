@@ -98,12 +98,12 @@
 			</div>
 	</div>
 	<!-- weather widget start -->
-	<div id="weather" class="col-md-6 gllpMap" style="width:40%; height:300px; display:none;">
+	<div id="weather" class="col-md-6 gllpMap" style="width:40%; height:300px; ">
 		<iframe id="forecast_embed" type="text/html" frameborder="0" height="245"width="100%"
 			src="http://forecast.io/embed/#lat=-29.850148&lon=31.007463&name=South-Africa:Durban">
 		</iframe>
 	</div>
-	<div id="googleMap" class="col-md-6" style="width:40%;display:none; height:300px;">
+	<div id="googleMap" class="col-md-6" style="width:40%; height:300px;">
 		<fieldset class="gllpLatlonPicker" id="custom_id">
 			<input type="text" class="gllpSearchField">
 			<input type="button" class="gllpSearchButton" value="search">
@@ -114,27 +114,33 @@
 		</fieldset>
 	</div>
 	<script>
+		$('#googleMap').hide();
+		$('#weather').hide();
 		function myMap() 
 		{
-			// var mapProp= 
-			// {
-			// 	center:new google.maps.LatLng(-29.850148, 31.007463),
-			// 	zoom:15,
-			// };
-			var map=new google.maps.Map($('#map'));
+			var mapProp= 
+			{
+				center:new google.maps.LatLng(-29.850148, 31.007463),
+				zoom:15,
+			};
+			google.maps.event.trigger(map, "resize");
+
+			// var map=new google.maps.Map($('#map'),mapProp);
 		}
 		$("#location").on('click', function()
 		{
-    		$('#googleMap').css('display','block');
-    		$('#weather').css('display','none');
-			myMap(); 
+			$('#googleMap').show();
+			$('#weather').hide();
+			myMap();
+    		// $('#googleMap').css('display','block');
+    		// $('#weather').css('display','none');
 		});
 		$("#sdate").on('click', function()
 		{
-    		$('#weather').css('display','block');
-			$('#googleMap').css('display','none');
+    		$('#googleMap').hide();
+			$('#weather').show();
 		});
-			$('#googleMap').locationpicker();
+		$('#map').locationpicker();
 	</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWOMyEmxZVyeidLLRrsdIH-Mb_zAaF7cM&callback=myMap"></script>
 </div>
