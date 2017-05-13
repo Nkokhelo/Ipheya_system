@@ -138,7 +138,7 @@
 			var lon =parseFloat($('#lon').val());
 			if(((lat<-30.008616)&&(lat>-29.737134))||((lon>30.787823)&&(lon<31.079611)))
 			{
-				
+				parame
 			}
 			$('#location').val(lat.toFixed(6)+", "+lon.toFixed(6));
 
