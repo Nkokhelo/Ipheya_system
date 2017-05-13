@@ -107,7 +107,7 @@
 		<fieldset class="gllpLatlonPicker" id="custom_id">
 			<input type="text" class="gllpSearchField">
 			<input type="button" class="gllpSearchButton" value="search">
-			<div class="gllpMap" style="width:100%; height:300px;">Google Maps</div>
+			<div class="gllpMap" id="map" style="width:100%; height:300px;">Google Maps</div>
 			<input type="hidden" id="lat" class="gllpLatitude" value="-29.850148"/>
 			<input type="hidden" id="lon" class="gllpLongitude" value="31.007463"/>
 			<input type="hidden" class="gllpZoom"value="15"/>
@@ -116,12 +116,12 @@
 	<script>
 		function myMap() 
 		{
-			var mapProp= 
-			{
-				center:new google.maps.LatLng(-29.850148, 31.007463),
-				zoom:15,
-			};
-			var map=new google.maps.Map($('.gllpMap'),mapProp);
+			// var mapProp= 
+			// {
+			// 	center:new google.maps.LatLng(-29.850148, 31.007463),
+			// 	zoom:15,
+			// };
+			var map=new google.maps.Map($('#map'));
 		}
 		$("#location").on('click', function()
 		{
