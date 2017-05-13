@@ -105,12 +105,12 @@
 	</div>
 	<div id="googleMap" class="col-md-6" style="width:40%; height:300px;">
 		<fieldset class="gllpLatlonPicker" id="custom_id">
-			<input type="text" class="gllpSearchField">
-			<input type="button" class="gllpSearchButton" value="search">
 			<div class="gllpMap" id="map" style="width:100%; height:300px;">Google Maps</div>
 			<input type="hidden" id="lat" class="gllpLatitude" value="-29.850148"/>
 			<input type="hidden" id="lon" class="gllpLongitude" value="31.007463"/>
 			<input type="hidden" class="gllpZoom"value="15"/>
+			<input type="text" width="20" class="gllpSearchField">
+			<input type="button" class="gllpSearchButton" value="search">
 		</fieldset>
 	</div>
 	<script>
@@ -118,29 +118,33 @@
 		$('#weather').hide();
 		function myMap() 
 		{
-			var mapProp= 
-			{
-				center:new google.maps.LatLng(-29.850148, 31.007463),
-				zoom:15,
-			};
 			google.maps.event.trigger(map, "resize");
-
-			// var map=new google.maps.Map($('#map'),mapProp);
 		}
 		$("#location").on('click', function()
 		{
 			$('#googleMap').show();
 			$('#weather').hide();
 			myMap();
-    		// $('#googleMap').css('display','block');
-    		// $('#weather').css('display','none');
+			$('#location').val($('#lat').val()+", "+$('#lon').val())
 		});
 		$("#sdate").on('click', function()
 		{
     		$('#googleMap').hide();
 			$('#weather').show();
 		});
-		$('#map').locationpicker();
+		$("#map").dblclick(function()
+		{
+			var lat =parseFloat($('#lat').val());
+			var lon =parseFloat($('#lon').val());
+			if(((lat<-30.008616)&&(lat>-29.737134))||((lon>30.787823)&&(lon<31.079611)))
+			{
+				
+			}
+			$('#location').val(lat.toFixed(6)+", "+lon.toFixed(6));
+
+		});
+
+		// $('#map').locationpicker();
 	</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWOMyEmxZVyeidLLRrsdIH-Mb_zAaF7cM&callback=myMap"></script>
 </div>
