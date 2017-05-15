@@ -42,7 +42,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                 break;
                 case 'Client':
                 $_SESSION['Client'] = $email;
-                header('Location: home.php');//client url
+                header('Location: client/home.php');//client url
                 break;
                 case 'Employee':
                 $_SESSION['Employee']=$email;

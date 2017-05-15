@@ -50,7 +50,5 @@
             // $serviceName = $logic->getServiceNameByID($Rrequest['ServiceID']);
 
         }
-
-
      }
 ?>

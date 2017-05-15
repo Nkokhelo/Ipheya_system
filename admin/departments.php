@@ -7,20 +7,23 @@
      require_once('../core/controllers/department-controller.php');
 ?>
 <div class="container-fluid" style="padding:1%;">
-      <h2 class="text-center">Departments</h2><hr>
-      <div class="">
+      <div class="col-sm-offset-2 col-sm-8 b">
+        <h2 class="text-center">List of all departments</h2><hr class="bhr">
+      <div class="col-sm-12">
         <form class="form-inline" action="departments.php<?=((isset($_GET['edit']))?'?edit='.$edit_id:'');?>" method="post" novalidate>
-          <div class="form-group">
-            <input type="text" name="department" id="department" class="form-control" value="<?=((isset($department))?$department:'');?>" placeholder="department">
-            <input type="email" name="email" id="email" class="form-control" value="<?=((isset($email))?$email:'');?>" placeholder="department email">
-            <input type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" value="<?=((isset($_GET['edit']))?'Edit':'Add new');?> department" class="btn btn-success">
-            <?=((isset($_GET['edit']))?'<a href="departments.php" class="btn btn-warning">Cancel</a>':'');?>
+          <div class="form-group col-xs-10 col-xs-offset-1">
+            <input type="text" name="department" id="department" class="form-control" value="<?=((isset($department))?$department:'');?>" placeholder="Department Name">
+            <input type="email" name="email" id="email" class="form-control" value="<?=((isset($email))?$email:'');?>" placeholder="Department Email">
+            <button type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-primary"><?=((isset($_GET['edit']))?'<span class="glyphicon glyphicon-pencil"></span> Edit':'<span class="glyphicon glyphicon-plus-sign"></span> Add new');?></button>
+            <?=((isset($_GET['edit']))?'<a href="departments.php" class="btn btn-primary"><span class="ion ion-android-cancel"></span> Cancel</a>':'');?>
           </div>
         </form>
-      </div><hr>
-      <table class="table table-bordered table-striped " style="padding:2%;">
+      </div>
+      <br/>
+      <hr class="bhr" style="width:100%">
+      <table class="table" style="padding:2%;">
         <thead>
-          <th>Department</th><th>Email</th><th>Options</th>
+          <th>Department Name</th><th>Department Email</th><th>Options</th>
         </thead>
         <tbody>
           <?=$allDepartments;?>
@@ -29,5 +32,8 @@
 
         </tfoot>
       </table>
+            <hr class="bhr"/>
+            <br/>
+      </div>
 </div>
 <?php include('includes/footer.php'); ?>

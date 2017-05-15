@@ -74,6 +74,10 @@
 						<br>
 						<label for="st-email" class="st-subscribe-message"></label>
 					</form>
+					<div class="contact-form">
+						<a class="btn btn-primary btn-lg submit-button" href="login.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-sign-in"></i> Sign-in</a>
+						<a class="btn btn-primary btn-lg submit-button" href="client/register.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-user"></i> Sign-Up </a>
+					</div>
 					<div class="col-sm-12 social-shear text-center">
 						<a href="#"><i class="fa fa-facebook"></i></a>
 						<a href="#"><i class="fa fa-twitter"></i></a>

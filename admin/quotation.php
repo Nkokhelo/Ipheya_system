@@ -1,16 +1,6 @@
 <script type="text/javascript" src="../assets/jquery/jquery-1.10.2.js"></script>
 <link type="text/css" rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css"/>
 <style type="text/css">
-	/*body
-	{
-		font-family:"open-sans";
-		font-weight:900;
-	}
-	h1
-	{
-		font-family:'open-sans,sans-serif';
-		font-weight:900;
-	}*/
 	#ItemTable
 	{
 			font-size:13px;
@@ -28,6 +18,10 @@
      include('includes/navigation.php');
 	 include('../core/logic.php');
      require_once("../core/controllers/qoutation-controller.php");
+	 if(isset($_GET['Type']))
+	 {
+		$serviceT =$_GET['Type'];
+	 }
 
 ?>
  <div class="row">
@@ -129,11 +123,12 @@
 							<hr/>
 							Payment Method 
 							<select name="paymentmethod">
-								<option value="1">10 % deposit</option>
-								<option value="2">15 % deposit</option>
-								<option value="3">30 % deposit</option>
+								<option value="10">10 % deposit</option>
+								<option value="15">15 % deposit</option>
+								<option value="30">30 % deposit</option>
 							</select>
 							<br/>
+							<input name="serviceType" type="hidden" value="<?=$serviceT?>"/>
 							<br/>
 						</div>
                     </div>
@@ -259,8 +254,6 @@
 										$("#result").html(data);
 									}
 								});
-							// alert(id);
-							// window.location = $(this).attr('href')+id;
 							return false;
 						});
 				

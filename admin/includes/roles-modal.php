@@ -28,3 +28,32 @@
     </div>
   </div>
 </div>
+ <!--add new role modal-->
+<div class="modal fade" id="add-role" role="dialog" tabindex="-1" aria-hidden="true" aria-labelledby="roles-modal-label">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title text-center" id="roles-model-label">Add new role</h4>
+      </div>
+      <form class="form-inline" action="roles.php<?=((isset($_GET['edit']))?'?edit='.$edit_id:'');?>" method="post">
+      <!--The roles form-->
+        <div class="modal-body">
+            <div class="form-group">
+              <input type="text" name="company-role" id="company-role" class="form-control" value="<?=((isset($_GET['edit']))?$role_val:'');?>" placeholder="Role Name">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" name="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+          <?= ((isset($_GET['add']))?'<input type="submit" class="btn btn-success" name="Add" value="Add role">':'<input type="submit" name="Edit" value="Edit Role" class="btn btn-success">');?>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+                    

@@ -1,13 +1,13 @@
 <div class="modal fade" id="addresses" role="modal" tabindex="-1" aria-hidden="true" aria-labelledby="addresses">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bhr">
         <button type="button" class="close" name="button" data-dismiss="modal" aria-label="Close">&times;</button>
-        <div class="modal-title text-center">
-          <h4 class="">Addresses</h4>
+        <div class="modal-title text-center ">
+          <h4 class="bh">Addresses</h4>
         </div>
       </div>
-      <div class="modal-body">
+      <div class="modal-body bhr">
         <div class="container-fluid">
             <div class="form-group">
               <label for="residential">Residential address</label>
@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" name="button" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateAddresses();$('#addresses').modal('toggle');return false;">Save changes</button>
+        <button type="button" class="btn btn-default" onclick="updateAddresses();$('#addresses').modal('toggle');return false;"><span class="glyphicon glyphicon-ok"></span> Ok</button>
+        <button type="button" class="btn btn-default" name="button" data-dismiss="modal"><span class="glyphicon glyphicon-cancel"></span> Close</button>
       </div>
     </div>
   </div>

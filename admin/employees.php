@@ -7,12 +7,13 @@
      include('includes/employee-session.php');
      
 ?>
-<h2 class="text-center">Employees</h2>
+
 <div class="container-fluid" style="margin:1%;">
   <!-- service form -->
-  <div class="col-md-6" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
+  <div class="col-md-6 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
+    <h2><?=((isset($_GET['edit']))?'Edit':'Add a new');?> employee</h2>
+    <hr class="bhr">
     <form class="form" action="employees.php<?=((isset($_GET['edit']))?'?edit='.$_GET['edit']:'');?>" method="post">
-      <legend class="text-center"><?=((isset($_GET['edit']))?'Edit':'Add a new');?> employee</legend>
       <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
       <div class="form-group">
         <label for="department">Department</label>
@@ -64,30 +65,29 @@
       </div>
       <div class="form-group col-md-6">
         <label for="residential">Residential address preview</label>
-        <input type="text" name="residential" id="residential" class="form-control" value="<?=((isset($residential))?$residential:'');?>" placeholder="address preview" readonly>
+        <input type="text" name="residential" data-toggle="modal" data-target="#addresses" id="residential" class="form-control" value="<?=((isset($residential))?$residential:'');?>" placeholder="enter residential addres" readonly>
       </div>
       <div class="form-group col-md-6">
         <label for="postal">Postal address preview</label>
-        <input type="text" name="postal" id="postal" class="form-control" value="<?=((isset($postal))?$postal:'');?>" placeholder="address preview" readonly>
+        <input type="text" name="postal" data-toggle="modal" data-target="#addresses" id="postal" class="form-control" value="<?=((isset($postal))?$postal:'');?>" placeholder="anter postal address" readonly>
       </div>
+      <hr class="bhr" style="width:100%"/>
       <div class="form-group">
-        <label for="address-btn"></label>
-        <button type="button" class="btn btn-primary form-control" name="address-btn" id="address-btn" data-toggle="modal" data-target="#addresses">Addresses</button>
-      </div>
-      <div class="form-group">
-        <input type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-success" value="<?=((isset($_GET['edit']))?'Edit':'Add');?> employee">
-        <?=((isset($_GET['edit']))?'<a href="employees.php" class="btn btn-warning">Cancel</a>':'');?>
+        <button type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-default"><span class="glyphicon glyphicon-floppy-save"></span> <?=((isset($_GET['edit']))?'Save Changes':'Add Employee');?></button>
+        <?=((isset($_GET['edit']))?'<a href="employees.php" class="btn btn-default"><span class="ion ion-android-cancel"></span> Cancel</a>':'');?>
       </div><div class="clear-fix"></div>
     </form>
     <?php include('includes/address-modal.php'); ?>
   </div>
   <!-- services table -->
-  <div class="col-md-6">
-    <table class="table table-bordered table-striped">
+  <div class="col-md-6 shift b" style="margin-left:10px; width:49%">
+  <h2>All Employees</h2>
+   <hr class="bhr"/>
+    <table class="table">
       <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
       <thead>
-        <th>Fullname</th>
         <th>Department</th>
+        <th>Fullname</th>
         <th>Role(s)</th>
         <th>Options</th>
       </thead>

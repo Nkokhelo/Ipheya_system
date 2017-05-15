@@ -1,26 +1,26 @@
 <?php
-   require_once('core/init.php');
+   require_once('../core/init.php');
 
    session_start();
    if(isset($_SESSION['Client']))
    {
-      include('core/logic.php');
-      include('includes/head.php');
-      include('includes/top-nav.php');
-      include('core/controllers/client-controller.php');
-      include('core/controllers/service-controller.php');
-      include('core/controllers/request-controller.php');
+      include('../core/logic.php');
+      include('../includes/head.php');
+      include('../includes/top-nav.php');
+      include('../core/controllers/client-controller.php');
+      include('../core/controllers/service-controller.php');
+      include('../core/controllers/request-controller.php');
       $request_page = 'selected';
    }
    else 
    {
-     header('Location: login.php');
+     header('Location: ../login.php');
    }
    
  ?>
   <body id="client-dashboard">
    <div class="row">
-      <?php include('includes/sidebar.php'); ?>
+      <?php include('../includes/sidebar.php'); ?>
       <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>Request</h4>

@@ -7,41 +7,34 @@
      include('includes/employee-session.php');
 ?>
 <div class="container-fluid" style="padding:1%;">
-      <h2 class="text-center">roles</h2><hr>
         <?php if(isset($_GET['edit']) || isset($_GET['add'])){ ?>
-        <div class="">
-            <form class="form-inline" action="roles.php<?=((isset($_GET['edit']))?'?edit='.$edit_id:'');?>" method="post">
-              <div class="form-group">
-                <input type="text" name="company-role" id="company-role" class="form-control" value="<?=((isset($_GET['edit']))?$role_val:'');?>" placeholder="Role">
-                <?= ((isset($_GET['add']))?'<input type="submit" class="btn btn-success" name="Add" value="Add role">':'<input type="submit" name="Edit" value="Edit Role" class="btn btn-success">');?>
-                <a href="roles.php<?=((isset($_GET['edit']))?'?add=1':'');?>" class="btn btn-warning">Cancel</a>
-              </div>
-            </form>
-       </div><hr>
-       <table class="table table-bordered table-striped " style="padding:2%;">
-         <thead>
-           <th>Role_id</th><th>Role</th><th>Options</th>
-         </thead>
-         <tbody>
-           <?=$allCompanyRoles_tbl;?>
-         </tbody>
-       </table>
-        <?php }else{ ?>
-          <div class="">
-              <a href="roles.php?add=1" class="btn btn-primary pull-right" id="add-btn">Role Management</a><div class="clearfix"></div>
-              <form class="form-inline" action="roles.php<?=((isset($_GET['remove']))?'?remove='.$remove_id:'');?>" method="post">
-                <div class="form-group">
-                  <input type="email" name="email" id="email" class="form-control" value="<?=((isset($email))?$email:'');?>" placeholder="employee email">
-                  <select class="form-control" name="role" id="role">
-                    <?=((isset($allEmployeeRoles))?$allEmployeeRoles:$allCompanyRoles);?>
-                  </select>
-                  <?= ((isset($_GET['remove']))?'<input type="submit" class="btn btn-danger" name="Remove" value="Remove role">':'<input type="submit" name="Assign" value="Assign role" class="btn btn-success">');?>
-                  <?=((isset($_GET['edit']) || isset($_GET['remove']))?'<a href="roles.php" class="btn btn-warning">Cancel</a>':'');?>
+        <div class="col-sm-12">
+        <?=include'includes/roles-modal.php';?>
+          <div class="col-xs-8 col-xs-offset-2 b" style="padding-bottom:15px;">
+            <h2>Roles Management</h2>
+                <hr class="bhr"/>
+                  <div class="col-xs-12">
+                    <table class="table" style="padding:2%;">
+                          <thead>
+                            <th>Role_id</th><th>Role Name</th><th>Options</th>
+                          </thead>
+                          <tbody>
+                            <?=$allCompanyRoles_tbl;?>
+                          </tbody>
+                    </table>
+                  </div>
+                <hr class="bhr" style="width:100%"/>
+                <div class="col-xs-8 col-xs-offset-4" style="align:center">
+                  <button data-toggle="modal" data-target="#add-role" class="btn btn-default" >Add new role</button>
                 </div>
-              </form>
           </div>
-          <hr>
-          <table class="table table-bordered table-striped " style="padding:2%;">
+        </div>
+        <?php }else{ ?>
+         <div class="col-sm-12 col-md-offset-1 col-md-9 b">
+         <h2>Company Roles</h2>
+           <hr class="bhr" style="width:100%; margin-top:20px"/>
+           <?=include'includes/assign-role-modal.php';?>
+          <table class="table" style="padding:2%;">
             <thead>
               <th>Employee</th><th>email</th><th>role(s)</th><th>Options</th>
             </thead>
@@ -49,6 +42,13 @@
               <?=$allEmployees;?>
             </tbody>
           </table>
+           <hr class="bhr" style="width:100%; margin-top:20px"/>
+            <div class="col-sm-12 " style="margin-bottom:20px;">  
+                <div class="col-md-7 col-md-push-4">
+                       <button class="btn btn-default" data-toggle="modal" data-target="#rolesAssign" id="assign"> Add role to employee</button>
+                       <a href="roles.php?add=1" class="btn btn-default" id="add-btn">Manage company Roles</a>
+                </div>            
+            </div>
         <?php } ?>
 </div>
 <?php include('includes/footer.php'); ?>

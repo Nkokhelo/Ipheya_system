@@ -6,12 +6,12 @@
      require_once('../core/controllers/service-controller.php');
      include('includes/employee-session.php');
 ?>
-<h2 class="text-center">Services</h2>
 <div class="container-fluid" style="margin:1%;">
   <!-- service form -->
-  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
+  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
+     <h2><?=((isset($_GET['edit']))?'Edit':'Add a new');?> service</h2>
+         <hr class="bhr"/>
     <form class="form" action="services.php<?=((isset($_GET['edit']))?'?edit='.$_GET['edit']:'');?>" method="post">
-      <legend class="text-center"><?=((isset($_GET['edit']))?'Edit':'Add a new');?> service</legend>
       <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
       <div class="form-group">
         <label for="department">Select department</label>
@@ -22,12 +22,12 @@
       </div>
       <div class="form-group">
         <label for="service">Service</label>
-        <input type="text" name="service" id="service" class="form-control" value="<?=((isset($service_name))?$service_name:'');?>" placeholder="service" <?=((isset($_GET['view']))?'readonly':'');?>>
+        <input type="text" name="service" id="service" class="form-control" value="<?=((isset($service_name))?$service_name:'');?>" placeholder="service name" <?=((isset($_GET['view']))?'readonly':'');?>>
       </div>
       <label for="min-duration" class="text-center">Minimum Duration</label>
       <div class="col-md-12" id="min-duration">
         <div class="form-group col-md-4">
-            <input type="number" class="form-control col-md-2" name="number" value="<?=((isset($num))?$num:'');?>" min="0" placeholder="number of" <?=((isset($_GET['view']))?'readonly':'');?>>
+            <input type="number" class="form-control col-md-1" name="number" value="<?=((isset($num))?$num:'');?>" min="0" placeholder="duration" <?=((isset($_GET['view']))?'readonly':'');?>>
         </div>
         <div class="form-group col-md-8">
           <select class="form-control col-md-4" name="type" <?=((isset($_GET['view']))?'readonly':'');?>>
@@ -42,18 +42,21 @@
         <label for="description">Service description</label>
         <textarea name="description" id="description" class="form-control" value="" rows="8" cols="100" <?=((isset($_GET['view']))?'readonly':'');?>><?=((isset($description))?$description:'');?></textarea>
       </div>
+      <hr class="bhr"/>
       <div class="form-group">
-        <input type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-success" value="<?=((isset($_GET['edit']))?'Edit':'Add');?> service">
-        <?=((isset($_GET['edit']))?'<a href="services.php" class="btn btn-warning">Cancel</a>':'');?>
+        <button type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-default" ><?=((isset($_GET['edit']))?'<span class="glyphicon glyphicon-pencil"></span> Edit':' <span class="glyphicon glyphicon-plus"></span> Add new');?> Service</button>
+        <?=((isset($_GET['edit']))?'<a href="services.php" class="btn btn-default"><span class="ion ion-android-cancel"></span> Cancel</a>':'');?>
       </div>
     </form>
   </div>
   <!-- services table -->
-  <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-    <table class="table table-bordered">
+  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 b">
+    <h2>All Services</h2>
+    <hr class="bhr"/>
+    <table class="table">
       <thead>
-        <th>Name</th>
-        <th>Type</th>
+        <th>Service name</th>
+        <th>Department name</th>
         <th>Options</th>
       </thead>
       <tbody>

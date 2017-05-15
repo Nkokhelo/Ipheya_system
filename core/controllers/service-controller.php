@@ -146,25 +146,19 @@
     #display departments
     while($department = mysqli_fetch_assoc($result)) :
       $allDepartments .= '<option value="'.$department['department_id'].'" >'.$department['department'].'</option>';
-      $allServices .=  '<tr class="bg-primary">
-                          <td>'.$department['department'].'</td>
-                           <td>Department</td>
-                           <td>
-                           </td>
-                         </tr>';
       #fetch all services under department
       $dep_id = $department['department_id'];
       $service_query = "SELECT * FROM services WHERE department = '$dep_id' ORDER BY service";
       $service_exe = mysqli_query($db,$service_query);
       #display services
       while($service = mysqli_fetch_assoc($service_exe)) :
-        $allServices .= '<tr class="bg-info">
+        $allServices .= '<tr>
                           <td>'.$service['service'].'</td>
                           <td>'.$department['department'].'</td>
                           <td>
                               <a href="services.php?edit='.$service['service_id'].'" class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-pencil "></span></a>
                               <a href="services.php?delete='.$service['service_id'].'" class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-trash"></span></a>
-                              <a href="services.php?view='.$service['service_id'].'" class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-eye-open "></span></a>
+                              <a href="services.php?view='.$service['service_id'].'" class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-open"></span></a>
                           </td>
                         </tr>';
       endwhile;

@@ -224,11 +224,11 @@
         {
                $roles_array .= $roles[$i].",";
         }
-
+        
        $roles_array = rtrim($roles_array,',');
        $allEmployees .= '<tr>
-                            <td>'.$employees['name'].' '.$employees['surname'].'</td>
                             <td>'.$depart_result['department'].'</td>
+                            <td>'.$employees['title'].' '.substr($employees['name'],0,1).' '.$employees['surname'].'</td>
                             <td>'.$roles_array.'</td>
                             <td>
                             <a href="employees.php?edit='.$employees['employee_id'].'" class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-pencil "></span></a>

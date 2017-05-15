@@ -1,7 +1,7 @@
 <?php
-   require_once('core/init.php');
-   include('includes/head.php');
-   include ('core/logic.php');
+   require_once('../core/init.php');
+   include('../includes/head.php');
+   include ('../core/logic.php');
    session_start();
    if(isset($_SESSION['Client']))
    {
@@ -9,15 +9,15 @@
    }
    else 
    {
-     header('Location: login.php');
+     header('Location: ../login.php');
    }
-   include('core/controllers/client-controller.php');
+   include('../core/controllers/client-controller.php');
    $profile_page = 'selected';
  ?>
   <body id="client-dashboard">
-    <?php  include('includes/top-nav.php'); ?>
+    <?php  include('../includes/top-nav.php'); ?>
     <div class="container-fluid" style="padding:1%;">
-        <?php include('includes/sidebar.php'); ?>
+        <?php include('../includes/sidebar.php'); ?>
         <div class="col-lg-9">
           <div class="col-md-8">
             <div class="row">
@@ -79,8 +79,13 @@
                   <label for="confirm-password">Confirm password</label>
                   <input type="text" class="form-control" name="confirm-password" id="confirm-password" value="" placeholder="Confirm password">
                 </div>
-                <div class="form-group col-sm-6">
-                  <input type="submit" class="form-control btn btn-warning" name="Change-password" value="Change password">
+                <div class="col-md-12">
+                   <div class="form-group col-sm-6">
+                    <input type="submit" class="form-control btn btn-warning" name="Change-password" value="Change password">
+                  </div>
+                  <div class="col-sm-6">
+                    <?=isset($error)?$error:''?>
+                  </div>
                 </div>
               </form>
             </div>

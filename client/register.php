@@ -1,8 +1,8 @@
 <?php
-   require_once('core/init.php');
-   include('core/logic.php');
-   include('core/controllers/register-controller.php');
-   include('core/controllers/login-controller.php');
+   require_once('../core/init.php');
+   include('../core/logic.php');
+   include('../core/controllers/register-controller.php');
+   include('../core/controllers/login-controller.php');
  ?> 
 <!DOCTYPE html>
 <html >
@@ -15,14 +15,14 @@
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" type="text/css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css"/>
-  <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" type="text/css"/>
+  <link rel="stylesheet" href="../assets/css/style.css" type="text/css">
   <link rel="stylesheet" type="text/css" href="">
 
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
   <script src="../assets/lib/jquery-2.1.3.min.js"></script>
-  <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="assets/lib/angular.min.js"></script>
+  <script type="text/javascript" src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../assets/lib/angular.min.js"></script>
 </head>
 
 <body>

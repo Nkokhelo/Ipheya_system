@@ -1,0 +1,90 @@
+body
+{
+    background: #eee;
+}
+
+.b{
+    background-color:white;
+    margin-top:2%;
+    border-radius:5px;
+    box-shadow: rgba(0, 0, 0, 0.60) -1px -1px 7px ;
+}
+.b>h2
+{
+    color:#808080;
+}
+.bhr
+{
+    border-bottom:#0094ff 1px solid;	
+}
+.bh
+{
+        color:#808080;
+}
+
+
+#navbar-main
+{
+    border-radius:0;
+    box-shadow: rgba(55, 55, 55, 0.93) 0px 2px 3px;
+    background: #232526;
+    border-bottom: 2px;
+    background-color:#2b3339;
+    border-color:#2b3339;
+}
+
+
+#navbar-main .navbar-header .navbar-brand
+{
+   color:rgba(169, 176, 187, 0.70);
+   font-weight:900;
+}
+#navbar-main .navbar-header .navbar-brand:hover
+{
+   color:rgb(169, 176, 187);
+   font-weight:900;
+}
+
+
+
+#main-menu .navbar-nav > li > a
+{
+    color:rgba(169, 176, 187, 0.70);
+    font-weight: 800;
+    
+}
+
+#main-menu .navbar-nav > li > a:link
+{
+    color:rgba(169, 176, 187, 0.70);
+    font-weight: 800;
+    
+}
+
+#main-menu .navbar-nav > li > a:visited
+{
+    color:rgba(169, 176, 187, 0.70);
+    font-weight: 800;
+    
+}
+
+#main-menu .navbar-nav > li > a:hover
+{
+    color:rgb(169, 176, 187);
+    font-weight: 900;
+    transition:ease .2s;
+}
+
+#main-menu .navbar-nav > li > a:active
+{
+    color:rgb(169, 176, 187);
+    font-weight: 900;
+    
+    transition:ease .2s;
+}
+.shift
+{
+    width:49%;
+    margin-left: 10px;
+}
+

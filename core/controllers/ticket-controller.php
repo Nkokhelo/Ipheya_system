@@ -33,9 +33,9 @@
           {
             die('Error'.mysqli_error($db));
           }
-          die("<h1>Thank you for reporting we will call you soon!</h1><br/>
-            <div class='col-md-8 col-offset-2'> The Ticket<br/>Ticket No :0111<br/>Request Date:#0505</div>
-          <a href='' class='btn btn-default' >Back to HomePage</a>");
+          die("<h3>Thank you for reporting we will call you soon!</h3><br/>
+            <div class='col-md-8 col-offset-2'> The Ticket<br/>Ticket No :0111<br/>Request Date:$date<br/>
+             <a href='' class='btn btn-sm btn-default' > Home</a> <a href class='btn btn-sm btn-default'>make a pdf</a></div>");
     }
    
 ?>

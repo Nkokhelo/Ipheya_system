@@ -4,7 +4,17 @@
   </div>
   <div class="col-md-3">
     <div class="logo pull-right">
-      <a href="#" dat-target="#userconfig" data-toggle="dropdown"><span class="navbar-brand text-right"><?=$_SESSION['Client'];?> <span class="caret"></span></span></a>
+      <div class="dropdown"  style="margin-top:15px;">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=$_SESSION['Client'];?> <span class="caret"></span>
+          <ul class="dropdown-menu dropdown-menu-right" style="color:black" id="#clientOptions">
+            <li><a href="../client/profile.php"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="../client/CreateTicket.php"><span class="glyphicon glyphicon-alert"></span> Report Faults</a></li>
+            <li><a href="../login.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            
+          </ul>
+      </div>
+      
+      </a>
     </div>
   </div>
 </div>

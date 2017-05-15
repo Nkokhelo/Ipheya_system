@@ -72,7 +72,7 @@
             {
               die("Error RolesU".mysqli_error($db));
             }
-            header('Location: login.php?success=1');
+            header('Location: ../login.php?success=1');
         }
         else
         {

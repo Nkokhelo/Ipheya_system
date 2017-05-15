@@ -73,7 +73,14 @@
               header('Location: profile.php?changed=1');
             }
             else{
-              echo "password not changed: ".mysqli_error();
+              if(empty($password)||empty($confirm))
+              {
+                 $error= "<span style='color:red'>password or cornfirm password is requred </span>";
+                 return true;
+              }
+              
+                      $error= "<span style='color:red'>password not changed: Please try again later</span>";
+              
             }
           }
         }

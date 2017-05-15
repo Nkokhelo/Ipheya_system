@@ -5,17 +5,17 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a style="color:#fff;"  href="index.php" class="navbar-brand text-uppercase">Ipheya</a>
+    <a   href="index.php" class="navbar-brand text-uppercase">Ipheya</a>
   </div>
   <div class="container collapse navbar-collapse" id="main-menu">
     <ul class="nav navbar-nav">
-      <li><a style="color:#fff;" href="departments.php">Departments</a></li>
-      <li><a style="color:#fff;" href="services.php">Services</a></li>
-      <li><a style="color:#fff;" href="employees.php">Employees</a></li>
-      <li><a style="color:#fff;" href="roles.php">Roles</a></li>
-      <li><a style="color:#fff;" href="clients.php">Clients</a></li>
-      <li><a style="color:#fff;" href="archives.php">Archived accounts</a></li>
-      <li><a style="color:#fff;" href="clientRequest.php">Client Request</a></li>
+      <li><a  href="departments.php">Departments</a></li>
+      <li><a  href="services.php">Services</a></li>
+      <li><a  href="employees.php">Employees</a></li>
+      <li><a  href="roles.php">Roles</a></li>
+      <li><a  href="clients.php">Clients</a></li>
+      <li><a  href="archives.php">Archived accounts</a></li>
+      <li><a  href="clientRequest.php">Client Request</a></li>
       
     </ul>
   </div>

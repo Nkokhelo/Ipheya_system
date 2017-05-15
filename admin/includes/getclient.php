@@ -26,24 +26,6 @@
         }
             echo $client_information;
 
-    // $idg=$_GET['cid'];
-    // $selected = "seleted='selected'";
-    // $clientQ = $logic->getallClients();
-    // $options ='';
-    //  while($allclients=mysqli_fetch_assoc($clientQ))
-    //  {
-    //      $id = $allclients['client_id'];
-    //      $name = $allclients['name'];
-    //      if($id == $idg)
-    //      {
-    //          $options.="<option  value='$id'selected='selected'>$name</option>";
-    //      }
-    //      else
-    //      {
-    //           $options.="<option  value='$id'>$name</option>";
-    //      }
-    //  }
-
    }
 
 ?>

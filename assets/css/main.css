@@ -15,7 +15,6 @@
 }
 #page-header .logo a{
   text-decoration: none;
-  color: #fff;
 }
 .container-fluid{
   padding: 0;
@@ -97,4 +96,9 @@ input[disabled="disabled"]{
 {
     font-size: 900px;
     color: #0080c0;
+}
+
+#clientOptions>li>a:hover
+{
+  font-weight: 900;
 }

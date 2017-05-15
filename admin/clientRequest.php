@@ -14,7 +14,7 @@
             {
                 include'includes/RequestInfo.php';
             }
-?>
+?> 
         
     </div>
     <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
@@ -29,6 +29,7 @@
             </thead>
             <tbody>
                  <?= $allRequest; ?>
+                 
             </tbody>
         </table>
     </div>
