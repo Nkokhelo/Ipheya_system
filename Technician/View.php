@@ -1,39 +1,54 @@
-<html>
-<head></head>
 <?php
-	$con=mysqli_connect("localhost","root","");
-	if(!$con)
-		die("Could not connect".mysqli_error());
-	mysqli_select_db($con,"Observe");
-	$result=mysqli_query($con,'select * from Surveying');
-	echo "<p><b>View All</b></p>";
-	// function getRequest($b)
-	// {
-	// 	return mysqli_query($con,"select * from ServiceRequest where RequestID==$b");
-	// }
+    include('../core/init.php');
+	include('includes/head.php');
+	include('includes/navigation.php');
+    include'../core/logic.php';
+    include'../core/controllers/suveyour-controller.php';
+?> 
+<div class="container-fluid" style="padding:1%;">
+	<div class="col-md-8 col-md-offset-2 b" style="border:1px solid #eee;border-radius:1%;padding-bottom:20px;">
+		<h2>All Surveying records </h2>
+		<hr class="bhr">
+		 <table class="table">
+		  <thead>
+		  	<th>Request ID</th>
+		  	<th>Desciption</th>
+		  	<th>Images</th>
+		  </thead>
+		  <tbody>
+		  	<?=$surveyingList?>
+		  </tbody>
+		 </table>
+		<hr class="bhr">
+		 <?= include'includes/Surveying-Modal.php';?>
+		 <a class="btn btn-default" href="CreateSurvey.php">Create Survey</a>
+	</div>
+</div>
+<script>
+	$(document).ready(function()
+	{
+		$('#actions a').click(function()
+		{
+			var did = this.id;
+			$("#delete").val(did);
+			$('#edit').val(did);
+			if($('#edit').val()!=null)
+			{
+					var id = $('#edit').val();
+					$.ajax({
+					        type:"get",
+					        url:"includes/geteditInfo.php",
+					        data:"edit="+id,
+					        success:function(data)
+							{
+					            $("#result").html(data);
+					        }
+					    });
+					return false;
+			}
+		});
+		
+	});
+	
 
-
-	// function getClient($x)
-	// {
-	// 	$request = mysqli_fetch_assoc(getRequest($x));
-	// 	return  $request['ClientID'];
-	// }
-echo "<table border='1' cellpadding='10'>";
-
-echo "<tr> <th>Request ID</th> <th>Description</th> <th>Image</th></tr>";
-
-while ($row=mysqli_fetch_array($result))
-{
-	echo "<tr>";
-	// echo "<td>" .getClient($row['RequestID'])."</td>";
-	echo "<td>" .$row['RequestID']."</td>";
-	echo "<td>". $row['Description'] . "</td>";
-	echo"<td>" .$row['Image'] . "</td>";
-	echo '<td><a href="delete.php?id=' . $row['SurveyingID'] . '">Delete</a></td>';
-	echo"</tr>";
-}
-echo"</table>"
-
-?>
-<p><a href="Surveying.php">Add a new record</a></p>
-</html>
+</script>

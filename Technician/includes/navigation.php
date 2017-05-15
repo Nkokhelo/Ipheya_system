@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" style="color:#fff;" data-toggle="collapse" data-target="#main-menu">
+    <button type="button" class="navbar-toggle"  data-toggle="collapse" data-target="#main-menu">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>

@@ -1,10 +1,7 @@
-<?php
-	ini_set('mysqli.connect_timeout',300);
-	ini_set('default_socket_timeout',300);
-?>
+
 <html>
 <?php
-  include('../core/init.php');
+    include('../core/init.php');
 	include('includes/head.php');
 	include('includes/navigation.php');
 	$request=mysqli_query($db,'select * from servicerequest');

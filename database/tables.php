@@ -428,5 +428,23 @@
           else
           {
             echo "Table taskEmployee Created Successfully";
-          }*/
+          }
+
+           $mvelo="Create Table Surveying
+            (
+              SurveyingID int NOT NULL AUTO_INCREMENT,
+              Primary KEY(SurveyingID),
+              RequestID int(11),
+              FOREIGN KEY(RequestID) REFERENCES serviceRequest(RequestID),
+              FOREIGN KEY(RequestID) REFERENCES RepairRequest(RequestID),
+              Description text,
+              Image LongBlob
+            )";
+            if(mysqli_query($con,$mvelo)){
+                echo '<BR>{--TABLE Surveying created--}';
+              }
+              else{
+                echo '<BR><<[Failed TO CREATE Surveying : '.mysqli_error($con).']>>';
+              }
+              */
 ?>

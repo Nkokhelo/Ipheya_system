@@ -306,6 +306,21 @@
             }
           }
         }
+
+#Surveying information
+
+function getallSuveyingInfo()
+{
+    $query ="SELECT * FROM Surveying";
+    $qey =mysqli_query($this->connect(),$query);
+    return $qey;
+}
+function getSurveyingbyID($id)
+{
+        $sqliquery ="SELECT FROM Surveying WHERE SurveyingID=$id";
+        $qr =mysqli_query($this->connect(),$sqliquery);
+        return $qr;
+}
 # Close Connection
         public function close()
         {
