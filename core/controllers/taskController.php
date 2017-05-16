@@ -1,5 +1,5 @@
 <?php 
-
+		$log = new Logic();
 		$assign=mysqli_query($db,'select * from Employees');
 		$task="";$task_error='';
 		$descr="";$descr_error='';
@@ -8,7 +8,7 @@
 		$Sdate="";$Sdate_error='';
 		$Edate="";$Edate_error='';
 		$Dposted=date('Y-m-d');$Dposted_error='';
-		$feedback='';
+		$feedback=''; 
 		
 		if(isset($_POST["submit"]))
 		{
@@ -79,9 +79,21 @@
 								Data INSERTED successfully
 							</p>";
 			}
-			
+		}
 
-
+		$freeemployees ='';
+		$add = false;
+		$allList=$log->getallEmployees();
+		$allEmptask = $log->getallEmployeeTasks();
+		while($allemployees = mysqli_fetch_assoc($allList))
+		{
+			while($allemptask = mysqli_fetch_assoc($allEmptask))
+			{
+				if()
+				{
+					
+				}
+			}
 		}
 		
 ?>

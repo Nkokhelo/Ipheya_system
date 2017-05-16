@@ -10,7 +10,7 @@
             return mysqli_connect('localhost','root','','ipheya');
         }
 
-# Employees
+# Employees 
         public function getallEmployees()
         {
             $sql ="SELECT * FROM employees";
@@ -306,7 +306,6 @@
             }
           }
         }
-
 #Surveying information
 
 function getallSuveyingInfo()
@@ -321,6 +320,14 @@ function getSurveyingbyID($id)
         $qr =mysqli_query($this->connect(),$sqliquery);
         return $qr;
 }
+#employeeTask
+  public function getallEmployeeTasks()
+        {
+            $sql ="SELECT * FROM employeetask";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+        }
+
 # Close Connection
         public function close()
         {
