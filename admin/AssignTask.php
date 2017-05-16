@@ -13,9 +13,7 @@
             <h2>Assign Task to employee</h2>
                 <div class="col-sm-12" style="padding-bottom:15px;">
                     <hr class="bhr"/>
-                            Employee Id <input type="text" name="empID" id="empID" required/><br/>
-                            Task Id <input type="text" name="taskID" id="taskID" required/><br/>
-                    <hr class="bhr"/>
+                      <?=$alltasklist?>
                     <input type="submit" class="btn btn-default" name="assign" value="assign"/>
                 </div>
         </div>
