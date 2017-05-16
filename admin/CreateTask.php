@@ -51,8 +51,7 @@
 				<?php if($Edate_error) echo "Enter End Date "?></td>
 				</tr>
 				<td>Task Location</td>
-				<td><input type="text" id="location" class="form-control" name="Edate" <?php if(isset ($_POST['Edate'])) echo"value='$Edate'" ?> required>
-				<?php if($Edate_error) echo "Enter End Date "?></td>
+				<td><input type="text" id="location" class="form-control" name="location" <?php if(isset ($_POST['location'])) echo"value='$Edate'" ?> required></td>
 				</tr>
 			</table>
 			<hr class="bhr"/>
