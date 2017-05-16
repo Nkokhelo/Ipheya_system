@@ -21,19 +21,49 @@
         $id = $_GET['editv'];
         $redId = $_GET['reqID'];
         $des = $_GET['discr'];
-        $file =$_GET['image'];
-        $sqlQ = "UPDATE surveying SET RequestID = $redId,Description = '$des',Image = '$file' WHERE SurveyingID = $id";
-        if(!mysqli_query($log->connect(),$sqlQ))
+        if(getimagesize($_GET['image'])==FALSE)
         {
-            die('error'.mysqli_error($log->connect()));
+            die("Please select an image");
+        }
+        else
+        {
+            $file =base64_encode($_GET['image']);
+            $sqlQ = "UPDATE surveying SET RequestID = $redId,Description = '$des',Image = '$file' WHERE SurveyingID = $id";
+            if(!mysqli_query($log->connect(),$sqlQ))
+            {
+                die('error'.mysqli_error($log->connect()));
+            }
         }
 
     }
+    if(isset($_POST["submit"]))
+	{
+
+		$obs="Select RequestID from Surveying Where RequestID='$_POST[reqID]'";
+        if(getimagesize($_FILES['image']['tmp_name'])==FALSE)
+        {
+            die("Please select an image");
+        }
+        else
+        {
+			$image=addslashes($_FILES['image']['tmp_name']);
+			$image=file_get_contents($image);
+			$image=base64_encode($image);
+            $insert="Insert into Surveying (RequestID,Description,Image) Values('$_POST[reqID]','$_POST[discr]','$image')";
+            if(!mysqli_query($log->connect(),$insert))
+            {
+                echo('Error');
+            }
+            header('Location:View.php');
+        }
+
+	}
+
     $surveyingList='';
     $sqlresult = $log->getallSuveyingInfo();
     while($suveys = mysqli_fetch_row($sqlresult))
     {
-        $surveyingList .= "<tr><td>$suveys[1]</td><td>$suveys[2]</td><td><img src='$suveys[3]' height='20px' width='20px'/></td>
+        $surveyingList .= "<tr><td>$suveys[1]</td><td>$suveys[2]</td><td><img src='data:image;base64,$suveys[3]' height='40px' width='40px'/></td>
                                     <td id='actions'>
                                         <a data-toggle='modal' class='btn btn-sm btn-default' id=".$suveys[0]."  href='#Dmodal' >Delete</a>
                                         <a data-toggle='modal' class='btn btn-sm btn-default' id=".$suveys[0]." href='#Smodal'>Edit</a>

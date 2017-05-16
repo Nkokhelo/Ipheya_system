@@ -1,4 +1,3 @@
-<?= session_start();?>
 <div id="Smodal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">

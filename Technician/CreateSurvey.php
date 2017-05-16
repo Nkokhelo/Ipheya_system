@@ -9,7 +9,7 @@
 	<div class="col-md-8 col-md-offset-2 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
 		<h2>Record Survey</h2>
 		<hr class="bhr">
-		<form class="form" action="Surveying.php" method="POST">
+		<form class="form" action="CreateSurvey.php" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="reqID">Request id</label>
 				<select class="form-control" name="reqID" id="reqID" required>

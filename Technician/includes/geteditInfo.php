@@ -42,7 +42,7 @@
                             </div>
                             <div class='form-group'>
                                 <label for='image'>Photos</label>
-                                <input type='file' name='image' id='image'  required value='".$arr[3]."'/>
+                                <input type='file' name='image' id='image' required value='".$arr[3]."'/>
                             </div>
                             <input type='hidden' name='editv' value='".$_GET['edit']."'/>
                     </div>

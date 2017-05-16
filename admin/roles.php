@@ -9,7 +9,7 @@
 <div class="container-fluid" style="padding:1%;">
         <?php if(isset($_GET['edit']) || isset($_GET['add'])){ ?>
         <div class="col-sm-12">
-        <?=include'includes/roles-modal.php';?>
+        <?php include'includes/roles-modal.php';?>
           <div class="col-xs-8 col-xs-offset-2 b" style="padding-bottom:15px;">
             <h2>Roles Management</h2>
                 <hr class="bhr"/>

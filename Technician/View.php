@@ -20,7 +20,7 @@
 		  </tbody>
 		 </table>
 		<hr class="bhr">
-		 <?= include'includes/Surveying-Modal.php';?>
+		 <? include'includes/Surveying-Modal.php'; ?>
 		 <a class="btn btn-default" href="CreateSurvey.php">Create Survey</a>
 	</div>
 </div>
