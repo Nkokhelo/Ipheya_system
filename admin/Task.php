@@ -9,8 +9,9 @@
 
  
 <div class="col-md-12">
-	<div class="col-md-6">
+	<div class="col-md-6 b">
 		<h1>Create Task</h1>
+		<hr class="bhr"/>
 		<form action="Task.php" method="post">
 		<table border="0">
 			<tr>
@@ -53,11 +54,9 @@
 			<td><input type="text" id="location" class="form-control" name="Edate" <?php if(isset ($_POST['Edate'])) echo"value='$Edate'" ?> required>
 			<?php if($Edate_error) echo "Enter End Date "?></td>
 			</tr>
-			
-			<tr>
-			<td><input type="submit" class="form-control" name="submit" value="Create Task"></td>
-			</tr>
 		</table>
+		<hr class="bhr"/>
+		<input type="submit" class="form-control" name="submit" value="Create Task">
 		</form>
 
 		<table border="0">
@@ -98,21 +97,24 @@
 			</div>
 	</div>
 	<!-- weather widget start -->
-	<div id="weather" class="col-md-6 gllpMap" style="width:40%; height:300px; ">
+	<div id="weather" class="col-md-6 gllpMap shift b" style="width:49%; height:300px; ">
 		<iframe id="forecast_embed" type="text/html" frameborder="0" height="245"width="100%"
 			src="http://forecast.io/embed/#lat=-29.850148&lon=31.007463&name=South-Africa:Durban">
 		</iframe>
 	</div>
-	<div id="googleMap" class="col-md-6" style="width:40%; height:300px;">
-		<fieldset class="gllpLatlonPicker" id="custom_id">
-			<div class="gllpMap" id="map" style="width:100%; height:300px;">Google Maps</div>
-			<input type="hidden" id="lat" class="gllpLatitude" value="-29.850148"/>
-			<input type="hidden" id="lon" class="gllpLongitude" value="31.007463"/>
-			<input type="hidden" class="gllpZoom"value="15"/>
-			<input type="text" width="20" class="gllpSearchField">
-			<input type="button" class="gllpSearchButton" value="search">
-		</fieldset>
+	<div class="col-md-6 b shift">
+		<div id="googleMap" style="width:100%; height:300px;">
+			<fieldset class="gllpLatlonPicker" style="margin-bottom:12px" id="custom_id">
+				<div class="gllpMap" id="map" style="width:100%; height:300px;">Google Maps</div>
+				<input type="hidden" id="lat" class="gllpLatitude" value="-29.850148"/>
+				<input type="hidden" id="lon" class="gllpLongitude" value="31.007463"/>
+				<input type="hidden" class="gllpZoom"value="15"/>
+				<input type="text" width="20" class="gllpSearchField">
+				<input type="button" class="gllpSearchButton" value="search">
+			</fieldset>
+		</div>
 	</div>
+
 	<script>
 		$('#googleMap').hide();
 		$('#weather').hide();
@@ -138,9 +140,12 @@
 			var lon =parseFloat($('#lon').val());
 			if(((lat<-30.008616)&&(lat>-29.737134))||((lon>30.787823)&&(lon<31.079611)))
 			{
-				parame
+				$('#location').val('Invalid place wa selected');
 			}
-			$('#location').val(lat.toFixed(6)+", "+lon.toFixed(6));
+			else
+			{
+				$('#location').val(lat.toFixed(6)+", "+lon.toFixed(6));
+			}
 
 		});
 
