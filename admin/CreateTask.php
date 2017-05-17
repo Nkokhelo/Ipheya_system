@@ -9,8 +9,8 @@
 
  
 <div class="col-md-12">
-	<div class="col-md-6 b">
-		<h1>Create Task</h1>
+	<div class="col-md-6 b" >
+		<h2>Add new task</h2>
 		<hr class="bhr"/>
 		<form action="CreateTask.php" method="post">
 			<table border="0">
@@ -28,17 +28,18 @@
 				
 				<tr>
 				<td>Duration</td>
-				<td><input type="text" class="form-control" name="dura" <?php if(isset ($_POST['dura'])) echo"value='$dura'" ?> required>
-				<?php if($dura_error) echo "Enter Duration" ?></td>
-				
-				
-				<td>Select Duration Type</td>
-				<td><select name="duraType" class="form-control">
-				<option value="day">Day</option>
-				<option value="week">Week</option>
-				<option value="month">Month</option>
-				</select></td>
-				</td >
+				<td style="padding:0;margin:0;">
+					<div class="form-group" style="padding:0;margin:0;">
+						<div class="input-group" style="padding:0;margin:0;">
+							<input type="text" class="input form-control" style="width:50%" name="dura" <?php if(isset ($_POST['dura'])) echo"value='$dura'" ?> required>
+							<select name="duraType" style="width:50%" class="input form-control">
+								<option value="day">Day</option>
+								<option value="week">Week</option>
+								<option value="month">Month</option>
+							</select>
+						</div>
+					</div>
+				</td>
 				<tr>
 				<td>Start Date</td>
 				<td><input type="date" id="sdate" onClick="onThisClick(this)" class="form-control" name="Sdate" <?php if(isset ($_POST['Sdate'])) echo"value='$Sdate'" ?> required>
@@ -51,20 +52,22 @@
 				<?php if($Edate_error) echo "Enter End Date "?></td>
 				</tr>
 				<td>Task Location</td>
-				<td><input type="text" id="location" class="form-control" name="location" <?php if(isset ($_POST['location'])) echo"value='$Edate'" ?> required></td>
+				<td><input type="text" id="location" class="form-control" name="location" <?php if(isset ($_POST['location'])) echo"value='$loca'" ?> required></td>
 				</tr>
 			</table>
 			<hr class="bhr"/>
 			<div class="col-sm-8 col-sm-offset-2" style='margin-bottom:15px;'>
 					<input type="submit" class="btn btn-default" name="submit" value="Create Task">
-					<a type="submit" href='AssignTask.php' class="btn btn-default" name="submit">Assign task to employees</a>
 			</div>
 		</form>
 	</div>
-	<div class="col-md-6 b shift" id='task'>
-			<div class="col-md-12">
-				<h3>To do list</h3> 
+	<div class="col-md-6 b shift" id='task' style="margin-bottom:10px padding-bottom:10px; height:410px; overflow-x:hidden;">
+			<h2>All unassigned tasks</h2> <hr class="bhr"/>
+			<div class="col-md-12" style='overflow-y:scroll;width:105%; height:290px'>
+				<div class="col-md-12">
 				 <?=$feedback?>
+				 <?=$tasksAll?>
+				</div>
 			</div>
 	</div>
 	<!-- weather widget start -->
@@ -93,6 +96,7 @@
 		$('#googleMap').hide();
 		$('#weather').hide();
 		$('#con').hide();
+		$('#allTask').hide();
 		function myMap() 
 		{
 			google.maps.event.trigger(map, "resize");
@@ -104,6 +108,7 @@
 			$("#googleMap").fadeIn("slow");
 			$("#googleMap").fadeIn(3000);
 			$("#con").show();
+			$("#task").hide();
 			myMap();
 			$('#location').val($('#lat').val()+", "+$('#lon').val())
 		});
@@ -114,6 +119,7 @@
 			$('#weather').fadeIn();
 			$("#weather").fadeIn("slow");
 			$("#weather").fadeIn(3000);
+			$("#task").hide();
 		});
 		$("#map").dblclick(function()
 		{

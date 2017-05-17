@@ -80,7 +80,7 @@
     <?php include('includes/address-modal.php'); ?>
   </div>
   <!-- services table -->
-  <div class="col-md-6 shift b" style="margin-left:10px; width:49%">
+  <div class="col-md-6 shift b" style="margin-left:10px; padding-bottom:15px; width:49%">
   <h2>All Employees</h2>
    <hr class="bhr"/>
     <table class="table">
@@ -95,6 +95,8 @@
         <?=$allEmployees;?>
       </tbody>
     </table>
+    <hr class="bhr" style="width:100"/>
+    <a class="btn btn-default" href="CreateTask.php">Task management</a>
   </div>
 </div>
 <?php include('includes/footer.php'); ?>
