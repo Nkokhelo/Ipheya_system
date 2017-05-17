@@ -21,12 +21,12 @@
                       <hr style="width:100%"/>
                       <div class="col-sm-12"></div>
                 </div>
-                <div id="dropemployee" class="col-sm-12" style="border: dashed 3px #eee; height:250px">
+                <div id='dropemployee'  class="col-sm-12" id="container" style="border: dashed 3px #eee; height:250px">
                     <h4>Please drag and drop employee here to add to a task</h4>
+                    
                 </div>
                 <hr class="bhr" style="width:100%"/>
-
-                <button type="submit" class="btn btn-default" name="assign"><span class="glyphicon glyphicon-save"></span> Save</button>
+            <button type="submit" class="btn btn-default" name="assign"><span class="glyphicon glyphicon-save"></span> Save</button>
         </div>
         <div class="col-sm-6 shift b">
             <h2>Free Employee</h2>
@@ -44,6 +44,25 @@
 <script>
    $(document).ready(function() 
    {
-       $('#nkokhelo tr').draggable();
+       $('#nkokhelo ').draggable({
+            helper: employee,
+            opacity: 1,
+            cursor:'move'
+       });
+      $( "#dropemployee" ).droppable({
+            drop: function(e, ui) 
+            {
+                // $(this).ui.draggable.remove();
+                $('#container').append('<div class="btn btn-success">&times Employee</div><br/>');
+
+                // $(this).append("<tr>"+ui.draggable.remove().html()+"</tr>");
+            },cursor:'move'
+
+      });
+
+      function employee( event)
+      {
+        return '<div class="btn btn-success">Nkokhelo</div>'
+      }
    });
 </script>
