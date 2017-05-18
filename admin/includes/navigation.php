@@ -37,6 +37,13 @@
           <li><a href="Tickets.php">Tickets</a></li>
         </ul>
       </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Survey<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="../technician/CreateSurvey.php">Record Survey</a></li>
+          <li><a href="../technician/View.php">View survey</a></li>
+        </ul>
+      </li>
       <li><a href="CreateTask.php">Create Task</a></li>
       <li><a href="../inventory/items.php">Inventory</a></li>
       <li><a href="targets.php">Targets</a></li>

@@ -66,9 +66,22 @@
 	          <li><a  href="../admin/archives.php">Archived accounts</a></li>
 	        </ul>
 	      </li>
-	      <li><a  href="../admin/clientRequest.php">Client Request</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Client Request<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a  href="../admin/clientRequest.php">Requests</a></li>
+						<li><a href="../admin/Tickets.php">Tickets</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Survey<span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="../technician/CreateSurvey.php">Record Survey</a></li>
+						<li><a href="../technician/View.php">View survey</a></li>
+					</ul>
+				</li>
 	      <li><a href="../admin/CreateTask.php">Create Task</a></li>
-	      <li><a href="inventory/items.php">Inventory</a></li>
+	      <li><a href="items.php">Inventory</a></li>
 	      <li><a href="../admin/targets.php">Targets</a></li>
 	    </ul>
 	  </div>
