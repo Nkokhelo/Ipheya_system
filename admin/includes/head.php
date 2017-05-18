@@ -15,5 +15,8 @@
     <script type="text/javascript" src="../assets/lib/angular.min.js"></script>
     <link rel="icon" type="image/png" href="../assets/index/images/favicon.gif">
     <link rel="stylesheet" href="../assets/Site.css" type="text/css"/>
+    <link ral ="stylesheet" href="../assets/plugins/datatables/dataTables.bootstrap.css" type="text/css"/>
+    <script type="text/javascript" src="../assets/plugins/datatables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../assets/plugins/datatables/dataTables.bootstrap.js"></script>
   </head>
   <body>
