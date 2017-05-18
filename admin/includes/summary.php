@@ -1,6 +1,6 @@
-<div class="col-lg-6 col-md-12 col-sm-12">
-</div>
+<h2>Request Summary</h2><hr class="bhr"/>
 <div class="col-lg-12">
+
             <div class="alert alert-info">
                 <span class="glyphicon glyphicon-info-sign"></span> Select a service to view their details.
                 <span class="glyphicon glyphicon-arrow-right"></span>
