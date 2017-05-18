@@ -365,7 +365,7 @@
         $sql ="Select * from task where task_id='$id'";
         $qey =mysqli_query($this->connect(),$sql);
         $name ='';
-        while($task= mysqli_fetch_assoc($qey))
+        while($task= mysqli_fetch_assoc($qey)) 
         {
             $name =$task['Name'];
         }
