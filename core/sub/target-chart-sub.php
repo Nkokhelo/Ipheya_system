@@ -11,6 +11,9 @@
       $data = array();
       foreach($result as $row)
       {
+        $id = $row['target_id'];
+        $dep = mysqli_fetch_assoc($db,"SELECT * FROM target_clients WHERE target_id = '$id'");
+
         $data[] = $row;
       }
       #free memory associated with result
