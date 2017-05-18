@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../assets/plugins/ionicons/css/ionicons.min.css" type="text/css"/>
     <script src="../assets/lib/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="../assets/plugins/jquery-ui/jquery-ui-1.10.4.min.js"></script>
-    <scritp type="text/javascript" src="../assets/plugins/jquery-ui/jquery-ui-1.10.4.min.js"></scritp>
     <script type="text/javascript" src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../assets/jquery/jquery-gmaps-latlon-picker.js"></script>
     <script type="text/javascript" src="../assets/lib/angular.min.js"></script>

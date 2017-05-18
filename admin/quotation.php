@@ -50,7 +50,7 @@
 									<div class="col-sm-8 col-sm-offset-4">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-												<input name="qdate" class="form-control"style="width:95%" placeholder="Qoute Date" id="" type="date" value="" required/>
+												<input name="qdate" class="form-control"style="width:100%" placeholder="Qoute Date" id="qdate" type="text" value="" required/>
 											</div>
 											<div class="input-group">
 												<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
@@ -264,6 +264,12 @@
 								});
 							return false;
 						});
+						$("#qdate").datepicker(
+							{
+								minDate:0,
+
+							}
+						);
 				
 	</script>
 </body>
