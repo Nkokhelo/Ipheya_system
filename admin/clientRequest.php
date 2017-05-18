@@ -32,7 +32,6 @@
             </thead>
             <tbody>
                  <?= $allRequest; ?>
-                 
             </tbody>
         </table>
     </div>

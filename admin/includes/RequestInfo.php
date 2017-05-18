@@ -24,7 +24,7 @@
         <hr class="bhr"/>
          Requested <?=$_GET['RType']?> is for <?=$logic->getServiceNameByID($Rrequest['RequestDate'])?> on <?= $Rrequest['RequestDate']?><br/>
          Client description: <br/>
-        <textarea rows="3" cols="60" readonly><?= $Rrequest['Description']?> </textarea><br/>
+        <textarea rows="3" cols="60" class="form-control" readonly><?= $Rrequest['Description']?> </textarea><br/>
         Status : <?=$Rrequest['RequestStatus']?>
         <?php $id = $Rrequest['RequestID'];?>
        </div>

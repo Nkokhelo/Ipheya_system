@@ -62,7 +62,7 @@
 											</div>
 											<div class="input-group">
 												<span class="input-group-addon"><i class="glyphicon glyphicon-warning-sign"></i></span>
-												<input name="edate" class="form-control" style="width:95%" placeholder="End Date" id="" type="date" value="" required/>
+												<input name="edate" class="form-control" style="width:100%" placeholder="End Date" id="enddate" type="text" value="" required/>
 											</div>
 									</div>
 								</div>
@@ -268,6 +268,11 @@
 							{
 								minDate:0,
 
+							}
+						);
+						$("#enddate").datepicker(
+							{
+								minDate:+20
 							}
 						);
 				

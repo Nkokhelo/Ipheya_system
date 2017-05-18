@@ -54,7 +54,7 @@
             cursor:'move',
              stop: function()
              {
-                        dragCheck = false;
+                dragCheck = false;
             }
 
        });
@@ -78,10 +78,10 @@
       { 
         return '<div class="alert alert-info">Employee is dragged !</div>';
       }
-        $("#dropemployee div").dblclick(function()
-        {
-            alert("The paragraph was double-clicked");
-        });
+      $("#dropemployee div").dblclick(function()
+      {
+          alert("The paragraph was double-clicked");
+      });
         
    });
 </script>
