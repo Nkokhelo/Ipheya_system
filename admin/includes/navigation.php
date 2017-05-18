@@ -24,9 +24,9 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Employees<span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Clients<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a  href="clients.php">Clients</a></li>
+          <li><a  href="clients.php">All clients</a></li>
           <li><a  href="archives.php">Archived accounts</a></li>
         </ul>
       </li>
