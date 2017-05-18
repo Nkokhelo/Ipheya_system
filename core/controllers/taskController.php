@@ -110,7 +110,7 @@
 						 <div class='form-group'>
 						 	<div class='btn-group-vertical'>
 								<a type='submit' href='AssignTask.php?assign=".$alltasks[0]."' name='assign' class='btn btn-xs btn-success ' value='$alltasks[0]'><span class='glyphicon glyphicon-plus'></span> Assign</a>
-								<a type='submit' href='AssignTask.php?assign=".$alltasks[0]."' name='delete' class='btn btn-xs btn-danger ' value='$alltasks[0]'><span class='glyphicon glyphicon-trash'></span> Delete</a>
+								<a type='submit' href='CreateTask.php?delete=".$alltasks[0]."' name='delete' class='btn btn-xs btn-danger ' value='$alltasks[0]'><span class='glyphicon glyphicon-trash'></span> Delete</a>
 							 </div>
 						 </div>
 					 </div>
@@ -185,6 +185,20 @@
 		while($arr = mysqli_fetch_row($emptask))
 		{
 			$taskInfo .="<tr><td>".$log->getTaskNameById($arr[1])."</td><td>".$log->getEmployeeNameById($arr[0])."</td></tr>";
+		}
+#Delete Task
+		if(isset($_GET['delete']))
+		{
+			$id =$_GET['delete'];
+			$remove ="DELETE  FROM task WHERE task_id ='$id'";
+			if(!mysqli_query($log->connect(),$remove))
+			{
+				$error ="Error ".mysqli_error($log->connect());
+				return $error;
+			}
+			header('Location:');
+
+			
 		}
 
 ?>
