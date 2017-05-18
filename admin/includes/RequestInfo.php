@@ -22,7 +22,7 @@
     <div class ="col-lg-12">
         <h4 style="color:#70747a"><b><?=$_GET['RType']?> Information</b> <span class="glyphicon glyphicon-cog"></span></h4>
         <hr class="bhr"/>
-        Requested <?=$_GET['RType']?> is for <?=$logic->getServiceNameByID($Rrequest['RequestDate'])?> on <?= $Rrequest['RequestDate']?><br/>
+         Requested <?=$_GET['RType']?> is for <?=$logic->getServiceNameByID($Rrequest['RequestDate'])?> on <?= $Rrequest['RequestDate']?><br/>
          Client description: <br/>
         <textarea rows="3" cols="60" readonly><?= $Rrequest['Description']?> </textarea><br/>
         Status : <?=$Rrequest['RequestStatus']?>
