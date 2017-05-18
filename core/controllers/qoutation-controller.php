@@ -42,7 +42,7 @@
             $units = $_POST['IUnitPrice'];
             $pricequants = $_POST['IPQ'];
 #test
-            die($name[0]." ".$descrs[0]);
+
 #end-test
             if(!mysqli_query($db,"INSERT INTO client_r_q VALUES('$RequestID','$QouteId','$RequestType')"))
             {
@@ -159,8 +159,11 @@
      }
 
    }
-   
 
-    
+   $allQoute="";
+   while()
+   {
+       
+   }
 
 ?>

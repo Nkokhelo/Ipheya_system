@@ -372,6 +372,13 @@
         return $name;
     }
 
+#Qoutation
+        public  function getallQoutations()
+        {
+            $select = "SELECT * FROM qoutation";
+            $allQ=mysqli_query($log->connect(),$select);
+        }
+
 # Close Connection
         public function close()
         {
