@@ -361,18 +361,22 @@
        else
        {
          echo '<<[CREATE TABLE Quotation Items FAILED: '.mysqli_error($con).']>>';
-       }
-        $sql ="Create Table Ticket
+         $sql ="Create Table Ticket
           (
           Id int(6) unsigned auto_increment primary key,
+          ClientID int(11),
           Subject varchar(50) not null,
           RequestType varchar(30) not null,
           ProblemDescription text not null,
+          Status varchar(50),
           DatePlaced datetime
           )";
           if(!mysqli_query($con,$sql))
           {
               die('Error'.mysqli_error($con));
+          }
+          else{
+            echo 'Done';
           }
           $sql ="Create Table Ticket
           (
@@ -443,7 +447,7 @@
               else{
                 echo '<BR><<[Failed TO CREATE Surveying : '.mysqli_error($con).']>>';
               }
-              */
+
                 $sql="CREATE TABLE payments
                 (
                     payment_id varchar(50),
@@ -461,5 +465,5 @@
                 else
                 {
                   echo '<<[CREATE TABLE Payments FAILED: '.mysqli_error($con).']>>';
-                }
+                }*/
 ?>

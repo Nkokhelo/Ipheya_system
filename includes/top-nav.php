@@ -10,8 +10,8 @@
           <ul class="dropdown-menu dropdown-menu-right" style="color:black" id="#clientOptions">
             <li><a href="../client/profile.php"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
             <li><a href="../client/CreateTicket.php"><span class="glyphicon glyphicon-alert"></span> Report Faults</a></li>
+            <li><a href="../client/history.php?Value=<?=$_SESSION['Client'];?>"><span class="glyphicon glyphicon-time"></span> History</a></li>
             <li><a href="../login.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-
           </ul>
       </div>
 

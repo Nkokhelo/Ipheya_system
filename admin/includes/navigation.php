@@ -30,7 +30,13 @@
           <li><a  href="archives.php">Archived accounts</a></li>
         </ul>
       </li>
-      <li><a  href="clientRequest.php">Client Request</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Client Request<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a  href="clientRequest.php">Requests</a></li>
+          <li><a href="Tickets.php">Tickets</a></li>
+        </ul>
+      </li>
       <li><a href="CreateTask.php">Create Task</a></li>
       <li><a href="../inventory/items.php">Inventory</a></li>
       <li><a href="targets.php">Targets</a></li>

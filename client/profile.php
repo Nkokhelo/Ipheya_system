@@ -82,7 +82,7 @@
                     <input type="submit" class="form-control btn btn-warning" name="Change-password" value="Change password">
                   </div>
                   <div class="col-sm-6">
-                    <?=isset($error)?$error:''?>
+                    <a href="CreateTicket.php" class="form-control btn btn-default">Create Tictet</a>
                   </div>
                 </div>
               </form>
