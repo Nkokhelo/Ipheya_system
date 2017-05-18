@@ -143,7 +143,7 @@
 				</div>
 				<div class="col-md-4 text-center member">
 					<div class="member-img">
-						<img src="assets/index/images/fiberOptic.png" alt="" />
+						<img src="assets/index/images/slider.png" alt="" />
 						<div class="member-social">
 							<a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a>
 							<a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a>
@@ -156,7 +156,7 @@
 				</div>
 				<div class="col-md-4 text-center member">
 					<div class="member-img">
-						<img src="assets/index/images/server.png" alt="" />
+						<img src="assets/index/images/slider2.png" alt="" />
 						<div class="member-social">
 							<a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a>
 							<a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a>
@@ -169,7 +169,7 @@
 				</div>
 				<div class="col-md-4 text-center member">
 					<div class="member-img">
-						<img src="assets/index/images/White_Camera.png" alt="" />
+						<img src="assets/index/images/slider3.png" alt="" />
 						<div class="member-social">
 							<a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a>
 							<a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a>
