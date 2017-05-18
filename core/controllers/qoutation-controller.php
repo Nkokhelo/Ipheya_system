@@ -23,14 +23,15 @@
         $AmountDue=$_POST['TotalPrice'];
         $ExpiringDate	=$_POST['edate'];
         $QoutationDate=$_POST['qdate'];
-        $RequestID= 2;/*$_POST['r_id'];*/
-        $RequestType = 'Service';/*$_POST['r_type'];*/
+        $RequestID= $_POST['Req_id'];
+        $RequestType = $_POST['serviceType'];
 #you cannot view quotaion page without the request
-        $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `SeviceID`, `RepairID`) VALUES 
-                                        (NULL, '$Title', '$Summary', '$PaymentMethord', '$AmountDue', '$ExpiringDate', '$QoutationDate', '$RequestID', NULL)";
+        $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`) VALUES 
+                                        (NULL, '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
+        
         if(!mysqli_query($db,$addInsert))
         {
-            echo 'Error! Q';
+            echo '<div class="alert alert-dander"><span class="glyphicon glyphicon-warning-sign"></span>Error! '.mysqli_error($db).'</div><br/>'.$addInsert;
         }
         else
         {
@@ -40,6 +41,9 @@
             $quants = $_POST['IQuantiy'];
             $units = $_POST['IUnitPrice'];
             $pricequants = $_POST['IPQ'];
+#test
+            die($name);
+#end-test
             if(!mysqli_query($db,"INSERT INTO client_r_q VALUES('$RequestID','$QouteId','$RequestType')"))
             {
                 die("Error in clientRQ".mysqli_error($db));
@@ -67,7 +71,7 @@
         $_SESSION['ExpiringDate']	=$_POST['edate'];
         $_SESSION['QoutationDate']=$_POST['qdate'];
         $_SESSION['RequestID']= 2;/*$_POST['r_id'];*/
-        $_SESSION['RequestType'] = 'Service';/*$_POST['r_type'];*/
+        $_SESSION['RequestType'] = $_POST['serviceType'];/*$_POST['r_type'];*/
         $_SESSION['names'] = $_POST['IName'];
         $_SESSION['descrs'] = $_POST['IDescription'];
         $_SESSION['quants'] = $_POST['IQuantiy'];

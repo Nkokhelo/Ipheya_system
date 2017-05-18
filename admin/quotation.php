@@ -10,6 +10,7 @@
 	 if(isset($_GET['Type']))
 	 {
 		$serviceT =$_GET['Type'];
+		$req_id=$_GET['id'];
 	 }
 
 ?>
@@ -133,6 +134,7 @@
 							</select>
 							<br/>
 							<input name="serviceType" type="hidden" value="<?=$serviceT?>"/>
+							<input name="Req_id" type="hidden" value="<?=$req_id?>"/>
 							<br/>
 						</div>
                     </div>
@@ -268,12 +270,14 @@
 						$("#qdate").datepicker(
 							{
 								minDate:0,
+								dateFormat: 'yy-mm-dd'
 
 							}
 						);
 						$("#enddate").datepicker(
 							{
-								minDate:+20
+								minDate:+20,
+								dateFormat: 'yy-mm-dd'
 							}
 						);
 				
