@@ -22,7 +22,6 @@
    include('../core/controllers/client-controller.php');
    $home_page = 'selected'
  ?>
-  <body id="client-dashboard">
     <?php  include('../includes/top-nav.php'); ?>
     <div class="container-fluid" style="padding:1%;">
         <?php include('../includes/sidebar.php'); ?>

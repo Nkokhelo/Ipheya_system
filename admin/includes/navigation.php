@@ -32,6 +32,7 @@
       </li>
       <li><a  href="clientRequest.php">Client Request</a></li>
       <li><a href="CreateTask.php">Create Task</a></li>
+      <li><a href="../inventory/items.php">Inventory</a></li>
       <li><a href="targets.php">Targets</a></li>
     </ul>
   </div>

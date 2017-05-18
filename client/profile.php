@@ -6,18 +6,17 @@
       include('../includes/head.php');
       include ('../core/logic.php');
    }
-   else 
+   else
    {
      header('Location: ../login.php');
    }
    include('../core/controllers/client-controller.php');
    $profile_page = 'selected';
  ?>
-  <body id="client-dashboard">
     <?php  include('../includes/top-nav.php'); ?>
     <div class="container-fluid" style="padding:1%;">
         <?php include('../includes/sidebar.php'); ?>
-        <div class="col-lg-9">
+        <div class="col-lg-9 b">
           <div class="col-md-8">
             <div class="row">
               <div class="col-lg-12" id="main-content-header">
