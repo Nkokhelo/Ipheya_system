@@ -1,8 +1,16 @@
 <?php
-     include('includes/head.php');
-     include'includes/navigation.php';
-     include'../core/logic.php';
-     include '../core/controllers/clientRequest-controller.php';
+    session_start();
+    if(isset($_SESSION['Client']))
+    {
+        include('includes/head.php');
+        include'includes/navigation.php';
+        include'../core/logic.php';
+        include '../core/controllers/clientRequest-controller.php';
+    }
+    else
+    {
+        header('Location:../login.php');
+    }
      
 ?>
     

@@ -30,7 +30,7 @@
        </div>
        <hr class="bhr"/>
        <div class="col-sm-12">
-            <a href="" class="btn btn-default"><span class="glyphicon glyphicon-calendar"></span> Surveying Date</a>
+            <a href="CreateTask.php" class="btn btn-default"><span class="glyphicon glyphicon-tasks"></span> Make a surveying task.</a>
             <a href="quotation.php?id=<?=$id?>&Type=<?=$_GET['RType']?>" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Make Qoutation</a>
             <a href="quotation.php" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View <?=$client['name']?></a>
         </div>
