@@ -110,7 +110,7 @@
 												<td><input type="text"class="form-control" name="IDescription[]"  id="txtD_0" value="" style="width:350px" placeholder="Description" required/></td>
 												<td><input type="text"class="form-control" name="IQuantiy[]"  id="txtQ_0" value="" style="width:100px" onkeyup="generateTotals(this)" placeholder="No.of Items" required/></td>
 												<td><input type="text"class="form-control" name="IUnitPrice[]"  id="txtUP_0"value=""  style="width:80px" onkeyup="generateTotals(this)"  placeholder="Unit Price" required/></td>
-												<td><input type="text"class="form-control" name="IPQ[]"  id="txtPQ_0"value=""  style="width:100px" required/></td>
+												<td><input type="text"class="form-control" name="IPQ[]"  id="txtPQ_0"value=""  style="width:100px" required readonly/></td>
 											</tr>
 										</tbody>
 										<tfoot>
@@ -204,6 +204,7 @@
 							newInput.name='IPQ[]';
 							newInput.setAttribute('style','width:100');
 							newInput.setAttribute('required','required');
+							newInput.setAttribute('readonly','readonly');
 							newInput.setAttribute('class','form-control');
 							newInput.id="txtPQ_"+arraycount;
 						}
@@ -233,6 +234,7 @@
 						var unitP =$('#txtUP_'+i).val();
 						if(isNaN(quant)||isNaN(unitP))
 						{
+							$(x).val(' ');
 							$('#txtPQ_'+i).val(0);
 						}
 						else
@@ -251,6 +253,7 @@
 							totP += Number($('#txtPQ_'+v).val());
 					}
 					$('#TotalPrice').val(totP);
+					
 				}
 
 				
@@ -280,6 +283,6 @@
 								dateFormat: 'yy-mm-dd'
 							}
 						);
-				
+						$("#TotalPrice").attr('readonly','readonly');
 	</script>
 </body>
