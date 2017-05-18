@@ -53,6 +53,7 @@
                     die('Error Item'.mysqli_error($db));
                 }
             }
+            header('Location:Qoutations.php');
         }
    }
 
@@ -73,7 +74,6 @@
         $_SESSION['units'] = $_POST['IUnitPrice'];
         $_SESSION['pricequants'] = $_POST['IPQ'];
         $_SESSION['clientID']=$_POST['clientid'];
-        header('Location:QoutePDF.php');
         $Title=$_POST['title'];
         $Summary=$_POST['summary'];	
         $PaymentMethord	=$_POST['paymentmethod'];
@@ -84,7 +84,7 @@
         $RequestType = 'Service';/*$_POST['r_type'];*/
 
 #you cannot view quotaion page without the request
-      /* $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `SeviceID`, `RepairID`) VALUES 
+       $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `SeviceID`, `RepairID`) VALUES 
                                         (NULL, '$Title', '$Summary', '$PaymentMethord', '$AmountDue', '$ExpiringDate', '$QoutationDate', '$RequestID', NULL)";
         if(!mysqli_query($db,$addInsert))
         {
@@ -92,27 +92,27 @@
         }
         else
         {
-            $QouteId= mysqli_insert_id($db);
-            $names = $_POST['IName'];
-            $descrs = $_POST['IDescription'];
-            $quants = $_POST['IQuantiy'];
-            $units = $_POST['IUnitPrice'];
-            $pricequants = $_POST['IPQ'];
-            if(!mysqli_query($db,"INSERT INTO client_r_q VALUES('$RequestID','$QouteId','$RequestType')"))
-            {
-                die("Error in clientRQ".mysqli_error($db));
-            }
-
-            for($i=0; $i<count($names); $i++)
-            {
-                $quert ="INSERT INTO qoutationitems VALUES(NULL,'$names[$i]','$descrs[$i]','$units[$i]','$quants[$i]','$pricequants[$i]','$QouteId')";
-                if(!mysqli_query($db,$quert))
+                $QouteId= mysqli_insert_id($db);
+                $names = $_POST['IName'];
+                $descrs = $_POST['IDescription'];
+                $quants = $_POST['IQuantiy'];
+                $units = $_POST['IUnitPrice'];
+                $pricequants = $_POST['IPQ'];
+                if(!mysqli_query($db,"INSERT INTO client_r_q VALUES('$RequestID','$QouteId','$RequestType')"))
                 {
-                    die('Error Item'.mysqli_error($db));
+                    die("Error in clientRQ".mysqli_error($db));
                 }
-            }
 
-            }*/
+                for($i=0; $i<count($names); $i++)
+                {
+                    $quert ="INSERT INTO qoutationitems VALUES(NULL,'$names[$i]','$descrs[$i]','$units[$i]','$quants[$i]','$pricequants[$i]','$QouteId')";
+                    if(!mysqli_query($db,$quert))
+                    {
+                        die('Error Item'.mysqli_error($db));
+                    }
+                }
+               header('Location:QoutePDF.php');
+            }
         }
         //  $options.="<option value='$id'>$name</option>";
     //  }

@@ -1,5 +1,5 @@
 <?php 
-		$log = new Logic();
+$log = new Logic();
 #add task View 
 		$assign=mysqli_query($db,'select * from Employees');
 		$task="";$task_error='';
@@ -82,8 +82,8 @@
 							</p>";
 			}
 		}
-#Display all task in employee Crate Task Form
-		
+#Display all task in employee Create Task Form
+
 		$alltasklist ='';
 		$alltask=$log->getallTasks();
 		$tasksAll='';
@@ -118,6 +118,7 @@
 				 </form>
 			";
 		}
+
 #add employees to task
 		if(isset($_GET['assign']))
 		{
@@ -196,9 +197,41 @@
 				$error ="Error ".mysqli_error($log->connect());
 				return $error;
 			}
-			header('Location:');
-
 			
+		$alltasklist ='';
+		$alltask=$log->getallTasks();
+		$tasksAll='';
+		while($alltasks =mysqli_fetch_row($alltask))
+		{
+			$alltasklist.="<div class='col-sm-12'><input type='radio' name='task' value='".$alltasks[0]."' />".$alltasks[1]."</div>";
+			$tasksAll.="
+			<form action='CreateTask.php' method='GET'>
+				<div class='col-sm-12 bhr' style='padding-top:10px;'>
+				 	<div class='col-sm-1'>
+					 	<h1>$alltasks[0]</h1>
+					 </div>
+				 	<div class='col-sm-6'>
+					 	<b>Title</b> $alltasks[1]<br/>
+						<i><h4>$alltasks[7]</h4></i>
+						<b>Date</b> $alltasks[5]
+					 </div> 
+					 <div class='col-sm-2'>
+					 	<b>Duration</b>
+						 <h5>$alltasks[2] $alltasks[3]</h5>
+					 </div>
+					 <div class='col-sm-3'>
+					 	<b> </b><br/>
+						 <div class='form-group'>
+						 	<div class='btn-group-vertical'>
+								<a type='submit' href='AssignTask.php?assign=".$alltasks[0]."' name='assign' class='btn btn-xs btn-success ' value='$alltasks[0]'><span class='glyphicon glyphicon-plus'></span> Assign</a>
+								<a type='submit' href='CreateTask.php?delete=".$alltasks[0]."' name='delete' class='btn btn-xs btn-danger ' value='$alltasks[0]'><span class='glyphicon glyphicon-trash'></span> Delete</a>
+							 </div>
+						 </div>
+					 </div>
+				 </div>
+				 </form>
+			";
+		}
 		}
 
 ?>

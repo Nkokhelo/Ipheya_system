@@ -1,11 +1,6 @@
 <script type="text/javascript" src="../assets/jquery/jquery-1.10.2.js"></script>
 <link type="text/css" rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css"/>
-<style type="text/css">
-	#items>tr>td>input
-	{
-		border-radius:0;
-	}
-</style>
+
 <?php
      require_once('../core/init.php');
      include('includes/head.php');
@@ -18,6 +13,12 @@
 	 }
 
 ?>
+<style type="text/css">
+	#items>tr>td>input
+	{
+		border-radius:0;
+	}
+</style>
  <div class="row">
          <div class="col-sm-8 b  col-sm-offset-2">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:15px;">
