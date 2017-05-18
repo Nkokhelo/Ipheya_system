@@ -165,7 +165,7 @@
 
    while($allQ =mysqli_fetch_assoc($sqlResult))
    {
-        $allQoute .="<tr><td>".$allQ['Title']."</td><td>".$allQ['QoutationDate']."</td><td>".$allQ['ExpiringDate']."</td><td>Status</td></tr>";
+        $allQoute .="<tr><td>".$allQ['Title']."</td><td>".$allQ['QoutationDate']."</td><td>".$allQ['ExpiringDate']."</td><td><a href='../client/qoutationView.php'/>View</a></td></tr>";
    }
 
 ?>
