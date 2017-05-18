@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $.ajax({
-    url : "/clone/ipheya/core/sub/target-chart-sub.php",
+    url : "/ipheya/core/sub/target-chart-sub.php",
     type : "GET",
     success : function(data,info){
       console.log(info);
