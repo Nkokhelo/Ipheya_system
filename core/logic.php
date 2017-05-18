@@ -376,7 +376,8 @@
         public  function getallQoutations()
         {
             $select = "SELECT * FROM qoutation";
-            $allQ=mysqli_query($log->connect(),$select);
+            $allQ=mysqli_query($this->connect(),$select);
+            return $allQ;
         }
 
 # Close Connection

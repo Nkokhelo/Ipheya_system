@@ -144,7 +144,7 @@
             </div>
          </div>
 </div>
-	<script type="text/javascript">
+	<script type="text/javascript"> 
 				var fieldCount = 1;
 				var arraycount =0;
 

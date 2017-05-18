@@ -88,9 +88,9 @@
         $RequestType = 'Service';/*$_POST['r_type'];*/
 
 #you cannot view quotaion page without the request
-       $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `SeviceID`, `RepairID`) VALUES 
-                                        (NULL, '$Title', '$Summary', '$PaymentMethord', '$AmountDue', '$ExpiringDate', '$QoutationDate', '$RequestID', NULL)";
-        if(!mysqli_query($db,$addInsert))
+       $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`) VALUES 
+                                        (NULL, '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
+         if(!mysqli_query($db,$addInsert))
         {
             echo 'Error! Inserting';
         }
@@ -161,9 +161,11 @@
    }
 
    $allQoute="";
-   while()
+   $sqlResult = $logic->getallQoutations();
+
+   while($allQ =mysqli_fetch_assoc($sqlResult))
    {
-       
+        $allQoute .="<tr><td>".$allQ['Title']."</td><td>".$allQ['QoutationDate']."</td><td>".$allQ['ExpiringDate']."</td><td>Status</td></tr>";
    }
 
 ?>
