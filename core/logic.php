@@ -379,6 +379,26 @@
             $allQ=mysqli_query($this->connect(),$select);
             return $allQ;
         }
+        
+        public  function getallClientRequestsBycid($id)
+        {
+            $select = "SELECT * FROM servicerequest WHERE ClientID =$id";
+            $allQ=mysqli_query($this->connect(),$select);
+            return $allQ;
+        }
+        public function getallQoutationByRid($id)
+        {
+            $select = "SELECT * FROM qoutation WHERE RequestID =$id";
+            $allQ=mysqli_query($this->connect(),$select);
+            return $allQ;
+        }
+        public function getallQoutationItemsByQid($id)
+        {
+            $select = "SELECT * FROM qoutationitems WHERE QoutationID =$id";
+            $allQ=mysqli_query($this->connect(),$select);
+            return $allQ;
+        }
+
 
 # Close Connection
         public function close()
