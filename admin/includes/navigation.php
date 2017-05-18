@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar-main">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" style="color:#fff;" data-toggle="collapse" data-target="#main-menu">
       <span class="icon-bar"></span>
