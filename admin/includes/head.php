@@ -15,6 +15,5 @@
     <script type="text/javascript" src="../assets/lib/angular.min.js"></script>
     <link rel="icon" type="image/png" href="../assets/index/images/favicon.gif">
     <link rel="stylesheet" href="../assets/Site.css" type="text/css"/>
-    <!--<script type="text/javascript" src="../assets/plugins/jquery-ui/jquery-1.10.2.js"></script>-->
   </head>
   <body>

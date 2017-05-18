@@ -24,6 +24,17 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+        public function getEmployeeNameById($id)
+        {
+            $sql ="Select * from employees where employee_id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            $name ='';
+            while($employee= mysqli_fetch_assoc($qey))
+            {
+                $name =$employee['name'];
+            }
+            return $name;
+        }
 
         public function getEmployeeByEmail($email)
         {
@@ -184,6 +195,17 @@
             $dep = mysqli_fetch_assoc($qey);
             return $dep;
         }
+         public function getDepartmentNameByID($id)
+        {
+            $name ='';
+            $sql ="SELECT * FROM departments WHERE department_id=$id";
+            $qey =mysqli_query($this->connect(),$sql);
+            while($department = mysqli_fetch_assoc($qey))
+            {
+                $name = $department['department'];
+            }
+            return $name;
+        }
 # ClientRequest
         public function getallServiceRequest()
         {
@@ -307,26 +329,48 @@
           }
         }
 #Surveying information
-
-function getallSuveyingInfo()
-{
-    $query ="SELECT * FROM Surveying";
-    $qey =mysqli_query($this->connect(),$query);
-    return $qey;
-}
-function getSurveyingbyID($id)
-{
-        $sqliquery ="SELECT FROM Surveying WHERE SurveyingID=$id";
-        $qr =mysqli_query($this->connect(),$sqliquery);
-        return $qr;
-}
+    function getallSuveyingInfo()
+    {
+        $query ="SELECT * FROM Surveying";
+        $qey =mysqli_query($this->connect(),$query);
+        return $qey;
+    }
+    function getSurveyingbyID($id)
+    {
+            $sqliquery ="SELECT FROM Surveying WHERE SurveyingID=$id";
+            $qr =mysqli_query($this->connect(),$sqliquery);
+            return $qr;
+    }
 #employeeTask
   public function getallEmployeeTasks()
-        {
+    {
             $sql ="SELECT * FROM employeetask";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
+    }
+    public function getTaskById($id)
+    {
+            $sql ="SELECT * FROM task WHERE task_id=$id";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+    }
+    public function getallTasks()
+    {
+        $sql ="SELECT * FROM task";
+        $qey =mysqli_query($this->connect(),$sql);
+        return $qey;
+    }
+    public function getTaskNameById($id)
+    {
+        $sql ="Select * from task where task_id='$id'";
+        $qey =mysqli_query($this->connect(),$sql);
+        $name ='';
+        while($task= mysqli_fetch_assoc($qey))
+        {
+            $name =$task['Name'];
         }
+        return $name;
+    }
 
 # Close Connection
         public function close()

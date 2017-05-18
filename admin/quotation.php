@@ -1,15 +1,9 @@
 <script type="text/javascript" src="../assets/jquery/jquery-1.10.2.js"></script>
 <link type="text/css" rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css"/>
 <style type="text/css">
-	#ItemTable
+	#items>tr>td>input
 	{
-			font-size:13px;
-	}
-	#ItemTable>thead
-	{
-		font-style: italic;
-		font-size:13px;
-		color:#33b5e5;
+		border-radius:0;
 	}
 </style>
 <?php
@@ -25,8 +19,8 @@
 
 ?>
  <div class="row">
-         <div class="col-lg-9 col-md-9  col-sm-9 col-xs-9  ">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+         <div class="col-sm-8 b  col-sm-offset-2">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:15px;">
                <form method="POST" action="quotation.php">
 			   			<div class="col-lg-12">
 							<div class="col-md-push-8 col-md-8 btn-group">
@@ -35,13 +29,13 @@
 								<input class="btn btn-xs btn-info" name="pdf_con"type="submit" value="Convert to PDF"/>
 							</div>
 						</div>
-						<hr/>
                 <div class="col-lg-12">
+				<hr class="bhr"/>
 					<div class="col-md-12">
 						<div class="col-md-12">
 							    <div class="col-lg-6">
-									<h1>Ipheya IT Solution</h1>
-									<table>
+									<h1 style="color:#808080">Ipheya IT Solution</h1>
+									<table class="">
 										<tr><td>05 Wallnut Road</td></tr>
 										<tr><td>Smartxchange</td></tr>
 										<tr><td>Durban</td></tr>
@@ -52,44 +46,53 @@
 									<br/>
 								</div>
 								<div class="col-lg-6" style="float:right">
-									<h1 style="float:right">Qoute</h1>
-									<table style="width:100%" align="right">
-										<tr><td>Date </td><td><input name="qdate" id="" type="date" value="" required/></td></tr>
-										<tr><td>Title</td><td> <input name="title" id="" value="" required/></td></tr>
-										<tr><td>Customer </td><td><select name="clientid" href='quotation.php?cid=' id='clients'><option name="clientid" value='0'>Select a client</option><?=$options ?></select></td></tr>
-										<tr><td>Valid Until</td><td> <input name="edate" id="" type="date" value="" required/></td></tr>
-										<tr><td>.</td><td> </td></tr>
-										<tr><td>.</td><td></td></tr>
-									</table>
+									<h1 style="float:right;color:#808080">Qoute</h1>
+									<div class="col-sm-8 col-sm-offset-4">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+												<input name="qdate" class="form-control"style="width:95%" placeholder="Qoute Date" id="" type="date" value="" required/>
+											</div>
+											<div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+												<input name="title" class="form-control"  placeholder="Title" id="" type="text" value="" required/>
+											</div>
+											<div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+												<select name="clientid"class="form-control"  href='quotation.php?cid=' id='clients'><option value='0'>Select a client</option><?=$options ?></select>
+											</div>
+											<div class="input-group">
+												<span class="input-group-addon"><i class="glyphicon glyphicon-warning-sign"></i></span>
+												<input name="edate" class="form-control" style="width:95%" placeholder="End Date" id="" type="date" value="" required/>
+											</div>
+									</div>
 								</div>
 						</div>
 					</div>
                 <div class="col-lg-12 ">
-					<hr/>
-					<div class="col-md-12">
+					<hr class="bhr"/>
+					<div class="col-md-12" style="margin-bottom:15px;">
 						<div class="col-md-6">
-							<h3>Customer Information</h3>
+							<h4>Customer Information</h4>
 							<div id="result">
 								<?=$client_information?>
 							</div>
 						</div>
 						<div class="col-md-6">
-							Summary<br/>
-							<textarea rows="4" name="summary" cols="50"></textarea>
+							<h4>Qoutation Summary</h4>
+							<textarea rows="4" class="form-control" name="summary" cols="50"></textarea>
 						</div>
 					</div>
-					<br/>
-					<hr style="width:100%;padding-top:15px;"/>
+					<hr class="bhr" style="width:100%;margin-top:15px; margin-bottom:15px"/>
                        <div class="col-md-12">
 					   		<div class="col-md-12">
 							    <div class="col-lg-8">
-									<h5>Items to be purchased</h5>
+									<h4>Qoutation Items</h4>
 								</div>
-								<div class="col-lg-3">
+								<div class="btn-group btn-group-xs btn-group-justified col-lg-3" style="width:30%">
 									<a class="btn btn-xs btn-default" onClick='addItem()' id='AddItem'>Add new Item</a>
 									<a class="btn btn-xs btn-default" onClick='removeItem()' id='AddItem'>remove row</a>
 								</div>
-								<div class="col-lg-12" style="border:1px #000 solid;">
+								<div class="col-lg-12" style="width:120%; margin-left:-60px;">
 									<div class="table-responsive">
 										<table id="ItemTable">
 										<thead>
@@ -99,19 +102,19 @@
 											<th>UnitPrice</th>
 											<th>Price x Quan</th>
 										</thead> 
-										<tbody id="items">
+										<tbody class="form-group" id="items">
 											<tr>
-												<td><input type="text" name="IName[]"  id="txtN_0" value="" placeholder="Item Name" required/></td>
-												<td><input type="text" name="IDescription[]"  id="txtD_0" value="" style="width:350px" placeholder="Description" required/></td>
-												<td><input type="text" name="IQuantiy[]"  id="txtQ_0" value="" style="width:100px" onkeyup="generateTotals(this)" placeholder="No.of Items" required/></td>
-												<td><input type="text" name="IUnitPrice[]"  id="txtUP_0"value=""  style="width:80px" onkeyup="generateTotals(this)"  placeholder="Unit Price" required/></td>
-												<td><input type="text" name="IPQ[]"  id="txtPQ_0"value=""  style="width:100px" required/></td>
+												<td><input type="text"class="form-control" name="IName[]"  id="txtN_0" value="" placeholder="Item Name" required/></td>
+												<td><input type="text"class="form-control" name="IDescription[]"  id="txtD_0" value="" style="width:350px" placeholder="Description" required/></td>
+												<td><input type="text"class="form-control" name="IQuantiy[]"  id="txtQ_0" value="" style="width:100px" onkeyup="generateTotals(this)" placeholder="No.of Items" required/></td>
+												<td><input type="text"class="form-control" name="IUnitPrice[]"  id="txtUP_0"value=""  style="width:80px" onkeyup="generateTotals(this)"  placeholder="Unit Price" required/></td>
+												<td><input type="text"class="form-control" name="IPQ[]"  id="txtPQ_0"value=""  style="width:100px" required/></td>
 											</tr>
 										</tbody>
 										<tfoot>
 											<tr>
 												<td colspan="4"><b style="float:right"><i>TOTAL PRICE : </i></b></td>
-												<td><input type="text" name="TotalPrice" id="TotalPrice" value="" style="width:100px" required/></td>
+												<td><input type="text" class="form-control" name="TotalPrice" id="TotalPrice" value="" style="width:100px;border-radius:0;" required/></td>
 											</tr>
 										</tfoot>
 									</table>
@@ -160,6 +163,7 @@
 							newInput.name='IName[]';
 							newInput.placeholder="Item Name";
 							newInput.setAttribute('required','required');
+							newInput.setAttribute('class','form-control');
 							newInput.id="txtN_"+arraycount;
 						}
 						else if(x ==1)
@@ -167,8 +171,9 @@
 							newInput.name='IDescription[]';
 							newInput.placeholder ="Description";
 							newInput.setAttribute('style','width:350px');
-							newInput.id="txtD_"+arraycount;
 							newInput.setAttribute('required','required');
+							newInput.id="txtD_"+arraycount;
+							newInput.setAttribute('class','form-control');
 
 						}
 						else if(x ==2)
@@ -178,6 +183,7 @@
 							newInput.setAttribute('style','width:100px');
 							newInput.setAttribute('onkeyup','generateTotals(this)');
 							newInput.setAttribute('required','required');
+							newInput.setAttribute('class','form-control');
 							newInput.id="txtQ_"+arraycount;
 						}
 						else if(x==3)
@@ -187,6 +193,7 @@
 							newInput.setAttribute('style','width:80');
 							newInput.setAttribute('onkeyup','generateTotals(this)');
 							newInput.setAttribute('required','required');
+							newInput.setAttribute('class','form-control');
 							newInput.id="txtUP_"+arraycount;
 						}
 						else 
@@ -194,6 +201,7 @@
 							newInput.name='IPQ[]';
 							newInput.setAttribute('style','width:100');
 							newInput.setAttribute('required','required');
+							newInput.setAttribute('class','form-control');
 							newInput.id="txtPQ_"+arraycount;
 						}
 						newColoum.appendChild(newInput);

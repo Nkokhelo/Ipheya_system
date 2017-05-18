@@ -1,11 +1,10 @@
 <?php
-   require_once('../core/init.php');
-   include('../includes/head.php');
-   include ('../core/logic.php');
    session_start();
    if(isset($_SESSION['Client']))
    {
-
+      require_once('../core/init.php');
+      include('../includes/head.php');
+      include ('../core/logic.php');
    }
    else 
    {

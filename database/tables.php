@@ -388,7 +388,7 @@
           }
 
           
-        $sql="CREATE TABLE test
+        $sql="CREATE TABLE Task
         (
           task_id int(3) NOT NULL AUTO_INCREMENT,
           PRIMARY KEY(task_id),
@@ -416,6 +416,7 @@
           (
             employee_id int(11) NOT NULL,
             task_id int(11) NOT NULL,
+            task_date Date,
             PRIMARY KEY(employee_id,task_id),
             FOREIGN KEY(task_id) references Task(task_id),
             FOREIGN KEY(employee_id) references employees(employee_id) 
@@ -447,4 +448,22 @@
                 echo '<BR><<[Failed TO CREATE Surveying : '.mysqli_error($con).']>>';
               }
               */
+                $sql="CREATE TABLE payments
+                (
+                    payment_id varchar(50),
+                    PRIMARY KEY (payment_id),
+                    Amount_Paid float(10,2) NOT NULL,
+                    Date DateTime,
+                    payment_status varchar(255),
+                    client_id int(11),
+                    FOREIGN KEY(client_id)references clients(client_id)
+                )";
+                if(mysqli_query($con,$sql))
+                {
+                  echo '{--TABLE Payments created--}';
+                }
+                else
+                {
+                  echo '<<[CREATE TABLE Payments FAILED: '.mysqli_error($con).']>>';
+                }
 ?>

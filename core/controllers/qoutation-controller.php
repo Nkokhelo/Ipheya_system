@@ -72,6 +72,7 @@
         $_SESSION['quants'] = $_POST['IQuantiy'];
         $_SESSION['units'] = $_POST['IUnitPrice'];
         $_SESSION['pricequants'] = $_POST['IPQ'];
+        $_SESSION['clientID']=$_POST['clientid'];
         header('Location:QoutePDF.php');
         $Title=$_POST['title'];
         $Summary=$_POST['summary'];	

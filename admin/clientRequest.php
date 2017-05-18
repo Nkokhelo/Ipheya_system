@@ -5,7 +5,8 @@
      include '../core/controllers/clientRequest-controller.php';
 ?>
 <div class="row"  style="margin:25px 1px 25px 25px;">
-    <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 fade in" id='change'>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 b" id='change'>
+
 <?php      if(!isset($_GET['RType']))
             {
                 include'includes/summary.php';
@@ -17,8 +18,8 @@
 ?> 
         
     </div>
-    <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
-        <h3>Client Requests</h3>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 shift b">
+        <h2>Client Requests</h2><hr class="bhr"/>
         <table class="table" id="cRequest">
             <thead>
                 <th>Client Name</th>

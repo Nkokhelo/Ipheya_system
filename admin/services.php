@@ -50,7 +50,7 @@
     </form>
   </div>
   <!-- services table -->
-  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 b">
+  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 shift b">
     <h2>All Services</h2>
     <hr class="bhr"/>
     <table class="table">

@@ -33,7 +33,7 @@
          <div class="col-sm-12 col-md-offset-1 col-md-9 b">
          <h2>Company Roles</h2>
            <hr class="bhr" style="width:100%; margin-top:20px"/>
-           <?=include'includes/assign-role-modal.php';?>
+           <?php include'includes/assign-role-modal.php';?>
           <table class="table" style="padding:2%;">
             <thead>
               <th>Employee</th><th>email</th><th>role(s)</th><th>Options</th>

@@ -6,8 +6,15 @@
      include('includes/employee-session.php');
 ?>
 <div class="container-fluid" style="padding:1%;">
-      <h2 class="text-center">Archived accounts</h2><hr>
-      <table class="table table-bordered table-striped " style="padding:2%;">
+     <div class="col-sm-8 col-sm-offset-2 b">
+         <h2 class="text-center">Archived accounts</h2><hr class="bhr">
+         <?php if($allClients==null)
+         {
+           echo "<div class='alert alert-info'><span class='glyphicon glyphicon-info-sign'></span> No achived accounts at the moment !</div>";
+         }
+         else
+         {?>
+      <table class="table table-striped " style="padding:2%;">
         <thead>
           <th>Name</th><th>Email</th><th>Contact</th><th>Restore</th>
         </thead>
@@ -18,5 +25,7 @@
 
         </tfoot>
       </table>
+      <?php } ?>
+     </div>
 </div>
 <?php include('includes/footer.php'); ?>

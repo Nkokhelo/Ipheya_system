@@ -17,6 +17,7 @@
         $expdate =$_SESSION['ExpiringDate']	;
         $qoudate =$_SESSION['QoutationDate'];
         $client_Id =$_SESSION['clientID'];
+        $req_Id =$_SESSION['RequestID'];
         $req_Type =$_SESSION['RequestType'];
         $Inames =$_SESSION['names'];
         $Idescri =$_SESSION['descrs'];
