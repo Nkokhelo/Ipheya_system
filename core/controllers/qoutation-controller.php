@@ -20,7 +20,7 @@
         $Title=$_POST['title'];
         $Summary=$_POST['summary'];	
         $PaymentMethord	=$_POST['paymentmethod'];
-        $AmountDue=$_POST['TotalPrice'];
+        $AmountDue=$_POST['TotalPrice']; 
         $ExpiringDate	=$_POST['edate'];
         $QoutationDate=$_POST['qdate'];
         $RequestID= $_POST['Req_id'];
@@ -86,7 +86,7 @@
         $QoutationDate=$_POST['qdate'];
         $RequestID= 2;/*$_POST['r_id'];*/
         $RequestType = 'Service';/*$_POST['r_type'];*/
-
+ 
 #you cannot view quotaion page without the request
        $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`) VALUES 
                                         (NULL, '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
@@ -165,7 +165,44 @@
 
    while($allQ =mysqli_fetch_assoc($sqlResult))
    {
-        $allQoute .="<tr><td>".$allQ['Title']."</td><td>".$allQ['QoutationDate']."</td><td>".$allQ['ExpiringDate']."</td><td><a href='../client/qoutationView.php'/>View</a></td></tr>";
+        $allQoute .="<tr><td>".$allQ['Title']."</td><td>".$allQ['QoutationDate']."</td><td>".$allQ['ExpiringDate']."</td><td><a href='../client/qoutationView.php?viewQ=".$allQ['QoutationID']."'/>View</a></td></tr>";
    }
+
+  if(isset($_GET['viewQ']))
+  {
+       $q_id = $_GET['viewQ'];
+        $Title= $Summary=$PaymentMethord=$AmountDue=$ExpiringDate= $QoutationDate=$deposit='';
+       $qouteSQL = $logic->getQoutationById($q_id);
+       if($qouteSQL=='')
+       {
+            die("Error ".mysqli_error($logic->connect()));
+       }
+       while ($qoute = mysqli_fetch_assoc($qouteSQL))
+       {
+            $Title=$qoute['Title'];
+            $Summary=$qoute['Summary'];
+            $PaymentMethord=$qoute['PaymentMethord'];
+            $AmountDue=$qoute['AmountDue'];
+            $ExpiringDate=$qoute['ExpiringDate'];
+            $QoutationDate=$qoute['QoutationDate'];
+            $deposit =($PaymentMethord/100)*$AmountDue;
+
+       }
+       $allQItems='';
+       $sqloQ = $logic->getallQoutationItemsByQid($q_id);
+       while($items = mysqli_fetch_assoc($sqloQ))
+       {
+         $allQItems.="<tr><td>".$items['Name']."</td><td>".$items['Description']."</td><td>".$items['UnitPrice']."</td><td>".$items['Quantity']."</td><td>".$items['TotalPrice']."</td></tr>";
+       }
+         $allQItems.="<tr><td></td><td></td><td></td><td>Amount Due</td><td>".$AmountDue."</td></tr>";
+
+         if(isset($_POST['deposit']))
+         {
+            $_SESSION['message']="Quotation Payament";
+		    $_SESSION['amount']=$deposit;
+		    $_SESSION['payament-status']="Qoutation Deposit";
+            header('Location:indexes.php');
+         }
+  }
 
 ?>

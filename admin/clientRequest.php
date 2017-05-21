@@ -17,7 +17,7 @@
 <div class="row"  style="margin:25px 1px 25px 25px;">
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 b" style="padding-bottom:15px;" id='change'>
 
-<?php      if(!isset($_GET['RType']))
+            <?php if(!isset($_GET['RType']))
             {
                 include'includes/summary.php';
             }
@@ -25,7 +25,7 @@
             {
                 include'includes/RequestInfo.php';
             }
-?> 
+            ?> 
         
     </div>
     <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 shift b">

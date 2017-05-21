@@ -350,7 +350,7 @@
     }
     public function getTaskById($id)
     {
-            $sql ="SELECT * FROM task WHERE task_id=$id";
+            $sql ="SELECT * FROM task WHERE task_id='$id'";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
     }
@@ -382,19 +382,29 @@
         
         public  function getallClientRequestsBycid($id)
         {
-            $select = "SELECT * FROM servicerequest WHERE ClientID =$id";
+            $select = "SELECT * FROM servicerequest WHERE ClientID ='$id'";
             $allQ=mysqli_query($this->connect(),$select);
             return $allQ;
         }
         public function getallQoutationByRid($id)
         {
-            $select = "SELECT * FROM qoutation WHERE RequestID =$id";
+            $select = "SELECT * FROM qoutation WHERE RequestID ='$id'";
             $allQ=mysqli_query($this->connect(),$select);
+            return $allQ;
+        }
+         public function getQoutationById($id)
+        {
+            $select = "SELECT * FROM qoutation WHERE QoutationID ='$id'";
+            $allQ=mysqli_query($this->connect(),$select);
+            if(!$allQ)
+            {
+                die("Error ".mysqli_error($this->connect()));
+            }
             return $allQ;
         }
         public function getallQoutationItemsByQid($id)
         {
-            $select = "SELECT * FROM qoutationitems WHERE QoutationID =$id";
+            $select = "SELECT * FROM qoutationitems WHERE QoutationID ='$id'";
             $allQ=mysqli_query($this->connect(),$select);
             return $allQ;
         }
@@ -409,12 +419,12 @@
 
 
 #testing -------------------------------------
-    $log = new Logic();
-    // $sqlresult =$log->getallClientRequest();
+    // $log = new Logic();
+    // $sqlresult =$log->getQoutationById(12);
     // // $sqlresult =$log->getallServiceRequest();
-    // while($array =$sqlresult)
+    // while($array =mysqli_fetch_assoc($sqlresult))
     // {
-    //     echo $array[0];
+    //     echo $array['Title'];
     // }
     // echo $roles;
 

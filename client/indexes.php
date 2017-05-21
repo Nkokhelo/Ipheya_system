@@ -24,6 +24,7 @@
 	<title>Standard Deposit</title>
 </head>
 <body>
+<div class="col-sm-12"  style="margin-top:2%;">
 <div class='web'>
 	<h1><?=$message;?></h1>
 	<p>Price: <?=$amount;?></p>
@@ -39,6 +40,7 @@
 		</script>
 	</form>
 
+</div>
 </div>
 </body>
 </html>

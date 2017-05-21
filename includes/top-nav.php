@@ -11,15 +11,12 @@
             <li><a href="../client/profile.php"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
             <li><a href="../client/CreateTicket.php"><span class="glyphicon glyphicon-alert"></span> Report Faults</a></li>
             <li><a href="../login.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-<<<<<<< HEAD
           </ul>
       </div>
-=======
 
           </ul>
       </div>
 
->>>>>>> 286899b06fa4cfed2daebf7f7eae4056eb186b61
       </a>
     </div>
   </div>
