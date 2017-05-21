@@ -3,7 +3,7 @@
      include('includes/head.php');
      include('includes/navigation.php');
      include('../core/controllers/target-controller.php');
-     include('includes/employee-session.php');
+    //  include('includes/employee-session.php');
 ?>
 
 <div class="container-fluid b" style="margin:2%;padding:1%;background-color:#eee;">

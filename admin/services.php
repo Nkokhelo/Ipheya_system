@@ -4,7 +4,7 @@
      include('includes/navigation.php');
      include('../core/logic.php');
      require_once('../core/controllers/service-controller.php');
-     include('includes/employee-session.php');
+    //  include('includes/employee-session.php');
 ?>
 <div class="container-fluid" style="margin:1%;">
   <!-- service form -->

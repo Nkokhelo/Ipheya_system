@@ -57,7 +57,7 @@
       </div>
       <div class="form-group col-md-6">
         <label for="date">Date of birth</label>
-        <input type="date" name="date" class="form-control" id="date" value="<?=((isset($date))?$date:'');?>">
+        <input type="text" name="date" class="form-control" id="date" value="<?=((isset($date))?$date:'');?>">
       </div>
       <div class="form-group col-md-6">
         <label for="identity">Id number</label>
@@ -99,4 +99,12 @@
     <a class="btn btn-default" href="CreateTask.php">Task management</a>
   </div>
 </div>
+<script>
+  	$("#date").datepicker(
+							{
+								dateFormat: 'yy/mm/dd',
+                yearRange: "c+0:c+1"
+							}
+						);
+</script>
 <?php include('includes/footer.php'); ?>

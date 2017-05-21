@@ -2,8 +2,8 @@
      require_once('../core/init.php');
      include('includes/head.php');
      include('includes/navigation.php');
-     session_start();
-     $_SESSION['Employee'];
+    //  session_start();
+    //  $_SESSION['Employee'];
      require_once('../core/controllers/department-controller.php');
 ?>
 <div class="container-fluid" style="padding:1%;">
