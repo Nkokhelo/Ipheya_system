@@ -13,7 +13,6 @@
    {
      header('Location: ../login.php');
    }
-
 ?>
 <div class="container-fluid">
    <div class="col-lg-6 b">
