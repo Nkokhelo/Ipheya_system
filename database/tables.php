@@ -387,7 +387,6 @@
               die('Error'.mysqli_error($con));
           }
 
-          
         $sql="CREATE TABLE Task
         (
           task_id int(3) NOT NULL AUTO_INCREMENT,
@@ -410,8 +409,6 @@
         {
           echo "Table Task Created Successfully";
         }
-
-
          /* $sql="Create Table employeetask
           (
             employee_id int(11) NOT NULL,
@@ -419,9 +416,9 @@
             task_date Date,
             PRIMARY KEY(employee_id,task_id),
             FOREIGN KEY(task_id) references Task(task_id),
-            FOREIGN KEY(employee_id) references employees(employee_id) 
+            FOREIGN KEY(employee_id) references employees(employee_id)
           )";
-          
+
           if(!mysqli_query($con,$sql))
           {
             echo "Error Creating table".mysqli_error($con);
@@ -430,7 +427,6 @@
           {
             echo "Table taskEmployee Created Successfully";
           }
-
            $mvelo="Create Table Surveying
             (
               SurveyingID int NOT NULL AUTO_INCREMENT,

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+<nav class="navbar navbar-inverse navbar-fixed-top" id="navbar-main">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" style="color:#fff;" data-toggle="collapse" data-target="#main-menu">
       <span class="icon-bar"></span>
@@ -24,14 +24,15 @@
         </ul>
       </li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Employees<span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Clients<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a  href="clients.php">Clients</a></li>
+          <li><a  href="clients.php">All clients</a></li>
           <li><a  href="archives.php">Archived accounts</a></li>
         </ul>
       </li>
       <li><a  href="clientRequest.php">Client Request</a></li>
       <li><a href="CreateTask.php">Create Task</a></li>
+      <li><a href="../inventory/items.php">Inventory</a></li>
       <li><a href="targets.php">Targets</a></li>
     </ul>
   </div>

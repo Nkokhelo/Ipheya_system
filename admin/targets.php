@@ -6,8 +6,7 @@
      include('includes/employee-session.php');
 ?>
 
-<div class="container-fluid" style="padding:1%;">
-      <h2 class="text-center">Target log</h2><hr>
+<div class="container-fluid b" style="margin:2%;padding:1%;background-color:#eee;">
       <div class="col-lg-8" style="">
         <ul class="nav nav-tabs" id="iptab">
             <li class="active"><a href="#table">Table</a></li>
@@ -21,6 +20,7 @@
         <div class="col-lg-12">
            <div class="tab-content">
               <div role="tabpanel" class="tab-pane fade in active" id="table">
+                <h3 class="text-center">Target log</h3>
                 <table class="table table-bordered table-striped " style="padding:2%;">
                   <thead>
                     <th>Ip address</th><th>First visit</th><th>Last visit</th><th>Total visits</th><th>Delete</th>
@@ -35,7 +35,7 @@
               <div role="tabpanel" class="tab-pane fade in" id="bar">
                 <div class="col-md-6">
                   <div class="chart-container">
-                    <label for="barcanvas">Bar graph show site visits per ip address</label>
+                    <label for="barcanvas">Bar graph showing site visits per ip address</label>
                     <canvas id="barcanvas">
                     </canvas>
                   </div>

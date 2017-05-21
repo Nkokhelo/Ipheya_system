@@ -12,24 +12,23 @@
       include('../core/controllers/request-controller.php');
       $request_page = 'selected';
    }
-   else 
+   else
    {
      header('Location: ../login.php');
    }
-   
+
  ?>
-  <body id="client-dashboard">
    <div class="row">
       <?php include('../includes/sidebar.php'); ?>
       <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 b">
                 <h4>Request</h4>
 					<ul class="nav nav-tabs">
 						<li class="active">
-							<a href="#SR"  data-toggle="tab">Service</a> 
+							<a href="#SR"  data-toggle="tab">Service</a>
 						</li>
 						<li>
-							<a href="#MR"  data-toggle="tab">Maintanance</a> 
+							<a href="#MR"  data-toggle="tab">Maintanance</a>
 						</li>
 						<li>
 							<a href="#" data-toggle="tab">Repair</a>
