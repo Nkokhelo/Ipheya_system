@@ -3,11 +3,10 @@
     //  require_once('../core/controllers/client-controller.php');
     //  include('includes/employee-session.php');
 ?>
-<div class="col-lg-12">
     <h2 style="color:#808080">Request Information</h2><hr class="bhr"/>
     <div class="">
             <div class="col-lg-8">
-            <h4 style="color:#70747a"><b>Client Information <span class="glyphicon glyphicon-user"> </b></h5>
+            <h4 style="color:#70747a"><span class="glyphicon glyphicon-user"></span><b>  Client Information</b></h5>
             <hr class="bhr"/>
             <table class="table" style="width:100%">
                 <tr><td> Client Name :</td><td align='right'><?= $client['name'] ?></td></tr>
@@ -20,7 +19,7 @@
     </div>
      <hr class="bhr"/>
     <div class ="col-lg-12">
-        <h4 style="color:#70747a"><b><?=$_GET['RType']?> Information</b> <span class="glyphicon glyphicon-cog"></span></h4>
+        <h4 style="color:#70747a"><span class="glyphicon glyphicon-cog"></span><b> <?=$_GET['RType']?> Information</b></h4>
         <hr class="bhr"/>
          Requested <?=$_GET['RType']?> is for <?=$logic->getServiceNameByID($Rrequest['RequestDate'])?> on <?= $Rrequest['RequestDate']?><br/>
          Client description: <br/>
@@ -31,7 +30,6 @@
        <hr class="bhr"/>
        <div class="col-sm-12">
             <a href="CreateTask.php" class="btn btn-default"><span class="glyphicon glyphicon-tasks"></span> Make a surveying task.</a>
-            <a href="quotation.php?id=<?=$id?>&Type=<?=$_GET['RType']?>" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Make Qoutation</a>
-            <a href="quotation.php" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View <?=$client['name']?></a>
+            <a href="quotation.php?id=<?=$id?>&Type=<?=$_GET['RType']?>" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a qoutation</a>
+            <a href="quotation.php" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View <?=$client['name']?>'s history</a>
         </div>
-</div>

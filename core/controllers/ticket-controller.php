@@ -2,29 +2,29 @@
     $logic = new Logic();
     if(isset($_POST['Submit']))
     {
-       $Subject = $_POST['Subject'];
-       $RequestType =$_POST['RequestType'];
-       $ProblemDescription = $_POST['ProblemDescription'];
-       $date = date('Y-m-d');
 
-       if(empty($Subject))
-       {
-            $error ="The Subject is requred";
-       }
-       if(empty($RequestType))
-       {
-            $error ="type of is requred";
-       }
-       if(empty($ProblemDescription))
-       {
-            $error ="The Subject is requred";
-       }
+          $Subject            = $_POST['Subject'];
+          $RequestType        = $_POST['RequestType'];
+          $ProblemDescription = $_POST['ProblemDescription'];
+          $date               = date('Y-m-d');
 
+          if(empty($Subject))
+          {
+                $error = "The Subject is requred";
+          }
+          if(empty($RequestType))
+          {
+                $error = "type of is requred";
+          }
+          if(empty($ProblemDescription))
+          {
+                $error = "The Subject is requred";
+          }
 
-          $Subject = mysqli_real_escape_string($db,$Subject);
-          $Subject = sanitize($Subject);
-          $RequestType = mysqli_real_escape_string($db,$RequestType);
-          $RequestType = sanitize($RequestType);
+          $Subject            = mysqli_real_escape_string($db,$Subject);
+          $Subject            = sanitize($Subject);
+          $RequestType        = mysqli_real_escape_string($db,$RequestType);
+          $RequestType        = sanitize($RequestType);
           $ProblemDescription = mysqli_real_escape_string($db,$ProblemDescription);
           $ProblemDescription = sanitize($ProblemDescription);
 
@@ -54,7 +54,7 @@
           }
     }
    #select all new tickets to be view by admin
-   $tickets = mysqli_query($db,"SELECT * FROM Ticket WHERE DatePlaced >= DATE_ADD(CURDATE(), INTERVAL - 7 DAY)");
+   $tickets = mysqli_query($db,"SELECT * FROM Ticket ");//WHERE DatePlaced >= DATE_ADD(CURDATE(), INTERVAL - 7 DAY) ||I REMOVED THIS LINE
    $newtickets = $acknowledged = $resolved = $pending = '';
    while($ticket = mysqli_fetch_assoc($tickets)):
       #select client associated with ticket

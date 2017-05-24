@@ -10,3 +10,4 @@ $data = $result->fetch_all();
 $mysqli->close();
 
 echo json_encode($data);
+  

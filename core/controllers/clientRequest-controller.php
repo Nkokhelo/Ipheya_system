@@ -8,9 +8,18 @@
      while($allCR = mysqli_fetch_assoc($allRServie))
      {
          $allRequest .="<tr id='itemVeiw' href='clientRequest.php?ri=".$allCR['RequestID']."&RType=".$allCR['RequestType']."&ci=".$allCR['ClientID']."'><td>".$logic->getClientNameById($allCR['ClientID'])."</td><td>".$allCR['RequestType']."</td><td>".$allCR['RequestDate']."</td><td>".$logic->getServiceNameByID($allCR['ServiceID'])."</td><td>".$allCR['RequestStatus']."</td></tr>";
-         
      }
     $allRServie = $logic->getallMaintananceRequest();
+     while($allCR = mysqli_fetch_assoc($allRServie))
+     {
+         $allRequest .="<tr id='itemVeiw' href='clientRequest.php?ri=".$allCR['RequestID']."&RType=".$allCR['RequestType']."&ci=".$allCR['ClientID']."'><td>".$logic->getClientNameById($allCR['ClientID'])."</td><td>".$allCR['RequestType']."</td><td>".$allCR['RequestDate']."</td><td>".$logic->getServiceNameByID($allCR['ServiceID'])."</td><td>".$allCR['RequestStatus']."</td></tr>";
+     }
+     $allRServie = $logic->getallSurveyRequest();
+     while($allCR = mysqli_fetch_assoc($allRServie))
+     {
+         $allRequest .="<tr id='itemVeiw' href='clientRequest.php?ri=".$allCR['RequestID']."&RType=".$allCR['RequestType']."&ci=".$allCR['ClientID']."'><td>".$logic->getClientNameById($allCR['ClientID'])."</td><td>".$allCR['RequestType']."</td><td>".$allCR['RequestDate']."</td><td>".$logic->getServiceNameByID($allCR['ServiceID'])."</td><td>".$allCR['RequestStatus']."</td></tr>";
+     }
+    $allRServie = $logic->getallRepairRequest();
      while($allCR = mysqli_fetch_assoc($allRServie))
      {
          $allRequest .="<tr id='itemVeiw' href='clientRequest.php?ri=".$allCR['RequestID']."&RType=".$allCR['RequestType']."&ci=".$allCR['ClientID']."'><td>".$logic->getClientNameById($allCR['ClientID'])."</td><td>".$allCR['RequestType']."</td><td>".$allCR['RequestDate']."</td><td>".$logic->getServiceNameByID($allCR['ServiceID'])."</td><td>".$allCR['RequestStatus']."</td></tr>";
@@ -26,28 +35,28 @@
         $request = null;
         if($type =='Service')
         {
-            $request =$logic->getServiceRequestById($rid);#mysli result
+            #if its a service request it search information from service request table from database...
+            $request =$logic->getServiceRequestById($rid);
             $Rrequest = mysqli_fetch_assoc($request);
-            // $serviceName = $logic->getServiceNameByID($Rrequest['ServiceID']);
         }
         else if($type =='Maintanance')
         {
+            #if its a maintanance request it search information from maintanance request table from database...
             $request =$logic->getMaintananceRequestById($rid);#mysli result
             $Rrequest =mysqli_fetch_assoc($request);
-            // $serviceName = $logic->getServiceNameByID($Rrequest['ServiceID']);
 
         }
         else if($type =='Repair')
         {
+            #if they requestered for repair it search information from repair  table from database...
             $request =$logic->getRepairRequestById($rid);#mysli result
             $Rrequest =mysqli_fetch_assoc($request);
-            // $serviceName = $logic->getServiceNameByID($Rrequest['ServiceID']);
         }
         else 
         {
+            #if its a search for survey it search information from survey request request table from database...
             $request =$logic->getSurveyRequestById($rid);#mysli result
             $Rrequest =mysqli_fetch_assoc($request);
-            // $serviceName = $logic->getServiceNameByID($Rrequest['ServiceID']);
 
         }
      }

@@ -12,7 +12,6 @@
 		$serviceT =$_GET['Type'];
 		$req_id=$_GET['id'];
 	 }
-
 ?>
 <style type="text/css">
 	#items>tr>td>input
@@ -26,9 +25,9 @@
                <form method="POST" action="quotation.php">
 			   			<div class="col-lg-12">
 							<div class="col-md-push-8 col-md-8 btn-group">
-								<input class="btn btn-xs btn-info" name="submit" type="submit" value="Save To Draft"/> 
-								<input class="btn btn-xs btn-info" name="email"  type="submit" value="Send Email"/> 
-								<input class="btn btn-xs btn-info" name="pdf_con"type="submit" value="Convert to PDF"/>
+								<button class="btn btn-sm btn-info" name="submit" type="submit" ><span class="glyphicon glyphicon-save-file"></span> Save as draft</button>  
+								<button class="btn btn-sm btn-info" name="email"  type="submit" ><span class="glyphicon glyphicon-send"></span> Email</button> 
+								<button class="btn btn-sm btn-info" name="pdf_con"type="submit" ><span class="glyphicon glyphicon-print"></span> Print</button>
 							</div>
 						</div>
                 <div class="col-lg-12">
@@ -37,7 +36,7 @@
 						<div class="col-md-12">
 							    <div class="col-lg-6">
 									<h1 style="color:#808080">Ipheya IT Solution</h1>
-									<table class="">
+									<table>
 										<tr><td>05 Wallnut Road</td></tr>
 										<tr><td>Smartxchange</td></tr>
 										<tr><td>Durban</td></tr>
@@ -137,7 +136,7 @@
 							<input name="Req_id" type="hidden" value="<?=$req_id?>"/>
 							<br/>
 						</div>
-                    </div>
+				</div>
 
                 </div>
 			   </form>

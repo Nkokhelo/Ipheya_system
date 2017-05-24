@@ -21,7 +21,7 @@
       </div>
       <br/>
       <hr class="bhr" style="width:100%">
-      <table class="table" style="padding:2%;">
+      <table class="table" style="padding:2%;" id="departments">
         <thead>
           <th>Department Name</th><th>Department Email</th><th>Options</th>
         </thead>
@@ -36,4 +36,7 @@
             <br/>
       </div>
 </div>
+<script>
+  $('#departments').dataTable();
+</script>
 <?php include('includes/footer.php'); ?>

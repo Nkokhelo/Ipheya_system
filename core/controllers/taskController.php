@@ -13,60 +13,23 @@ $log = new Logic();
 		$removed ='';
 		if(isset($_POST["submit"]))
 		{
-			if($_POST["task"]==null)
-			{
-				$task_err=1;
-			}
-			else
-			{
 				$task=$_POST["task"];
-			}
-			
-			if($_POST["descr"]==null)
-			{
-				$descr_err=1;
-			}
-			else
-			{
 				$descr=$_POST["descr"];
-			}
-			
-			if($_POST["duraType"]==null)
-			{
-				$duraType_err=1;
-			}
-			else
-			{
 				$duraType=$_POST["duraType"];
-			}
-			
-			if($_POST["dura"]==null)
-			{
-				$dura_err=1;
-			}
-			else
-			{
 				$dura=$_POST["dura"];
-			}
-
-			if($_POST["Sdate"]==null)
-			{
-				$Sdate_err=1;
-			}
-			else
-			{
 				$Sdate=$_POST["Sdate"];
+				// $Edate="null";
+				$loca =$_POST['location'];
+
+#logic before data is saved!
+			switch ($duraType)
+			{
+				case "Day";
+					$Edate = date_add($Sdate,"MM");
+				break;
 			}
+			die("Edate ".$Edate);
 			
-			if($_POST["Edate"]==null)
-			{
-				$Edate_err=1;
-			}
-			else
-			{
-				$Edate=$_POST["Edate"];
-			}
-			$loca =$_POST['location'];
 			$insert ="INSERT INTO `task` (`task_id`, `Name`, `Duration`, `DurationType`, `Location`, `StartDate`, `EndDate`, `Description`, `DatePosted`) 
 						VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}');";
 			if(!mysqli_query($db,$insert))

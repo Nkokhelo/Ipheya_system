@@ -24,11 +24,11 @@
       </div>
       <div class="form-group col-md-6">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" class="form-control" value="<?=((isset($name))?$name:'');?>" placeholder="name">
+        <input type="text" name="name" id="name" class="form-control" value="<?=((isset($name))?$name:'');?>" placeholder="First Name">
       </div>
       <div class="form-group col-md-6">
         <label for="surname">Last name</label>
-        <input type="text" name="surname" id="surname" class="form-control" value="<?=((isset($surname))?$surname:'');?>" placeholder="last name">
+        <input type="text" name="surname" id="surname" class="form-control" value="<?=((isset($surname))?$surname:'');?>" placeholder="Last Name">
       </div>
       <div class="form-group col-md-6">
         <label for="title">Title</label>
@@ -49,19 +49,19 @@
       </div>
       <div class="form-group col-md-6">
         <label for="number">Contact number</label>
-        <input type="text" name="number" id="number" class="form-control" value="<?=((isset($number))?$number:'');?>" placeholder="number" maxlength="10">
+        <input type="text" name="number" id="number" class="form-control" value="<?=((isset($number))?$number:'');?>" placeholder="Phone-Number" maxlength="10">
       </div>
       <div class="form-group col-md-6">
         <label for="email">Email address</label>
-        <input type="email" name="email" id="email" class="form-control" value="<?=((isset($email))?$email:'');?>" placeholder="email address">
+        <input type="email" name="email" id="email" class="form-control" value="<?=((isset($email))?$email:'');?>" placeholder="Email Address">
       </div>
       <div class="form-group col-md-6">
         <label for="date">Date of birth</label>
         <input type="text" name="date" class="form-control" id="date" value="<?=((isset($date))?$date:'');?>">
       </div>
       <div class="form-group col-md-6">
-        <label for="identity">Id number</label>
-        <input type="text" name="identity" class="form-control" id="identity" value="<?=((isset($identity))?$identity:'');?>" placeholder="Identity number" maxlength="13">
+        <label for="identity">ID number</label>
+        <input type="text" name="identity" class="form-control" id="identity" value="<?=((isset($identity))?$identity:'');?>" placeholder="ID number" maxlength="13">
       </div>
       <div class="form-group col-md-6">
         <label for="residential">Residential address preview</label>
@@ -100,10 +100,14 @@
   </div>
 </div>
 <script>
+   var date = new Date();
+   
   	$("#date").datepicker(
 							{
 								dateFormat: 'yy/mm/dd',
-                yearRange: "c+0:c+1"
+                changeYear:true,
+                changeMonth:true,
+                yearRange: "-40:-18"
 							}
 						);
 </script>
