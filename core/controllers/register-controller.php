@@ -47,7 +47,7 @@
         $displayR = display_errors($errors);
       }
 
-	    $check_existing_user = "SELECT * FROM Users WHERE email = '$email'";
+	    $check_existing_user = "SELECT * FROM users WHERE email = '$email'";
       $check_existing_exe = mysqli_query($db,$check_existing_user);
       $count = mysqli_num_rows($check_existing_exe);
 		
@@ -57,12 +57,19 @@
       }
       else
       {
-        $insert_c = "INSERT INTO clients(name,surname,email,postal_address,contact_number,account,archived,token)
-                                VALUES('$name','$surname','$email','$postal','$number','$account',0,'$token')";
+        #generating unique client number
+        $date = date('Y-m-d');//we take a date
+        $client_unique = uniqid();//generate unique id
+        $client_no ="C".substr($date,2,2).substr($date,0,2).strtoupper(substr($client_unique,4,4));//create new client no by date and unique values by miniseconds
+        
+        $insert_c = "INSERT INTO clients(client_no,name,surname,email,postal_address,contact_number,account,archived,token)
+                                VALUES('$client_no','$name','$surname','$email','$postal','$number','$account',0,'$token')";
         $adduser =mysqli_query($db,$insert_c);
         if($adduser)
         {
-            $addtoUsers="INSERT INTO Users VALUES(NULL,'$email','$email',true,'$password')";
+          #hashing a password
+            $password = password_hash($password,PASSWORD_DEFAULT);
+            $addtoUsers="INSERT INTO users VALUES(NULL,'$email','$email',true,'$password')";
             if(!mysqli_query($db,$addtoUsers))
             {
               die("Error Users".mysqli_error($db));

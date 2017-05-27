@@ -1,8 +1,4 @@
-<?php
-    //  include('../core/logic.php');
-    //  require_once('../core/controllers/client-controller.php');
-    //  include('includes/employee-session.php');
-?>
+
     <h2 style="color:#808080">Request Information</h2><hr class="bhr"/>
     <div class="">
             <div class="col-lg-8">
@@ -29,7 +25,7 @@
        </div>
        <hr class="bhr"/>
        <div class="col-sm-12">
-            <a href="CreateTask.php" class="btn btn-default"><span class="glyphicon glyphicon-tasks"></span> Make a surveying task.</a>
+            <a href="CreateTask.php?ci=<?=$_GET['ci']?>&ri=<?=$_GET['ri']?>&type=<?=$_GET['RType']?>" class="btn btn-default"><span class="glyphicon glyphicon-tasks"></span> Create Task</a>
             <a href="quotation.php?id=<?=$id?>&Type=<?=$_GET['RType']?>" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a qoutation</a>
-            <a href="quotation.php" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View <?=$client['name']?>'s history</a>
+            <a href="client_view.php?id=<?=$_GET['ci']?>" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View <?=$client['name']?>'s history</a>
         </div>

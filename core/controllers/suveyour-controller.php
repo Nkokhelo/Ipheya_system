@@ -1,8 +1,8 @@
 <?php
 #list of all survying information
- $log = new Logic();
- $sqlSquery = $log->getallServiceRequest();
- $surveyingOptions="";
+    $log = new Logic();
+    $sqlSquery = $log->getallServiceRequest();
+    $surveyingOptions="";
 	while($arrReq=mysqli_fetch_row($sqlSquery))
     {
         $surveyingOptions.= "<option value='$arrReq[0]'>$arrReq[1]</option>";
@@ -13,7 +13,6 @@
         $id = $_GET['delete'];
         $sqliquery ="DELETE FROM Surveying WHERE SurveyingID=$id";
         mysqli_query($log->connect(),$sqliquery);
-
     }
 
     if(isset($_GET['editv']))
@@ -54,6 +53,15 @@
             {
                 echo('Error');
             }
+            $departments = $_POST['departments'];
+            
+            if(!empty($departments))
+            {
+                foreach($departments as $department)
+                {
+                    $save ="";
+                }
+            }
             header('Location:View.php');
         }
 
@@ -63,12 +71,15 @@
     $sqlresult = $log->getallSuveyingInfo();
     while($suveys = mysqli_fetch_row($sqlresult))
     {
-        $surveyingList .= "<tr><td>$suveys[1]</td><td>$suveys[2]</td><td><img src='data:image;base64,$suveys[3]' height='40px' width='40px'/></td>
-                                    <td id='actions'>
+        $surveyingList.= "<tr>
+                                <td>$suveys[1]</td>
+                                <td>$suveys[2]</td>
+                                <td><img src='data:image;base64,$suveys[3]' height='40px' width='40px'/></td>
+                                <td id='actions'>
                                         <a data-toggle='modal' class='btn btn-sm btn-default' id=".$suveys[0]."  href='#Dmodal' >Delete</a>
                                         <a data-toggle='modal' class='btn btn-sm btn-default' id=".$suveys[0]." href='#Smodal'>Edit</a>
-                                    </td>
-                            </tr>";
+                                </td>
+                           </tr>";
     }
 
 ?>

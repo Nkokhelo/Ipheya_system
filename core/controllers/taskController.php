@@ -1,5 +1,6 @@
-<?php 
+<?php
 $log = new Logic();
+
 #add task View 
 		$assign=mysqli_query($db,'select * from Employees');
 		$task="";$task_error='';
@@ -11,39 +12,73 @@ $log = new Logic();
 		$Dposted=date('Y-m-d H:i:s');$Dposted_error='';
 		$feedback='';
 		$removed ='';
+		// $cid=$rid ='';
+
+#find basic client info before a form can be viewed
+	
+  if(isset ($_GET['ri']))
+     {
+        $cid = $_GET['ci'];
+        $rid = $_GET['ri'];
+		$type = $_GET['type'];
+        $clientQR = $log->getClientsById($cid);
+        $client=mysqli_fetch_assoc($clientQR);
+		if($type=="Service")
+		{
+			$req = $log->getServiceRequestById($rid);
+		}
+		else 
+		{
+			$req = $log->getMaintananceRequestById($rid);
+		}
+        $request=mysqli_fetch_assoc($req);
+		$name =$log->getServiceNameByID($request['ServiceID']);
+	 }
+#Saving a task
 		if(isset($_POST["submit"]))
 		{
-				$task=$_POST["task"];
-				$descr=$_POST["descr"];
-				$duraType=$_POST["duraType"];
-				$dura=$_POST["dura"];
-				$Sdate=$_POST["Sdate"];
-				// $Edate="null";
-				$loca =$_POST['location'];
-
-#logic before data is saved!
-			switch ($duraType)
+			$task=$_POST["task"];
+			$descr=$_POST["descr"];
+			$duraType=$_POST["duraType"];
+			$dura=$_POST["dura"];
+			$Sdate=$_POST["Sdate"];
+			$Edate="";
+			$loca =$_POST['location'];
+			$sum_date = "";
+			$cid = $_POST['ci'];
+			$rid = $_POST['ri'];
+			if($duraType=="day")
 			{
-				case "Day";
-					$Edate = date_add($Sdate,"MM");
-				break;
+				$Edate = (new DateTime($Sdate.'+'.$dura.'day'))->format('Y-m-d');
 			}
-			die("Edate ".$Edate);
-			
-			$insert ="INSERT INTO `task` (`task_id`, `Name`, `Duration`, `DurationType`, `Location`, `StartDate`, `EndDate`, `Description`, `DatePosted`) 
-						VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}');";
-			if(!mysqli_query($db,$insert))
-		    {
-				$feedback="<p class='alert alert-warning'>
-								Error ".mysqli_error($log->connect()).
-							"</p>"; 
+			else if($duraType=="week")
+			{
+				$Edate = (new DateTime($Sdate.'+'.$dura.'week'))->format('Y-m-d');
 			}
 			else
 			{
-				$feedback= "<p class='alert alert-info'>
-								task saved 
-							</p>";
+				$Edate = (new DateTime($Sdate.'+'.$dura.'month'))->format('Y-m-d');
 			}
+			$insert ="INSERT INTO `task` (`task_id`, `Name`, `Duration`, `DurationType`, `Location`, `StartDate`, `EndDate`, `Description`, `DatePosted`, `request_id`)
+			 VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}', '{$rid}')";
+
+			if(!mysqli_query($db,$insert))
+		    {
+				$feedback="<p class='alert alert-warning'>Error ".mysqli_error($log->connect())."</p>"; 
+				$clientQR = $log->getClientsById($cid);
+				$client=mysqli_fetch_assoc($clientQR);
+				if($type=="Service")
+				{
+					$req = $log->getServiceRequestById($rid);
+				}
+				else 
+				{
+					$req = $log->getMaintananceRequestById($rid);
+				}
+				$request=mysqli_fetch_assoc($req);
+			}
+			#the reason I used this is tha header is not working...
+			echo("<script>location.href='alltasks.php'</script>");
 		}
 #Display all task in employee Create Task Form
 
@@ -73,7 +108,7 @@ $log = new Logic();
 						 <div class='form-group'>
 						 	<div class='btn-group-vertical'>
 								<a type='submit' href='AssignTask.php?assign=".$alltasks[0]."' name='assign' class='btn btn-xs btn-success ' value='$alltasks[0]'><span class='glyphicon glyphicon-plus'></span> Assign</a>
-								<a type='submit' href='CreateTask.php?delete=".$alltasks[0]."' name='delete' class='btn btn-xs btn-danger ' value='$alltasks[0]'><span class='glyphicon glyphicon-trash'></span> Delete</a>
+								<a type='submit' href='alltasks.php?delete=".$alltasks[0]."' name='delete' class='btn btn-xs btn-danger ' value='$alltasks[0]'><span class='glyphicon glyphicon-trash'></span> Delete</a>
 							 </div>
 						 </div>
 					 </div>
@@ -187,7 +222,7 @@ $log = new Logic();
 						 <div class='form-group'>
 						 	<div class='btn-group-vertical'>
 								<a type='submit' href='AssignTask.php?assign=".$alltasks[0]."' name='assign' class='btn btn-xs btn-success ' value='$alltasks[0]'><span class='glyphicon glyphicon-plus'></span> Assign</a>
-								<a type='submit' href='CreateTask.php?delete=".$alltasks[0]."' name='delete' class='btn btn-xs btn-danger ' value='$alltasks[0]'><span class='glyphicon glyphicon-trash'></span> Delete</a>
+								<a type='submit' href='alltasks.php?delete=".$alltasks[0]."' name='delete' class='btn btn-xs btn-danger ' value='$alltasks[0]'><span class='glyphicon glyphicon-trash'></span> Delete</a>
 							 </div>
 						 </div>
 					 </div>

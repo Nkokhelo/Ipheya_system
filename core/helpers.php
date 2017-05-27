@@ -17,6 +17,6 @@ $errors = array();
     #function login($user_id){
     #  $_SESSION['Client'] = $user_id;
     #  global $db;
-
+// TODO come and check if to do works
     #  }
 ?>

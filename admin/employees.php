@@ -83,10 +83,11 @@
   <div class="col-md-6 shift b" style="margin-left:10px; padding-bottom:15px; width:49%">
   <h2>All Employees</h2>
    <hr class="bhr"/>
-    <table class="table">
+    <table class="table" id="table">
       <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
       <thead>
         <th>Department</th>
+        <th>Employee No</th>
         <th>Fullname</th>
         <th>Role(s)</th>
         <th>Options</th>
@@ -110,5 +111,6 @@
                 yearRange: "-40:-18"
 							}
 						);
+    $('#table').dataTable();
 </script>
 <?php include('includes/footer.php'); ?>

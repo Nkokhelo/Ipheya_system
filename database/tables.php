@@ -1,4 +1,5 @@
-<?php error_reporting(0);
+<?php 
+// error_reporting(0);
 #Connection
    $con = mysqli_connect('localhost','root','');
 
@@ -374,19 +375,7 @@
           {
               die('Error'.mysqli_error($con));
           }
-          $sql ="Create Table Ticket
-          (
-          Id int(6) unsigned auto_increment primary key,
-          Subject varchar(50) not null,
-          RequestType varchar(30) not null,
-          ProblemDescription text not null,
-          DatePlaced datetime
-          )";
-          if(!mysqli_query($con,$sql))
-          {
-              die('Error'.mysqli_error($con));
-          }
-
+         */
         $sql="CREATE TABLE Task
         (
           task_id int(3) NOT NULL AUTO_INCREMENT,
@@ -398,16 +387,15 @@
           StartDate date,
           EndDate date,
           Description Text,
-          DatePosted DateTime
+          DatePosted DateTime,
+          request_id int(11) not null,
+          foreign key(request_id) references serviceRequest(RequestID),
+          foreign key(request_id) references RepairRequest(RequestID) 
         )";
 
         if(!mysqli_query($con,$sql))
         {
-          echo "Error Task".mysqli_error($con);
-        }
-        else
-        {
-          echo "Table Task Created Successfully";
+          die("Error Task".mysqli_error($con));
         }
          /* $sql="Create Table employeetask
           (
@@ -443,7 +431,7 @@
               else{
                 echo '<BR><<[Failed TO CREATE Surveying : '.mysqli_error($con).']>>';
               }
-              */
+              
                 $sql="CREATE TABLE payments
                 (
                     payment_id varchar(50),
@@ -462,4 +450,18 @@
                 {
                   echo '<<[CREATE TABLE Payments FAILED: '.mysqli_error($con).']>>';
                 }
+                
+                $sql="CREATE TABLE included_departments
+                      (
+                          request_id int(11),
+                          department_id int(11),
+                          primary key(request_id,department_id),
+                          foreign key(request_id) references serviceRequest(RequestID),
+                          foreign key(request_id) references RepairRequest(RequestID), 
+                          foreign key(department_id) references departments(department_id)
+                      )";
+                      if(!mysqli_query($con,$sql))
+                      {
+                        echo "Error! ".mysqli_error($con);
+                      }*/
 ?>

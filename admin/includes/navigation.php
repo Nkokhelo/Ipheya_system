@@ -44,7 +44,6 @@
           <li><a href="../technician/View.php">View survey</a></li>
         </ul>
       </li>
-      <li><a href="CreateTask.php">Create Task</a></li>
       <li><a href="../inventory/items.php">Inventory</a></li>
       <li><a href="targets.php">Targets</a></li>
     </ul>

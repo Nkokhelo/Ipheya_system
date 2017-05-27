@@ -94,7 +94,24 @@
 
         public function Login($email,$password)
         {
-            $login = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+            #since we hashed a password we have to verify a user password with a hashed one
+            #step 1 we will selecte a record by email 
+            $login = "SELECT * FROM users WHERE email = '$email'";
+            $login_exe = mysqli_query($this->connect(),$login);
+            #step 2 we will check if password and hash password match
+            #2.1 get user 
+            $user = mysqli_fetch_assoc($login_exe);
+            #2.2 get hashed password
+            $hash =$user['Password'];
+            #2.3 compare the user input with the one from database
+            if(!password_verify($password,$hash))
+            {
+                #2.3if it doesn't macth we give a null record to client ti make cound be less than 1
+                $login = "SELECT * FROM users WHERE email = 'nullemail'";
+                $login_exe = mysqli_query($this->connect(),$login);
+                return $login_exe;
+            }
+            #2.4 if they match we log user in fair enough???
             $login_exe = mysqli_query($this->connect(),$login);
             return  $login_exe;
         }
@@ -162,16 +179,15 @@
         public function addUserToRole($email,$roleName)
         {
              $roleId = $this->getRoleIdByName($roleName);
-             $userId = $this->getUserIdByEmail($email);
-             if(($roleId ==0)||($userId==0))
+             $userId = $this->getUserIdByEmail($email);//email is unique if ==0
+             if($userId==0)
              {
-                echo "Email or Role Name does not exist";
+                if(!mysqli_query($this->connect(),"INSERT INTO userroles VALUES ($roleId,$userId)"))
+                {
+                    return false;
+                }
+                return true;
              }
-             if(!mysqli_query($this->connect(),"INSERT INTO userroles VALUES ($roleId,$userId)"))
-             {
-                echo  "User already have a that role";
-             }
-             return "Success ";
         }
 
 # Departments
@@ -307,7 +323,8 @@
         {
           $user_sql = mysqli_query($this->connect(),"SELECT * FROM clients WHERE email = '$email'");
           $count_client = mysqli_num_rows($user_sql);
-          if($count_client>0){
+          if($count_client>0)
+          {
             $client = mysqli_fetch_assoc($user_sql);
             $client_id = $client['client_id'];
 
@@ -317,15 +334,21 @@
 
             $assoc_query = mysqli_query($this->connect(),"SELECT * FROM target_clients WHERE target_id = '$target_id' AND client_id = '$client_id'");
             $count_assoc = mysqli_num_rows($assoc_query);
-            if($count_assoc<1){
+            if($count_assoc<1)
+            {
               if(mysqli_query($this->connect(),"INSERT INTO target_clients(target_id,client_id) VALUES('{$target_id}','{$client_id}')"))
               {
                 return $_SESSION['succ'] = 'Success';
               }
-              else {
+              else
+              {
                 return $_SESSION['err'] = mysqli_error($this->connect());
               }
             }
+          }
+          else
+          {
+
           }
         }
 #Surveying information

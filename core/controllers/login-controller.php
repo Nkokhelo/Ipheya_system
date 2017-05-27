@@ -14,7 +14,6 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
       $email = mysqli_real_escape_string($db,$_POST['log-email']);
       $password = mysqli_real_escape_string($db,$_POST['log-password']);
 
-
       $login_exe =$log->Login($email,$password);
       $result = mysqli_fetch_row($login_exe);
       if(count($result)< 1)
@@ -46,13 +45,13 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                 break;
                 case 'Employee':
                 $_SESSION['Employee']=$email;
-                header('Location: /employee/index.php');//employrr url
+                header('Location: employee/index.php');//employrr url
                 break;
                 case 'Manager':
-                header('Location: /manager/index.php');//manager url
+                $_SESSION['Manager']=$email;
+                header('Location: manager/index.php');//manager url
                 break;
             }
       }
-
     }
 ?>

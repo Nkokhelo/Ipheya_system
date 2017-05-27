@@ -30,7 +30,7 @@
 								<button class="btn btn-sm btn-info" name="pdf_con"type="submit" ><span class="glyphicon glyphicon-print"></span> Print</button>
 							</div>
 						</div>
-                <div class="col-lg-12">
+				<div class="col-lg-12">
 				<hr class="bhr"/>
 					<div class="col-md-12">
 						<div class="col-md-12">
@@ -254,34 +254,35 @@
 					$('#TotalPrice').val(totP);
 					
 				}
+				$("#TotalPrice").attr('readonly','readonly');
 
 				
-					  $('#clients').change(function()
-						{
-							var id = $(this).val();
-							$.ajax({
-										type:"get",
-										url:"includes/getclient.php",
-										data:"cid="+id,
-									success:function(data){
-										$("#result").html(data);
-									}
-								});
-							return false;
+				$('#clients').change(function()
+				{
+					var id = $(this).val();
+					$.ajax({
+								type:"get",
+								url:"includes/getclient.php",
+								data:"cid="+id,
+							success:function(data){
+								$("#result").html(data);
+							}
 						});
-						$("#qdate").datepicker(
-							{
-								minDate:0,
-								dateFormat: 'yy-mm-dd'
+					return false;
+				});
 
-							}
-						);
-						$("#enddate").datepicker(
-							{
-								minDate:+20,
-								dateFormat: 'yy-mm-dd'
-							}
-						);
-						$("#TotalPrice").attr('readonly','readonly');
+				$("#qdate").datepicker(
+					{
+						minDate:0,
+						dateFormat: 'yy-mm-dd'
+
+					}
+				);
+				$("#enddate").datepicker(
+					{
+						minDate:+20,
+						dateFormat: 'yy-mm-dd'
+					}
+				);
 	</script>
 </body>

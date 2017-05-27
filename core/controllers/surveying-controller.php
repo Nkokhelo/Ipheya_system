@@ -4,12 +4,12 @@
   $clientOptions ='';
   while($clients = mysqli_fetch_assoc($qresult))
   {
-      $clientID = $clients['client_id'];
+    $clientID = $clients['client_id'];
     $clientOptions .="<option value='$clientID'>".$clients['name']."</option>";
   }
 
 
-  $name="";$name_err=0;
+  	$name="";$name_err=0;
 	$cat="";$cat_err=0;
 	$dis="";$dis_err=0;
 	$date=date("Y-m-d");

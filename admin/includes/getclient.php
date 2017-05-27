@@ -24,8 +24,7 @@
         {
              $client_information ="<div class='alert alert-warning'>No client has been selected</div>";
         }
-            echo $client_information;
-
+        echo $client_information;
    }
 
 ?>

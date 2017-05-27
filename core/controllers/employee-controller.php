@@ -85,8 +85,13 @@
       }
       else
       {
-          $ins_employee = "INSERT INTO employees(name,surname,title,date_of_birth,gender,email,phone_number,identity_number,postal_address,residential_address,department,password,token)
-         VALUES('{$name}','{$surname}','{$title}','{$date}','{$gender}','{$email}','{$number}','{$identity}','{$postal}','{$residential}','{$department}','{$password}','{$token}')";
+         #generating unique employee number
+        $date = date('Y-m-d');//we take a date
+        $client_unique = uniqid();//generate unique id
+        $emp_no ="E".substr($date,2,2).substr($date,0,2).strtoupper(substr($client_unique,4,4));//create new client no by date and unique values by miniseconds
+        
+        $ins_employee = "INSERT INTO employees(employee_no,name,surname,title,date_of_birth,gender,email,phone_number,identity_number,postal_address,residential_address,department,password,token)
+         VALUES('{$emp_no}','{$name}','{$surname}','{$title}','{$date}','{$gender}','{$email}','{$number}','{$identity}','{$postal}','{$residential}','{$department}','{$password}','{$token}')";
          
          if(mysqli_query($db,$ins_employee))
          {
@@ -94,10 +99,14 @@
             $addtoUser = mysqli_query($db,$addtoUserSQL);
             if(!$addtoUser)
             {
-              die ("Error in add to user at emplyee controller ".mysqli_error($db));
+              $errors[].="Error in add to user at emplyee controller ".mysqli_error($db);
             }
          }
-         $addToRole = $log->addUserToRole("$email","Employee");
+         $employee_added = $log->addUserToRole($email,"Employee");
+         if($employee_added==false)
+         {
+            $errors[].="employee was not added to roles";
+         }
          header('Location: employees.php');
       }
     }
@@ -228,6 +237,7 @@
        $roles_array = rtrim($roles_array,',');
        $allEmployees .= '<tr>
                             <td>'.$depart_result['department'].'</td>
+                            <td>'.$employees['emp_no'].'</td>
                             <td>'.$employees['title'].' '.substr($employees['name'],0,1).' '.$employees['surname'].'</td>
                             <td>'.$roles_array.'</td>
                             <td>
