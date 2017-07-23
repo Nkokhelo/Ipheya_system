@@ -3,7 +3,7 @@
 
     $logic = new Logic();
 #find a client for a quotation request 
-    $client_information="The client information for a quotation will be here";
+     $client_information="The client information for a quotation will be here";
      $clientQ = $logic->getallClients();
       
      $options ='';
@@ -31,7 +31,7 @@
         
         if(!mysqli_query($db,$addInsert))
         {
-            echo '<div class="alert alert-dander"><span class="glyphicon glyphicon-warning-sign"></span>Error! '.mysqli_error($db).'</div><br/>'.$addInsert;
+            echo '<div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span>Error! '.mysqli_error($db).'</div><br/>'.$addInsert;
         }
         else
         {
@@ -78,6 +78,7 @@
         $_SESSION['units'] = $_POST['IUnitPrice'];
         $_SESSION['pricequants'] = $_POST['IPQ'];
         $_SESSION['clientID']=$_POST['clientid'];
+        $_SESSION['client_no']=$logic->getClientNo($_POST['clientid']);
         $Title=$_POST['title'];
         $Summary=$_POST['summary'];	
         $PaymentMethord	=$_POST['paymentmethod'];
@@ -133,30 +134,31 @@
         $address = $client['postal_address'];
         $email = $client['email'];
         $phone = $client['contact_number'];
+        $client_no = $client['client_no'];
          $client_information = "<table>
-										<tr><td>Name :</td><td>$name</td></tr>
-										<tr><td>Address :</td><td>$address</td></tr>
-										<tr><td>Email :</td><td>$email</td></tr>
-										<tr><td>Phone :</td><td>$phone</td></tr>
+										<tr><td><span style='color:#808080'>Name</strong> </td><td>: $name</td></tr>
+										<tr><td><span style='color:#808080'>Address</strong> </td><td>: $address</td></tr>
+										<tr><td><span style='color:#808080'>Email</strong> </td><td>: $email</td></tr>
+										<tr><td><span style='color:#808080'>Phone</strong> </td><td>: $phone</td></tr>
 									</table>";
 
-    $idg=$_GET['cid'];
-    $selected = "seleted='selected'";
-    $clientQ = $logic->getallClients();
-    $options ='';
-     while($allclients=mysqli_fetch_assoc($clientQ))
-     {
-         $id = $allclients['client_id'];
-         $name = $allclients['name'];
-         if($id == $idg)
-         {
-             $options.="<option  value='$id'selected='selected'>$name</option>";
-         }
-         else
-         {
-              $options.="<option  value='$id'>$name</option>";
-         }
-     }
+    // $idg=$_GET['cid'];
+    // $selected = "seleted='selected'";
+    // $clientQ = $logic->getallClients();
+    // $options ='';
+    //  while($allclients=mysqli_fetch_assoc($clientQ))
+    //  {
+    //      $id = $allclients['client_id'];
+    //      $name = $allclients['name'];
+    //      if($id == $idg)
+    //      {
+    //          $options.="<option  value='$id'selected='selected'>$name</option>";
+    //      }
+    //      else
+    //      {
+    //           $options.="<option  value='$id'>$name</option>";
+    //      }
+    //  }
 
    }
 

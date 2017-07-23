@@ -1,10 +1,19 @@
 <?php
-    require_once('../core/init.php');
-    include('includes/head.php');
-    include('includes/navigation.php');
-    include('includes/sidebar.php');
-    include('../core/logic.php');
-    require_once('../core/controllers/ticket-controller.php');
+
+    session_start();
+    if(isset($_SESSION['Employee']))
+    {
+        require_once('../core/init.php');
+        include('includes/head.php');
+        include('includes/navigation.php');
+        include('includes/sidebar.php');
+        include('../core/logic.php');
+        require_once('../core/controllers/ticket-controller.php');
+    }
+    else
+    {
+        header('Location:../login.php');
+    }
 ?>
    <div class="container-fluid">
      <div class="col-sm-8 col-sm-offset-2 b">

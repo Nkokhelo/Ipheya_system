@@ -89,24 +89,30 @@
         $date = date('Y-m-d');//we take a date
         $client_unique = uniqid();//generate unique id
         $emp_no ="E".substr($date,2,2).substr($date,0,2).strtoupper(substr($client_unique,4,4));//create new client no by date and unique values by miniseconds
-        
-        $ins_employee = "INSERT INTO employees(employee_no,name,surname,title,date_of_birth,gender,email,phone_number,identity_number,postal_address,residential_address,department,password,token)
-         VALUES('{$emp_no}','{$name}','{$surname}','{$title}','{$date}','{$gender}','{$email}','{$number}','{$identity}','{$postal}','{$residential}','{$department}','{$password}','{$token}')";
-         
+
+        $ins_employee = "INSERT INTO employees(emp_no,name,surname,title,date_of_birth,gender,email,phone_number,identity_number,postal_address,residential_address,department,password,token)
+        VALUES('{$emp_no}','{$name}','{$surname}','{$title}','{$date}','{$gender}','{$email}','{$number}','{$identity}','{$postal}','{$residential}','{$department}','{$password}','{$token}')";
+
          if(mysqli_query($db,$ins_employee))
          {
             $addtoUserSQL="INSERT INTO Users VALUES(NULL,'$email','$email',true,'Ipheya@2017')";
             $addtoUser = mysqli_query($db,$addtoUserSQL);
-            if(!$addtoUser)
+            if($addtoUser)
             {
+              $employee_added = $log->addUserToRole($email,"Employee");
+              if($employee_added==false)
+              {
+                die("Role method failed");
+                  $errors[].="employee was not added to roles";
+              }
+            }
+            else
+            {
+              die("Cannot add to users");
               $errors[].="Error in add to user at emplyee controller ".mysqli_error($db);
             }
          }
-         $employee_added = $log->addUserToRole($email,"Employee");
-         if($employee_added==false)
-         {
-            $errors[].="employee was not added to roles";
-         }
+
          header('Location: employees.php');
       }
     }
@@ -206,7 +212,7 @@
         }
       }
     }
-    
+
     #fetch all departments
     $result = $log->getallDepartments();
     $allDepartments ='';
@@ -233,7 +239,7 @@
         {
                $roles_array .= $roles[$i].",";
         }
-        
+
        $roles_array = rtrim($roles_array,',');
        $allEmployees .= '<tr>
                             <td>'.$depart_result['department'].'</td>

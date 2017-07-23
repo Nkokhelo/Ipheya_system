@@ -2,8 +2,8 @@
  	require_once('../core/init.php');
      include('../core/logic.php');
      include('includes/head.php');
-     include('includes/navigation.php');
      require('../core/controllers/taskController.php');
+     include('includes/navigation.php');
 ?>
 
  

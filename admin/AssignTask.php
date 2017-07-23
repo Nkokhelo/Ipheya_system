@@ -1,10 +1,18 @@
 <?php 
- 	require_once('../core/init.php');
-     include('../core/logic.php');
-     include('includes/head.php');
-     include('includes/navigation.php');
-     require('../core/controllers/taskController.php');
-     include('includes/employee-session.php');
+   session_start();
+    if(isset($_SESSION['Employee']))
+    {
+        require_once('../core/init.php');
+        include('../core/logic.php');
+        include('includes/head.php');
+        include('includes/employee-session.php');
+        require('../core/controllers/taskController.php');
+        include('includes/navigation.php');
+    }
+    else
+    {
+        header('Location:../login.php');
+    }
 ?>
 
 <div class="col-sm-12">
@@ -22,7 +30,7 @@
                       <div class="col-sm-12"></div>
                 </div>
                 <div id='dropemployee' class="col-sm-12" id="container" style="border: dashed 3px #eee; height:250px; padding-top:15px;">
-                    <h4>Please drag and drop employee here to add to a task</h4>
+                    <?= ((isset($error))? $error: "<h4>Please drag and drop employee here to add to a task</h4>");?>
                 </div>
                 <hr class="bhr" style="width:100%"/>
             <button type="submit" class="btn btn-default" name="saveassignment"><span class="glyphicon glyphicon-save"></span> Save</button>

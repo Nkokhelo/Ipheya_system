@@ -1,15 +1,17 @@
 <?php
+    // include '../logic.php';
     $logic = new Logic();
+    $client = "<div class='alert alert-warning'><p class='glyphicon glyphicon-info-sign'></p> No Data was found!</div>";
     #fetch all clients
     $client_exe = $logic->getUnachivedClients();
     $allClients = '';
     while($clients = mysqli_fetch_assoc($client_exe)) :
       $allClients .= '<tr>
+                          <td>'.$clients['client_no'].'</td>
                           <td>'.$clients['name'].' '.$clients['surname'].'</td>
                           <td>'.$clients['email'].'</td>
-                          <td>'.$clients['contact_number'].'</td>
                           <td>
-                          <!--<a href="clients.php?edit='.$clients['client_id'].'" class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-pencil "></span></a>-->
+                          <a href="viewclient.php?view='.$clients['client_id'].'" class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-eye-open "></span></a>
                           <a href="clients.php?archive='.$clients['client_id'].'" class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-trash"></span></a>
                           </td>
                         </tr>';
@@ -72,17 +74,26 @@
             if(mysqli_query($db,$change_p_sql)){
               header('Location: profile.php?changed=1');
             }
-            else{
+            else
+            {
               if(empty($password)||empty($confirm))
               {
                  $error= "<span style='color:red'>password or cornfirm password is requred </span>";
                  return true;
               }
-              
-                      $error= "<span style='color:red'>password not changed: Please try again later</span>";
-              
+                 $error= "<span style='color:red'>password not changed: Please try again later</span>";
             }
           }
         }
+   }
+
+   if(isset($_GET['view']))
+   {
+     $query = $logic->getClientsById($_GET['view']);
+     while($clientdata = mysqli_fetch_assoc($query))
+     {
+      $client = $clientdata;
+     }
+
    }
  ?>

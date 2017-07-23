@@ -1,10 +1,19 @@
 <?php
-     require_once('../core/init.php');
-     include('../core/logic.php');
-     include('includes/head.php');
-     include('includes/navigation.php');
-     require_once('../core/controllers/role-controller.php');
-     include('includes/employee-session.php');
+session_start();
+    if(isset($_SESSION['Employee']))
+    {
+        require_once('../core/init.php');
+        include('../core/logic.php');
+        include('includes/head.php');
+        require_once('../core/controllers/role-controller.php');
+        include('includes/navigation.php');
+        include('includes/employee-session.php');
+    }
+    else
+    {
+      header("Location:../login.php");
+    }
+     
 ?>
 <div class="container-fluid" style="padding:1%;">
         <?php if(isset($_GET['edit']) || isset($_GET['add'])){ ?>

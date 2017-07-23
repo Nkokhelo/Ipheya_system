@@ -11,6 +11,7 @@
 # Attribute holder
         session_start();
         $title =$_SESSION['title'];
+        $client_no = $_SESSION['client_no'];
         $summary =$_SESSION['Summary'];
         $payment =$_SESSION['PaymentMethord']	;
         $amount =$_SESSION['AmountDue'];
@@ -36,10 +37,20 @@
  $pdf->SetFont("Arial","",12);
 #set the position of the quotation information
  $pdf->SetXY(168,17);
- $pdf->Cell(30,5,"Qoute Date :$qoudate",0,2,'R');
- $pdf->Cell(30,5,"Client # :IC0017".$req_Id,0,2,'R');
- $pdf->Cell(30,5,"Qoute #:004",0,2,'R');
- $pdf->Cell(30,5,"Title :$title",0,2,'R');
+ $pdf->Cell(10,5,"Qoute Date :",0,0,'R');
+ $pdf->Cell(30,5,(new DateTime($qoudate))->format("d M Y"),0,0,'L');
+     $pdf->Ln();
+ $pdf->SetX(168);
+ $pdf->Cell(10,5,"Client-No :",0,0,'R');
+ $pdf->Cell(30,5,$client_no,0,0,'L');
+     $pdf->Ln();
+ $pdf->SetX(168);
+ $pdf->Cell(10,5,"Qoute-No :",0,0,'R');
+ $pdf->Cell(30,5,"004",0,0,'L');
+     $pdf->Ln();
+ $pdf->SetX(168);
+ $pdf->Cell(10,5,"Qoute Title :",0,0,'R');
+ $pdf->Cell(30,5,$title,0,0,'L');
 #the company basic information
  $pdf->SetXY(10,40);
  $pdf->Line(11,38,198,38);
@@ -100,7 +111,7 @@
  $pdf->SetFont('','BI','');
  $pdf->Cell(80,5,"Terms and Conditions",0,1);
  $pdf->SetFont('','','');
- $pdf->MultiCell(150,7,"*The summary lies here \n*And also here \nThis qoutation is valid until\nhjkjhnb\nPayemnt methord $payment% deposit.",1,'L');
+ $pdf->MultiCell(150,7,"*The summary lies here \n*And also here \nThis qoutation is valid until :".(new DateTime($expdate))->format("d M Y")."\nClient is expected to pay $payment% deposit before the job begins.",1,'L');
  $pdf->Ln();
  $pdf->Cell(80,5,"To accept this quotation, sign here and return:______________________",0,1);
  $pdf->Output();

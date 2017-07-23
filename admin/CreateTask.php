@@ -1,30 +1,40 @@
 <?php 
- 	require_once('../core/init.php');
-     include('../core/logic.php');
-     include('includes/head.php');
-     include('includes/navigation.php');
-     require('../core/controllers/taskController.php');
-     include('includes/employee-session.php');
+
+	session_start();
+    if(isset($_SESSION['Employee']))
+    {
+		require_once('../core/init.php');
+		include('../core/logic.php');
+		include('includes/head.php');
+		require('../core/controllers/taskController.php');
+		include('includes/employee-session.php');
+		include('includes/navigation.php');
+    }
+    else
+    {
+        header('Location:../login.php');
+    }
 ?>
  
  
 <div class="col-md-12">
 <!--Task form-->
 	<div class="col-sm-8 col-sm-offset-2 b">
-		<h2>Add new task</h2>
+		<h2>New Task</h2>
 		<hr class="bhr"/>
 			
 		<form action="CreateTask.php" method="post">
 			<div class="col-sm-6">
 				<h4>Fill in task information</h4>
+				<?=$feedback;?>
 				<hr/>
 				<table border="0">
 					<tr>
-						<td>Task Name</td>
+						<td>Task Title</td>
 						<td><input type="text"  class="form-control" name="task" required></td>
 					</tr>
 					<tr>
-						<td>Description </td>
+						<td>Task description </td>
 						<td><textarea class="form-control" name="descr"  required></textarea></td>
 					</tr>
 					<tr>

@@ -1,17 +1,23 @@
 <?php
-     require_once('../core/init.php');
-     include('../core/logic.php');
-     include('includes/head.php');
-     include('includes/navigation.php');
-     require_once('../core/controllers/employee-controller.php');
-     include('includes/employee-session.php');
-     
+   session_start();
+   if(isset($_SESSION['Employee']))
+   {
+        require_once('../core/init.php');
+        include('../core/logic.php');
+        include('includes/head.php');
+        require_once('../core/controllers/employee-controller.php');
+        include('includes/employee-session.php');
+        include('includes/navigation.php');
+   }
+   else
+   {
+     header("Location:../login.php");
+   }
 ?>
-
-<div class="container-fluid" style="margin:1%;">
-  <!-- service form -->
-  <div class="col-md-6 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
-    <h2><?=((isset($_GET['edit']))?'Edit':'Add a new');?> employee</h2>
+<div  class="container-fluid" style="margin:1%;">
+  <!-- employees form -->
+  <div id="employeeform" class="col-xs-8 col-xs-offset-2 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
+    <h2><?=((isset($_GET['edit']))?'Edit':'Add');?> Employee</h2>
     <hr class="bhr">
     <form class="form" action="employees.php<?=((isset($_GET['edit']))?'?edit='.$_GET['edit']:'');?>" method="post">
       <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
@@ -79,9 +85,9 @@
     </form>
     <?php include('includes/address-modal.php'); ?>
   </div>
-  <!-- services table -->
-  <div class="col-md-6 shift b" style="margin-left:10px; padding-bottom:15px; width:49%">
-  <h2>All Employees</h2>
+  <!-- employees table -->
+  <div id="employeetable" class="col-xs-8 col-xs-offset-2 b" >
+   <h2>All Employees</h2>
    <hr class="bhr"/>
     <table class="table" id="table">
       <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
@@ -97,7 +103,11 @@
       </tbody>
     </table>
     <hr class="bhr" style="width:100"/>
-    <a class="btn btn-default" href="CreateTask.php">Task management</a>
+    <div class="col-xs-6 col-xs-offset-3 btn-group">
+      <a style="width:50%"href="roles.php" class="btn btn-default" ><span class="glyphicon glyphicon-adjust"></span> Manage employee role  </a>
+      <a style="width:50%" onclick='addEmployee()' class="btn btn-default" ><span class="glyphicon glyphicon-plus-sign"></span> Add employee  </a>
+    </div>
+      <br>
   </div>
 </div>
 <script>
@@ -112,5 +122,17 @@
 							}
 						);
     $('#table').dataTable();
+    // $('#employeetable').show();
+    // $('#employeeform').hide();
+    // function addEmployee(){
+    //     $('#employeetable').hide();
+    //     $('#employeeform').show();
+    // }
+    // function added()
+    // {
+    //    $('#employeetable').show();
+    //     $('#employeeform').hide();
+    // }
+
 </script>
 <?php include('includes/footer.php'); ?>

@@ -1,9 +1,17 @@
 <?php
+  session_start();
+   if(isset($_SESSION['Employee']))
+    {
      require_once('../core/init.php');
      include('includes/head.php');
-     include('includes/navigation.php');
      require_once('../core/controllers/archive-controller.php');
-     include('includes/employee-session.php');
+     include('includes/navigation.php');
+    }
+    else
+    {
+      header("Location:../login.php");
+    }
+
 ?>
 <div class="container-fluid" style="padding:1%;">
      <div class="col-sm-8 col-sm-offset-2 b">

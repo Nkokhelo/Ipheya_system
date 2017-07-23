@@ -1,10 +1,17 @@
 <?php
-     require_once('../core/init.php');
-     include('includes/head.php');
-     include('includes/navigation.php');
-     include('../core/logic.php');
-     require_once('../core/controllers/service-controller.php');
-    //  include('includes/employee-session.php');
+    session_start();
+    if(isset($_SESSION['Employee']))
+    {
+        require_once('../core/init.php');
+        include('includes/head.php');
+        include('../core/logic.php');
+        require_once('../core/controllers/service-controller.php');
+        include('includes/navigation.php');
+    }
+    else
+    {
+      header("Location:../login.php");
+    }
 ?>
 <div class="container-fluid" style="margin:1%;">
   <!-- service form -->

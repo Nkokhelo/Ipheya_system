@@ -1,18 +1,18 @@
 <?php
-     require_once('../core/init.php');
-     include('../core/logic.php');
-     include('includes/head.php');
-     include('includes/navigation.php');
-     require_once('../core/controllers/role-controller.php');
-     include('includes/employee-session.php');
-    // session_start();
-    if(isset($_SESSION['Employee']))
-    {
 
+	session_start();
+    if(isset($_SESSION['Employee']))
+	{
+		require_once('../core/init.php');
+		include('../core/logic.php');
+		include('includes/head.php');
+		include('includes/navigation.php');
+		require_once('../core/controllers/role-controller.php');
+		include('includes/employee-session.php');
     }
     else
     {
-      header('Location: login.php');
+        header('Location:../login.php');
     }
 ?>
 <div class="row" style="margin-left:0; margin-right:0;">
@@ -31,7 +31,6 @@
 			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 				5 Clients
 			</div>
-
       		
 			<div class="col-lg-4">
 				<div class="panel panel-info">

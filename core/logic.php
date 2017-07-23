@@ -10,7 +10,7 @@
             return mysqli_connect('localhost','root','','ipheya');
         }
 
-# Employees 
+# Employees
         public function getallEmployees()
         {
             $sql ="SELECT * FROM employees";
@@ -49,6 +49,12 @@
             $sql ="SELECT * FROM clients";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
+        }
+        public function getClientNo($id)
+        {
+            $sql ="SELECT * FROM clients WHERE client_id = $id";
+            $qey =mysqli_query($this->connect(),$sql);
+            return mysqli_fetch_row($qey)[1];
         }
         public function getUnachivedClients()
         {
@@ -91,15 +97,21 @@
             $clientID = mysqli_fetch_row($qey)[0];
             return $clientID;
         }
-
+        public function getSupplierNameById($id)
+        {
+            $sql ="Select * from suppliers where supplier_no='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            $supplierName = mysqli_fetch_row($qey)[1];
+            return $supplierName;
+        }
         public function Login($email,$password)
         {
             #since we hashed a password we have to verify a user password with a hashed one
-            #step 1 we will selecte a record by email 
+            #step 1 we will selecte a record by email
             $login = "SELECT * FROM users WHERE email = '$email'";
             $login_exe = mysqli_query($this->connect(),$login);
             #step 2 we will check if password and hash password match
-            #2.1 get user 
+            #2.1 get user
             $user = mysqli_fetch_assoc($login_exe);
             #2.2 get hashed password
             $hash =$user['Password'];
@@ -179,8 +191,8 @@
         public function addUserToRole($email,$roleName)
         {
              $roleId = $this->getRoleIdByName($roleName);
-             $userId = $this->getUserIdByEmail($email);//email is unique if ==0
-             if($userId==0)
+             $userId = $this->getUserIdByEmail($email);//email is unique if ==0 user does not exist
+             if($userId!=0)
              {
                 if(!mysqli_query($this->connect(),"INSERT INTO userroles VALUES ($roleId,$userId)"))
                 {
@@ -377,6 +389,24 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
     }
+    public function no_ofEmployees($id)
+    {
+            $sql ="SELECT * FROM employeetask WHERE task_id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            $qey =mysqli_num_rows($qey);
+            return $qey;
+    }
+
+    public function isEmployeeAssigned($id)
+    {
+            $sql ="SELECT * FROM employeetask WHERE employee_id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            if(mysqli_fetch_assoc($qey)>0)
+            {
+                return true;
+            }
+            return false;
+    }
     public function getallTasks()
     {
         $sql ="SELECT * FROM task";
@@ -388,7 +418,7 @@
         $sql ="Select * from task where task_id='$id'";
         $qey =mysqli_query($this->connect(),$sql);
         $name ='';
-        while($task= mysqli_fetch_assoc($qey)) 
+        while($task= mysqli_fetch_assoc($qey))
         {
             $name =$task['Name'];
         }
@@ -402,7 +432,7 @@
             $allQ=mysqli_query($this->connect(),$select);
             return $allQ;
         }
-        
+
         public  function getallClientRequestsBycid($id)
         {
             $select = "SELECT * FROM servicerequest WHERE ClientID ='$id'";
@@ -428,27 +458,48 @@
         public function getallQoutationItemsByQid($id)
         {
             $select = "SELECT * FROM qoutationitems WHERE QoutationID ='$id'";
-            $allQ=mysqli_query($this->connect(),$select);
-            return $allQ;
+            $items_restult=mysqli_query($this->connect(),$select);
+            if(!$items_restult)
+            {
+                die("Error ".mysqli_error($this->connect()));
+            }
+            return $items_restult;
+        }
+         public function getQuantity($id)
+        {
+            $select = "SELECT * FROM qoutationitems WHERE QoutationID ='$id'";
+            $items_restult=mysqli_query($this->connect(),$select);
+            if(!$items_restult)
+            {
+                die("Error ".mysqli_error($this->connect()));
+            }
+            return $items_restult;
+        }
+         public function getallPrograms()
+        {
+            $sql ="SELECT * FROM programs";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
         }
 
-
+#suppliers 
+ public function getallSuppliers()
+        {
+            $sql ="SELECT * FROM suppliers";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+        }
 # Close Connection
         public function close()
         {
-            mysqli_close();
+            mysqli_close($this->connect());
         }
     }
 
 
 #testing -------------------------------------
     // $log = new Logic();
-    // $sqlresult =$log->getQoutationById(12);
-    // // $sqlresult =$log->getallServiceRequest();
-    // while($array =mysqli_fetch_assoc($sqlresult))
-    // {
-    //     echo $array['Title'];
-    // }
+    // $test =$log->addUserToRole("Nhlaka@gmail.com","Employee");
     // echo $roles;
 
 #end of testing--------------------------

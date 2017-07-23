@@ -15,7 +15,6 @@ $log = new Logic();
 		// $cid=$rid ='';
 
 #find basic client info before a form can be viewed
-	
   if(isset ($_GET['ri']))
      {
         $cid = $_GET['ci'];
@@ -38,7 +37,6 @@ $log = new Logic();
 		if(isset($_POST["submit"]))
 		{
 			$task=$_POST["task"];
-			$descr=$_POST["descr"];
 			$duraType=$_POST["duraType"];
 			$dura=$_POST["dura"];
 			$Sdate=$_POST["Sdate"];
@@ -47,6 +45,10 @@ $log = new Logic();
 			$sum_date = "";
 			$cid = $_POST['ci'];
 			$rid = $_POST['ri'];
+			$descr = mysqli_real_escape_string($db, $_POST["descr"]);
+      		$descr = sanitize($descr);
+			
+			#this are the calculations of the end date... "HINT: You can add them by week or day or months"... 
 			if($duraType=="day")
 			{
 				$Edate = (new DateTime($Sdate.'+'.$dura.'day'))->format('Y-m-d');
@@ -59,9 +61,9 @@ $log = new Logic();
 			{
 				$Edate = (new DateTime($Sdate.'+'.$dura.'month'))->format('Y-m-d');
 			}
-			$insert ="INSERT INTO `task` (`task_id`, `Name`, `Duration`, `DurationType`, `Location`, `StartDate`, `EndDate`, `Description`, `DatePosted`, `request_id`)
+			$insert ="INSERT INTO task (`task_id`, `Name`, `Duration`, `DurationType`, `Location`, `StartDate`, `EndDate`, `Description`, `DatePosted`, `request_id`)
 			 VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}', '{$rid}')";
-
+			
 			if(!mysqli_query($db,$insert))
 		    {
 				$feedback="<p class='alert alert-warning'>Error ".mysqli_error($log->connect())."</p>"; 
@@ -77,11 +79,12 @@ $log = new Logic();
 				}
 				$request=mysqli_fetch_assoc($req);
 			}
-			#the reason I used this is tha header is not working...
-			echo("<script>location.href='alltasks.php'</script>");
+			else
+			{
+				header("Location:alltasks.php");
+			}
 		}
 #Display all task in employee Create Task Form
-
 		$alltasklist ='';
 		$alltask=$log->getallTasks();
 		$tasksAll='';
@@ -97,7 +100,7 @@ $log = new Logic();
 				 	<div class='col-sm-6'>
 					 	<b>Title</b> $alltasks[1]<br/>
 						<i><h4>$alltasks[7]</h4></i>
-						<b>Date</b> $alltasks[5]
+						<b>Date</b>".(new DateTime($alltasks[5]))->format("d-M-Y")."
 					 </div> 
 					 <div class='col-sm-2'>
 					 	<b>Duration</b>
@@ -136,22 +139,13 @@ $log = new Logic();
 			$add = false;
 			$allList=$log->getallEmployees();
 			$allEmptask = $log->getallEmployeeTasks();
+			$isequal=false;
 			while($allemployees = mysqli_fetch_assoc($allList))
 			{
-				if(mysqli_fetch_assoc($allEmptask)!='')
-				{
-					while($allemptask = mysqli_fetch_assoc($allEmptask))
-					{
-						if($allemployees['employee_id']!=$allemptask['employee_id'])
-						{
-							$freeemployees.="<div class='col-sm-12' id='".$allemployees['employee_id']."_".$allemployees['name']."_".$allemployees['email']."_".$log->getDepartmentNameByID($allemployees['department'])."_".$taskid."'><div class='col-sm-4' id='empname'>".$allemployees['name']."</div><div class='col-sm-4' id='email'>".$allemployees['email']."</div><div class='col-sm-4' id='department'>".$log->getDepartmentNameByID($allemployees['department'])."</div></div>";
-						}
-					}
-				}
-				else
-				{
-							$freeemployees.="<div class='col-sm-12' id='".$allemployees['employee_id']."_".$allemployees['name']."_".$allemployees['email']."_".$log->getDepartmentNameByID($allemployees['department'])."_".$taskid."'><div class='col-sm-4' id='empname'>".$allemployees['name']."</div><div class='col-sm-4' id='email'>".$allemployees['email']."</div><div class='col-sm-4' id='department'>".$log->getDepartmentNameByID($allemployees['department'])."</div></div>";
-				}
+				if(!$log->isEmployeeAssigned($allemployees['employee_id']))
+				{   #TODO this code is unfinished all you have to do is check employees by date or do date calculations!!
+					$freeemployees.="<div class='col-sm-12' id='".$allemployees['employee_id']."_".$allemployees['name']."_".$allemployees['email']."_".$log->getDepartmentNameByID($allemployees['department'])."_".$taskid."'><div class='col-sm-4' id='empname'>".$allemployees['name']."</div><div class='col-sm-4' id='email'>".$allemployees['email']."</div><div class='col-sm-4' id='department'>".$log->getDepartmentNameByID($allemployees['department'])."</div></div>";;
+				} 
 			}
 		}
 #if remove employee from taks on assing use case not update use case#display all employee task
@@ -168,22 +162,58 @@ $log = new Logic();
 		{
 			$empids = $_POST['EmpId'];
 			$TaskId =$_POST['Task'];
+			$error="";
+			$errort="";
 			foreach($empids as $empid)
 			{
-				$insertQ ="INSERT INTO employeetask VALUES($empid,$TaskId)";
-				if(!mysqli_query($log->connect(),$insertQ))
+				#check if this association exist
+				$select = "SELECT * FROM employeetask WHERE task_id = $TaskId AND employee_id = $empid";
+				$task_empl =mysqli_query($db,$select);
+				$task_empl = mysqli_fetch_row($task_empl);
+				if(count($task_empl)>0)
 				{
-					die('Error');
+				
+					$errort.="<div class='alert alert-danger alert-dismissable' style='opacity:1;'>  <a  class='close' data-dismiss='alert' aria-label='close'>&times;</a>Unable to assign ".$log->getEmployeeNameById($empid)." in the same task more than once!</div>";
+				}
+				else
+				{
+					$insertQ ="INSERT INTO employeetask VALUES($empid,$TaskId)";
+					if(!mysqli_query($db,$insertQ))
+					{
+						$errort.=$log->getEmployeeNameById($empid)." Database error";
+					}
+					else
+					{
+						$Success.="<div class='alert alert-danger alert-dismissable' style='opacity:1;'>  <a  class='close' data-dismiss='alert' aria-label='close'>&times;</a>Unable to assign ".$log->getEmployeeNameById($empid)." in the same task more than once!</div>";
+					}
 				}
 			}
-			header("Location:TaskInformation.php");
+			if($errort=="")
+			{
+				header("Location:TaskInformation.php");
+			}
+
+			else
+			{
+				$error=$errort;
+				header("Location:AssignTask.php?assign=".$TaskId);
+			}
 		}
 #view all activities
 		$taskInfo ="";
-		$emptask = $log->getallEmployeeTasks();
+		$emptask = $log->getallTasks();
+
 		while($arr = mysqli_fetch_row($emptask))
 		{
-			$taskInfo .="<tr><td>".$log->getTaskNameById($arr[1])."</td><td>".$log->getEmployeeNameById($arr[0])."</td></tr>";
+			#TODO>@FIXIT you have an error here it should show only one task and the number of emlpoyees within that task!!!
+			$task = mysqli_fetch_row($log->getTaskById($arr[1]));
+			$taskInfo .="<tr><td>".$arr[1]."</td>
+							 <td>".$log->no_ofEmployees($arr[0])."</td>
+							 <td>".$arr[2]." ".$arr[3]."</td>
+							 <td>".(new Datetime($task[5]))->format("d M")." to ". (new DateTime($task[6]))->format("d M Y") ."</td>
+							 <td><a href='../'><span class='glyphicon glyphicon-open-file'></span> View </a> || <a href='../'><span class='glyphicon glyphicon-edit'></span> Edit </a></td>
+							 </tr>";
+							 
 		}
 #Delete Task
 		if(isset($_GET['delete']))
@@ -233,3 +263,5 @@ $log = new Logic();
 		}
 
 ?>
+
+

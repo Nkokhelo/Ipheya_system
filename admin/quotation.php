@@ -1,24 +1,25 @@
 <script type="text/javascript" src="../assets/jquery/jquery-1.10.2.js"></script>
 <link type="text/css" rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css"/>
-
 <?php
+   session_start();
+   if(isset($_SESSION['Employee']))
+   {
      require_once('../core/init.php');
      include('includes/head.php');
-     include('includes/navigation.php');
 	 include('../core/logic.php');
      require_once("../core/controllers/qoutation-controller.php");
+     include('includes/navigation.php');
+   }
+   else
+   {
+     header("Location:../login.php");
+   }
 	 if(isset($_GET['Type']))
 	 {
 		$serviceT =$_GET['Type'];
 		$req_id=$_GET['id'];
 	 }
 ?>
-<style type="text/css">
-	#items>tr>td>input
-	{
-		border-radius:0;
-	}
-</style>
  <div class="row">
          <div class="col-sm-8 b  col-sm-offset-2">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top:15px;">
@@ -36,14 +37,16 @@
 						<div class="col-md-12">
 							    <div class="col-lg-6">
 									<h1 style="color:#808080">Ipheya IT Solution</h1>
-									<table>
-										<tr><td>05 Wallnut Road</td></tr>
-										<tr><td>Smartxchange</td></tr>
-										<tr><td>Durban</td></tr>
-										<tr><td>4001</td></tr>
-										<tr><td>Office: 0318240515</td></tr>
-										<tr><td>Phone :0832774984</td></tr>
-									</table>
+									<div class="col-sm-12">
+										<table>
+											<tr><td>05 Wallnut Road</td></tr>
+											<tr><td>Smartxchange</td></tr>
+											<tr><td>Durban</td></tr>
+											<tr><td>4001</td></tr>
+											<tr><td>Office: 0318240515</td></tr>
+											<tr><td>Phone :0832774984</td></tr>
+										</table>
+									</div>
 									<br/>
 								</div>
 								<div class="col-lg-6" style="float:right">
@@ -51,7 +54,7 @@
 									<div class="col-sm-8 col-sm-offset-4">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-												<input name="qdate" class="form-control"style="width:100%" placeholder="Qoute Date" id="qdate" type="text" value="" required/>
+												<input name="qdate" class="form-control"style="width:100%" placeholder="Qoute date" id="qdate" type="text" value="" required/>
 											</div>
 											<div class="input-group">
 												<span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
@@ -59,11 +62,11 @@
 											</div>
 											<div class="input-group">
 												<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-												<select name="clientid"class="form-control"  href='quotation.php?cid=' id='clients'><option value='0'>Select a client</option><?=$options ?></select>
+												<input name="clientid"class="form-control"  id="clients" value="<?=$client_no?>" disabled/>
 											</div>
 											<div class="input-group">
-												<span class="input-group-addon"><i class="glyphicon glyphicon-warning-sign"></i></span>
-												<input name="edate" class="form-control" style="width:100%" placeholder="End Date" id="enddate" type="text" value="" required/>
+												<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+												<input name="edate" class="form-control" style="width:100%" placeholder="Valid until" id="enddate" type="text" value="" required/>
 											</div>
 									</div>
 								</div>
@@ -73,13 +76,13 @@
 					<hr class="bhr"/>
 					<div class="col-md-12" style="margin-bottom:15px;">
 						<div class="col-md-6">
-							<h4>Customer Information</h4>
+							<h4 style="color:#808080"><u>Customer Information</u></h4>
 							<div id="result">
-								<?=$client_information?>
+								<?=$client_information?> 
 							</div>
 						</div>
 						<div class="col-md-6">
-							<h4>Qoutation Summary</h4>
+							<h4 style="color:#808080"><u>Qoutation Summary</u></h4>
 							<textarea rows="4" class="form-control" name="summary" cols="50"></textarea>
 						</div>
 					</div>
@@ -275,7 +278,6 @@
 					{
 						minDate:0,
 						dateFormat: 'yy-mm-dd'
-
 					}
 				);
 				$("#enddate").datepicker(

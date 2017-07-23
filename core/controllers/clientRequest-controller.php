@@ -12,7 +12,13 @@
     $allRServie = $logic->getallMaintananceRequest();
      while($allCR = mysqli_fetch_assoc($allRServie))
      {
-         $allRequest .="<tr id='itemVeiw' href='clientRequest.php?ri=".$allCR['RequestID']."&RType=".$allCR['RequestType']."&ci=".$allCR['ClientID']."'><td>".$logic->getClientNameById($allCR['ClientID'])."</td><td>".$allCR['RequestType']."</td><td>".$allCR['RequestDate']."</td><td>".$logic->getServiceNameByID($allCR['ServiceID'])."</td><td>".$allCR['RequestStatus']."</td></tr>";
+         $allRequest .="<tr id='itemVeiw' href='clientRequest.php?ri=".$allCR['RequestID']."&RType=".$allCR['RequestType']."&ci=".$allCR['ClientID']."'>
+           <td>".$logic->getClientNameById($allCR['ClientID'])."</td>
+           <td>".$allCR['RequestType']."</td>
+           <td>".$allCR['RequestDate']."</td>
+           <td>".$logic->getServiceNameByID($allCR['ServiceID'])."</td>
+           <td>".$allCR['RequestStatus']."</td>
+          </tr>";
      }
      $allRServie = $logic->getallSurveyRequest();
      while($allCR = mysqli_fetch_assoc($allRServie))
@@ -52,7 +58,7 @@
             $request =$logic->getRepairRequestById($rid);#mysli result
             $Rrequest =mysqli_fetch_assoc($request);
         }
-        else 
+        else
         {
             #if its a search for survey it search information from survey request request table from database...
             $request =$logic->getSurveyRequestById($rid);#mysli result

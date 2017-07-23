@@ -49,7 +49,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                 break;
                 case 'Manager':
                 $_SESSION['Manager']=$email;
-                header('Location: manager/index.php');//manager url
+                header('Location: manager/cashflow.php');//manager url
                 break;
             }
       }
