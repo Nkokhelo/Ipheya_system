@@ -475,17 +475,24 @@
             }
             return $items_restult;
         }
-         public function getallPrograms()
-        {
-            $sql ="SELECT * FROM programs";
-            $qey =mysqli_query($this->connect(),$sql);
-            return $qey;
-        }
 
 #suppliers 
  public function getallSuppliers()
         {
             $sql ="SELECT * FROM suppliers";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+        }
+#project and programs
+        public function getallProjets()
+        {
+                    $sql ="SELECT * FROM projects";
+                    $qey =mysqli_query($this->connect(),$sql);
+                    return $qey;
+        }
+        public function getallPrograms()
+        {
+            $sql ="SELECT * FROM programs";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }

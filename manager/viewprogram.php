@@ -16,7 +16,7 @@
 
 <div class="col-xs-12">
   <div class="col-xs-8 col-xs-offset-2 b">
-      <h2><?=$program['name']?></h2>
+      <h2><?=$program['program_name']?></h2>
       <hr class='bhr'/>
       <div class='col-xs-7 col-xs-offset-1'>
           <div class='row'>
@@ -27,8 +27,7 @@
           <div class='row'>
             <h4 class='col-xs-12 '>Project </h4>
             <div class='col-xs-11 '>
-              No Project under this program
-             <a class='col-xs-12' href='#' data-toggle='modal' data-target='#addproject' >Add a project for this program?</a>
+                <?= (isset($feedback))?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":'no data ' ?>
             </div>
           </div>
       </div>

@@ -52,7 +52,7 @@
             {
                 data =JSON.parse(data);
                 $('#id').val(data.id);
-                $('#title').val(data.name);
+                $('#title').val(data.program_name);
                 $('#description').val(data.description);
                 $('#label').text('Edit '+data.name+' program');
 
@@ -79,7 +79,7 @@
             {
                 data =JSON.parse(data);
                 $('#id').val(data.id);
-                $('#title').val(data.name);
+                $('#title').val(data.program_name);
                 $('#description').val(data.description);
                 $('#label').text('Archive '+data.name+' program?');    
             },error:function (err) 

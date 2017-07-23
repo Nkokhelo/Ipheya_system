@@ -12,14 +12,15 @@
                         <div class="form-group">
                             <label class="col-xs-3 control-label" for="program_name">Title :</label>
                             <div class="col-xs-6">
-                                <input class="form-control" id='title' type="text" name ="program_name"/>
+                                <input  class="form-control" id='title' type="text" name ="program_name" required/>
+                                <input  class="form-control" id='title' type="hidden" name ="delete_name" required/>
                                 <input class="form-control" id='id' type="hidden" name ="id"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 control-label" for="description">Description :</label>
                             <div class="col-xs-8">
-                                <textarea class="form-control" id='description' name ="description" rows="8" cols="20"></textarea>
+                                <textarea  class="form-control" id='description' name ="description" rows="8" cols="20" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -36,3 +37,6 @@
         </div>
    </div>
 </div>
+<script>
+   
+</script>

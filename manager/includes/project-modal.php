@@ -71,14 +71,15 @@
    </div>
 </div>
 <script>
-    $('#edate').datepicker(
-        beforeShow: function() {
-              $('.datepicker').css("z-index","1050");
-            }
+    $('#edate').datepicker({
+        minDate:0,
+		dateFormat: 'yy-mm-dd'
+    }
     );
     $('#sdate').datepicker(
-        beforeShow: function() {
-              $('.datepicker').css("z-index","1050");
-            }
+        {
+        minDate:0,
+		dateFormat: 'yy-mm-dd'
+        }
     );
 </script>
