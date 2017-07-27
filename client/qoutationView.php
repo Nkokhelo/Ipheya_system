@@ -16,7 +16,7 @@
  ?>
   <body id="client-dashboard">
     <?php  include('../includes/top-nav.php'); ?>
-    <div class="container-fluid" style="padding:1%;">
+    <div class="col-xs-12" style="padding:1%;">
         <?php include('../includes/sidebar.php'); ?>
         <div class="col-sm-8 b">
             <h2>Qoute</h2>

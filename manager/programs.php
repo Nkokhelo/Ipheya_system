@@ -54,7 +54,7 @@
                 $('#id').val(data.id);
                 $('#title').val(data.program_name);
                 $('#description').val(data.description);
-                $('#label').text('Edit '+data.name+' program');
+                $('#label').text('Edit '+data.program_name+' program');
 
                 
             },error:function (err) 
@@ -81,7 +81,7 @@
                 $('#id').val(data.id);
                 $('#title').val(data.program_name);
                 $('#description').val(data.description);
-                $('#label').text('Archive '+data.name+' program?');    
+                $('#label').text('Archive '+data.program_name+' program?');    
             },error:function (err) 
             {
                 console.log("Result"+err);

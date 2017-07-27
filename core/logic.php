@@ -18,6 +18,20 @@
             return $qey;
         }
 
+        public function getEmployeeByEmpNo($emp_no)
+        {
+            $employee='';
+            $result = $this->getallEmployees();
+            while($employees = mysqli_fetch_assoc($result))
+            {
+                if($employees['emp_no']== $emp_no)
+                {
+                    $employee = $employees;
+                }
+            }
+            return $employee;
+        }
+
         public function getEmployeeById($id)
         {
             $sql ="Select * from employees where employee_id='$id'";
@@ -75,7 +89,19 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-
+        public function getClientByNo($no)
+        {
+            $result = $this->getallClients();
+            $client ='';
+            while($clientdata = mysqli_fetch_assoc($result))
+            {
+                if($no = $clientdata['client_no'])
+                {
+                    $client = $clientdata;
+                }
+            }
+            return $client;
+        }
         public function getClientByEmail($email)
         {
             $sql ="Select * from clients where email='$email'";
@@ -486,15 +512,40 @@
 #project and programs
         public function getallProjets()
         {
-                    $sql ="SELECT * FROM projects";
-                    $qey =mysqli_query($this->connect(),$sql);
-                    return $qey;
+            $sql ="SELECT * FROM projects";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
         }
         public function getallPrograms()
         {
             $sql ="SELECT * FROM programs";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
+        }
+        public function getProjectByNo($project_no)
+        {
+            $project ='';
+            $result = $this->getallProjets();
+            while($projects = mysqli_fetch_assoc($result))
+            {
+                if($projects['project_no']==$project_no)
+                {
+                    $project = $projects;
+                }
+            }
+            return $project;
+        }
+        public function getProgramByNo($progam_no)
+        {
+            $program='';
+            $result = $this->getallPrograms();
+            while($programs = mysqli_fetch_assoc($result)):
+                if($programs['program_no']==$progam_no)
+                {
+                    $program=$programs;
+                }
+            endwhile;
+            return $program;
         }
 # Close Connection
         public function close()
