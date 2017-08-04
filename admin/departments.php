@@ -23,7 +23,7 @@
                 <legend class='thelegend'>List of all department</legend>
                   <table class="table" style="padding:2%;" id="departments">
                     <thead>
-                      <th>Department Name</th><th><span class="fa fa-users"></span>Department Email</th><th>Options</th>
+                      <th>Department Name</th><th></span>Department Email</th><th>Options</th>
                     </thead>
                     <tbody>
                       <div  class="form-group col-xs-10 col-xs-offset-1">

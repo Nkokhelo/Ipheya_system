@@ -354,12 +354,6 @@
         margin-right: 10px;
     }
     
-    #sidebar ul li a i[class^='ion'] {
-        margin-right: 5px;
-        font-size: 1.5em;
-        margin-bottom: 5px;
-    }
-    
     #sidebar ul li.active>a,
     a[aria-expanded="true"] {
         color: rgb(169, 176, 187);

@@ -92,7 +92,7 @@
                           <button type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-default btn-block"><span class="glyphicon glyphicon-floppy-save"></span> <?=((isset($_GET['edit']))?'Save Changes':'Add Employee');?></button>
                         </div>
                         <div class="form-group col-xs-3">
-                          <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span> Employee List</a>
+                          <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span><i class="fa fa-check-square"></i> Employee List</a>
                         </div>
                     </fieldset>
                   </form>

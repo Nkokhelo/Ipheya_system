@@ -51,6 +51,8 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                 $_SESSION['Manager']=$email;
                 header('Location: manager/cashflow.php');//manager url
                 break;
+                case 'Stock Counter':
+                header('Location: stock-counter/inventorys.php');//stockcounter url
             }
       }
     }

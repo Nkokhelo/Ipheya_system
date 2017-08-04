@@ -6,7 +6,7 @@ session_start();
 		 include('includes/head.php');
 		 include('../core/logic.php');
 		 require_once('../core/controllers/inventory-controller.php');
-		 include('includes/navigation.php');
+		//  include('includes/navigation.php');
     }
     else
     {
@@ -14,31 +14,32 @@ session_start();
     }
      
 ?>
-<div class="container-fluid" style="padding:1%;">
-      <div class="col-sm-offset-2 col-sm-8 b">
-        <h2 class="text-center">Inventory</h2><hr class="bhr">
-        <div class="col-xs-12">
-          <!--<div class="col-xs-12">
-            <div class="col-xs-4">Qoute No</div>
-            <div class="col-xs-4">Client</div>
-            <div class="col-xs-4">Date</div>
-          </div>-->
-          <div class="col-xs-12">
-            <?=$qitems?>
+
+<body>
+  <div class="wrapper">
+      <?php include 'includes/sidebar.php'?>
+      <div id='content'>
+        <div class='row'>
+            <div class="col-sm-10 b">
+            <h2 class="text-center">Inventory</h2><hr class="bhr">
+            <div class="col-xs-12">
+              <div class="col-xs-12">
+                <?=$qitems?>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-</div>
-
-
-<!-- add item -->
+  </div>
+  <?php include('includes/footer.php'); ?>
+  <!-- add item -->
 <div class="modal fade" id="additemModal" tabindex="-1" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
     	<form class="form-horizontal" id="submititemForm" action="additem.php" method="POST">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h3 class="modal-title "><i class="fa fa-plus"></i> <label>Add </label> <label id='name'></label> <label> to inventories</label> </h3>
+	        <h3 class="modal-title "><i class="fa fa-plus"></i> <label>Order for </label> <label id='name'></label> <label> </label> </h3>
 	      </div>
 	      <div class="modal-body" style="max-height:450px; overflow:auto;">
 	      	<div id="add-item-messages"></div>
@@ -75,7 +76,7 @@ session_start();
 	        </div> <!-- /form-group-->
 
 	        <div class="form-group">
-	        	<label for="quantity" class="col-sm-4 control-label">No.of Purchased Item(s): </label>
+	        	<label for="quantity" class="col-sm-4 control-label">Quantity: </label>
             <div class="col-sm-3">
               <input type="text" class="form-control" id="quantity" onkeyup="totalprice()" placeholder="Quantity" name="quantity" >
               <input type="hidden" id="old_quantity" name="old_quantity" >
@@ -86,7 +87,7 @@ session_start();
               <!--<label style="font-weight:100; text-decoration:italics" id="q_info"></label>-->
 
           <div class="form-group">
-            <label for="arrival_date" class="col-sm-4 control-label">Arrival Date         : </label>
+            <label for="arrival_date" class="col-sm-4 control-label">Expected Date         : </label>
             <div class="col-sm-6">
               <input type="text" class="form-control" id="arrival_date" name="arrival_date" >
 				    </div>
@@ -103,7 +104,7 @@ session_start();
           <!-- /form-group-->
 
           <div class="form-group">
-            <label for="total_price" class="col-sm-4 control-label">Total Price         : </label>
+            <label for="total_price" class="col-sm-4 control-label">Amount         : </label>
             <div class="col-sm-6">
               <input type="text" disabled class="form-control" id="total_price" placeholder="Total Price" >
               <input type="hidden" id="total_price"name="total_price" >
@@ -121,6 +122,8 @@ session_start();
     </div> <!-- /modal-content -->
   </div> <!-- /modal-dailog -->
 </div>
+
+</body>
 
 
 <script>

@@ -8,57 +8,14 @@
                   <li class="active">
                     <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
                       <i class='fa fa-building'></i>
-                      Departments
+                      Invetory Management
                     </a>
                       <ul class="collapse list-unstyled" id="companyMenu">
-                      <li><a  href="departments.php">Departments</a></li>
-                      <li><a  href="allservices.php">Services</a></li>
-                    </ul>
-                  </li>
-                  <li  >
-                    <a href="#stakeholders" data-toggle="collapse" aria-expanded="false">
-                      <i class='fa fa-vcard'></i>
-                      HR Management
-                    </a>
-                    <ul class="collapse list-unstyled" id="stakeholders">
-                        <li><a  href="employees.php">Employees</a></li>
-                        <li><a  href="allsuppliers.php">Suppliers</a></li>
-                        <li><a  href="roles.php">Roles</a></li>
-                    </ul>
-                  </li>
-                  <li  >
-                    <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
-                      <i class='fa fa-group'/></i>
-                      Clients 
-                    </a>
-                    <ul class="collapse list-unstyled" id="clientMenu">
-                      <li><a  href="clients.php">All clients</a></li>
-                      <li><a  href="archives.php">Archived accounts</a></li>
-                    </ul>
-                  </li>
-                  <li  >
-                    <a href="#requestsMenu" data-toggle="collapse" aria-expanded="false">
-                        <i class='glyphicon glyphicon-duplicate'></i>
-                      Request & Tickets 
-                    </a>
-                    <ul class="collapse list-unstyled" id="requestsMenu">
-                      <li><a  href="clientRequest.php">Requests</a></li>
-                      <li><a href="Tickets.php">Tickets</a></li>
+                      <li><a  href="departments.php">Invetory</a></li>
+                      <li><a  href="allservices.php">All Items</a></li>
                     </ul>
                   </li>
                   
-                  <li>
-                    <a href="../inventory/items.php">
-                      <i class='fa fa-cubes'></i>
-                      Inventory management
-                    </a>
-                  </li>
-                  <li>
-                    <a href="targets.php">
-                        <i class='fa fa-bullseye'></i>
-                      Targets
-                    </a>
-                  </li>
                   <li>
                     <a href="../login.php">
                       <i class="fa fa-sign-out"></i>

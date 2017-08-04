@@ -17,6 +17,17 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+         public function allEmployees()
+        {
+            $allemployees='';
+            $sql ="SELECT * FROM employees";
+            $qey =mysqli_query($this->connect(),$sql);
+            while($all = mysqli_fetch_assoc($qey))
+            {
+                $allemployees = $all;
+            }
+            return $allemployees;
+        }
 
         public function getEmployeeByEmpNo($emp_no)
         {
@@ -409,6 +420,7 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
     }
+    
     public function getTaskById($id)
     {
             $sql ="SELECT * FROM task WHERE task_id='$id'";

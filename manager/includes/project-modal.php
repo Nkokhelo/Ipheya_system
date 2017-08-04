@@ -40,6 +40,7 @@
                                     <select required placeholder='Client' class="form-control" id='client_no' name ="client_no">
                                         <option value='0'>~Select a Client~</option>
                                     </select>
+                                    
                                     <div class='input-group-btn' style="width:10%">
                                             <a type="" class='btn btn-default'><span class='glyphicon glyphicon-search'></span></a>
                                     </div>
