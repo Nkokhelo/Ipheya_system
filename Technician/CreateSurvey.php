@@ -1,10 +1,10 @@
 <?php
     include('../core/init.php');
-	include('includes/head.php');
-	include('includes/navigation.php');
+	  include('includes/head.php');
+	  include('includes/navigation.php');
     include'../core/logic.php';
     include'../core/controllers/suveyour-controller.php';
-?> 
+?>
 <div class="container-fluid" style="padding:1%;">
 	<div class="col-md-8 col-md-offset-2 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
 		<h2>Record Survey</h2>

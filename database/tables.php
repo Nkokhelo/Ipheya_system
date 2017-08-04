@@ -366,8 +366,28 @@
        else
        {
          echo '<<[CREATE TABLE Quotation Items FAILED: '.mysqli_error($con).']>>';
-       }
-        $sql ="Create Table Ticket
+         $sql ="Create Table Ticket
+          (
+          Id int(6) unsigned auto_increment primary key,
+          ClientID int(11),
+          Subject varchar(50) not null,
+          RequestType varchar(30) not null,
+          ProblemDescription text not null,
+          Status varchar(50),
+          DatePlaced datetime
+          )";
+          if(!mysqli_query($con,$sql))
+          {
+              die('Error'.mysqli_error($con));
+          }
+<<<<<<< HEAD
+         
+        -$sql="CREATE TABLE Task
+=======
+          else{
+            echo 'Done';
+          }
+          $sql ="Create Table Ticket
           (
           Id int(6) unsigned auto_increment primary key,
           Subject varchar(50) not null,
@@ -379,8 +399,9 @@
           {
               die('Error'.mysqli_error($con));
           }
-         
-        -$sql="CREATE TABLE Task
+
+        $sql="CREATE TABLE Task
+>>>>>>> 3e1b0c896d9d12b3f76cfc6406b6bd3a9c50292a
         (
           task_id int(3) NOT NULL AUTO_INCREMENT,
           PRIMARY KEY(task_id),
@@ -435,7 +456,11 @@
               else{
                 echo '<BR><<[Failed TO CREATE Surveying : '.mysqli_error($con).']>>';
               }
+<<<<<<< HEAD
               
+=======
+
+>>>>>>> 3e1b0c896d9d12b3f76cfc6406b6bd3a9c50292a
                 $sql="CREATE TABLE payments
                 (
                     payment_id varchar(50),
@@ -453,6 +478,7 @@
                 else
                 {
                   echo '<<[CREATE TABLE Payments FAILED: '.mysqli_error($con).']>>';
+<<<<<<< HEAD
                 }
                 
                 $sql="CREATE TABLE included_departments
@@ -548,4 +574,7 @@
                         //   {
                         //     die("Error".mysqli_error($con));
                         //   }
+=======
+                }*/
+>>>>>>> 3e1b0c896d9d12b3f76cfc6406b6bd3a9c50292a
 ?>
