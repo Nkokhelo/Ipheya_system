@@ -14,9 +14,12 @@ $errors = array();
     function money($number){
       return 'R'.number_format($number,2);
     }
+
+
+    
     #function login($user_id){
     #  $_SESSION['Client'] = $user_id;
     #  global $db;
-
+ 
     #  }
 ?>
