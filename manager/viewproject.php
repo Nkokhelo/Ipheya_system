@@ -6,7 +6,7 @@
         include('../core/logic.php');
         include('includes/head.php');
         include('../core/controllers/programs-controller.php');
-        include('includes/navigation.php');
+        // include('includes/navigation.php');
    }
    else
    {

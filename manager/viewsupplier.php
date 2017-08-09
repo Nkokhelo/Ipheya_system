@@ -6,7 +6,7 @@
         include('../core/logic.php');
         include('includes/head.php');
         require_once('../core/controllers/supplier-controller.php');
-        include('includes/navigation.php');
+        // include('includes/navigation.php');
    }
    else
    {

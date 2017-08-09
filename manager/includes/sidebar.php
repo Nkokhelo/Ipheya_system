@@ -12,26 +12,51 @@
                       </a>
                     </li>
                   <li>
+                      <a href="allincome.php">
+                          <i class='fa fa-line-chart'></i>
+                        Income
+                      </a>
+                    </li>
+                  <li>
+                      <a href="allexpence.php">
+                          <i class='fa fa-money'></i>
+                        Expense
+                      </a>
+                    </li>
+                  <li>
+                      <a href="allprograms.php">
+                          <i class='fa fa-folder-o'></i>
+                        Programs
+                      </a>
+                    </li>
+                  <li>
+                      <a href="allprojects.php">
+                          <i class='fa fa-folder-open-o'></i>
+                        Projects
+                      </a>
+                    </li>
+                   <li>
                     <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
-                      <i class='glyphicon glyphicon-th-list'></i>
-                      My Company
+                      <i class='fa fa-bar-chart-o'></i>
+                      Reports
                     </a>
                       <ul class="collapse list-unstyled" id="companyMenu">
-                      <li><a  href="cashflow.php">Finacial</a></li>
-                      <li><a  href="allprograms.php">Programs</a></li>
-                      <li><a  href="allprojects.php">Projects</a></li>
+                      <li><a  href="cashflow.php">Finacial Reports</a></li>
+                      <li><a  href="allprojects.php">Projects Reports</a></li>
+                      <li><a  href="allprojects.php">Clients Reports</a></li>
+                      <li><a  href="allprojects.php">Inventory Reports</a></li>
                     </ul>
-                  </li>
+                  </li> 
                   
                   <li>
                     <a href="targets.php">
-                        <i class='glyphicon glyphicon-home'></i>
+                        <i class='fa fa-arrow-circle-o-down'></i>
                       Targets
                     </a>
                   </li>
                   <li>
                     <a href="../login.php">
-                        <i class='glyphicon glyphicon-logout'></i>
+                        <i class='fa fa-sign-out'></i>
                       Logout
                     </a>
                   </li>

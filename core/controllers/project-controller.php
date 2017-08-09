@@ -16,5 +16,13 @@
     $error = '<div class="alert alert-info"><i class="glyphicon glyphicon-info-sign"></i> No Project at the moment<br/> <a href="createproject.php">Create Project</a></div>';
   }
 
+  #get deoartments
+  $department='';
+  $query_result = $logic->getallDepartments();
+  while($dep = mysqli_fetch_assoc($query_result))
+  {
+    $department .="<option value='".$dep['department_id']."'>".$dep['department']."</option>";
+  }
 
+  
 ?>

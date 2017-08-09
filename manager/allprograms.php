@@ -20,7 +20,7 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 b'>
-              <?php if($proj_list ==''){ ?>
+              <?php if($prog_list ==''){ ?>
               <?=$error?>
               <?php } else { ?>
               <h1>Programs</h1>
