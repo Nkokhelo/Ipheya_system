@@ -1,7 +1,7 @@
 <?php
   include 'includes/head.php';
 ?>  
-<body>
+<body></body>
   <div class="wrapper">
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
