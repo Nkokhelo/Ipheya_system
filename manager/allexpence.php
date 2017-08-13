@@ -6,7 +6,7 @@
         include('../core/logic.php');
         include('includes/head.php');
         // require_once('../core/controllers/cashflow-controller.php');
-        // include('includes/navigation.php');
+        // include('includes/navigation.php'); thi is pull
    }
    else
    {
