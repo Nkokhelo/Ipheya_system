@@ -1,7 +1,7 @@
 <?php
    session_start();
    if(isset($_SESSION['Manager']))
-   {k
+   {
         require_once('../core/init.php');
         include('../core/logic.php');
         include('includes/head.php');
