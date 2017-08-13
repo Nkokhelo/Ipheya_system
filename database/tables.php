@@ -380,10 +380,6 @@
           {
               die('Error'.mysqli_error($con));
           }
-<<<<<<< HEAD
-         
-        -$sql="CREATE TABLE Task
-=======
           else{
             echo 'Done';
           }
@@ -401,7 +397,6 @@
           }
 
         $sql="CREATE TABLE Task
->>>>>>> 3e1b0c896d9d12b3f76cfc6406b6bd3a9c50292a
         (
           task_id int(3) NOT NULL AUTO_INCREMENT,
           PRIMARY KEY(task_id),
@@ -456,11 +451,6 @@
               else{
                 echo '<BR><<[Failed TO CREATE Surveying : '.mysqli_error($con).']>>';
               }
-<<<<<<< HEAD
-              
-=======
-
->>>>>>> 3e1b0c896d9d12b3f76cfc6406b6bd3a9c50292a
                 $sql="CREATE TABLE payments
                 (
                     payment_id varchar(50),
@@ -478,103 +468,5 @@
                 else
                 {
                   echo '<<[CREATE TABLE Payments FAILED: '.mysqli_error($con).']>>';
-<<<<<<< HEAD
-                }
-                
-                $sql="CREATE TABLE included_departments
-                      (
-                          request_id int(11),
-                          department_id int(11),
-                          primary key(request_id,department_id),
-                          foreign key(request_id) references serviceRequest(RequestID),
-                          foreign key(request_id) references RepairRequest(RequestID), 
-                          foreign key(department_id) references departments(department_id)
-                      )";
-                      if(!mysqli_query($con,$sql))
-                      {
-                        echo "Error! ".mysqli_error($con);
-                      }
-
-#22 june----table for notifications on our system.....
-                $sql ="CREATE TABLE notifications 
-                    (
-                      notific_id int(11) NOT NULL AUTO_INCREMENT,
-                      user_email varchar(100),
-                      notific_message varchar(150),
-                      notific_date datetime,
-                      unread int(3),
-                      notific_link varchar(500),
-                      primary key(notific_id),
-                      foreign key(user_email) references Users(Email)
-                    )";
-                    if(!mysqli_query($con,$sql))
-                    {
-                      die("Error!".mysqli_error($con));
-                    }
-
-                    $sql ="CREATE TABLE suppliers
-                          (
-                              supplier_no varchar(10) NOT NULL,
-                              company_name varchar(100),
-                              address varchar(100),
-                              line2 varchar(100),
-                              line3 varchar(100),
-                              line4 varchar(100),
-                              post_code varchar(10),
-                              contact_name varchar(150),
-                              telephone varchar(13),
-                              mobile varchar(15),
-                              fax varchar(15),
-                              web varchar(100),
-                              email varchar(200),
-                              primary key(supplier_no)
-                          )";
-                          if(!mysqli_query($con,$sql))
-                          {
-                            die("Error".mysqli_error($con));
-                          }
-                          $sql =" CREATE TABLE purchases(
-                                  item_no int(11) NOT NULL,
-                                  item_code varchar(11) NOT NULL,
-                                  supplier_no varchar(10)NOT NULL,
-                                  purchase_date datetime,
-                                  quantity int,
-                                  unit_price double,
-                                  total_price double,
-                                  item_image longblob,
-                                  PRIMARY KEY(item_code),
-                                  FOREIGN KEY(item_no) REFERENCES QoutationItems(QoutationItemID),
-                                  FOREIGN KEY(supplier_no) REFERENCES suppliers(supplier_no)
-                                  )";
-                          if(!mysqli_query($con,$sql))
-                          {
-                            die("Error".mysqli_error($con));
-                          }*/
-                         
-                         $sql ="CREATE TABLE programs
-                         (
-                            program_no varchar(11) primary key not null,
-                            name varchar(50) not null,
-                            description varchar(150)
-                         )";
-                          if(!mysqli_query($con,$sql))
-                          {
-                            die("Error".mysqli_error($con));
-                          }
-
-                        //   $sql ="CREATE TABLE project
-                        //  (
-                        //     project_no varchar(11) primary key not null,
-                        //     program_no varchar(11),
-                        //     name varchar(50) not null,
-                        //     duration datetime not null,
-
-                        //  )";
-                        //   if(!mysqli_query($con,$sql))
-                        //   {
-                        //     die("Error".mysqli_error($con));
-                        //   }
-=======
                 }*/
->>>>>>> 3e1b0c896d9d12b3f76cfc6406b6bd3a9c50292a
 ?>
