@@ -114,7 +114,7 @@
                         <label class="col-xs-4 control-label" for="budget">No of Employees Involved :</label>
                         <div class="col-xs-2  input-group input-append " style='padding-left:15px; float: inherit;'>
                             <input required type="number" placeholder="15" class="form-control " id='emp_no' name ="emp_no"></input>
-                        </div>
+                        </div>   
                     </div>
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for='charge'>Charge :</label>
