@@ -65,9 +65,10 @@
                             <!--client  -->
                                     <label id="client" class="col-xs-2 control-label client" for="client">Client:</label>
                                     <div id="client" class="col-xs-5 client">
-                                        <select id="client" class="form-control" name="client">
-                                            <option style="backgroud:#aaa">--None Selected--</option>
-                                        </select>
+                                        <input id="client" datalist="clients" class="form-control" name="client"></input>
+                                        <datalist id="clients">
+                                          <option value=""></option>
+                                        </datalist>
                                     </div>                             
                               </div>
                              <hr  style="width:100%"/>
@@ -221,6 +222,7 @@
                 case 'jpeg':
                 case 'png':
                 case 'gif':
+                case 'pdf':
                     $('#uploadButton').attr('disabled', false);
                     break;
                 default:
