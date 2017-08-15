@@ -43,6 +43,20 @@
             return $employee;
         }
 
+        public function getEmployeeByEmpNo($emp_no)
+        {
+            $employee='';
+            $result = $this->getallEmployees();
+            while($employees = mysqli_fetch_assoc($result))
+            {
+                if($employees['emp_no']== $emp_no)
+                {
+                    $employee = $employees;
+                }
+            }
+            return $employee;
+        }
+
         public function getEmployeeById($id)
         {
             $sql ="Select * from employees where employee_id='$id'";
@@ -112,6 +126,22 @@
                 }
             }
             return $client;
+<<<<<<< HEAD
+        }        
+        public function getClientByIdNo($no)
+        {
+            $result = $this->getallClients();
+            $client ='';
+            while($clientdata = mysqli_fetch_assoc($result))
+            {
+                if($no = $clientdata['client_id'])
+                {
+                    $client = $clientdata;
+                }
+            }
+            return $client;
+=======
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
         }
         public function getClientByEmail($email)
         {
@@ -354,6 +384,12 @@
         }
 
 #services
+        public function getallServices()
+        {
+            $sql ="SELECT * FROM services";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+        }
         public function getServiceIdByName($serviceName)
         {
             $serviceSql = "SELECT * FROM services WHERE service =$serviceName";
@@ -368,6 +404,21 @@
             $serviceID = mysqli_fetch_row($query)[1];
             return $serviceID;
         }
+
+        public function getServiceById($no)
+        {
+            $result = $this->getallServices();
+            $service ='';
+            while($servicedata = mysqli_fetch_assoc($result))
+            {
+                if($no = $servicedata['service_id'])
+                {
+                    $service = $servicedata;
+                }
+            }
+            return $service;
+        }
+
         public function AssociateTarget($ip,$email)
         {
           $user_sql = mysqli_query($this->connect(),"SELECT * FROM clients WHERE email = '$email'");
@@ -400,6 +451,8 @@
 
           }
         }
+
+        
 #Surveying information
     function getallSuveyingInfo()
     {
@@ -559,6 +612,13 @@
             endwhile;
             return $program;
         }
+<<<<<<< HEAD
+
+#Client History
+        public function clientHistoryReview($client,$service)
+        {
+
+=======
 #error 
         public function display_error($message)
         {
@@ -590,6 +650,7 @@
             $sql ="SELECT * FROM e_category";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
         }
 # Close Connection
         public function close()

@@ -67,8 +67,40 @@
             {
                 $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong> has been achived!');
             }
+<<<<<<< HEAD
+    }
+#save Project
+    if(isset($_POST['save_project']))
+    {
+        $feedback =array('alert'=>'', 'message'=>'');
+        $project_name =$_POST['project_name'];
+        $program_no =$_POST['program_no'];
+        $description =$_POST['description'];
+        $sdate =$_POST['sdate'];
+        $edate =$_POST['edate'];
+        $employee_no =$_POST['employee_no'];
+        $client_no =$_POST['client_no'];
+
+        $client_unique = uniqid();
+        $project_no ="P00".strtoupper(substr($client_unique,6,4));
+
+        $query ="INSERT INTO `projects` (`id`, `project_no`, `program_no`, `project_name`, `description`, `start_date`, `end_date`, `employee_no`, `client_no`)
+        VALUES(NULL,'$project_no','$program_no','$project_name','$description','$sdate','$edate','$employee_no','$client_no')";
+    $result = mysqli_query($db,$query);
+        if(!$result)
+        {
+                die($query);
+                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Error!</strong>'.mysqli_error($db));
+        }
+        else
+        {
+              $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> Project saved !');
+        }
+    }
+=======
     }
 
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
 #view program
     if(isset($_GET['view']))
     {

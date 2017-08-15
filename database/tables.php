@@ -24,8 +24,23 @@
      }
    }
    #select database
- /* mysqli_select_db($con,"ipheya");
-#CREATE TABLE clients
+  mysqli_select_db($con,"ipheya");
+  $sqli="CREATE TABLE serviceHistory
+                        (
+                          historyID int NOT NULL AUTO_INCREMENT,
+                          PRIMARY KEY(historyID),
+                          ClientID int(11),
+                          FOREIGN KEY(ClientID) REFERENCES clients(client_id),
+                          ServiceID int,
+                          FOREIGN KEY(ServiceID) REFERENCES services(service_id)
+                        )";
+                           if(!mysqli_query($con,$sqli))
+                          {
+                            die("Error".mysqli_error($con));
+                          }
+
+          mysqli_close($con);
+/*#CREATE TABLE clients
    $sql = "CREATE TABLE clients
            (
              client_id int NOT NULL AUTO_INCREMENT,
@@ -230,7 +245,9 @@
              RequestID int NOT NULL AUTO_INCREMENT,
              PRIMARY KEY(RequestID),
              ClientID int(11),
-             FOREIGN KEY(ClientID) REFERENCES clients(client_id),
+             FOREIGN KEY(ClientID) REFERENCES clients(
+               
+             ),
              ServiceID int,
              FOREIGN KEY(ServiceID) REFERENCES services(service_id),
              Description text,
@@ -345,6 +362,7 @@
        }
        mysqli_close($con);
 #CREATE TABLE QoutationsItems
+
       $sql = "CREATE TABLE QoutationItems
              (
                QoutationItemID int NOT NULL AUTO_INCREMENT,
@@ -494,6 +512,8 @@
                         echo "Error! ".mysqli_error($con);
                       }
 
+            
+
 #22 june----table for notifications on our system.....
                 $sql ="CREATE TABLE notifications 
                     (
@@ -548,7 +568,7 @@
                           if(!mysqli_query($con,$sql))
                           {
                             die("Error".mysqli_error($con));
-                          }*/
+                          }
                          
                          $sql ="CREATE TABLE programs
                          (
@@ -559,7 +579,10 @@
                           if(!mysqli_query($con,$sql))
                           {
                             die("Error".mysqli_error($con));
-                          }
+                          }*/
+
+                        
+                   
 
                         //   $sql ="CREATE TABLE project
                         //  (
@@ -567,12 +590,13 @@
                         //     program_no varchar(11),
                         //     name varchar(50) not null,
                         //     duration datetime not null,
-
                         //  )";
                         //   if(!mysqli_query($con,$sql))
                         //   {
                         //     die("Error".mysqli_error($con));
                         //   }
+
+                        
 ?>
 =======
                 }*/
