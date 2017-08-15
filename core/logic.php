@@ -559,6 +559,31 @@
             endwhile;
             return $program;
         }
+#error 
+        public function display_error($message)
+        {
+            $mes = '<div class="alert alert-danger"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            return $mes;
+        }
+#success 
+        public function display_success($message)
+        {
+            $mes = '<div class="alert alert-success"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            return $mes;
+        }
+#success 
+        public function display_info($message)
+        {
+            $mes = '<div class="alert alert-info"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            return $mes;
+        }
+#warning to implememnt : $logic->display_warning('this is wrong!');
+        public function display_warning($message)
+        {
+            $mes = '<div class="alert alert-warning"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            return $mes;
+        }
+
 # categories
         public function getallcategories()
         {
@@ -572,7 +597,6 @@
             mysqli_close($this->connect());
         }
     }
-
 
 #testing -------------------------------------
     // $log = new Logic();

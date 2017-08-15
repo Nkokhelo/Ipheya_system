@@ -134,7 +134,7 @@
                               <div class="col-xs-12"> 
                             <!-- project  -->
                                 <h5 class="col-xs-12" style="color:#999"> <b>Link this expense to a project</b></h5><br/>
-                                <label class="col-xs-2 control-label" for="expense_name">Proejct:</label>
+                                <label class="col-xs-2 control-label" for="expense_name">Project:</label>
                                 <div class="col-xs-4">
                                     <select class="form-control">
                                         <option style="background:#aaa">--None--</option>
