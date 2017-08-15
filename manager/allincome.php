@@ -5,7 +5,7 @@
         require_once('../core/init.php');
         include('../core/logic.php');
         include('includes/head.php');
-        require_once('../core/controllers/incomes-controller.php');
+        // require_once('../core/controllers/incomes-controller.php');
    }
    else
    {
@@ -44,7 +44,7 @@
                     <div class="col-xs-12">
                         <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' method="post" action='allexpence.php'>
                           <fieldset>
-                            <?=($feedback)?$feedback:""?>
+                            <!-- must have a feedback -->
                             <legend class="inlegend">Income Information</legend>
                               <div class="form-group col-xs-12">
                             <!-- Income type  -->

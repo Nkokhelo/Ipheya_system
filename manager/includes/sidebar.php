@@ -87,16 +87,25 @@
             <div class="notification" onclick="show">
               <p class="not-bell glyphicon glyphicon-bell" ></p>
             </div>
-
+-->
 <script>
   $(document).ready(function(){
-    $(".notification").click(function(){
-            $(".notification").toggleClass("move");
-            // $(".notification-container").toggleClass("show-not");
-            // $(".notification-container").toggleClass("hide-not");
-            // $("#not").toggleClass("hide-not");
-            $("#not").toggle(300);
-            $(".notification-container").toggle(300);
+    //  $(".notification").click(function(){
+    //         $(".notification").toggleClass("move");
+    //         // $(".notification-container").toggleClass("show-not");
+    //         // $(".notification-container").toggleClass("hide-not");
+    //         // $("#not").toggleClass("hide-not");
+    //         $("#not").toggle(300);
+    //         $(".notification-container").toggle(300);
+    // });
+    $(function()
+    {
+      $('#sidebar .components li a').filter(function()
+      {return this.href==location.href}).parent().addClass('active').css('border-left','3px rgb(169, 176, 187) solid').siblings().removeClass('active').attr("aria-expanded","flase");
+	  
+      $('#sidebar .components li ul li a').filter(function()
+      {return this.href==location.href}).parents('ul').addClass('in').siblings('a').attr("aria-expanded","true").parent().addClass('active').siblings().removeClass('active').attr("aria-expanded","flase");
+	  
     });
   });
 </script>

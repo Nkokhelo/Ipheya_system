@@ -11,8 +11,8 @@
                       Departments
                     </a>
                       <ul class="collapse list-unstyled" id="companyMenu">
-                      <li><a  href="departments.php">Departments</a></li>
-                      <li><a  href="allservices.php">Services</a></li>
+                        <li><a id="ddepa" href="departments.php">Departments</a></li>
+                        <li><a id="dsup" href="allservices.php">Services</a></li>
                     </ul>
                   </li>
                   <li  >
@@ -26,7 +26,7 @@
                         <li><a  href="roles.php">Roles</a></li>
                     </ul>
                   </li>
-                  <li  >
+                  <li>
                     <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
                       <i class='fa fa-group'/></i>
                       Clients 
@@ -103,15 +103,22 @@
     //         $("#not").toggle(300);
     //         $(".notification-container").toggle(300);
     // });
-    // $("#sidebar .components li").on("click", function() {
-    //   $("#sidebar .components li").removeClass("active");
+    // $("#sidebar .components li").click(function() {
+    //   $("#sidebar .components li.active a").removeClass("active");
     //   $(this).addClass("active");
     // });
-    $("#sidebar .components>li").each(function() {
-    var navItem = $(this);
-    if (navItem.find("a").attr("href") == location.pathname) {
-      navItem.addClass("active");
-    }
-});
+    // $('#sidebar .components li a').click(function(){
+    //   $(this).parent().addClass('active').siblings().removeClass('active');	
+    // });
+
+    $(function()
+    {
+      $('#sidebar .components li a').filter(function()
+      {return this.href==location.href}).parent().addClass('active').css('border-left','3px rgb(169, 176, 187) solid').siblings().removeClass('active').attr("aria-expanded","flase");
+	  
+      $('#sidebar .components li ul li a').filter(function()
+      {return this.href==location.href}).parents('ul').addClass('in').siblings('a').attr("aria-expanded","true").parent().addClass('active').siblings().removeClass('active').attr("aria-expanded","flase");
+	  
+    });
   });
 </script>
