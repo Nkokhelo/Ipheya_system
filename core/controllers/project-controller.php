@@ -1,7 +1,7 @@
 <?php
 #get logic class
  $logic = new Logic();
- 
+ $feedback ='';
   #save Project
     if(isset($_POST['save_project']))
     {
@@ -26,12 +26,11 @@
         $client_unique = uniqid();
         $project_no ="P00".strtoupper(substr($client_unique,6,4));
 
-        $query ="INSERT INTO `projects` (`id`, `project_no`, `program_no`, `project_name`, `description`, `start_date`, `employee_no`, `'duration'`, `duration_type`, `department`,`service`,`budget`,`no_of_emp`,`patner`,`visibility`,`daily_hour`,`charge`)
-        VALUES(NULL,'$project_no','$program_no','$project_name','$description','$sdate','$employee_no','$duration','$duration_type','$department','$service','$budget','$no_of_emp','$patner','$visibility','$daily_hour','$charge')";
+        $query ="INSERT INTO `projects` (`id`, `project_no`, `program_no`, `project_name`, `description`, `start_date`, `employee_no`, `duration`, `duration_type`, `department`,`service`,`budget`,`no_of_emp`,`patner`,`visibility`,`daily_hours`,`charge`,`quotation`)
+        VALUES(NULL,'$project_no','$program_no','$project_name','$description','$sdate','$employee_no','$duration','$duration_type','$department','$service','$budget','$no_of_emp','$patner','$visibility','$daily_hour','$charge','$qno')";
         $result = mysqli_query($db,$query);
         if(!$result)
         {
-                die($query);
                 $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Error!</strong>'.mysqli_error($db));
         }
         else

@@ -25,6 +25,7 @@
                   <legend class="inlegend thelegend">
                     Project Information
                   </legend>
+                  <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
                   <div class="col-xs-12">
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="project_name">Name :</label>
@@ -132,7 +133,7 @@
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="visibility">Visibility :</label>
                         <div class="col-xs-9  input-group input-append "style='padding-left:15px; float: inherit;'>
-                            <label class="radio-inline"><input type="radio" name="visibility" value=1> Private <i class="fa fa-lock" style="color:#0094ff"></i></label>
+                            <label class="radio-inline"><input type="radio" name="visibility" value=1 checked="checked"> Private <i class="fa fa-lock" style="color:#0094ff"></i></label>
                             <label class="radio-inline"><input type="radio" name="visibility" value=2> Team <i class="fa fa-group" style="color:#0094ff"></i></label>
                             <label class="radio-inline"><input type="radio" name="visibility" value=3> Team & Client <i class="fa fa-globe" style="color:#0094ff"></i></label>
                        </div>
