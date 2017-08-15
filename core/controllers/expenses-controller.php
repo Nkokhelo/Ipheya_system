@@ -4,7 +4,7 @@
     $feedback ="";
     if(isset($_POST['save']))
     {
-       
+        $project_no=$_POST['project_no'];
         $ei_name =$_POST['ei_name'];
         $ei_date =$_POST['ei_date'];
         $ei_type =$_POST['ei_type'];
@@ -20,7 +20,8 @@
          $result = mysqli_query($logic->connect(),$save);
         if(!$result)
         {
-                $feedback =$logic->display_error('Error'.mysqli_error($logic->connect()));
+            die(mysqli_error());
+                $feedback =$logic->display_error(mysqli_error($logic->connect()));
         }
         else
         {
