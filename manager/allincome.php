@@ -5,7 +5,7 @@
         require_once('../core/init.php');
         include('../core/logic.php');
         include('includes/head.php');
-        // require_once('../core/controllers/incomes-controller.php');
+        require_once('../core/controllers/incomes-controller.php');
    }
    else
    {
@@ -42,32 +42,35 @@
                   </div>
                   <div role="tabpanel" class="tab-pane fade  in active" id="newincome">
                     <div class="col-xs-12">
-                        <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' methor="post" action=''>
+                        <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' method="post" action='allexpence.php'>
                           <fieldset>
+                            <?=($feedback)?$feedback:""?>
                             <legend class="inlegend">Income Information</legend>
                               <div class="form-group col-xs-12">
                             <!-- Income type  -->
-                                    <label class="col-xs-2 control-label" for="income_type">Income type :</label>
+                                    <label class="col-xs-2 control-label" for="ei_type">Income type :</label>
                                     <div class="col-xs-3">
-                                        <select class="selectpicker form-control" id='income_t' type="text" name ="income_type">
+                                        <select class="selectpicker form-control" id='income_t' type="text" name ="ei_type">
                                             <option style="backgroud:#aaa" value="">--Select--</option>
                                             <option value="p">Payament</option>
                                             <option value="r">Refund</option>
                                         </select>
                                     </div>
                             <!--Supplier  -->
-                                    <label class="col-xs-2 control-label supplier" id="supplier" for="supplier">Supplier:</label>
+                                    <label class="col-xs-2 control-label supplier" id="supplier" for="supplier_no">Supplier:</label>
                                     <div id="supplier" class="col-xs-4 supplier">
-                                        <select id="supplier" class="form-control" name="supplier">
-                                            <option style="backgroud:#aaa">--None Selected--</option>
-                                        </select>
+                                        <input id="supplier" list="suppliers" class="form-control" name="supplier_no"></input>
+                                        <datalist id="suppliers">
+                                          <?=($suppliers_dd)?$suppliers_dd:""?>
+                                        </datalist>
                                     </div> 
                             <!--client  -->
-                                    <label id="client" class="col-xs-2 control-label client" for="client">Client:</label>
+                                    <label id="client" class="col-xs-2 control-label client" for="client_no">Client:</label>
                                     <div id="client" class="col-xs-5 client">
-                                        <select id="client" class="form-control" name="client">
-                                            <option style="backgroud:#aaa">--None Selected--</option>
-                                        </select>
+                                        <input id="client" list="clients" class="form-control" name="client_no"></input>
+                                        <datalist id="clients">
+                                          <?=($clients_dd)?$clients_dd:""?>
+                                        </datalist>
                                     </div>                             
                               </div>
                              <hr  style="width:100%"/>
@@ -75,15 +78,15 @@
                             <!--Income inforamtion  -->
                               <div class="form-group col-xs-12">
                                 <!-- Income name  -->
-                                <label class="col-xs-2 control-label" for="income_name">Name :</label>
+                                <label class="col-xs-2 control-label" for="ei_name">Name :</label>
                                 <div class="col-xs-4">
-                                    <input required placeholder="A4 transpotation" class="form-control" id='income_name' type="text" name ="income_name"/>
+                                    <input required placeholder="A4 transpotation" class="form-control" id='income_name' type="text" name ="ei_name"/>
                                 </div>
 
                                 <!-- Reference  -->
                                 <label class="col-xs-2 control-label" for="ref">Reference :</label>
                                 <div class="col-xs-3">
-                                    <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref" row='15' col=''></input>
+                                    <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref_id" row='15' col=''></input>
                                 </div>  
                                 
                               </div>
@@ -99,15 +102,15 @@
                             <!-- Date  -->
                                 <label class="col-xs-2 control-label" for="t_date">Date :</label>
                                 <div class="col-xs-3">
-                                    <input required placeholder="2017-05-09" class="form-control" id='t_date' type="text" name ="t_date" row='15' col=''></input>
+                                    <input required placeholder="2017-05-09" class="form-control" id='t_date' type="text" name ="ei_date" row='15' col=''></input>
                                 </div>  
                                      
                             <!-- Payment Type -->
                                 <label class="col-xs-2 control-label col-xs-push-1" for="payment_type">Payment type:</label>
                                 <div class="col-xs-3 col-xs-push-1">
-                                <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="payment_type">       
+                                <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="ei_payment_type">       
                                     <option style="background:#aaa">--None--</option>
-                                    <option value="chsh">Cash Payment</option>
+                                    <option value="cash">Cash Payment</option>
                                     <option value="card">Card Payement</option>
                                 </select>
                                 </div>
@@ -116,19 +119,23 @@
                             <!-- category  -->
                                 <label class="col-xs-2 control-label" for="income_name">Category :</label>
                                 <div class="col-xs-4">
-                                    <select class="form-control">
+                                    <select class="form-control" name="category_id">
                                         <option style="background:#aaa">--None--</option>
                                         <?=$categories_dd?>
                                     </select>
+                                </div> 
+                                <label class="col-xs-2 control-label" for="amount">Amount :</label>
+                                <div class="col-xs-4">
+                                   <input type="text" class="form-control" name="ei_amount" value="" id="amount">
                                 </div> 
                               </div>
                                 <hr style="width:100%"/>  
                               <div class="col-xs-12"> 
                             <!-- project  -->
-                                <h5 class="col-xs-12" style="color:#999"> <b> Is this a project income?</b></h5><br/>
-                                <label class="col-xs-2 control-label" for="income_name">Proejct:</label>
+                                <h5 class="col-xs-12" style="color:#999"> <b>Link this income to a project</b></h5><br/>
+                                <label class="col-xs-2 control-label" for="income_name">Project:</label>
                                 <div class="col-xs-4">
-                                    <select class="form-control">
+                                    <select class="form-control" name="project_no">
                                         <option style="background:#aaa">--None--</option>
                                         <?=$project_dd?>
                                     </select>
@@ -147,7 +154,7 @@
                                       </div>
                                     </div>
                                     <div class="col-xs-6" id="files">
-                                      <label for="choose">Please choose a file pdf/doc/png/jpg</label>
+                                      <label for="choose">Please choose a file pdf/png/jpg/</label>
                                       <div class="col-xs-12" >
                                         <input type="file" class="form-control-file" name="attachment[]" multiple/>
                                       </div>
@@ -184,6 +191,21 @@
            dateFormat: 'yy-mm-dd'
           }
         );
+         $("#amount").keydown(function (e) {
+              // Allow: backspace, delete, tab, escape, enter and .
+              if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                  // Allow: Ctrl+A, Command+A
+                  (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+                  // Allow: home, end, left, right, down, up
+                  (e.keyCode >= 35 && e.keyCode <= 40)) {
+                      // let it happen, don't do anything
+                      return;
+              }
+              // Ensure that it is a number and stop the keypress
+              if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                  e.preventDefault();
+              }
+        });
         $('#yes').click(function(){
           $('#files').show();
         });
@@ -209,10 +231,6 @@
             }
           });
 
-          $('form').submit(function(evt){
-            alert('stop');
-            evt.preventDefault();// to stop form submitting
-          });
           //form validator file 
           $('INPUT[type="file"]').change(function () {
             var ext = this.value.match(/\.(.+)$/)[1];

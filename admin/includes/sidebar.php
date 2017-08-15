@@ -7,7 +7,7 @@
                 <ul class="list-unstyled components">
                   <li class="active">
                     <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
-                      <i class='fa fa-building'></i>
+                      <i class='fa fa-building-o'></i>
                       Departments
                     </a>
                       <ul class="collapse list-unstyled" id="companyMenu">
@@ -17,7 +17,7 @@
                   </li>
                   <li  >
                     <a href="#stakeholders" data-toggle="collapse" aria-expanded="false">
-                      <i class='fa fa-vcard'></i>
+                      <i class='fa fa-vcard-o'></i>
                       HR Management
                     </a>
                     <ul class="collapse list-unstyled" id="stakeholders">
@@ -38,7 +38,7 @@
                   </li>
                   <li  >
                     <a href="#requestsMenu" data-toggle="collapse" aria-expanded="false">
-                        <i class='glyphicon glyphicon-duplicate'></i>
+                        <i class='fa fa-copy'></i>
                       Request & Tickets 
                     </a>
                     <ul class="collapse list-unstyled" id="requestsMenu">

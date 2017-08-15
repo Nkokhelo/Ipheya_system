@@ -126,7 +126,7 @@
                                 </div> 
                                 <label class="col-xs-2 control-label" for="amount">Amount :</label>
                                 <div class="col-xs-4">
-                                   <input type="text" name="ei_amount" value="" id="amount">
+                                   <input type="text" class="form-control" name="ei_amount" value="" id="amount">
                                 </div> 
                               </div>
                                 <hr style="width:100%"/>  
