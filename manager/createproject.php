@@ -7,6 +7,7 @@
         include('includes/head.php');
         require_once('../core/controllers/project-controller.php');
         // include('includes/navigation.php');
+        //mfudo...
    }
    else
    {
@@ -129,8 +130,8 @@
                         </div>
                     </div>
                      </div>
-                        <label class="col-xs-4 control-label" for="budget"></label>
-                        <div class="col-xs-2  input-group input-append " style='padding-left:15px; float: inherit;'>
+                        <label class="col-xs-6 control-label" for="budget"></label>
+                        <div class="col-xs-4  input-group input-append " style='padding-left:30px; float: inherit;'>
                             <input required type="number" placeholder="per-hour" class="form-control " id='hourly' name ="hourly"></input>
                         </div>
                     </div>
