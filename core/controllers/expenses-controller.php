@@ -25,6 +25,8 @@
     $payments =array();
     $project_dd ='';
     $categories_dd='';
+    $clients_dd='';
+    $suppliers_dd='';
     $query = mysqli_query($logic->connect(),$trans_query);
 
     if(!$query)
@@ -46,5 +48,17 @@
     while($categories = mysqli_fetch_assoc($allproject))
     {
       $categories_dd .= "<option value='".$categories['id']."'>".$categories["expense_name"]."</option>";
+    }
+
+    $allproject =$logic->getallSuppliers();
+    while($suppliers = mysqli_fetch_assoc($allproject))
+    {
+      $suppliers_dd .= "<option value='".$suppliers['supplier_no']."'>".$suppliers["company_name"]."</option>";
+    }
+
+    $allproject =$logic->getallClients();
+    while($clients = mysqli_fetch_assoc($allproject))
+    {
+      $clients_dd .= "<option value='".$clients['client_no']."'>".$clients["name"]."</option>";
     }
 ?>    

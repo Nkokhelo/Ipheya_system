@@ -58,16 +58,17 @@
                             <!--Supplier  -->
                                     <label class="col-xs-2 control-label supplier" id="supplier" for="supplier_no">Supplier:</label>
                                     <div id="supplier" class="col-xs-4 supplier">
-                                        <select id="supplier" class="form-control" name="supplier_no">
-                                            <option style="backgroud:#aaa">--None Selected--</option>
-                                        </select>
+                                        <input id="supplier" list="suppliers" class="form-control" name="supplier_no"></input>
+                                        <datalist id="suppliers">
+                                          <?=($suppliers_dd)?$suppliers_dd:""?>
+                                        </datalist>
                                     </div> 
                             <!--client  -->
                                     <label id="client" class="col-xs-2 control-label client" for="client_no">Client:</label>
                                     <div id="client" class="col-xs-5 client">
-                                        <input id="client" datalist="clients" class="form-control" name="client_no"></input>
+                                        <input id="client" list="clients" class="form-control" name="client_no"></input>
                                         <datalist id="clients">
-                                          <option value=""></option>
+                                          <?=($clients_dd)?$clients_dd:""?>
                                         </datalist>
                                     </div>                             
                               </div>
@@ -84,7 +85,7 @@
                                 <!-- Reference  -->
                                 <label class="col-xs-2 control-label" for="ref">Reference :</label>
                                 <div class="col-xs-3">
-                                    <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref" row='15' col=''></input>
+                                    <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref_id" row='15' col=''></input>
                                 </div>  
                                 
                               </div>
@@ -106,7 +107,7 @@
                             <!-- Payment Type -->
                                 <label class="col-xs-2 control-label col-xs-push-1" for="payment_type">Payment type:</label>
                                 <div class="col-xs-3 col-xs-push-1">
-                                <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="payment_type">       
+                                <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="ei_payment_type">       
                                     <option style="background:#aaa">--None--</option>
                                     <option value="cash">Cash Payment</option>
                                     <option value="card">Card Payement</option>
@@ -117,14 +118,14 @@
                             <!-- category  -->
                                 <label class="col-xs-2 control-label" for="expense_name">Category :</label>
                                 <div class="col-xs-4">
-                                    <select class="form-control" name="category">
+                                    <select class="form-control" name="category_id">
                                         <option style="background:#aaa">--None--</option>
                                         <?=$categories_dd?>
                                     </select>
                                 </div> 
                                 <label class="col-xs-2 control-label" for="amount">Amount :</label>
                                 <div class="col-xs-4">
-                                    <select class="form-control" name="amont">
+                                    <select class="form-control" name="ei_amount">
                                         <option style="background:#aaa">--None--</option>
                                         <?=$categories_dd?>
                                     </select>
