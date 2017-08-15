@@ -131,7 +131,7 @@
                                     <select class="form-control">
                                         <option style="background:#aaa">--None--</option>
                                         <?=$project_dd?>
-                                    </select>
+                                    </select>
                                     <br/>
                                 </div>
                               </div>
