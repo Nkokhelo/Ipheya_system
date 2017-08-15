@@ -23,7 +23,6 @@
   {
     $department .="<option value='".$dep['department_id']."'>".$dep['department']."</option>";
   }
-<<<<<<< HEAD
   # get all programs
    $allprogram='';
    $program_pro="SELECT * FROM programs ORDER BY program_name";
@@ -49,8 +48,4 @@
    endwhile;
   # find projectmanager
     
-=======
-
-  
->>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
 ?>
