@@ -42,7 +42,7 @@
                   </div>
                   <div role="tabpanel" class="tab-pane fade  in active" id="newexpense">
                     <div class="col-xs-12">
-                        <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' methor="post" action=''>
+                        <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' method="post" action='allexpence.php'>
                           <fieldset>
                             <?=($feedback)?$feedback:""?>
                             <legend class="inlegend">Expense Information</legend>
@@ -102,7 +102,7 @@
                             <!-- Date  -->
                                 <label class="col-xs-2 control-label" for="t_date">Date :</label>
                                 <div class="col-xs-3">
-                                    <input required placeholder="2017-05-09" class="form-control" id='t_date' type="text" name ="t_date" row='15' col=''></input>
+                                    <input required placeholder="2017-05-09" class="form-control" id='t_date' type="text" name ="ei_date" row='15' col=''></input>
                                 </div>  
                                      
                             <!-- Payment Type -->
@@ -126,7 +126,7 @@
                                 </div> 
                                 <label class="col-xs-2 control-label" for="amount">Amount :</label>
                                 <div class="col-xs-4">
-                                   <input type="text" name="amount" value="" id="amount">
+                                   <input type="text" name="ei_amount" value="" id="amount">
                                 </div> 
                               </div>
                                 <hr style="width:100%"/>  
@@ -135,7 +135,7 @@
                                 <h5 class="col-xs-12" style="color:#999"> <b>Link this expense to a project</b></h5><br/>
                                 <label class="col-xs-2 control-label" for="expense_name">Project:</label>
                                 <div class="col-xs-4">
-                                    <select class="form-control">
+                                    <select class="form-control" name="project_no">
                                         <option style="background:#aaa">--None--</option>
                                         <?=$project_dd?>
                                     </select>
