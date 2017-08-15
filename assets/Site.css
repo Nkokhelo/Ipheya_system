@@ -284,6 +284,7 @@
     #sidebar.active .CTAs {
         display: none;
     }
+<<<<<<< HEAD
     
     #sidebar.active .sidebar-header strong {
         display: block;
@@ -369,6 +370,87 @@
         position: relative;
     }
     
+=======
+    
+    #sidebar.active .sidebar-header strong {
+        display: block;
+    }
+    
+    #sidebar ul li a {
+        text-align: left;
+    }
+    
+    #sidebar.active ul li a {
+        padding: 20px 10px;
+        text-align: center;
+        font-size: 0.85em;
+    }
+    
+    #sidebar.active ul li a i {
+        margin-right: 0;
+        display: block;
+        font-size: 1.8em;
+        margin-bottom: 5px;
+    }
+    
+    #sidebar.active ul ul a {
+        padding: 10px !important;
+    }
+    
+    #sidebar.active a[aria-expanded="false"]::before,
+    #sidebar.active a[aria-expanded="true"]::before {
+        top: auto;
+        bottom: 5px;
+        right: 50%;
+        -webkit-transform: translateX(50%);
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    
+    #sidebar .sidebar-header {
+        padding-left: 10px;
+        background: #2b333f;
+        color: rgb(169, 176, 187);
+    }
+    
+    #sidebar .sidebar-header strong {
+        display: none;
+        font-size: 1.8em;
+    }
+    
+    #sidebar ul.components {
+        padding: 20px 0;
+        border-bottom: 1px solid #47748b;
+    }
+    
+    #sidebar ul li a {
+        padding: 10px;
+        font-size: 1.1em;
+        display: block;
+        text-decoration: none;
+        font-weight: 900;
+        color: rgba(169, 176, 187, .6);
+    }
+    
+    #sidebar ul li a:hover {
+        color: rgb(169, 176, 187);
+        transition: ease .2s;
+    }
+    
+    #sidebar ul li a i {
+        margin-right: 10px;
+    }
+    
+    #sidebar ul li.active>a,
+    a[aria-expanded="true"] {
+        color: rgb(169, 176, 187);
+    }
+    
+    a[data-toggle="collapse"] {
+        position: relative;
+    }
+    
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
     a[aria-expanded="false"]::before,
     a[aria-expanded="true"]::before {
         content: '\e259';

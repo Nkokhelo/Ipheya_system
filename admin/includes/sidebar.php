@@ -1,13 +1,21 @@
 <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
+<<<<<<< HEAD
                 <h3 style='font-weight:900'>IPHEYA</h3>
+=======
+                    <h3 style='font-weight:900'>IPHEYA</h3>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                 </div>
                 <!-- <!---My new side bar-->
                 <ul class="list-unstyled components">
                   <li class="active">
                     <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
                       <i class='glyphicon glyphicon-th-list'></i>
+=======
+                      <i class='fa fa-building'></i>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                       Departments
                     </a>
                       <ul class="collapse list-unstyled" id="companyMenu">
@@ -17,6 +25,7 @@
                   </li>
                   <li  >
                     <a href="#stakeholders" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
                       <i class='fa fa-users' arial-hidden="true"></i>
                       Organisation
                     </a>
@@ -24,11 +33,24 @@
                         <li><a  href="employees.php">Employees</a></li>
                         <li><a  href="roles.php">Roles</a></li>
                         <li><a  href="allsuppliers.php">Suppliers</a></li>
+=======
+                      <i class='fa fa-vcard'></i>
+                      HR Management
+                    </a>
+                    <ul class="collapse list-unstyled" id="stakeholders">
+                        <li><a  href="employees.php">Employees</a></li>
+                        <li><a  href="allsuppliers.php">Suppliers</a></li>
+                        <li><a  href="roles.php">Roles</a></li>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                     </ul>
                   </li>
                   <li  >
                     <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
                       <i class='ion-ios-people'/></i>
+=======
+                      <i class='fa fa-group'/></i>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                       Clients 
                     </a>
                     <ul class="collapse list-unstyled" id="clientMenu">
@@ -38,7 +60,11 @@
                   </li>
                   <li  >
                     <a href="#requestsMenu" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
                         <i class='glyphicon glyphicon-home'></i>
+=======
+                        <i class='glyphicon glyphicon-duplicate'></i>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                       Request & Tickets 
                     </a>
                     <ul class="collapse list-unstyled" id="requestsMenu">
@@ -49,16 +75,34 @@
                   
                   <li>
                     <a href="../inventory/items.php">
+<<<<<<< HEAD
                       <i class='glyphicon glyphicon-home'></i>
                       Inventory
+=======
+                      <i class='fa fa-cubes'></i>
+                      Inventory management
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                     </a>
                   </li>
                   <li>
                     <a href="targets.php">
+<<<<<<< HEAD
                         <i class='glyphicon glyphicon-home'></i>
                       Targets
                     </a>
                   </li>
+=======
+                        <i class='fa fa-bullseye'></i>
+                      Targets
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../login.php">
+                      <i class="fa fa-sign-out"></i>
+                      Logout
+                    </a>
+                  </li>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                 </ul>
             </nav>
 <!-- Notification Panel Hidden

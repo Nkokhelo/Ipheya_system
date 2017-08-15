@@ -17,6 +17,31 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+         public function allEmployees()
+        {
+            $allemployees='';
+            $sql ="SELECT * FROM employees";
+            $qey =mysqli_query($this->connect(),$sql);
+            while($all = mysqli_fetch_assoc($qey))
+            {
+                $allemployees = $all;
+            }
+            return $allemployees;
+        }
+
+        public function getEmployeeByEmpNo($emp_no)
+        {
+            $employee='';
+            $result = $this->getallEmployees();
+            while($employees = mysqli_fetch_assoc($result))
+            {
+                if($employees['emp_no']== $emp_no)
+                {
+                    $employee = $employees;
+                }
+            }
+            return $employee;
+        }
 
         public function getEmployeeByEmpNo($emp_no)
         {
@@ -101,6 +126,7 @@
                 }
             }
             return $client;
+<<<<<<< HEAD
         }        
         public function getClientByIdNo($no)
         {
@@ -114,6 +140,8 @@
                 }
             }
             return $client;
+=======
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
         }
         public function getClientByEmail($email)
         {
@@ -445,6 +473,7 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
     }
+    
     public function getTaskById($id)
     {
             $sql ="SELECT * FROM task WHERE task_id='$id'";
@@ -583,11 +612,45 @@
             endwhile;
             return $program;
         }
+<<<<<<< HEAD
 
 #Client History
         public function clientHistoryReview($client,$service)
         {
 
+=======
+#error 
+        public function display_error($message)
+        {
+            $mes = '<div class="alert alert-danger"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            return $mes;
+        }
+#success 
+        public function display_success($message)
+        {
+            $mes = '<div class="alert alert-success"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            return $mes;
+        }
+#success 
+        public function display_info($message)
+        {
+            $mes = '<div class="alert alert-info"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            return $mes;
+        }
+#warning to implememnt : $logic->display_warning('this is wrong!');
+        public function display_warning($message)
+        {
+            $mes = '<div class="alert alert-warning"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            return $mes;
+        }
+
+# categories
+        public function getallcategories()
+        {
+            $sql ="SELECT * FROM e_category";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
         }
 # Close Connection
         public function close()
@@ -595,7 +658,6 @@
             mysqli_close($this->connect());
         }
     }
-
 
 #testing -------------------------------------
     // $log = new Logic();

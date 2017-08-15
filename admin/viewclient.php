@@ -23,11 +23,17 @@
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active" data-toggle="tab"><a href="#client" data-toggle="tab">Cient Personal Details</a></li>
                     <li><a href="#history" data-toggle="tab">Client History</a></li>
+<<<<<<< HEAD
                     <li><a href="#graph" data-toggle="tab">Bar graph</a></li>
                 </ul>
                 <div class="col-md-12" style="padding:2%;">
                     <div class="tab-content" >
 
+=======
+                </ul>
+                <div class="col-md-12" style="padding:2%;">
+                    <div class="tab-content" >
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                         <div role="tabpanel" class="tab-pane fade in active" id="client" style="font-size:12px">
                             <div class="col-xs-12">
                                     <h5><p style="color:#0094ff; position:absolute; top:5px;">Client number : #<?= $client['client_no'];?></p></h5>
@@ -48,11 +54,17 @@
                                                 <td align="left"><h5>Postal Address </h5></td><td align="left"> <h5> : <?=$client['postal_address']?></h5></td>
                                             </tr>
                                         </table>
+<<<<<<< HEAD
                                     </div>           
+=======
+                                    </div>
+                                    
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                             </div>
                                 <hr class="bhr" style="width:100%"/>
                                 <div class="col-xs-5 col-xs-offset-5">
                                     <a href="viewsupplier?edit=<?=$_GET['view']?>" class="btn btn-xs btn-primary"><p class="glyphicon glyphicon-edit"></p> edit...</a>
+<<<<<<< HEAD
                                 </div>
                             </div>
                         </div>
@@ -113,6 +125,22 @@
                                 ?>
                          </div>
                          </div>
+=======
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="history">
+                            <div class="col-xs-12">
+                                <div class="alert alert-info">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong><i class="glyphicon glyphicon-info-sign"></i></strong> No service request has been made by 
+                                        </div>
+                                <div class="alert alert-info">
+                                    
+                                        <p><span class="glyphicon glyphicon-info-sign"></span> No service request has been made by <?=$client['name']?></p>
+                                </div>
+                            </div>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                         </div>
 
 

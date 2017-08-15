@@ -384,8 +384,28 @@
        else
        {
          echo '<<[CREATE TABLE Quotation Items FAILED: '.mysqli_error($con).']>>';
-       }
-        $sql ="Create Table Ticket
+         $sql ="Create Table Ticket
+          (
+          Id int(6) unsigned auto_increment primary key,
+          ClientID int(11),
+          Subject varchar(50) not null,
+          RequestType varchar(30) not null,
+          ProblemDescription text not null,
+          Status varchar(50),
+          DatePlaced datetime
+          )";
+          if(!mysqli_query($con,$sql))
+          {
+              die('Error'.mysqli_error($con));
+          }
+<<<<<<< HEAD
+         
+        -$sql="CREATE TABLE Task
+=======
+          else{
+            echo 'Done';
+          }
+          $sql ="Create Table Ticket
           (
           Id int(6) unsigned auto_increment primary key,
           Subject varchar(50) not null,
@@ -397,8 +417,9 @@
           {
               die('Error'.mysqli_error($con));
           }
-         
-        -$sql="CREATE TABLE Task
+
+        $sql="CREATE TABLE Task
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
         (
           task_id int(3) NOT NULL AUTO_INCREMENT,
           PRIMARY KEY(task_id),
@@ -453,7 +474,10 @@
               else{
                 echo '<BR><<[Failed TO CREATE Surveying : '.mysqli_error($con).']>>';
               }
+<<<<<<< HEAD
               
+=======
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                 $sql="CREATE TABLE payments
                 (
                     payment_id varchar(50),
@@ -471,6 +495,7 @@
                 else
                 {
                   echo '<<[CREATE TABLE Payments FAILED: '.mysqli_error($con).']>>';
+<<<<<<< HEAD
                 }
                 
                 $sql="CREATE TABLE included_departments
@@ -573,3 +598,7 @@
 
                         
 ?>
+=======
+                }*/
+?>
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe

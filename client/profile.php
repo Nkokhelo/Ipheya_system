@@ -75,6 +75,7 @@
                     <label for="new-password">New password</label>
                     <input type="text" class="form-control" name="new-password" id="new-password" value="" placeholder="New password">
                   </div>
+<<<<<<< HEAD
                   <div class="form-group col-sm-6">
                     <label for="confirm-password">Confirm password</label>
                     <input type="text" class="form-control" name="confirm-password" id="confirm-password" value="" placeholder="Confirm password">
@@ -86,6 +87,24 @@
                     <div class="col-sm-6">
                       <?=isset($error)?$error:''?>
                   </div>
+=======
+<<<<<<< HEAD
+                  <div class="form-group col-sm-6">
+                    <label for="confirm-password">Confirm password</label>
+                    <input type="text" class="form-control" name="confirm-password" id="confirm-password" value="" placeholder="Confirm password">
+=======
+                  <div class="col-sm-6">
+                    <a href="CreateTicket.php" class="form-control btn btn-default">Create Tictet</a>
+>>>>>>> 3e1b0c896d9d12b3f76cfc6406b6bd3a9c50292a
+                  </div>
+                  <hr/ style='width:100%'>
+                    <div class="form-group col-sm-6">
+                      <input type="submit" class="form-control btn btn-warning" name="Change-password" value="Change password">
+                    </div>
+                    <div class="col-sm-6">
+                      <?=isset($error)?$error:''?>
+                  </div>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                 </fieldset>
               </form>
             </div>

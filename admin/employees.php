@@ -28,7 +28,15 @@
                         <div class="form-group col-md-2">
                           <label for="title">Title</label>
                           <select name="title" id="title" class="form-control">
+<<<<<<< HEAD
                             <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'~Select~');?></option>
+=======
+<<<<<<< HEAD
+                            <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'--Select--');?></option>
+=======
+                            <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'~Select~');?></option>
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                             <option value="Mr.">Mr.</option>
                             <option value="Mrs.">Mrs.</option>
                             <option value="Ms.">Ms.</option>
@@ -47,7 +55,15 @@
                         <div class="form-group col-md-3">
                           <label for="gender">Gender</label>
                           <select name="gender" class="form-control" id="gender">
+<<<<<<< HEAD
                             <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'~Select~');?></option>
+=======
+<<<<<<< HEAD
+                            <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'--Select--');?></option>
+=======
+                            <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'~Select~');?></option>
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                             <option value="Female">Female</option>
                             <option value="Male">Male</option>
                           </select>
@@ -92,7 +108,11 @@
                           <button type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-default btn-block"><span class="glyphicon glyphicon-floppy-save"></span> <?=((isset($_GET['edit']))?'Save Changes':'Add Employee');?></button>
                         </div>
                         <div class="form-group col-xs-3">
+<<<<<<< HEAD
                           <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span> Employee List</a>
+=======
+                          <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span><i class="fa fa-check-square"></i> Employee List</a>
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
                         </div>
                     </fieldset>
                   </form>

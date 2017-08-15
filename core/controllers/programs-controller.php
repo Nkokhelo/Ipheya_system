@@ -67,6 +67,7 @@
             {
                 $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong> has been achived!');
             }
+<<<<<<< HEAD
     }
 #save Project
     if(isset($_POST['save_project']))
@@ -96,6 +97,10 @@
               $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> Project saved !');
         }
     }
+=======
+    }
+
+>>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
 #view program
     if(isset($_GET['view']))
     {
