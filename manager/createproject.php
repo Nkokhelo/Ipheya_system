@@ -7,6 +7,7 @@
         include('includes/head.php');
         require_once('../core/controllers/project-controller.php');
         // include('includes/navigation.php');
+        //mfudo...
    }
    else
    {
@@ -35,6 +36,7 @@
                         <div class="col-xs-4">
                         <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="project_name">       
                             <option>~Select~</option>
+                             <?=($allprogram)?$allprogram:""?>
                         </select>
                         </div>
 
@@ -60,6 +62,7 @@
                         <div class="col-xs-4">
                             <select id="serv"  class="form-control" name="service">
                                 <option name="department">~Select~</option>
+                                 <?=( $allServicesDDL)?$allServicesDDL:""?>
                             </select>
                         </div>
 
@@ -86,15 +89,15 @@
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="project_qoute">Project Qoute :</label>
                         <div class="col-xs-3 input-group " style='padding-left:15px; float: inherit;'>
-                               <select id="project_qoute" class="form-control">
-                                    <option value="">~Select~</option>
-                                </select>
+                            <input class="form-control" list="browsers" name="browser">
+                            <datalist id="browsers">
+                                  <?=($allquote )?$allquote :""?>
+                            </datalist>
                             </div>
                         <label class="col-xs-3 control-label" for="client_no">Project Manager :</label>
                         <div class="col-xs-3 input-group " style='padding-left:15px'>
                                 <select id="employees" class="form-control">
                                     <option value="">~Select~</option>
-                                    
                                 </select>
                             </div>
                     </div>
@@ -110,30 +113,39 @@
                             <input required placeholder="R 10 000,00" class="form-control " id='budget' name ="budget"></input>
                         </div>
                         <label class="col-xs-4 control-label" for="budget">No of Employees Involved :</label>
-                        <div class="col-xs-2  input-group input-append " style='padding-left:15px; float: inherit;'>
+                        <div class="col-xs-1  input-group input-append " style='padding-left:15px; float: inherit;'>
                             <input required type="number" placeholder="15" class="form-control " id='emp_no' name ="emp_no"></input>
-                        </div>
+                        </div>   
                     </div>
                     <div class="form-group col-xs-12">
-                        <label class="col-xs-3 control-label" for="budget">Project Security :</label>
+                        <label class="col-xs-2 control-label" for="charge">Charge :</label>
+                        <div class="col-xs-2  input-group input-append " style='padding-left:15px; float: inherit;'>
+                            <input required placeholder="18,00" class="form-control " id='charge' name ="charge"></input>
+                        </div>   
+                        <label class="col-xs-2 control-label col-xs-pull-1" for="charge">Per/hour</label>
+
+                        <label class="col-xs-2 control-label" for='hours'>Daily-hours:</label>
+                        <div class="col-xs-2 input-group input-append" style='padding-left:15px; float: inherit;'>
+                            <input required placeholder="8.00" class="form-control" id='hours' name ="hours"></input>
+                        </div>
+                     </div> 
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-2 control-label" for="budget">Visibility :</label>
                         <div class="col-xs-9  input-group input-append "style='padding-left:15px; float: inherit;'>
                             <label class="radio-inline"><input type="radio" name="security"> Private <i class="fa fa-lock" style="color:#0094ff"></i></label>
                             <label class="radio-inline"><input type="radio" name="security"> Team <i class="fa fa-group" style="color:#0094ff"></i></label>
-                            <label class="radio-inline"><input type="radio" name="security"> Public <i class="fa fa-globe" style="color:#0094ff"></i></label>
+                            <label class="radio-inline"><input type="radio" name="security"> Team & Client <i class="fa fa-globe" style="color:#0094ff"></i></label>
                        </div>
                     </div>
-
                 </fieldset>
-                    <hr class="bhr"/>        
-                  <div class="col-xs-12">
-                        <div class="form-group">
-                          <div class="col-xs-offset-2 col-xs-8" id='change'>
-                              <input required placeholder=" " type="submit"id='save' name="save_project" class="btn btn-block btn-success" value="create"/>
-                              <!--<input required placeholder=" " type="submit"id='edit' name="update_program" class="btn btn-block btn-primary" value="update"/>-->
-                              <!--<input required placeholder=" " type="submit"id='delete' name="delete_program" class="btn btn-block btn-danger" value="archive"/>-->
-                          </div>
-                      </div>
-                  </div>
+                <hr class="bhr"/>        
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-8" id='change'>
+                            <input required placeholder=" " type="submit"id='save' name="save_project" class="btn btn-block btn-success" value="create"/>
+                        </div>
+                    </div>
+                </div>
               </form>
             </div>
         </div>
@@ -180,13 +192,14 @@
                     data:"department="+department,
                     success:function(data)
                     {
-                        $('#serv').empty();
-                        $('#serv').append("<option value=''>~Select~</option>");
+                        $('#employees').empty();
+                        $('#employees').append("<option value=''>~Select~</option>");
                         data=JSON.parse(data);
                         console.log(data);
                         if(data.employee_id!=null)
                         {
-                            $('#serv').append("<option value='"+data.service_id+"'>"+data.service+"</option>");
+                            $('#employees').append("<option value='"+data.employeee_id+"'>"+data.name+"</option>");
+
                         }                        
                     }
                     });

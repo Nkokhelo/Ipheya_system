@@ -38,7 +38,11 @@
                             <label class="col-xs-2 control-label" for="client_no">Client :</label>
                             <div class="col-xs-5 input-group " style='padding-left:15px'>
                                     <select required placeholder='Client' class="form-control" id='client_no' name ="client_no">
+<<<<<<< HEAD
+                                        <option value='0'>--Select a Client--</option>
+=======
                                         <option value='0'>~Select a Client~</option>
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                                     </select>
                                     
                                     <div class='input-group-btn' style="width:10%">
@@ -50,7 +54,11 @@
                             <label class="col-xs-2 control-label" for="employee_no">Project Manager :</label>
                             <div class="col-xs-5 input-group" style='padding-left:15px'>
                                     <select required placeholder='Client' class="form-control" id='employee_no' name ="employee_no">
+<<<<<<< HEAD
+                                        <option value='0'>--Select a Project Manager--</option>
+=======
                                         <option value='0'>~Select a Project Manager~</option>
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                                     </select>
                                     <div class='input-group-btn' style="width:10%">
                                             <a type="" class='btn btn-default'><span class='glyphicon glyphicon-search'></span></a>

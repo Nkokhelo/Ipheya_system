@@ -22,7 +22,6 @@
     {
         $transactions.="<tr><td>".$p['Date']."</td><td>".$p['payment_status']."</td><td>".$p['Amount_Paid']."</td><td style='color:green' align='center'><span class='glyphicon glyphicon-arrow-up'></span></td></tr>";
     }
-
     $allproject =$logic->getallProjets();
     while($projects = mysqli_fetch_assoc($allproject))
     {

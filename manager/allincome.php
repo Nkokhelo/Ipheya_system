@@ -28,9 +28,23 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
+
             <div class='col-xs-10 b'>
               <div>
 
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" ><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Incomes</a></li>
+                  <li role="presentation" class="active"><a href="#newincome"  aria-controls="profile" role="tab" data-toggle="tab">New Income</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade" id="list">
+
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade  in active" id="newincome">
+                    <div class="col-xs-12">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                   <li role="presentation" ><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Incomes</a></li>
@@ -48,6 +62,7 @@
                           <fieldset>
                             <legend class="inlegend">Income Information</legend>
                               <div class="form-group col-xs-12">
+
                             <!-- Income type  -->
                                     <label class="col-xs-2 control-label" for="income_type">Income type :</label>
                                     <div class="col-xs-3">
@@ -84,11 +99,46 @@
 
                                 <!-- Reference  -->
                                 <label class="col-xs-2 control-label" for="ref">Reference :</label>
+=======
+                                <!-- income name  -->
+                                <label class="col-xs-2 control-label" for="income_name">Name :</label>
+                                <div class="col-xs-5">
+                                    <input required placeholder="A4 transpotation" class="form-control" id='income_name' type="text" name ="income_name"/>
+                                </div>
+
+                                <!-- Reference  -->
+                                <label class="col-xs-2 control-label" for="income_name">Reference :</label>
                                 <div class="col-xs-3">
                                     <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref" row='15' col=''></input>
                                 </div>  
                                 
+
+<<<<<<< HEAD
                               </div>
+                            <!-- Transaction Description-->
+                              <div class="form-group col-xs-12">
+                                <label class="col-xs-2 control-label" for="details"> Description: </label>
+                                <div class="col-xs-10">
+                                    <textarea required placeholder="Mr John Sith- 50 A4 pack Deliviries" class="form-control" id='details' type="text" name ="details" rows="5" cols="10"></textarea>
+                              </div>                              
+                            </div>
+                            <hr style="width:100%"/>
+                            <div class="form-group col-xs-12">
+                            <!-- Date  -->
+                                <label class="col-xs-2 control-label" for="t_date">Date :</label>
+                                <div class="col-xs-3">
+                                    <input required placeholder="2017-05-09" class="form-control" id='t_date' type="text" name ="t_date" row='15' col=''></input>
+                                </div>  
+                                     
+                            <!-- Payment Type -->
+                                <label class="col-xs-2 control-label col-xs-push-1" for="payment_type">Payment type:</label>
+                                <div class="col-xs-3 col-xs-push-1">
+                                <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="payment_type">       
+                                    <option value="">--None--</option>
+=======
+                            </div>
+                            
+>>>>>>> 3ecc84af5dd657cdb6f9846e7bd9dbb7baf54874
                             <!-- Transaction Description-->
                               <div class="form-group col-xs-12">
                                 <label class="col-xs-2 control-label" for="details"> Description: </label>
@@ -115,8 +165,28 @@
                                 </div>
                             </div>
                             <div class="form-group col-xs-12">
+
                             <!-- category  -->
                                 <label class="col-xs-2 control-label" for="Income_name">Category :</label>
+                                <div class="col-xs-4">
+                                    <select class="form-control">
+                                        <option>--None--</option>
+                                    </select>
+                                </div>  
+                            <!-- project  -->
+                                <label class="col-xs-2 control-label" for="Income_name">Proejct:</label>
+                                <div class="col-xs-4">
+                                    <select class="form-control">
+                                        <option>--None-- (not required)</option>
+                                    </select>
+                                </div>
+                            </div>
+                              <hr style="width:100%"/>
+                              <div class="col-xs-12">
+                            <!-- fie decition  -->
+                                <div class="form-group col-xs-12">
+                                    <div class="col-xs-6">
+                                      <label for="choose">Income Attachemnts?</label>
                                 <div class="col-xs-4">
                                     <select class="form-control">
                                         <option>--None--</option>
@@ -141,6 +211,7 @@
                                         <label class="radio-inline"><input id="no" type="radio" name='choose' value="no" selected='true'>No</label>
                                       </div>
                                     </div>
+
                                     <div class="col-xs-6" id="files">
                                       <label for="choose">Please choose a file pdf/doc/png/jpg</label>
                                       <div class="col-xs-12" >
@@ -149,6 +220,7 @@
                                     </div>
                                 </div>  
                             </div>
+
                             
                             <hr class="bhr" style="width:100%"/>
                             <div class="form-group col-xs-12">

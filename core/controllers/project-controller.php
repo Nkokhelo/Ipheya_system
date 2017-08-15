@@ -23,6 +23,29 @@
   {
     $department .="<option value='".$dep['department_id']."'>".$dep['department']."</option>";
   }
-
-  
+  # get all programs
+   $allprogram='';
+   $program_pro="SELECT * FROM programs ORDER BY program_name";
+   $program_sql= mysqli_query($db,$program_pro);
+   while($pro = mysqli_fetch_assoc($program_sql))
+   {
+    $allprogram .= '<option value="' .$pro['program_no'].'">' .$pro['program_name'].'</option>';
+   }
+   #get Quotations
+   $allquote='';
+   $Quote="SELECT * FROM qoutation ORDER BY Title";
+   $Quotatio_sql= mysqli_query($db, $Quote);
+   while($Quo = mysqli_fetch_assoc($Quotatio_sql))
+   {
+    $allquote .= '<option value="' .$Quo['QoutationID'].'">' .$Quo['Title'].'</option>';
+   }
+   #get All services
+   $allServicesDDL = '';
+   $ddl_service_sql = "SELECT * FROM services ORDER BY service";
+   $general_services = mysqli_query($db,$ddl_service_sql);
+   while($g_service = mysqli_fetch_assoc($general_services)):
+      $allServicesDDL .= '<option value="'.$g_service['service_id'].'">'.$g_service['service'].'</option>';
+   endwhile;
+  # find projectmanager
+    
 ?>

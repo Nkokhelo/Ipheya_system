@@ -190,7 +190,6 @@
         $('#no').click(function(){
           $('#files').hide();
         });
-
           $('#expense_t').change(function(){
             var p_type = $(this).val();
             if(p_type=='r')
