@@ -221,6 +221,7 @@
                 case 'jpeg':
                 case 'png':
                 case 'gif':
+                case 'pdf':
                     $('#uploadButton').attr('disabled', false);
                     break;
                 default:
