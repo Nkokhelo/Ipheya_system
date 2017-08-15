@@ -1,6 +1,6 @@
 <?php
    session_start();
-   if(isset($_SESSION['Employee']))
+   if(isset($_SESSION['Manager']))
    {
         require_once('../core/init.php');
         include('../core/logic.php');
@@ -20,7 +20,7 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 b'>
-              <form class="form-horizontal" action="programs.php" method="POST">
+              <form class="form-horizontal" action="createproject.php" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">
                     Project Information
@@ -32,9 +32,9 @@
                             <input required placeholder="Wifi Project" class="form-control" id='project_name' type="text" name ="project_name"/>
                         </div>
                         <!---->
-                        <label class="col-xs-2 control-label" for="project_name">Program:</label>
+                        <label class="col-xs-2 control-label" for="program_no">Program:</label>
                         <div class="col-xs-4">
-                        <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="project_name">       
+                        <select class="selectpicker form-control" title="Please select" id='program_no' type="text" name ="program_no">       
                             <option>~Select~</option>
                              <?=($allprogram)?$allprogram:""?>
                         </select>
@@ -89,14 +89,14 @@
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="project_qoute">Project Qoute :</label>
                         <div class="col-xs-3 input-group " style='padding-left:15px; float: inherit;'>
-                            <input class="form-control" list="browsers" name="browser">
+                            <input class="form-control" list="browsers" name="q_id">
                             <datalist id="browsers">
                                   <?=($allquote )?$allquote :""?>
                             </datalist>
                             </div>
-                        <label class="col-xs-3 control-label" for="client_no">Project Manager :</label>
+                        <label class="col-xs-3 control-label" for="employee_no">Project Manager :</label>
                         <div class="col-xs-3 input-group " style='padding-left:15px'>
-                                <select id="employees" class="form-control">
+                                <select id="employees" class="form-control" name="employee_no">
                                     <option value="">~Select~</option>
                                 </select>
                             </div>
@@ -112,9 +112,9 @@
                         <div class="col-xs-2  input-group input-append "style='padding-left:15px; float: inherit;'>
                             <input required placeholder="R 10 000,00" class="form-control " id='budget' name ="budget"></input>
                         </div>
-                        <label class="col-xs-4 control-label" for="budget">No of Employees Involved :</label>
+                        <label class="col-xs-4 control-label" for="No of Employees Involved">No of Employees Involved :</label>
                         <div class="col-xs-1  input-group input-append " style='padding-left:15px; float: inherit;'>
-                            <input required type="number" placeholder="15" class="form-control " id='emp_no' name ="emp_no"></input>
+                            <input required type="number" placeholder="15" class="form-control " id='no_of_emp' name ="no_of_emp"></input>
                         </div>   
                     </div>
                     <div class="form-group col-xs-12">
@@ -124,17 +124,17 @@
                         </div>   
                         <label class="col-xs-2 control-label col-xs-pull-1" for="charge">Per/hour</label>
 
-                        <label class="col-xs-2 control-label" for='hours'>Daily-hours:</label>
+                        <label class="col-xs-2 control-label" for='daily_hour'>Daily-hours:</label>
                         <div class="col-xs-2 input-group input-append" style='padding-left:15px; float: inherit;'>
-                            <input required placeholder="8.00" class="form-control" id='hours' name ="hours"></input>
+                            <input required placeholder="8.00" class="form-control" id='daily_hour' name ="daily_hour"></input>
                         </div>
                      </div> 
                     <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for="budget">Visibility :</label>
+                        <label class="col-xs-2 control-label" for="visibility">Visibility :</label>
                         <div class="col-xs-9  input-group input-append "style='padding-left:15px; float: inherit;'>
-                            <label class="radio-inline"><input type="radio" name="security"> Private <i class="fa fa-lock" style="color:#0094ff"></i></label>
-                            <label class="radio-inline"><input type="radio" name="security"> Team <i class="fa fa-group" style="color:#0094ff"></i></label>
-                            <label class="radio-inline"><input type="radio" name="security"> Team & Client <i class="fa fa-globe" style="color:#0094ff"></i></label>
+                            <label class="radio-inline"><input type="radio" name="visibility" value=1> Private <i class="fa fa-lock" style="color:#0094ff"></i></label>
+                            <label class="radio-inline"><input type="radio" name="visibility" value=2> Team <i class="fa fa-group" style="color:#0094ff"></i></label>
+                            <label class="radio-inline"><input type="radio" name="visibility" value=3> Team & Client <i class="fa fa-globe" style="color:#0094ff"></i></label>
                        </div>
                     </div>
                 </fieldset>
@@ -142,7 +142,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-8" id='change'>
-                            <input required placeholder=" " type="submit"id='save' name="save_project" class="btn btn-block btn-success" value="create"/>
+                            <input  type="submit" id='save' name="save_project" class="btn btn-block btn-success" value="create"/>
                         </div>
                     </div>
                 </div>
@@ -154,11 +154,7 @@
   <?php include('includes/footer.php'); ?>
   <script>
    $(document).ready(function(){
-        $('#edate').datepicker({
-            minDate:0,
-            dateFormat: 'yy-mm-dd'
-        }
-        );
+
         $('#sdate').datepicker(
             {
             minDate:0,
@@ -198,8 +194,8 @@
                         console.log(data);
                         if(data.employee_id!=null)
                         {
-                            $('#employees').append("<option value='"+data.employeee_id+"'>"+data.name+"</option>");
-
+                            alert(data.emp_no);
+                            $('#employees').append("<option value='"+data.emp_no+"'>"+data.name+"</option>");
                         }                        
                     }
                     });
