@@ -4,7 +4,7 @@
     if(isset($_POST['save']))
     {
         
-    }
+    }  
 
     $trans_query = "SELECT * FROM expense_income";
     $transactions='';
@@ -33,4 +33,4 @@
     {
       $categories_dd .= "<option value='".$categories['id']."'>".$categories["expense_name"]."</option>";
     }
-?>
+?>    
