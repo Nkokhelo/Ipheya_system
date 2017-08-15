@@ -108,7 +108,7 @@
                                 <div class="col-xs-3 col-xs-push-1">
                                 <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="payment_type">       
                                     <option style="background:#aaa">--None--</option>
-                                    <option value="chsh">Cash Payment</option>
+                                    <option value="cash">Cash Payment</option>
                                     <option value="card">Card Payement</option>
                                 </select>
                                 </div>
@@ -117,7 +117,14 @@
                             <!-- category  -->
                                 <label class="col-xs-2 control-label" for="expense_name">Category :</label>
                                 <div class="col-xs-4">
-                                    <select class="form-control">
+                                    <select class="form-control" name="category">
+                                        <option style="background:#aaa">--None--</option>
+                                        <?=$categories_dd?>
+                                    </select>
+                                </div> 
+                                <label class="col-xs-2 control-label" for="amount">Amount :</label>
+                                <div class="col-xs-4">
+                                    <select class="form-control" name="amont">
                                         <option style="background:#aaa">--None--</option>
                                         <?=$categories_dd?>
                                     </select>
@@ -126,7 +133,7 @@
                                 <hr style="width:100%"/>  
                               <div class="col-xs-12"> 
                             <!-- project  -->
-                                <h5 class="col-xs-12" style="color:#999"> <b> Is this a project expense?</b></h5><br/>
+                                <h5 class="col-xs-12" style="color:#999"> <b>Link this expense to a project</b></h5><br/>
                                 <label class="col-xs-2 control-label" for="expense_name">Proejct:</label>
                                 <div class="col-xs-4">
                                     <select class="form-control">
@@ -148,7 +155,7 @@
                                       </div>
                                     </div>
                                     <div class="col-xs-6" id="files">
-                                      <label for="choose">Please choose a file pdf/doc/png/jpg</label>
+                                      <label for="choose">Please choose a file pdf/png/jpg/</label>
                                       <div class="col-xs-12" >
                                         <input type="file" class="form-control-file" name="attachment[]" multiple/>
                                       </div>
