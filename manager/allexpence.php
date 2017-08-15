@@ -122,7 +122,7 @@
                                     </select>
                                 </div> 
                               </div>
-                                <hr style="width:100%"/>
+                                <hr style="width:100%"/>  
                               <div class="col-xs-12"> 
                             <!-- project  -->
                                 <h5 class="col-xs-12" style="color:#999"> <b> Is this a project expense?</b></h5><br/>
