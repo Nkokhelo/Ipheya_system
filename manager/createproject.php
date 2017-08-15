@@ -145,7 +145,7 @@
                     </div>
 
                 </fieldset>
-                    <hr class="bhr"/>        
+                <hr class="bhr"/>        
                   <div class="col-xs-12">
                         <div class="form-group">
                           <div class="col-xs-offset-2 col-xs-8" id='change'>
