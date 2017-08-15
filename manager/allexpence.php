@@ -122,7 +122,7 @@
                                     </select>
                                 </div> 
                               </div>
-                                <hr style="width:100%"/>
+                                <hr style="width:100%"/>  
                               <div class="col-xs-12"> 
                             <!-- project  -->
                                 <h5 class="col-xs-12" style="color:#999"> <b> Is this a project expense?</b></h5><br/>
@@ -131,7 +131,7 @@
                                     <select class="form-control">
                                         <option style="background:#aaa">--None--</option>
                                         <?=$project_dd?>
-                                    </select>
+                                    </select>
                                     <br/>
                                 </div>
                               </div>
@@ -171,6 +171,7 @@
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
+
   <script>
     $(document).ready(function(){
         $('.supplier').hide();
@@ -211,7 +212,7 @@
           $('form').submit(function(evt){
             alert('stop');
             evt.preventDefault();// to stop form submitting
-          });\
+          });
           //form validator file 
           $('INPUT[type="file"]').change(function () {
             var ext = this.value.match(/\.(.+)$/)[1];
@@ -225,8 +226,8 @@
                 default:
                     alert('This is not an allowed file type.');
                     this.value = '';
-          }
-      });
+              }
+          });
     });
   </script>
 </body>
