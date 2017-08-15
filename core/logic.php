@@ -559,6 +559,13 @@
             endwhile;
             return $program;
         }
+# categories
+        public function getallcategories()
+        {
+            $sql ="SELECT * FROM e_category";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+        }
 # Close Connection
         public function close()
         {
