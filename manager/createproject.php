@@ -128,7 +128,7 @@
                         <div class="col-xs-2 input-group input-append" style='padding-left:15px; float: inherit;'>
                             <input required placeholder="8.00" class="form-control" id='hours' name ="hours"></input>
                         </div>
-                     </div>   //msanage
+                     </div> 
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="budget">Visibility :</label>
                         <div class="col-xs-9  input-group input-append "style='padding-left:15px; float: inherit;'>
