@@ -36,7 +36,10 @@
                         <div class="col-xs-4">
                         <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="project_name">       
                             <option>~Select~</option>
+<<<<<<< HEAD
                              <?=($allprogram)?$allprogram:""?>
+=======
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                         </select>
                         </div>
 
@@ -62,7 +65,10 @@
                         <div class="col-xs-4">
                             <select id="serv"  class="form-control" name="service">
                                 <option name="department">~Select~</option>
+<<<<<<< HEAD
                                  <?=( $allServicesDDL)?$allServicesDDL:""?>
+=======
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                             </select>
                         </div>
 
@@ -89,15 +95,25 @@
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="project_qoute">Project Qoute :</label>
                         <div class="col-xs-3 input-group " style='padding-left:15px; float: inherit;'>
+<<<<<<< HEAD
                             <input class="form-control" list="browsers" name="browser">
                             <datalist id="browsers">
                                   <?=($allquote )?$allquote :""?>
                             </datalist>
+=======
+                               <select id="project_qoute" class="form-control">
+                                    <option value="">~Select~</option>
+                                </select>
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                             </div>
                         <label class="col-xs-3 control-label" for="client_no">Project Manager :</label>
                         <div class="col-xs-3 input-group " style='padding-left:15px'>
                                 <select id="employees" class="form-control">
                                     <option value="">~Select~</option>
+<<<<<<< HEAD
+=======
+                                    
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                                 </select>
                             </div>
                     </div>
@@ -115,6 +131,7 @@
                         <label class="col-xs-4 control-label" for="budget">No of Employees Involved :</label>
                         <div class="col-xs-2  input-group input-append " style='padding-left:15px; float: inherit;'>
                             <input required type="number" placeholder="15" class="form-control " id='emp_no' name ="emp_no"></input>
+<<<<<<< HEAD
                         </div>   
                     </div>
                     <div class="form-group col-xs-12">
@@ -141,6 +158,16 @@
                             <label class="radio-inline"><input type="radio" name="security"> Private <i class="fa fa-lock" style="color:#0094ff"></i></label>
                             <label class="radio-inline"><input type="radio" name="security"> Team <i class="fa fa-group" style="color:#0094ff"></i></label>
                             <label class="radio-inline"><input type="radio" name="security"> Team & Client <i class="fa fa-globe" style="color:#0094ff"></i></label>
+=======
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="col-xs-3 control-label" for="budget">Project Security :</label>
+                        <div class="col-xs-9  input-group input-append "style='padding-left:15px; float: inherit;'>
+                            <label class="radio-inline"><input type="radio" name="security"> Private <i class="fa fa-lock" style="color:#0094ff"></i></label>
+                            <label class="radio-inline"><input type="radio" name="security"> Team <i class="fa fa-group" style="color:#0094ff"></i></label>
+                            <label class="radio-inline"><input type="radio" name="security"> Public <i class="fa fa-globe" style="color:#0094ff"></i></label>
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                        </div>
                     </div>
 
@@ -201,14 +228,23 @@
                     data:"department="+department,
                     success:function(data)
                     {
+<<<<<<< HEAD
                         $('#employees').empty();
                         $('#employees').append("<option value=''>~Select~</option>");
+=======
+                        $('#serv').empty();
+                        $('#serv').append("<option value=''>~Select~</option>");
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                         data=JSON.parse(data);
                         console.log(data);
                         if(data.employee_id!=null)
                         {
+<<<<<<< HEAD
                             $('#employees').append("<option value='"+data.employeee_id+"'>"+data.name+"</option>");
 
+=======
+                            $('#serv').append("<option value='"+data.service_id+"'>"+data.service+"</option>");
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
                         }                        
                     }
                     });

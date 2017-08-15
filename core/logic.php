@@ -559,6 +559,7 @@
             endwhile;
             return $program;
         }
+<<<<<<< HEAD
 # categories
         public function getallcategories()
         {
@@ -566,6 +567,8 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+=======
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
 # Close Connection
         public function close()
         {

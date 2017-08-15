@@ -19,6 +19,10 @@
         {
             $data='Error';
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b7201f99d71a057ccf7d40f9bbc90ed5be45eafe
         echo json_encode($data);
     }
 ?>
