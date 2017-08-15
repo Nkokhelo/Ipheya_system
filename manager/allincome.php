@@ -78,15 +78,6 @@
 
                             <!--Income inforamtion  -->
                               <div class="form-group col-xs-12">
-                                <!-- Income name  -->
-                                <label class="col-xs-2 control-label" for="Income_name">Name :</label>
-                                <div class="col-xs-4">
-                                    <input required placeholder="A4 transpotation" class="form-control" id='Income_name' type="text" name ="Income_name"/>
-                                </div>
-
-                                <!-- Reference  -->
-                                <label class="col-xs-2 control-label" for="ref">Reference :</label>
-=======
                                 <!-- income name  -->
                                 <label class="col-xs-2 control-label" for="income_name">Name :</label>
                                 <div class="col-xs-5">
@@ -108,26 +99,7 @@
                             </div>
                             <hr style="width:100%"/>
                             <div class="form-group col-xs-12">
-                            <!-- Date  -->
-                                <label class="col-xs-2 control-label" for="t_date">Date :</label>
-                                <div class="col-xs-3">
-                                    <input required placeholder="2017-05-09" class="form-control" id='t_date' type="text" name ="t_date" row='15' col=''></input>
-                                </div>  
-                                     
-                            <!-- Payment Type -->
-                                <label class="col-xs-2 control-label col-xs-push-1" for="payment_type">Payment type:</label>
-                                <div class="col-xs-3 col-xs-push-1">
-                                <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="payment_type">       
-                                    <option value="">--None--</option>
-                            <!-- Transaction Description-->
-                              <div class="form-group col-xs-12">
-                                <label class="col-xs-2 control-label" for="details"> Description: </label>
-                                <div class="col-xs-10">
-                                    <textarea required placeholder="Mr John Sith- 50 A4 pack Deliviries" class="form-control" id='details' type="text" name ="details" rows="5" cols="10"></textarea>
-                              </div>                              
-                            </div>
-                            <hr style="width:100%"/>
-                            <div class="form-group col-xs-12">
+                            
                             <!-- Date  -->
                                 <label class="col-xs-2 control-label" for="t_date">Date :</label>
                                 <div class="col-xs-3">
