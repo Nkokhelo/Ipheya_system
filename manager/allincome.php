@@ -5,8 +5,7 @@
         require_once('../core/init.php');
         include('../core/logic.php');
         include('includes/head.php');
-        require_once('../core/controllers/cashflow-controller.php');
-        // include('includes/navigation.php');
+        // require_once('../core/controllers/incomes-controller.php');
    }
    else
    {
@@ -15,7 +14,6 @@
 ?>
 
 <body>
-
 <style>
   a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
     content: '';
@@ -28,7 +26,6 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-
             <div class='col-xs-10 b'>
               <div>
 
@@ -45,16 +42,15 @@
                   </div>
                   <div role="tabpanel" class="tab-pane fade  in active" id="newincome">
                     <div class="col-xs-12">
-                        <form class="form-horizontal" enctype="multipart/form-data" methor="post" action=''>
+                        <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' methor="post" action=''>
                           <fieldset>
                             <legend class="inlegend">Income Information</legend>
                               <div class="form-group col-xs-12">
-
                             <!-- Income type  -->
                                     <label class="col-xs-2 control-label" for="income_type">Income type :</label>
                                     <div class="col-xs-3">
                                         <select class="selectpicker form-control" id='income_t' type="text" name ="income_type">
-                                            <option value="">--Select--</option>
+                                            <option style="backgroud:#aaa" value="">--Select--</option>
                                             <option value="p">Payament</option>
                                             <option value="r">Refund</option>
                                         </select>
@@ -63,14 +59,14 @@
                                     <label class="col-xs-2 control-label supplier" id="supplier" for="supplier">Supplier:</label>
                                     <div id="supplier" class="col-xs-4 supplier">
                                         <select id="supplier" class="form-control" name="supplier">
-                                            <option>--None Selected--</option>
+                                            <option style="backgroud:#aaa">--None Selected--</option>
                                         </select>
                                     </div> 
                             <!--client  -->
                                     <label id="client" class="col-xs-2 control-label client" for="client">Client:</label>
                                     <div id="client" class="col-xs-5 client">
                                         <select id="client" class="form-control" name="client">
-                                            <option>--None Selected--</option>
+                                            <option style="backgroud:#aaa">--None Selected--</option>
                                         </select>
                                     </div>                             
                               </div>
@@ -78,17 +74,18 @@
 
                             <!--Income inforamtion  -->
                               <div class="form-group col-xs-12">
-                                <!-- income name  -->
+                                <!-- Income name  -->
                                 <label class="col-xs-2 control-label" for="income_name">Name :</label>
-                                <div class="col-xs-5">
+                                <div class="col-xs-4">
                                     <input required placeholder="A4 transpotation" class="form-control" id='income_name' type="text" name ="income_name"/>
                                 </div>
 
                                 <!-- Reference  -->
-                                <label class="col-xs-2 control-label" for="income_name">Reference :</label>
+                                <label class="col-xs-2 control-label" for="ref">Reference :</label>
                                 <div class="col-xs-3">
                                     <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref" row='15' col=''></input>
-                                </div> 
+                                </div>  
+                                
                               </div>
                             <!-- Transaction Description-->
                               <div class="form-group col-xs-12">
@@ -99,7 +96,6 @@
                             </div>
                             <hr style="width:100%"/>
                             <div class="form-group col-xs-12">
-                            
                             <!-- Date  -->
                                 <label class="col-xs-2 control-label" for="t_date">Date :</label>
                                 <div class="col-xs-3">
@@ -110,48 +106,35 @@
                                 <label class="col-xs-2 control-label col-xs-push-1" for="payment_type">Payment type:</label>
                                 <div class="col-xs-3 col-xs-push-1">
                                 <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="payment_type">       
-                                    <option value="">--None--</option>
+                                    <option style="background:#aaa">--None--</option>
                                     <option value="chsh">Cash Payment</option>
                                     <option value="card">Card Payement</option>
                                 </select>
                                 </div>
                             </div>
                             <div class="form-group col-xs-12">
-
                             <!-- category  -->
-                                <label class="col-xs-2 control-label" for="Income_name">Category :</label>
+                                <label class="col-xs-2 control-label" for="income_name">Category :</label>
                                 <div class="col-xs-4">
                                     <select class="form-control">
-                                        <option>--None--</option>
+                                        <option style="background:#aaa">--None--</option>
+                                        <?=$categories_dd?>
                                     </select>
-                                </div>  
+                                </div> 
+                              </div>
+                                <hr style="width:100%"/>  
+                              <div class="col-xs-12"> 
                             <!-- project  -->
-                                <label class="col-xs-2 control-label" for="Income_name">Proejct:</label>
+                                <h5 class="col-xs-12" style="color:#999"> <b> Is this a project income?</b></h5><br/>
+                                <label class="col-xs-2 control-label" for="income_name">Proejct:</label>
                                 <div class="col-xs-4">
                                     <select class="form-control">
-                                        <option>--None-- (not required)</option>
-                                    </select>
+                                        <option style="background:#aaa">--None--</option>
+                                        <?=$project_dd?>
+                                    </select>
+                                    <br/>
                                 </div>
-                            </div>
-                              <hr style="width:100%"/>
-                              <div class="col-xs-12">
-                            <!-- fie decition  -->
-                                <div class="form-group col-xs-12">
-                                    <div class="col-xs-6">
-                                      <label for="choose">Income Attachemnts?</label>
-                                <div class="col-xs-4">
-                                    <select class="form-control">
-                                        <option>--None--</option>
-                                    </select>
-                                </div>  
-                            <!-- project  -->
-                                <label class="col-xs-2 control-label" for="Income_name">Proejct:</label>
-                                <div class="col-xs-4">
-                                    <select class="form-control">
-                                        <option>--None-- (not required)</option>
-                                    </select>
-                                </div>
-                            </div>
+                              </div>
                               <hr style="width:100%"/>
                               <div class="col-xs-12">
                             <!-- fie decition  -->
@@ -163,17 +146,14 @@
                                         <label class="radio-inline"><input id="no" type="radio" name='choose' value="no" selected='true'>No</label>
                                       </div>
                                     </div>
-
                                     <div class="col-xs-6" id="files">
                                       <label for="choose">Please choose a file pdf/doc/png/jpg</label>
                                       <div class="col-xs-12" >
-                                        <input type="file" name="attachment[]" multiple/>
+                                        <input type="file" class="form-control-file" name="attachment[]" multiple/>
                                       </div>
                                     </div>
                                 </div>  
                             </div>
-
-                            
                             <hr class="bhr" style="width:100%"/>
                             <div class="form-group col-xs-12">
                               <div class="col-xs-4 col-xs-offset-4">
@@ -191,6 +171,7 @@
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
+
   <script>
     $(document).ready(function(){
         $('.supplier').hide();
@@ -213,19 +194,39 @@
             var p_type = $(this).val();
             if(p_type=='r')
             {
-              $('.client').hide();
-              $('.supplier').show();
+              $('.supplier').hide();
+              $('.client').show();
             }
             else if(p_type=='p')
             {
-              $('.client').show();
-              $('.supplier').hide();
+              $('.supplier').show();
+              $('.client').hide();
             }
             else
             {
               $('.supplier').hide();
               $('.client').hide();
             }
+          });
+
+          $('form').submit(function(evt){
+            alert('stop');
+            evt.preventDefault();// to stop form submitting
+          });
+          //form validator file 
+          $('INPUT[type="file"]').change(function () {
+            var ext = this.value.match(/\.(.+)$/)[1];
+            switch (ext) {
+                case 'jpg':
+                case 'jpeg':
+                case 'png':
+                case 'gif':
+                    $('#uploadButton').attr('disabled', false);
+                    break;
+                default:
+                    alert('This is not an allowed file type.');
+                    this.value = '';
+              }
           });
     });
   </script>
