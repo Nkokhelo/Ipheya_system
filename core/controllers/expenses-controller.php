@@ -1,9 +1,9 @@
 <?php
 
     $logic = new Logic();
+    $feedback ="";
     if(isset($_POST['save']))
     {
-        $feedback =array('alert'=>'', 'message'=>'');
         $t_date =$_POST['t_date'];
         $id =$_POST['id'];
         $ei_name =$_POST['ei_name'];
@@ -18,8 +18,18 @@
         
         $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`, `ei_payment_type`, `ei_amount`, `ref_id`, `supplier_no`, `client_no`, `project_no`, `category_id`) 
         VALUES (null,'$id','$ei_name','$ei_date','$ei_type','$ei_payment_type','$ei_amount','$ref_id','$supplier_no','$client_no','$project_no','$category_id')";
+         $result = mysqli_query($logic->connect(),$save);
+        if(!$result)
+        {
+                $feedback =$logic->display_errors('Error'.mysqli_error($logic->connect()));
+        }
+        else
+        {
+              $feedback =$logic->display_success("Saved successfuly");
+        }
     }  
-
+        
+    
     $trans_query = "SELECT * FROM expense_income";
     $transactions='';
     $payments =array();

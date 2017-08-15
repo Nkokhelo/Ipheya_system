@@ -44,6 +44,7 @@
                     <div class="col-xs-12">
                         <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' methor="post" action=''>
                           <fieldset>
+                            <?=($feedback)?$feedback:""?>
                             <legend class="inlegend">Expense Information</legend>
                               <div class="form-group col-xs-12">
                             <!-- Expense type  -->
