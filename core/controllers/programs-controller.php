@@ -79,6 +79,14 @@
         $edate =$_POST['edate'];
         $employee_no =$_POST['employee_no'];
         $client_no =$_POST['client_no'];
+        $duration =$_POST['duration'];
+        $duration_type=$_POST['duration_type'];
+        $department= $_POST ['department'];
+        $service=$_POST['service'];
+        $budget= $_POST['budget'];
+        $no_of_emp=$_POST['budget'];
+        $patner=$_POST['patner'];
+        $Visibility=$_POST['Visibility'];
 
         $client_unique = uniqid();
         $project_no ="P00".strtoupper(substr($client_unique,6,4));
