@@ -45,19 +45,6 @@
                   </div>
                   <div role="tabpanel" class="tab-pane fade  in active" id="newincome">
                     <div class="col-xs-12">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" ><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Incomes</a></li>
-                  <li role="presentation" class="active"><a href="#newincome"  aria-controls="profile" role="tab" data-toggle="tab">New Income</a></li>
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane fade" id="list">
-
-                  </div>
-                  <div role="tabpanel" class="tab-pane fade  in active" id="newincome">
-                    <div class="col-xs-12">
                         <form class="form-horizontal" enctype="multipart/form-data" methor="post" action=''>
                           <fieldset>
                             <legend class="inlegend">Income Information</legend>
