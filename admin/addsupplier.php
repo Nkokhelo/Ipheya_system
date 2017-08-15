@@ -8,10 +8,6 @@
         require_once('../core/controllers/supplier-controller.php');
         include('includes/employee-session.php');
         // include('includes/navigation.php');
-<<<<<<< HEAD
-=======
-        
->>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
    }
    else
    {

@@ -22,9 +22,5 @@
      <script type = "text/javascript" src = "../assets/plugins/datatables/dataTables.bootstrap.js"></script> 
     <link rel = "stylesheet" href = "../assets/Site.css" type = "text/css"/>
     <link rel = "stylesheet" href = "../assets/client.css" type = "text/css"/>
-<<<<<<< HEAD
     <link rel="stylesheet" src="../assets/font-awesome/font-awesome2/css/font-awesome.min.css" type="text/css">
-=======
-    <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css">
->>>>>>> accbf54a17fe5b81da2a63dd12f77ac0fc3e6b1d
   </head>
