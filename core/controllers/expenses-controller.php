@@ -20,7 +20,7 @@
          $result = mysqli_query($logic->connect(),$save);
         if(!$result)
         {
-            die(mysqli_error());
+            die(mysqli_error($logic->connect()));
                 $feedback =$logic->display_error(mysqli_error($logic->connect()));
         }
         else
