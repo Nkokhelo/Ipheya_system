@@ -86,7 +86,7 @@
         $budget= $_POST['budget'];
         $no_of_emp=$_POST['budget'];
         $patner=$_POST['patner'];
-        $Visibility=$_POST['Visibility'];
+        $Visibility=$_POST['Visibility']; 
 
         $client_unique = uniqid();
         $project_no ="P00".strtoupper(substr($client_unique,6,4));
