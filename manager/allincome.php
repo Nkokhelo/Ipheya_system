@@ -110,10 +110,7 @@
                                 <label class="col-xs-2 control-label" for="income_name">Reference :</label>
                                 <div class="col-xs-3">
                                     <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref" row='15' col=''></input>
-                                </div>  
-                                
-
-<<<<<<< HEAD
+                                </div> 
                               </div>
                             <!-- Transaction Description-->
                               <div class="form-group col-xs-12">
@@ -135,10 +132,6 @@
                                 <div class="col-xs-3 col-xs-push-1">
                                 <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="payment_type">       
                                     <option value="">--None--</option>
-=======
-                            </div>
-                            
->>>>>>> 3ecc84af5dd657cdb6f9846e7bd9dbb7baf54874
                             <!-- Transaction Description-->
                               <div class="form-group col-xs-12">
                                 <label class="col-xs-2 control-label" for="details"> Description: </label>
