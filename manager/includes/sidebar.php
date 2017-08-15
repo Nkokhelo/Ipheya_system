@@ -42,9 +42,9 @@
                     </a>
                       <ul class="collapse list-unstyled" id="companyMenu">
                       <li><a  href="cashflow.php">Finacial Reports</a></li>
-                      <li><a  href="allprojects.php">Projects Reports</a></li>
-                      <li><a  href="allprojects.php">Clients Reports</a></li>
-                      <li><a  href="allprojects.php">Inventory Reports</a></li>
+                      <li><a  href=".php">Projects Reports</a></li>
+                      <li><a  href=".php">Clients Reports</a></li>
+                      <li><a  href=".php">Inventory Reports</a></li>
                     </ul>
                   </li> 
                   
