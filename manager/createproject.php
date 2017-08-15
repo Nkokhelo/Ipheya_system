@@ -113,28 +113,22 @@
                             <input required placeholder="R 10 000,00" class="form-control " id='budget' name ="budget"></input>
                         </div>
                         <label class="col-xs-4 control-label" for="budget">No of Employees Involved :</label>
-                        <div class="col-xs-2  input-group input-append " style='padding-left:15px; float: inherit;'>
+                        <div class="col-xs-1  input-group input-append " style='padding-left:15px; float: inherit;'>
                             <input required type="number" placeholder="15" class="form-control " id='emp_no' name ="emp_no"></input>
                         </div>   
                     </div>
                     <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for='charge'>Charge :</label>
-                        <div class="col-xs-6">
-                            <input required placeholder="R 1000,00" class="form-control col-xs-3" id='charge' name ="charge"></input>
+                        <label class="col-xs-2 control-label" for="charge">Charge :</label>
+                        <div class="col-xs-2  input-group input-append " style='padding-left:15px; float: inherit;'>
+                            <input required placeholder="18,00" class="form-control " id='charge' name ="charge"></input>
+                        </div>   
+                        <label class="col-xs-2 control-label col-xs-pull-1" for="charge">Per/hour</label>
+
+                        <label class="col-xs-2 control-label" for='hours'>Daily-hours:</label>
+                        <div class="col-xs-2 input-group input-append" style='padding-left:15px; float: inherit;'>
+                            <input required placeholder="8.00" class="form-control" id='hours' name ="hours"></input>
                         </div>
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for='charge'>daily-hour:</label>
-                        <div class="col-xs-6">
-                            <input required placeholder="8.00" class="form-control col-xs-3" id='hours' name ="hours"></input>
-                        </div>
-                    </div>
                      </div>
-                        <label class="col-xs-6 control-label" for="budget"></label>
-                        <div class="col-xs-4  input-group input-append " style='padding-left:30px; float: inherit;'>
-                            <input required type="number" placeholder="per-hour" class="form-control " id='hourly' name ="hourly"></input>
-                        </div>
-                    </div>
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="budget">Visibility :</label>
                         <div class="col-xs-9  input-group input-append "style='padding-left:15px; float: inherit;'>
@@ -143,18 +137,15 @@
                             <label class="radio-inline"><input type="radio" name="security"> Team & Client <i class="fa fa-globe" style="color:#0094ff"></i></label>
                        </div>
                     </div>
-
                 </fieldset>
                 <hr class="bhr"/>        
-                  <div class="col-xs-12">
-                        <div class="form-group">
-                          <div class="col-xs-offset-2 col-xs-8" id='change'>
-                              <input required placeholder=" " type="submit"id='save' name="save_project" class="btn btn-block btn-success" value="create"/>
-                              <!--<input required placeholder=" " type="submit"id='edit' name="update_program" class="btn btn-block btn-primary" value="update"/>-->
-                              <!--<input required placeholder=" " type="submit"id='delete' name="delete_program" class="btn btn-block btn-danger" value="archive"/>-->
-                          </div>
-                      </div>
-                  </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-8" id='change'>
+                            <input required placeholder=" " type="submit"id='save' name="save_project" class="btn btn-block btn-success" value="create"/>
+                        </div>
+                    </div>
+                </div>
               </form>
             </div>
         </div>
