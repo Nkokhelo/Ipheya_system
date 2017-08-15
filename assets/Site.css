@@ -278,6 +278,7 @@
         min-width: 80px;
         max-width: 80px;
         text-align: center;
+        border-left: 2px rgb(169, 176, 187) solid;
     }
     
     #sidebar.active .sidebar-header h3,
@@ -347,6 +348,7 @@
     
     #sidebar ul li a:hover {
         color: rgb(169, 176, 187);
+        border-left: 2px rgb(169, 176, 187) solid;
         transition: ease .2s;
     }
     

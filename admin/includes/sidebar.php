@@ -5,7 +5,7 @@
                 </div>
                 <!-- -My new side bar-->
                 <ul class="list-unstyled components">
-                  <li class="active">
+                  <li>
                     <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
                       <i class='fa fa-building-o'></i>
                       Departments
@@ -50,7 +50,7 @@
                   <li>
                     <a href="../inventory/items.php">
                       <i class='fa fa-cubes'></i>
-                      Inventory management
+                      Inventory
                     </a>
                   </li>
                   <li>
@@ -92,17 +92,26 @@
             <div class="notification" onclick="show">
               <p class="not-bell glyphicon glyphicon-bell" ></p>
             </div>
-
+-->
 <script>
   $(document).ready(function(){
-    $(".notification").click(function(){
-            $(".notification").toggleClass("move");
-            // $(".notification-container").toggleClass("show-not");
-            // $(".notification-container").toggleClass("hide-not");
-            // $("#not").toggleClass("hide-not");
-            $("#not").toggle(300);
-            $(".notification-container").toggle(300);
-    });
+    // $(".notification").click(function(){
+    //         $(".notification").toggleClass("move");
+    //         // $(".notification-container").toggleClass("show-not");
+    //         // $(".notification-container").toggleClass("hide-not");
+    //         // $("#not").toggleClass("hide-not");
+    //         $("#not").toggle(300);
+    //         $(".notification-container").toggle(300);
+    // });
+    // $("#sidebar .components li").on("click", function() {
+    //   $("#sidebar .components li").removeClass("active");
+    //   $(this).addClass("active");
+    // });
+    $("#sidebar .components>li").each(function() {
+    var navItem = $(this);
+    if (navItem.find("a").attr("href") == location.pathname) {
+      navItem.addClass("active");
+    }
+});
   });
 </script>
--->
