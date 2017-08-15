@@ -3,7 +3,21 @@
     $logic = new Logic();
     if(isset($_POST['save']))
     {
-        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`, `ei_payment_type`, `ei_amount`, `ref_id`, `supplier_no`, `client_no`, `project_no`, `category_id`) VALUES (null, 'event food', ".$_POST['t_date'].",".$_POST['expense_type'].",".$_POST['payment_type'].", ".$_POST['amount'].", '1', 'S1720ED5A', 'C172060F8', 'PRG0076F6', '14')";
+        $feedback =array('alert'=>'', 'message'=>'');
+        $t_date =$_POST['t_date'];
+        $id =$_POST['id'];
+        $ei_name =$_POST['ei_name'];
+        $ei_date =$_POST['ei_date'];
+        $ei_type =$_POST['ei_type'];
+        $ei_payment_type =$_POST['ei_payment_type'];
+        $ei_amount =$_POST['ei_amount'];
+        $ref_id=$_POST['ref_id'];
+        $supplier_no= $_POST ['supplier_no'];
+        $client_no=$_POST['client_no'];
+        $category_id= $_POST['category_id'];
+        
+        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`, `ei_payment_type`, `ei_amount`, `ref_id`, `supplier_no`, `client_no`, `project_no`, `category_id`) 
+        VALUES (null,'$id','$ei_name','$ei_date','$ei_type','$ei_payment_type','$ei_amount','$ref_id','$supplier_no','$client_no','$project_no','$category_id')";
     }  
 
     $trans_query = "SELECT * FROM expense_income";

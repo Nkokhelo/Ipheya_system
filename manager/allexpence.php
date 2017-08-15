@@ -47,25 +47,25 @@
                             <legend class="inlegend">Expense Information</legend>
                               <div class="form-group col-xs-12">
                             <!-- Expense type  -->
-                                    <label class="col-xs-2 control-label" for="expense_type">Expense type :</label>
+                                    <label class="col-xs-2 control-label" for="ei_type">Expense type :</label>
                                     <div class="col-xs-3">
-                                        <select class="selectpicker form-control" id='expense_t' type="text" name ="expense_type">
+                                        <select class="selectpicker form-control" id='expense_t' type="text" name ="ei_type">
                                             <option style="backgroud:#aaa" value="">--Select--</option>
                                             <option value="p">Payament</option>
                                             <option value="r">Refund</option>
                                         </select>
                                     </div>
                             <!--Supplier  -->
-                                    <label class="col-xs-2 control-label supplier" id="supplier" for="supplier">Supplier:</label>
+                                    <label class="col-xs-2 control-label supplier" id="supplier" for="supplier_no">Supplier:</label>
                                     <div id="supplier" class="col-xs-4 supplier">
-                                        <select id="supplier" class="form-control" name="supplier">
+                                        <select id="supplier" class="form-control" name="supplier_no">
                                             <option style="backgroud:#aaa">--None Selected--</option>
                                         </select>
                                     </div> 
                             <!--client  -->
-                                    <label id="client" class="col-xs-2 control-label client" for="client">Client:</label>
+                                    <label id="client" class="col-xs-2 control-label client" for="client_no">Client:</label>
                                     <div id="client" class="col-xs-5 client">
-                                        <input id="client" datalist="clients" class="form-control" name="client"></input>
+                                        <input id="client" datalist="clients" class="form-control" name="client_no"></input>
                                         <datalist id="clients">
                                           <option value=""></option>
                                         </datalist>
@@ -76,9 +76,9 @@
                             <!--Expense inforamtion  -->
                               <div class="form-group col-xs-12">
                                 <!-- Expense name  -->
-                                <label class="col-xs-2 control-label" for="expense_name">Name :</label>
+                                <label class="col-xs-2 control-label" for="ei_name">Name :</label>
                                 <div class="col-xs-4">
-                                    <input required placeholder="A4 transpotation" class="form-control" id='expense_name' type="text" name ="expense_name"/>
+                                    <input required placeholder="A4 transpotation" class="form-control" id='expense_name' type="text" name ="ei_name"/>
                                 </div>
 
                                 <!-- Reference  -->
