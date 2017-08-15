@@ -13,7 +13,6 @@
             <li><a href="../login.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           </ul>
       </div>
-          </ul>
       </div>
 
       </a>

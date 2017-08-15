@@ -4,53 +4,74 @@
     {
         require_once('../core/init.php');
         include('../core/logic.php');
-        include('includes/head.php');
+        include('includes/head2.php');
         include('includes/employee-session.php');
         require('../core/controllers/taskController.php');
-        include('includes/navigation.php');
+        // include('includes/navigation.php');
     }
     else
     {
         header('Location:../login.php');
     }
 ?>
-
-<div class="col-sm-12">
-    <form method="POST" action="AssignTask.php">
-        <div class="col-sm-6 b" style="padding-bottom:15px;">
-            <h2><?=$title?></h2>
-                <hr class="bhr"/>
-                <div class="col-sm-12" style="padding-bottom:15px;">
-                        <div class="col-sm-12"><b>Task Date </b> <?=$date?> / <b>Task Duration </b> <?=$duration?><hr/></div>
-                        <div class="col-sm-2" style="padding-bottom:12px"><b>Description </b></div>
-                        <div class="col-sm-10" style="padding-bottom:12px">
-                            <?=$description?>
-                        </div>
-                      <hr style="width:100%"/>
-                      <div class="col-sm-12"></div>
-                </div>
-                <div id='dropemployee' class="col-sm-12" id="container" style="border: dashed 3px #eee; height:250px; padding-top:15px;">
-                    <?= ((isset($error))? $error: "<h4>Please drag and drop employee here to add to a task</h4>");?>
-                </div>
-                <hr class="bhr" style="width:100%"/>
-            <button type="submit" class="btn btn-default" name="saveassignment"><span class="glyphicon glyphicon-save"></span> Save</button>
-        </div>
-        <div class="col-sm-6 shift b">
-            <h2>Free Employee</h2>
-            <hr class="bhr"/>
-            <div class="col-sm-12">
-                <div class="col-sm-12">
-                    <div class="col-sm-12">
-                        <div class="col-sm-4"><b>Employee Name</b></div> <div class="col-sm-4"><b>Email</b></div> <div class="col-sm-4"><b>Department</b></div>   
+<body>
+  <div class="wrapper">
+      <?php include 'includes/sidebar.php'?>
+      <div id='content'>
+        <div class='row'>
+            <div class="col-xs-11 b">
+                <fieldset>
+                    <legend class="thelegend">Assign Employee</legend>
+                    <form method="POST" action="AssignTask.php">
+                    <div class="col-xs-6">
+                            <fieldset>
+                                <legend class="inlegend">Task Information</legend>
+                                <div class="form-group col-xs-6">
+                                    <label clas="control-label col-xs-6">Title :</labe>
+                                    <?=$title?>
+                                </div>
+                                <div class="form-group col-xs-6">
+                                    <label clas="control-label col-xs-6">Duration :</labe>
+                                    <?=$duration?>(s)
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label clas="control-label col-xs-12">Description :</labe>
+                                    <textarea class='form-control col-xs-12' style="heigh:90px; width:420px" row='30' col="30" readonly><?=$description?></textarea>
+                                </div>
+                                <div id='dropemployee' class="col-sm-12" id="container" style="border: dashed 3px #eee; height:250px; padding-top:15px;">
+                                <?= ((isset($error))? $error: "<h4>Please drag and drop employee here to add to a task</h4>");?>
+                                </div>
+                            </fieldset>
                     </div>
-                </div>
-                <div class="col-sm-12" id="allemp">
-                    <?=$freeemployees;?>    
-                </div>
+                    <div class="col-sm-6">
+                        <fieldset>
+                            <legend class='inlegend'>Employees</legend>
+                        </fieldset>
+                        <div class="col-sm-12">
+                            <div class="col-sm-12">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-4"><b> Name</b></div> <div class="col-sm-4"><b>Email</b></div> <div class="col-sm-4"><b>Department</b></div>   
+                                </div>
+                            </div>
+                            <div class="col-sm-12" id="allemp">
+                                <?=$freeemployees;?>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <hr style="width:100%"/>
+                            <div class="col-xs-6 col-xs-offset-3">
+                                <button type="submit" class="btn btn-default form-control" name="saveassignment"><span class="glyphicon glyphicon-save"></span> Save Task</button>
+                            </div>
+                        </div>
+                </form>
+                </fieldset>
             </div>
         </div>
-    </form>
-</div>
+      </div>
+  </div>
+  <?php include('includes/footer.php'); ?>
+</body>
 <script>
    $(document).ready(function() 
    {

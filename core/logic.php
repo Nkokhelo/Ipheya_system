@@ -18,6 +18,20 @@
             return $qey;
         }
 
+        public function getEmployeeByEmpNo($emp_no)
+        {
+            $employee='';
+            $result = $this->getallEmployees();
+            while($employees = mysqli_fetch_assoc($result))
+            {
+                if($employees['emp_no']== $emp_no)
+                {
+                    $employee = $employees;
+                }
+            }
+            return $employee;
+        }
+
         public function getEmployeeById($id)
         {
             $sql ="Select * from employees where employee_id='$id'";
@@ -75,7 +89,32 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-
+        public function getClientByNo($no)
+        {
+            $result = $this->getallClients();
+            $client ='';
+            while($clientdata = mysqli_fetch_assoc($result))
+            {
+                if($no = $clientdata['client_no'])
+                {
+                    $client = $clientdata;
+                }
+            }
+            return $client;
+        }        
+        public function getClientByIdNo($no)
+        {
+            $result = $this->getallClients();
+            $client ='';
+            while($clientdata = mysqli_fetch_assoc($result))
+            {
+                if($no = $clientdata['client_id'])
+                {
+                    $client = $clientdata;
+                }
+            }
+            return $client;
+        }
         public function getClientByEmail($email)
         {
             $sql ="Select * from clients where email='$email'";
@@ -317,6 +356,12 @@
         }
 
 #services
+        public function getallServices()
+        {
+            $sql ="SELECT * FROM services";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+        }
         public function getServiceIdByName($serviceName)
         {
             $serviceSql = "SELECT * FROM services WHERE service =$serviceName";
@@ -331,6 +376,21 @@
             $serviceID = mysqli_fetch_row($query)[1];
             return $serviceID;
         }
+
+        public function getServiceById($no)
+        {
+            $result = $this->getallServices();
+            $service ='';
+            while($servicedata = mysqli_fetch_assoc($result))
+            {
+                if($no = $servicedata['service_id'])
+                {
+                    $service = $servicedata;
+                }
+            }
+            return $service;
+        }
+
         public function AssociateTarget($ip,$email)
         {
           $user_sql = mysqli_query($this->connect(),"SELECT * FROM clients WHERE email = '$email'");
@@ -363,6 +423,8 @@
 
           }
         }
+
+        
 #Surveying information
     function getallSuveyingInfo()
     {
@@ -486,15 +548,46 @@
 #project and programs
         public function getallProjets()
         {
-                    $sql ="SELECT * FROM projects";
-                    $qey =mysqli_query($this->connect(),$sql);
-                    return $qey;
+            $sql ="SELECT * FROM projects";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
         }
         public function getallPrograms()
         {
             $sql ="SELECT * FROM programs";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
+        }
+        public function getProjectByNo($project_no)
+        {
+            $project ='';
+            $result = $this->getallProjets();
+            while($projects = mysqli_fetch_assoc($result))
+            {
+                if($projects['project_no']==$project_no)
+                {
+                    $project = $projects;
+                }
+            }
+            return $project;
+        }
+        public function getProgramByNo($progam_no)
+        {
+            $program='';
+            $result = $this->getallPrograms();
+            while($programs = mysqli_fetch_assoc($result)):
+                if($programs['program_no']==$progam_no)
+                {
+                    $program=$programs;
+                }
+            endwhile;
+            return $program;
+        }
+
+#Client History
+        public function clientHistoryReview($client,$service)
+        {
+
         }
 # Close Connection
         public function close()

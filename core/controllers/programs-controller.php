@@ -1,6 +1,6 @@
 <?php
         $logic = new Logic();
-
+#save
     if(isset($_POST['save_program']))
     {
         $feedback =array('alert'=>'', 'message'=>'');
@@ -25,6 +25,8 @@
             }
         }
     }
+
+#update
     if(isset($_POST['update_program']))
     {
         $feedback =array('alert'=>'', 'message'=>'');
@@ -50,6 +52,7 @@
             }
         }
     }
+#delete
     if(isset($_POST['delete_program']))
     {
         $feedback =array('alert'=>'', 'message'=>'');
@@ -64,8 +67,8 @@
             {
                 $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong> has been achived!');
             }
-        
     }
+#save Project
     if(isset($_POST['save_project']))
     {
         $feedback =array('alert'=>'', 'message'=>'');
@@ -93,39 +96,47 @@
               $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> Project saved !');
         }
     }
-
+#view program
     if(isset($_GET['view']))
     {
         $p_no = $_GET['view'];
         $feedback = array('alert'=>'','message'=>'');
         $program ='';
-        $project = '';
-        $result = $logic->getallPrograms();
-        $i=0;
+        $get_project = '';
+        $pi=0;
         $presult = $logic->getallProjets();
-        while($programs = mysqli_fetch_assoc($result)):
-            if($programs['program_no']==$p_no)
-            {
-                $program=$programs;
-                while($projects = mysqli_fetch_assoc($presult))
-                {
-                    if($programs['program_no']==$projects['program_no'])
-                    {
-                        // $project = $projects;
-                        $i++;
-                    }
-                }
-                $i=0;
-            }
-        endwhile;
-        if($project =='')
+        $program = $logic->getProgramByNo($p_no);
+        while($projects = mysqli_fetch_assoc($presult))
         {
-            // die('null');
-            $feedback =array('alert'=>'alert alert-info', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-alert"></span> Info :</strong> No project under this program <a class="alert-link data-toggle="modal" data-target="#addproject" onclick="">Create new project?</a>');
+            if($projects['program_no']==$p_no)
+            {
+                $no = $projects['project_no'];
+                $get_project .="<a href='viewproject.php?pview=$no&prog=".$_GET['view']."'>".$projects['project_name']."</a>, ";
+                $pi++;
+            }
         }
-
+        $get_project =rtrim($get_project,', ');
+        if($get_project =='')
+        {
+            $pi=0;
+            $feedback =array('alert'=>'alert alert-info', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-alert"></span> Info :</strong> No project under this program <a class="alert-link" data-toggle="modal" data-target="#addproject" onclick="">Create new project?</a>');
+        }
+        //TODO: Here You should allow a user to enter a client No of employee no 
+    }
+#view project
+    if(isset($_GET['pview']))
+    {
+        $project_no = $_GET['pview'];
+        $viewproject ='';
+        $employee='';
+        $client ='';
+        $viewproject = $logic->getProjectByNo($_GET['pview']);//get project data from a a database
+        $employee= $logic->getEmployeeByEmpNo($viewproject['employee_no']);//get employee information from a database
+        $client = $logic ->getClientByNo($viewproject['client_no']);// get client information from a database
+        
     }
 
+#getallprograms
     $result = $logic->getallPrograms();
     $presult = $logic->getallProjets();
     $prog_list='';
