@@ -41,7 +41,7 @@
                     <div class="row">
                       <div class="col-xs-12">
                         <?php if($e_trans==''){?>
-                          <?=$feedback?>
+                          <?=$efeedback?>
                         <?php } else{ ?>
                           <h3 class="text-center" style="color:#888">All Expenses</h3><hr class="bhr"/>
                           <table class="table table-bordered table-hover">
@@ -63,7 +63,7 @@
                     <div class="col-xs-12">
                         <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' method="post" action='allexpence.php'>
                           <fieldset>
-                            <?=($feedback)?$feedback:""?>
+                            <?=($efeedback)?$efeedback:""?>
                             <legend class="inlegend">Expense Information</legend>
                               <div class="form-group col-xs-12">
                             <!-- Expense type  -->

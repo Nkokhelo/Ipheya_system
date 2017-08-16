@@ -41,7 +41,7 @@
                     <div class="row">
                       <div class="col-xs-12">
                         <?php if($i_trans==''){?>
-                          <?=$feedback?>
+                          <?=$ifeedback?>
                         <?php } else{ ?>
                           <h3 class="text-center" style="color:#888">All Incomes</h3><hr class="bhr"/>
                           <table class="table table-bordered table-hover">
@@ -49,7 +49,7 @@
                               <th>Ref</th><th>Name</th><th>Description</th><th>Price</th>
                             </thead>
                             <tbody>
-                              <?=$e_trans?>
+                              <?=$i_trans?>
                             </tbody>
                             <tfoot>
                               
@@ -61,9 +61,9 @@
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="newincome">
                     <div class="col-xs-12">
-                        <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' method="post" action='allexpence.php'>
+                        <form class="form-horizontal" enctype="multipart/form-data" id='incomeForm' method="post" action='allincome.php'>
                           <fieldset>
-                            <?=($feedback)?$feedback:""?>
+                            <?=($ifeedback)?$ifeedback:""?>
                             <legend class="inlegend">Income Information</legend>
                               <div class="form-group col-xs-12">
                             <!-- Income type  -->
@@ -156,7 +156,7 @@
                                 <div class="col-xs-4">
                                     <select class="form-control" name="category_id">
                                         <option style="background:#aaa">--None--</option>
-                                        <?=$categories_dd?>
+                                        <?=$i_categories_dd?>
                                     </select>
                                 </div> 
                                 <label class="col-xs-2 control-label" for="amount">Amount :</label>
