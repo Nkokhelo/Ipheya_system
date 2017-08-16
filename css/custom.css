@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'federalescort';
+    src: url('../assets/font/federalescort.ttf') format('truetype');
+}
+
+.nav {
+    margin-bottom: 100px;
+}
+
+.nav>li {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.nav>li>a {
+    color: rgba(169, 176, 187, 0.70);
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 1px;
+}
+
+.nav>li>a:link {
+    color: rgba(169, 176, 187, 0.70);
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.nav>li>a:visited {
+    color: rgba(169, 176, 187, 0.70);
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.nav>li>a:hover {
+    color: rgb(169, 176, 187);
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 20px;
+    transition: ease .2s;
+    background: transparent;
+}
+
+.nav>li>a:active {
+    color: rgb(169, 176, 187);
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 20px;
+    transition: ease .2s;
+}
+
+a:after {
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: ' ';
+    color: transparent;
+    background: #aaa;
+    height: 3px;
+    transition: ease-in .2s;
+}
+
+.nav>li>a:active:after {
+    width: 100%;
+}
+
+.nav>li>a:hover:after {
+    width: 100%;
+}
+
+#foot>.col-md-4>ul>li {
+    list-style: none;
+    text-align: left;
+}
