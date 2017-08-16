@@ -2,7 +2,16 @@
 
     $logic = new Logic();
     $feedback ="";
-    if(isset($_POST['save']))
+    $e_trans ="";
+    $i_trans="";
+    $transactions="";
+    $payments =array();
+    $project_dd ="";
+    $categories_dd="";
+    $clients_dd="";
+    $suppliers_dd="";
+
+    if(isset($_POST['save_expence']))
     {
         $project_no=$_POST['project_no'];
         $ei_name =$_POST['ei_name'];
@@ -14,13 +23,15 @@
         $supplier_no= $_POST ['supplier_no'];
         $client_no=$_POST['client_no'];
         $category_id= $_POST['category_id'];
+        $other = $_POST['other'];
+        $ei_description = $_POST['ei_description'];
         
-        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`, `ei_payment_type`, `ei_amount`, `ref_id`, `supplier_no`, `client_no`, `project_no`, `category_id`) 
-        VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_payment_type','$ei_amount','$ref_id','$supplier_no','$client_no','$project_no','$category_id')";
+        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`,`ei_description`, `ei_payment_type`, `ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`expense_income`) 
+        VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_description','$ei_payment_type','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','e')";
          $result = mysqli_query($logic->connect(),$save);
         if(!$result)
         {
-            // die(mysqli_error($logic->connect()));
+                die($save);
                 $feedback =$logic->display_error(mysqli_error($logic->connect()));
         }
         else
@@ -28,25 +39,39 @@
               $feedback =$logic->display_success("Saved successfuly");
         }
     }  
+    if(isset($_POST['save_income']))
+    {
+        $project_no=$_POST['project_no'];
+        $ei_name =$_POST['ei_name'];
+        $ei_date =$_POST['ei_date'];
+        $ei_type =$_POST['ei_type'];
+        $ei_payment_type =$_POST['ei_payment_type'];
+        $ei_amount =$_POST['ei_amount'];
+        $ref_no=$_POST['ref_no'];
+        $supplier_no= $_POST ['supplier_no'];
+        $client_no=$_POST['client_no'];
+        $category_id= $_POST['category_id'];
+        $other = $_POST['other'];
         
-    
-    $trans_query = "SELECT * FROM expense_income";
-    $transactions='';
-    $payments =array();
-    $project_dd ='';
-    $categories_dd='';
-    $clients_dd='';
-    $suppliers_dd='';
-    $query = mysqli_query($logic->connect(),$trans_query);
+        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`, `ei_payment_type`, `refe_no`,`ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`expense_income`) 
+        VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_payment_type','$ref_no','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','i')";
+         $result = mysqli_query($logic->connect(),$save);
+        if(!$result)
+        {
+                die($save);
+                $feedback =$logic->display_error(mysqli_error($logic->connect()));
+        }
+        else
+        {
+              $feedback =$logic->display_success("Saved successfuly");
+        }
+        exit;
+    }  
 
-    if(!$query)
+    $allexpense = $logic->getallExpenses();
+    while ($expenses = mysqli_fetch_assoc($allexpense))
     {
-        die("Error".mysqli_error($logic->connect()));
-    }
-
-    while ($p = mysqli_fetch_assoc($query))
-    {
-        // $transactions.="<tr><td>".$p['Date']."</td><td>".$p['payment_status']."</td><td>".$p['Amount_Paid']."</td><td style='color:green' align='center'><span class='glyphicon glyphicon-arrow-up'></span></td></tr>";
+        $e_trans.="<tr><td>".$expenses['ref_no']."</td><td>".$expenses['ei_name']."</td><td>".$expenses['ei_description']."</td><td align='right'>R".number_format($expenses['ei_amount'],2,","," ")."</td></tr>";
     }
     $allproject =$logic->getallProjets();
     while($projects = mysqli_fetch_assoc($allproject))
@@ -70,5 +95,11 @@
     while($clients = mysqli_fetch_assoc($allproject))
     {
       $clients_dd .= "<option value='".$clients['client_no']."'>".$clients["name"]."</option>";
+    }
+
+    if($e_trans=="")
+    {
+        $feedback = $logic->display_info("No Expenses at the moment!");
+        exit;
     }
 ?>    

@@ -29,7 +29,7 @@
                     <li><a  href="#Resolved">Resolved</a></li>-->
                 </ul>
               </div>
-              <div class="container-fluid" style="padding:2%;background-color:#fff;border:1px solid #ddd;border-top:none;">
+              <div class="container-fluid">
                 <div class="col-lg-12">
                   <div class="tab-content">
                       <div role="tabpanel" class="tab-pane fade in active" id="table">

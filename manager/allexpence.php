@@ -31,16 +31,35 @@
 
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" ><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Expenses</a></li>
-                  <li role="presentation" class="active"><a href="#newexpense"  aria-controls="profile" role="tab" data-toggle="tab">New Expense</a></li>
+                  <li role="presentation" class="active"><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Expenses</a></li>
+                  <li role="presentation" ><a href="#newexpense"  aria-controls="profile" role="tab" data-toggle="tab">New Expense</a></li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                  <div role="tabpanel" class="tab-pane fade" id="list">
-
+                  <div role="tabpanel" class="tab-pane fade in active" id="list">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <?php if($e_trans==''){?>
+                          <?=$feedback?>
+                        <?php } else{ ?>
+                          <h3 class="text-center" style="color:#888">All Expenses</h3><hr class="bhr"/>
+                          <table class="table table-bordered table-hover">
+                            <thead>
+                              <th>Ref</th><th>Name</th><th>Description</th><th>Price</th>
+                            </thead>
+                            <tbody>
+                              <?=$e_trans?>
+                            </tbody>
+                            <tfoot>
+                              
+                            </tfoot>
+                        </table>
+                        <?php }?>
+                      </div> 
+                    </div>
                   </div>
-                  <div role="tabpanel" class="tab-pane fade  in active" id="newexpense">
+                  <div role="tabpanel" class="tab-pane fade" id="newexpense">
                     <div class="col-xs-12">
                         <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' method="post" action='allexpence.php'>
                           <fieldset>
@@ -56,17 +75,33 @@
                                             <option value="r">Refund</option>
                                         </select>
                                     </div>
+
+                                    <div class="col-xs-6 push-1" id="osupplier">
+                                        <label class="radio-inline"><input id="s_supplier" type="radio" name='s_choose' value="yas">Suppler</label>
+                                        <label class="radio-inline"><input id="s_other" type="radio" name='s_choose' value="no" selected='true'>Other</label>
+                                    </div>
+                                    
+                                    <div class="col-xs-6 push-1" id="oclient">
+                                        <label class="radio-inline"><input id="c_client" type="radio" name='c_choose' value="yas">Client</label>
+                                        <label class="radio-inline"><input id="c_other" type="radio" name='c_choose' value="no" selected='true'>Other</label>
+                                    </div>
+
                             <!--Supplier  -->
-                                    <label class="col-xs-2 control-label supplier" id="supplier" for="supplier_no">Supplier:</label>
-                                    <div id="supplier" class="col-xs-4 supplier">
+                                    <label class="col-xs-2 control-label supplier" id="supplier_lbl" for="supplier_no">Supplier:</label>
+                                    <div id="" class="col-xs-4 supplier">
                                         <input id="supplier" list="suppliers" class="form-control" name="supplier_no"></input>
                                         <datalist id="suppliers">
                                           <?=($suppliers_dd)?$suppliers_dd:""?>
                                         </datalist>
                                     </div> 
+                            <!--other  -->
+                                    <label class="col-xs-2 control-label other" id="other_lbl" for="other">Specify:</label>
+                                    <div id="" class="col-xs-4 other">
+                                        <input id="other" list="other" class="form-control" name="other"></input>
+                                    </div> 
                             <!--client  -->
-                                    <label id="client" class="col-xs-2 control-label client" for="client_no">Client:</label>
-                                    <div id="client" class="col-xs-5 client">
+                                    <label id="client_lbl" class="col-xs-2 control-label client" for="client_no">Client:</label>
+                                    <div id="" class="col-xs-5 client">
                                         <input id="client" list="clients" class="form-control" name="client_no"></input>
                                         <datalist id="clients">
                                           <?=($clients_dd)?$clients_dd:""?>
@@ -86,7 +121,7 @@
                                 <!-- Reference  -->
                                 <label class="col-xs-2 control-label" for="ref">Reference :</label>
                                 <div class="col-xs-3">
-                                    <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref_id" row='15' col=''></input>
+                                    <input required placeholder="#0056" class="form-control" id='ref' type="text" name ="ref_no" row='15' col=''></input>
                                 </div>  
                                 
                               </div>
@@ -94,7 +129,7 @@
                               <div class="form-group col-xs-12">
                                 <label class="col-xs-2 control-label" for="details"> Description: </label>
                                 <div class="col-xs-10">
-                                    <textarea required placeholder="Mr John Sith- 50 A4 pack Deliviries" class="form-control" id='details' type="text" name ="details" rows="5" cols="10"></textarea>
+                                    <textarea required placeholder="Mr John Sith- 50 A4 pack Deliviries" class="form-control" id='details' type="text" name ="ei_description" rows="5" cols="10"></textarea>
                               </div>                              
                             </div>
                             <hr style="width:100%"/>
@@ -164,7 +199,7 @@
                             <hr class="bhr" style="width:100%"/>
                             <div class="form-group col-xs-12">
                               <div class="col-xs-4 col-xs-offset-4">
-                                <button class="btn btn-block btn-primary" name="save">Save</button>
+                                <button class="btn btn-block btn-primary" name="save_expense">Save</button>
                               </div>
                             </div>
                           </fieldset>
@@ -183,7 +218,11 @@
     $(document).ready(function(){
         $('.supplier').hide();
         $('.client').hide();
+        $('.other').hide();
         $('#files').hide();
+        $('#osupplier').hide();
+      $('#oclient').hide();
+
 
         $('#t_date').datepicker(
           {
@@ -212,41 +251,103 @@
         $('#no').click(function(){
           $('#files').hide();
         });
-          $('#expense_t').change(function(){
-            var p_type = $(this).val();
-            if(p_type=='r')
-            {
-              $('.supplier').hide();
-              $('.client').show();
-            }
-            else if(p_type=='p')
-            {
-              $('.supplier').show();
-              $('.client').hide();
-            }
-            else
-            {
-              $('.supplier').hide();
-              $('.client').hide();
-            }
-          });
 
-          //form validator file 
-          $('INPUT[type="file"]').change(function () {
-            var ext = this.value.match(/\.(.+)$/)[1];
-            switch (ext) {
-                case 'jpg':
-                case 'jpeg':
-                case 'png':
-                case 'gif':
-                case 'pdf':
-                    $('#uploadButton').attr('disabled', false);
-                    break;
-                default:
-                    alert('This is not an allowed file type.');
-                    this.value = '';
-              }
-          });
+        // Chaning the client or supplier selection
+        $('#expense_t').change(function(){
+          var p_type = $(this).val();
+          if(p_type=='r')
+          {
+            $('#osupplier').hide();
+            $('#oclient').show();
+            $('.client').hide();
+            $('.other').hide();
+            $('.supplier').hide();
+          }
+          else if(p_type=='p')
+          {
+            $('#osupplier').show();
+            $('#oclient').hide();
+            $('.client').hide();
+            $('.other').hide();
+            $('.supplier').hide();
+          }
+          else
+          {
+            $('#osupplier').hide();
+            $('#oclient').hide();
+            $('.client').hide();
+            $('.other').hide();
+            $('.supplier').hide();
+          }
+         $('#s_supplier').attr('checked', false);
+         $('#s_other').attr('checked', false);
+         $('#c_client').attr('checked', false);
+         $('#c_other').attr('checked', false);
+
+        });
+        
+        //cheking if the client is cliecked
+        $('#s_supplier').click(function(){
+          $('.supplier').show();
+          $('.client').hide();
+          $('.other').hide();
+          $('#osupplier').hide();
+          $('#oclient').hide();
+
+          $('#other').attr('required', false);
+          $('#client').attr('required', false);
+          $('#supplier').attr('required', true);
+
+        });
+        $('#s_other').click(function(){
+          $('.supplier').hide();
+          $('.client').hide();
+          $('.other').show();
+          $('#osupplier').hide();
+          $('#oclient').hide();
+          
+          $('#other').attr('required', true);
+          $('#client').attr('required', false);
+          $('#supplier').attr('required', false);
+        });
+        $('#c_client').click(function(){
+          $('.supplier').hide();
+          $('.client').show();
+          $('.other').hide();
+          $('#osupplier').hide();
+          $('#oclient').hide();
+
+          $('#other').attr('required', false);
+          $('#client').attr('required', true);
+          $('#supplier').attr('required', false);
+        });
+        $('#c_other').click(function(){
+          $('.supplier').hide();
+          $('.client').hide();
+          $('.other').show();
+          $('#osupplier').hide();
+          $('#oclient').hide();
+
+          $('#other').attr('required', true);
+          $('#client').attr('required', false);
+          $('#supplier').attr('required', false);
+        });
+        //form validator file 
+        $('INPUT[type="file"]').change(function () {
+          var ext = this.value.match(/\.(.+)$/)[1];
+          switch (ext) {
+              case 'jpg':
+              case 'jpeg':
+              case 'png':
+              case 'gif':
+              case 'pdf':
+                  $('#uploadButton').attr('disabled', false);
+                  break;
+              default:
+                  alert('This is not an allowed file type.');
+                  this.value = '';
+            }
+        });
     });
   </script>
 </body>

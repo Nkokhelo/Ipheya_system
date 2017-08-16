@@ -549,6 +549,19 @@
             }
             return $items_restult;
         }
+#expense_income
+    public function getallExpenses()
+    {
+        $sql ="SELECT * FROM expense_income where e_or_i = 'e'";
+        $qey =mysqli_query($this->connect(),$sql);
+        return $qey;
+    }
+    public function getallIncomes()
+    {
+        $sql ="SELECT * FROM expense_income where e_or_i = 'i'";
+        $qey =mysqli_query($this->connect(),$sql);
+        return $qey;
+    }
 
 #suppliers 
  public function getallSuppliers()
@@ -557,6 +570,7 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+
 #project and programs
         public function getallProjets()
         {
@@ -564,12 +578,14 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+
         public function getallPrograms()
         {
             $sql ="SELECT * FROM programs";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+
         public function getProjectByNo($project_no)
         {
             $project ='';
@@ -583,6 +599,7 @@
             }
             return $project;
         }
+
         public function getProgramByNo($progam_no)
         {
             $program='';
@@ -604,13 +621,13 @@
 #success 
         public function display_success($message)
         {
-            $mes = '<div class="alert alert-success"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            $mes = '<div class="alert alert-success"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> '.$message.'</div>';
             return $mes;
         }
 #success 
         public function display_info($message)
         {
-            $mes = '<div class="alert alert-info"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
+            $mes = '<div class="alert alert-info"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-info-sign"></span> <strong>info!</strong> '.$message.'</div>';
             return $mes;
         }
 #warning to implememnt : $logic->display_warning('this is wrong!');
