@@ -31,8 +31,8 @@
 
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Expenses</a></li>
-                  <li role="presentation" ><a href="#newexpense"  aria-controls="profile" role="tab" data-toggle="tab">New Expense</a></li>
+                  <li role="presentation" class="active"><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Incomes</a></li>
+                  <li role="presentation" ><a href="#newincome"  aria-controls="profile" role="tab" data-toggle="tab">New Income</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -40,10 +40,10 @@
                   <div role="tabpanel" class="tab-pane fade in active" id="list">
                     <div class="row">
                       <div class="col-xs-12">
-                        <?php if($e_trans==''){?>
+                        <?php if($i_trans==''){?>
                           <?=$feedback?>
                         <?php } else{ ?>
-                          <h3 class="text-center" style="color:#888">All Expenses</h3><hr class="bhr"/>
+                          <h3 class="text-center" style="color:#888">All Incomes</h3><hr class="bhr"/>
                           <table class="table table-bordered table-hover">
                             <thead>
                               <th>Ref</th><th>Name</th><th>Description</th><th>Price</th>
@@ -59,17 +59,17 @@
                       </div> 
                     </div>
                   </div>
-                  <div role="tabpanel" class="tab-pane fade" id="newexpense">
+                  <div role="tabpanel" class="tab-pane fade" id="newincome">
                     <div class="col-xs-12">
                         <form class="form-horizontal" enctype="multipart/form-data" id='expenceForm' method="post" action='allexpence.php'>
                           <fieldset>
                             <?=($feedback)?$feedback:""?>
-                            <legend class="inlegend">Expense Information</legend>
+                            <legend class="inlegend">Income Information</legend>
                               <div class="form-group col-xs-12">
-                            <!-- Expense type  -->
-                                    <label class="col-xs-2 control-label" for="ei_type">Expense type :</label>
+                            <!-- Income type  -->
+                                    <label class="col-xs-2 control-label" for="ei_type">Income type :</label>
                                     <div class="col-xs-3">
-                                        <select class="selectpicker form-control" id='expense_t' type="text" name ="ei_type">
+                                        <select class="selectpicker form-control" id='income_t' type="text" name ="ei_type">
                                             <option style="backgroud:#aaa" value="">--Select--</option>
                                             <option value="p">Payament</option>
                                             <option value="r">Refund</option>
@@ -110,12 +110,12 @@
                               </div>
                              <hr  style="width:100%"/>
 
-                            <!--Expense inforamtion  -->
+                            <!--Income inforamtion  -->
                               <div class="form-group col-xs-12">
-                                <!-- Expense name  -->
+                                <!-- Income name  -->
                                 <label class="col-xs-2 control-label" for="ei_name">Name :</label>
                                 <div class="col-xs-4">
-                                    <input required placeholder="A4 transpotation" class="form-control" id='expense_name' type="text" name ="ei_name"/>
+                                    <input required placeholder="A4 transpotation" class="form-control" id='income_name' type="text" name ="ei_name"/>
                                 </div>
 
                                 <!-- Reference  -->
@@ -152,7 +152,7 @@
                             </div>
                             <div class="form-group col-xs-12">
                             <!-- category  -->
-                                <label class="col-xs-2 control-label" for="expense_name">Category :</label>
+                                <label class="col-xs-2 control-label" for="income_name">Category :</label>
                                 <div class="col-xs-4">
                                     <select class="form-control" name="category_id">
                                         <option style="background:#aaa">--None--</option>
@@ -167,8 +167,8 @@
                                 <hr style="width:100%"/>  
                               <div class="col-xs-12"> 
                             <!-- project  -->
-                                <h5 class="col-xs-12" style="color:#999"> <b>Link this expense to a project</b></h5><br/>
-                                <label class="col-xs-2 control-label" for="expense_name">Project:</label>
+                                <h5 class="col-xs-12" style="color:#999"> <b>Link this income to a project</b></h5><br/>
+                                <label class="col-xs-2 control-label" for="income_name">Project:</label>
                                 <div class="col-xs-4">
                                     <select class="form-control" name="project_no">
                                         <option style="background:#aaa">--None--</option>
@@ -182,7 +182,7 @@
                             <!-- fie decition  -->
                                 <div class="form-group col-xs-12">
                                     <div class="col-xs-6">
-                                      <label for="choose">Expense Attachemnts?</label>
+                                      <label for="choose">Income Attachemnts?</label>
                                       <div class="col-xs-12" id="selection">
                                         <label class="radio-inline"><input id="yes" type="radio" name='choose' value="yas">Yes</label>
                                         <label class="radio-inline"><input id="no" type="radio" name='choose' value="no" selected='true'>No</label>
@@ -199,7 +199,7 @@
                             <hr class="bhr" style="width:100%"/>
                             <div class="form-group col-xs-12">
                               <div class="col-xs-4 col-xs-offset-4">
-                                <button class="btn btn-block btn-primary" name="save_expense">Save</button>
+                                <button class="btn btn-block btn-primary" name="save_income">Save</button>
                               </div>
                             </div>
                           </fieldset>
@@ -253,20 +253,20 @@
         });
 
         // Chaning the client or supplier selection
-        $('#expense_t').change(function(){
+        $('#income_t').change(function(){
           var p_type = $(this).val();
           if(p_type=='r')
           {
-            $('#osupplier').hide();
-            $('#oclient').show();
+            $('#osupplier').show();
+            $('#oclient').hide();
             $('.client').hide();
             $('.other').hide();
             $('.supplier').hide();
           }
           else if(p_type=='p')
           {
-            $('#osupplier').show();
-            $('#oclient').hide();
+            $('#osupplier').hide();
+            $('#oclient').show();
             $('.client').hide();
             $('.other').hide();
             $('.supplier').hide();

@@ -47,14 +47,15 @@
         $ei_type =$_POST['ei_type'];
         $ei_payment_type =$_POST['ei_payment_type'];
         $ei_amount =$_POST['ei_amount'];
-        $ref_no=$_POST['ref_no'];
+        $ref_id=$_POST['ref_id'];
         $supplier_no= $_POST ['supplier_no'];
         $client_no=$_POST['client_no'];
         $category_id= $_POST['category_id'];
         $other = $_POST['other'];
+        $ei_description = $_POST['ei_description'];
         
-        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`, `ei_payment_type`, `refe_no`,`ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`expense_income`) 
-        VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_payment_type','$ref_no','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','i')";
+        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`,`ei_description`, `ei_payment_type`, `ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`expense_income`) 
+        VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_description','$ei_payment_type','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','e')";
          $result = mysqli_query($logic->connect(),$save);
         if(!$result)
         {
@@ -65,8 +66,8 @@
         {
               $feedback =$logic->display_success("Saved successfuly");
         }
-        exit;
     }  
+ 
 
     $allexpense = $logic->getallExpenses();
     while ($expenses = mysqli_fetch_assoc($allexpense))
