@@ -27,7 +27,7 @@
                 <?php } else { ?>
                 <table class="table">
                   <thead>
-                    <th>Project Number </th><th>Name</th><th>Program Name</th><th>Status</th><th>Duration</th>
+                    <th>Project_Number </th><th>Name</th><th>Program Name</th><th>Duration</th><th>Due_Date</th><th>Project_Status</th>
                   </thead>
                   <tbody>
                     <?=$proj_list?>
