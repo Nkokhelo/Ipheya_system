@@ -1,0 +1,104 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#admin-dashboard{
+  padding-top: 50px;
+}
+#client-dashboard{
+    padding-top: 0px;
+}
+#page-header{
+  background-color: #33b5e5;
+  color: #fff;
+  height: 50px;
+}
+#page-header .logo a{
+  text-decoration: none;
+}
+.container-fluid{
+  padding: 0;
+}
+#navbar-main{
+  background-color: #33b5e5;
+}
+#wrapper{
+  margin-top: -50px;
+
+}
+#sidebar,#main-content-header{
+  padding-top: 1%;
+}
+#sidebar ul{
+  list-style: none;
+  padding-right: 2%;
+}
+#sidebar ul li{
+  font-size: 1.1em;
+}
+#sidebar ul li a{
+  text-decoration: none;;
+  color: #787878;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.selected, #sidebar ul li a:focus, #sidebar ul li a:hover{
+  text-decoration: none;
+  background-color: #eee;
+}
+#sidebar-header, #main-content-header, #aside-header{
+  padding: 10px;
+  margin-bottom: 1%;
+}
+#sidebar-header span, #main-content-header span{
+  font-size: 1.2em;
+  color: #337ab7;
+}
+#sidebar-header{
+  border-bottom: 1px solid #eee;
+}
+.main-span{
+  color: #fff;
+}
+.bg-success h5{
+  color: #fff;
+}
+.navbar-default{
+  background-color: #000;
+}
+.navbar-default .navbar-toggle {
+  border-color: #fff;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.navbar-default .navbar-toggle:hover {
+  background-color: transparent;
+  border-color: #fff;
+}
+
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid{
+  border:2px solid red;
+}
+input[disabled="disabled"]{
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+/*Nkokhelo new code*/
+#cRequest>tr
+{
+    font-size: 900px;
+    color: #0080c0;
+}
+#cRequest>tr:hover
+{
+    font-size: 900px;
+    color: #0080c0;
+}
+
+#clientOptions>li>a:hover
+{
+  font-weight: 900;
+}
