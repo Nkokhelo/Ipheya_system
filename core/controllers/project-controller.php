@@ -21,7 +21,7 @@
         $patner=$_POST['patner'];
         $visibility=$_POST['visibility']; 
         $daily_hour=$_POST['daily_hour'];
-        $charge=$_POST['charge'];
+        $charge=$_POST['charge'];   
 
         $client_unique = uniqid();
         $project_no ="P00".strtoupper(substr($client_unique,6,4));
