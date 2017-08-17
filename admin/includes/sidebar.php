@@ -13,7 +13,6 @@
                       <ul class="collapse list-unstyled" id="companyMenu">
                         <li><a id="ddepa" href="departments.php">Departments</a></li>
                         <li><a id="dsup" href="allservices.php">Services</a></li>
-                        <li><a id="Eve" href="create_events.php">Events</a></li>
                     </ul>
                   </li>
                   <li  >
@@ -24,6 +23,7 @@
                     <ul class="collapse list-unstyled" id="stakeholders">
                         <li><a  href="employees.php">Employees</a></li>
                         <li><a  href="allsuppliers.php">Suppliers</a></li>
+                        <li><a id="Eve" href="create_events.php">Events</a></li>                        
                         <li><a  href="roles.php">Roles</a></li>
                     </ul>
                   </li>
