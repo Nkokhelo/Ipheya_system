@@ -23,7 +23,7 @@
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active" data-toggle="tab"><a href="#client" data-toggle="tab">Cient Personal Details</a></li>
                     <li><a href="#history" data-toggle="tab">Client History</a></li>
-                    <li><a href="#graph" data-toggle="tab">Bar graph</a></li>
+                    <li><a href="#bar" data-toggle="tab">Bar graph</a></li>
                 </ul>
                 <div class="col-md-12" style="padding:2%;">
                     <div class="tab-content" >
@@ -73,18 +73,17 @@
                                 <?php } ?>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="graph">
-                            <div class="col-xs-12">
-                                <?php
-                                    $history=mysqli_query($db,"Select ClientID and ServiceID from ServiceRequest");
-
-                            
-                                ?>
-                         </div>
-                         </div>
+                    <div role="tabpanel" class="tab-pane fade in" id="bar">
+                        <div class="col-md-6">
+                          <fieldset>
+                            <legend class="thelegend">Bar graph</legend>
+                              <div class="chart-container">
+                                <canvas id="barcanvas">
+                                </canvas>
+                              </div>
+                          </fieldset>
                         </div>
-
-
+                     </div>
                     </div>    
                 </div>
             </div>      
@@ -93,3 +92,7 @@
   </div>
   <?php include('includes/footer.php'); ?>
 </body>
+ <script src="../assets/chartjs/Chart.js" type="text/javascript"></script>
+ <!--<script src="../assets/chartjs/lib/jquery-2.1.3.min.js" type="text/javascript"></script>-->
+ <script src="../assets/chartjs/customjs/servicebar.js" type="text/javascript"></script>
+ <!-- <script src="../assets/chartjs/customjs/servicebar.js"></script> -->
