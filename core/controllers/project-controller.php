@@ -45,11 +45,7 @@
   $error='';
   while($proj = mysqli_fetch_assoc($query_result))
   {
-<<<<<<< HEAD
-    $proj_list="<tr><td>".$proj['project_name']."</td><td>".$proj['']."</td><td>".$proj['']."</td></tr>";
-=======
     $proj_list.="</td><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['description']."</td><td>".$proj['duration']."</td><td>".$proj['end_date']."</td></tr>";
->>>>>>> fbdc7f2b7bfeeaaa27ebf59f02f0bd62916cbb63
   }
   if($proj_list == '')
   {
