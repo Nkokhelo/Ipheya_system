@@ -93,3 +93,4 @@
   </div>
   <?php include('includes/footer.php'); ?>
 </body>
+<script src="../assets/chartjs/customjs/servicebar.js"></script>
