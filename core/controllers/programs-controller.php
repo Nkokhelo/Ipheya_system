@@ -132,8 +132,7 @@
         $client ='';
         $viewproject = $logic->getProjectByNo($_GET['pview']);//get project data from a a database
         $employee= $logic->getEmployeeByEmpNo($viewproject['employee_no']);//get employee information from a database
-        $client = $logic ->getClientByNo($viewproject['client_no']);// get client information from a database
-        
+        $client = $logic ->getClientByNo($viewproject['client_no']);// get client information from a database       
     }
 
 #getallprograms
