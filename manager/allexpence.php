@@ -191,7 +191,7 @@
                                     <div class="col-xs-6" id="files">
                                       <label for="choose">Please choose a file pdf/png/jpg/</label>
                                       <div class="col-xs-12" >
-                                        <input type="file" class="form-control-file" name="attachment[]" multiple/>
+                                        <input type="file" class="form-control-file" name="attachment"/>
                                       </div>
                                     </div>
                                 </div>  

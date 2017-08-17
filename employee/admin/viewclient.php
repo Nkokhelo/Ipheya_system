@@ -31,6 +31,7 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="client" style="font-size:12px">
                             <div class="col-xs-12">
                                     <h5><p style="color:#0094ff; position:absolute; top:5px;">Client number : #<?= $client['client_no'];?></p></h5>
+                                    <input type='hidden' id="client_id" value='<?= $client['client_id'] ?>'>
                                     <hr class="bhr"/>
                                     <div class="col-xs-12">
                                     <div class="col-xs-12" style="text-align:right">
@@ -61,12 +62,12 @@
                             <div class="col-xs-12">
                                 <?php if($history_view !=''){ ?>
                                     <table class="table">
-                                        <thead>
-                                        <th>Service Name</th><th>Description</th><th>Date</th>
-                                        </thead>
-                                        <tbody>
-                                            <?=$history_view?>
-                                        </tbody>
+                                    <thead>
+                                    <th>Service Name</th><th>Description</th><th>Date</th>
+                                    </thead>
+                                    <tbody>
+                                        <?=$history_view?>
+                                    </tbody>
                                     </table>
                                 <?php }else{ ?>
                                     <?=$history_view_feed?>
@@ -77,9 +78,8 @@
                         <div class="col-md-6">
                           <fieldset>
                             <legend class="thelegend">Bar graph</legend>
-                              <div class="chart-container">
-                                <canvas id="barcanvas">
-                                </canvas>
+                              <div class="col-xs-12">
+                                <canvas id="barcanvas"></canvas>
                               </div>
                           </fieldset>
                         </div>

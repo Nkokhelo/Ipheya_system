@@ -27,20 +27,31 @@
         $category_id= $_POST['category_id'];
         $other = $_POST['other'];
         $ei_description = $_POST['ei_description'];
-        
-        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`,`ei_description`, `ei_payment_type`,`ref_no`, `ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`e_or_i`) 
-        VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_description','$ei_payment_type','$ref_id','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','e')";
+
+        $image=addslashes($_FILES['attachment']['tmp_name']);
+        $image=file_get_contents($image);
+        $image=base64_encode($image);
+
+        if($_FILES['attachment']['errors'])
+        {
+            $efeedback = $logic->display_error($_FILES['attachment']['errors']);
+            return;
+        }
+        $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`,`ei_description`, `ei_payment_type`,`ref_no`, `ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`e_or_i`,`file`) 
+        VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_description','$ei_payment_type','$ref_id','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','e','$image')";
          $result = mysqli_query($logic->connect(),$save);
         if(!$result)
         {
                 // die($save);
-                $feedback =$logic->display_error(mysqli_error($logic->connect()));
+             $efeedback =$logic->display_error(mysqli_error($logic->connect()));
         }
         else
         {
-              $feedback =$logic->display_success("Saved successfuly");
+              $efeedback =$logic->display_success("Saved successfuly");
         }
     }  
+
+
     if(isset($_POST['save_income']))
     {
         $project_no=$_POST['project_no'];

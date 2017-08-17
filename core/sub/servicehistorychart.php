@@ -1,24 +1,29 @@
 <?php
-     require_once('../init.php');
-     header('Content-Type: application/json');
-     
-      ob_start();
-      $sel = sprintf("SELECT ClientID,ServiceID FROM serviceRequest");
-      
-      $result = mysqli_query($db,$sel);
-      $product = mysqli_query($db,$sql);
-      
-      $data = array();
-      foreach($result as $row)
-      {
-        $id = $row['RequestID'];
-        $assoc = mysqli_fetch_assoc($db,"SELECT ClientID,ServiceID FROM serviceRequest WHERE RequestID = '$id'");
-
-        $data[] = $row;
-      }
-     
-      ob_end_clean();
-      mysqli_close($db);
-      #print data
-      print json_encode($data);
+    require_once('../init.php');
+    require('../logic.php');
+    $logic = new Logic();
+    header('Content-Type: application/json');
+    $data='';
+    //  ob_start();
+    if(isset($_GET['client']))
+    {
+       $id =$_GET['client'];
+      //  $sel = sprintf("SELECT ClientID,ServiceID FROM serviceRequest");
+       $view ="SELECT COUNT(servicerequest.RequestID) AS num_req , servicerequest.ServiceID FROM servicerequest WHERE servicerequest.ClientID=".$id." GROUP BY servicerequest.ServiceID";
+ 
+       $result = mysqli_query($db,$view);
+      //  $product = mysqli_query($db,$sql);
+       
+       $data = '[';
+       while($row = mysqli_fetch_assoc($result))
+       {
+         $data .='{"req_count":"'.$row['num_req'].'","service_name":"'.$logic->getServiceNameByID($row['ServiceID']).'"},';
+       }
+       $data =rtrim($data,",");
+       $data .=']';
+       echo $data;
+      //  ob_end_clean();
+       mysqli_close($db);
+       #print data
+    }
  ?>
