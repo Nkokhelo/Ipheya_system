@@ -4,7 +4,7 @@
    {
         require_once('../core/init.php');
         include('../core/logic.php');
-        include('includes/head2.php');
+        include('includes/head.php');
         require_once('../core/controllers/project-controller.php');
         // include('includes/navigation.php');
         //mfudo...
@@ -20,63 +20,43 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 b'>
-              <form class="form-horizontal" action="Events.php" method="POST">
+              <form class="form-horizontal" action="bookings.php" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">
-                Events
+               Make Bookings
                   </legend>
                   <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
                   <div class="col-xs-12">
                     <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for="event_name">Name :</label>
+                        <label class="col-xs-2 control-label" for="Name">Name:</label>
                         <div class="col-xs-4">
-                            <input required placeholder="Create New Event Name" class="form-control" id='event_name' type="text" name ="name "/>
+                            <input required placeholder="Mfundos" class="form-control" id='Name' type="text" name ="name "/>
                         </div>
-                        <label class="col-xs-2 control-label" for="location">Location :</label>
-                        <div class="col-xs-4">
-                            <input required placeholder="Your Location Here" class="form-control" id='location' type="text" name ="location"/>
-                        </div>
+                      
                     </div>
                     <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for="description">Description :</label>
-                        <div class="col-xs-10">
-                            <textarea class="form-control" id='description' name ="description" rows="5" cols="10"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label for="department" class="control-label col-xs-2">Category :</label>
+                       <label class="col-xs-2 control-label" for="email_address">Email Adress:</label>
                         <div class="col-xs-4">
-                            <select id="depart" class="form-control" name="category">
-                                <option value=''><b>~~Select~~</b></option> 
-                                <option>Innovation</option>   
-                                <option>New Technologies</option>  
-                                <option>Buisness empowerment</option>                            
-                            </select>
-                        </div>                     
-                    </div>
-
+                            <input required placeholder="please enter your Email address" class="form-control" id='email_address' type="text" name ="email_address "/>
+                        </div>
+                      
+                     </div>
                     <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for="">Event date :</label>
-                        <div class="col-xs-3  input-group input-append " id='dsdate'style='padding-left:15px; float: inherit;'>
-                            <input required placeholder="2017-08-09" class="form-control " id='sdate' name ="date" rows="5" cols="10"></input>
-                            <span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
+                     <label class="col-xs-3 control-label" for="remind ">Remind?:</label>
+                        <div class="col-xs-3">
+                            <input type="checkbox" name="remind" value="remind"></input>
                         </div>
-                        <label class="col-xs-3 control-label" for="">Duration :</label>
-                        <div class="col-xs-3  input-group input-append " id='dsdate'style='padding-left:15px'>
-                            <input required placeholder=" " placeholder='6' class="form-control"style="width:30%" id='duration' name ="duration" rows="5" cols="10"></input>
-                            <select name="duration_type" class="form-control"style="width:70%;background:#eee">
-                                <option value="1">Day(s)</option>
-                                <option value="2">Week(s)</option>  
-                                <option value="2">Week(s)</option> 
-                            </select>
-                        </div>
-                    </div>                    
+                    </div>
+                     <label class="col-xs-2 control-label" for="cell_num ">Cell Number:</label>
+                        <div class="col-xs-2">
+                            <input required placeholder="cell_num" class="form-control" id='cell_num' type="text" name ="cell_num  "/> 
+                        </div>                    
                 </fieldset>
                 <hr class="bhr"/>        
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-8" id='change'>
-                            <input  type="submit" id='save' name="Create_Event" class="btn btn-block btn-success" value="create"/>
+                        <div class="col-xs-offset-2 col-xs-4" id='change'>
+                            <input  type="submit" id='save' name="bookings" class="btn btn-block btn-success" value="Book"/>
                         </div>
                     </div>
                 </div>

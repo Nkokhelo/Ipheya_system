@@ -1,7 +1,7 @@
 <?php
 
     $logic = new Logic();
-   if(isset($_POST['Create_Event']))
+   if(isset($_POST['bookings']))
     {
         $name=$_POST['name'];
         $location =$_POST['location'];
