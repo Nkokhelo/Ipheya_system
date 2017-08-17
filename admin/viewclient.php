@@ -94,5 +94,5 @@
 </body>
  <script src="../assets/chartjs/Chart.js" type="text/javascript"></script>
  <!--<script src="../assets/chartjs/lib/jquery-2.1.3.min.js" type="text/javascript"></script>-->
- <script src="../assets/chartjs/customjs/servicebar.js" type="text/javascript"></script>
- <!-- <script src="../assets/chartjs/customjs/servicebar.js"></script> -->
+ <!-- <script src="../assets/chartjs/customjs/servicebar.js" type="text/javascript"></script> -->
+ <script src="../assets/chartjs/customjs/servicebar.js"></script>
