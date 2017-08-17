@@ -62,12 +62,12 @@
                             <div class="col-xs-12">
                                 <?php if($history_view !=''){ ?>
                                     <table class="table">
-                                        <thead>
-                                        <th>Service Name</th><th>Description</th><th>Date</th>
-                                        </thead>
-                                        <tbody>
-                                            <?=$history_view?>
-                                        </tbody>
+                                    <thead>
+                                    <th>Service Name</th><th>Description</th><th>Date</th>
+                                    </thead>
+                                    <tbody>
+                                        <?=$history_view?>
+                                    </tbody>
                                     </table>
                                 <?php }else{ ?>
                                     <?=$history_view_feed?>
