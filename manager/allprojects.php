@@ -32,10 +32,19 @@
                   <tbody>
                     <?=$proj_list?>
                   </tbody>
+                  
                 </table>
+                <div>
+                <hr class="bhr"/>
+                    <div class="form-group col-xs-6 col-xs-offset-3">
+                      <button type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-default form-control" ><?=((isset($_GET['edit']))?'<span class="glyphicon glyphicon-pencil"></span> Edit':' <span class="glyphicon glyphicon-plus"></span> Add new');?> Project</button>
+                      <?=((isset($_GET['edit']))?'<a href="createproject.php" class="btn btn-default"><span class="ion ion-android-cancel"></span> Cancel</a>':'');?>
+                    </div>
+                </div>
                 <?php } ?>
             </div>
         </div>
+       
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
