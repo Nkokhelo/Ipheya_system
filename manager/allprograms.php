@@ -20,19 +20,29 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 b'>
-              <?php if($prog_list ==''){ ?>
-              <?=$error?>
-              <?php } else { ?>
-              <h1>Programs</h1>
-                <table class="table">
-                  <thead>
-                    <th>Program Number </th><th>Program Name</th><th>No of Projets</th>
-                  </thead>
-                  <tbody>
-                    <?=$prog_list?>
-                  </tbody>
-                </table>
-              <?php } ?>
+              <fieldset>
+              <h2>Programs</h2>
+                <hr class="bhr">
+                <?php if($prog_list ==''){ ?>
+                <?=$error?>
+                <?php } else { ?>
+                  <table class="table">
+                    <thead>
+                      <th>Program Number </th><th>Program Name</th><th>No of Projets</th>
+                    </thead>
+                    <tbody>
+                      <?=$prog_list?>
+                    </tbody>
+                  </table>
+                  <hr class="bhr"/>
+                  <div class="col-xs-12">
+                    <div class="col-xs-6 col-xs-offset-2">                      
+                    <a class="btn btn-block btn-success" href="programs.php"><i class="fa fa-plus"></i>Create Program</a>
+                    <br/>
+                    </div>
+                  </div>
+                <?php } ?>
+              </fieldset>
             </div>
         </div>
       </div>

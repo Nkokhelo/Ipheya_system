@@ -24,7 +24,7 @@
                       </a>
                     </li>
                   <li>
-                      <a href="allprograms.php">
+                      <a href="programs.php">
                           <i class='fa fa-folder-o'></i>
                         Programs
                       </a>

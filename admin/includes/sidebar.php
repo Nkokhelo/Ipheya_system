@@ -49,7 +49,7 @@
                   </li>
                   
                   <li>
-                    <a href="../inventory/items.php">
+                    <a href="inventorys.php">
                       <i class='fa fa-cubes'></i>
                       Inventory
                     </a>
