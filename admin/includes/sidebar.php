@@ -13,6 +13,7 @@
                       <ul class="collapse list-unstyled" id="companyMenu">
                         <li><a id="ddepa" href="departments.php">Departments</a></li>
                         <li><a id="dsup" href="allservices.php">Services</a></li>
+                        <li><a id="Eve" href="Events.php">Events</a></li>
                     </ul>
                   </li>
                   <li  >

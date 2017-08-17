@@ -490,3 +490,12 @@
     .form-control {
         border-radius: 0;
     }
+    
+    .nav.nav-tabs li a[aria-expanded="false"]::before,
+    .nav.nav-tabs li a[aria-expanded="true"]::before {
+        content: '';
+    }
+    
+    .nav.nav-tabs li a[aria-expanded="true"]::before {
+        content: '';
+    }
