@@ -1,6 +1,8 @@
 <?php
     // include '../logic.php';
     $logic = new Logic();
+    $history_view='';
+    $history_view_feed ='';
     $client = "<div class='alert alert-warning'><p class='glyphicon glyphicon-info-sign'></p> No Data was found!</div>";
     #fetch all clients
     $client_exe = $logic->getUnachivedClients();
@@ -94,6 +96,22 @@
      {
       $client = $clientdata;
      }
-
+     $resule= $logic->getallServiceRequest();
+     if(!$resule)
+     {
+        die(mysqli_error($logic->connect()));
+     }
+     while($req = mysqli_fetch_assoc($resule))
+     {
+       if($_GET['view']== $req['ClientID'])
+       {
+          $history_view.="<tr><td>".$logic->getServiceById($req['ServiceID'])['service']."</td><td style='width:70%'>".$req['Description']."</td><td>".$req['DueDate']."</td></tr>"; 
+       }
+    }
+     if($history_view == '')
+     {
+        $history_view_feed = $logic->display_info('No history for this client');
+     }
+    
    }
  ?>

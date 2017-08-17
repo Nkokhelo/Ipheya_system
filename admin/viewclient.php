@@ -59,27 +59,18 @@
 
                         <div role="tabpanel" class="tab-pane fade" id="history">
                             <div class="col-xs-12">
-                            <?php
-
-                                $log = new Logic(); 
-                                $result=mysqli_query($db,'select * from ServiceRequest');
-                            
-                                echo "<table class='table table-hover'>";
-                                echo "<tr> <th>Client Name</th> <th>Service Name</th> <th>Description</th> <th>Request Date</th> <th>Duration</th><th>Due Date</th> </tr>";
-                                while ($row=mysqli_fetch_array($result))
-                                {
-                                        echo "<tr>";
-                                        echo "<td>" .$log->getClientByIdNo($row['ClientID'])['name']."</td>";
-                                        echo "<td>" .$log->getServiceById($row['ServiceID'])['service']."</td>";
-                                        echo "<td>" .$row['Description']."</td>";
-                                        echo "<td>" .$row['RequestDate']."</td>";
-                                        echo "<td>" .$row['Duration']."</td>";
-                                        echo "<td>" .$row['DueDate']."</td>";
-                                        echo"</tr>";
-                                    }
-                                    echo"</table>";
-
-                            ?>
+                                <?php if($history_view !=''){ ?>
+                                    <table class="table">
+                                        <thead>
+                                        <th>Service Name</th><th>Description</th><th>Date</th>
+                                        </thead>
+                                        <tbody>
+                                            <?=$history_view?>
+                                        </tbody>
+                                    </table>
+                                <?php }else{ ?>
+                                    <?=$history_view_feed?>
+                                <?php } ?>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="graph">

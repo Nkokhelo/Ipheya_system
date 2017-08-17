@@ -14,14 +14,6 @@
 ?>
 
 <body>
-<style>
-  a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '';
-  }
-  a[aria-expanded="true"]::before {
-    content: '';
-}
-</style>
   <div class="wrapper">
       <?php include 'includes/sidebar.php'?>
       <div id='content'>

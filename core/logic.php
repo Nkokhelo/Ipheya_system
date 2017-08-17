@@ -289,10 +289,6 @@
         {
             $query ="SELECT * FROM servicerequest";
             $qey =mysqli_query($this->connect(),$query);
-            if(!$qey)
-            {
-                    die('Error !'.mysqli_error($this->connect()));
-            }
             return $qey;
         }
         public function getallMaintananceRequest()
