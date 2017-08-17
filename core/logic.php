@@ -638,9 +638,16 @@
         }
 
 # categories
-        public function getallcategories()
+        public function getalle_categories()
         {
             $sql ="SELECT * FROM e_category";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+        }
+# categories
+        public function getalli_categories()
+        {
+            $sql ="SELECT * FROM i_category";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
