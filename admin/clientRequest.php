@@ -32,30 +32,24 @@
                     </tbody>
                 </table>
             </div>
+            <div class="row" id="modal" style="margin:25px 1px 25px 25px;">
+                <div class="col-xs-10 b" style="padding-bottom:15px;" id='change'>
+                        <?php if(!isset($_GET['RType']))
+                        {
+                            include'includes/summary.php';
+                        }
+                        else
+                        {
+                            include'includes/RequestInfo.php';
+                        }
+                        ?>
+                </div>
+            </div>
         </div>
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
 </body>
-<div class="row"  style="margin:25px 1px 25px 25px;">
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 b" style="padding-bottom:15px;" id='change'>
-
-            <?php if(!isset($_GET['RType']))
-            {
-                include'includes/summary.php';
-            }
-            else
-            {
-                include'includes/RequestInfo.php';
-            }
-            ?> 
-        
-    </div>
-    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 shift b">
-        
-    </div>
-</div>
-<?php include('includes/footer.php'); ?>
 <script>
     $(document).ready(function(){
     $('table tbody tr').click(function()

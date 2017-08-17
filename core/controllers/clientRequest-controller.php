@@ -7,7 +7,7 @@
     $allRServie = $logic->getallServiceRequest(); #this is mysqliresult
      while($allCR = mysqli_fetch_assoc($allRServie))
      {
-         $allRequest .="<tr id='itemVeiw' href='clientRequest.php?ri=".$allCR['RequestID']."&RType=".$allCR['RequestType']."&ci=".$allCR['ClientID']."'><td>".$logic->getClientNameById($allCR['ClientID'])."</td><td>".$allCR['RequestType']."</td><td>".$allCR['RequestDate']."</td><td>".$logic->getServiceNameByID($allCR['ServiceID'])."</td><td>".$allCR['RequestStatus']."</td></tr>";
+         $allRequest .="<tr id='itemVeiw'data-toggle='modal' data-target='#myModal' href='clientRequest.php?ri=".$allCR['RequestID']."&RType=".$allCR['RequestType']."&ci=".$allCR['ClientID']."'><td>".$logic->getClientNameById($allCR['ClientID'])."</td><td>".$allCR['RequestType']."</td><td>".$allCR['RequestDate']."</td><td>".$logic->getServiceNameByID($allCR['ServiceID'])."</td><td>".$allCR['RequestStatus']."</td></tr>";
      }
     $allRServie = $logic->getallMaintananceRequest();
      while($allCR = mysqli_fetch_assoc($allRServie))
