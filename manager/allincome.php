@@ -64,7 +64,7 @@
                                     <div class="col-xs-3">
                                         <select class="selectpicker form-control" id='income_t' type="text" name ="ei_type">
                                             <option style="backgroud:#aaa" value="">--Select--</option>
-                                            <option value="p">Payament</option>
+                                            <option value="p">Payment</option>
                                             <option value="r">Refund</option>
                                         </select>
                                     </div>

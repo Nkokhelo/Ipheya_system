@@ -22,14 +22,15 @@
         <div class='row'>
              <div class="col-xs-offset-2 col-xs-10 b">
               <h2 class="text-center">All Suppliers</h2><hr class="bhr">
-              <table class="table"id="supplierTable">
-                <thead>
-                  <th>Supplier No</th><th>Name</th><th>Telephone</th><th>Email</th>
+              <table class="table" id="supplierTable">
+                <thead style="border-top:#eee 2px solid">
+                  <tr><th>#</th><th>Name</th><th>Telephone</th><th>Email</th><th>Actions</th></tr>
                 </thead>
                 <tbody>
-                  <?=$all_suppliers;?>
+                  <?= $all_suppliers;?>
                 </tbody>
                 <tfoot>
+                  
                 </tfoot>
               </table>
               <hr class="bhr"/>
@@ -46,7 +47,10 @@
 </body>
 <script>
   $(document).ready(function(){
-    $('#supplierTable').dataTable();
+    $('#supplierTable').dataTable({
+      "scrollY": "200px",
+      "scrollCollapse": true,
+    });
   });
 </script>
 

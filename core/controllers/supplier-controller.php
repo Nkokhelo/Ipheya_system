@@ -4,17 +4,17 @@ $sql = "SELECT * FROM suppliers";
 $query = mysqli_query($db, $sql);
 $all_suppliers = '';
 while($suppliers = mysqli_fetch_assoc($query)):
-      $all_suppliers .= '<tr>
-                      <td>'.$suppliers['supplier_no'].'</td>
-                      <td>'.$suppliers['company_name'].'</td>
-                      <td>'.$suppliers['telephone'].'</td>
-                      <td>'.$suppliers['email'].'</td>
+      $all_suppliers .= "<tr>
+                      <td>".$suppliers['supplier_no']."</td>
+                      <td>".$suppliers['company_name']."</td>
+                      <td>".$suppliers['telephone']."</td>
+                      <td>".$suppliers['email']."</td>
                       <td>
-                        <a href="viewsupplier.php?edit='.$suppliers['supplier_no'].'" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pencil text-primary"></span></a>
-                        <a href="viewsupplier.php?delete='.$suppliers['supplier_no'].'" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-trash text-danger"></span></a>
-                        <a href="viewsupplier.php?view='.$suppliers['supplier_no'].'" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-eye-open text-danger"></span></a>
+                        <a href='viewsupplier.php?edit=".$suppliers['supplier_no']."' class='btn btn-xs btn-default'><span class='glyphicon glyphicon-pencil text-primary'></span></a>
+                        <a href='viewsupplier.php?delete=".$suppliers['supplier_no']."' class='btn btn-xs btn-default'><span class='glyphicon glyphicon-trash text-danger'></span></a>
+                        <a href='viewsupplier.php?view=".$suppliers['supplier_no']."' class='btn btn-xs btn-default'><span class='glyphicon glyphicon-eye-open text-danger'></span></a>
                       </td>
-                    </tr>';
+                    </tr>";
 endwhile;
 #add new supplier...
     if(isset($_POST['savesupplier']))
