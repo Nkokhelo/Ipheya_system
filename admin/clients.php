@@ -33,6 +33,12 @@ session_start();
 								<tfoot>
 								</tfoot>
 							</table>
+              <hr class="bhr"/>
+              <div class="col-xs-12">
+                <div class="col-xs-6 col-xs-offset-3">
+                  <a class="btn btn-default btn-block">Show clients statisticks</a><br/>
+                </div>
+              </div>
             </div>
         </div>
       </div>

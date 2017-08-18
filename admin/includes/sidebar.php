@@ -6,6 +6,12 @@
                 <!-- -My new side bar-->
                 <ul class="list-unstyled components">
                   <li>
+                    <a href="dashboard.php" >
+                      <i class="fa fa-dashboard"></i>
+                      Dashboard
+                    </a>
+                  </li>
+                  <li>
                     <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
                       <i class='fa fa-building-o'></i>
                       Departments

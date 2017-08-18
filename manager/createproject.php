@@ -79,10 +79,10 @@
                         <div class="col-xs-3  input-group input-append " id='dsdate'style='padding-left:15px'>
                             <input required placeholder=" " placeholder='6' class="form-control"style="width:30%" id='duration' name ="duration" rows="5" cols="10"></input>
                             <select name="duration_type" class="form-control"style="width:70%;background:#eee">
-                                <option value="1">Day(s)</option>
-                                <option value="2">Week(s)</option>
-                                <option value="3">Month(s)</option>
-                                <option value="4">Year(s)</option>
+                                <option value="days">Day(s)</option>
+                                <option value="weeks">Week(s)</option>
+                                <option value="month(s)">Month(s)</option>
+                                <option value="years">Year(s)</option>
                             </select>
                         </div>
                     </div>
