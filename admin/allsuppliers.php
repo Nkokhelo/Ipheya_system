@@ -22,7 +22,7 @@
         <div class='row'>
              <div class="col-xs-offset-2 col-xs-10 b">
               <h2 class="text-center">All Suppliers</h2><hr class="bhr">
-              <table class="table" style="padding:2%;" id="suppliers">
+              <table class="table"id="supplierTable">
                 <thead>
                   <th>Supplier No</th><th>Name</th><th>Telephone</th><th>Email</th>
                 </thead>
@@ -40,14 +40,13 @@
               </div>
             </div>
         </div>
+        <?php include('includes/footer.php'); ?>
       </div>
   </div>
-  <?php include('includes/footer.php'); ?>
 </body>
 <script>
-  $('#suppliers').dataTable();
+  $(document).ready(function(){
+    $('#supplierTable').dataTable();
+  });
 </script>
-<div class="container-fluid" style="padding:1%;">
-     
-</div>
 

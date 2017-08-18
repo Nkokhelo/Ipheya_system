@@ -21,7 +21,7 @@
         <div class='row'>
             <!-- service form -->
             <div class="col-sm-10 col-sm-offset-2 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
-                <h2>Programs</h2>
+                <h2>project per Client</h2>
                 <hr class="bhr">
                 <table class="table table-hover">
                     <thead>
