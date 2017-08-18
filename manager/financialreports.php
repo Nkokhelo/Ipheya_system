@@ -39,3 +39,8 @@
  <script src="../assets/chartjs/Chart.js"></script>
  <script src="../assets/chartjs/customjs/expenseline.js"></script>
 </body>
+
+<?php
+  #TODO Please have a look on tis code next time
+  "SELECT services.service, Count(servicerequest.RequestID) FROM servicerequest INNER JOIN services WHERE servicerequest.ServiceID = services.service_id GROUP BY services.service"
+?>

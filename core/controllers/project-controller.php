@@ -21,7 +21,7 @@
         $patner=$_POST['patner'];
         $visibility=$_POST['visibility']; 
         $daily_hour=$_POST['daily_hour'];
-        $charge=$_POST['charge'];
+        $charge=$_POST['charge'];   
 
         $client_unique = uniqid();
         $project_no ="P00".strtoupper(substr($client_unique,6,4));
@@ -45,7 +45,7 @@
   $error='';
   while($proj = mysqli_fetch_assoc($query_result))
   {
-    $proj_list='';
+    $proj_list.="</td><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date("d F Y",time($proj['end_date']))."</td><td>".$proj['status']."</td></tr>";
   }
   if($proj_list == '')
   {

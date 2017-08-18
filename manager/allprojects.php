@@ -25,18 +25,32 @@
                 <?php if($proj_list ==''){ ?>
                 <?=$error?>
                 <?php } else { ?>
-                <table class="table">
+                  <table class="table table-bordered table-hover" id="projectTable">
                   <thead>
-                    <th>Project Number </th><th>Name</th><th>Program Name</th><th>Status</th><th>Duration</th>
+                    <th>#</th><th>Project Name</th><th>Duration</th><th>Project Due</th><th>status</th>
                   </thead>
                   <tbody>
                     <?=$proj_list?>
                   </tbody>
+                  
                 </table>
+                <div>
+                <hr class='bhr' style="width:100%"/>
+                <div class='col-xs-6 col-xs-offset-3' style='margin-bottom:30px;'>
+                  <a type="submit" href="createproject.php" class='btn btn-default btn-block'>add project</a>
+                </div>
+  
+                </div>
                 <?php } ?>
             </div>
         </div>
+       
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
+  <script>
+  $(document).ready(function(){
+    $('#projectTable').dataTable();
+  });
+    </script>
 </body>

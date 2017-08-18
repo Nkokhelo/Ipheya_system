@@ -35,8 +35,9 @@
                         <?php if($i_trans==''){?>
                           <?=$ifeedback?>
                         <?php } else{ ?>
+                          <?=$ifeedback?>
                           <h3 class="text-center" style="color:#888">All Incomes</h3><hr class="bhr"/>
-                          <table class="table table-bordered table-hover">
+                          <table class="table table-bordered table-hover" id="incomeTable">
                             <thead>
                               <th>Ref</th><th>Name</th><th>Description</th><th>Price</th>
                             </thead>
@@ -63,7 +64,7 @@
                                     <div class="col-xs-3">
                                         <select class="selectpicker form-control" id='income_t' type="text" name ="ei_type">
                                             <option style="backgroud:#aaa" value="">--Select--</option>
-                                            <option value="p">Payament</option>
+                                            <option value="p">Payment</option>
                                             <option value="r">Refund</option>
                                         </select>
                                     </div>
@@ -183,7 +184,7 @@
                                     <div class="col-xs-6" id="files">
                                       <label for="choose">Please choose a file pdf/png/jpg/</label>
                                       <div class="col-xs-12" >
-                                        <input type="file" class="form-control-file" name="attachment[]" multiple/>
+                                        <input type="file" class="form-control-file" name="attachment" multiple/>
                                       </div>
                                     </div>
                                 </div>  
@@ -214,6 +215,8 @@
         $('#files').hide();
         $('#osupplier').hide();
       $('#oclient').hide();
+      $('#incomeTable').dataTable();
+
 
 
         $('#t_date').datepicker(

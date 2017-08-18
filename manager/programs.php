@@ -20,15 +20,14 @@
       <div id='content'>
         <div class='row'>
             <!-- service form -->
-            <div class="col-sm-8 col-sm-offset-2 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
-                <h2>Programs</h2>
+            <div class="col-sm-10 col-sm-offset-2 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
+                <h2>project per Client</h2>
                 <hr class="bhr">
                 <table class="table table-hover">
                     <thead>
                         <th>Program Number</th>
                         <th>Program Name</th>
                         <th>Number of Project(s)</th>
-                        <th><a data-toggle="modal" data-target="#addprogram" onclick='saveprogram()'class="btn btn-block btn-default"><span class="ion-android-add"></span> New Program</a></th>
                     </thead>
                     <tbody>
                         <?=$prog_list?>
@@ -37,7 +36,14 @@
                         <?= (isset($feedback))?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":' ' ?>
                     </tfoot>
                 </table>
-                    <?php include('includes/program-modal.php'); ?>
+                <hr class="bhr"/>
+                <div class="col-xs-12">
+                    <div class="col-xs-6 col-xs-offset-2">
+                        <a data-toggle="modal" data-target="#addprogram" onclick='saveprogram()'class="btn btn-block btn-success"><span class="ion-android-add"></span> New Program</a>
+                        <br/>
+                    </div>
+                </div>
+                <?php include('includes/program-modal.php'); ?>
             </div>
         </div>
       </div>
