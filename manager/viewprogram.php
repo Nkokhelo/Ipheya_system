@@ -39,7 +39,7 @@
               </div>
               <hr class='bhr' style="width:100%"/>
               <div class='col-xs-6 col-xs-offset-3' style='margin-bottom:30px;'>
-                <button data-toggle="modal" data-target="#addproject" class='btn btn-default btn-block'>add project</button>
+                <a class="btn btn-success" href="createproject.php?prog=<?=$program['program_no']?>"><span class="fa fa-plus"></span> Create Project</a>
               </div>
           </div>
         </div>

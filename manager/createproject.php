@@ -23,7 +23,11 @@
               <form class="form-horizontal" action="createproject.php" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">
-                    Project Information
+                    <?php if(isset($_GET['prog'])) { ?>
+                    Add project to <?php echo($logic->getProgramByNo($_GET['prog'])['program_name']) ?> projects
+                    <?php } else { ?>
+                        Project Informatiion
+                    <?php } ?>
                   </legend>
                   <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
                   <div class="col-xs-12">
@@ -33,6 +37,9 @@
                             <input required placeholder="Wifi Project" class="form-control" id='project_name' type="text" name ="project_name"/>
                         </div>
                         <!---->
+                        <?php if(isset($_GET['prog'])){ ?>
+                        <input type="hidden" name="program_no" value='<?php echo ($_GET['prog']) ?>' />
+                        <?php } else {?>
                         <label class="col-xs-2 control-label" for="program_no">Program:</label>
                         <div class="col-xs-4">
                         <select class="selectpicker form-control" title="Please select" id='program_no' type="text" name ="program_no">       
@@ -40,7 +47,7 @@
                              <?=($allprogram)?$allprogram:""?>
                         </select>
                         </div>
-
+                        <?php } ?>
                     </div>
 
                     <div class="form-group col-xs-12">

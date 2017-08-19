@@ -46,13 +46,13 @@
                           <h3 class="text-center" style="color:#888">All Expenses</h3><hr class="bhr"/>
                           <table class="table table-bordered table-hover" id="expensetable">
                             <thead>
-                              <th>Ref</th><th>Name</th><th>Description</th><th>Price</th>
+                              <tr><th style="50px">Ref</th><th style="100px">Name</th><th style="250px">Description</th><th style="150px"> Price</th></tr>
                             </thead>
                             <tbody>
                               <?=$e_trans?>
                             </tbody>
                             <tfoot>
-                              
+                              <tr></tr>
                             </tfoot>
                         </table>
                         <?php }?>
