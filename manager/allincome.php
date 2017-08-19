@@ -39,7 +39,7 @@
                           <h3 class="text-center" style="color:#888">All Incomes</h3><hr class="bhr"/>
                           <table class="table table-bordered table-hover" id="incomeTable">
                             <thead>
-                              <th>Ref</th><th>Name</th><th>Description</th><th>Price</th>
+                              <td><th>Ref</th><th>Name</th><thstyle="width:300px">Description</th><th>Price</th></td>
                             </thead>
                             <tbody>
                               <?=$i_trans?>
