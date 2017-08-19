@@ -74,7 +74,14 @@
                     <form action="upload.php" method="post" enctype="multipart/form-data">
                  <label class="col-xs-3 control-label" for="">Select image to upload:</label>
                 <input type="file" name="fileToUpload" id="fileToUpload">
-                <input type="submit" value="Upload Image" name="submit">
+                    
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="col-xs-offset-2 col-xs-2" id='change'>
+                            <input  type="submit" id='save' name="Upload_Image" class="btn btn-block btn-success" value="Upload Image"/>
+                        </div>
+                    </div>
+                </div>
                 </form>  
 
                 </fieldset>
@@ -82,7 +89,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-8" id='change'>
-                            <input  type="submit" id='save' name="Create_Event" class="btn btn-block btn-success" value="create"/>
+                            <input  type="submit" id='save' name="Create_Event" class="btn btn-block btn-success" value="Create Event"/>
                         </div>
                     </div>
                 </div>
