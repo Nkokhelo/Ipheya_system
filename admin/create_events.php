@@ -7,7 +7,7 @@
         include('includes/head2.php');
         require_once('../core/controllers/project-controller.php');
         // include('includes/navigation.php');
-        //mfudo...
+        
    }
     else
     {
@@ -32,9 +32,7 @@
                         <div class="col-xs-4">
                             <input required placeholder="Create New Event Name" class="form-control" id='event_name' type="text" name ="name "/>
                         </div>
-                        <label class="col-xs-2 control-label" for="location">Location :</label>
-                        <div class="col-xs-4">
-                            <input required placeholder="Your Location Here" class="form-control" id='location' type="text" name ="location"/>
+                       
                         </div>
                     </div>
                     <div class="form-group col-xs-12">
@@ -65,12 +63,20 @@
                         <div class="col-xs-3  input-group input-append " id='dsdate'style='padding-left:15px'>
                             <input required placeholder=" " placeholder='6' class="form-control"style="width:30%" id='duration' name ="duration" rows="5" cols="10"></input>
                             <select name="duration_type" class="form-control"style="width:70%;background:#eee">
+                                <option value="1">Hour(s)</option>
                                 <option value="1">Day(s)</option>
                                 <option value="2">Week(s)</option>  
-                                <option value="2">Week(s)</option> 
+                                <option value="2">Month(s)</option> 
                             </select>
                         </div>
-                    </div>                    
+                    </div>  
+                    
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                 Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload Image" name="submit">
+                </form>  
+
                 </fieldset>
                 <hr class="bhr"/>        
                 <div class="col-xs-12">
