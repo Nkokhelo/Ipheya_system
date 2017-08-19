@@ -82,6 +82,7 @@
                         </div>
                     </div>
                 </div>
+                   <input type="checkbox" name="reminder" class="chk chk-block chk-reminder"value="reminder"/> Send Me Reminder?
                 </form>  
 
                 </fieldset>
