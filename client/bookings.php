@@ -23,14 +23,14 @@
               <form class="form-horizontal" action="bookings.php" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">
-               Make Bookings
+               Event Bookings
                   </legend>
                   <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
                   <div class="col-xs-12">
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="Name">Name:</label>
                         <div class="col-xs-4">
-                            <input required placeholder="Mfundos" class="form-control" id='Name' type="text" name ="name "/>
+                            <input required placeholder="Full Name" class="form-control" id='Name' type="text" name ="name "/>
                         </div>
                       
                     </div>
@@ -42,14 +42,14 @@
                       
                      </div>
                     <div class="form-group col-xs-12">
-                     <label class="col-xs-3 control-label" for="remind ">Remind?:</label>
+                     <label class="col-xs-3 control-label" for="remind ">Remind Me?</label>
                         <div class="col-xs-3">
                             <input type="checkbox" name="remind" value="remind"></input>
                         </div>
                     </div>
                      <label class="col-xs-2 control-label" for="cell_num ">Cell Number:</label>
                         <div class="col-xs-2">
-                            <input required placeholder="cell_num" class="form-control" id='cell_num' type="text" name ="cell_num  "/> 
+                            <input required placeholder="Cell Number" class="form-control" id='cell_num' type="text" name ="cell_num"/> 
                         </div>                    
                 </fieldset>
                 <hr class="bhr"/>        

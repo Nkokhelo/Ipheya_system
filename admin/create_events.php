@@ -42,13 +42,13 @@
                         </div>
                     </div>
                     <div class="form-group col-xs-12">
-                        <label for="department" class="control-label col-xs-2">Category :</label>
+                        <label for="category" class="control-label col-xs-2">Category :</label>
                         <div class="col-xs-4">
                             <select id="depart" class="form-control" name="category">
                                 <option value=''><b>~~Select~~</b></option> 
                                 <option>Innovation</option>   
-                                <option>New Technologies</option>  
-                                <option>Buisness empowerment</option>                            
+                                <option>New System Features</option>  
+                                <option>Customer Empowerment</option>                            
                             </select>
                         </div>                     
                     </div>
@@ -78,11 +78,11 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-2" id='change'>
-                            <input  type="submit" id='save' name="Upload_Image" class="btn btn-block btn-success" value="Upload Image"/>
+                            
                         </div>
                     </div>
                 </div>
-                   <input type="checkbox" name="reminder" class="chk chk-block chk-reminder"value="reminder"/> Send Me Reminder?
+                   
                 </form>  
 
                 </fieldset>
