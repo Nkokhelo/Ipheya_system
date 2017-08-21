@@ -133,7 +133,7 @@
         {
             if($_FILES['attachment']['error'])
             {
-                $efeedback = $logic->display_error("Attechment Error".$_FILES['attachment']['error']);
+                $ifeedback = $logic->display_error("Attechment Error".$_FILES['attachment']['error']);
             }  
         }
         else

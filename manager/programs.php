@@ -23,11 +23,12 @@
             <div class="col-sm-10 col-sm-offset-2 b" style="border:1px solid #eee;border-radius:1%;margin-bottom:10px;">
                 <h2>project per Client</h2>
                 <hr class="bhr">
-                <table class="table table-hover">
+                <table class="table table-bordered table-hover">
                     <thead>
                         <th>Program Number</th>
                         <th>Program Name</th>
                         <th>Number of Project(s)</th>
+                        <th>...</th>
                     </thead>
                     <tbody>
                         <?=$prog_list?>

@@ -106,6 +106,7 @@
         $pi=0;
         $presult = $logic->getallProjets();
         $program = $logic->getProgramByNo($p_no);
+
         while($projects = mysqli_fetch_assoc($presult))
         {
             if($projects['program_no']==$p_no)
@@ -132,14 +133,14 @@
         $client ='';
         $viewproject = $logic->getProjectByNo($_GET['pview']);//get project data from a a database
         $employee= $logic->getEmployeeByEmpNo($viewproject['employee_no']);//get employee information from a database
-        $client = $logic ->getClientByNo($viewproject['client_no']);// get client information from a database       
+        $client = $logic ->getClientByNo($logic->getProgramByNo($viewproject['program_no'])['client_no']);// get client information from a database       
+        // die($client['name']);
     }
 
 #getallprograms
     $result = $logic->getallPrograms();
     $presult = $logic->getallProjets();
     $prog_list='';
-    $i =0;
     if(!$result)
     {
         die(mysqli_error($db));
@@ -147,18 +148,10 @@
     while($programs = mysqli_fetch_assoc($result)):
         if($programs['archive']==0)
         {
-            while($project = mysqli_fetch_assoc($presult))
-            {
-                if($programs['program_no']==$project['program_no'])
-                {
-                    $i++;
-                }
-            }
-            $prog_list .= "<tr><td>".$programs['program_no']."</td><td>".$programs['program_name']."</td><td>$i</td>
+            $prog_list .= "<tr><td>".$programs['program_no']."</td><td>".$programs['program_name']."</td><td>".$logic->numOfProject($programs['program_no'])."</td>
             <td aling='right'><a href='viewprogram.php?view=".$programs['program_no']."' class='btn btn-xs btn-default' class='btn btn-xs btn-default'>View <span class='glyphicon glyphicon-eye-open'></span> </a>
             <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='editprogram(".$programs['id'].")'>Edit <span class='glyphicon glyphicon-pencil' ></span> </button>
             <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='deleteprogram(".$programs['id'].")'class='btn btn-xs btn-default'>Archive <span class='glyphicon glyphicon-ban-circle'></span> </button></td></tr>  ";
-            $i=0;
         }
     endwhile;
 

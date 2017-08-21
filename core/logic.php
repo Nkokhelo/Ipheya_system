@@ -102,16 +102,10 @@
         }
         public function getClientByNo($no)
         {
-            $result = $this->getallClients();
-            $client ='';
-            while($clientdata = mysqli_fetch_assoc($result))
-            {
-                if($no = $clientdata['client_no'])
-                {
-                    $client = $clientdata;
-                }
-            }
-            return $client;
+            
+            $sql ="Select * from clients where client_no='$no'";
+            $qey =mysqli_query($this->connect(),$sql);
+            return mysqli_fetch_assoc($qey);
         }        
         public function getClientByIdNo($no)
         {
@@ -398,6 +392,13 @@
             return $service;
         }
 
+        public function numOfProject($pro_id)
+        {
+            $serviceSql = "SELECT COUNT(*) FROM projects WHERE program_no ='$pro_id'";
+            $query =mysqli_query($this->connect(),$serviceSql);
+            $serviceID = mysqli_fetch_array($query);
+            return $serviceID[0];
+        }
         public function AssociateTarget($ip,$email)
         {
           $user_sql = mysqli_query($this->connect(),"SELECT * FROM clients WHERE email = '$email'");
@@ -656,8 +657,8 @@
 
 #testing -------------------------------------
     // $log = new Logic();
-    // $test =$log->addUserToRole("Nhlaka@gmail.com","Employee");
-    // echo $roles;
+    // $test =$log->getClientByNo('PRG0076F6');
+    // $test['name'];
 
 #end of testing--------------------------
 ?>

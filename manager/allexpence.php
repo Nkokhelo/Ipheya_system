@@ -89,7 +89,7 @@
                           <!--Supplier  -->
                             <label class="col-xs-2 control-label supplier" id="supplier_lbl" for="supplier_no">Supplier:</label>
                             <div id="" class="col-xs-4 supplier">
-                              <input id="supplier" list="suppliers" class="form-control" name="supplier_no"></input>
+                              <input id="supplier" list="suppliers" class="form-control" name="supplier_no"required></input>
                               <datalist id="suppliers">
                                 <?=($suppliers_dd)?$suppliers_dd:""?>
                               </datalist>
@@ -97,12 +97,12 @@
                           <!--other  -->
                               <label class="col-xs-2 control-label other" id="other_lbl" for="other">Specify:</label>
                               <div id="" class="col-xs-4 other">
-                                <input id="other" list="other" class="form-control" name="other"></input>
+                                <input id="other" list="other" class="form-control" name="other" required></input>
                               </div> 
                           <!--client  -->
                               <label id="client_lbl" class="col-xs-2 control-label client" for="client_no">Client:</label>
                               <div id="" class="col-xs-5 client">
-                                <input id="client" list="clients" class="form-control" name="client_no"></input>
+                                <input id="client" list="clients" class="form-control" name="client_no" required></input>
                                 <datalist id="clients">
                                   <?=($clients_dd)?$clients_dd:""?>
                                 </datalist>
@@ -143,7 +143,7 @@
                             <label class="col-xs-2 control-label col-xs-push-1" for="payment_type">Payment type:</label>
                             <div class="col-xs-3 col-xs-push-1">
                             <select class="selectpicker form-control" title="Please select" id='program_name' type="text" name ="ei_payment_type">       
-                              <option style="background:#aaa">--None--</option>
+                              <option style="background:#aaa" value="">--None--</option>
                               <option value="cash">Cash Payment</option>
                               <option value="card">Card Payement</option>
                             </select>
@@ -154,13 +154,13 @@
                             <label class="col-xs-2 control-label" for="expense_name">Category :</label>
                             <div class="col-xs-4">
                               <select class="form-control" name="category_id">
-                                <option style="background:#aaa">--None--</option>
+                                <option style="background:#aaa" value="">--None--</option>
                                 <?=$categories_dd?>
                               </select>
                             </div> 
                             <label class="col-xs-2 control-label" for="amount">Amount :</label>
                             <div class="col-xs-4">
-                              <input type="text" class="form-control" name="ei_amount" value="" id="amount">
+                              <input type="text" class="form-control" name="ei_amount" value="" id="amount" required>
                             </div> 
                           </div>
                           <hr style="width:100%"/>  
@@ -170,7 +170,7 @@
                             <label class="col-xs-2 control-label" for="expense_name">Project:</label>
                             <div class="col-xs-4">
                               <select class="form-control" name="project_no">
-                                <option style="background:#aaa">--None--</option>
+                                <option style="background:#aaa" value="">--None--</option>
                                 <?=$project_dd?>
                               </select>
                               <br/>
@@ -190,7 +190,7 @@
                               <div class="col-xs-6" id="files">
                                 <label for="choose">Please choose a file pdf/png/jpg/</label>
                                 <div class="col-xs-12" >
-                                  <input type="file" class="form-control-file" name="attachment"/>
+                                  <input type="file" class="form-control-file" name="attachment" required/>
                                 </div>
                               </div>
                             </div>  
