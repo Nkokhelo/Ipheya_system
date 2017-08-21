@@ -10,8 +10,8 @@
         $description =$_POST['description']; 
         $category =$_POST['category']; 
         
-        $save = "INSERT INTO `events`(`name`,`location`,`date`,`duration`,`description`,`category`)      
-        VALUES (null,'$name','$location','$date','$duration','$description','$category')";
+        $save = "INSERT INTO `events`(`name`,`description`,`category`,`date`,`duration`)      
+                 VALUES (null,'$name','$description','$category','$date','$duration')";
          $result = mysqli_query($logic->connect(),$save);
         if(!$result)  
         { 
