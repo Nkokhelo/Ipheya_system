@@ -46,13 +46,13 @@
                           <h3 class="text-center" style="color:#888">All Expenses</h3><hr class="bhr"/>
                           <table class="table table-bordered table-hover" id="expensetable">
                             <thead>
-                              <tr><th style="50px">Ref</th><th style="100px">Name</th><th style="250px">Description</th><th style="150px"> Price</th></tr>
+                              <tr><th style="50px">Ref</th><th style="100px">Name</th><th style="width:520px">Description</th><th style="150px"> Price</th></tr>
                             </thead>
                             <tbody>
                               <?=$e_trans?>
                             </tbody>
                             <tfoot>
-                              <tr></tr>
+                              <tr><td colspan="3" align="right"><b>Total Expenses</b></td><td align="right">R <?= number_format($tot_exp,2,","," ")?></td></tr>
                             </tfoot>
                         </table>
                         <?php }?>
@@ -198,7 +198,7 @@
                         <hr class="bhr" style="width:100%"/>
                         <div class="form-group col-xs-12">
                           <div class="col-xs-4 col-xs-offset-4">
-                            <button type="submit" class="btn btn-block btn-primary" name="save_expense">Create Expense</button>
+                            <button type="submit" class="btn btn-block btn-primary"id="save_expense" name="save_expense">Create Expense</button>
                           </div>
                         </div>
                       </fieldset>
@@ -345,6 +345,17 @@
               alert('This is not an allowed file type.');
               this.value = '';
         }
+    });
+    $('#save_expense').bind("click",function() 
+    { 
+        var imgVal = $('INPUT[type="file"]').val(); 
+        if(imgVal==''&& $('#yes').is(':checked')) 
+        { 
+            alert("selecte an attachemt for this expense"); 
+            return false; 
+        } 
+
+
     });
   });
   </script>

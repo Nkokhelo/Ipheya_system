@@ -25,6 +25,7 @@
                 <ul class="nav nav-tabs" role="tablist">
                   <li role="presentation" class="active"><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Incomes</a></li>
                   <li role="presentation" ><a href="#newincome"  aria-controls="profile" role="tab" data-toggle="tab">New Income</a></li>
+                  <li role="presentation" ><a href="#graph_income"  aria-controls="profile" role="tab" data-toggle="tab">Income Review</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -39,13 +40,13 @@
                           <h3 class="text-center" style="color:#888">All Incomes</h3><hr class="bhr"/>
                           <table class="table table-bordered table-hover" id="incomeTable">
                             <thead>
-                              <td><th>Ref</th><th>Name</th><thstyle="width:300px">Description</th><th>Price</th></td>
+                              <tr><th>Ref</th><th>Name</th><th style="width:520px">Description</th><th>Price</th></tr>
                             </thead>
                             <tbody>
                               <?=$i_trans?>
                             </tbody>
                             <tfoot>
-                              
+                            <tr align="right"><td colspan="3" ><b>Total Incomes</b></td><td>R <?= number_format($tot_inc,2,","," ")?></td></tr>
                             </tfoot>
                         </table>
                         <?php }?>
@@ -199,6 +200,11 @@
                         </form>
                     </div>
                   </div>
+                  <div role="tabpanel" class="tab-pane fade" id="graph_income">
+                    <div class="col-xs-12">
+                          <h3 class="text-center" style="color:#888">Monthy income from Jan-2017 to Aug-2017</h3><hr class="bhr"/>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -343,6 +349,17 @@
                   this.value = '';
             }
         });
+        $('#save_income').bind("click",function() 
+        { 
+        var imgVal = $('INPUT[type="file"]').val(); 
+        if(imgVal==''&& $('#yes').is(':checked')) 
+        { 
+            alert("selecte an attachemt for this expense"); 
+            return false; 
+        } 
+
+
+    });
     });
   </script>
 </body>

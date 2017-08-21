@@ -12,16 +12,20 @@
     $i_categories_dd="";
     $clients_dd="";
     $suppliers_dd="";
+    $tot_exp=0;
+    $tot_inc=0;
 
     $allexpense = $logic->getallExpenses();
     while ($expenses = mysqli_fetch_assoc($allexpense))
     {
         $e_trans.="<tr><td>".$expenses['ref_no']."</td><td>".$expenses['ei_name']."</td><td>".$expenses['ei_description']."</td><td align='right'>R".number_format($expenses['ei_amount'],2,","," ")."</td></tr>";
+        $tot_exp+=$expenses['ei_amount'];
     }
     $allincome = $logic->getallIncomes();
     while ($incomes = mysqli_fetch_assoc($allincome))
     {
         $i_trans.="<tr><td>".$incomes['ref_no']."</td><td>".$incomes['ei_name']."</td><td>".$incomes['ei_description']."</td><td align='right'>R".number_format($incomes['ei_amount'],2,","," ")."</td></tr>";
+        $tot_inc+=$incomes['ei_amount'];
     }
     $allproject =$logic->getallProjets();
     while($projects = mysqli_fetch_assoc($allproject))
@@ -78,7 +82,7 @@
         $category_id= $_POST['category_id'];
         $other = $_POST['other'];
         $ei_description = $_POST['ei_description'];
-
+        // die($_POST['attachment']);
         $image=addslashes($_FILES['attachment']['tmp_name']);
         if(!isset($image))
         {
@@ -89,8 +93,11 @@
         }
         else
         {
-            $image=file_get_contents($image);
-            $image=base64_encode($image);
+            if($_FILES['attachment']['size'] != "")
+            {
+                $image=file_get_contents($image);
+                $image=base64_encode($image);
+            }
             $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`,`ei_description`, `ei_payment_type`,`ref_no`, `ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`e_or_i`,`file`) 
             VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_description','$ei_payment_type','$ref_id','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','e','$image')";
                 $result = mysqli_query($logic->connect(),$save);
@@ -126,13 +133,16 @@
         {
             if($_FILES['attachment']['error'])
             {
-                $ifeedback = $logic->display_error("Attechment Error".$_FILES['attachment']['error']);
+                $efeedback = $logic->display_error("Attechment Error".$_FILES['attachment']['error']);
             }  
         }
         else
         {
-            $image=file_get_contents($image);
-            $image=base64_encode($image);
+            if($_FILES['attachment']['size'] != "")
+            {
+                $image=file_get_contents($image);
+                $image=base64_encode($image);
+            }
             $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`,`ei_description`, `ei_payment_type`,`ref_no`, `ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`e_or_i`,`file`) 
             VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_description','$ei_payment_type','$ref_id','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','i','$image')";
                 $result = mysqli_query($logic->connect(),$save);
