@@ -10,7 +10,7 @@
         //mfudo...
    }
    else
-   {
+   {  
      header("Location:../login.php");
    }
 ?>
@@ -25,8 +25,8 @@
                   <legend class="inlegend thelegend">
                     <?php if(isset($_GET['prog'])) { ?>
                     Add project to <?php echo($logic->getProgramByNo($_GET['prog'])['program_name']) ?> projects
-                    <?php } else { ?>
-                        Project Informatiion
+                    <?php } else { ?>  
+                        Project Information
                     <?php } ?>
                   </legend>
                   <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
