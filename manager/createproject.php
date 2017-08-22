@@ -105,7 +105,7 @@
                         <label class="col-xs-3 control-label" for="employee_no">Project Manager :</label>
                         <div class="col-xs-3 input-group " style='padding-left:15px'>
                                 <select id="employees" class="form-control" name="employee_no">
-                                    <option value="">~Select~</option>
+                                    <option value=""></option>
                                 </select>
                             </div>
                     </div>

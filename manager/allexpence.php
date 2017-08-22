@@ -28,7 +28,7 @@
         <div class='row'>
             <div class='col-xs-10 b'>
               <div>
-
+  
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                   <li role="presentation" class="active"><a href="#list"  aria-controls="home" role="tab" data-toggle="tab">All Expenses</a></li>
