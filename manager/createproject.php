@@ -43,7 +43,7 @@
                         <label class="col-xs-2 control-label" for="program_no">Program:</label>
                         <div class="col-xs-4">
                         <select class="selectpicker form-control" title="Please select" id='program_no' type="text" name ="program_no">       
-                            <option>~Select~</option>
+                            <option value="">~Select~</option>
                              <?=($allprogram)?$allprogram:""?>
                         </select>
                         </div>

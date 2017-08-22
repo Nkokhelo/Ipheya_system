@@ -27,10 +27,10 @@
                 </ul>
                 <div class="col-md-12" style="padding:2%;">
                     <div class="tab-content" >
-
                         <div role="tabpanel" class="tab-pane fade in active" id="client" style="font-size:12px">
                             <div class="col-xs-12">
-                                    <h5><p style="color:#0094ff; position:absolute; top:5px;">Client number : #<?= $client['client_no'];?></p></h5>
+                                    <h4><p style="color:#0094ff; position:absolute; top:5px;"><?= $client['name']?></p></h4>
+<br/>
                                     <input type='hidden' id="client_id" value='<?= $client['client_id'] ?>'>
                                     <hr class="bhr"/>
                                     <div class="col-xs-12">
@@ -53,7 +53,6 @@
                             </div>
                                 <hr class="bhr" style="width:100%"/>
                                 <div class="col-xs-5 col-xs-offset-5">
-                                    <a href="viewsupplier?edit=<?=$_GET['view']?>" class="btn btn-xs btn-primary"><p class="glyphicon glyphicon-edit"></p> edit...</a>
                                 </div>
                             </div>
                         </div>
@@ -88,9 +87,9 @@
                 </div>
             </div>      
         </div>
+        <?php include('includes/footer.php'); ?>
       </div>
   </div>
-  <?php include('includes/footer.php'); ?>
 </body>
  <script src="../assets/chartjs/Chart.js" type="text/javascript"></script>
  <!--<script src="../assets/chartjs/lib/jquery-2.1.3.min.js" type="text/javascript"></script>-->
