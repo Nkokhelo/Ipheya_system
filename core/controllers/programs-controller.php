@@ -112,11 +112,11 @@
             if($projects['program_no']==$p_no)
             {
                 $no = $projects['project_no'];
-                $get_project .="<a href='viewproject.php?pview=$no&prog=".$_GET['view']."'>".$projects['project_name']."</a>, ";
+                $get_project .="<li><a href='viewproject.php?pview=$no&prog=".$_GET['view']."'>".$projects['project_name']."</a></li> ";
                 $pi++;
             }
         }
-        $get_project =rtrim($get_project,', ');
+        // $get_project =rtrim($get_project,', ');
         if($get_project =='')
         {
             $pi=0;

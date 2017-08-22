@@ -31,7 +31,9 @@
                   <div class='row'>
                     <h4 class='col-xs-12 '><?=($pi>0)? $pi." Projects": "No Projects" ?></h4>
                     <div class='col-xs-11 '>
-                            <label style='font-style: italic'><?= $get_project ?></label>
+                      <ol>
+                        <?= $get_project ?>
+                      </ol>
                             <?=(isset($feedback))?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":'no data '?>
                     </div>
                   </div>
@@ -45,7 +47,7 @@
         </div>
       </div>
       <?php include('includes/footer.php'); ?>
-  </div>
+    </div>
   <?php include('includes/project-modal.php') ?>
 </body>
 

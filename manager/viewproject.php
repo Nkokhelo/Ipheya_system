@@ -35,11 +35,11 @@
                   </div>
                   <div class='row'>
                     <label class=' col-xs-3' style='text-align:right'>Start Date : </label>
-                    <div class=' col-xs-9 '><?= date("d F Y", time($viewproject['start_date']))?></div>
+                    <div class=' col-xs-9 '><?= date_format(date_create($viewproject['start_date']),'d F Y')?></div>
                   </div>
                   <div class='row'>
                     <label class=' col-xs-3' style='text-align:right'>End Date : </label>
-                    <div class=' col-xs-9 '><?= date("d F Y",time($viewproject['end_date']))?></div>
+                    <div class=' col-xs-9 '><?= date_format(date_create($viewproject['end_date']),'d F Y')?></div>
                   </div>
                   <h4 style="color:#888">Project Manager Details  </h4 style="color:#888">
                   <hr />
@@ -80,7 +80,6 @@
               <hr class='bhr' style="width:100%"/>
                 <div class='col-xs-6 col-xs-offset-3' style='padding-bottom:20px;'>
                     <?php if(isset($_GET['prog'])){?>
-                        
                         <a class=" col-xs-6 btn btn-default"><span class="glyphicon glyphicon-pencil"></span> edit</a>
                         <a href='viewprogram?view=<?=$_GET["prog"]?>' class=" col-xs-6 btn btn-default"><span class="glyphicon glyphicon-chevron-right"></span> back</a>
                     <?php } else{?>
