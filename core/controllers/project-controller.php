@@ -37,7 +37,7 @@
         {
               $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> Project saved !');
         }
-    }
+    } 
  
  #get all projets
   $query_result = $logic->getallProjets();
