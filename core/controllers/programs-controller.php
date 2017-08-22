@@ -17,7 +17,7 @@
             $query = mysqli_query($db,"INSERT INTO `programs`(`program_no`,`program_name`,`description`) VALUES('$program_no','$name','$description')");
             if(!$query)
             {
-                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again');
+                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Error :</strong> occured during execution<br/>Please try again'.mysqli_error($db));
             }
             else
             {
@@ -65,7 +65,7 @@
             }
             else
             {
-                $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong> has been achived!');
+                $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong> has been achived!<a href="programs.php?archived=arch">View Archived Programs?</a>');
             }
     }
 #save Project
@@ -154,6 +154,21 @@
             <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='deleteprogram(".$programs['id'].")'class='btn btn-xs btn-default'>Archive <span class='glyphicon glyphicon-ban-circle'></span> </button></td></tr>  ";
         }
     endwhile;
+    
+    if(isset($_GET['archived']))
+    {
+        $prog_list='';
+        $result = $logic->getallPrograms();
+        while($programs = mysqli_fetch_assoc($result)):
+            if($programs['archive']==1)
+            {
+                $prog_list .= "<tr><td>".$programs['program_no']."</td><td>".$programs['program_name']."</td><td>".$logic->numOfProject($programs['program_no'])."</td>
+                <td aling='right'><a href='viewprogram.php?view=".$programs['program_no']."' class='btn btn-xs btn-default' class='btn btn-xs btn-default'>View <span class='glyphicon glyphicon-eye-open'></span> </a>
+                <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='editprogram(".$programs['id'].")'>Edit <span class='glyphicon glyphicon-pencil' ></span> </button>
+                <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='deleteprogram(".$programs['id'].")'class='btn btn-xs btn-default'>Restore <span class='glyphicon glyphicon-ban-circle'></span> </button></td></tr>  ";
+            }
+        endwhile;
+    }
 
     if($prog_list=='')
     {   

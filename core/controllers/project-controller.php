@@ -45,7 +45,7 @@
   $error='';
   while($proj = mysqli_fetch_assoc($query_result))
   {
-    $proj_list.="</td><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a>View</a> | <a>Edit</a> | <a>Delete</a></td></tr>";
+    $proj_list.="</td><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='".$proj['project_no']."' class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
   }
   if($proj_list == '')
   {
