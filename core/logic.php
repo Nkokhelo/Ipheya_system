@@ -599,8 +599,8 @@
         public function getRelatedProject($proj)
         {
             $result =$this->getProjectByNo($proj)['program_no'];
-            
-
+            $query =mysqli_query($this->connect(),"SELECT * FROM projects WHERE proram_no='$result'");
+            return mysqli_fetch_assoc();
         }
 
         public function getProgramByNo($progam_no)
