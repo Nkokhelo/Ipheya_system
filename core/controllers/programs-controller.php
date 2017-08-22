@@ -130,10 +130,29 @@
         $viewproject ='';
         $employee='';
         $client ='';
+        $proj ='';
         $viewproject = $logic->getProjectByNo($_GET['pview']);//get project data from a a database
         $employee= $logic->getEmployeeByEmpNo($viewproject['employee_no']);//get employee information from a database
         $client = $logic ->getClientByNo($logic->getProgramByNo($viewproject['program_no'])['client_no']);// get client information from a database       
-        // die($client['name']);
+        $related_proj = $logic->getRelatedProject($_GET['pview']);
+        //get related Projects
+        while($all = mysqli_fetch_assoc($related_proj))
+        {
+            if($all['project_no']!= $_GET['pview'])
+            {
+                $proj .="<li><b>".$all['project_name']."</b>:  -  :<a href='viewproject?pview=".$all['project_no']."'>View.</a></li>"; 
+            }
+            
+        }
+        $allTask = $logic->getallTasks();
+        while($all = mysqli_fetch_assoc($related_proj))
+        {
+            if($all['project_no']!= $_GET['pview'])
+            {
+                $proj .="<li>".$all['project_name']."-<a href='viewproject?pview=".$all['project_no']."'>View?</a></li>"; 
+            }
+            
+        }
     }
 
 #getallprograms

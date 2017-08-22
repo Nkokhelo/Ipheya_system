@@ -72,8 +72,14 @@
                 </div>
                 <div class="col-xs-4">
                   <div class="col-xs-12">
-                    <a href="../admin/CreateTask.php">Create task?</a><br/>
-                    This project is related with...
+                    <h4 style="color:#888">Tasks</h4 style="color:#888">
+
+                  </div>
+                  <div class="col-xs-12">
+                  <h4 style="color:#888">Related Projects...</h4 style="color:#888">
+                  <ul>
+                      <?=(isset($proj))?$proj:''?>
+                    </ul>
                   </div>
                 </div>
               </div>
