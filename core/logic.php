@@ -596,6 +596,12 @@
             }
             return $project;
         }
+        public function getRelatedProject($proj)
+        {
+            $result =$this->getProjectByNo($proj)['program_no'];
+            
+
+        }
 
         public function getProgramByNo($progam_no)
         {
