@@ -39,12 +39,11 @@
         }
         else
         {
-            $client_unique = uniqid();
-        	$program_no ="PRG00".strtoupper(substr($client_unique,4,4));
-            $query = mysqli_query($db,"UPDATE `programs` SET `name` = '$name', `description`='$description' WHERE `programs`.`id` = $id");
+            $query = mysqli_query($db,"UPDATE `programs` SET `program_name` = '$name', `description`='$description' WHERE `programs`.`id` = $id");
             if(!$query)
             {
-                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again');
+                
+                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again'.mysqli_error($db));
             }
             else
             {
@@ -164,12 +163,24 @@
             {
                 $prog_list .= "<tr><td>".$programs['program_no']."</td><td>".$programs['program_name']."</td><td>".$logic->numOfProject($programs['program_no'])."</td>
                 <td aling='right'><a href='viewprogram.php?view=".$programs['program_no']."' class='btn btn-xs btn-default' class='btn btn-xs btn-default'>View <span class='glyphicon glyphicon-eye-open'></span> </a>
-                <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='editprogram(".$programs['id'].")'>Edit <span class='glyphicon glyphicon-pencil' ></span> </button>
-                <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='deleteprogram(".$programs['id'].")'class='btn btn-xs btn-default'>Restore <span class='glyphicon glyphicon-ban-circle'></span> </button></td></tr>  ";
+                <a class='btn btn-xs btn-default' href='programs.php?restore=".$programs['program_no']."'>Restore <span class='glyphicon glyphicon-refresh'></span></a> </td></tr>  ";
             }
         endwhile;
     }
-
+    if(isset($_GET['restore']))
+    {
+        $prog_no =$_GET['restore'];
+        $query = mysqli_query($db,"UPDATE `programs` SET `archive` = 0 WHERE `programs`.`program_no` ='$prog_no'");
+        // die("UPDATE `programs` SET `archive` = 0 WHERE `programs`.`program_no` =$prog_no");
+        if(!$query)
+        {
+            $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Error :</strong> occured during execution<br/>'.mysqli_error($db));
+        }
+        else
+        {
+            $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong>Program has been Unachived! <a href="programs.php">View Programs?</a>');
+        }
+    }
     if($prog_list=='')
     {   
         $prog_list ="<tr>
