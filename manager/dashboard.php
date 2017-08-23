@@ -30,16 +30,24 @@
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <h3 class="text-center" style="color:#888">Not Stated</h3><hr class="bhr"/>
+                            <h3 class="text-center" style="color:#888">All Tasks</h3><hr class="bhr"/>
                             <div class="col-xs-4">
                             <h4 class="text-center" style="color:#888">Progress</h4><hr class="bhr"/>
-                                Tasks
+                            <h1 class="text-center" style="color:#86c0d6">
+                                5
+                            </h1><hr class="bhr"/>
                             </div>
                             <div class="col-xs-4">
                                 <h4 class="text-center" style="color:#888">Complete</h4><hr class="bhr"/>
+                                <h1 class="text-center" style="color:#86d6a4">
+                                9
+                                </h1><hr class="bhr"/>
                             </div>
                             <div class="col-xs-4">
-                                <h4 class="text-center" style="color:#888">All Tasks</h4><hr class="bhr"/>
+                                <h4 class="text-center" style="color:#888">Over due</h4><hr class="bhr"/>
+                                <h1 class="text-center" style="color:#fc8c7e">
+                                8
+                                </h1><hr class="bhr"/>
                             </div><i class="zmdi zmdi-3d-rotation"></i>         
                     </div>
                 </div>  
