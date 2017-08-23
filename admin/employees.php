@@ -55,15 +55,9 @@
                         <div class="form-group col-md-3">
                           <label for="gender">Gender</label>
                           <select name="gender" class="form-control" id="gender">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'~Select~');?></option>
-=======
+
                             <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'--Select--');?></option>
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
-                            <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'--Select--');?></option>
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
+
                             <option value="Female">Female</option>
                             <option value="Male">Male</option>
                           </select>
