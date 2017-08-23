@@ -1,4 +1,11 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+<<<<<<< HEAD
     "editor.tabSize": 2
+=======
+
+    "editor.tabSize": 1,
+    "editor.letterSpacing": 0,
+    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?"
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
 }

@@ -19,7 +19,11 @@
 ?>
 <body>
   <div class="wrapper">
+<<<<<<< HEAD
       <?php include 'includes/sidebar.php';?>
+=======
+      <?php include 'includes/sidebar.php'?>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
       <div id='content'>
         <div class='row'>
           <div class="col-xs-10 col-xs-offset-1 cb">
@@ -121,4 +125,8 @@
   {
      border-radius: 0 0 0 0;
   }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0

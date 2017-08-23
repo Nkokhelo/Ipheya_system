@@ -37,8 +37,8 @@
                                         <th>Item</th>
                                         <th>Quantity</th>
                                         <th>Unit Price</th>
-                                        <th>Total Price</th>
-                                        <th>Purchase </th>
+                                        <th>Amount</th>
+                                        <th>Order </th>
                                     </thead>
                                     <tbody>";
                                          $result1 = $logic->getallQoutationItemsByQid($qoute['QoutationID']);
@@ -52,7 +52,7 @@
                                                 <td align='right'>".number_format($item['Quantity'],null,""," ")."</td>
                                                 <td align='right'>".number_format($item['UnitPrice'],2,","," ")."</td>
                                                 <td align='right'>".number_format($item['TotalPrice'],2,","," ")."</td>
-                                                <td><button data-toggle='modal' onclick='getItem(".$item['QoutationItemID'].")' data-target='#additemModal' class='btn btn-block btn-xs btn-default'><span class='glyphicon glyphicon-plus-sign'></span> Add</button></td>
+                                                <td><button data-toggle='modal' onclick='getItem(".$item['QoutationItemID'].")' data-target='#additemModal' class='btn btn-block btn-xs btn-default'><span class='glyphicon glyphicon-plus'></span> Place an order</button></td>
                                             </tr>";
                                         endwhile;
                                 $qitems.=" </tbody>
@@ -75,11 +75,11 @@
         $item_code = $_POST['item_code'];
         $supplier = $_POST['supplier'];
         $purchased_quantity = $_POST['quantity'];
-        $arrival_date =$_POST['arrival_date'];
+        $expected_date =$_POST['expected_date'];
         $unit_price = $_POST['unit_price'];
         $total_price = $_POST['total_price'];
         $item_image = $_POST['item_image'];
-        $purchase_date = date("Y-m-d");
+        $order_date = date("Y-m-d");
         //compare no of items in qoutations vs purchase if incomplete status = I else = P
         $query_save = "UPDATE `qoutationitems` SET `Status` = 'P' WHERE `qoutationitems`.`QoutationItemID` =".$item_no;
         $result_save = mysqli_query($query_save);

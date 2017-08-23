@@ -16,7 +16,11 @@
 
 <body>
   <div class="wrapper">
+<<<<<<< HEAD
       <?php include 'includes/sidebar.php'; ?>
+=======
+      <?php include 'includes/sidebar.php'?>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 col-xs-offset-1 cb'>
@@ -34,15 +38,23 @@
                             <option value="1">Service</option>
                             <option value="2">Maintenance</option>
                             <option value="3">Repairs</option>
-                        </select>
+                        </select>                            
                     </div>
                     <div class='form-group col-xs-11'>
                         <label>Explain the descovered fault:</label>
+<<<<<<< HEAD
                         <textarea class="form-control foo" name="ProblemDescription"  cols="80" rows="6" required></textarea>
                     </div>
                     <div class='form-group col-xs-7'>
                         <label>Attatch Pictures:</label>
                         <input type="file" name="files[]" multiple="true"/>
+=======
+                        <textarea class="form-control foo" name="ProblemDescription"  cols="80" rows="6" required></textarea>                           
+                    </div>
+                    <div class='form-group col-xs-7'>
+                        <label>Attatch Pictures:</label>
+                        <input type="file" name="files[]" multiple="true"/>                           
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                     </div>
                     <hr style='width:100%'/>
                     <div class="form-group col-md-12">
@@ -59,7 +71,10 @@
         </div>
       </div>
   </div>
+<<<<<<< HEAD
   <?php include('includes/chat.php'); ?>
+=======
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
 </body>
          <style>
                     textarea.foo

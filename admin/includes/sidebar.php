@@ -1,6 +1,7 @@
 <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
+<<<<<<< HEAD
                 <h3 style='font-weight:900'>IPHEYA</h3>
                 </div>
                 <!-- <!---My new side bar-->
@@ -13,10 +14,31 @@
                       <ul class="collapse list-unstyled" id="companyMenu">
                       <li><a  href="departments.php">Departments</a></li>
                       <li><a  href="allservices.php">Services</a></li>
+=======
+                    <h3 style='font-weight:900'>IPHEYA</h3>
+                </div>
+                <!-- -My new side bar-->
+                <ul class="list-unstyled components">
+                  <li>
+                    <a href="dashboard.php" >
+                      <i class="fa fa-dashboard"></i>
+                      Dashboard
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
+                      <i class='fa fa-building-o'></i>
+                      Departments
+                    </a>
+                      <ul class="collapse list-unstyled" id="companyMenu">
+                        <li><a id="ddepa" href="departments.php">Departments</a></li>
+                        <li><a id="dsup" href="allservices.php">Services</a></li>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                     </ul>
                   </li>
                   <li  >
                     <a href="#stakeholders" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
                       <i class='fa fa-users' arial-hidden="true"></i>
                       Organisation
                     </a>
@@ -29,6 +51,21 @@
                   <li  >
                     <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
                       <i class='ion-ios-people'/></i>
+=======
+                      <i class='fa fa-vcard-o'></i>
+                      HR Management
+                    </a>
+                    <ul class="collapse list-unstyled" id="stakeholders">
+                        <li><a  href="employees.php">Employees</a></li>
+                        <li><a  href="allsuppliers.php">Suppliers</a></li>
+                        <li><a id="Eve" href="create_events.php">Events</a></li>                        
+                        <li><a  href="roles.php">Roles</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
+                      <i class='fa fa-group'/></i>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                       Clients 
                     </a>
                     <ul class="collapse list-unstyled" id="clientMenu">
@@ -38,7 +75,11 @@
                   </li>
                   <li  >
                     <a href="#requestsMenu" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
                         <i class='glyphicon glyphicon-home'></i>
+=======
+                        <i class='fa fa-copy'></i>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                       Request & Tickets 
                     </a>
                     <ul class="collapse list-unstyled" id="requestsMenu">
@@ -48,17 +89,35 @@
                   </li>
                   
                   <li>
+<<<<<<< HEAD
                     <a href="../inventory/items.php">
                       <i class='glyphicon glyphicon-home'></i>
+=======
+                    <a href="inventorys.php">
+                      <i class='fa fa-cubes'></i>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                       Inventory
                     </a>
                   </li>
                   <li>
                     <a href="targets.php">
+<<<<<<< HEAD
                         <i class='glyphicon glyphicon-home'></i>
                       Targets
                     </a>
                   </li>
+=======
+                        <i class='fa fa-bullseye'></i>
+                      Targets
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../login.php">
+                      <i class="fa fa-sign-out"></i>
+                      Logout
+                    </a>
+                  </li>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                 </ul>
             </nav>
 <!-- Notification Panel Hidden
@@ -86,6 +145,7 @@
             <div class="notification" onclick="show">
               <p class="not-bell glyphicon glyphicon-bell" ></p>
             </div>
+<<<<<<< HEAD
 
 <script>
   $(document).ready(function(){
@@ -100,3 +160,35 @@
   });
 </script>
 -->
+=======
+-->
+<script>
+  $(document).ready(function(){
+    // $(".notification").click(function(){
+    //         $(".notification").toggleClass("move");
+    //         // $(".notification-container").toggleClass("show-not");
+    //         // $(".notification-container").toggleClass("hide-not");
+    //         // $("#not").toggleClass("hide-not");
+    //         $("#not").toggle(300);
+    //         $(".notification-container").toggle(300);
+    // });
+    // $("#sidebar .components li").click(function() {
+    //   $("#sidebar .components li.active a").removeClass("active");
+    //   $(this).addClass("active");
+    // });
+    // $('#sidebar .components li a').click(function(){
+    //   $(this).parent().addClass('active').siblings().removeClass('active');	
+    // });
+
+    $(function()
+    {
+      $('#sidebar .components li a').filter(function()
+      {return this.href==location.href}).parent().addClass('active').css('border-left','3px rgb(169, 176, 187) solid').siblings().removeClass('active').attr("aria-expanded","flase");
+	  
+      $('#sidebar .components li ul li a').filter(function()
+      {return this.href==location.href}).parents('ul').addClass('in').siblings('a').attr("aria-expanded","true").parent().addClass('active').siblings().removeClass('active').attr("aria-expanded","flase");
+	  
+    });
+  });
+</script>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0

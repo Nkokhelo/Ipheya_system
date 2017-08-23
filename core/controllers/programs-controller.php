@@ -17,7 +17,7 @@
             $query = mysqli_query($db,"INSERT INTO `programs`(`program_no`,`program_name`,`description`) VALUES('$program_no','$name','$description')");
             if(!$query)
             {
-                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again');
+                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Error :</strong> occured during execution<br/>Please try again'.mysqli_error($db));
             }
             else
             {
@@ -39,12 +39,11 @@
         }
         else
         {
-            $client_unique = uniqid();
-        	$program_no ="PRG00".strtoupper(substr($client_unique,4,4));
-            $query = mysqli_query($db,"UPDATE `programs` SET `name` = '$name', `description`='$description' WHERE `programs`.`id` = $id");
+            $query = mysqli_query($db,"UPDATE `programs` SET `program_name` = '$name', `description`='$description' WHERE `programs`.`id` = $id");
             if(!$query)
             {
-                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again');
+                
+                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again'.mysqli_error($db));
             }
             else
             {
@@ -65,7 +64,7 @@
             }
             else
             {
-                $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong> has been achived!');
+                $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong> has been achived!<a href="programs.php?archived=arch">View Archived Programs?</a>');
             }
     }
 #save Project
@@ -106,6 +105,7 @@
         $pi=0;
         $presult = $logic->getallProjets();
         $program = $logic->getProgramByNo($p_no);
+<<<<<<< HEAD
         while($projects = mysqli_fetch_assoc($presult))
         {
             if($projects['program_no']==$p_no)
@@ -116,10 +116,24 @@
             }
         }
         $get_project =rtrim($get_project,', ');
+=======
+
+        while($projects = mysqli_fetch_assoc($presult))
+        {
+            if($projects['program_no']==$p_no) 
+            {
+                $no = $projects['project_no'];
+                $get_project .="<li><a href='viewproject.php?pview=$no&prog=".$_GET['view']."'>".$projects['project_name']."</a> >> Duration: ".$projects['duration']." ".$projects['duration_type']."</li><hr/>";
+                $pi++;
+            }
+        }
+        // $get_project =rtrim($get_project,', ');
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
         if($get_project =='')
         {
             $pi=0;
             $feedback =array('alert'=>'alert alert-info', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-alert"></span> Info :</strong> No project under this program <a class="alert-link" data-toggle="modal" data-target="#addproject" onclick="">Create new project?</a>');
+<<<<<<< HEAD
         }
         //TODO: Here You should allow a user to enter a client No of employee no 
     }
@@ -134,13 +148,47 @@
         $employee= $logic->getEmployeeByEmpNo($viewproject['employee_no']);//get employee information from a database
         $client = $logic ->getClientByNo($viewproject['client_no']);// get client information from a database
         
+=======
+        }
+        //TODO: Here You should allow a user to enter a client No of employee no 
+    }
+#view project
+    if(isset($_GET['pview']))
+    {
+        $project_no = $_GET['pview'];
+        $viewproject ='';
+        $employee='';
+        $client ='';
+        $proj ='';
+        $viewproject = $logic->getProjectByNo($_GET['pview']);//get project data from a a database
+        $employee= $logic->getEmployeeByEmpNo($viewproject['employee_no']);//get employee information from a database
+        $client = $logic ->getClientByNo($logic->getProgramByNo($viewproject['program_no'])['client_no']);// get client information from a database       
+        $related_proj = $logic->getRelatedProject($_GET['pview']);
+        //get related Projects
+        while($all = mysqli_fetch_assoc($related_proj))
+        {
+            if($all['project_no']!= $_GET['pview'])
+            {
+                $proj .="<li><b>".$all['project_name']."</b>:  -  :<a href='viewproject?pview=".$all['project_no']."'>View.</a></li>"; 
+            }
+            
+        }
+        $allTask = $logic->getallTasks();
+        while($all = mysqli_fetch_assoc($related_proj))
+        {
+            if($all['project_no']!= $_GET['pview'])
+            {
+                $proj .="<li>".$all['project_name']."-<a href='viewproject?pview=".$all['project_no']."'>View?</a></li>"; 
+            }
+            
+        }
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
     }
 
 #getallprograms
     $result = $logic->getallPrograms();
     $presult = $logic->getallProjets();
     $prog_list='';
-    $i =0;
     if(!$result)
     {
         die(mysqli_error($db));
@@ -148,21 +196,40 @@
     while($programs = mysqli_fetch_assoc($result)):
         if($programs['archive']==0)
         {
-            while($project = mysqli_fetch_assoc($presult))
-            {
-                if($programs['program_no']==$project['program_no'])
-                {
-                    $i++;
-                }
-            }
-            $prog_list .= "<tr><td>".$programs['program_no']."</td><td>".$programs['program_name']."</td><td>$i</td>
+            $prog_list .= "<tr><td>".$programs['program_no']."</td><td>".$programs['program_name']."</td><td>".$logic->numOfProject($programs['program_no'])."</td>
             <td aling='right'><a href='viewprogram.php?view=".$programs['program_no']."' class='btn btn-xs btn-default' class='btn btn-xs btn-default'>View <span class='glyphicon glyphicon-eye-open'></span> </a>
             <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='editprogram(".$programs['id'].")'>Edit <span class='glyphicon glyphicon-pencil' ></span> </button>
             <button data-toggle='modal' data-target='#addprogram' class='btn btn-xs btn-default' onclick='deleteprogram(".$programs['id'].")'class='btn btn-xs btn-default'>Archive <span class='glyphicon glyphicon-ban-circle'></span> </button></td></tr>  ";
-            $i=0;
         }
     endwhile;
-
+    
+    if(isset($_GET['archived']))
+    {
+        $prog_list='';
+        $result = $logic->getallPrograms();
+        while($programs = mysqli_fetch_assoc($result)):
+            if($programs['archive']==1)
+            {
+                $prog_list .= "<tr><td>".$programs['program_no']."</td><td>".$programs['program_name']."</td><td>".$logic->numOfProject($programs['program_no'])."</td>
+                <td aling='right'><a href='viewprogram.php?view=".$programs['program_no']."' class='btn btn-xs btn-default' class='btn btn-xs btn-default'>View <span class='glyphicon glyphicon-eye-open'></span> </a>
+                <a class='btn btn-xs btn-default' href='programs.php?restore=".$programs['program_no']."'>Restore <span class='glyphicon glyphicon-refresh'></span></a> </td></tr>  ";
+            }
+        endwhile;
+    }
+    if(isset($_GET['restore']))
+    {
+        $prog_no =$_GET['restore'];
+        $query = mysqli_query($db,"UPDATE `programs` SET `archive` = 0 WHERE `programs`.`program_no` ='$prog_no'");
+        // die("UPDATE `programs` SET `archive` = 0 WHERE `programs`.`program_no` =$prog_no");
+        if(!$query)
+        {
+            $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Error :</strong> occured during execution<br/>'.mysqli_error($db));
+        }
+        else
+        {
+            $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong>Program has been Unachived! <a href="programs.php">View Programs?</a>');
+        }
+    }
     if($prog_list=='')
     {   
         $prog_list ="<tr>

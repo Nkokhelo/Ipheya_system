@@ -31,8 +31,19 @@ session_start();
 									<?=$allClients;?>
 								</tbody>
 								<tfoot>
+<<<<<<< HEAD
 								</tfoot>
 							</table>
+=======
+                  <tr><td><a href="">Show clients statisticks?</a></td></tr>
+								</tfoot>
+							</table>
+              <hr class="bhr"/>
+              <div class="col-xs-12">
+                <div class="col-xs-6 col-xs-offset-3">
+                </div>
+              </div>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
             </div>
         </div>
       </div>

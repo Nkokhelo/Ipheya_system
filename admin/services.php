@@ -35,7 +35,11 @@
                     <div class="form-group col-md-2">
                     <label for="min-duration" class="text-center">Duration Type</label>
                       <select class="form-control col-md-4" name="type" <?=((isset($_GET['view']))?'readonly':'');?>>
+<<<<<<< HEAD
                         <option value="<?=((isset($type))?$type:'');?>"><?=((isset($type))?$type:'~Select~');?></option>
+=======
+                        <option value="<?=((isset($type))?$type:'');?>"><?=((isset($type))?$type:'--Select--');?></option>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                         <?=((isset($_GET['view']))?'':'<option value="day(s)">day(s)</option>');?>
                         <?=((isset($_GET['view']))?'':'<option value="week(s)">week(s)</option>');?>
                         <?=((isset($_GET['view']))?'':'<option value="month(s)">month(s)</option>');?>
@@ -45,7 +49,11 @@
                     <div class="form-group col-xs-6">
                       <label for="department">Select department</label>
                         <select class="form-control" name="department" id="department" <?=((isset($_GET['view']))?'readonly':'');?>>
+<<<<<<< HEAD
                           <option value="<?=((isset($depart_id))?$depart_id:'');?>"><?=((isset($dep_name))?$dep_name:'~Select~');?></option>
+=======
+                          <option value="<?=((isset($depart_id))?$depart_id:'');?>"><?=((isset($dep_name))?$dep_name:'--Select--');?></option>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                           <?=((isset($_GET['view']))?'':$allDepartments);?>
                         </select>
                     </div>

@@ -22,6 +22,7 @@
         <div class='row'>
              <div class="col-xs-offset-2 col-xs-10 b">
               <h2 class="text-center">All Suppliers</h2><hr class="bhr">
+<<<<<<< HEAD
               <table class="table" style="padding:2%;" id="suppliers">
                 <thead>
                   <th>Supplier No</th><th>Name</th><th>Telephone</th><th>Email</th>
@@ -30,6 +31,17 @@
                   <?=$all_suppliers;?>
                 </tbody>
                 <tfoot>
+=======
+              <table class="table" id="supplierTable">
+                <thead style="border-top:#eee 2px solid">
+                  <tr><th>#</th><th>Name</th><th>Telephone</th><th>Email</th><th>Actions</th></tr>
+                </thead>
+                <tbody>
+                  <?= $all_suppliers;?>
+                </tbody>
+                <tfoot>
+                  
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
                 </tfoot>
               </table>
               <hr class="bhr"/>
@@ -40,14 +52,28 @@
               </div>
             </div>
         </div>
+<<<<<<< HEAD
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
+=======
+        <?php include('includes/footer.php'); ?>
+      </div>
+  </div>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
 </body>
 <script>
-  $('#suppliers').dataTable();
+  $(document).ready(function(){
+    $('#supplierTable').dataTable({
+      "scrollY": "200px",
+      "scrollCollapse": true,
+    });
+  });
 </script>
+<<<<<<< HEAD
 <div class="container-fluid" style="padding:1%;">
      
 </div>
+=======
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
 
