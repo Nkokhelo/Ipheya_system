@@ -22,19 +22,6 @@
     </ul>
   </li>
   <li  >
-    <a href="#stakeholders" data-toggle="collapse" aria-expanded="false">
-      <i class='fa fa-users' arial-hidden="true"></i>
-      Organisation
-      <i class='fa fa-vcard-o'></i>
-      HR Management
-    </a>
-    <ul class="collapse list-unstyled" id="stakeholders">
-        <li><a  href="employees.php">Employees</a></li>
-        <li><a  href="roles.php">Roles</a></li>
-        <li><a  href="allsuppliers.php">Suppliers</a></li>
-    </ul>
-  </li>
-  <li  >
     <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-vcard-o'></i>
       HR Management

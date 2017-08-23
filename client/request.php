@@ -6,7 +6,6 @@
    {
       include('../core/logic.php');
       include('includes/head.php');
-      // include('../includes/top-nav.php');
       include('../core/controllers/client-controller.php');
       include('../core/controllers/service-controller.php');
       include('../core/controllers/request-controller.php');
@@ -19,15 +18,8 @@
 ?>
 <body>
   <div class="wrapper">
-<<<<<<< HEAD
-<<<<<<< HEAD
       <?php include 'includes/sidebar.php';?>
-=======
-      <?php include 'includes/sidebar.php'?>
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
-      <?php include 'includes/sidebar.php'?>
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
+
       <div id='content'>
         <div class='row'>
           <div class="col-xs-10 col-xs-offset-1 cb">
@@ -129,12 +121,5 @@
   {
      border-radius: 0 0 0 0;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
-</style>
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
+

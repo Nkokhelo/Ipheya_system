@@ -28,15 +28,8 @@
                         <div class="form-group col-md-2">
                           <label for="title">Title</label>
                           <select name="title" id="title" class="form-control">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'~Select~');?></option>
-=======
                             <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'--Select--');?></option>
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
-                            <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'--Select--');?></option>
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
+
                             <option value="Mr.">Mr.</option>
                             <option value="Mrs.">Mrs.</option>
                             <option value="Ms.">Ms.</option>
@@ -87,8 +80,6 @@
                           <label for="email">Email address</label>
                           <input type="email" name="email" id="email" class="form-control" value="<?=((isset($email))?$email:'');?>" placeholder="abcdefg@email.com">
                         </div>
-
-
                         <div class="form-group col-md-8">
                           <label for="residential">Residential address preview</label>
                           <textarea type="text" name="residential" data-toggle="modal" data-target="#addresses" id="residential" class="form-control" value="<?=((isset($residential))?$residential:'');?>" placeholder="enter residential addres" readonly></textarea>
@@ -102,15 +93,7 @@
                           <button type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-default btn-block"><span class="glyphicon glyphicon-floppy-save"></span> <?=((isset($_GET['edit']))?'Save Changes':'Add Employee');?></button>
                         </div>
                         <div class="form-group col-xs-3">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span> Employee List</a>
-=======
                           <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span><i class="fa fa-check-square"></i> Employee List</a>
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
-                          <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span><i class="fa fa-check-square"></i> Employee List</a>
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                         </div>
                     </fieldset>
                   </form>
