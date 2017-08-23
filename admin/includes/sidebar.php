@@ -1,6 +1,23 @@
 <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <h3 style='font-weight:900'>IPHEYA</h3>
+                </div>
+                <!-- <!---My new side bar-->
+                <ul class="list-unstyled components">
+                  <li class="active">
+                    <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
+                      <i class='glyphicon glyphicon-th-list'></i>
+                      Departments
+                    </a>
+                      <ul class="collapse list-unstyled" id="companyMenu">
+                      <li><a  href="departments.php">Departments</a></li>
+                      <li><a  href="allservices.php">Services</a></li>
+=======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                     <h3 style='font-weight:900'>IPHEYA</h3>
                 </div>
                 <!-- -My new side bar-->
@@ -19,10 +36,34 @@
                       <ul class="collapse list-unstyled" id="companyMenu">
                         <li><a id="ddepa" href="departments.php">Departments</a></li>
                         <li><a id="dsup" href="allservices.php">Services</a></li>
+<<<<<<< HEAD
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                     </ul>
                   </li>
                   <li  >
                     <a href="#stakeholders" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                      <i class='fa fa-users' arial-hidden="true"></i>
+                      Organisation
+=======
+                      <i class='fa fa-vcard-o'></i>
+                      HR Management
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
+                    </a>
+                    <ul class="collapse list-unstyled" id="stakeholders">
+                        <li><a  href="employees.php">Employees</a></li>
+                        <li><a  href="roles.php">Roles</a></li>
+                        <li><a  href="allsuppliers.php">Suppliers</a></li>
+                    </ul>
+                  </li>
+                  <li  >
+                    <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
+                      <i class='ion-ios-people'/></i>
+=======
                       <i class='fa fa-vcard-o'></i>
                       HR Management
                     </a>
@@ -36,6 +77,10 @@
                   <li>
                     <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
                       <i class='fa fa-group'/></i>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+                      <i class='fa fa-group'/></i>
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                       Clients 
                     </a>
                     <ul class="collapse list-unstyled" id="clientMenu">
@@ -45,7 +90,15 @@
                   </li>
                   <li  >
                     <a href="#requestsMenu" data-toggle="collapse" aria-expanded="false">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        <i class='glyphicon glyphicon-home'></i>
+=======
                         <i class='fa fa-copy'></i>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+                        <i class='fa fa-copy'></i>
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                       Request & Tickets 
                     </a>
                     <ul class="collapse list-unstyled" id="requestsMenu">
@@ -55,13 +108,32 @@
                   </li>
                   
                   <li>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                    <a href="../inventory/items.php">
+                      <i class='glyphicon glyphicon-home'></i>
+=======
                     <a href="inventorys.php">
                       <i class='fa fa-cubes'></i>
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+                    <a href="inventorys.php">
+                      <i class='fa fa-cubes'></i>
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                       Inventory
                     </a>
                   </li>
                   <li>
                     <a href="targets.php">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                        <i class='glyphicon glyphicon-home'></i>
+                      Targets
+                    </a>
+                  </li>
+=======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                         <i class='fa fa-bullseye'></i>
                       Targets
                     </a>
@@ -72,6 +144,10 @@
                       Logout
                     </a>
                   </li>
+<<<<<<< HEAD
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                 </ul>
             </nav>
 <!-- Notification Panel Hidden
@@ -99,6 +175,25 @@
             <div class="notification" onclick="show">
               <p class="not-bell glyphicon glyphicon-bell" ></p>
             </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+<script>
+  $(document).ready(function(){
+    $(".notification").click(function(){
+            $(".notification").toggleClass("move");
+            // $(".notification-container").toggleClass("show-not");
+            // $(".notification-container").toggleClass("hide-not");
+            // $("#not").toggleClass("hide-not");
+            $("#not").toggle(300);
+            $(".notification-container").toggle(300);
+    });
+  });
+</script>
+-->
+=======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 -->
 <script>
   $(document).ready(function(){
@@ -129,3 +224,7 @@
     });
   });
 </script>
+<<<<<<< HEAD
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99

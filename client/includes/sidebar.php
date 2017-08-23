@@ -1,7 +1,10 @@
 <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
+<<<<<<< HEAD
+=======
                     
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                     <h3 style='font-weight:900'>IPHEYA</h3>
                 </div>
 
@@ -57,6 +60,13 @@
                         </a>
                     </li>
                 </ul>
+<<<<<<< HEAD
+                <div class="" align="center">
+                  <button class="btn btn-primary" onclick="on();">Start chat <span class="glyphicon glyphicon-comment"></span></button>
+                </div>
+            </nav>
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
             </nav>
 <script>
     $(document).ready(function(){
@@ -64,10 +74,10 @@
         {
         $('#sidebar .components li a').filter(function()
         {return this.href==location.href}).parent().addClass('active').css('border-left','3px rgb(169, 176, 187) solid').siblings().removeClass('active').attr("aria-expanded","flase");
-        
+
         $('#sidebar .components li ul li a').filter(function()
         {return this.href==location.href}).parents('ul').addClass('in').siblings('a').attr("aria-expanded","true").parent().addClass('active').siblings().removeClass('active').attr("aria-expanded","flase");
-        
+
         });
     });
 
