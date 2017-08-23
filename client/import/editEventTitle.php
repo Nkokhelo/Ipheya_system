@@ -1,24 +1,26 @@
 <?php
-
-require_once('bdd.php');
+include('../../core/logic.php');
+$log=new Logic();
+$message='';
 if (isset($_POST['delete']) && isset($_POST['id'])){
 	
 	
 	$id = $_POST['id'];
 	
 	$sql = "DELETE FROM events WHERE id = $id";
-	$query = $bdd->prepare( $sql );
-	if ($query == false) {
-	 print_r($bdd->errorInfo());
-	 die ('Erreur prepare');
+	$query = mysqli_query($log->connect(), $sql);
+	if(!$query)
+	{
+		$message='Error'.mysqli_error($log->connect());
 	}
-	$res = $query->execute();
-	if ($res == false) {
-	 print_r($query->errorInfo());
-	 die ('Erreur execute');
+	else
+	{
+		$message="meeting has been updated!";
 	}
+	echo json_encode($message);
 	
-}elseif (isset($_POST['title']) && isset($_POST['color']) && isset($_POST['id'])){
+}
+else if (isset($_POST['title']) && isset($_POST['color']) && isset($_POST['id'])){
 	
 	$id = $_POST['id'];
 	$title = $_POST['title'];
@@ -26,20 +28,18 @@ if (isset($_POST['delete']) && isset($_POST['id'])){
 	
 	$sql = "UPDATE events SET  title = '$title', color = '$color' WHERE id = $id ";
 
-	
-	$query = $bdd->prepare( $sql );
-	if ($query == false) {
-	 print_r($bdd->errorInfo());
-	 die ('Erreur prepare');
+	$query = mysqli_query($log->connect(), $sql);
+	if(!$query)
+	{
+		$message='Error'.mysqli_error($log->connect());
 	}
-	$sth = $query->execute();
-	if ($sth == false) {
-	 print_r($query->errorInfo());
-	 die ('Erreur execute');
+	else
+	{
+		$message="meeting has been updated!";
 	}
+	echo json_encode($message);
 
 }
-header('Location: index.php');
 
 	
 ?>
