@@ -17,17 +17,6 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-         public function allEmployees()
-        {
-            $allemployees='';
-            $sql ="SELECT * FROM employees";
-            $qey =mysqli_query($this->connect(),$sql);
-            while($all = mysqli_fetch_assoc($qey))
-            {
-                $allemployees = $all;
-            }
-            return $allemployees;
-        }
 
         public function getEmployeeByEmpNo($emp_no)
         {
@@ -42,7 +31,6 @@
             }
             return $employee;
         }
-
 
         public function getEmployeeById($id)
         {
@@ -103,35 +91,11 @@
         }
         public function getClientByNo($no)
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
-            
-            $sql ="Select * from clients where client_no='$no'";
-            $qey =mysqli_query($this->connect(),$sql);
-            return mysqli_fetch_assoc($qey);
-        }        
-        public function getClientByIdNo($no)
-        {
-<<<<<<< HEAD
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
             $result = $this->getallClients();
             $client ='';
             while($clientdata = mysqli_fetch_assoc($result))
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 if($no = $clientdata['client_no'])
-=======
-                if($no = $clientdata['client_id'])
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
-                if($no = $clientdata['client_id'])
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                 {
                     $client = $clientdata;
                 }
@@ -301,6 +265,10 @@
         {
             $query ="SELECT * FROM servicerequest";
             $qey =mysqli_query($this->connect(),$query);
+            if(!$qey)
+            {
+                    die('Error !'.mysqli_error($this->connect()));
+            }
             return $qey;
         }
         public function getallMaintananceRequest()
@@ -375,12 +343,6 @@
         }
 
 #services
-        public function getallServices()
-        {
-            $sql ="SELECT * FROM services";
-            $qey =mysqli_query($this->connect(),$sql);
-            return $qey;
-        }
         public function getServiceIdByName($serviceName)
         {
             $serviceSql = "SELECT * FROM services WHERE service =$serviceName";
@@ -394,28 +356,6 @@
             $query =mysqli_query($this->connect(),$serviceSql);
             $serviceID = mysqli_fetch_row($query)[1];
             return $serviceID;
-        }
-
-        public function getServiceById($no)
-        {
-            $result = $this->getallServices();
-            $service ='';
-            while($servicedata = mysqli_fetch_assoc($result))
-            {
-                if($no = $servicedata['service_id'])
-                {
-                    $service = $servicedata;
-                }
-            }
-            return $service;
-        }
-
-        public function numOfProject($pro_id)
-        {
-            $serviceSql = "SELECT COUNT(*) FROM projects WHERE program_no ='$pro_id'";
-            $query =mysqli_query($this->connect(),$serviceSql);
-            $serviceID = mysqli_fetch_array($query);
-            return $serviceID[0];
         }
         public function AssociateTarget($ip,$email)
         {
@@ -449,8 +389,6 @@
 
           }
         }
-
-        
 #Surveying information
     function getallSuveyingInfo()
     {
@@ -471,7 +409,6 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
     }
-    
     public function getTaskById($id)
     {
             $sql ="SELECT * FROM task WHERE task_id='$id'";
@@ -564,19 +501,6 @@
             }
             return $items_restult;
         }
-#expense_income
-    public function getallExpenses()
-    {
-        $sql ="SELECT * FROM expense_income where e_or_i = 'e'";
-        $qey =mysqli_query($this->connect(),$sql);
-        return $qey;
-    }
-    public function getallIncomes()
-    {
-        $sql ="SELECT * FROM expense_income where e_or_i = 'i'";
-        $qey =mysqli_query($this->connect(),$sql);
-        return $qey;
-    }
 
 #suppliers 
  public function getallSuppliers()
@@ -585,7 +509,6 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-
 #project and programs
         public function getallProjets()
         {
@@ -593,15 +516,12 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-
         public function getallPrograms()
         {
             $sql ="SELECT * FROM programs";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
         public function getProjectByNo($project_no)
         {
             $project ='';
@@ -615,39 +535,11 @@
             }
             return $project;
         }
-=======
-=======
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
-
-        public function getProjectByNo($project_no)
-        {
-            $sql ="SELECT * FROM projects WHERE project_no='$project_no'";
-            $qey =mysqli_query($this->connect(),$sql);
-            if(!$qey)
-            {
-                die("Error".mysqli_error($this->connect()));
-            }
-            return mysqli_fetch_assoc($qey);
-        }
-        public function getRelatedProject($proj)
-        {
-            $result =$this->getProjectByNo($proj)['program_no'];
-            $query =mysqli_query($this->connect(),"SELECT * FROM projects WHERE program_no='$result'");
-
-            return $query;
-        }
-
-<<<<<<< HEAD
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
         public function getProgramByNo($progam_no)
         {
             $program='';
             $result = $this->getallPrograms();
             while($programs = mysqli_fetch_assoc($result)):
-<<<<<<< HEAD
-<<<<<<< HEAD
                 if($programs['program_no']==$progam_no)
                 {
                     $program=$programs;
@@ -655,59 +547,6 @@
             endwhile;
             return $program;
         }
-=======
-=======
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
-            if($programs['program_no']==$progam_no)
-            {
-                $program=$programs;
-            }
-            endwhile;
-            return $program;
-        }
-#error 
-        public function display_error($message)
-        {
-            $mes = '<div class="alert alert-danger"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
-            return $mes;
-        }
-#success 
-        public function display_success($message)
-        {
-            $mes = '<div class="alert alert-success"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> '.$message.'</div>';
-            return $mes;
-        }
-#success 
-        public function display_info($message)
-        {
-            $mes = '<div class="alert alert-info"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-info-sign"></span> <strong>info!</strong> '.$message.'</div>';
-            return $mes;
-        }
-#warning to implememnt : $logic->display_warning('this is wrong!');
-        public function display_warning($message)
-        {
-            $mes = '<div class="alert alert-warning"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
-            return $mes;
-        }
-
-# categories
-        public function getalle_categories()
-        {
-            $sql ="SELECT * FROM e_category";
-            $qey =mysqli_query($this->connect(),$sql);
-            return $qey;
-        }
-# categories
-        public function getalli_categories()
-        {
-            $sql ="SELECT * FROM i_category";
-            $qey =mysqli_query($this->connect(),$sql);
-            return $qey;
-        }
-<<<<<<< HEAD
->>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
-=======
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 # Close Connection
         public function close()
         {
@@ -715,14 +554,11 @@
         }
     }
 
+
 #testing -------------------------------------
     // $log = new Logic();
-    // $all= $log->getRelatedProject('P002215');
-
-    // while($th = mysqli_fetch_assoc($all))
-    // {
-    //     echo $th['project_name'];
-    // }
+    // $test =$log->addUserToRole("Nhlaka@gmail.com","Employee");
+    // echo $roles;
 
 #end of testing--------------------------
 ?>
