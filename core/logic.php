@@ -43,6 +43,20 @@
             return $employee;
         }
 
+        public function getEmployeeByEmpNo($emp_no)
+        {
+            $employee='';
+            $result = $this->getallEmployees();
+            while($employees = mysqli_fetch_assoc($result))
+            {
+                if($employees['emp_no']== $emp_no)
+                {
+                    $employee = $employees;
+                }
+            }
+            return $employee;
+        }
+
         public function getEmployeeById($id)
         {
             $sql ="Select * from employees where employee_id='$id'";
