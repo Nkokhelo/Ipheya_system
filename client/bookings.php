@@ -5,7 +5,7 @@
         require_once('../core/init.php');
         include('../core/logic.php');
         include('includes/head.php');
-        require_once('../core/controllers/project-controller.php');
+        require_once('../core/controllers/booking-controller.php');
         // include('includes/navigation.php');
         //mfudo...
    }
@@ -28,23 +28,23 @@
                   <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
                   <div class="col-xs-12">
                     <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for="Name">Name:</label>
+                        <label class="col-xs-2 control-label" for="name">Name:</label>
                         <div class="col-xs-4">
-                            <input required placeholder="Full Name" class="form-control" id='Name' type="text" name ="name "/>
+                            <input required name ="name" placeholder="Full Name" class="form-control" id='name' type="text" />
                         </div>
                       
                     </div>
                     <div class="form-group col-xs-12">
                        <label class="col-xs-2 control-label" for="email_address">Email Adress:</label>
                         <div class="col-xs-4">
-                            <input required placeholder="please enter your Email address" class="form-control" id='email_address' type="text" name ="email_address "/>
+                            <input required placeholder="please enter your Email address" class="form-control" id='email_address' type="text" name ="email_address"/>
                         </div>
                       
                      </div>
                     <div class="form-group col-xs-12">
-                     <label class="col-xs-3 control-label" for="remind ">Remind Me?</label>
+                     <label class="col-xs-3 control-label" for="reminder">Remind Me?</label>
                         <div class="col-xs-3">
-                            <input type="checkbox" name="remind" value="remind"></input>
+                            <input type="checkbox" name="reminder" value="remind"></input>
                         </div>
                     </div>
                      <label class="col-xs-2 control-label" for="cell_num ">Cell Number:</label>
@@ -56,7 +56,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-4" id='change'>
-                            <input  type="submit" id='save' name="bookings" class="btn btn-block btn-success" value="Book"/>
+                            <input  type="submit" id='save' name="save_bookings" class="btn btn-block btn-success" value="Book"/>
                         </div>
                     </div>
                 </div>
@@ -75,47 +75,6 @@
             dateFormat: 'yy-mm-dd'
             }
         );
-
-
-        $('#depart').change(function(){
-            var department = $(this).val();
-            $.ajax({
-                    type:"get",
-                    url:"includes/getservice.php",
-                    data:"department="+department,
-                    success:function(data)
-                    {
-                        $('#serv').empty();
-                        $('#serv').append("<option value=''>~Select~</option>");
-                        data=JSON.parse(data);
-                        console.log(data);
-                        if((data.service_id!=null))
-                        {
-                         $('#serv').append("<option value='"+data.service_id+"'>"+data.service+"</option>");
-                        }                     
-                    }
-                    });
-
-            $.ajax({
-                    type:"get",
-                    url:"includes/getprojectmanager.php",
-                    data:"department="+department,
-                    success:function(data)
-                    {
-                        $('#employees').empty();
-                        $('#employees').append("<option value=''>~Select~</option>");
-                        data=JSON.parse(data);
-                        console.log(data);
-                        if(data.employee_id!=null)
-                        {
-                            alert(data.emp_no);
-                            $('#employees').append("<option value='"+data.emp_no+"'>"+data.name+"</option>");
-                        }                        
-                    }
-                    });
-            return false;
-        });
-
    }); 
   </script>
 </body>
