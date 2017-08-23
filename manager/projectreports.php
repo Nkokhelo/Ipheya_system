@@ -1,10 +1,10 @@
 <?php
 	session_start();
   if(isset($_SESSION['Employee']))
-	{
-		require_once('../core/init.php');
-		include('../core/logic.php');
-		include('includes/head.php');
+  {
+   require_once('../core/init.php');
+   include('../core/logic.php');
+   include('includes/head.php');
   }
   else
   {
@@ -17,9 +17,9 @@
   <div id='content'>
     <div class='row'>
       <div class="col-xs-10 b">
-          <h2 class="text-center">Financial Reports</h2><hr class="bhr"/>
+          <h2 class="text-center">Project Reports</h2><hr class="bhr"/>
           <div class="col-xs-12">
-            <canvas id="lineView"></canvas>
+            <canvas id="pieView"></canvas>
           </div> <br/>
           <hr class="bhr"/>
           <div class="col-xs-12">

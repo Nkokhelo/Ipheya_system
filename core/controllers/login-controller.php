@@ -37,7 +37,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
             {
                 case 'Admin':
                 $_SESSION['Employee']=$email;
-                header('Location: admin/employees.php');//admin url
+                header('Location: admin/dashboard.php');//admin url
                 break;
                 case 'Client':
                 $_SESSION['Client'] = $email;

@@ -20,6 +20,7 @@
     <!-- <link ral = "stylesheet" href = "../assets/plugins/datatables/jquery.dataTables.css" type = "text/css"/> -->
     <!-- <script type = "text/javascript" src = "../assets/plugins/datatables/jquery.dataTables.js"></script> -->
     <!-- <script type = "text/javascript" src = "../assets/plugins/datatables/dataTables.bootstrap.js"></script> -->
+    <link rel = "stylesheet" href = "../assets/font-awesome/css/font-awesome.min.css" type = "text/css"/>
     <link rel = "stylesheet" href = "../assets/Site.css" type = "text/css"/>
     <link rel = "stylesheet" href = "../assets/client.css" type = "text/css"/>
     <!-- <link rel = "stylesheet" href = "../assets/fullcalendar/css/fullcalendar.css" type = "text/css"/> -->

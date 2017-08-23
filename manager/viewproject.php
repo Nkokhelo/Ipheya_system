@@ -105,9 +105,7 @@
                     <ul>
                       <?=(isset($proj))?$proj:''?>
                     </ul>
-                  </div>
-                  
-                 
+                  </div>               
                   <div class="col-xs-12">
                     <h4 style="color:#888">Tasks</h4 style="color:#888">
                     <?php 

@@ -7,7 +7,7 @@
                 <ul class="list-unstyled components">
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="fa fa-user-circle-o"></i>
                             Account
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
@@ -19,11 +19,11 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="glyphicon glyphicon-briefcase"></i>
+                            <i class="fa fa-money"></i>
                             Make Payaments
                         </a>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="glyphicon glyphicon-duplicate"></i>
+                            <i class="fa fa-clipboard"></i>    
                             Request
                         </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -34,25 +34,19 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="glyphicon glyphicon-link"></i>
+                            <i class="fa fa-history"></i>
                             History
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="glyphicon glyphicon-paperclip"></i>
+                            <i class="fa fa-send-o"></i>
                             FAQ
                         </a>
                     </li>
                     <li>
-                        <a href="contact.php">
-                            <i class="glyphicon glyphicon-send"></i>
-                            Contact
-                        </a>
-                    </li>
-                    <li>
                         <a href='../login.php'>
-                            <i class='glyphicon glyphicon-log-out'></i>
+                            <i class="fa fa-sign-out"></i>
                             Logout
                         </a>
                     </li>
