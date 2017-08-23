@@ -3739,7 +3739,7 @@ fieldset[disabled] a.btn {
 
 .btn-default:hover {
     color: #0094ff;
-    box-shadow: 0px 7px 15px #aaa;
+    box-shadow: 0px 1px 3px #aaa;
     background-color: #e6e6e6;
     border-color: #adadad;
 }
@@ -3809,7 +3809,7 @@ fieldset[disabled] .btn-default:hover {
 
 .btn-primary:hover {
     color: #fff;
-    box-shadow: 0px 7px 15px #aaa;
+    box-shadow: 0px 1px 3px #aaa;
     background-color: #286090;
     border-color: #204d74
 }
@@ -3879,7 +3879,7 @@ fieldset[disabled] .btn-primary:hover {
 
 .btn-success:hover {
     color: #fff;
-    box-shadow: 0px 7px 15px #aaa;
+    box-shadow: 0px 1px 3px #aaa;
     background-color: #449d44;
     border-color: #398439
 }
@@ -3949,7 +3949,7 @@ fieldset[disabled] .btn-success:hover {
 
 .btn-info:hover {
     color: #fff;
-    box-shadow: 0px 7px 15px #aaa;
+    box-shadow: 0px 1px 3px #aaa;
     background-color: #31b0d5;
     border-color: #269abc
 }
@@ -4019,7 +4019,7 @@ fieldset[disabled] .btn-info:hover {
 
 .btn-warning:hover {
     color: #fff;
-    box-shadow: 0px 7px 15px #aaa;
+    box-shadow: 0px 1px 3px #aaa;
     background-color: #ec971f;
     border-color: #d58512
 }
@@ -4089,7 +4089,7 @@ fieldset[disabled] .btn-warning:hover {
 
 .btn-danger:hover {
     color: #fff;
-    box-shadow: 0px 7px 15px #aaa;
+    box-shadow: 0px 1px 3px #aaa;
     background-color: #c9302c;
     border-color: #ac2925
 }

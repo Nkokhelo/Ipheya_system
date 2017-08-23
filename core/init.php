@@ -7,4 +7,6 @@
     }
     #require_once($_SERVER['DOCUMENT_ROOT'].'/walk-about/config.php');
     require_once('helpers.php');
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
  ?>

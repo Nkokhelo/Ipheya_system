@@ -15,7 +15,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="">Departments<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><a  href="departments.php">Departments</a></li>
-                  <li><a  href="services.php">Services</a></li>
+                  <li><a  href="allservices.php">Services</a></li>
                 </ul>
               </li>
               <li class="dropdown">
