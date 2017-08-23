@@ -4,11 +4,10 @@
    if(isset($_POST['Create_Event']))
     {
         $name=$_POST['name'];
-        $location =$_POST['location'];
-        $date =$_POST['date'];
+        $description =$_POST['description'];
+        $category =$_POST['category'];
+        $date =$_POST['date'];  
         $duration =$_POST['duration'];  
-        $description =$_POST['description']; 
-        $category =$_POST['category']; 
         
         $save = "INSERT INTO `events`(`name`,`description`,`category`,`date`,`duration`)      
                  VALUES (null,'$name','$description','$category','$date','$duration')";
@@ -20,7 +19,7 @@
         }
         else
         {
-              $feedback =$logic->display_success("Saved successfuly");
+              $feedback =$logic->display_success("Event Created Successfuly");
         }
     } 
     ?>    
