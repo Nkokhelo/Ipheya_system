@@ -1,10 +1,6 @@
 <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-<<<<<<< HEAD
-=======
-                    
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                     <h3 style='font-weight:900'>IPHEYA</h3>
                 </div>
 
@@ -61,13 +57,10 @@
                         </a>
                     </li>
                 </ul>
-<<<<<<< HEAD
                 <div class="" align="center">
                   <button class="btn btn-primary" onclick="on();">Start chat <span class="glyphicon glyphicon-comment"></span></button>
                 </div>
             </nav>
-=======
->>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
             </nav>
 <script>
     $(document).ready(function(){
