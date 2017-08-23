@@ -47,31 +47,36 @@ $(document).ready(function() {
                 // RequestID.push(data[i].historyID);
                 date.push(data[i].date);
                 amount.push(data[i].amount);
+                // alert(data[i].amount);
             }
-            var ctx = $('#barcanvas');
-            var barGraph = new Chart(ctx, {
-                type: 'bar',
+            var line2 = $('#line2');
+            var myChart2 = new Chart(line2, {
+                type: 'line',
                 data: {
-                    labels: s_name,
+                    labels: date,
                     datasets: [{
-                        label: "requested service",
+                        label: 'Expenses',
+                        lineTension: 0,
                         fill: false,
-                        backgroundColor: "rgba(143, 198, 162,0.5)",
-                        borderColor: "rgba(143, 198, 162,1)",
                         borderWidth: 2,
-                        pointHoverBackgroundColor: "rgba(59, 89, 152, 1)",
-                        pointHoverBorderColor: "rgba(59, 89, 152, 1)",
-                        data: count
+                        data: amount,
+                        borderColor: "rgba(188, 75, 75,0.5)",
+                        backgroundColor: "rgba(188, 75, 75,0.5)"
+                    }, {
+                        label: 'Incomes',
+                        lineTension: 0,
+                        fill: false,
+                        borderWidth: 2,
+                        data: [10, 5],
+                        backgroundColor: "rgba(133, 219, 107,0.5)",
+                        borderColor: "rgba(133, 219, 107,0.5)",
                     }]
                 },
                 options: {
                     scales: {
                         yAxes: [{
-                            display: true,
                             ticks: {
-                                beginAtZero: true,
-                                stepValue: 0.5,
-                                max: 10
+                                beginAtZero: true
                             }
                         }]
                     }

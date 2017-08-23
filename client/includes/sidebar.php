@@ -1,11 +1,7 @@
 <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-<<<<<<< HEAD
                     
-=======
-
->>>>>>> dc5c48ebe9500ec7db628e5309e5df54aaebaad5
                     <h3 style='font-weight:900'>IPHEYA</h3>
                 </div>
 
@@ -61,7 +57,6 @@
                         </a>
                     </li>
                 </ul>
-<<<<<<< HEAD
             </nav>
 <script>
     $(document).ready(function(){
@@ -77,9 +72,3 @@
     });
 
 </script>
-=======
-                <div class="" align="center">
-                  <button class="btn btn-primary" onclick="on();">Start chat <span class="glyphicon glyphicon-comment"></span></button>
-                </div>
-            </nav>
->>>>>>> dc5c48ebe9500ec7db628e5309e5df54aaebaad5
