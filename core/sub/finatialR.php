@@ -8,9 +8,9 @@
     //  ob_start();
     if(isset($_GET['expenses']))
     {
+      $data = '[';
        $view ="SELECT DISTINCT ei_date, SUM(ei_amount) as amount, e_or_i FROM expense_income where e_or_i='e' GROUP BY ei_date"; 
        $result = mysqli_query($db,$view);       
-       $data = '[';
        while($row = mysqli_fetch_assoc($result))
        {
         //  echo $row['amount'];
