@@ -22,8 +22,13 @@
             <div class='col-xs-10 col-xs-offset-1 b'>
             <h2>All Employees</h2>
             <hr class="bhr"/>
+<<<<<<< HEAD
             <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
               <table class="table" id="employeeTable">
+=======
+              <table class="table" id="table">
+                <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
+>>>>>>> dc5c48ebe9500ec7db628e5309e5df54aaebaad5
                 <thead>
                   <th>Department</th>
                   <th>Employee No</th>
@@ -50,7 +55,11 @@
   </div>
 </body>
 <script>
+<<<<<<< HEAD
   $(document).ready(function() {
     $('#employeeTable').dataTable();
   });
+=======
+  $('#table').datatable();
+>>>>>>> dc5c48ebe9500ec7db628e5309e5df54aaebaad5
 </script>

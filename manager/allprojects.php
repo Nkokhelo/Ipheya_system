@@ -27,7 +27,7 @@
                 <?php } else { ?>
                   <table class="table table-bordered table-hover" id="projectTable">
                   <thead>
-                    <th>#</th><th>Project Name</th><th>Duration</th><th>Project Due</th><th>status</th>
+                    <th>#</th><th>Project Name</th><th>Duration</th><th>Project Due</th><th>status</th><th>...</th>
                   </thead>
                   <tbody>
                     <?=$proj_list?>

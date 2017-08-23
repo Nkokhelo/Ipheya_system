@@ -43,6 +43,7 @@
             return $employee;
         }
 
+
         public function getEmployeeById($id)
         {
             $sql ="Select * from employees where employee_id='$id'";
@@ -102,16 +103,10 @@
         }
         public function getClientByNo($no)
         {
-            $result = $this->getallClients();
-            $client ='';
-            while($clientdata = mysqli_fetch_assoc($result))
-            {
-                if($no = $clientdata['client_no'])
-                {
-                    $client = $clientdata;
-                }
-            }
-            return $client;
+            
+            $sql ="Select * from clients where client_no='$no'";
+            $qey =mysqli_query($this->connect(),$sql);
+            return mysqli_fetch_assoc($qey);
         }        
         public function getClientByIdNo($no)
         {
@@ -398,6 +393,13 @@
             return $service;
         }
 
+        public function numOfProject($pro_id)
+        {
+            $serviceSql = "SELECT COUNT(*) FROM projects WHERE program_no ='$pro_id'";
+            $query =mysqli_query($this->connect(),$serviceSql);
+            $serviceID = mysqli_fetch_array($query);
+            return $serviceID[0];
+        }
         public function AssociateTarget($ip,$email)
         {
           $user_sql = mysqli_query($this->connect(),"SELECT * FROM clients WHERE email = '$email'");
@@ -584,16 +586,20 @@
 
         public function getProjectByNo($project_no)
         {
-            $project ='';
-            $result = $this->getallProjets();
-            while($projects = mysqli_fetch_assoc($result))
+            $sql ="SELECT * FROM projects WHERE project_no='$project_no'";
+            $qey =mysqli_query($this->connect(),$sql);
+            if(!$qey)
             {
-                if($projects['project_no']==$project_no)
-                {
-                    $project = $projects;
-                }
+                die("Error".mysqli_error($this->connect()));
             }
-            return $project;
+            return mysqli_fetch_assoc($qey);
+        }
+        public function getRelatedProject($proj)
+        {
+            $result =$this->getProjectByNo($proj)['program_no'];
+            $query =mysqli_query($this->connect(),"SELECT * FROM projects WHERE program_no='$result'");
+
+            return $query;
         }
 
         public function getProgramByNo($progam_no)
@@ -601,10 +607,10 @@
             $program='';
             $result = $this->getallPrograms();
             while($programs = mysqli_fetch_assoc($result)):
-                if($programs['program_no']==$progam_no)
-                {
-                    $program=$programs;
-                }
+            if($programs['program_no']==$progam_no)
+            {
+                $program=$programs;
+            }
             endwhile;
             return $program;
         }
@@ -656,8 +662,12 @@
 
 #testing -------------------------------------
     // $log = new Logic();
-    // $test =$log->addUserToRole("Nhlaka@gmail.com","Employee");
-    // echo $roles;
+    // $all= $log->getRelatedProject('P002215');
+
+    // while($th = mysqli_fetch_assoc($all))
+    // {
+    //     echo $th['project_name'];
+    // }
 
 #end of testing--------------------------
 ?>

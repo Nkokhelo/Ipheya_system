@@ -105,7 +105,8 @@
      {
        if($_GET['view']== $req['ClientID'])
        {
-          $history_view.="<tr><td>".$logic->getServiceById($req['ServiceID'])['service']."</td><td style='width:70%'>".$req['Description']."</td><td>".$req['DueDate']."</td></tr>"; 
+        //  die($req['ServiceID']);
+          $history_view.="<tr><td>".$logic->getServiceNameByID($req['ServiceID'])."</td><td style='width:70%'>".$req['Description']."</td><td>".$req['DueDate']."</td></tr>"; 
        }
     }
      if($history_view == '')

@@ -37,19 +37,70 @@
         {
               $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> Project saved !');
         }
-    }
+    } 
  
  #get all projets
   $query_result = $logic->getallProjets();
   $proj_list ='';
   $error='';
+
   while($proj = mysqli_fetch_assoc($query_result))
+  
   {
-    $proj_list.="</td><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date("d F Y",time($proj['end_date']))."</td><td>".$proj['status']."</td></tr>";
+    if($proj['status']=='complete')
+    {
+      $proj_list.="<tr class='success'><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+    }
+    else if($proj['status']=='inprogress')
+    {
+      $proj_list.="<tr class='info'><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+    }
+    else if($proj['status']=='overdue')
+    {
+      $proj_list.="<tr class='warning'><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+    }
+    else if($proj['status']=='canceled')
+    {
+      $proj_list.="<tr class='warning'><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+    }
+    else
+    {
+      $proj_list.="<tr><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+    }
+
+
   }
   if($proj_list == '')
   {
     $error = '<div class="alert alert-info"><i class="glyphicon glyphicon-info-sign"></i> No Project at the moment<br/> <a href="createproject.php">Create Project</a></div>';
+  }
+#archive
+  if(isset($_GET['archived']))
+  {
+      $prog_list='';
+      $result = $logic->getallProject();
+      while($project = mysqli_fetch_assoc($result)):
+          if($project['archive']==1)
+          {
+              $prog_list .= "<tr><td>".$project['project_name']."</td><td>".$project['duration']."</td><td>"."</td><td>".$project['end_date']."</td><td>".$project['end_date']."</td><td>".$logic->numOfProject($project['project_no'])."</td>
+              <td aling='right'><a href='viewproject.php?view=".$project['project_no']."' class='btn btn-xs btn-default' class='btn btn-xs btn-default'>View <span class='glyphicon glyphicon-eye-open'></span> </a>
+              <a class='btn btn-xs btn-default' href='allProjects.php?restore=".$project['project_no']."'>Restore <span class='glyphicon glyphicon-refresh'></span></a> </td></tr>  ";
+          }
+      endwhile;
+  }
+  if(isset($_GET['restore']))
+  {
+      $proj_no =$_GET['restore'];
+      $query = mysqli_query($db,"UPDATE `project` SET `archive` = 0 WHERE `projects`.`project_no` ='$proj_no'");
+      // die("UPDATE `programs` SET `archive` = 0 WHERE `programs`.`program_no` =$prog_no");
+      if(!$query)
+      {
+          $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Error :</strong> occured during execution<br/>'.mysqli_error($db));
+      }
+      else
+      {
+          $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-ok"></span>Success :</strong>Program has been Unachived! <a href="allProjects.php">View Programs?</a>');
+      }
   }
 
   #get deoartments

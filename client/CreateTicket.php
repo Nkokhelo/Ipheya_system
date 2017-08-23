@@ -59,6 +59,7 @@
         </div>
       </div>
   </div>
+  <?php include('includes/chat.php'); ?>
 </body>
          <style>
                     textarea.foo
@@ -66,4 +67,3 @@
                     resize:true;
                     }
         </style>
-</body>

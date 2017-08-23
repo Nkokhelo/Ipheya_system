@@ -10,7 +10,7 @@
         //mfudo...
    }
    else
-   {
+   {  
      header("Location:../login.php");
    }
 ?>
@@ -25,8 +25,8 @@
                   <legend class="inlegend thelegend">
                     <?php if(isset($_GET['prog'])) { ?>
                     Add project to <?php echo($logic->getProgramByNo($_GET['prog'])['program_name']) ?> projects
-                    <?php } else { ?>
-                        Project Informatiion
+                    <?php } else { ?>  
+                        Project Information
                     <?php } ?>
                   </legend>
                   <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
@@ -43,7 +43,7 @@
                         <label class="col-xs-2 control-label" for="program_no">Program:</label>
                         <div class="col-xs-4">
                         <select class="selectpicker form-control" title="Please select" id='program_no' type="text" name ="program_no">       
-                            <option>~Select~</option>
+                            <option value="">~Select~</option>
                              <?=($allprogram)?$allprogram:""?>
                         </select>
                         </div>
@@ -105,7 +105,7 @@
                         <label class="col-xs-3 control-label" for="employee_no">Project Manager :</label>
                         <div class="col-xs-3 input-group " style='padding-left:15px'>
                                 <select id="employees" class="form-control" name="employee_no">
-                                    <option value="">~Select~</option>
+                                    <option value=""></option>
                                 </select>
                             </div>
                     </div>

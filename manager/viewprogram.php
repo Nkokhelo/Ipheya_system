@@ -31,7 +31,9 @@
                   <div class='row'>
                     <h4 class='col-xs-12 '><?=($pi>0)? $pi." Projects": "No Projects" ?></h4>
                     <div class='col-xs-11 '>
-                            <label style='font-style: italic'><?= $get_project ?></label>
+                      <ol>
+                        <?= $get_project ?>
+                      </ol>
                             <?=(isset($feedback))?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":'no data '?>
                     </div>
                   </div>
@@ -39,14 +41,14 @@
               </div>
               <hr class='bhr' style="width:100%"/>
               <div class='col-xs-6 col-xs-offset-3' style='margin-bottom:30px;'>
-                <a class="btn btn-success" href="createproject.php?prog=<?=$program['program_no']?>"><span class="fa fa-plus"></span> Create Project</a>
+                <a class="btn btn-block btn-success" href="createproject.php?prog=<?=$program['program_no']?>"><span class="fa fa-plus"></span> Create Project</a>
               </div>
           </div>
         </div>
+        <?php include('includes/footer.php'); ?>
       </div>
-  </div>
-  <?php include('includes/footer.php'); ?>
-  <?php include'includes/project-modal.php' ?>
+    </div>
+  <?php include('includes/project-modal.php') ?>
 </body>
 
 
