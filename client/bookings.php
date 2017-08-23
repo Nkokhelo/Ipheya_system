@@ -25,7 +25,7 @@
                   <legend class="inlegend thelegend">
                Event Bookings
                   </legend>
-                  <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
+                  <?=($feedback)?$feedback:""?>
                   <div class="col-xs-12">
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="name">Name:</label>

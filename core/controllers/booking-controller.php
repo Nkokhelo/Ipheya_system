@@ -14,8 +14,7 @@
          $result = mysqli_query($logic->connect(),$save);
         if(!$result)  
         { 
-                die($save);
-                $feedback =$logic->display_error(mysqli_error($logic->connect()));
+           $feedback = $logic->display_error("error".mysqli_error($logic->connect()));
         }
         else
         {

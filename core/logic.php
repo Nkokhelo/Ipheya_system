@@ -103,6 +103,11 @@
         }
         public function getClientByNo($no)
         {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
             
             $sql ="Select * from clients where client_no='$no'";
             $qey =mysqli_query($this->connect(),$sql);
@@ -110,11 +115,23 @@
         }        
         public function getClientByIdNo($no)
         {
+<<<<<<< HEAD
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
             $result = $this->getallClients();
             $client ='';
             while($clientdata = mysqli_fetch_assoc($result))
             {
+<<<<<<< HEAD
+<<<<<<< HEAD
+                if($no = $clientdata['client_no'])
+=======
                 if($no = $clientdata['client_id'])
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+                if($no = $clientdata['client_id'])
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                 {
                     $client = $clientdata;
                 }
@@ -583,6 +600,24 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+<<<<<<< HEAD
+<<<<<<< HEAD
+        public function getProjectByNo($project_no)
+        {
+            $project ='';
+            $result = $this->getallProjets();
+            while($projects = mysqli_fetch_assoc($result))
+            {
+                if($projects['project_no']==$project_no)
+                {
+                    $project = $projects;
+                }
+            }
+            return $project;
+        }
+=======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 
         public function getProjectByNo($project_no)
         {
@@ -602,11 +637,27 @@
             return $query;
         }
 
+<<<<<<< HEAD
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
         public function getProgramByNo($progam_no)
         {
             $program='';
             $result = $this->getallPrograms();
             while($programs = mysqli_fetch_assoc($result)):
+<<<<<<< HEAD
+<<<<<<< HEAD
+                if($programs['program_no']==$progam_no)
+                {
+                    $program=$programs;
+                }
+            endwhile;
+            return $program;
+        }
+=======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
             if($programs['program_no']==$progam_no)
             {
                 $program=$programs;
@@ -653,6 +704,10 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+<<<<<<< HEAD
+>>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 # Close Connection
         public function close()
         {
