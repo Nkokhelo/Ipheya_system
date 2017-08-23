@@ -1,21 +1,21 @@
 <?php
-	 session_start();
-    if(isset($_SESSION['Client']))
-    {
-		include'../core/init.php';
-		include('../core/logic.php');
-		include('../includes/head.php');
-		include('../includes/top-nav.php');
-		include('../includes/sidebar.php');
-		$email   = $_SESSION['Client'];
-		$amount  = $_SESSION['amount'];
-		$message = $_SESSION['message'];
-		$name    = $_SESSION['payament-status'];
-   }
-   else 
-   {
-     header('Location: ../login.php');
-   }
+session_start();
+if(isset($_SESSION['Client']))
+{
+			include'../core/init.php';
+			include('../core/logic.php');
+			include('../includes/head.php');
+			include('../includes/top-nav.php');
+			include('../includes/sidebar.php');
+			$email   = $_SESSION['Client'];
+			$amount  = $_SESSION['amount'];
+			$message = $_SESSION['message'];
+			$name    = $_SESSION['payament-status'];
+}
+else 
+{
+	header('Location: ../login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

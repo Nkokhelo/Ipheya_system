@@ -22,4 +22,6 @@
     <!-- <script type = "text/javascript" src = "../assets/plugins/datatables/dataTables.bootstrap.js"></script> -->
     <link rel = "stylesheet" href = "../assets/Site.css" type = "text/css"/>
     <link rel = "stylesheet" href = "../assets/client.css" type = "text/css"/>
+    <!-- <link rel = "stylesheet" href = "../assets/fullcalendar/css/fullcalendar.css" type = "text/css"/> -->
+
   </head>

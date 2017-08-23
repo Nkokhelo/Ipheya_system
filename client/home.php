@@ -9,7 +9,10 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-12'>
-              <h1>Welcome to Ipheya IT Solutions</h1>
+              <div class="col-xs-10 b">
+                <h1>Welcome to Ipheya IT Solutions</h1>
+
+              </div>
               <?php include('includes/chat.php'); ?>
             </div>
         </div>

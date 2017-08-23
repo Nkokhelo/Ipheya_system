@@ -15,6 +15,7 @@
                             <li><a href="profile.php">Profile</a></li>
                             <li><a href="CreateTicket.php">Report Faults</a></li>
                             <li><a href="contact.php">Contact us</a></li>
+                            <li><a href="meeting-booking.php">Book a meeting</a></li>
                         </ul>
                     </li>
                     <li>
@@ -45,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="contact.php">
                             <i class="glyphicon glyphicon-send"></i>
                             Contact
                         </a>
