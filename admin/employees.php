@@ -29,10 +29,14 @@
                           <label for="title">Title</label>
                           <select name="title" id="title" class="form-control">
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'~Select~');?></option>
 =======
                             <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'--Select--');?></option>
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+                            <option value="<?=((isset($title))?$title:'');?>"><?=((isset($title))?$title:'--Select--');?></option>
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                             <option value="Mr.">Mr.</option>
                             <option value="Mrs.">Mrs.</option>
                             <option value="Ms.">Ms.</option>
@@ -52,10 +56,14 @@
                           <label for="gender">Gender</label>
                           <select name="gender" class="form-control" id="gender">
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'~Select~');?></option>
 =======
                             <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'--Select--');?></option>
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+                            <option value="<?=((isset($gender))?$gender:'');?>"><?=((isset($gender))?$gender:'--Select--');?></option>
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                             <option value="Female">Female</option>
                             <option value="Male">Male</option>
                           </select>
@@ -101,10 +109,14 @@
                         </div>
                         <div class="form-group col-xs-3">
 <<<<<<< HEAD
+<<<<<<< HEAD
                           <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span> Employee List</a>
 =======
                           <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span><i class="fa fa-check-square"></i> Employee List</a>
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+                          <a href='allemployees.php' class="btn btn-default btn-block"><span class="glyphicon glyphicon-list-alt"></span><i class="fa fa-check-square"></i> Employee List</a>
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                         </div>
                     </fieldset>
                   </form>

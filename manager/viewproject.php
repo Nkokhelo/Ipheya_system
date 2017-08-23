@@ -7,16 +7,22 @@
         include('includes/head.php');
         include('../core/controllers/programs-controller.php');
 <<<<<<< HEAD
+<<<<<<< HEAD
         include('includes/navigation.php');
 =======
         // include('includes/navigation.php');
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+        // include('includes/navigation.php');
+
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
    }
    else
    {
      header("Location:../login.php");
    }
 ?>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <div class="col-xs-12" style='padding-bottom:50px;'>
@@ -86,6 +92,8 @@
   </div>
 </div>
 =======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 <body>
   <div class="wrapper">
       <?php include 'includes/sidebar.php'?>
@@ -144,15 +152,66 @@
                   </div>
                 </div>
                 <div class="col-xs-4">
-                  <div class="col-xs-12">
-                    <h4 style="color:#888">Tasks</h4 style="color:#888">
-
+                <div class="col-xs-12">
+                  <h4 style="color:#888">Status...</h4 style="color:#888">
+                  <ul>
+                  <?php echo "<b>";
+                      if($viewproject['status']=='complete')
+                      {
+                        echo '<p class="text-success"><i class="glyphicon glyphicon-ok-circle"></i> '.$viewproject['status'].'</p>';
+                      }
+                      if($viewproject['status']=='inprogress')
+                      {
+                        echo '<p class="text-info"><i class="glyphicon glyphicon-refresh"></i> '.$viewproject['status'].'</p>';
+                      }
+                      if($viewproject['status']=='not stated')
+                      {
+                        echo '<p class=""><i class="glyphicon glyphicon-thumbs-down"></i> '.$viewproject['status'].'</p>';                        
+                      }
+                      if($viewproject['status']=='overdue')
+                      {
+                        echo '<p class="text-warning"><i class="glyphicon glyphicon-warning-sign"></i> '.$viewproject['status'].'</p>';                        
+                      }
+                      if($viewproject['status']=='canceled')
+                      {
+                        echo '<p class="text-danger"><i class="glyphicon glyphicon-alert"></i> '.$viewproject['status'].'</p>';                        
+                      }
+                      echo "</b>";
+                    ?>
+                    </ul>
                   </div>
                   <div class="col-xs-12">
-                  <h4 style="color:#888">Related Projects...</h4 style="color:#888">
-                  <ul>
+                    <h4 style="color:#888">Related Projects...</h4 style="color:#888">
+                    <ul>
                       <?=(isset($proj))?$proj:''?>
                     </ul>
+                  </div>
+                  
+                 
+                  <div class="col-xs-12">
+                    <h4 style="color:#888">Tasks</h4 style="color:#888">
+                    <?php 
+                      if($viewproject['status']=='complete')
+                      {
+                        echo '5';
+                      }
+                      if($viewproject['status']=='inprogress')
+                      {
+                        echo '3';
+                      }
+                      if($viewproject['status']=='not stated')
+                      {
+                        echo '0';
+                      }
+                      if($viewproject['status']=='overdue')
+                      {
+                        echo '3';
+                      }
+                      if($viewproject['status']=='canceled')
+                      {
+                        echo '1';
+                      }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -171,4 +230,7 @@
       </div>
     </div>
 </body>
+<<<<<<< HEAD
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99

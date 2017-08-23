@@ -11,6 +11,7 @@
      <link rel = "stylesheet" href = "../assets/plugins/jquery-ui/jquery-ui.css" type = "text/css"/> 
     <link rel = "icon" type = "image/png" href = "../assets/index/images/favicon.gif">
 <<<<<<< HEAD
+<<<<<<< HEAD
      <link ral = "stylesheet" href = "../assets/plugins/datatables/dataTables.bootstrap.css" type = "text/css"/> 
     <script src = "../assets/lib/jquery-2.1.3.min.js"></script>
     <script type = "text/javascript" src = "../assets/bootstrap/js/bootstrap.min.js"></script>
@@ -26,6 +27,8 @@
     <link rel="stylesheet" src="../assets/font-awesome/font-awesome2/css/font-awesome.min.css" type="text/css">
   </head>
 =======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
     <script src = "../assets/lib/jquery-2.1.3.min.js"></script>
     <script type = "text/javascript" src = "../assets/bootstrap/js/bootstrap.min.js"></script>
     <script type = "text/javascript" src = "../assets/plugins/jquery-ui/jquery-ui.js"></script>  
@@ -41,4 +44,7 @@
     <link rel = "stylesheet" href = "../assets/client.css" type = "text/css"/>
     <link rel = "stylesheet" href = "../assets/font-awesome/css/font-awesome.min.css" type = "text/css"/>
     </head>
+<<<<<<< HEAD
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99

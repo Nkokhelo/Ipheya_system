@@ -14,6 +14,7 @@
    }
 ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <div class="col-xs-12">
   <div class="col-xs-8 col-xs-offset-2 b">
@@ -33,6 +34,8 @@
                     <?=(isset($feedback))?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":'no data '?>
             </div>
 =======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 <body>
   <div class="wrapper">
       <?php include 'includes/sidebar.php'?>
@@ -63,11 +66,15 @@
               <div class='col-xs-6 col-xs-offset-3' style='margin-bottom:30px;'>
                 <a class="btn btn-block btn-success" href="createproject.php?prog=<?=$program['program_no']?>"><span class="fa fa-plus"></span> Create Project</a>
               </div>
+<<<<<<< HEAD
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
           </div>
         </div>
         <?php include('includes/footer.php'); ?>
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
       </div>
       <hr class='bhr' style="width:100%"/>
@@ -78,9 +85,14 @@
   <?php include'includes/project-modal.php' ?>
 </div>
 =======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
     </div>
   <?php include('includes/project-modal.php') ?>
 </body>
 
 
+<<<<<<< HEAD
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99

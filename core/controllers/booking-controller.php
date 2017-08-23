@@ -1,17 +1,16 @@
 <?php
 
     $logic = new Logic();
-   if(isset($_POST['bookings']))
+    $feedback='';
+   if(isset($_POST['save_bookings']))
     {
         $name=$_POST['name'];
-        $location =$_POST['location'];
-        $date =$_POST['date'];
-        $duration =$_POST['duration'];  
-        $description =$_POST['description']; 
-        $category =$_POST['category']; 
-        
-        $save = "INSERT INTO `events`(`name`,`location`,`date`,`duration`,`description`,`category`)      
-        VALUES (null,'$name','$location','$date','$duration','$description','$category')";
+        $email_address =$_POST['email_address'];
+        $reminder =$_POST['reminder'];
+        $cell_num =$_POST['cell_num'];  
+
+        $save = "INSERT INTO `bookings`(`name`,`email_address`,`reminder`,`cell_num`)      
+                    VALUES (null,'$name','$email_address','$reminder','$cell_num')";
          $result = mysqli_query($logic->connect(),$save);
         if(!$result)  
         { 

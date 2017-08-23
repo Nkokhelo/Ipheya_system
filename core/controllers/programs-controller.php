@@ -106,6 +106,10 @@
         $presult = $logic->getallProjets();
         $program = $logic->getProgramByNo($p_no);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
         while($projects = mysqli_fetch_assoc($presult))
         {
             if($projects['program_no']==$p_no)
@@ -115,6 +119,7 @@
                 $pi++;
             }
         }
+<<<<<<< HEAD
         $get_project =rtrim($get_project,', ');
 =======
 
@@ -129,10 +134,14 @@
         }
         // $get_project =rtrim($get_project,', ');
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+        // $get_project =rtrim($get_project,', ');
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
         if($get_project =='')
         {
             $pi=0;
             $feedback =array('alert'=>'alert alert-info', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-alert"></span> Info :</strong> No project under this program <a class="alert-link" data-toggle="modal" data-target="#addproject" onclick="">Create new project?</a>');
+<<<<<<< HEAD
 <<<<<<< HEAD
         }
         //TODO: Here You should allow a user to enter a client No of employee no 
@@ -149,6 +158,8 @@
         $client = $logic ->getClientByNo($viewproject['client_no']);// get client information from a database
         
 =======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
         }
         //TODO: Here You should allow a user to enter a client No of employee no 
     }
@@ -182,7 +193,10 @@
             }
             
         }
+<<<<<<< HEAD
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
     }
 
 #getallprograms

@@ -23,6 +23,7 @@
              <div class="col-xs-offset-2 col-xs-10 b">
               <h2 class="text-center">All Suppliers</h2><hr class="bhr">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <table class="table" style="padding:2%;" id="suppliers">
                 <thead>
                   <th>Supplier No</th><th>Name</th><th>Telephone</th><th>Email</th>
@@ -32,6 +33,8 @@
                 </tbody>
                 <tfoot>
 =======
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
               <table class="table" id="supplierTable">
                 <thead style="border-top:#eee 2px solid">
                   <tr><th>#</th><th>Name</th><th>Telephone</th><th>Email</th><th>Actions</th></tr>
@@ -41,7 +44,10 @@
                 </tbody>
                 <tfoot>
                   
+<<<<<<< HEAD
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                 </tfoot>
               </table>
               <hr class="bhr"/>
@@ -53,6 +59,7 @@
             </div>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
@@ -61,6 +68,11 @@
       </div>
   </div>
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+        <?php include('includes/footer.php'); ?>
+      </div>
+  </div>
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 </body>
 <script>
   $(document).ready(function(){
@@ -71,9 +83,12 @@
   });
 </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <div class="container-fluid" style="padding:1%;">
      
 </div>
 =======
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 

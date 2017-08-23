@@ -279,9 +279,13 @@
         max-width: 80px;
         text-align: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         /* border-left: 2px rgb(169, 176, 187) solid; */
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+        /* border-left: 2px rgb(169, 176, 187) solid; */
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
     }
     
     #sidebar.active .sidebar-header h3,
@@ -289,6 +293,9 @@
         display: none;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
     
     #sidebar.active .sidebar-header strong {
         display: block;
@@ -486,6 +493,7 @@
     
     .form-control {
         border-radius: 0;
+<<<<<<< HEAD
 =======
     
     #sidebar.active .sidebar-header strong {
@@ -691,6 +699,8 @@
     
     .form-control {
         border-radius: 0;
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
     }
     
     .nav.nav-tabs li a[aria-expanded="false"]::before,
@@ -700,5 +710,8 @@
     
     .nav.nav-tabs li a[aria-expanded="true"]::before {
         content: '';
+<<<<<<< HEAD
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
     }

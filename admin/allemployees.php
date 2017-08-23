@@ -23,12 +23,17 @@
             <h2>All Employees</h2>
             <hr class="bhr"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <table class="table" id="table">
                 <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
 =======
             <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
               <table class="table" id="employeeTable">
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+            <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
+              <table class="table" id="employeeTable">
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
                 <thead>
                   <th>Department</th>
                   <th>Employee No</th>
@@ -56,10 +61,16 @@
 </body>
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
   $('#table').datatable();
 =======
   $(document).ready(function() {
     $('#employeeTable').dataTable();
   });
 >>>>>>> 99a079921e80d6f614019d96f8546c8a862ae4b0
+=======
+  $(document).ready(function() {
+    $('#employeeTable').dataTable();
+  });
+>>>>>>> bf70662ea22827d46098b33ba13833a6c3395e99
 </script>
