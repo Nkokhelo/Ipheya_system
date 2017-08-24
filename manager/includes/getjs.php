@@ -29,7 +29,7 @@
         $data ='no data';
         $result = mysqli_query($log->connect(),$query);
         while($program  = mysqli_fetch_assoc($result)):
-            $data = "<i class='fa fa-user-o'></i> Fullname : ".$program['name']." ".$program['surname']."<br/>
+            $data = "<h3 class='text-left' style='color:#888'>Client Information</h3><i class='fa fa-user-o'></i> Fullname : ".$program['name']." ".$program['surname']."<br/>
                      <i class='fa fa-send-o'></i> Email : ".$program['email']."<br/>
                      <i class='fa fa-phone'></i> Phone Number: ".$program['contact_number']."<br/>
                      <i class='fa fa-address-card-o'></i> Postal ".$program['postal_address']."<br/>
@@ -40,6 +40,6 @@
             $data='Error';
         }
 
-        echo json_encode($data);
+        echo ($data);
     }
 ?>

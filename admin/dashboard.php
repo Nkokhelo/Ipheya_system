@@ -40,4 +40,5 @@ session_start();
 
 <script>
 	$(".table").dataTable();
+
 </script>

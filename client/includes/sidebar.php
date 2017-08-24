@@ -27,19 +27,19 @@
                             Request
                         </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="request.php#MR" data-toggle="tab">Maintanance</a></li>
-                            <li><a href="request.php#SR" data-toggle="tab">Service</a></li>
-                            <li><a href="request.php#MR">Survey</a></li>
+                            <li><a href="request.php#MaintananceR">Maintanance</a></li>
+                            <li><a href="request.php#ServiceR">Service</a></li>
+                            <li><a href="request.php#SurvetyR">Survey</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="history.php">
                             <i class="fa fa-history"></i>
-                            History
+                            My history
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="#faq.php">
                             <i class="fa fa-send-o"></i>
                             FAQ
                         </a>

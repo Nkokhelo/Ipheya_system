@@ -63,25 +63,25 @@
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Created</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#000">
-                            <?= $np ?>
+                            <span class="count"><?= $np ?></span>
                             </h1><hr class="bhr"/>
                         </div>   
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Progress</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#86c0d6">
-                                <?= $pp ?>
+                            <span class="count"><?= $pp ?></span>
                             </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Complete</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#86d6a4">
-                            <?= $pc ?>
+                            <span class="count"><?= $pc ?></span>
                             </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Over due</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#fc8c7e">
-                            <?= $po ?>
+                            <span class="count"><?= $po ?></span>
                             </h1><hr class="bhr"/>
                         </div>         
                         <hr class="bhr"/>
@@ -104,6 +104,19 @@
 <script>
 
     $(document).ready(function() {
+
+    $('h4 h1.text-center .count').each(function () {
+        $(this).prop('Counter',0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 4000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+        
     var today = moment(Date()).format("YYYY-MM-DD");
 
     $('#calendar').fullCalendar({
@@ -172,7 +185,8 @@
         ]
     });
     
-    function edit(event){
+    function edit(event)
+    {
         start = event.start.format('YYYY-MM-DD HH:mm:ss');
         if(event.end){
             end = event.end.format('YYYY-MM-DD HH:mm:ss');
@@ -197,7 +211,9 @@
                 }
             }
         });
-    }});
+    }
+    
+    });
 
 </script>
 

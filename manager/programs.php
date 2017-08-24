@@ -125,19 +125,20 @@
 
     function getClient(client_no)
     {
-        $.ajax({
-            type : "get",
-             url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
-            data : "clientInfor="+client_no,
-            success:function(data)
-            {
-                data =JSON.parse(data);
-                document.getElementById("cInfo").innerHTML= "<h3 class='text-left' style='color:#888'>Client Information</h3>"+data;
+        $('#cInfo').load('http://localhost:81/Ipheya/manager/includes/getjs.php?clientInfor='+client_no);
+        // $.ajax({ that was a log methord
+        //     type : "get",
+        //      url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+        //     data : "clientInfor="+client_no,
+        //     success:function(data)
+        //     {
+        //         data =JSON.parse(data);
+        //         document.getElementById("cInfo").innerHTML= "<h3 class='text-left' style='color:#888'>Client Information</h3>"+data;
                 
-            },error:function (err) 
-            {
-                console.log("Result"+err);
-            }});
+        //     },error:function (err) 
+        //     {
+        //         console.log("Result"+err);
+        //     }});
     }
 </script>
 <?php include('includes/footer.php'); ?>
