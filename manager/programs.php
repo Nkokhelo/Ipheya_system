@@ -56,6 +56,7 @@
           $('#edit').show();
           $('#save').hide();
           $('#delete').hide();
+          $('.cl').hide();
           var title = document.getElementById('title');
           var desc = document.getElementById('description');
           title.removeAttribute('disabled');
@@ -71,7 +72,8 @@
                 $('#title').val(data.program_name);
                 $('#description').val(data.description);
                 $('#label').text('Edit '+data.program_name+' program');
-
+                // getClient(data.client_no);
+                getClient(data.client_no);
                 
             },error:function (err) 
             {
@@ -83,6 +85,7 @@
           $('#delete').show();
           $('#save').hide();
           $('#edit').hide();
+          $('.cl').hide();
          var title = document.getElementById('title');
          var desc = document.getElementById('description');
           title.setAttribute('disabled','true');
@@ -108,6 +111,8 @@
           $('#save').show();
           $('#delete').hide();
           $('#edit').hide();
+          $('#cInfo').hide();
+          $('.cl').show();
           var title = document.getElementById('title');
           var desc = document.getElementById('description');
           title.removeAttribute('disabled');
@@ -116,6 +121,23 @@
           $('#description').val(' ');
           $('#label').text('New Program');
 
+    }
+
+    function getClient(client_no)
+    {
+        $.ajax({
+            type : "get",
+             url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+            data : "clientInfor="+client_no,
+            success:function(data)
+            {
+                data =JSON.parse(data);
+                document.getElementById("cInfo").innerHTML= "<h3 class='text-left' style='color:#888'>Client Information</h3>"+data;
+                
+            },error:function (err) 
+            {
+                console.log("Result"+err);
+            }});
     }
 </script>
 <?php include('includes/footer.php'); ?>

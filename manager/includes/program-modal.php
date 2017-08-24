@@ -23,6 +23,15 @@
                                 <textarea  class="form-control" id='description' name ="description" rows="8" cols="20" required></textarea>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="client" class="col-xs-3 control-label cl">Link to a client</label>
+                            <div class="col-xs-6 cl">
+                                <select id="client_no" class="col-xs-6 form-control" name="client_no">
+                                    <option value="">--Select Client--</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-10 col-xs-offset-2" id="cInfo"></div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                          <div class="form-group">

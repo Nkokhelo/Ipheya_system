@@ -144,14 +144,14 @@
             }
             
         }
-        $allTask = $logic->getallTasks();
+
+        $tasks_no = mysqli_fetch_row($logic->countTasks($_GET['pview']))[0];
         while($all = mysqli_fetch_assoc($related_proj))
         {
             if($all['project_no']!= $_GET['pview'])
             {
                 $proj .="<li>".$all['project_name']."-<a href='viewproject?pview=".$all['project_no']."'>View?</a></li>"; 
             }
-            
         }
 
     }

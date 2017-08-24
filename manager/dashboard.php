@@ -7,6 +7,7 @@
 		include('../core/logic.php');
         include('includes/head.php');
         include('../core/controllers/meeting-controller.php');
+        include('../core/controllers/admin-controller.php');
 		// include('includes/navigation.php');
 		// include('includes/employee-session.php');
     }
@@ -30,62 +31,64 @@
                             </div>
                         </div>
                     <div class="col-xs-6">
-                        <h3 class="text-center" style="color:#888">All Tasks</h3><hr class="bhr"/>
+                        <h3 class="text-center" style="color:#888">2017 Total Tasks <?= $tott?></h3><hr class="bhr"/>
                         <div class="col-xs-3">
-                        <h4 class="text-center" style="color:#888">Progress</h4><hr class="bhr"/>
-                        <h1 class="text-center" style="color:#86c0d6">
-                            5
-                        </h1><hr class="bhr"/>
+                            <h4 class="text-center" style="color:#888">Created</h4><hr class="bhr"/>
+                            <h1 class="text-center" style="color:#000">
+                            <?= $nt?>
+                            </h1><hr class="bhr"/>
+                        </div> 
+                        <div class="col-xs-3">
+                            <h4 class="text-center" style="color:#888">Progress</h4><hr class="bhr"/>
+                            <h1 class="text-center" style="color:#86c0d6">
+                            <?= $tp?>
+                            </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Complete</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#86d6a4">
-                            9
+                            <?= $tc ?>
                             </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Over due</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#fc8c7e">
-                            8
+                            <?= $to?>
                             </h1><hr class="bhr"/>
-                        </div>       
-                        <div class="col-xs-3">
-                            <h4 class="text-center" style="color:#888">Total Task</h4><hr class="bhr"/>
-                            <h1 class="text-center" style="color:#000">
-                            22
-                            </h1><hr class="bhr"/>
-                        </div>       
+                        </div>             
                     </div>
                     <div class="col-xs-6">
-                    <hr class="bhr"/>
-                    <h3 class="text-center" style="color:#888">All Projects</h3><hr class="bhr"/>
+                        <hr class="bhr"/>
+                        <h3 class="text-center" style="color:#888">2017 Total Projects <?= $totp ?></h3><hr class="bhr"/>
                         <div class="col-xs-3">
-                        <h4 class="text-center" style="color:#888">Progress</h4><hr class="bhr"/>
-                        <h1 class="text-center" style="color:#86c0d6">
-                            5
-                        </h1><hr class="bhr"/>
+                            <h4 class="text-center" style="color:#888">Created</h4><hr class="bhr"/>
+                            <h1 class="text-center" style="color:#000">
+                            <?= $np ?>
+                            </h1><hr class="bhr"/>
+                        </div>   
+                        <div class="col-xs-3">
+                            <h4 class="text-center" style="color:#888">Progress</h4><hr class="bhr"/>
+                            <h1 class="text-center" style="color:#86c0d6">
+                                <?= $pp ?>
+                            </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Complete</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#86d6a4">
-                            9
+                            <?= $pc ?>
                             </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Over due</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#fc8c7e">
-                            8
+                            <?= $po ?>
                             </h1><hr class="bhr"/>
-                        </div>       
-                        <div class="col-xs-3">
-                            <h4 class="text-center" style="color:#888">Total Task</h4><hr class="bhr"/>
-                            <h1 class="text-center" style="color:#000">
-                            22
-                            </h1><hr class="bhr"/>
-                        </div>     
-                    </div>
-                    <div class="">
+                        </div>         
                         <hr class="bhr"/>
+                    </div>
+                    <div class="col-xs-12">
+                        <hr/>
+
                     </div>
                 </div>  
             </div>

@@ -453,7 +453,13 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
     }
-    
+    public function countTasks($id)
+    {
+        
+        $sql ="SELECT COUNT(*) FROM `task` WHERE `project_no`='$id'";
+        $qey =mysqli_query($this->connect(),$sql);
+        return $qey;
+    }
     public function getTaskById($id)
     {
             $sql ="SELECT * FROM task WHERE task_id='$id'";
@@ -625,7 +631,7 @@
             $mes = '<div class="alert alert-success"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> '.$message.'</div>';
             return $mes;
         }
-#success 
+#info 
         public function display_info($message)
         {
             $mes = '<div class="alert alert-info"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-info-sign"></span> <strong>info!</strong> '.$message.'</div>';
@@ -661,8 +667,7 @@
 
 #testing -------------------------------------
     // $log = new Logic();
-    // $all= $log->getRelatedProject('P002215');
-
+    // echo mysqli_fetch_row($log->countTasks('P005A5A'))[0];
     // while($th = mysqli_fetch_assoc($all))
     // {
     //     echo $th['project_name'];
