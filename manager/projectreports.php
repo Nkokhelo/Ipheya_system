@@ -20,6 +20,7 @@
           <h2 class="text-center">Project Reports</h2><hr class="bhr"/>
           <div class="col-xs-12">
             <canvas id="pieView"></canvas>
+            <canvas id="pie2"></canvas>
           </div> <br/>
           <hr class="bhr"/>
           <div class="col-xs-12">

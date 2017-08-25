@@ -58,7 +58,7 @@ $data='<div class="modal-header">
            <div class ="col-lg-6">
                <h4 style="color:#70747a"><span class="glyphicon glyphicon-cog"></span><b> '.$_GET['RType'].' Information</b></h4>
                <hr class="bhr"/>
-               Requested '.$_GET['RType'].' is for '.($logic->getServiceNameByID($Rrequest['RequestDate'])).' on'.$Rrequest['RequestDate'].'<br/>
+               Requested '.$_GET['RType'].' for '.($logic->getServiceNameByID($Rrequest['RequestDate'])).' on '.date_format(date_create($Rrequest['RequestDate']),"l d F Y").'<br/>
                Client description: <br/>
                <textarea rows="3" cols="60" class="form-control" readonly>'.$Rrequest['Description'].' </textarea><br/>
                Status : '.$Rrequest['RequestStatus'].'
@@ -70,7 +70,7 @@ $data='<div class="modal-header">
     <div class="col-xs-10">
       <a href="CreateTask.php?ci='.$_GET['ci'].'&ri='.$_GET['ri'].'&type='.$_GET['RType'].'" class="btn btn-default"><span class="glyphicon glyphicon-tasks"></span> Create Task</a>
       <a href="quotation.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a qoutation</a>
-      <a href="client_view.php?id='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View '.$client['name'].'s history</a>
+      <a href="viewclient.php?view='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View '.$client['name'].'s history</a>
     </div>
     </div>
    </div>
