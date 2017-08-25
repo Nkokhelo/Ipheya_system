@@ -22,7 +22,7 @@
     </ul>
   </li>
   <li  >
-    <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
+    <a href="#stakeholders" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-vcard-o'></i>
       HR Management
     </a>
