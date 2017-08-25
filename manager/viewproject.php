@@ -110,6 +110,7 @@
                     <h4 style="color:#888">Tasks</h4 style="color:#888">
                     <?= $tasks_no ?>
                   </div>
+                  <div class="col-xs-12"><a href='ganttchart.php'>Gantt Chart View</a></div>
                 </div>
               </div>
               <hr class='bhr' style="width:100%"/>

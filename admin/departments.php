@@ -23,10 +23,13 @@
                 <legend class='thelegend'>List of all department</legend>
                   <table class="table" style="padding:2%;" id="departments">
                     <thead>
-                      <th>Department Name</th><th><span class="fa fa-users"></span>Department Email</th><th>Options</th>
+                      <th>Department Name</th><th>Department Email</th><th>Options</th>
                     </thead>
                     <tbody>
-                      <div  class="form-group col-xs-10 col-xs-offset-1">
+                      <?=$allDepartments;?>
+                      </div>
+                    </tbody>
+                    <tfoot>
                         <tr>
                           <td>
                             <input type="text" name="department" id="department" class="form-control" value="<?=((isset($department))?$department:'');?>" placeholder="Department Name">
@@ -39,11 +42,6 @@
                             <?=((isset($_GET['edit']))?'<a href="departments.php" class="btn btn-primary"><span class="ion ion-android-cancel"></span> Cancel</a>':'');?>
                           </td>
                         </tr>
-                      <?=$allDepartments;?>
-                      </div>
-                    </tbody>
-                    <tfoot>
-
                     </tfoot>
                   </table>
               </fieldset>
