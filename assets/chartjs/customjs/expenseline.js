@@ -66,26 +66,37 @@ $(document).ready(function() {
         }
     });
 
-    var pie = document.getElementById("pieView").getContext('2d');
-    var myChart = new Chart(pie, {
+    // var pie = document.getElementById("pieView").getContext('2d');
+    var bar = $('#barView');
+
+    var myChart = new Chart(bar, {
         type: 'bar',
         data: {
             labels: ["M", "T", "W", "T", "F", "S", "S"],
             datasets: [{
-                label: 'apples',
+                label: 'servic',
                 data: [12, 19, 3, 17, 28, 24, 7],
                 backgroundColor: "rgba(153,255,51,1)"
             }, {
-                label: 'oranges',
-                data: [30, 29, 5, 5, 20, 3, 10],
-                backgroundColor: "rgba(255,153,0,1)"
+                label: 'service2',
+                data: [59, 6, 5, 5, 20, 63, 56],
+                backgroundColor: "rgba(0,153,0,1)"
+            }, {
+                label: 'service3',
+                data: [6, 29, 5, 59, 56, 3, 10],
+                backgroundColor: "rgba(255,53,0,1)"
+            }, {
+                label: 'service4',
+                data: [30, 56, 5, 56, 59, 3, 10],
+                backgroundColor: "rgba(62,33,255,1)"
             }]
         }
     });
 
-    var ctx = document.getElementById("pie2").getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'polarArea',
+    // var ctx = document.getElementById("pie2").getContext('2d');
+    var ctx1 = $('#pieView');
+    var myChart = new Chart(ctx1, {
+        type: 'doughnut',
         data: {
             labels: ["M", "T", "W", "T", "F", "S", "S"],
             datasets: [{
