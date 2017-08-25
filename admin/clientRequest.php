@@ -38,13 +38,12 @@
       </div>
   </div>
 </body>
-<script>
-$(document).ready(function()
-{
-    $('table tbody tr').click(function()
-    {
-        $().load('http:/');
-    });
+<script type="text/javascript">
+
     $('#cRequest').DataTable();
-});
+
+    function getInfor(rId,rT,cId)
+    {
+        $('#dataData').load('http://localhost:81/ipheya/core/sub/getRequestInfo.php?ri='+rId+'&RType='+rT+'&ci='+cId);
+    }
 </script>

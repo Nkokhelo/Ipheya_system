@@ -5,6 +5,7 @@
         require_once('../core/init.php');
         include('../core/logic.php');
         include('includes/head.php');
+        $logic = new Logic();
    }
    else
    {
@@ -24,7 +25,8 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-12'>
-              <div class="col-xs-11 b">
+                <h2 class="text-center" style="color:#888">Gantt Chart for <?= $logic->getProjectByNo($_GET['proj'])['project_name'] ?></h2>
+              <div class="col-xs-12 ">
                 <div class="shadow"></div>
                 <div class="hideSkipLink">
                 </div>
@@ -184,5 +186,5 @@
                     }
                 ]
             });
-
+            $('#dp div div div:contains("DEMO")').remove();
         </script>
