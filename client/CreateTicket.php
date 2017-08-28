@@ -4,7 +4,7 @@
    {
       require_once('../core/init.php');
       include('includes/head.php');
-      include ('../core/logic.php');
+      include('../core/logic.php');
       include('../core/controllers/ticket-controller.php');
    }
    else
@@ -58,7 +58,6 @@
           </div>
         </div>
       </div>
-      <?php include('includes/chat.php'); ?>
   </div>
 </body>
 <style>

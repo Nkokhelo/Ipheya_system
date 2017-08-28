@@ -23,6 +23,7 @@
               <form class="form" method="post">
                 <fieldset>
                   <legend class='thelegend'> Personal Information</legend>
+                  <?=$feedback?>
                     <div class="form-group col-sm-7">
                           <label for="name">Name</label>
                           <input type="text" class="form-control" name="name" id="name" value="<?=((isset($a_name))?$a_name:'');?>" placeholder="First name">
@@ -44,13 +45,13 @@
                         <input type="text" class="form-control" name="number" id="number" value="<?=((isset($a_number))?$a_number:'');?>" placeholder="Contact number">
                       </div>
                       <div class="form-group col-sm-6">
-                        <label for="province">Province</label>
-                        <select class="form-control" name="province" id="province">
+                        <label for="province" >Province</label>
+                        <select disabled class="form-control" name="province" id="province">
                           <option value="<?=((isset($a_province)&&$a_province!='default')?$a_province:'');?>"><?=((isset($a_province))?$a_province:'Select province');?></option>
                           <option value="Eastern Cape.">Eastern Cape.</option>
                           <option value="Free State.">Free State.</option>
                           <option value="Gauteng.">Gauteng.</option>
-                          <option value="KwaZulu-Natal.">KwaZulu-Natal.</option>
+                          <option value="KwaZulu-Natal." selected>KwaZulu-Natal.</option>
                           <option value="Limpopo.">Limpopo.</option>
                           <option value="Mpumalanga.">Mpumalanga.</option>
                           <option value="Northern Cape.">Northern Cape.</option>

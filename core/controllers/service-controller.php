@@ -1,6 +1,7 @@
 <?php
     // include('../logic.php');
     $logic = new Logic();
+    $feedback="";
 #add Service
     if(isset($_POST['Add']) && !empty($_POST['Add']))
     {
@@ -19,7 +20,7 @@
       $dep_result = $logic->getDepartmentById($departmentID);
       $depart_id = $dep_result['department_id'];
       $dep_name = $dep_result['department'];
-
+      die('this is add');
       #form validation
       if($departmentID=='')
       {
@@ -52,9 +53,10 @@
       }
       else
       {
+        $feedback=$logic->display_success("Service saved!");
         $insert_service = "INSERT INTO services(service,min_duration,durationType,description,department) VALUES('{$service}','{$min_duration}','{$type}','{$description}','{$depart_id}')";
         mysqli_query($db, $insert_service);
-        header('Location: services.php');
+        header('Location: allservices.php');
       }
     }
 #edit service
@@ -101,7 +103,7 @@
         else{
         $edit_sql = "UPDATE services SET service = '$service', min_duration = '$min_duration',description = '$description', department = '$department' WHERE service_id = '$edit_id'";
         mysqli_query($db,$edit_sql);
-        header('Location: services.php');
+        header('Location: allservices.php');
       }
       }
     }

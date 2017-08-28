@@ -23,9 +23,13 @@
               <h2><?=$viewproject['project_name']?></h2>
               <hr class='bhr'/>
               <div class='col-xs-12'>
-                <div class='col-xs-7'>
+                <div class='col-xs-7' style="border-right:1px #ccc solid; margin-bottom:5px;">
                   <h4 style="color:#888">Project Details</h4 style="color:#888">
-                  <hr>
+                  <hr class="bhr">
+                  <div class='row'>
+                    <label class='col-xs-3' style='text-align:right'>Program : </label>
+                    <div class=' col-xs-9 '><?= $logic->getProgramByNo($viewproject['program_no'])['program_name']?></div>
+                  </div>
                   <div class='row'>
                     <label class='col-xs-3' style='text-align:right'>Project Name : </label>
                     <div class=' col-xs-9 '><?=$viewproject['project_name']?></div>
@@ -35,15 +39,11 @@
                     <div class=' col-xs-9' style='min-height:40px'><?=$viewproject['description']?></div>
                   </div>
                   <div class='row'>
-                    <label class=' col-xs-3' style='text-align:right'>Start Date : </label>
-                    <div class=' col-xs-9 '><?= date_format(date_create($viewproject['start_date']),'d F Y')?></div>
-                  </div>
-                  <div class='row'>
-                    <label class=' col-xs-3' style='text-align:right'>End Date : </label>
-                    <div class=' col-xs-9 '><?= date_format(date_create($viewproject['end_date']),'d F Y')?></div>
+                    <label class=' col-xs-3' style='text-align:right'>Start From : </label>
+                    <div class=' col-xs-9 '><?= date_format(date_create($viewproject['start_date']),'d F Y')?> <b>To : </b><?= date_format(date_create($viewproject['end_date']),'d F Y')?></div>
                   </div>
                   <h4 style="color:#888">Project Manager Details  </h4 style="color:#888">
-                  <hr />
+                  <hr  class="bhr"/>
                   <div class='row'>
                     <label class=' col-xs-3' style='text-align:right'>Manager : </label>
                     <div class=' col-xs-9 '><?=$employee['title']." ".substr($employee['name'],0,1).".".$employee['surname']?></div>
@@ -57,7 +57,7 @@
                     <div class=' col-xs-9 '><?=$logic->getDepartmentNameByID($employee['department'])?> Department</div>
                   </div>
                     <h4 style="color:#888">Client Details  </h4 style="color:#888">
-                  <hr/>
+                  <hr class="bhr"/>
                   <div class='row'>
                     <label class=' col-xs-3' style='text-align:right'>Client : </label>
                     <div class=' col-xs-9 '><?=$client['name']?> <?=$client['surname']?></div>
@@ -71,7 +71,7 @@
                     <div class=' col-xs-9 '><?=$client['email']?></div>
                   </div>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-xs-5" >
                 <div class="col-xs-12">
                   <h4 style="color:#888">Status...</h4 style="color:#888">
                   <ul>
@@ -101,38 +101,16 @@
                     </ul>
                   </div>
                   <div class="col-xs-12">
-                    <h4 style="color:#888">Related Projects...</h4 style="color:#888">
+                    <h4 style="color:#888">Projets under <?= $logic->getProgramByNo($viewproject['program_no'])['program_name']?></h4 style="color:#888">
                     <ul>
                       <?=(isset($proj))?$proj:''?>
                     </ul>
-                  </div>
-                  
-                 
+                  </div>               
                   <div class="col-xs-12">
                     <h4 style="color:#888">Tasks</h4 style="color:#888">
-                    <?php 
-                      if($viewproject['status']=='complete')
-                      {
-                        echo '5';
-                      }
-                      if($viewproject['status']=='inprogress')
-                      {
-                        echo '3';
-                      }
-                      if($viewproject['status']=='not stated')
-                      {
-                        echo '0';
-                      }
-                      if($viewproject['status']=='overdue')
-                      {
-                        echo '3';
-                      }
-                      if($viewproject['status']=='canceled')
-                      {
-                        echo '1';
-                      }
-                    ?>
+                    <?= $tasks_no ?>
                   </div>
+                  <div class="col-xs-12"><a href='ganttchart.php?proj=<?=$_GET["pview"]?>'>Gantt Chart View</a></div>
                 </div>
               </div>
               <hr class='bhr' style="width:100%"/>

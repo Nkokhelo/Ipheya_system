@@ -33,6 +33,12 @@ session_start();
       </div>
   </div>
 </body>
+<script src="../assets/fullcalendar/js/jquery-1.10.2.js"></script>
+<script src="../assets/fullcalendar/js/bootstrap.min.js"></script>
+<script src='../assets/fullcalendar/js/moment.min.js'></script>
+<script src='../assets/fullcalendar/js/fullcalendar.js'></script>
+
 <script>
 	$(".table").dataTable();
+
 </script>

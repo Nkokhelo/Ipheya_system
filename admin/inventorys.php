@@ -38,7 +38,7 @@ session_start();
                         <tfoot style="font-weight:800; ">
                             <tr>
                                 <td align='right' colspan=4>
-                                    <i>TOTAL PRICE :</i>
+                                    <i>TOTAL :</i>
                                 </td>
                                 <td align='right'>
                                     <i><?=$sumQ?></i>

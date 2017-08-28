@@ -3,6 +3,7 @@
     $logic = new Logic();
     $history_view='';
     $history_view_feed ='';
+    $feedback='';
     $client = "<div class='alert alert-warning'><p class='glyphicon glyphicon-info-sign'></p> No Data was found!</div>";
     #fetch all clients
     $client_exe = $logic->getUnachivedClients();
@@ -55,26 +56,41 @@
           // $a_province = mysqli_real_escape_string($db,$_POST['province']);
           // $a_province = sanitize($a_province);
           $client_update = "UPDATE clients SET name = '$a_name', surname = '$a_surname', postal_address = '$a_postal', contact_number = '$a_number' WHERE email = '$sess_client'";
-          mysqli_query($db,$client_update);
-          header('Location: profile.php');
+          $feed=mysqli_query($db,$client_update);
+          if(!$feed)
+          {
+            $feedback = $logic->display_error("Unable to update you profile");          
+          }
+          else
+          {
+            $feedback = $logic->display_success("Your Profile was succesfully updated");          
+          }
+          // header('Location: profile.php');
         }
 
         #change password
-        if(isset($_POST['Change-password'])){
+        if(isset($_POST['Change-password']))
+        {
           $password = mysqli_real_escape_string($db,$_POST['new-password']);
           $password = sanitize($password);
           $confirm  = mysqli_real_escape_string($db,$_POST['confirm-password']);
           $confirm = sanitize($password);
-          if($password!==$confirm){
+          if($password!==$confirm)
+          {
             $errors[] .= 'Passwords do not match';
           }
-          if(!empty($errors)){
+          if(!empty($errors))
+          {
             $pass_error = display_errors($errors);
           }
-          else {
-            $change_p_sql = "UPDATE clients SET password = '$password' WHERE email = '$sess_client'";
-            if(mysqli_query($db,$change_p_sql)){
-              header('Location: profile.php?changed=1');
+          else 
+          {
+            $password = password_hash($password, PASSWORD_DEFAULT);                      
+            $change_p_sql = "UPDATE users SET password = '$password' WHERE email = '$sess_client'";
+            if(mysqli_query($db,$change_p_sql))
+            {
+              // header('Location: profile.php?changed=1');
+              $feedback = $logic->display_success("Your Profile was succesfully updated");
             }
             else
             {
