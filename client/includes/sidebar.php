@@ -39,9 +39,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="service-ratings.php">
                             <i class="glyphicon glyphicon-paperclip"></i>
-                            FAQ
+                            Services blog
                         </a>
                     </li>
                     <li>
