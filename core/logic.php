@@ -619,6 +619,30 @@
             endwhile;
             return $program;
         }
+        public function sendEmail($to_name,$to_email,$sub,$to_message)
+        {
+            $feedback="";
+            require 'vendor/autoload.php';
+            $from = new SendGrid\Email("Ipheya", "N.N.Tembe@outlook.com");
+            $subject = $sub;
+            $to = new SendGrid\Email("$to_name", "$to_email");
+            $content = new SendGrid\Content("text/plain", "$to_message");
+            $mail = new SendGrid\Mail($from, $subject, $to, $content);
+            $apiKey = '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';//add zero atfer you have done
+            $sg = new \SendGrid($apiKey);
+            $response = $sg->client->mail()->send()->post($mail);
+
+            if($response->body()!=null)
+            {
+                $feedback="Email not sent!!!";
+            }
+            else
+            {
+                $feedback="Email sent!!!";
+            }
+            return $feedback;
+           
+        }
 #error 
         public function display_error($message)
         {

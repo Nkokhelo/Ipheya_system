@@ -1,6 +1,9 @@
 <?php
-    require('core/init.php');
-    require('core/controllers/target-home-controller.php');
+				require('core/init.php');
+				require('core/logic.php');
+				require('core/controllers/target-home-controller.php');
+				require('core/controllers/faq-controller.php');
+				
     #include('includes/index-head.php');
  ?>
 <!DOCTYPE HTML>
@@ -197,7 +200,6 @@
 							<div class="service-aro-right"></div>
 						</div>
 						<h2>Feel free to contact any query</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
 						<div class="contact-form">
 							<div class="col-sm-5 your-name col-sm-offset-1">
 								<div class="form-group">
@@ -211,7 +213,7 @@
 							</div>
 							<div class="col-sm-10 your-message col-sm-offset-1">
 								<div class="form-group">
-									<textarea name="message" id="message" required="required" class="form-control" rows="10" placeholder="Enter your message..."></textarea>
+									<textarea name="message" id="message" required="required" class="form-control" rows="10" placeholder="Enter your question..."></textarea>
 								</div>
 								<div class="form-group">
 									<button type="submit" name="submit" class="btn btn-primary btn-lg submit-button" >Send</button>
