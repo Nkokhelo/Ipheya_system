@@ -51,6 +51,7 @@
     <ul class="collapse list-unstyled" id="requestsMenu">
       <li><a  href="clientRequest.php">Requests</a></li>
       <li><a href="Tickets.php">Tickets</a></li>
+      <li><a href="createfaq.php">FAQ</a></li>
     </ul>
   </li>
   

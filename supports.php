@@ -52,32 +52,16 @@
 					 <div class="navbar-collapse collapse">
 						<div class="col-lg-offset-4 col-md-6">
 							<ul class="nav navbar-nav">
-								<li><a class="active"  href="#home-page" target="_top">Home</a></li>
+								<li><a class="active"  href="index.php" target="_top">Home</a></li>
 								<li><a  href="#service-page" target="_top">Services</a></li>
 								<li><a  href="#about-page" target="_top">About-us</a></li>
 								<li><a  href="#contact-page" target="_top">Contact-us</a></li>
 								<li><a  href="supports.php" target="_top">Support</a></li>
 							</ul>
 						</div>
-            		</div>
+     </div>
 					<div class="main-logo">
-						<a href="#"><img src="assets/index/images/logo.gif" alt="" /></a>
-					</div>
-					<h1>Welcome to Ipheya IT Solution.</h1>
-					<h2>Stay tuned!</h2>
-					<div class="container">
-
-					</div>
-					<p>Subscribe on newsletter Learn first about the launch</p>
-					<form id="subscribe" class="form-group subscribe-area">
-						<input type="email" name="subscribe-email" id="st-email" class="form-control subscribe-box" placeholder="Enter your email...">
-						<button type="submit" name="subscribe-submit" class="btn btn-primary btn-lg submit-bt" >Subscribe</button>
-						<br>
-						<label for="st-email" class="st-subscribe-message"></label>
-					</form>
-					<div class="contact-form">
-						<a class="btn btn-primary btn-lg submit-button" href="login.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-sign-in"></i> Sign-in</a>
-						<a class="btn btn-primary btn-lg submit-button" href="client/register.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-user"></i> Sign-Up </a>
+						<h2 class="text-center" style="font-size:68px;">Supports</h2>
 					</div>
 					<div class="col-sm-12 social-shear text-center">
 						<a href="#"><i class="fa fa-facebook"></i></a>
@@ -96,14 +80,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="service-title">Who are we?</h1>
+					<h1 class="service-title">Ipheya Support Center: FAQ</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
-							<i class="fa fa-gift"></i>
+							<i class="fa fa-send-o"></i>
 						<div class="service-aro-right"></div>
 					</div>
-					<h2>Ipheya IT solution </h2>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
 				</div>
 				<div class="col-md-3 col-sm-6 text-center service">
 					<i class="fa fa-laptop"></i>
@@ -129,100 +111,6 @@
 		</div><!-- /.container -->
 	</section><!-- /#service-page -->
 
-	<section id="about-page">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<h1 class="about-title">About Us</h1>
-					<div class="service-aro-icon">
-						<div class="service-aro-left"></div>
-							<i class="fa fa-group"></i>
-						<div class="service-aro-right"></div>
-					</div>
-					<h2>We are creative and young</h2>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-				</div>
-				<div class="col-md-4 text-center member">
-					<div class="member-img">
-						<img src="assets/index/images/slider.png" alt="" />
-						<div class="member-social">
-							<a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a>
-							<a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a>
-							<a class="linkedin-icon" href="#"><i class="fa fa-linkedin"></i></a>
-							<a class="google-plus-icon" href="#"><i class="fa fa-google-plus"></i></a>
-						</div>
-					</div>
-					<h3>Rubel Miah</h3>
-					<span>Lead Developer</span>
-				</div>
-				<div class="col-md-4 text-center member">
-					<div class="member-img">
-						<img src="assets/index/images/slider2.png" alt="" />
-						<div class="member-social">
-							<a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a>
-							<a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a>
-							<a class="linkedin-icon" href="#"><i class="fa fa-linkedin"></i></a>
-							<a class="google-plus-icon" href="#"><i class="fa fa-google-plus"></i></a>
-						</div>
-					</div>
-					<h3>Khalil Uddin</h3>
-					<span>Designer</span>
-				</div>
-				<div class="col-md-4 text-center member">
-					<div class="member-img">
-						<img src="assets/index/images/slider3.png" alt="" />
-						<div class="member-social">
-							<a class="facebook-icon" href="#"><i class="fa fa-facebook"></i></a>
-							<a class="twitter-icon" href="#"><i class="fa fa-twitter"></i></a>
-							<a class="linkedin-icon" href="#"><i class="fa fa-linkedin"></i></a>
-							<a class="google-plus-icon" href="#"><i class="fa fa-google-plus"></i></a>
-						</div>
-					</div>
-					<h3>Shamim Mia</h3>
-					<span>Developer</span>
-				</div>
-			</div><!-- /.row -->
-		</div><!-- /.container -->
-	</section><!-- /#about-page -->
-
-	<section id="contact-page">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<form id="main-contact-form" class="contact-form-area text-center" name="contact-form" method="post" action="">
-						<h1 class="contact-title">Get in touch</h1>
-						<div class="service-aro-icon">
-							<div class="service-aro-left"></div>
-								<i class="fa fa-envelope"></i>
-							<div class="service-aro-right"></div>
-						</div>
-						<h2>Feel free to contact any query</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-						<div class="contact-form">
-							<div class="col-sm-5 your-name col-sm-offset-1">
-								<div class="form-group">
-									<input type="text" name="name" required="required" class="form-control" placeholder="Enter your name...">
-								</div>
-							</div>
-							<div class="col-sm-5 your-email">
-								<div class="form-group">
-									<input type="email" name="email" class="form-control" required="required" placeholder="Enter your email...">
-								</div>
-							</div>
-							<div class="col-sm-10 your-message col-sm-offset-1">
-								<div class="form-group">
-									<textarea name="message" id="message" required="required" class="form-control" rows="10" placeholder="Enter your message..."></textarea>
-								</div>
-								<div class="form-group">
-									<button type="submit" name="submit" class="btn btn-primary btn-lg submit-button" >Send</button>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div><!--/.row-->
-		</div><!-- /.container -->
-	</section><!-- /#contact-page -->
 
 	<footer class="footer">
 		<div class="container">
