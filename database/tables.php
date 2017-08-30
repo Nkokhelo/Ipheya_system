@@ -23,6 +23,7 @@
         // echo '{--Connected--}';
      }
    }
+   
    #select database
   mysqli_select_db($con,"ipheya");
   $sqli="CREATE TABLE serviceHistory

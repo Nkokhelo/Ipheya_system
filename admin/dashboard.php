@@ -6,7 +6,6 @@ session_start();
       include('includes/head2.php');
       include('../core/logic.php');
       require_once('../core/controllers/client-controller.php');
-		//  include('includes/navigation.php');
     }
     else
     {
@@ -40,5 +39,4 @@ session_start();
 
 <script>
 	$(".table").dataTable();
-
 </script>

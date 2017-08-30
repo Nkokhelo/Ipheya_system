@@ -5,9 +5,7 @@
         require_once('../core/init.php');
         include('../core/logic.php');
         include('includes/head2.php');
-        require_once('../core/controllers/project-controller.php');
-        // include('includes/navigation.php');
-        
+        require_once('../core/controllers/event-controller.php');
    }
     else
     {
@@ -20,17 +18,17 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 b'>
-              <form class="form-horizontal" action="Events.php" class="form" method="POST">
+              <form class="form-horizontal" action="" enctype="multipart/form-data" class="form" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">
                 Events
                   </legend>
-                  <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
+                  <?=($feedback)? $feedback:""?>
                   <div class="col-xs-11 col-xs-offset-1">
                       <div class="row">
                         <div class="form-group col-xs-7">
                             <label for="event_name">Name :</label>
-                            <input required placeholder="Create New Event Name" class="form-control" id='event_name' type="text" name ="name "/>
+                            <input required placeholder="Create New Event Name" class="form-control" id='event_name' type="text" name ="name"/>
                         </div>
                        </div>
                         <div class="row">
@@ -51,27 +49,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group col-xs-6">
-                                <label for="">Event date :</label>
-                                <input required placeholder="2017-08-23" class="form-control " id='sdate' name ="date" rows="5" cols="10"></input>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-xs-6">
-                                <label for="">Duration :</label>
-                                <div class="col-xs-6  input-group input-append " id='dsdate'style='padding-left:15px; margin-left:-12px;'>
-                                    <input required placeholder=" " placeholder='6' class="form-control"style="width:30%" id='duration' name ="duration" rows="5" cols="10"></input>
-                                    <select name="duration_type" class="form-control"style="width:70%;background:#eee">
-                                        <option value="1">Hour(s)</option>
-                                        <option value="1">Day(s)</option>
-                                        <option value="2">Week(s)</option>   
-                                    </select>
+                                <div class="form-group col-xs-6">
+                                    <label for="">Start  :</label>
+                                    <input required placeholder="2017-08-23" class="form-control " id='sdate' name ="sdate" rows="5" cols="10"></input>
+                                </div>
+                            <div class="col-xs-6">
+                                <div class="form-group col-xs-12">
+                                    <label for="">End date :</label>
+                                    <input required placeholder="2017-08-23" class="form-control " id='edate' name ="edate" rows="5" cols="10"></input>
                                 </div>
                             </div>
-
+                            </div>
+                        <div class="row">
                             <div class="col-xs-6">
                                 <label  for="">Select image to upload:</label>
-                                <input type="file" name="fileToUpload" id="fileToUpload">
+                                <input type="file" name="eventimage" id="eventimage"/>
                             </div>
                         </div>
                   </div>
@@ -93,8 +85,27 @@
   <?php include('includes/footer.php'); ?>
   <script>
    $(document).ready(function(){
-
+        $('INPUT[type="file"]').change(function () {
+        var ext = this.value.match(/\.(.+)$/)[1];
+        switch (ext) {
+            case 'jpg':
+            case 'jpeg':
+            case 'png':
+            case 'gif':
+                $('#uploadButton').attr('disabled', false);
+                break;
+            default:
+                alert('This is not an allowed file type.');
+                this.value = '';
+            }
+        });
         $('#sdate').datepicker(
+            {
+            minDate:0,
+            dateFormat: 'yy-mm-dd'
+            }
+        );
+        $('#edate').datepicker(
             {
             minDate:0,
             dateFormat: 'yy-mm-dd'
