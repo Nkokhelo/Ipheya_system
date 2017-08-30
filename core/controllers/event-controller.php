@@ -2,6 +2,31 @@
 
     $logic = new Logic();
     $feedback="";
+    $allevents="";
+    $events =$logic->getallevents();
+    while ($all = mysqli_fetch_assoc($events))
+    {
+        $allevents .='	<div class="col-xs-3" id="event" style="border:1px #999 solid; max-height:340px; margin:1%; box-shadow:6px 6px 6px #eee;">
+                    <div style="width:94%;  margin-left:-15px; height:150px;">
+                        <img src="data:image/*;base64,'.$all['image'].'" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
+                    </div>
+                    <div style="padding-bottom:3px;">
+                        <h3 style="display: -webkit-box;
+                        overflow : hidden;
+                        text-overflow: ellipsis;
+                        -webkit-line-clamp: 1;
+                        -webkit-box-orient: vertical; ">'.$all['title'].'</h3>
+                        <p style="display: -webkit-box;
+                        overflow : hidden;
+                        text-overflow: ellipsis;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical; ">'.$all['description'].'</p>
+                        
+                        <p class="text-right"><a data-toggle="modal" data-target="#myModal" onclick="loadevent('.$all['id'].')" id="view">View</a> |'.date_format(date_create($all['start']),"d-F-Y").'</p>
+                    </div>
+                </div>';
+    }
+
    if(isset($_POST['Create_Event']))
     {
         $name= $_POST['name'];
@@ -26,7 +51,7 @@
                 $image=base64_encode($image);
             }
             $save = "INSERT INTO `events`(`id`,`title`,`color`,`description`,`category`,`start`,`end`,`image`)      
-            VALUES (null,'$name','#fff',$description','$category','$sdate','$edate','$image')";
+            VALUES (null,'$name','#fff','$description','$category','$sdate','$edate','$image')";
             $result = mysqli_query($logic->connect(),$save);
             if(!$result)  
             { 

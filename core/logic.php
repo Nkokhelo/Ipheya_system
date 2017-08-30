@@ -1699,6 +1699,25 @@ public function getfaqbyId($id)
     }
     return mysqli_fetch_assoc($qey);
 }
+
+#event 
+public function getallevents()
+{
+    $sql ="SELECT * FROM events";
+    $qey =mysqli_query($this->connect(),$sql);
+    return $qey;
+}
+
+public function getEventbyID($id)
+{
+    $sql ="SELECT * FROM events WHERE id=$id";
+    $qey =mysqli_query($this->connect(),$sql);
+    if(!$qey)
+    {
+        die("Error".mysqli_error($this->connect()));
+    }
+    return mysqli_fetch_assoc($qey);
+}
 #error 
         public function display_error($message)
         {
