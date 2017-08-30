@@ -59,6 +59,7 @@
 								<li><a  href="#service-page" target="_top">Services</a></li>
 								<li><a  href="#about-page" target="_top">About-us</a></li>
 								<li><a  href="#contact-page" target="_top">Contact-us</a></li>
+								<li><a  href="events.php" target="_top">Events</a></li>
 								<li><a  href="supports.php" target="_top">Support</a></li>
 							</ul>
 						</div>
@@ -66,22 +67,23 @@
 					<div class="main-logo">
 						<a href="#"><img src="assets/index/images/logo.gif" alt="" /></a>
 					</div>
-					<h1>Welcome to Ipheya IT Solution.</h1>
-					<h2>Stay tuned!</h2>
+					<h1>Welcome to</h1>
+					<h2>Ipheya IT Solutions</h2>
 					<div class="container">
 
 					</div>
-					<p>Subscribe on newsletter Learn first about the launch</p>
+					<div class="contact-form">
+						<a class="btn btn-primary btn-lg submit-button" href="login.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-sign-in"></i> Sign-in</a>
+						<a class="btn btn-primary btn-lg submit-button" href="client/register.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-user"></i> Sign-Up </a>
+					</div>
+					<br/>
+					<!-- <p>Subscribe on newsletter Learn first about the launch</p>
 					<form id="subscribe" class="form-group subscribe-area">
 						<input type="email" name="subscribe-email" id="st-email" class="form-control subscribe-box" placeholder="Enter your email...">
 						<button type="submit" name="subscribe-submit" class="btn btn-primary btn-lg submit-bt" >Subscribe</button>
 						<br>
 						<label for="st-email" class="st-subscribe-message"></label>
-					</form>
-					<div class="contact-form">
-						<a class="btn btn-primary btn-lg submit-button" href="login.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-sign-in"></i> Sign-in</a>
-						<a class="btn btn-primary btn-lg submit-button" href="client/register.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-user"></i> Sign-Up </a>
-					</div>
+					</form> -->
 					<div class="col-sm-12 social-shear text-center">
 						<a href="#"><i class="fa fa-facebook"></i></a>
 						<a href="#"><i class="fa fa-twitter"></i></a>
@@ -221,6 +223,10 @@
 							</div>
 						</div>
 					</form>
+					<div class="col-xs-10 col-xs-offset-1">
+					<div id="disqus_thread"></div>
+					</div>
+						
 				</div>
 			</div><!--/.row-->
 		</div><!-- /.container -->
@@ -280,5 +286,26 @@
 	============================================================== -->
 	<script type="text/javascript" src="assets/index/demo/styleswitcher.js"></script>
 	<script type="text/javascript" src="assets/index/demo/demo.js"></script>
+
+	<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://ipheya.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                           
 </body>
 </html>

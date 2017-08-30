@@ -1,5 +1,5 @@
 <?php
-  include 'includes/head.php';
+  include 'includes/head2.php';
   include('../core/init.php');
   include('../core/logic.php');
   include('../core/controllers/faq-controller.php');
@@ -13,14 +13,15 @@
             <div class='col-xs-12'>
               <div class="col-xs-10 b">
                <h3 class="text-center">Create a FAQ</h3><hr class="bhr"/>
-                <form action="" method="POST">
+               <form  method="post" action="createfaq.php">
                 <div class="row">
+                <input type="hidden" name="faq_id" value="<?= $FAQ['f_id']?>">
                 <div class="col-xs-12">
                   <?=$feedback?>
                 </div>
                 <div class="col-xs-6">
                  <label for="question">Department : </label>
-                 <select class="form-control">
+                 <select class="form-control" name="d_id">
                   <option>--Select--</option>
                   <?=$alldepartment?>
                  </select>
@@ -29,7 +30,7 @@
                <div class="row">
                 <div class="col-xs-6">
                 <label for="question">Cateory : </label>
-                <select class="form-control">
+                <select class="form-control" name="cat">
                  <option>--Select--</option>
                  <option value="accounts">Account</option>
                  <option value="services">Services</option>
@@ -41,17 +42,17 @@
                <div class="row">
                 <div class="col-xs-6">
                  <label for="question">Question : </label>
-                 <textarea type="textarea" name="question" id="quetion" class="form-control"></textarea>
+                 <textarea type="textarea" name="question" id="quetion" class="form-control"><?=$FAQ['question']?></textarea>
                 </div>
                 <div class="col-xs-6">
                  <label for="question">Answer : </label>
-                 <textarea type="textarea" name="question" id="quetion" class="form-control"></textarea>
+                 <textarea type="textarea" name="answer" id="quetion" class="form-control"></textarea>
                 </div>
                </div>
                <div class="row">
                 <hr class="bhr"/>
                  <div class="col-xs-4 col-xs-offset-4">
-                  <input type="button" value="save" class="btn btn-block btn-default">
+                  <input type="submit" name="save" value="save" class="btn btn-block btn-default">
                  </div>
                </div>
                 </form>
