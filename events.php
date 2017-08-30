@@ -83,15 +83,52 @@
 					<h1 class="service-title">Upcomming events</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
-							<i class="fa fa-send-o"></i>
+							<i class="fa fa-calendar-o"></i>
 						<div class="service-aro-right"></div>
 					</div>
-     <div class="">
-				</div>
+					<div class="service-aro-icon">
+						</div>
+						<div class="col-xs-11 col-xs-offset-1">
+								<hr class="bhr" style="margin-left:-105px;">
+									<!-- Start Event View-->
+									<div class="col-xs-3" id="event" style="border:1px #999 solid; margin:1%;">
+										<div style="width:95%; margin-left:-7%; height:150px;">
+											<img src="core/testimages/ADVANCEAPPS" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
+										</div>
+										<div>
+											<h3>Microsoft New Technologyes</h3>
+											<p>Microsoft has created new technologies so the want to intoduce it to people</p>
+										</div>
+									</div>
+									<!-- Start Event View-->
+									<!-- Start Event View-->
+									<div class="col-xs-3" id="event" style="border:1px #999 solid; margin:1%;">
+										<div style="width:95%; margin-left:-7%; height:150px;">
+											<img src="core/testimages/Wkey" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
+										</div>
+										<div>
+											<h3>Microsoft New Technologyes</h3>
+											<p>Microsoft has created new technologies so the want to intoduce it to people</p>
+										</div>
+									</div>
+									<!-- Start Event View-->
+									<!-- Start Event View-->
+									<div class="col-xs-3" id="event" style="border:1px #999 solid; margin:1%;">
+										<div style="width:95%; margin-left:-7%; height:150px;">
+											<img src="core/testimages/360cam" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
+										</div>
+										<div>
+											<h3>Microsoft New Technologyes</h3>
+											<p>Microsoft has created new technologies so the want to intoduce it to people</p>
+										</div>
+									</div>
+									<!-- Start Event View-->
+					
+								</div>
+						</div>
 			</div><!-- /.row -->
 		</div><!-- /.container -->
 	</section><!-- /#service-page -->
-
 
 	<footer class="footer">
 		<div class="container">

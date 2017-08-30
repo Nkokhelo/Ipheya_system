@@ -83,7 +83,7 @@
 						<button type="submit" name="subscribe-submit" class="btn btn-primary btn-lg submit-bt" >Subscribe</button>
 						<br>
 						<label for="st-email" class="st-subscribe-message"></label>
-					</form> -->
+					</form> --> #TODO You need this for subcribe on events
 					<div class="col-sm-12 social-shear text-center">
 						<a href="#"><i class="fa fa-facebook"></i></a>
 						<a href="#"><i class="fa fa-twitter"></i></a>
