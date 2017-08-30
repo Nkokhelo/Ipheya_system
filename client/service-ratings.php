@@ -10,7 +10,7 @@
         <div class='row'>
             <div class='col-md-12' style="padding:2%;">
               <h1 class="text-center">Service ratings</h1>
-              <div class="col-md-8 bg-white" style="padding:1%;background-color:#fff;border:1px solid #99A8AD;border-radius:2px;">
+              <div class="col-md-12 bg-white" style="padding:1%;background-color:#fff;border:1px solid #99A8AD;border-radius:3px;">
                 <?=$servicedata;?>
               </div>
             </div>

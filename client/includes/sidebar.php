@@ -39,9 +39,15 @@
                         </a>
                     </li>
                     <li>
+<<<<<<< HEAD
+                        <a href="service-ratings.php">
+                            <i class="glyphicon glyphicon-paperclip"></i>
+                            Services blog
+=======
                         <a href="#faq.php">
                             <i class="fa fa-send-o"></i>
                             FAQ
+>>>>>>> 66fbc7684fafa65362da65cc2c2b9b8bd68c4868
                         </a>
                     </li>
                     <li>
