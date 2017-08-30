@@ -25,12 +25,11 @@
                     <li><a href="#history" data-toggle="tab">Client History</a></li>
                     <li><a href="#bar" data-toggle="tab">Bar graph</a></li>
                 </ul>
-                <div class="col-md-12" style="padding:2%;">
+                <div class="col-md-12" style="padding:2%;min-height:500px;">
                     <div class="tab-content" >
                         <div role="tabpanel" class="tab-pane fade in active" id="client" style="font-size:12px">
                             <div class="col-xs-12">
-                                    <h4><p style="color:#0094ff; position:absolute; top:5px;"><?= $client['name']?></p></h4>
-<br/>
+                                    <h4><p style="color:#888; position:absolute; top:5px;"><?= $client['name']?></p></h4><br/>
                                     <input type='hidden' id="client_id" value='<?= $client['client_id'] ?>'>
                                     <hr class="bhr"/>
                                     <div class="col-xs-12">
@@ -51,39 +50,41 @@
                                         </table>
                                     </div>           
                             </div>
-                                <hr class="bhr" style="width:100%"/>
-                                <div class="col-xs-5 col-xs-offset-5">
-                                </div>
                             </div>
                         </div>
-
                         <div role="tabpanel" class="tab-pane fade" id="history">
                             <div class="col-xs-12">
                                 <?php if($history_view !=''){ ?>
                                     <table class="table">
-                                    <thead>
-                                    <th>Service Name</th><th>Description</th><th>Date</th>
-                                    </thead>
-                                    <tbody>
-                                        <?=$history_view?>
-                                    </tbody>
+                                        <thead>
+                                            <th>Service Name</th><th style="max-width:70%;">Description</th><th>Date</th>
+                                        </thead>
+                                        <tbody>
+                                            <?=$history_view?>
+                                        </tbody>
                                     </table>
                                 <?php }else{ ?>
                                     <?=$history_view_feed?>
                                 <?php } ?>
                             </div>
                         </div>
-                    <div role="tabpanel" class="tab-pane fade in" id="bar">
-                        <div class="col-md-6">
-                          <fieldset>
-                            <legend class="thelegend">Bar graph</legend>
-                              <div class="col-xs-12">
-                                <canvas id="barcanvas"></canvas>
-                              </div>
-                          </fieldset>
+                        <div role="tabpanel" class="tab-pane fade in" id="bar">
+                            <div class="col-md-6">
+                            <fieldset>
+                                <legend class="thelegend">Bar graph</legend>
+                                <div class="col-xs-12">
+                                    <canvas id="barcanvas"></canvas>
+                                </div>
+                            </fieldset>
+                            </div>
                         </div>
-                     </div>
                     </div>    
+                </div>
+                <div class='col-xs-12'>
+                    <hr class="bhr"/>
+                 <div class="col-xs-4 col-xs-offset-4">
+                    <a class="btn btn-block btn-default" href="clients.php"><i class="fa fa-list-alt"></i> All Clients</a>
+                 </div>
                 </div>
             </div>      
         </div>

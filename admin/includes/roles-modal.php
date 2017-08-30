@@ -55,5 +55,20 @@
 </div>
 
 
-
+<script type="text/javascript">
+$(document).ready(function(){
+  function updateRoles()
+  {
+    var roles = '';
+    for(var i = 1;i<=3;i++)
+    {
+      if($('#roles'+i).val()!='')
+      {
+        roles += $('#roles'+i).val()+',';
+      }
+    }
+    $('#roles').val(roles);
+  }
+});
+</script>
                     

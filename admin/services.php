@@ -25,12 +25,12 @@
                     <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
                     <div class="form-group col-xs-6">
                       <label for="service">Service</label>
-                      <input type="text" name="service" id="service" class="form-control" value="<?=((isset($service_name))?$service_name:'');?>" placeholder="service name" <?=((isset($_GET['view']))?'readonly':'');?>>
+                      <input required type="text" name="service" id="service" class="form-control" value="<?=((isset($service_name))?$service_name:'');?>" placeholder="service name" <?=((isset($_GET['view']))?'readonly':'');?>>
                     </div>
                   
                     <div class="form-group col-md-3">
                     <label for="min-duration" class="text-center">Minimum Duration</label>
-                      <input type="number" class="form-control col-md-1" name="number" value="<?=((isset($num))?$num:'');?>" min="0" placeholder="duration" <?=((isset($_GET['view']))?'readonly':'');?>>
+                      <input required type="number" class="form-control col-md-1" name="number" value="<?=((isset($num))?$num:'');?>" min="0" placeholder="duration" <?=((isset($_GET['view']))?'readonly':'');?>>
                     </div>
                     <div class="form-group col-md-2">
                     <label for="min-duration" class="text-center">Duration Type</label>
@@ -56,9 +56,17 @@
                       <textarea name="description" id="description" class="form-control" value="" rows="6" cols="100" <?=((isset($_GET['view']))?'readonly':'');?>><?=((isset($description))?$description:'');?></textarea>
                     </div>
                     <hr class="bhr"/>
-                    <div class="form-group col-xs-6 col-xs-offset-3">
-                      <button type="submit" name="<?=((isset($_GET['edit']))?'Edit':'Add');?>" class="btn btn-default form-control" ><?=((isset($_GET['edit']))?'<span class="glyphicon glyphicon-pencil"></span> Edit':' <span class="glyphicon glyphicon-plus"></span> Add new');?> Service</button>
-                      <?=((isset($_GET['edit']))?'<a href="services.php" class="btn btn-default"><span class="ion ion-android-cancel"></span> Cancel</a>':'');?>
+                    <div class="col-xs-12">
+                      <?php if(isset($_GET['edit'])) { ?>
+                        <div class="col-xs-6 col-xs-offset-4">
+                          <button class="btn btn-default" style="width:20%; display:inline; " name="Edit"><i class="fa fa-plus-square-o"></i> Update</button>
+                          <a href="allservices.php" style="width:70%; display:inline; padding:2%" class="btn btn-danger"><span class="ion ion-android-cancel"></span> Cancel</a>
+                        </div>
+                        <?php } else{ ?>
+                          <div class="col-xs-4 col-xs-offset-4">
+                            <button class="btn btn-block btn-default" name="Add"><i class="fa fa-floppy-o"></i> Save</button>
+                          </div>
+                        <?php } ?>
                     </div>
                 </fieldset>
               </form>

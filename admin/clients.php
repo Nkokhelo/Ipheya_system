@@ -23,7 +23,7 @@ session_start();
         <div class='row'>
             <div class='col-xs-10 b'>
               <h2 class="text-center">All Clients</h2></h2><hr class="bhr">
-							<table class=" table table-bordered" style="padding:2%;">
+							<table class=" table table-bordered" >
 								<thead>
 									<th>Client No</th><th>Name</th><th>Email</th><th>Options</th>
 								</thead>

@@ -18,8 +18,11 @@
     <div class='row'>
       <div class="col-xs-10 b">
           <h2 class="text-center">Project Reports</h2><hr class="bhr"/>
-          <div class="col-xs-12">
+          <div class="col-xs-6">
             <canvas id="pieView"></canvas>
+          </div> <br/>
+          <div class="col-xs-6">
+            <canvas id="barView"></canvas>
           </div> <br/>
           <hr class="bhr"/>
           <div class="col-xs-12">

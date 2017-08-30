@@ -9,25 +9,34 @@
      $commentsql = mysqli_query($db, "SELECT comment_text FROM comments WHERE service_id = '$briefs[service_id]'");
      $commentdatacount = mysqli_num_rows($commentsql);
 
-     $servicedata .= '<div class="col-md-8">
-                        <h3 class="title">'.$briefs['service'].'</h3><hr>
-                        <p>'.$briefs['description'].'</p>
-                        <span>Rating: '.$rating.'</span> <span>Comments: '.$commentdatacount.'</span>
-                        <a href="service-ratings.php?service='.$briefs['service_id'].'" class="btn btn-md btn-primary">View info</a>
-                        <form class="form" method="post" action="" style="margin-top:3%;">
-                                          <div class="input-group">
-                                              <input type="text" name="comment" class="form-control input-sm" placeholder="Type your comment here...">
-                                              <input type="hidden" name="servid" value="'.$briefs['service_id'].'">
-                                              <span class="input-group-btn">
-                                                  <button class="btn btn-info btn-sm" name="SendComment">Comment</button>
-                                                  <!--<input class="btn btn-warning btn-sm" type="submit" name="Send"value="Send Comment">-->
-                                              </span>
-                                          </div>
-                                      </form>
-                         <hr>
-                      </div>';
+     $servicedata .= '<div class="card col-sm-6" style="">
+                            <div class="col-xs-6"><img class="card-img-top" src="..." alt="Card image cap" width="200px" height="150px;"></div>
+                            <div class="card-body">
+                              <h3 class="card-title">'.$briefs['service'].'</h3>
+                              <p class="card-text"><i>'.$briefs['description'].'</i></p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                                <ul class=""
+                              </li>
+                              <li class="list-group-item">Rating: Comments: '.$commentdatacount.'</li>
+                            </ul>
+                            <div class="card-body">
+                              <!--<a href="#" class="card-link">Card link</a>
+                              <a href="#" class="card-link">Another link</a>-->
+                              <form class="form" method="post" action="" style="margin-top:3%;">
+                                    <div class="input-group">
+                                        <input type="text" name="comment" class="form-control input-sm" placeholder="Type your comment here...">
+                                        <input type="hidden" name="servid" value="'.$briefs['service_id'].'">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-info btn-sm" name="SendComment">Comment</button>
+                                            <!--<input class="btn btn-warning btn-sm" type="submit" name="Send"value="Send Comment">-->
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                          </div>';
    endwhile;
-
    #display information for single services
    if(isset($_GET['service']))
    {

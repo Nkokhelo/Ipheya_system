@@ -22,7 +22,7 @@
     </ul>
   </li>
   <li  >
-    <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
+    <a href="#stakeholders" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-vcard-o'></i>
       HR Management
     </a>
@@ -51,6 +51,7 @@
     <ul class="collapse list-unstyled" id="requestsMenu">
       <li><a  href="clientRequest.php">Requests</a></li>
       <li><a href="Tickets.php">Tickets</a></li>
+      <li><a href="allfaqs.php">FAQ</a></li>
     </ul>
   </li>
   

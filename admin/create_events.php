@@ -20,70 +20,62 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 b'>
-              <form class="form-horizontal" action="Events.php" method="POST">
+              <form class="form-horizontal" action="Events.php" class="form" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">
                 Events
                   </legend>
                   <?=($feedback)?"<div class='".$feedback['alert']."'>".$feedback['message']."</div>":""?>
-                  <div class="col-xs-12">
-                    <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for="event_name">Name :</label>
-                        <div class="col-xs-4">
+                  <div class="col-xs-11 col-xs-offset-1">
+                      <div class="row">
+                        <div class="form-group col-xs-7">
+                            <label for="event_name">Name :</label>
                             <input required placeholder="Create New Event Name" class="form-control" id='event_name' type="text" name ="name "/>
                         </div>
-                       
+                       </div>
+                        <div class="row">
+                            <div class="form-group col-xs-9">
+                                <label for="description">Description :</label>
+                                <textarea class="form-control" id='description' name ="description" rows="5" cols="10"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for="description">Description :</label>
-                        <div class="col-xs-10">
-                            <textarea class="form-control" id='description' name ="description" rows="5" cols="10"></textarea>
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label for="category" >Category :</label>
+                                <select id="depart" class="form-control" name="category">
+                                    <option value=''><b>~~Select~~</b></option> 
+                                    <option>Innovation & new technology</option>   
+                                    <option>New System Updates</option>  
+                                    <option>Customer Empowerment</option>                            
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group col-xs-12">
-                        <label for="category" class="control-label col-xs-2">Category :</label>
-                        <div class="col-xs-4">
-                            <select id="depart" class="form-control" name="category">
-                                <option value=''><b>~~Select~~</b></option> 
-                                <option>Innovation & new technology</option>   
-                                <option>New System Updates</option>  
-                                <option>Customer Empowerment</option>                            
-                            </select>
-                        </div>                     
-                    </div>
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label for="">Event date :</label>
+                                <input required placeholder="2017-08-23" class="form-control " id='sdate' name ="date" rows="5" cols="10"></input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label for="">Duration :</label>
+                                <div class="col-xs-6  input-group input-append " id='dsdate'style='padding-left:15px; margin-left:-12px;'>
+                                    <input required placeholder=" " placeholder='6' class="form-control"style="width:30%" id='duration' name ="duration" rows="5" cols="10"></input>
+                                    <select name="duration_type" class="form-control"style="width:70%;background:#eee">
+                                        <option value="1">Hour(s)</option>
+                                        <option value="1">Day(s)</option>
+                                        <option value="2">Week(s)</option>   
+                                    </select>
+                                </div>
+                            </div>
 
-                    <div class="form-group col-xs-12">
-                        <label class="col-xs-2 control-label" for="">Event date :</label>
-                        <div class="col-xs-3  input-group input-append " id='dsdate'style='padding-left:15px; float: inherit;'>
-                            <input required placeholder="2017-08-23" class="form-control " id='sdate' name ="date" rows="5" cols="10"></input>
-                            <span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
+                            <div class="col-xs-6">
+                                <label  for="">Select image to upload:</label>
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                            </div>
                         </div>
-                        <label class="col-xs-3 control-label" for="">Duration :</label>
-                        <div class="col-xs-3  input-group input-append " id='dsdate'style='padding-left:15px'>
-                            <input required placeholder=" " placeholder='6' class="form-control"style="width:30%" id='duration' name ="duration" rows="5" cols="10"></input>
-                            <select name="duration_type" class="form-control"style="width:70%;background:#eee">
-                                <option value="1">Hour(s)</option>
-                                <option value="1">Day(s)</option>
-                                <option value="2">Week(s)</option>   
-                            </select>
-                        </div>
-                    </div>  
-                    
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
-                 <label class="col-xs-3 control-label" for="">Select image to upload:</label>
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                    
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-2" id='change'>
-                            
-                        </div>
-                    </div>
-                </div>
-                   
-                </form>  
-
+                  </div>
+        
                 </fieldset>
                 <hr class="bhr"/>        
                 <div class="col-xs-12">

@@ -44,9 +44,12 @@
     	$(document).ready(function (){
     	  // backstretch
     	  $("#home-page").backstretch([
-    		  "assets/index/images/fiberOptic.png"
-    		, "assets/index/images/server.png"
-    		, "assets/index/images/White_Camera.png"
+    		  "assets/index/images/slider.png"
+    		, "assets/index/images/slider2.png"
+    		, "assets/index/images/slider3.png"
+    		, "assets/index/images/slider4.png"
+    		, "assets/index/images/slider5.png"
+    		, "assets/index/images/slider6.png"
     	  ], {duration: 3000, fade: 750});
     	});
     }());
