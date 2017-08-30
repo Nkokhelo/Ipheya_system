@@ -1,6 +1,7 @@
 <?php
 				require('core/init.php');
 				require('core/logic.php');
+				require('core/controllers/event-controller.php');
 	 ?>
 <!DOCTYPE HTML>
 <html lang="en-US">
@@ -90,46 +91,22 @@
 						</div>
 						<div class="col-xs-11 col-xs-offset-1">
 								<hr class="bhr" style="margin-left:-105px;">
-									<!-- Start Event View-->
-									<div class="col-xs-3" id="event" style="border:1px #999 solid; margin:1%;">
-										<div style="width:95%; margin-left:-7%; height:150px;">
-											<img src="core/testimages/ADVANCEAPPS" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
-										</div>
-										<div>
-											<h3>Microsoft New Technologyes</h3>
-											<p>Microsoft has created new technologies so the want to intoduce it to people</p>
-										</div>
-									</div>
-									<!-- Start Event View-->
-									<!-- Start Event View-->
-									<div class="col-xs-3" id="event" style="border:1px #999 solid; margin:1%;">
-										<div style="width:95%; margin-left:-7%; height:150px;">
-											<img src="core/testimages/Wkey" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
-										</div>
-										<div>
-											<h3>Microsoft New Technologyes</h3>
-											<p>Microsoft has created new technologies so the want to intoduce it to people</p>
-										</div>
-									</div>
-									<!-- Start Event View-->
-									<!-- Start Event View-->
-									<div class="col-xs-3" id="event" style="border:1px #999 solid; margin:1%;">
-										<div style="width:95%; margin-left:-7%; height:150px;">
-											<img src="core/testimages/360cam" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
-										</div>
-										<div>
-											<h3>Microsoft New Technologyes</h3>
-											<p>Microsoft has created new technologies so the want to intoduce it to people</p>
-										</div>
-									</div>
-									<!-- Start Event View-->
-					
+										<?=$allevents?>
 								</div>
 						</div>
 			</div><!-- /.row -->
 		</div><!-- /.container -->
 	</section><!-- /#service-page -->
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content" id="event-data">
+
+    </div>
+  </div>
+</div>
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
@@ -184,5 +161,19 @@
 	============================================================== -->
 	<script type="text/javascript" src="assets/index/demo/styleswitcher.js"></script>
 	<script type="text/javascript" src="assets/index/demo/demo.js"></script>
+	<style>
+		#view:hover{
+			cursor :pointer;
+		}
+
+	</style>
+	<script>
+		function loadevent(id)
+		{
+				$('#event-data').load('http://localhost:81/ipheya/core/sub/finatialR.php?event_data='+id);
+		}
+
+	
+	</script>
 </body>
 </html>
