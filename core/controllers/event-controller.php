@@ -7,10 +7,10 @@
     while ($all = mysqli_fetch_assoc($events))
     {
         $allevents .='	<div class="col-xs-3" id="event" style="border:1px #999 solid; max-height:340px; margin:1%; box-shadow:6px 6px 6px #eee;">
-                    <div style="width:94%;  margin-left:-15px; height:150px;">
+                    <div style="width:95%;  margin-left:-15px; height:150px;">
                         <img src="data:image/*;base64,'.$all['image'].'" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
                     </div>
-                    <div style="padding-bottom:3px;">
+                    <div style="padding-bottom:3px; min-heigh:150px;">
                         <h3 style="display: -webkit-box;
                         overflow : hidden;
                         text-overflow: ellipsis;
@@ -29,8 +29,8 @@
 
    if(isset($_POST['Create_Event']))
     {
-        $name= $_POST['name'];
-        $description= $_POST['description'];
+        $name= htmlspecialchars($_POST['name'], ENT_QUOTES);
+        $description= htmlspecialchars($_POST['description'], ENT_QUOTES);
         $category= $_POST['category'];
         $sdate= $_POST['sdate'];  
         $edate= $_POST['edate'];  
@@ -65,4 +65,10 @@
         }
 
     } 
+    if(isset($_POST['subscribe_submit']))
+    {
+        $id=$_POST['event_id'];
+        $email=$_POST['subscribe_email'];
+        
+    }
     ?>    

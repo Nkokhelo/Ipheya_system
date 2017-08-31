@@ -11,6 +11,7 @@
                             Account
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="home.php">dashboard</a></li>
                             <li><a href="profile.php">Profile</a></li>
                             <li><a href="CreateTicket.php">Report Faults</a></li>
                             <li><a href="contact.php">Contact us</a></li>
@@ -42,6 +43,12 @@
                         <a href="service-ratings.php">
                             <i class="glyphicon glyphicon-paperclip"></i>
                             Services blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="events.php">
+                            <i class="fa fa-calendar-check-o"></i>
+                            Events
                         </a>
                     </li>
                     <li>
