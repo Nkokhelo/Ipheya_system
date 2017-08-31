@@ -18,6 +18,12 @@
                       </a>
                     </li>
                   <li>
+                      <a href="employee_training.php">
+                          <i class='fa fa-line-chart'></i>
+                        Income
+                      </a>
+                    </li>
+                  <li>
                       <a href="allexpence.php">
                           <i class='fa fa-money'></i>
                         Expense
