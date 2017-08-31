@@ -11,7 +11,8 @@
                             Account
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="profile.php">Profile</a></li>
+                            <li><a href="home.php">My dashboard</a></li>
+                            <li><a href="profile.php">My profile</a></li>
                             <li><a href="CreateTicket.php">Report Faults</a></li>
                             <li><a href="contact.php">Contact us</a></li>
                             <li><a href="meeting-booking.php">Book a meeting</a></li>
@@ -23,7 +24,7 @@
                             Make Payaments
                         </a>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="fa fa-clipboard"></i>    
+                            <i class="fa fa-clipboard"></i>
                             Request
                         </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -42,6 +43,15 @@
                         <a href="service-ratings.php">
                             <i class="glyphicon glyphicon-paperclip"></i>
                             Services blog
+                        <a href="#faq.php">
+                            <i class="fa fa-send-o"></i>
+                            FAQ
+                        </a>
+                    </li>
+                    <li>
+                        <a href="events.php">
+                            <i class="fa fa-calendar-check-o"></i>
+                            Events
                         </a>
                     </li>
                     <li>

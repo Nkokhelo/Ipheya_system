@@ -16,7 +16,7 @@
 ?>
 <body>
   <div class="wrapper">
-      <?php include 'includes/sidebar.php'?>
+      <?php include 'includes/sidebar.php';?>
       <div id='content'>
         <div class='row'>
             <div class="col-sm-10 col-sm-offset-1 b" >
@@ -48,7 +48,7 @@
                       <label for="line4">Line-4 :</label>
                       <textarea required type="text" name="line4" id="line4" class="form-control" value="<?=((isset($name))?$name:'');?>" placeholder="Address 4"></textarea>
                     </div>
-                    
+
                   </fieldset>
                 </div>
 
@@ -86,7 +86,7 @@
                     </div>
                   </fieldset>
                 </div>
-              
+
               <hr class="bhr" style="width:100%"/>
               <div class="form-group col-xs-12">
                 <div class="col-xs-3 col-xs-offset-3">
@@ -108,7 +108,7 @@
 
 <script>
    var date = new Date();
-   
+
   	$("#date").datepicker(
 							{
 								dateFormat: 'yy/mm/dd',
@@ -119,4 +119,3 @@
 						);
     $('#table').dataTable();
 </script>
-
