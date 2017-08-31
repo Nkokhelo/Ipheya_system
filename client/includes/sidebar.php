@@ -24,7 +24,7 @@
                             Make Payaments
                         </a>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="fa fa-clipboard"></i>    
+                            <i class="fa fa-clipboard"></i>
                             Request
                         </a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -43,6 +43,9 @@
                         <a href="service-ratings.php">
                             <i class="glyphicon glyphicon-paperclip"></i>
                             Services blog
+                        <a href="#faq.php">
+                            <i class="fa fa-send-o"></i>
+                            FAQ
                         </a>
                     </li>
                     <li>
