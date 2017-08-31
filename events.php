@@ -170,7 +170,7 @@
 	<script>
 		function loadevent(id)
 		{
-				$('#event-data').load('http://localhost:81/ipheya/core/sub/finatialR.php?event_data='+id);
+				$('#event-data').load('http://localhost:81/ipheya/core/sub/finatialR.php?uevent_data='+id);
 		}
 
 	

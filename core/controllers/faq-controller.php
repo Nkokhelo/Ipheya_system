@@ -76,7 +76,8 @@ while($dep = mysqli_fetch_assoc($all))
    }
    else
    {
-     $logic->sendEmail($_POST['name'],$_POST['email'],"Question submited",$logic->emailBody($_POST['name'],"Your question was recived by ipheya<br> It be answered soon!"));
+     die($logic->sendEmail($_POST['name'],$_POST['email'],"Question submited",$logic->emailBody($_POST['name'],"Your question was recived by ipheya<br> It be answered soon!")));
+     
    }
  }
  if(isset($_GET['faq']))
