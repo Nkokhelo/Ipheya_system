@@ -10,7 +10,6 @@
       <i class="fa fa-dashboard"></i>
       Dashboard
     </a>
-  </li>
   <li>
     <a href="#companyMenu" class="dropdown-toggle" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-building-o'></i>
