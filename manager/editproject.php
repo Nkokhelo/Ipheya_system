@@ -77,7 +77,7 @@
 
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="patner">Patner :</label>
-                        <div class="col-xs-4  input-group input-append " id='dsdate'style='padding-left:15px; float: inherit;'>
+                        <div class="col-xs-4  input-group input-append " id='patner'style='padding-left:15px; float: inherit;'>
                             <input required placeholder="Ukhamba Ltd" class="form-control " id='patner' name ="patner"></input>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <div class="col-xs-offset-2 col-xs-8" id='change'>
-                            <input  type="submit" id='save' name="save_project" class="btn btn-block btn-success" value="create"/>
+                            <input  type="submit" id='save' name="edit" class="btn btn-block btn-success" value="update"/>
                         </div>
                     </div>
                 </div>
