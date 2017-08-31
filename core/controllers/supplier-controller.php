@@ -59,7 +59,7 @@ endwhile;
         $date = date('Y-m-d');//we take a date
         $client_unique = uniqid();//generate unique id
         $sup_no ="S".substr($date,2,2).substr($date,0,2).strtoupper(substr($client_unique,4,4));//create new supplier no by date and unique values of miniseconds
-        
+
         $ins_supplier = "INSERT INTO suppliers(supplier_no,company_name, address ,line2,line3, line4, post_code , contact_name , telephone , mobile, fax, email,web)
          VALUES('{$sup_no}','{$name}','{$address}','{$line2}','{$line3}','{$line4}','{$postal}','{$fullname}','{$telephone}','{$mobile}','{$fax}','{$email}','{$web}')";
          if(mysqli_query($db,$ins_supplier))
