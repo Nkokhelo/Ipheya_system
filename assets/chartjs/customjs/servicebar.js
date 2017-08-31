@@ -59,7 +59,7 @@ $(document).ready(function() {
             });
         },
         error: function(data) {
-            alert("TF bro");
+            alert("Error");
         }
     });
 });
