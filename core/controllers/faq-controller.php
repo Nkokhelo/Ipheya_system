@@ -64,6 +64,7 @@ while($dep = mysqli_fetch_assoc($all))
   else
   {
     $feedback = $logic->display_success("Saved");
+    header("Location:allfaqs.php");
   }
  }
  if(isset($_POST['submit']))
