@@ -351,7 +351,7 @@
         var imgVal = $('INPUT[type="file"]').val(); 
         if(imgVal==''&& $('#yes').is(':checked')) 
         { 
-            alert("selecte an attachemt for this expense"); 
+            alert("select an attachemt for this expense"); 
             return false; 
         } 
 

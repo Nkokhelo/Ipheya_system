@@ -40,5 +40,32 @@
        mysqli_close($db);
        #print data
     }
+    if(isset($_GET['event_data']))
+    {
+      $id=$_GET['event_data'];
+      $event = $logic->getEventbyID($id);
+      $data =' <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h1 class="modal-title text-center">'.$event['title'].'</h1>
+                </div>
+                <div class="modal-body">
+                  <p>'.$event['description'].'</p></br>
+                  <p> <b>From</b>'.date_format(date_create($event['start']),"d F Y").' <b>to</b>'.date_format(date_create($event['end']),"d F Y").'</p></br>
+                </div>
+                <div class="modal-footer">
+                  <div class="subscribe">
+                    <form id="subscribe" method="post" class="form-group subscribe-area">
+                      <input type="hidden" name="event_id" value="'.$id.'"/>
+                      <input type="email" name="subscribe_email" id="st-email" class="form-control subscribe-box" placeholder="Enter your email...">
+                      <button type="submit" name="subscribe_submit" class="btn btn-primary btn-lg submit-bt" >
+                     + Subscribe for this event</button>
+                      <br>
+                      <label for="st-email" class="st-subscribe-message"></label>
+                    </form>
+                  </div>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>';
+                echo $data;
+    }
  ?>
 

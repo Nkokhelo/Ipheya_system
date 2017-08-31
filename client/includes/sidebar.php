@@ -11,6 +11,7 @@
                             Account
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="home.php">dashboard</a></li>
                             <li><a href="profile.php">Profile</a></li>
                             <li><a href="CreateTicket.php">Report Faults</a></li>
                             <li><a href="contact.php">Contact us</a></li>
@@ -45,6 +46,12 @@
                         <a href="#faq.php">
                             <i class="fa fa-send-o"></i>
                             FAQ
+                        </a>
+                    </li>
+                    <li>
+                        <a href="events.php">
+                            <i class="fa fa-calendar-check-o"></i>
+                            Events
                         </a>
                     </li>
                     <li>
