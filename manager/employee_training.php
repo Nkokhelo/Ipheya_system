@@ -1,16 +1,18 @@
 <?php
    session_start();
-   if(isset($_SESSION['Employee']))
+   if(isset($_SESSION['Manager']))
    {
         require_once('../core/init.php');
         include('../core/logic.php');
-        include('includes/head2.php');
-        require_once('../core/controllers/event-controller.php');
+        include('includes/head.php');
+        require_once('../core/controllers/project-controller.php');
+        // include('includes/navigation.php');
+        //mfudo...
    }
-    else
-    {
-      header("Location:../login.php");
-    }       
+   else
+   {  
+     header("Location:../login.php");
+   }
 ?>
 <body>
   <div class="wrapper">
@@ -24,7 +26,7 @@
                 Trainings
                   </legend>
                   <?=($feedback)? $feedback:""?>
-                  <div class="col-xs-11 col-xs-offset-1">
+                  <div class="col-xs-9 col-xs-offset-1">
                       <div class="row">
                         <div class="form-group col-xs-7">
                             <label for="email_address">TO :</label>

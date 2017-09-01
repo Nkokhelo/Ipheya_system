@@ -20,7 +20,7 @@
                   <li>
                       <a href="employee_training.php">
                           <i class='fa fa-line-chart'></i>
-                        Income
+                      Trainees
                       </a>
                     </li>
                   <li>
