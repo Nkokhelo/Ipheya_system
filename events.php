@@ -91,6 +91,7 @@
 						</div>
 						<div class="col-xs-11 col-xs-offset-1">
 								<hr class="bhr" style="margin-left:-105px;">
+								<?=$feedback?>
 										<?=$allevents?>
 								</div>
 						</div>

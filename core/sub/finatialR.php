@@ -64,7 +64,7 @@
     }
     if(isset($_GET['uevent_data']))
     {
-      $id=$_GET['event_data'];
+      $id=$_GET['uevent_data'];
       $event = $logic->getEventbyID($id);
       $data =' <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -75,8 +75,17 @@
                   <p> <b>From</b>'.date_format(date_create($event['start']),"d F Y").' <b>to</b>'.date_format(date_create($event['end']),"d F Y").'</p></br>
                 </div>
                 <div class="modal-footer">
-                 
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <form class="form-inline" method="post">
+                    <div class="form-group">
+                      <input type="hidden" name="event_id" value="'.$id.'"></input>
+                      <input type="text" class="form-control" placeholder="Name" name="name" required id="name">
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email Address" name="email" required id="email">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="oevent_booking"><i class="fa fa-check-square-o"></i>Book</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </form>
                 </div>';
                 echo $data;
     }
