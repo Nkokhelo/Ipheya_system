@@ -139,6 +139,7 @@
   if(isset($_POST['edit']))
     {
         $feedback =array('alert'=>'', 'message'=>'');
+        $id=$_POST['id'];
         $project_name =$_POST['project_name'];
         $description =$_POST['description'];
         $duration =$_POST['duration']; 
@@ -155,7 +156,7 @@
         }
         else
         {
-            $query = mysqli_query($db,"UPDATE `projects` SET `project_name` = '$project_name',`description`='$description', `duration`='$duration', `sdate`='$sdate', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hour`='$daily_hour', `visibility`='$visibility' WHERE `project`.`id`= $id");
+            $query = mysqli_query($db,"UPDATE `projects` SET `project_name` = '$project_name',`description`='$description', `duration`='$duration', `sdate`='$sdate', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hour`='$daily_hour', `visibility`='$visibility' WHERE `projects`.`id`= $id");
             if(!$query)
             {
                 
