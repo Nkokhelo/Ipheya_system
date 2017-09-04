@@ -19,9 +19,8 @@
         <div class='row'>
             <div class='col-xs-12'>
                 <div class="col-xs-11 b">
-
-
-                
+                    <h2 style="color:#888" class="text-center">My History</h2><hr class="bhr"/>
+                 <?=$display ?>
               </div>
             </div>
         </div>
