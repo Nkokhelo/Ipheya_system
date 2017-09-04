@@ -135,8 +135,12 @@
    endwhile;
   # find projectmanager
   #update project
-
-  if(isset($_POST['edit']))
+if(isset($_GET['pview']))
+{
+    $pid = $_GET['pview'];
+    $pquery = mysqli_query($db, "SELECT * FROM projects WHERE project_no = '$pid'");
+    $presult = mysqli_fetch_assoc($pquery);
+    if(isset($_POST['edit']))
     {
         $feedback =array('alert'=>'', 'message'=>'');
         $project_name =$_POST['project_name'];
@@ -146,7 +150,7 @@
         $patner =$_POST['patner'];
         $budget =$_POST['budget'];
         $charge =$_POST['charge'];
-        $daily_hour =$_POST['daily_hour'];
+        $daily_hours =$_POST['daily_hours'];
         $visibility =$_POST['visibility'];
 
         if(($project_name||$description||$sdate||$patner||$budget||$Charge||$daily_hour||$Visibility)=='')
@@ -155,7 +159,7 @@
         }
         else
         {
-            $query = mysqli_query($db,"UPDATE `projects` SET `project_name` = '$project_name',`description`='$description', `duration`='$duration', `sdate`='$sdate', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hour`='$daily_hour', `visibility`='$visibility' WHERE `project`.`id`= $id");
+            $query = mysqli_query($db,"UPDATE projects SET project_name = '$project_name',description='$description', duration='$duration', sdate='$sdate', patner='$patner', budget='$budget', charge='$charge', daily_hours='$daily_hours', visibility='$visibility' WHERE project_no= '$pid'");
             if(!$query)
             {
                 
@@ -167,4 +171,6 @@
             }
         }
     }
+}
+
 ?>
