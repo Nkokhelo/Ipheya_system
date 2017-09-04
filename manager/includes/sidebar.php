@@ -17,12 +17,12 @@
                         Income
                       </a>
                     </li>
-                  <li>
+                  <!-- <li>
                       <a href="employee_training.php">
                           <i class='fa fa-line-chart'></i>
                       Trainees
                       </a>
-                    </li>
+                    </li> -->
                   <li>
                       <a href="allexpence.php">
                           <i class='fa fa-money'></i>
@@ -53,8 +53,8 @@
                       <li><a  href=".php">Clients Reports</a></li>
                       <li><a  href=".php">Inventory Reports</a></li>
                     </ul>
-                  </li> 
-                  
+                  </li>
+
                   <li>
                     <a href="targets.php">
                         <i class='fa fa-arrow-circle-o-down'></i>
@@ -109,10 +109,10 @@
     {
       $('#sidebar .components li a').filter(function()
       {return this.href==location.href}).parent().addClass('active').css('border-left','3px rgb(169, 176, 187) solid').siblings().removeClass('active').attr("aria-expanded","flase");
-	  
+
       $('#sidebar .components li ul li a').filter(function()
       {return this.href==location.href}).parents('ul').addClass('in').siblings('a').attr("aria-expanded","true").parent().addClass('active').siblings().removeClass('active').attr("aria-expanded","flase");
-	  
+
     });
   });
 </script>
