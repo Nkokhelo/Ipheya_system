@@ -1,8 +1,14 @@
 <?php
+session_start();
+if(isset($_SESSION['Client']))
+{
   include 'includes/head.php';
   include('../core/init.php');
   include('../core/logic.php');
   require('../core/controllers/event-controller.php');
+}else{
+  header("Location:../login.php");
+}
   ?>
 <body>
   <div class="wrapper">
@@ -12,9 +18,16 @@
             <div class='col-xs-12'>
               <div class="col-xs-11 b">
                 <h1 style="color:#888;" class="text-center">Up comming events</h1><hr class="bhr"/>
+                <?=$feedback?>
                 <div class="col-xs-12">
                 <?=$allevents?>
                 </div>
+                <hr class="bhr"/>
+                <div class="col-xs-4 col-xs-offset-4">
+                    <form id="subscribe" method="post" class="form-group subscribe-area">
+                      <button type="submit" name="subscribe_submit" class="btn btn-primary submit-bt" ><i class="fa fa-calendar-check-o"></i> Subscribe for events</button>
+                    </form>
+                  </div>
               </div>
             </div>
         </div>

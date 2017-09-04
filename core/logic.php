@@ -126,6 +126,12 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+        public function getByEmail($email)
+        {
+            $sql ="Select * from clients where email='$email'";
+            $qey =mysqli_query($this->connect(),$sql);
+            return mysqli_fetch_assoc($qey);
+        }
         public function getClientNameById($id)
         {
             $sql ="Select * from clients where client_id='$id'";
@@ -635,7 +641,7 @@
             $to = new SendGrid\Email("$to_name", "$to_email");
             $content = new SendGrid\Content("text/html", "$html_body");
             $mail = new SendGrid\Mail($from, $subject, $to, $content);
-            $apiKey = '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';//add zero atfer you have done
+            $apiKey = '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';//add zero atfer you have done
             $sg = new \SendGrid($apiKey);
 
             $response = $sg->client->mail()->send()->post($mail);
@@ -1150,7 +1156,7 @@
             </tr>
             <tr>
                 <td style="width:80%; padding:5%;background: #fff;border: 2px solid #ddd; text-align:center; font-size: 1vw;font-family: &#39;Gill Sans&#39;, &#39;Gill Sans MT;&#39;, Calibri, &#39;Trebuchet MS&#39;, sans-serif;">
-                    Hy '.$name.',<br><br>'.$message.'
+                    Hy '.$name.',<br><br>'.$message.'<br/><br/> Regard<br/> Ipheya Team.
                     <br><br>'.$btnLink.'
                 </td>
             </tr>
@@ -1665,7 +1671,7 @@
             </tr>
             <tr>
                 <td style="width:80%; padding:5%;background: #fff;border: 2px solid #ddd; color:#000; text-align:center;font-size: 1.5vw;font-family: &#39;Gill Sans&#39;, &#39;Gill Sans MT;&#39;, Calibri, &#39;Trebuchet MS&#39;, sans-serif;">
-                    Hy '.$name.',<br><br>'.$message.'
+                    Hy '.$name.',<br><br>'.$message.'<br/><br/> Regard<br/> Ipheya Team.
                     
                 </td>
             </tr>

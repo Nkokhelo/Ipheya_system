@@ -91,6 +91,7 @@
 						</div>
 						<div class="col-xs-11 col-xs-offset-1">
 								<hr class="bhr" style="margin-left:-105px;">
+								<?=$feedback?>
 										<?=$allevents?>
 								</div>
 						</div>
@@ -170,7 +171,7 @@
 	<script>
 		function loadevent(id)
 		{
-				$('#event-data').load('http://localhost:81/ipheya/core/sub/finatialR.php?event_data='+id);
+				$('#event-data').load('http://localhost:81/ipheya/core/sub/finatialR.php?uevent_data='+id);
 		}
 
 	

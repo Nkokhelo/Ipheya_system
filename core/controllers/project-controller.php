@@ -134,6 +134,37 @@
       $allServicesDDL .= '<option value="'.$g_service['service_id'].'">'.$g_service['service'].'</option>';
    endwhile;
   # find projectmanager
+  #update project
 
-    
+  if(isset($_POST['edit']))
+    {
+        $feedback =array('alert'=>'', 'message'=>'');
+        $project_name =$_POST['project_name'];
+        $description =$_POST['description'];
+        $duration =$_POST['duration']; 
+        $sdate =$_POST['sdate'];
+        $patner =$_POST['patner'];
+        $budget =$_POST['budget'];
+        $charge =$_POST['charge'];
+        $daily_hour =$_POST['daily_hour'];
+        $visibility =$_POST['visibility'];
+
+        if(($project_name||$description||$sdate||$patner||$budget||$Charge||$daily_hour||$Visibility)=='')
+        {
+            $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> Please fill up all forms');
+        }
+        else
+        {
+            $query = mysqli_query($db,"UPDATE `projects` SET `project_name` = '$project_name',`description`='$description', `duration`='$duration', `sdate`='$sdate', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hour`='$daily_hour', `visibility`='$visibility' WHERE `project`.`id`= $id");
+            if(!$query)
+            {
+                
+                $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again'.mysqli_error($db));
+            }
+            else
+            {
+                $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> Program saved succesfull');
+            }
+        }
+    }
 ?>

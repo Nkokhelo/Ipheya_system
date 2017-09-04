@@ -3,6 +3,7 @@
     $logic = new Logic();
     $feedback="";
     $allevents="";
+    $emailfeed='';
     $events =$logic->getallevents();
     while ($all = mysqli_fetch_assoc($events))
     {
@@ -67,8 +68,68 @@
     } 
     if(isset($_POST['subscribe_submit']))
     {
-        $id=$_POST['event_id'];
-        $email=$_POST['subscribe_email'];
+        $email =$_SESSION['Client'];
+        $name =$logic->getByEmail($email)['name'];
+        $query ="INSERT INTO `subscribers` (`id`, `email`, `subscribed`, `is_client`) VALUES (NULL, '".$email."', '1', '1')";
+        $execute = mysqli_query($logic->connect(),$query);
+        if(!$execute)
+        {
+            $feedback =$logic->display_error("You have subscribe for ipheya events, but an error occured please try again or contact admin on live chat");            
+        }
+        else
+        {
+            $subject ="Ipheya Events";
+            $message ="You have successfully subcribed for updates on ipheya events. We will make sure you don't miss out any of our new technologies";
+            $body = $logic->emailBody($name,$message);
+            $emailfeed =$logic->sendEmail($name,$email,$subject,$body);
+            $feedback =$logic->display_success("Subscription was successfully, ".$emailfeed." please check your email");
+        }
+    }
+
+    if(isset($_POST['event_booking']))
+    {
+        $id =$_POST['event_id'];
+        $email =$_SESSION['Client'];
+        $name =$logic->getByEmail($email)['name'];
+        $query ="INSERT INTO `subscribers` (`id`, `email`, `subscribed`, `is_client`) VALUES (NULL, '".$email."', '1', '1')";
+        $execute = mysqli_query($logic->connect(),$query);
+        if(!$execute)
+        {
+            $feedback =$logic->display_error("Opps! an error occured please try again or contact admin on live chat");            
+        }
+        else
+        {
+            $subject ="Ipheya Events";
+            $message ="You have successfully booked for ".$logic->getEventbyID($id)['title']." event. which occure on ".date_format(date_create($logic->getEventbyID($id)['start']),"d F Y")."<br> Can't wait to see you...";
+            $body = $logic->emailBody($name,$message);
+            $emailfeed =$logic->sendEmail($name,$email,$subject,$body);
+            $feedback =$logic->display_success("You have successfully booked for ".$logic->getEventbyID($id)['title']." event.<br/> ".$emailfeed." Please check your email");            
+            
+        }
+
+    }
+    if(isset($_POST['oevent_booking']))
+    {
         
+        $id =$_POST['event_id'];
+        $email =$_POST['email'];
+        $name =$_POST['name'];
+        
+        $query ="INSERT INTO `subscribers` (`id`, `email`, `subscribed`, `is_client`) VALUES (NULL, '".$email."', '1', '1')";
+        $execute = mysqli_query($logic->connect(),$query);
+        if(!$execute)
+        {
+            $feedback =$logic->display_error("Opps! an error occured please try again or contact admin on live chat");            
+        }
+        else
+        {
+            $subject ="Ipheya Events";
+            $message ="You have successfully booked for ".$logic->getEventbyID($id)['title']." event. which occure on ".date_format(date_create($logic->getEventbyID($id)['start']),"d F Y")."<br> Can't wait to see you...";
+            $body = $logic->emailBody($name,$message);
+            $emailfeed =$logic->sendEmail($name,$email,$subject,$body);
+            $feedback =$logic->display_success("You have successfully booked for ".$logic->getEventbyID($id)['title']." event.<br/> ".$emailfeed." Please check your email");            
+            
+        }
+
     }
     ?>    

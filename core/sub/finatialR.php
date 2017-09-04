@@ -52,18 +52,40 @@
                   <p>'.$event['description'].'</p></br>
                   <p> <b>From</b>'.date_format(date_create($event['start']),"d F Y").' <b>to</b>'.date_format(date_create($event['end']),"d F Y").'</p></br>
                 </div>
-                <div class="modal-footer">
-                  <div class="subscribe">
+                  <div class="modal-footer">
                     <form id="subscribe" method="post" class="form-group subscribe-area">
-                      <input type="hidden" name="event_id" value="'.$id.'"/>
-                      <input type="email" name="subscribe_email" id="st-email" class="form-control subscribe-box" placeholder="Enter your email...">
-                      <button type="submit" name="subscribe_submit" class="btn btn-primary btn-lg submit-bt" >
-                     + Subscribe for this event</button>
-                      <br>
-                      <label for="st-email" class="st-subscribe-message"></label>
-                    </form>
-                  </div>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="hidden" name="event_id" value="'.$id.'"/>
+                    <button type="submit" name="event_booking" class="btn btn-primary" >
+                    <i class="fa fa-check-square-o"></i> Book this event </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </form>
+                </div>';
+                echo $data;
+    }
+    if(isset($_GET['uevent_data']))
+    {
+      $id=$_GET['uevent_data'];
+      $event = $logic->getEventbyID($id);
+      $data =' <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h1 class="modal-title text-center">'.$event['title'].'</h1>
+                </div>
+                <div class="modal-body">
+                  <p>'.$event['description'].'</p></br>
+                  <p> <b>From</b>'.date_format(date_create($event['start']),"d F Y").' <b>to</b>'.date_format(date_create($event['end']),"d F Y").'</p></br>
+                </div>
+                <div class="modal-footer">
+                  <form class="form-inline" method="post">
+                    <div class="form-group">
+                      <input type="hidden" name="event_id" value="'.$id.'"></input>
+                      <input type="text" class="form-control" placeholder="Name" name="name" required id="name">
+                    </div>
+                    <div class="form-group">
+                      <input type="email" class="form-control" placeholder="Email Address" name="email" required id="email">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="oevent_booking"><i class="fa fa-check-square-o"></i>Book</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </form>
                 </div>';
                 echo $data;
     }

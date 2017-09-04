@@ -23,7 +23,7 @@
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active" data-toggle="tab"><a href="#client" data-toggle="tab">Cient Personal Details</a></li>
                     <li><a href="#history" data-toggle="tab">Client History</a></li>
-                    <li><a href="#bar" data-toggle="tab">Bar graph</a></li>
+                    <li><a href="#bar" data-toggle="tab">Reports</a></li>
                 </ul>
                 <div class="col-md-12" style="padding:2%;min-height:500px;">
                     <div class="tab-content" >
@@ -69,11 +69,19 @@
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade in" id="bar">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                             <fieldset>
-                                <legend class="thelegend">Bar graph</legend>
+                                <legend class="thelegend">Most Requested Service</legend>
                                 <div class="col-xs-12">
                                     <canvas id="barcanvas"></canvas>
+                                </div>
+                            </fieldset>
+                            </div>
+                            <div class="col-md-5">
+                            <fieldset>
+                                <legend class="thelegend">Most Requested Service Pie</legend>
+                                <div class="col-xs-12">
+                                    <canvas id="piecanvas"></canvas>
                                 </div>
                             </fieldset>
                             </div>
@@ -96,3 +104,4 @@
  <!--<script src="../assets/chartjs/lib/jquery-2.1.3.min.js" type="text/javascript"></script>-->
  <!-- <script src="../assets/chartjs/customjs/servicebar.js" type="text/javascript"></script> -->
  <script src="../assets/chartjs/customjs/servicebar.js"></script>
+ <script src="../assets/chartjs/customjs/piechart.js"></script>
