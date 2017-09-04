@@ -168,6 +168,7 @@ endwhile;
     }
     if(isset($_GET['view']))
     {
+        #line below validates web
         require_once('../core/sub/find-url.php');
         $sup_no = $_GET['view'];
         $supplier_query = "SELECT * FROM suppliers WHERE supplier_no = '{$sup_no}'";

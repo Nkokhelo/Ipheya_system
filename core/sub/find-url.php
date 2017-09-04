@@ -1,4 +1,5 @@
 <?php
+#Find if a url exists
 function urlExists($url) {
       $class_attr = '';
       $handle = curl_init($url);
