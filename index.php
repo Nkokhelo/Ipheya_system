@@ -53,7 +53,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center home-page">
 					 <div class="navbar-collapse collapse">
-						<div class="col-lg-offset-4 col-md-6">
+						<div class="col-lg-offset-2 col-md-8">
 							<ul class="nav navbar-nav">
 								<li><a class="active"  href="#home-page" target="_top">Home</a></li>
 								<li><a  href="#service-page" target="_top">Services</a></li>
