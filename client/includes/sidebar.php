@@ -43,9 +43,9 @@
                         <a href="service-ratings.php">
                             <i class="glyphicon glyphicon-paperclip"></i>
                             Services blog
-                        <a href="#faq.php">
-                            <i class="fa fa-send-o"></i>
-                            FAQ
+                        <a href="rateus.php">
+                            <i class="fa fa-star-o"></i>
+                            Rate Us
                         </a>
                     </li>
                     <li>

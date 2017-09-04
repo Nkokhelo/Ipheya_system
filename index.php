@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="assets/index/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="assets/index/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="assets/index/css/style.css" />
+	
  	<!-- COLORS -->
 	<link rel="stylesheet" href="assets/index/css/colors/blue.css" title="blue"> <!-- DEFAULT COLOR/ CURRENTLY USING -->
 	<link rel="alternate stylesheet" href="assets/index/css/colors/green.css" title="green">
@@ -53,7 +54,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center home-page">
 					 <div class="navbar-collapse collapse">
-						<div class="col-lg-offset-2 col-md-8">
+						<div class="col-lg-offset-3 col-md-8">
 							<ul class="nav navbar-nav">
 								<li><a class="active"  href="#home-page" target="_top">Home</a></li>
 								<li><a  href="#service-page" target="_top">Services</a></li>
@@ -70,20 +71,12 @@
 					<h1>Welcome to</h1>
 					<h2>Ipheya IT Solutions</h2>
 					<div class="container">
-
 					</div>
 					<div class="contact-form">
 						<a class="btn btn-primary btn-lg submit-button" href="login.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-sign-in"></i> Sign-in</a>
 						<a class="btn btn-primary btn-lg submit-button" href="client/register.php"  style="font-size:14px; text-transform: capitalize" target="_top"><i class="fa fa-user"></i> Sign-Up </a>
 					</div>
 					<br/>
-					<!-- <p>Subscribe on newsletter Learn first about the launch</p>
-					<form id="subscribe" class="form-group subscribe-area">
-						<input type="email" name="subscribe-email" id="st-email" class="form-control subscribe-box" placeholder="Enter your email...">
-						<button type="submit" name="subscribe-submit" class="btn btn-primary btn-lg submit-bt" >Subscribe</button>
-						<br>
-						<label for="st-email" class="st-subscribe-message"></label>
-					</form> --> 
 					<div class="col-sm-12 social-shear text-center">
 						<a href="#"><i class="fa fa-facebook"></i></a>
 						<a href="#"><i class="fa fa-twitter"></i></a>
