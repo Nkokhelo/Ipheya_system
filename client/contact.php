@@ -1,7 +1,15 @@
 <?php
+session_start();
+if(isset($_SESSION['Client']))
+{
   include 'includes/head.php';
   include('../core/init.php');
   include('../core/controllers/chat-controller.php');
+}
+else
+{
+  header('../login.php');
+}
 ?>
 <body>
   <div class="wrapper">
@@ -15,5 +23,5 @@
         </div>
       </div>
   </div>
-  <?php # include('../includes/footer.php'); ?>
+  <?php include('includes/footer.php'); ?>\
 </body>

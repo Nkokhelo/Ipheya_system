@@ -1,6 +1,5 @@
 <?php
     $chat = $chatfooter = '';
-    session_start();
     if(isset($_SESSION["Client"]))
     {
       $u = $_SESSION["Client"];
@@ -17,12 +16,14 @@
         {
           echo '<script>alert("'.$newtc.'")</script>';
         }
-        else {
+        else 
+        {
           echo '<script>alert("'.mysqli_error($db).'");</script><br>';
           echo '<script>alert("'."INSERT INTO tc_account(email,name,surname) VALUES('{$u}','$qr[name]','$qr[surname]')".'");</script>';
         }
       }
     }
+
     else{
       echo '<script>alert("No session is set!")</script>';
     }

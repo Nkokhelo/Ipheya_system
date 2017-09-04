@@ -126,7 +126,8 @@
              type:'POST',
              url:'../core/sub/insert-message-sub.php',
              data:$('#chatBox').serialize(),
-             success:function(response){
+             success:function(response)
+             {
                $('#chat-panel').html(response);
                $('#fadeinchat').fadeIn(2000);
              }
@@ -135,8 +136,6 @@
            var form = $('#chatBox').reset();
            return false;
          }
-    </script>
-    <script>
         function on() {
           document.getElementById("overlay").style.display = "block";
         }

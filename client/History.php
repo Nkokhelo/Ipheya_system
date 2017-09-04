@@ -19,9 +19,8 @@
         <div class='row'>
             <div class='col-xs-12'>
                 <div class="col-xs-11 b">
-
-
-                
+                  <h3 class="text-center" style="color:#888"><b>Client history</b></h3>
+                  <?= $history ?>
               </div>
             </div>
         </div>
@@ -29,4 +28,3 @@
   </div>
   <?php include('includes/footer.php'); ?>
 </body>
-
