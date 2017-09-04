@@ -6,13 +6,12 @@ session_start();
       include('includes/head2.php');
       include('../core/logic.php');
       require_once('../core/controllers/client-controller.php');
+      include('../core/controllers/chat-controller.php');
     }
     else
     {
       header("Location:../login.php");
     }
-     
-
 ?>
 
 <body>
@@ -21,14 +20,15 @@ session_start();
       <div id='content'>
         <div class='row'>
          <div class='col-xs-11 b'>
-           <h3 class="text-center">Welcome <?php echo($_SESSION['Employee'])?> </h3> 
-             <hr class="bhr"/>
-             <div class="col-xs-12">
+         <h3 class="text-center">Welcome </h3>
+         <hr class="bhr"/>
+         <div class="col-xs-12">
 
-             </div>
-            </div>
+         </div>
+        </div>
         </div>
         <?php include('includes/footer.php'); ?>
+        <?php include('includes/chat.php'); ?>
       </div>
   </div>
 </body>

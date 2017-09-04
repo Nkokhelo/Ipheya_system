@@ -43,9 +43,9 @@
                         <a href="service-ratings.php">
                             <i class="glyphicon glyphicon-paperclip"></i>
                             Services blog
-                        <a href="#faq.php">
-                            <i class="fa fa-send-o"></i>
-                            FAQ
+                        <a href="rateus.php">
+                            <i class="fa fa-star-o"></i>
+                            Rate Us
                         </a>
                     </li>
                     <li>
@@ -62,7 +62,7 @@
                     </li>
                 </ul>
                 <div class="" align="center">
-                  <button class="btn btn-primary" onclick="on();">Start chat <span class="glyphicon glyphicon-comment"></span></button>
+                  <button class="btn btn-primary" onclick="on();">Chat <span class="glyphicon glyphicon-comment"></span></button>
                 </div>
             </nav>
             </nav>
@@ -78,5 +78,4 @@
 
         });
     });
-
 </script>

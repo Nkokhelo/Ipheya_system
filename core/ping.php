@@ -11,7 +11,7 @@
       function ping($host,$port=80,$timeout=6)
       {
               $fsock = fsockopen($host, $port, $errno, $errstr, $timeout);
-              if ( ! $fsock )
+              if (!$fsock )
               {
                       $bool = FALSE;
               }
@@ -24,18 +24,19 @@
 
       /* check if the host is up
         $host can also be an ip address */
-      $host = 'www.alomac-universal.com';
       $up = ping($host);
 
 
       if($bool==TRUE)
       {
-        header('Location: http://'.$host);
+        $class_attr = 'text-success';
+        #header('Location: http://'.$host);
         /* optionally display either a red or green image to signify the server status */
         #echo '<img src="'.($up ? 'on' : 'off').'.jpg" alt="'.($up ? 'up' : 'down').'" />';
       }
       else{
+        $class_attr = 'text-danger';
         /* optionally display either a red or green image to signify the server status */
-        echo '<img src="'.($up ? 'on' : 'off').'.jpg" alt="'.($up ? 'up' : 'down').'" />';
+        #echo '<img src="'.($up ? 'on' : 'off').'.jpg" alt="'.($up ? 'up' : 'down').'" />';
       }
  ?>

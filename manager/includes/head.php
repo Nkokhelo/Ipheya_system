@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin</title>  
+    <title>Ipheya-Manager</title>  
     <meta charset="utf-8">
     <meta name="viewport" content = "width=device-width, initial-scale=1, user-scalable=no">
-    
+
     <link rel = "stylesheet" href = "../assets/bootstrap/css/bootstrap.min.css"/>
     <!-- <link rel = "stylesheet" href = "../assets/css/main.css" type = "text/css"/> -->
     <!-- <link rel = "stylesheet" href = "../assets/plugins/ionicons/css/ionicons.min.css" type = "text/css"/> -->
