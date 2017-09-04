@@ -27,6 +27,7 @@
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active" data-toggle="tab"><a href="#suppliers" data-toggle="tab">Supplier</a></li>
                     <li><a href="#purchases" data-toggle="tab">Purchases and Sales</a></li>
+                    <li><a href="#contract" data-toggle="tab">Agreement</a></li>
                 </ul>
                 <div class="col-md-12" style="padding:2%;">
                 <div class="tab-content" >
@@ -179,6 +180,71 @@
                                         <p><span class="glyphicon glyphicon-info-sign"></span> No purchases have been made on this supplier</p>
                                 </div>
                             </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="contract">
+                          <div class="col-xs-12" >
+                              <form class="form" action="" method="post">
+                                  <h4 style="color:#aaa">Edit supplier</h4>
+                                  <hr class="bhr"/>
+                                  <div class="col-xs-12 col-md-12">
+                                      <input name="sup_no" type="hidden" value="<?=$_GET['edit']?>" />
+                                      <p style="color:#0094ff; position:absolute; top:5px;">Supplier number : #<?= $_GET['edit'];?></p>
+                                  <hr class="bhr"/>
+                                  </div>
+
+                                  <div class="form-group col-md-6">
+                                      <div class="col-xs-12">
+                                      <div class="form-group col-md-12">
+                                          <label for="name">Supplier :</label>
+                                          <input required type="text" name="name" id="name" class="form-control" value="<?=((isset($name))?$name:'');?>" placeholder="Company Name">
+                                      </div>
+                                      </div>
+                                      <div class="col-xs-12">
+                                      <div class="form-group col-md-12">
+                                          <label for="address">Address :</label>
+                                          <input required type="text" name="address" id="address" class="form-control" value="" placeholder="Address">
+                                      </div>
+                                      </div>
+                                      <div class="col-xs-12">
+                                      <div class="form-group col-md-12">
+                                          <label for="line2">Line-2 :</label>
+                                          <input required type="text" name="line2" id="line2" class="form-control" value="" placeholder="Address 2">
+                                      </div>
+                                      </div>
+                                      <div class="col-xs-12">
+                                      <div class="form-group col-md-12">
+                                          <label for="line3">Line-3 :</label>
+                                          <input required type="text" name="line3" id="line2" class="form-control" value="" placeholder="Address 3">
+                                      </div>
+                                      </div>
+                                  </div>
+                                  <hr class="bhr" style="width:100%"/>
+                                  <div class="form-group col-xs-4 col-xs-offset-4">
+                                      <button type="submit" name="update" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-save"></span> Update</button>
+                                      <a href="viewsupplier?view=<?=$_GET['edit']?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> View supplier</a>
+                                  </div>
+                              </form>
+                          </div>
+                          <!--<div class="container-fluid" id="contract-wrap">
+                            <div class="col-md-12" id="contract-header">
+                              <div class="row">
+                                <div class="col-sm-3">
+
+                                </div>
+                                <div class="">
+
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="" id="contract-tile" title="">
+
+                                </div>
+                                <div class="col-md-12 text-center" id="contact">
+                                  <p>Phone: (031) 609 2866</p> <p>Fax: (031) 902 4796</p> <p>Info@ipheya.com</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>-->
                         </div>
                     </div>
                 </div>
