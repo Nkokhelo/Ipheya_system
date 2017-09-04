@@ -6,6 +6,10 @@
         include('../core/logic.php');
         include('includes/head2.php');
         require_once('../core/controllers/supplier-controller.php');
+        /*if(isset($_GET['view'])){include('../core/sub/ping.php');}
+        else{
+          $class_attr = '';
+        }*/
         include('includes/employee-session.php');
         // include('includes/navigation.php');
    }
@@ -16,7 +20,7 @@
 ?>
 <body>
   <div class="wrapper">
-      <?php include 'includes/sidebar.php'?>
+      <?php include 'includes/sidebar.php';?>
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 b'>
@@ -29,7 +33,7 @@
                         <div role="tabpanel" class="tab-pane fade in active" id="suppliers" style="font-size:12px">
                             <?php if(isset($_GET['edit']))  { ?>
                             <div class="col-xs-12" >
-                                <form class="form" action="addsupplier.php" method="post">
+                                <form class="form" action="" method="post">
                                     <h4 style="color:#aaa">Edit supplier</h4>
                                     <hr class="bhr"/>
                                     <div class="col-xs-12 col-md-12">
@@ -37,7 +41,7 @@
                                         <p style="color:#0094ff; position:absolute; top:5px;">Supplier number : #<?= $_GET['edit'];?></p>
                                     <hr class="bhr"/>
                                     </div>
-                                    
+
                                     <div class="form-group col-md-6">
                                         <div class="col-xs-12">
                                         <div class="form-group col-md-12">
@@ -114,12 +118,12 @@
                                         </div>
                                         </div>
                                     </div>
+                                    <hr class="bhr" style="width:100%"/>
+                                    <div class="form-group col-xs-4 col-xs-offset-4">
+                                        <button type="submit" name="update" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-save"></span> Update</button>
+                                        <a href="viewsupplier?view=<?=$_GET['edit']?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> View supplier</a>
+                                    </div>
                                 </form>
-                            </div>
-                            <hr class="bhr" style="width:100%"/>
-                            <div class="form-group col-xs-4 col-xs-offset-4">
-                                <button type="submit" name="update" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-save"></span> Update</button>
-                                <a href="viewsupplier?view=<?=$_GET['edit']?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> View supplier</a>
                             </div>
                             </div>
                             <?php }else { ?>
@@ -158,7 +162,7 @@
                                             <p><?=$telephone?></p>
                                             <p><?=$mobile?></p>
                                             <p><?=$fax?></p>
-                                            <p><?=$web?></p>
+                                            <p class="<?=urlExists($web);?>"><?=$web?></p>
                                             <p><?=$email?></p>
                                     </div>
                                     </div>
