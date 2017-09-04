@@ -24,19 +24,4 @@
 
       /* check if the host is up
         $host can also be an ip address */
-      $up = ping($host);
-
-
-      if($bool==TRUE)
-      {
-        $class_attr = 'text-success';
-        #header('Location: http://'.$host);
-        /* optionally display either a red or green image to signify the server status */
-        #echo '<img src="'.($up ? 'on' : 'off').'.jpg" alt="'.($up ? 'up' : 'down').'" />';
-      }
-      else{
-        $class_attr = 'text-danger';
-        /* optionally display either a red or green image to signify the server status */
-        #echo '<img src="'.($up ? 'on' : 'off').'.jpg" alt="'.($up ? 'up' : 'down').'" />';
-      }
  ?>

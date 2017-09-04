@@ -62,7 +62,7 @@
                     </li>
                 </ul>
                 <div class="" align="center">
-                  <button class="btn btn-primary" onclick="on();">Start chat <span class="glyphicon glyphicon-comment"></span></button>
+                  <button class="btn btn-primary" onclick="on();">Chat <span class="glyphicon glyphicon-comment"></span></button>
                 </div>
             </nav>
             </nav>
@@ -78,5 +78,4 @@
 
         });
     });
-
 </script>

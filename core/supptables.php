@@ -54,6 +54,9 @@
      FOREIGN KEY(supplier_id) REFERENCES suppliers(supplier_id),
      deposit varchar(10),
      liability_clause text,
+     discount varchar(10),
+     delivery_fee varchar(10),
+     duration varchar(30),
      warranty varchar(50)
    )";
    if(mysqli_query($db,$sql))
