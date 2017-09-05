@@ -170,7 +170,7 @@
                             </div>
                                 <hr class="bhr" style="width:100%"/>
                                 <div class="col-xs-5 col-xs-offset-5">
-                                    <a href="viewsupplier?edit=<?=$_GET['view']?>" class="btn btn-xs btn-primary"><p class="glyphicon glyphicon-edit"></p> edit...</a>
+                                    <a href="viewsupplier?edit=<?=$_GET['view'];?>" class="btn btn-xs btn-primary"><p class="glyphicon glyphicon-edit"></p> edit...</a>
                                 </div>
                             </div>
                             <?php } ?>
@@ -184,44 +184,82 @@
                         <div role="tabpanel" class="tab-pane fade" id="contract">
                           <div class="col-xs-12" >
                               <form class="form" action="" method="post">
-                                  <h4 style="color:#aaa">Edit supplier</h4>
+                                  <h4 style="color:#aaa">Draft Agreement</h4>
                                   <hr class="bhr"/>
                                   <div class="col-xs-12 col-md-12">
-                                      <input name="sup_no" type="hidden" value="<?=$_GET['edit']?>" />
-                                      <p style="color:#0094ff; position:absolute; top:5px;">Supplier number : #<?= $_GET['edit'];?></p>
+                                      <input name="sup_no" type="hidden" value="<?=$_GET['view'];?>" />
+                                      <p style="color:#0094ff; position:absolute; top:5px;">Supplier number : #<?= $_GET['view'];?></p>
                                   <hr class="bhr"/>
                                   </div>
 
                                   <div class="form-group col-md-6">
-                                      <div class="col-xs-12">
+                                    <div class="col-xs-12">
                                       <div class="form-group col-md-12">
                                           <label for="name">Supplier :</label>
                                           <input required type="text" name="name" id="name" class="form-control" value="<?=((isset($name))?$name:'');?>" placeholder="Company Name">
                                       </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                      <div class="form-group col-md-12">
+                                          <label for="address">Deposit % :</label>
+                                          <input required type="number" name="deposit" id="deposit" class="form-control" value="<?=((isset($agreementresult['deposit']))?$agreementresult['deposit']:'');?>" placeholder="%">
+                                      </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                      <div class="form-group col-md-12">
+                                          <label for="address">warranty :</label>
+                                          <div class="col-xs-12">
+                                            <div class="col-xs-4">
+                                              <input required type="number" name="warrantynum" id="warrantynum" class="form-control" value="<?=((isset($warrantyArr[0]))?$warrantyArr[0]:'');?>" placeholder="1...">
+                                            </div>
+                                            <div class="col-xs-8">
+                                              <select required class="form-control" name="warrantytype" id="warrantytype">
+                                                <option value="<?=((isset($warrantyArr[1]))?$warrantyArr[1]:'');?>"><?=((isset($warrantyArr[1]))?$warrantyArr[1]:'Warranty type');?></option>
+                                                <option value="days">days</option>
+                                                <option value="weeks">weeks</option>
+                                                <option value="months">months</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                      <div class="col-xs-12">
+                                        <div class="form-group col-md-12">
+                                            <label for="line2">Discount % :</label>
+                                            <input required type="number" name="discount" id="discount" class="form-control" value="<?=((isset($agreementresult['discount']))?$agreementresult['discount']:'');?>" placeholder="%">
+                                        </div>
                                       </div>
                                       <div class="col-xs-12">
-                                      <div class="form-group col-md-12">
-                                          <label for="address">Address :</label>
-                                          <input required type="text" name="address" id="address" class="form-control" value="" placeholder="Address">
-                                      </div>
-                                      </div>
-                                      <div class="col-xs-12">
-                                      <div class="form-group col-md-12">
-                                          <label for="line2">Line-2 :</label>
-                                          <input required type="text" name="line2" id="line2" class="form-control" value="" placeholder="Address 2">
-                                      </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="line3">Delivery Fee :</label>
+                                            <input type="text" name="delivery" id="delivery" class="form-control" value="<?=((isset($agreementresult['delivery_fee']))?$agreementresult['delivery_fee']:'');?>" placeholder="R.00">
+                                        </div>
                                       </div>
                                       <div class="col-xs-12">
-                                      <div class="form-group col-md-12">
-                                          <label for="line3">Line-3 :</label>
-                                          <input required type="text" name="line3" id="line2" class="form-control" value="" placeholder="Address 3">
-                                      </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="address">Contract Duration :</label>
+                                            <div class="col-xs-12">
+                                              <div class="col-xs-6">
+                                                <input required type="date" name="start_date" id="contract_start" class="form-control" value="<?=((isset($agreementresult['start_date']))?$agreementresult['start_date']:'');?>" placeholder="start...">
+                                              </div>
+                                              <div class="col-xs-6">
+                                                <input required type="date" name="end_date" id="contract_end" class="form-control" value="<?=((isset($agreementresult['end_date']))?$agreementresult['end_date']:'');?>" placeholder="end...">
+                                              </div>
+                                            </div>
+                                        </div>
                                       </div>
                                   </div>
+                                  <div class="form-group col-md-12" align="center">
+                                    <label for="clause">Liability Clause</label>
+                                    <textarea required name="clause" class="form-control" rows="6" cols="60" placeholder="Liability agreement"><?=((isset($agreementresult['liability_clause']))?$agreementresult['liability_clause']:'');?></textarea>
+                                  </div>
                                   <hr class="bhr" style="width:100%"/>
-                                  <div class="form-group col-xs-4 col-xs-offset-4">
-                                      <button type="submit" name="update" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-save"></span> Update</button>
-                                      <a href="viewsupplier?view=<?=$_GET['edit']?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> View supplier</a>
+                                  <div class="form-group col-xs-6 col-xs-offset-3">
+                                      <button type="submit" name="<?=((isset($agreementresult['deposit']))?'Update_Agreement':'Agreement');?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-save"></span> <?=((isset($agreementresult['deposit']))?'Update Draft':'Save Draft');?></button>
+                                      <a href="viewsupplier?view=<?=$_GET['view'];?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> View supplier</a>
+                                      <?=((isset($agreementresult['deposit']))?'<a href="print-agreement.php?agrid='.$sup_no.'" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> Print Agreement</a>':'Agreement');?>
                                   </div>
                               </form>
                           </div>
