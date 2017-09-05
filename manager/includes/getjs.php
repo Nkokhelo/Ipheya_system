@@ -42,4 +42,57 @@
 
         echo ($data);
     }
+
+    if(isset($_GET['service']))
+    {
+        $query ="SELECT * FROM `services`";
+        $data = array();
+        $result = mysqli_query($log->connect(),$query);
+        while($program  = mysqli_fetch_assoc($result)):
+            $data[] = $program;
+        endwhile;
+
+        if($data =='no data')
+        {
+            $data='Error';
+        }
+
+        echo json_encode($data);
+    }
+
+    if(isset($_GET['service_id']))
+    {
+        $rating='';
+        $client_id='';
+        $service_id='';
+        $service_id =$_GET['service_id'];
+        $client_id=$_GET['client_id'];
+        $rating=$_GET['rating'];
+        $query ="SELECT * FROM `s_ratings` where client_id=$client_id and service_id=$service_id";
+        $data = array();
+        $result = mysqli_query($log->connect(),$query);
+        while($program  = mysqli_fetch_assoc($result)):
+            $data[] = $program;
+        endwhile;
+
+        if($data==null)
+        {
+            $data="INSERT INTO `s_ratings` (`rating_id`, `client_id`, `service_id`, `rating`) VALUES (NULL, '$client_id', '$service_id','$rating')";
+            $result = mysqli_query($log->connect(),$data);
+            if(!$result)
+            {
+                $date="Error";
+            }
+            else
+            {
+                $data="success";
+            }
+        }
+        else
+        {
+            $data='have rated this service';
+        }
+        echo json_encode($data);
+        
+    }
 ?>

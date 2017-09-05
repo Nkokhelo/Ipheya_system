@@ -217,9 +217,12 @@
 						</div>
 					</form>
 					<div class="col-xs-10 col-xs-offset-1">
+						<div class="col-xs-12">
+							<h3><i class="fa fa-star-o"></i>Service Ratings</h3>
+						<?=$service_ratings?>
+						</div>
 					<div id="disqus_thread"></div>
 					</div>
-						
 				</div>
 			</div><!--/.row-->
 		</div><!-- /.container -->

@@ -48,10 +48,10 @@
                       Reports
                     </a>
                       <ul class="collapse list-unstyled" id="companyMenu">
-                      <li><a  href="financialreports.php">Finacial Reports</a></li>
-                      <li><a  href="projectreports.php">Projects Reports</a></li>
+                      <li><a  href="projectreports.php">Graphs</a></li>
+                      <!-- <li><a  href="projectreports.php">Projects Reports</a></li>
                       <li><a  href=".php">Clients Reports</a></li>
-                      <li><a  href=".php">Inventory Reports</a></li>
+                      <li><a  href=".php">Inventory Reports</a></li> -->
                     </ul>
                   </li>
 

@@ -242,8 +242,8 @@
 
        $roles_array = rtrim($roles_array,',');
        $allEmployees .= '<tr>
-                            <td>'.$depart_result['department'].'</td>
                             <td>'.$employees['emp_no'].'</td>
+                            <td>'.$depart_result['department'].'</td>
                             <td>'.$employees['title'].' '.substr($employees['name'],0,1).' '.$employees['surname'].'</td>
                             <td>'.$roles_array.'</td>
                             <td>

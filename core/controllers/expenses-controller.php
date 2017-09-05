@@ -100,7 +100,7 @@
             }
             $save = "INSERT INTO `expense_income` (`id`, `ei_name`, `ei_date`, `ei_type`,`ei_description`, `ei_payment_type`,`ref_no`, `ei_amount`, `supplier_no`, `client_no`, `project_no`, `category_id`,`other`,`e_or_i`,`file`) 
             VALUES (null,'$ei_name','$ei_date','$ei_type','$ei_description','$ei_payment_type','$ref_id','$ei_amount','$supplier_no','$client_no','$project_no','$category_id','$other','e','$image')";
-                $result = mysqli_query($logic->connect(),$save);
+            $result = mysqli_query($logic->connect(),$save);
             if(!$result)
             {
                     $efeedback =$logic->display_error(mysqli_error($logic->connect()));
@@ -148,6 +148,7 @@
                 $result = mysqli_query($logic->connect(),$save);
             if(!$result)
             {
+                die($save);
                     $ifeedback =$logic->display_error(mysqli_error($logic->connect()));
             }
             else

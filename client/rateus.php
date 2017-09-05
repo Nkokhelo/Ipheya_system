@@ -1,9 +1,16 @@
 <?php
 session_start();
-if(isset($_SESSION['Employee']))
+if(isset($_SESSION['Client']))
 {
   include('../core/init.php');
   include('includes/head.php');
+  include('../core/logic.php');
+  $logic =new  Logic();
+  $email ='';
+  $email=$_SESSION['Client'];
+    $id='';
+  $id= $logic->getByEmail($email)['client_id'];
+  
 }
 else
 {
@@ -24,8 +31,8 @@ else
             </div>
         </div>
       </div>
+      <?php include('includes/footer.php'); ?>
   </div>
-  <?php include('includes/footer.php'); ?>
 </body>
 <script src="../assets/rating/js/dist/rating.min.js"></script>
 <script>
@@ -33,35 +40,36 @@ else
 
             'use strict';
             var shop = document.querySelector('#shop');
-            var data = [{
-                title: "Dope Hat",
-                description: "Dope hat dolor sit amet, consectetur adipisicing elit. Commodi consectetur similique ullam natus ut debitis praesentium.",
-                rating: 3
-            }, {
-                title: "Hot Top",
-                description: "Hot top dolor sit amet, consectetur adipisicing elit. Commodi consectetur similique ullam natus ut debitis praesentium.",
-                rating: 2
-            }, {
-                title: "Fresh Kicks",
-                description: "Fresh kicks dolor sit amet, consectetur adipisicing elit. Commodi consectetur similique ullam natus ut debitis praesentium.",
-                rating: null
-            }];
+            var service = new Object();
 
-            // INITIALIZE
-            (function init() {
-                for (var i = 0; i < data.length; i++) {
-                    addRatingWidget(buildShopItem(data[i]), data[i]);
+            $.ajax({
+            type : "get",
+             url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+            data : "service=allservice",
+            success:function(data)
+            {
+                data = JSON.parse(data);
+                service =data;
+                // INITIALIZE
+                (function init() {
+                for (var i = 0; i < service.length; i++) {
+                    addRatingWidget(buildShopItem(service[i]), service[i]);
                 }
             })();
+            },
+            error:function (err) 
+            {
+                console.log("Result"+err);
+            }});
+
 
             // BUILD SHOP ITEM
-            function buildShopItem(data) {
+            function buildShopItem(service) {
                 var shopItem = document.createElement('div');
-
                 var html = '<div class="c-shop-item__img"></div>' +
                     '<div class="c-shop-item__details">' +
-                    '<h3 class="c-shop-item__title">' + data.title + '</h3>' +
-                    '<p class="c-shop-item__description">' + data.description + '</p>' +
+                    '<h3 class="c-shop-item__title">' + service.service + '</h3>' +
+                    '<p class="c-shop-item__description">' + service.description + '</p>' +
                     '<ul class="c-rating"></ul>' +
                     '</div>';
 
@@ -73,12 +81,25 @@ else
             }
 
             // ADD RATING WIDGET
-            function addRatingWidget(shopItem, data) {
+            function addRatingWidget(shopItem, service) {
                 var ratingElement = shopItem.querySelector('.c-rating');
-                var currentRating = data.rating;
+                var currentRating = service.rating;
                 var maxRating = 5;
+                var id = <?= $id?>;
                 var callback = function(rating) {
-                    alert(rating);
+                    $.ajax({
+                    type : "get",
+                    url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+                    data : "service_id="+service.service_id+"&client_id="+id+"&rating="+rating,
+                    success:function(data)
+                    {
+                        data = JSON.parse(data);
+                        alert(data);
+                    },
+                    error:function (err) 
+                    {
+                        console.log("Result"+err);
+                    }});
                 };
                 var r = rating(ratingElement, currentRating, maxRating, callback);
             }

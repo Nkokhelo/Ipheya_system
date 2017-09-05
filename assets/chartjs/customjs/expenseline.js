@@ -2,6 +2,9 @@ $(document).ready(function() {
     var amount_income = [];
     var amount_expense = [];
     var date = [];
+    var project = [];
+    var proj_income = [];
+    var proj_expense = [];
     var client = $('#client_id').val();
     $.ajax({
         type: "get",
@@ -93,24 +96,153 @@ $(document).ready(function() {
         }
     });
 
-    // var ctx = document.getElementById("pie2").getContext('2d');
-    var ctx1 = $('#pieView');
-    var myChart = new Chart(ctx1, {
-        type: 'doughnut',
-        data: {
-            labels: ["M", "T", "W", "T", "F", "S", "S"],
-            datasets: [{
-                backgroundColor: [
-                    "#2ecc71",
-                    "#3498db",
-                    "#95a5a6",
-                    "#9b59b6",
-                    "#f1c40f",
-                    "#e74c3c",
-                    "#34495e"
-                ],
-                data: [12, 19, 3, 17, 28, 24, 7]
-            }]
+    $.ajax({
+        type: "get",
+        url: "/ipheya/core/sub/finatialR.php",
+        data: "projects=i",
+        success: function(data) {
+            var project = [];
+            for (var i in data) {
+                project.push(data[i].projectname);
+                proj_income.push(data[i].amount);
+            }
+            var ctx1 = $('#incomespie');
+            var myChart = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: project,
+                    datasets: [{
+                        label: "Projects per income",
+                        backgroundColor: [
+                            "#2ecc71",
+                            "#3498db",
+                            "#95a5a6",
+                            "#9b59b6",
+                            "#f1c40f",
+                            "#e74c3c",
+                            "#34495e"
+                        ],
+                        data: proj_income
+                    }]
+                }
+            });
+        },
+        error: function(data) {
+            alert("Error while drawing graphs" + data);
+        }
+    });
+
+
+    $.ajax({
+        type: "get",
+        url: "/ipheya/core/sub/finatialR.php",
+        data: "projects=e",
+        success: function(data) {
+            var project = [];
+            for (var i in data) {
+                project.push(data[i].projectname);
+                proj_expense.push(data[i].amount);
+            }
+            var ctx1 = $('#expensespie');
+            var myChart = new Chart(ctx1, {
+                type: 'bar', //doughnut
+                data: {
+                    labels: project,
+                    datasets: [{
+                        label: 'project per expenses',
+                        backgroundColor: [
+                            "#2ecc71",
+                            "#3498db",
+                            "#9b59b6",
+                            "#95a5a6",
+                            "#f1c40f",
+                            "#e74c3c",
+                            "#34495e"
+                        ],
+                        data: proj_expense
+                    }]
+                }
+            });
+        },
+        error: function(data) {
+            alert("Error while drawing graphs" + data);
+        }
+    });
+
+    $.ajax({
+        type: "get",
+        url: "/ipheya/core/sub/finatialR.php",
+        data: "services=any",
+        success: function(data) {
+            var service = [];
+            var request = [];
+            for (var i in data) {
+                projects.push(data[i].projectname);
+                budget.push(data[i].budget);
+            }
+            var ctx1 = $('#budgetpie');
+            var myChart = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: projects,
+                    datasets: [{
+                        label: 'Project budgets in 2017',
+                        backgroundColor: [
+                            "#fcbc05",
+                            "#3498db",
+                            "#9b59b6",
+                            "#00ffff",
+                            "#fc809b",
+                            "#2ecc71",
+                            "#cfcb89",
+                            "#f1c40f",
+                            "#f12acb"
+                        ],
+                        data: budget
+                    }]
+                }
+            });
+        },
+        error: function(data) {
+            alert("Error while drawing graphs" + data);
+        }
+    });
+    $.ajax({
+        type: "get",
+        url: "/ipheya/core/sub/finatialR.php",
+        data: "budget=any",
+        success: function(data) {
+            var projects = [];
+            var budget = [];
+            for (var i in data) {
+                projects.push(data[i].projectname);
+                budget.push(data[i].budget);
+            }
+            var ctx1 = $('#budgetpie');
+            var myChart = new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: projects,
+                    datasets: [{
+                        label: 'Project budgets in 2017',
+                        backgroundColor: [
+                            "#fcbc05",
+                            "#3498db",
+                            "#9b59b6",
+                            "#00ffff",
+                            "#fc809b",
+                            "#2ecc71",
+                            "#cfcb89",
+                            "#f1c40f",
+                            "#f12acb"
+                        ],
+                        data: budget
+                    }]
+                }
+            });
+        },
+        error: function(data) {
+            alert("Error while drawing graphs" + data);
         }
     });
 });

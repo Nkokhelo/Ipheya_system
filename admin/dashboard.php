@@ -3,8 +3,8 @@ session_start();
     if(isset($_SESSION['Employee']))
     {
       require_once('../core/init.php');
-      include('includes/head2.php');
       include('../core/logic.php');
+      include('includes/head2.php');
       require_once('../core/controllers/client-controller.php');
       include('../core/controllers/chat-controller.php');
     }
