@@ -44,6 +44,6 @@
 
     function getInfor(rId,rT,cId)
     {
-        $('#dataData').load('http://localhost:81/ipheya/core/sub/getRequestInfo.php?ri='+rId+'&RType='+rT+'&ci='+cId);
+        $('#dataData').load('http://www.invest4living.com/ipheya/core/sub/getRequestInfo.php?ri='+rId+'&RType='+rT+'&ci='+cId);
     }
 </script>

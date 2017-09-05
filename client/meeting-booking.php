@@ -252,7 +252,7 @@ function edit(event){
 	Event[2] = end;
 
 	$.ajax({
-		url: 'http://localhost:81/Ipheya/client/import/editEventDate.php',
+		url: 'http://www.invest4living.com/Ipheya/client/import/editEventDate.php',
 		type: "POST",
 		data: {Event:Event},
 		success: function(rep) {
