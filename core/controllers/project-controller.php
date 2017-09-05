@@ -156,7 +156,7 @@
         }
         else
         {
-            $query = mysqli_query($db,"UPDATE `projects` SET `project_name` = '$project_name',`description`='$description', `duration`='$duration', `sdate`='$sdate', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hour`='$daily_hour', `visibility`='$visibility' WHERE `projects`.`id`= $id");
+            $query = mysqli_query($db,"UPDATE `projects` SET `project_name` ='$project_name',`description`='$description', `duration`='$duration', `sdate`='$sdate', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hour`='$daily_hour', `visibility`='$visibility' WHERE `projects`.`id`= $id");
             if(!$query)
             {
                 
