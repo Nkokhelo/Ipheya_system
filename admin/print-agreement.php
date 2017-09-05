@@ -20,5 +20,5 @@ $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
 // Output the generated PDF (1 = download and 0 = preview)
-$dompdf->stream("Agreement",array("Attachment"=>0));
+$dompdf->stream("Agreement",array("Attachment"=>1));
 ?>
