@@ -259,7 +259,7 @@
                                   <div class="form-group col-xs-6 col-xs-offset-3">
                                       <button type="submit" name="<?=((isset($agreementresult['deposit']))?'Update_Agreement':'Agreement');?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-save"></span> <?=((isset($agreementresult['deposit']))?'Update Draft':'Save Draft');?></button>
                                       <a href="viewsupplier?view=<?=$_GET['view'];?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> View supplier</a>
-                                      <?=((isset($agreementresult['deposit']))?'<a href="print-agreement.php?agrid='.$sup_no.'" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> Print Agreement</a>':'Agreement');?>
+                                      <?=((isset($agreementresult['deposit']))?'<a href="print-agreement.php?agrid='.$sup_no.'" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-print"></span> Print Agreement</a>':'Agreement');?>
                                   </div>
                               </form>
                           </div>

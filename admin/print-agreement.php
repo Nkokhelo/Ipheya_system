@@ -1,6 +1,5 @@
 <?php
-
-#require_once('connection/conect.php');
+#require_once('../init.php');
 include('../core/sub/generate-agreement.php');
 // include autoloader
 require_once '../dompdf/autoload.inc.php';
@@ -15,11 +14,11 @@ $dompdf = new Dompdf();
 $dompdf->loadHtml($html);
 
 // (Optional) Setup the paper size and orientation
-$dompdf->setPaper('A5', 'portrait');
+$dompdf->setPaper('A4', 'portrait');
 
 // Render the HTML as PDF
 $dompdf->render();
 
 // Output the generated PDF (1 = download and 0 = preview)
-$dompdf->stream("Student report",array("Attachment"=>0));
+$dompdf->stream("Agreement",array("Attachment"=>0));
 ?>
