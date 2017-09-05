@@ -8,8 +8,8 @@
         include('includes/head.php');
         include('../core/controllers/meeting-controller.php');
         include('../core/controllers/admin-controller.php');
-				$sql = "SELECT * FROM meetings";
-				$req = mysqli_query($db,$sql);
+        $sql = "SELECT * FROM meetings";
+        $req = mysqli_query($db,$sql);
     }
     else
     {
@@ -100,57 +100,59 @@
                     </div>
                     <div class="col-xs-12">
                     <hr	/>
-										<div class="modal fade" id="View" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-													<div class="modal-dialog modal-lg" role="document">
-													<div class="modal-content">
-													<form class="form-horizontal" method="POST" action="">
+                    <div class="modal fade" id="View" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                <form class="form-horizontal" method="POST" action="">
 
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-															<h2 class="modal-title" id="myModalLabel" class="text-center" style="color:#888"><p id="header"></p></h2>
-														</div>
-														<div class="modal-body">
-																<table class="table">
-																	<tr style="border-top:none"><td><b>Meeting Title</b></td><td><p id="title"></p></td></tr>
-																	<tr><td><b>Clinet name</b></td><td><p id="name"></p></td></tr>
-																	<tr><td><b>Email</b></td><td><p id="email"></p></td></tr>
-																	<tr><td><b>Description</b></td><td><p id="description"></p></td></tr>
-																	<tr><td colspan="2"><b>From :</b><p id="from" style="display:inline"></p><b> To :</b><p style="display:inline" id="to"></p></td></tr>
-																	<tr><td><b>Registered client?</b></td><td><p id="is"></p></td></tr>
-																</table>
-															</div>
-															<div class="form-group">
-														</div>
-														<div class="modal-footer">
-														<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-														</div>
-													</form>
-													</div>
-													</div>
-												</div>
-										<div class="modal fade" id="feed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-													<div class="modal-dialog modal-md" role="document">
-													<div class="modal-content">
-													<form class="form-horizontal" method="POST" action="">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-															<h3 class="modal-title" id="myModalLabel" class="text-center" style="color:#888">Alert</h3>
-														</div>
-														<div class="modal-body">
-															<h5>Meeting has been schaduled successfully</h5>
-																Send notification to <p id="name" style="display:inline">	</p> about the meeting scheduling
-															</br/>
-															<input type="hidden" id="event_id" />
-															<input type="hidden" id="email" />
-														</div>
-														<div class="modal-footer">
-															<button type="submit" name="yes_send" class="btn btn-primary" ><i class="fa fa-ok"></i>Yes</button>
-															<button type="submit" name="not_now" class="btn btn-primary" ><i class="fa fa-history"></i>Not now</button>
-														</div>
-													</form>
-													</div>
-													</div>
-												</div>
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h2 class="modal-title" id="myModalLabel" class="text-center" style="color:#888"><p id="header"></p></h2>
+                                    </div>
+                                    <div class="modal-body">
+                                            <table class="table">
+                                                <tr style="border-top:none"><td><b>Meeting Title</b></td><td><p id="title"></p></td></tr>
+                                                <tr><td><b>Clinet name</b></td><td><p id="name"></p></td></tr>
+                                                <tr><td><b>Email</b></td><td><p id="email"></p></td></tr>
+                                                <tr><td><b>Description</b></td><td><p id="description"></p></td></tr>
+                                                <tr><td colspan="2"><b>From :</b><p id="from" style="display:inline"></p><b> To :</b><p style="display:inline" id="to"></p></td></tr>
+                                                <tr><td><b>Registered client?</b></td><td><p id="is"></p></td></tr>
+                                            </table>
+                                        </div>
+                                        <div class="form-group">
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="feed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog modal-md" role="document">
+                                        <div class="modal-content">
+                                        <form class="form-horizontal" method="POST" action="">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h3 class="modal-title" id="myModalLabel" class="text-center" style="color:#888">Alert</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h5>Meeting has been schaduled successfully</h5>
+                                                    Send notification to <p id="name" style="display:inline">	</p> about the meeting scheduling
+                                                </br/>
+                                                <input type="hidden" id="event_id" name="event_id" />
+                                                <input type="hidden" id="inputname" name="name" />
+                                                <input type="hidden" id="email"name="email"  />
+                                                <input type="hidden" id="date"name="date"  />
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="yes_send" class="btn btn-primary" ><i class="fa fa-ok"></i>Yes</button>
+                                                <button type="submit" name="not_now" class="btn btn-primary" ><i class="fa fa-history"></i>Not now</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                        </div>
+                                    </div>
                     </div>
                 </div>
             </div>
@@ -272,7 +274,6 @@
             end = start;
         }
         id =  event.id;
-				alert(start);
         Event = [];
         Event[0] = id;
         Event[1] = start;
@@ -286,9 +287,11 @@
 							rep = JSON.parse(rep);
 							if(rep !="error")
 							{
-									$('#feed #event_id').val(id);
 									$('#feed #name').text(event.name);
+									$('#feed #event_id').val(id);
+									$('#feed #inputname').val(event.name);
 									$('#feed #email').val(event.email);
+									$('#feed #date').val(event.start);
 									$("#feed").modal('show');
 							}
 							else
