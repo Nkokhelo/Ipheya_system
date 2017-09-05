@@ -30,15 +30,12 @@
        $data = '[';
        while($row = mysqli_fetch_assoc($result))
        {
-        //  echo $row['amount'];
          $data .='{"date":"'.date_format(date_create($row['ei_date']),'F Y').'","amount":"'.$row['amount'].'"},';
        }
        $data =rtrim($data,",");
        $data .=']';
        echo $data;
-      //  ob_end_clean();
        mysqli_close($db);
-       #print data
     }
     if(isset($_GET['event_data']))
     {
@@ -88,6 +85,40 @@
                 </form>
                 </div>';
                 echo $data;
+    }
+
+    if(isset($_GET['projects']))
+    {
+      $type=$_GET['projects'];
+      $view ="SELECT project_no, SUM(ei_amount) as project_amount FROM expense_income WHERE e_or_i ='$type' GROUP BY project_no"; 
+      $result = mysqli_query($db,$view);       
+      $data = '[';
+      while($row = mysqli_fetch_assoc($result))
+      {
+
+        if($logic->getProjectByNo($row['project_no'])['project_name']!=null)
+        {
+          $data .='{"projectname":"'.$logic->getProjectByNo($row['project_no'])['project_name'].'","amount":"'.$row['project_amount'].'"},';
+        }
+      }
+      $data =rtrim($data,",");
+      $data .=']';
+      echo $data;
+      mysqli_close($db);
+    }
+    if(isset($_GET['budget']))
+    {
+      $view ="SELECT project_name, budget FROM projects"; 
+      $result = mysqli_query($db,$view);       
+      $data = '[';
+      while($row = mysqli_fetch_assoc($result))
+      {
+          $data .='{"projectname":"'.$row['project_name'].'","budget":"'.$row['budget'].'"},';
+      }
+      $data =rtrim($data,",");
+      $data .=']';
+      echo $data;
+      mysqli_close($db);
     }
  ?>
 

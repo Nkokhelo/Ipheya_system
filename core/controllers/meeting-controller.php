@@ -1,28 +1,95 @@
 <?php
  $logic = new Logic();
-	$sql = "SELECT id, title, start, end, color FROM events ";
+ $email =$_SESSION['Client'];
+ $sql = "SELECT meeting_id, m_title, email, m_start, m_end, color FROM meetings where email = '$email'";
  $req = mysqli_query($db,$sql);
- // $events=array('id'=>'','title'=>'','start'=>'','end'=>'','color'=>'');
-  // while($thiseve =mysqli_fetch_assoc($req)):
-  //  $events =$thiseve;
-  // endwhile;
-
  $feedback="";
- if (isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) && isset($_POST['color']))
+ $notify="";
+ $sql = "SELECT `name`,`email`,`meeting_id` FROM meetings WHERE is_notified=false";
+ $query = mysqli_query($db,$sql);
+ if ($query == false)
  {
-  
-  $title = $_POST['title'];
-  $start = $_POST['start'];
-  $end = $_POST['end'];
-  $color = $_POST['color'];
- 
-  $sql = "INSERT INTO events(title, start, end, color) values ('$title', '$start', '$end', '$color')";
-  $query = mysqli_query($db,$sql);
-  if ($query == false) {
-     $feedback = $logic->display_error("Error".mysqli_error($db));
-  }
+    $feedback = $logic->display_error("Error!! ".mysqli_error($db));
  }
- 
-  
+ else
+ {
+   while($clients = mysqli_fetch_assoc($query))
+   {
+     $notify .="<tr><td>".$clients['name']."</td><td><form method='post' action=''><input type='hidden' name='event_id' value='".$clients['meeting_id']."'/><button class='btn btn-primary' name='yes_send'>Notify</button></form></td></tr>";
+   }
+ }
+ if(isset($_POST['title']) && isset($_POST['description'])&& isset($_POST['start']) && isset($_POST['end']))
+ {
+    $title = $_POST['title'];
+    $start = $_POST['start'];
+    $end = $_POST['end'];
+    $color = "#888";
+    $description = $_POST['description'];
+    $sql = "INSERT INTO meetings(email, m_title, m_description, m_start, m_end, color, is_client) values ('$email', '$title', '$description', '$start','$end','$color', true)";
+    $query = mysqli_query($db,$sql);
+    if ($query == false)
+    {
+       $feedback = $logic->display_error("Error!! ".mysqli_error($db));
+    }
+    else
+    {
+      $feedback = $logic->display_success("Your request was successfull, you will be notified when ther are changes on your request");
+    }
+ }
 
+ if(isset($_POST['yes_send']))
+ {
+  $id= $_POST['event_id'];
+   $sql = "UPDATE meetings set is_notified=true WHERE meeting_id=$id";
+   $query = mysqli_query($db,$sql);
+   if ($query == false)
+   {
+      $feedback = $logic->display_error("Error!! ".mysqli_error($db));
+   }
+   else
+   {
+     $sql = "SELECT `name`,`email`,`meeting_id` FROM meetings WHERE is_notified=false";
+     $query = mysqli_query($db,$sql);
+     if ($query == false)
+     {
+        $feedback = $logic->display_error("Error!! ".mysqli_error($db));
+     }
+     else
+     {
+       $notify="";
+       while($clients = mysqli_fetch_assoc($query))
+       {
+         $notify .="<tr><td>".$clients['name']."</td><td><form method='post' action=''><input type='hidden' name='event_id' value='".$clients['meeting_id']."'/><button class='btn btn-primary' name='yes_send'>Notify</button></form></td></tr>";
+       }
+     }
+     $feedback = $logic->display_success("Client has been notofied.");
+   }
+ }
+ if(isset($_POST['not_now']))
+ {
+   $notify="";
+   $sql = "UPDATE meetings set is_notified=false";
+   $query = mysqli_query($db,$sql);
+   if ($query == false)
+   {
+      $feedback = $logic->display_error("Error!! ".mysqli_error($db));
+   }
+   else
+   {
+     $sql = "SELECT `name`,`email`,`meeting_id` FROM meetings WHERE is_notified=false";
+     $query = mysqli_query($db,$sql);
+     if ($query == false)
+     {
+        $feedback = $logic->display_error("Error!! ".mysqli_error($db));
+     }
+     else
+     {
+       while($clients = mysqli_fetch_assoc($query))
+       {
+         $notify .="<tr><td>".$clients['name']."</td><td><form method='post' action=''><input type='hidden' name='event_id' value='".$clients['meeting_id']."'/><button class='btn btn-primary' name='yes_send'>Notify</button></form></td></tr>";
+       }
+     }
+     $feedback = $logic->display_info("Your responce was <b>not now</b>, please use the left box to notify your client anytime later");
+   }
+ }
 ?>

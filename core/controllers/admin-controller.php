@@ -24,7 +24,6 @@
      $np++;
     }
   }
-
   //get all tasks
   $query = $logic->getallTasks();
   while($projects = mysqli_fetch_assoc($query))
@@ -47,5 +46,7 @@
      $nt++;
     }
   }
+
+
 
 ?>

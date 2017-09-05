@@ -4,6 +4,8 @@
    #temporary client account
    $sql = "CREATE TABLE tc_account
    (
+     tc_id int NOT NULL AUTO_INCREMENT,
+     PRIMARY KEY(tc_id),
      email varchar(175),
      name  varchar(75),
      surname varchar(75)
@@ -22,7 +24,7 @@
      chat_id int NOT NULL AUTO_INCREMENT,
      PRIMARY KEY(chat_id),
      client_email varchar(175),
-     employee_id int
+     employee_id varchar(20)
    ) ENGINE=InnoDB AUTO_INCREMENT=20170000 DEFAULT CHARSET=latin1";
    if(mysqli_query($con, $sql))
    {
@@ -38,7 +40,6 @@
      message_id int NOT NULL AUTO_INCREMENT,
      PRIMARY KEY(message_id),
      chat_id int,
-     FOREIGN KEY(chat_id) REFERENCES chat(chat_id),
      message_time DateTime,
      message_from varchar(100),
      message_to varchar(100),

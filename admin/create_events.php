@@ -17,62 +17,54 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
-              <form class="form-horizontal" action="" enctype="multipart/form-data" class="form" method="POST">
+            <div class='col-md-10 b'>
+              <form class="form" action="" enctype="multipart/form-data" class="form" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">
                 Events
                   </legend>
                   <?=($feedback)? $feedback:""?>
-                  <div class="col-xs-11 col-xs-offset-1">
-                      <div class="row">
-                        <div class="form-group col-xs-7">
+  
+                        <div class="form-group col-md-5">
                             <label for="event_name">Name :</label>
-                            <input required placeholder="Create New Event Name" class="form-control" id='event_name' type="text" name ="name"/>
+                            <input required placeholder="Event Name" class="form-control" id='event_name' type="text" name ="name"/>
                         </div>
-                       </div>
-                        <div class="row">
-                            <div class="form-group col-xs-9">
-                                <label for="description">Description :</label>
-                                <textarea class="form-control" id='description' name ="description" rows="5" cols="10"></textarea>
-                            </div>
+ 
+                        <div class="form-group col-md-8">
+                            <label for="description">Description :</label>
+                            <textarea class="form-control" placeholder="Event Name" id='description' name ="description" rows="5" cols="10"></textarea>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-xs-6">
-                                <label for="category" >Category :</label>
-                                <select id="depart" class="form-control" name="category">
-                                    <option value=''><b>~~Select~~</b></option> 
-                                    <option>Innovation & new technology</option>   
-                                    <option>New System Updates</option>  
-                                    <option>Customer Empowerment</option>                            
-                                </select>
-                            </div>
+ 
+                        <div class="form-group col-md-4">
+                            <label for="">Start  :</label>
+                            <input required placeholder="----/--/--" class="form-control " id='sdate' name ="sdate" rows="5" cols="10"></input>
                         </div>
-                        <div class="row">
-                                <div class="form-group col-xs-6">
-                                    <label for="">Start  :</label>
-                                    <input required placeholder="2017-08-23" class="form-control " id='sdate' name ="sdate" rows="5" cols="10"></input>
-                                </div>
-                            <div class="col-xs-6">
-                                <div class="form-group col-xs-12">
-                                    <label for="">End date :</label>
-                                    <input required placeholder="2017-08-23" class="form-control " id='edate' name ="edate" rows="5" cols="10"></input>
-                                </div>
-                            </div>
-                            </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <label  for="">Select image to upload:</label>
-                                <input type="file" name="eventimage" id="eventimage"/>
-                            </div>
+ 
+                        <div class="form-group col-md-4">
+                            <label for="">End date :</label>
+                            <input required placeholder="----/--/--" class="form-control " id='edate' name ="edate" rows="5" cols="10"></input>
                         </div>
-                  </div>
-        
+
+                        <div class="form-group col-md-5">
+                            <label for="category" >Category :</label>
+                            <select id="depart" class="form-control" name="category">
+                                <option value=''><b>~~Select~~</b></option> 
+                                <option>Innovation & new technology</option>   
+                                <option>New System Updates</option>  
+                                <option>Customer Empowerment</option>                            
+                            </select>
+                        </div>
+ 
+                        <div class="form-group col-md-12">
+                            <label  for="">Select image to upload:</label>
+                            <input type="file" name="eventimage" id="eventimage"/>
+                        </div>
+    
                 </fieldset>
                 <hr class="bhr"/>        
-                <div class="col-xs-12">
+                <div class="col-md-12">
                     <div class="form-group">
-                        <div class="col-xs-offset-2 col-xs-8" id='change'>
+                        <div class="col-md-offset-3 col-md-6" id='change'>
                             <input  type="submit" id='save' name="Create_Event" class="btn btn-block btn-success" value="Create Event"/>
                         </div>
                     </div>

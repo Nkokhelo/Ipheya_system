@@ -1,18 +1,22 @@
 <?php
 $log = new Logic(); 
-$result=mysqli_query($db,'select * from ServiceRequest');
+$email = $_SESSION['Client'];
+$client = $log->getByEmail($email);
+$id =$client['client_id'];
+$display ="";
+$result=mysqli_query($db,"select * from ServiceRequest where ClientID =$id");
     
-        echo "<table class='table table-hover'>";
-        echo "<tr> <th>Service Name</th> <th>Description</th> <th>Request Date</th> <th>Duration</th><th>Due Date</th> </tr>";
+        $display.= "<table class='table table-hover'>";
+        $display.= "<tr> <th>Service Name</th> <th>Description</th> <th>Request Date</th> <th>Duration</th><th>Due Date</th> </tr>";
         while ($row=mysqli_fetch_array($result))
         {
-                echo "<tr>";
-                echo "<td>" .$log->getServiceNameByID($row['ServiceID'])."</td>";
-                echo "<td>" .$row['Description']."</td>";
-                echo "<td>" .$row['RequestDate']."</td>";
-                echo "<td>" .$row['Duration']."</td>";
-                echo "<td>" .$row['DueDate']."</td>";
-                echo"</tr>";
+                $display.= "<tr>";
+                $display.= "<td>" .$log->getServiceNameByID($row['ServiceID'])."</td>";
+                $display.= "<td>" .$row['Description']."</td>";
+                $display.= "<td>" .$row['RequestDate']."</td>";
+                $display.= "<td>" .$row['Duration']."</td>";
+                $display.= "<td>" .$row['DueDate']."</td>";
+                $display.="</tr>";
             }
-            echo"</table>";
+            $display.="</table>";
 ?>

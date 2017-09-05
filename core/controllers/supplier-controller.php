@@ -105,62 +105,71 @@ endwhile;
         {
             die("error".mysqli_error($db));
         }
-    }
-    if(isset($_POST['update']))
-    {
-        $sup_no = $_POST['sup_no'];
-        $name = mysqli_real_escape_string($db, $_POST['name']);
-        $name = sanitize($name);
-
-        $address = mysqli_real_escape_string($db, $_POST['address']);
-        $address = sanitize($address);
-
-        $line2 = mysqli_real_escape_string($db, $_POST['line2']);
-        $line2 = sanitize($line2);
-
-        $line3 = mysqli_real_escape_string($db, $_POST['line3']);
-        $line3 = sanitize($line3);
-
-        $line4 = mysqli_real_escape_string($db, $_POST['line4']);
-        $line4 = sanitize($line4);
-
-        $postal = mysqli_real_escape_string($db, $_POST['postal']);
-        $postal = sanitize($postal);
-
-        $fullname = mysqli_real_escape_string($db, $_POST['fullname']);
-        $fullname = sanitize($fullname);
-
-        $telephone = mysqli_real_escape_string($db, $_POST['telephone']);
-        $telephone = sanitize($telephone);
-
-        $mobile = mysqli_real_escape_string($db, $_POST['mobile']);
-        $mobile = sanitize($mobile);
-
-        $fax = mysqli_real_escape_string($db, $_POST['fax']);
-        $fax = sanitize($fax);
-
-        $email = mysqli_real_escape_string($db, $_POST['email']);
-        $email = sanitize($email);
-
-        $web = mysqli_real_escape_string($db, $_POST['web']);
-        $web = sanitize($web);
-
-        $supplier_query = "SELECT * FROM suppliers WHERE supplier_no = '{$sup_no}'";
-        $edit_query =mysqli_query($db,$supplier_query);
-        if(mysqli_num_rows(mysqli_query($db,$supplier_query))>0)
+        if(isset($_POST['update']))
         {
-            $edit_query = "UPDATE suppliers SET company_name = '$name', address = '$address', line2='$line2', line3='$line3', line4='$line4',
-            post_code='$postal',contact_name='$fullname',telephone = '$telephone', mobile='$mobile',fax='$fax',web='$web',email ='$email' WHERE supplier_no = '{$sup_no}'";
-            $upadte = mysqli_query($db, $edit_query);
-            header('Location: viewsupplier.php?view='.$sup_no);
-        }
-        else
-        {
-            die($supplier_query);
+            $sup_no = $_POST['sup_no'];
+            $name = mysqli_real_escape_string($db, $_POST['name']);
+            $name = sanitize($name);
+
+            $address = mysqli_real_escape_string($db, $_POST['address']);
+            $address = sanitize($address);
+
+            $line2 = mysqli_real_escape_string($db, $_POST['line2']);
+            $line2 = sanitize($line2);
+
+            $line3 = mysqli_real_escape_string($db, $_POST['line3']);
+            $line3 = sanitize($line3);
+
+            $line4 = mysqli_real_escape_string($db, $_POST['line4']);
+            $line4 = sanitize($line4);
+
+            $postal = mysqli_real_escape_string($db, $_POST['postal']);
+            $postal = sanitize($postal);
+
+            $fullname = mysqli_real_escape_string($db, $_POST['fullname']);
+            $fullname = sanitize($fullname);
+
+            $telephone = mysqli_real_escape_string($db, $_POST['telephone']);
+            $telephone = sanitize($telephone);
+
+            $mobile = mysqli_real_escape_string($db, $_POST['mobile']);
+            $mobile = sanitize($mobile);
+
+            $fax = mysqli_real_escape_string($db, $_POST['fax']);
+            $fax = sanitize($fax);
+
+            $email = mysqli_real_escape_string($db, $_POST['email']);
+            $email = sanitize($email);
+
+            $web = mysqli_real_escape_string($db, $_POST['web']);
+            $web = sanitize($web);
+
+            $supplier_query = "SELECT * FROM suppliers WHERE supplier_no = '{$sup_no}'";
+            $edit_query = mysqli_query($db,$supplier_query);
+            $num_supp = mysqli_num_rows($edit_query);
+            if($num_supp>0)
+            {
+                $edit_query = "UPDATE suppliers SET company_name = '$name', address = '$address', line2='$line2', line3='$line3', line4='$line4',
+                post_code='$postal',contact_name='$fullname',telephone = '$telephone', mobile='$mobile',fax='$fax',web='$web',email ='$email' WHERE supplier_no = '{$sup_no}'";
+                $update = mysqli_query($db, $edit_query);
+                if($update)
+                {
+                  header('Location: viewsupplier.php?view='.$sup_no);
+                }
+                else{
+                  echo '<script>alert("'.mysqli_error($db).'")</script>';
+                }
+            }
+            else
+            {
+                die($supplier_query);
+            }
         }
     }
     if(isset($_GET['view']))
     {
+        #line below validates web
+        require_once('../core/sub/find-url.php');
         $sup_no = $_GET['view'];
         $supplier_query = "SELECT * FROM suppliers WHERE supplier_no = '{$sup_no}'";
         if(mysqli_query($db,$supplier_query))
@@ -186,6 +195,37 @@ endwhile;
             {
                 die("error");
             }
+        }
+
+        #select agreement info
+        $agreementsql = mysqli_query($db, "SELECT * FROM supplier_agreement WHERE supplier_no = '$sup_no'");
+        $agreementresult = mysqli_fetch_assoc($agreementsql);
+        $warrantyArr = explode(':',$agreementresult['warranty']);
+        
+        #draft new agreement for supplier
+        if(isset($_POST['Agreement']))
+        {
+          $discount = mysqli_real_escape_string($db, $_POST['discount']);
+          $deposit = mysqli_real_escape_string($db, $_POST['deposit']);
+          $delivery = mysqli_real_escape_string($db, $_POST['delivery']);
+          $warrantynum = mysqli_real_escape_string($db, $_POST['warrantynum']);
+          $warrantytype = mysqli_real_escape_string($db, $_POST['warrantytype']);
+          $start_date = mysqli_real_escape_string($db, $_POST['start_date']);
+          $end_date = mysqli_real_escape_string($db, $_POST['end_date']);
+          $clause = mysqli_real_escape_string($db, $_POST['clause']);
+
+          $warranty = $warrantynum.':'.$warrantytype;
+          if(empty($_POST['deposit']))
+          {
+            $deposit = 'N/A';
+          }
+
+          $agreement = mysqli_query($db, "INSERT INTO supplier_agreement(supplier_no,deposit,liability_clause,discount,delivery_fee,start_date,end_date,warranty)
+          VALUES('{$sup_no}','{$deposit}','{$clause}','{$discount}','{$delivery}','{$start_date}','{$end_date}','{$warranty}')");
+          if(!$agreement)
+          {
+            echo '<script>alert("'.mysqli_error($db).'")</script>';
+          }
         }
     }
     if(isset($_GET['delete']))
