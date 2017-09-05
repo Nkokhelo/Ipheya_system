@@ -663,7 +663,7 @@
             $body='<table style="max-width:800px; padding:1% 10% 5%; width:100%; background: #eee;font-family: &#39;Gill Sans&#39;, &#39;Gill Sans MT&#39;, Calibri, &#39;Trebuchet MS&#39;, sans-serif;">
             <tr>
                 <td style="text-align:center">
-                <img alt="Ipheya Logo" width="30%" heigh="30%" src="http://localhost:81/ipheya/assets/images/logo.gif">
+                <img alt="Ipheya Logo" width="30%" heigh="30%" src="http://www.invest4living.com/ipheya/assets/images/logo.gif">
                     <h3 style="text-align: center;font-weight: bolder;font-size: 2vw;">IPHEYA IT SOLUTIONS</h3>
                 </td>
             </tr>
@@ -691,7 +691,7 @@
             $body='<table style="max-width:800px; padding:1% 10% 5%; width:100%; background: #eee;font-family: &#39;Gill Sans&#39;, &#39;Gill Sans MT&#39;, Calibri, &#39;Trebuchet MS&#39;, sans-serif;">
             <tr>
                 <td style="text-align:center">
-                    <img img alt="Ipheya Logo" width="30%" heigh="30%" src="http://localhost:81/ipheya/assets/images/logo.gif" >
+                    <img img alt="Ipheya Logo" width="30%" heigh="30%" src="http://www.invest4living.com/ipheya/assets/images/logo.gif" >
                     <h3 style="text-align: center; color:#000;font-weight: bolder;font-size: 2vw;">IPHEYA IT SOLUTIONS</h3>
                 </td>
             </tr>
