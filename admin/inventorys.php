@@ -54,9 +54,8 @@ session_start();
                     </table>
                 </div>
                 <hr class="bhr" style="width:100%">
-                <div class="col-xs-12">
+                <div class="col-xs-6 col-xs-offset-3">
                     <a href="additem.php?purchase" class="btn btn-block btn-default"><span class="glyphicon glyphicon-plus-sign"></span> Purchase</a>
-                    <br>
                 </div>
             </div>
         </div>
