@@ -110,7 +110,7 @@
             if($projects['program_no']==$p_no)
             {
                 $no = $projects['project_no'];
-                $get_project .="<a href='viewproject.php?pview=$no&prog=".$_GET['view']."'>".$projects['project_name']."</a>, ";
+                $get_project .="<li><a href='viewproject.php?pview=$no&prog=".$_GET['view']."'><b>".$projects['project_name']."</b></a></li>";
                 $pi++;
             }
         }
@@ -127,10 +127,24 @@
     if(isset($_GET['pview']))
     {
         $project_no = $_GET['pview'];
+        $p_expenses ='';
+        $p_income='';
         $viewproject ='';
         $employee='';
         $client ='';
         $proj ='';
+        $query = "SELECT SUM(ei_amount) as amount FROM expense_income WHERE e_or_i ='i' AND project_no='".$project_no."'";
+        $p_income = mysqli_fetch_assoc(mysqli_query($logic->connect(),$query))['amount'];
+        if($p_income==null)
+        {
+            $p_income=0;
+        }
+        $query = "SELECT SUM(ei_amount) as amount FROM expense_income WHERE e_or_i ='e' AND project_no='".$project_no."'";
+        $p_expenses = mysqli_fetch_assoc(mysqli_query($logic->connect(),$query))['amount'];
+        if($p_expenses==null)
+        {
+            $p_expenses=0;
+        }
         $viewproject = $logic->getProjectByNo($_GET['pview']);//get project data from a a database
         $employee= $logic->getEmployeeByEmpNo($viewproject['employee_no']);//get employee information from a database
         $client = $logic ->getClientByNo($logic->getProgramByNo($viewproject['program_no'])['client_no']);// get client information from a database       
@@ -140,7 +154,7 @@
         {
             if($all['project_no']!= $_GET['pview'])
             {
-                $proj .="<li><b>".$all['project_name']."</b>:  -  :<a href='viewproject?pview=".$all['project_no']."'>View.</a></li>"; 
+                $proj .="<li><a href='viewproject?pview=".$all['project_no']."'><b>".$all['project_name']."</b></a></li>"; 
             }
             
         }
@@ -150,7 +164,8 @@
         {
             if($all['project_no']!= $_GET['pview'])
             {
-                $proj .="<li>".$all['project_name']."-<a href='viewproject?pview=".$all['project_no']."'>View?</a></li>"; 
+                $proj .="<li><a href='viewproject?pview=".$all['project_no']."'><b>".$all['project_name']."</b></a></li>"; 
+                
             }
         }
 

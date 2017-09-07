@@ -79,7 +79,7 @@
                     <div class="form-group col-xs-12">
                         <label class="col-xs-2 control-label" for="">Start date :</label>
                         <div class="col-xs-3  input-group input-append " id='dsdate'style='padding-left:15px; float: inherit;'>
-                            <input required placeholder="2017-08-09" class="form-control " id='sdate' name ="sdate" rows="5" cols="10"></input>
+                            <input required placeholder="2017-08-09" class="form-control " id='sdate' name ="start_date" rows="5" cols="10"></input>
                             <span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
                         </div>
                         <label class="col-xs-3 control-label" for="">Duration :</label>

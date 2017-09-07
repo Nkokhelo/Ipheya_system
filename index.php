@@ -217,9 +217,14 @@
 						</div>
 					</form>
 					<div class="col-xs-10 col-xs-offset-1">
+						<div class="col-xs-12" style="padding-bottom:5px; margin-bottom:5px;">
+							<h3><i class="fa fa-star-o"></i>Service Ratings</h3>
+						<?=$service_ratings?>
+						</div>
+						<br/>
+						<hr style="width:100%; border:1px solid #48b4ff;"/>
 					<div id="disqus_thread"></div>
 					</div>
-						
 				</div>
 			</div><!--/.row-->
 		</div><!-- /.container -->

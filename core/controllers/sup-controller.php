@@ -7,7 +7,7 @@
  {
    if($f['department_id']!=null)
    {
-     $faqs.="<dt>".$f['question']."?</dt><dd>".$f['answer']."</dd>";
+     $faqs.="<dt>".$f['question']."?</dt><dd>".$f['answer']."</dd><br><br>";
    }
  }   
 ?>

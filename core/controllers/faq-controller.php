@@ -5,7 +5,7 @@ $all= $logic->getallDepartments();
 $feedback="";
 $faqs='';
 $allf = $logic->getallfaqs();
-
+$service_ratings='';
 while($f = mysqli_fetch_assoc($allf))
 {
   if($f['department_id']!=null)
@@ -18,6 +18,27 @@ while($f = mysqli_fetch_assoc($allf))
   }
 }
 
+$ratequery ="SELECT service_id, AVG(rating) as rating FROM s_ratings GROUP BY service_id";
+$result =mysqli_query($logic->connect(), $ratequery);
+while($rate =mysqli_fetch_assoc($result))
+{
+  $stars ='';
+  for($i=0; $i<5;$i++)
+  {
+    if($i< $rate['rating'])
+    {
+      $stars.="<div class='col-xs-1'><i class='fa fa-star'></i></div>";
+    }
+    else
+    {
+      $stars.="<div class='col-xs-1'><i class='fa fa-star-o'></i></div>";
+    }
+  }
+  $service_ratings .="<div class='col-xs-3'> 
+                      <h4>".$logic->getServiceNameByID($rate['service_id'])."</h4>
+                      <div class='col-xs-12' style='color:blue'>".$stars."</div>
+                      </div>";
+}
 if(isset($_GET['an']))
 {
   $faqs=null;  
@@ -64,6 +85,7 @@ while($dep = mysqli_fetch_assoc($all))
   else
   {
     $feedback = $logic->display_success("Saved");
+    header("Location:allfaqs.php");
   }
  }
  if(isset($_POST['submit']))

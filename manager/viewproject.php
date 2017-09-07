@@ -110,7 +110,13 @@
                     <h4 style="color:#888">Tasks</h4 style="color:#888">
                     <?= $tasks_no ?>
                   </div>
-                  <div class="col-xs-12"><a href='ganttchart.php?proj=<?=$_GET["pview"]?>'>Gantt Chart View</a></div>
+                <!--  #TODO please do the gantt chart ganttchart.php -->
+                  <div class="col-xs-12"><br>
+                  <h4 style="color:#888">Project amount and Budget</h4 style="color:#888">
+                  <b>Budget :</b> R <?= number_format($viewproject['budget'],2,","," ")?><br/><br/>
+                  Expenses : <p style="color:red">R <?= number_format($p_expenses,2,","," ")?><br/></p>
+                    Incomes : <p style="color:green"> R <?=number_format($p_income,2,","," ")?><br/></p>
+                  </div>
                 </div>
               </div>
               <hr class='bhr' style="width:100%"/>

@@ -23,10 +23,10 @@
             <h2>All Employees</h2>
             <hr class="bhr"/>
             <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>
-              <table class="table" id="employeeTable">
+              <table class="table  table-bordered" id="employeeTable">
                 <thead>
+                  <th>Employee no#</th>
                   <th>Department</th>
-                  <th>Employee No</th>
                   <th>Fullname</th>
                   <th>Role(s)</th>
                   <th>Options</th>

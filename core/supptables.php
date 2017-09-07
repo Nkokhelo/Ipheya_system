@@ -50,13 +50,13 @@
    (
      sagreement_id int NOT NULL AUTO_INCREMENT,
      PRIMARY KEY(sagreement_id),
-     supplier_id int,
-     FOREIGN KEY(supplier_id) REFERENCES suppliers(supplier_id),
+     supplier_no varchar(20),
      deposit varchar(10),
      liability_clause text,
      discount varchar(10),
      delivery_fee varchar(10),
-     duration varchar(30),
+     start_date date,
+     end_date date,
      warranty varchar(50)
    )";
    if(mysqli_query($db,$sql))

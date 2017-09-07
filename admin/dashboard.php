@@ -3,10 +3,10 @@ session_start();
     if(isset($_SESSION['Employee']))
     {
       require_once('../core/init.php');
-      include('includes/head2.php');
       include('../core/logic.php');
+      include('includes/head2.php');
       require_once('../core/controllers/client-controller.php');
-      include('../core/controllers/chat-controller.php');
+      #include('../core/controllers/chat-controller.php');
     }
     else
     {
@@ -16,7 +16,7 @@ session_start();
 
 <body>
   <div class="wrapper">
-      <?php include 'includes/sidebar.php'?>
+      <?php include 'includes/sidebar.php';?>
       <div id='content'>
         <div class='row'>
          <div class='col-xs-11 b'>
@@ -28,7 +28,7 @@ session_start();
         </div>
         </div>
         <?php include('includes/footer.php'); ?>
-        <?php include('includes/chat.php'); ?>
+        <?php #include('includes/chat.php'); ?>
       </div>
   </div>
 </body>

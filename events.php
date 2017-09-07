@@ -50,7 +50,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center home-page">
 					 <div class="navbar-collapse collapse">
-						<div class="col-lg-offset-4 col-md-6">
+						<div class="col-xs-offset-3 col-md-8">
       <ul class="nav navbar-nav">
        <li><a class="active"  href="index.php" target="_top">Home</a></li>
        <li><a  href="#service-page" target="_top">Services</a></li>
@@ -171,7 +171,7 @@
 	<script>
 		function loadevent(id)
 		{
-				$('#event-data').load('http://localhost:81/ipheya/core/sub/finatialR.php?uevent_data='+id);
+				$('#event-data').load('http://www.invest4living.com/ipheya/core/sub/finatialR.php?uevent_data='+id);
 		}
 
 	

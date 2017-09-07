@@ -196,6 +196,37 @@ endwhile;
                 die("error");
             }
         }
+
+        #select agreement info
+        $agreementsql = mysqli_query($db, "SELECT * FROM supplier_agreement WHERE supplier_no = '$sup_no'");
+        $agreementresult = mysqli_fetch_assoc($agreementsql);
+        $warrantyArr = explode(':',$agreementresult['warranty']);
+        
+        #draft new agreement for supplier
+        if(isset($_POST['Agreement']))
+        {
+          $discount = mysqli_real_escape_string($db, $_POST['discount']);
+          $deposit = mysqli_real_escape_string($db, $_POST['deposit']);
+          $delivery = mysqli_real_escape_string($db, $_POST['delivery']);
+          $warrantynum = mysqli_real_escape_string($db, $_POST['warrantynum']);
+          $warrantytype = mysqli_real_escape_string($db, $_POST['warrantytype']);
+          $start_date = mysqli_real_escape_string($db, $_POST['start_date']);
+          $end_date = mysqli_real_escape_string($db, $_POST['end_date']);
+          $clause = mysqli_real_escape_string($db, $_POST['clause']);
+
+          $warranty = $warrantynum.':'.$warrantytype;
+          if(empty($_POST['deposit']))
+          {
+            $deposit = 'N/A';
+          }
+
+          $agreement = mysqli_query($db, "INSERT INTO supplier_agreement(supplier_no,deposit,liability_clause,discount,delivery_fee,start_date,end_date,warranty)
+          VALUES('{$sup_no}','{$deposit}','{$clause}','{$discount}','{$delivery}','{$start_date}','{$end_date}','{$warranty}')");
+          if(!$agreement)
+          {
+            echo '<script>alert("'.mysqli_error($db).'")</script>';
+          }
+        }
     }
     if(isset($_GET['delete']))
     {

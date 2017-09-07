@@ -40,9 +40,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="service-ratings.php">
-                            <i class="glyphicon glyphicon-paperclip"></i>
-                            Services blog
                         <a href="rateus.php">
                             <i class="fa fa-star-o"></i>
                             Rate Us
