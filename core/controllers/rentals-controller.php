@@ -1,8 +1,8 @@
 <?php
 
     $logic = new Logic();
-
- if(isset($_POST['save_rentals']))
+    $feedback="";
+   if(isset($_POST['save_rentals']))
     {
         $name= htmlspecialchars($_POST['name'], ENT_QUOTES);
         $description= htmlspecialchars($_POST['description'], ENT_QUOTES);
