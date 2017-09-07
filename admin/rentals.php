@@ -40,6 +40,7 @@
                         <div class="col-xs-4">
                         <select class="selectpicker form-control" title="Please select" id='catergory' type="text" name ="catergory">       
                             <option value="">~Select~</option>
+                            <option value="1">printer</option>
                         </select>
                         </div>
                     </div>
@@ -72,7 +73,7 @@
                    </div>
                     <div class="form-group col-xs-3">
                        <label  for="">Select image to upload:</label>
-                            <input type="file" name="rentalimage" id="rentalimage"/>
+                            <input type="file" name="eventimage" id="eventimage"/>
                         </div>
                      
                     <div class="form-group col-xs-12">
