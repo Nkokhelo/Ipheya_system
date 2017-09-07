@@ -4,15 +4,14 @@
     $feedback="";
    if(isset($_POST['save_rentals']))
     {
-        $name= htmlspecialchars($_POST['name'], ENT_QUOTES);
-        $description= htmlspecialchars($_POST['description'], ENT_QUOTES);
+        
         $asset_code= $_POST['asset_code'];
         $catergory= $_POST['catergory'];  
-        $name= $_POST['name']; 
-        $description= $_POST['description'];  
+        $name= htmlspecialchars($_POST['name'], ENT_QUOTES);
+        $description= htmlspecialchars($_POST['description'], ENT_QUOTES);
         $purchase_date= $_POST['purchase_date'];  
         $charge= $_POST['charge'];  
-        $rentalimage= $_POST['rentalimage'];  
+        $visibility= $_POST['visibility'];  
         $rentalimage= $_POST['rentalimage'];  
 
         $image=addslashes($_FILES['rentalimage']['tmp_name']);
@@ -30,8 +29,8 @@
                 $image=file_get_contents($image);
                 $image=base64_encode($image);
             }
-            $save = "INSERT INTO `rentals`(`id`,`title`,`color`,`description`,`category`,`start`,`end`,`image`)      
-                             VALUES (null,'$name','#fff','$description','$category','$sdate','$edate','$image')";
+            $save = "INSERT INTO `rentals`(`id`,`asset_code`,`color`,`catergory`,`name`,`description`,`purchase_date`,`charge,`visibility,`rentalimage`)      
+                             VALUES (null,'$asset_code','#fff','$catergory','$name','$description','$purchase_date','$charge','$visibility','$rentalimage')";
             $result = mysqli_query($logic->connect(),$save);
             if(!$result)  
             { 
