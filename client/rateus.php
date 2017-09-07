@@ -44,7 +44,7 @@ else
 
             $.ajax({
             type : "get",
-             url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+             url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
             data : "service=allservice",
             success:function(data)
             {
@@ -89,7 +89,7 @@ else
                 var callback = function(rating) {
                     $.ajax({
                     type : "get",
-                    url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+                    url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
                     data : "service_id="+service.service_id+"&client_id="+id+"&rating="+rating,
                     success:function(data)
                     {
