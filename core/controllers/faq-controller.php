@@ -20,7 +20,7 @@ while($f = mysqli_fetch_assoc($allf))
 
 if(isset($_GET['an']))
 {
-  $faqs='';  
+  $faqs=null;  
   $allf = $logic->getallfaqs();
   
   while($f = mysqli_fetch_assoc($allf))

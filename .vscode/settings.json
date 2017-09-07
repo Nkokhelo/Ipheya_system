@@ -1,10 +1,4 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-
-    "editor.tabSize": 2,
-    "editor.tabSize": 1,
-    "editor.letterSpacing": 0,
-    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
-    "editor.fontSize": 12,
-    "editor.fontWeight": "900"
+    "php.validate.executablePath":"C://wamp64//bin//php//php7.0.10//php.exe"
 }

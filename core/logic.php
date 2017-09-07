@@ -1697,7 +1697,7 @@
 #faqs
 public function getfaqbyId($id)
 {
-    $sql ="SELECT * FROM faqs WHERE f_id=$id";
+    $sql ="SELECT * FROM faqs WHERE f_id= '$id' ";
     $qey =mysqli_query($this->connect(),$sql);
     if(!$qey)
     {
