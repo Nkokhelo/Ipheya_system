@@ -19,8 +19,8 @@ while($f = mysqli_fetch_assoc($allf))
 }
 
 $ratequery ="SELECT service_id, AVG(rating) as rating FROM s_ratings GROUP BY service_id";
-$result = mysqli_query($logic->connect(), $ratequery);
-while($rate = mysqli_fetch_assoc($result))
+$result =mysqli_query($logic->connect(), $ratequery);
+while($rate =mysqli_fetch_assoc($result))
 {
   $stars ='';
   for($i=0; $i<5;$i++)
