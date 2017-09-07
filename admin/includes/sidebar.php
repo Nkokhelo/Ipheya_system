@@ -60,6 +60,12 @@
       Inventory
     </a>
   </li>
+    <li>
+    <a href="rentals.php">
+      <i class='fa fa-cubes'></i>
+      rentals
+    </a>
+  </li>
   <li>
     <a href="targets.php">
         <i class='fa fa-bullseye'></i>
