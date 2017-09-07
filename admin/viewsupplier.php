@@ -187,8 +187,8 @@
                                   <h4 style="color:#aaa">Draft Agreement</h4>
                                   <hr class="bhr"/>
                                   <div class="col-xs-12 col-md-12">
-                                      <input name="sup_no" type="hidden" value="<?=$_GET['view'];?>" />
-                                      <p style="color:#0094ff; position:absolute; top:5px;">Supplier number : #<?= $_GET['view'];?></p>
+                                      <input name="sup_no" type="hidden" value="<?=((isset($_GET['view']))?:$_GET['edit']);?>" />
+                                      <p style="color:#0094ff; position:absolute; top:5px;">Supplier number : #<?= ((isset($_GET['view']))?:$_GET['edit']);?></p>
                                   <hr class="bhr"/>
                                   </div>
 
