@@ -1,4 +1,5 @@
 <?php
+#21539288 POLELA AL
 #Find if a url exists
 function urlExists($url) {
       $class_attr = '';

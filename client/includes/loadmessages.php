@@ -1,4 +1,5 @@
 <?php
+   #21539288 POLELA AL
    require_once($_SERVER['DOCUMENT_ROOT'].'/ipheya/core/init.php');
    session_start();
    header('Content-Type: application/json');

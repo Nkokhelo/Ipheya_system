@@ -1,4 +1,5 @@
 <?php
+    #21539288 POLELA AL
     require_once('../init.php');
 
     if(!$db)

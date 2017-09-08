@@ -1,4 +1,5 @@
 <?php
+    #21539288 POLELA AL
     $chat = $chatfooter = '';
     if(isset($_SESSION["Client"]))
     {
@@ -16,7 +17,7 @@
         {
           echo '<script>alert("'.$newtc.'")</script>';
         }
-        else 
+        else
         {
           echo '<script>alert("'.mysqli_error($db).'");</script><br>';
           echo '<script>alert("'."INSERT INTO tc_account(email,name,surname) VALUES('{$u}','$qr[name]','$qr[surname]')".'");</script>';
