@@ -1,4 +1,5 @@
 <style>
+/*21539288 POLELA AL*/
 #overlay {
     position: fixed;
     <?php if(!isset($_SESSION['chat_client'])){echo 'display: none;';}?>

@@ -1,4 +1,6 @@
 <?php
+#20427839 Xulu K
+#21539288 POLELA AL
 require_once('../core/init.php');
 #require_once('../init.php');
 $id = mysqli_real_escape_string($db,$_GET['agrid']);
