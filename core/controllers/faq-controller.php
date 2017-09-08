@@ -1,4 +1,5 @@
 <?php
+# 21401824 ME Zenzile
 $logic = new Logic();
 $alldepartment='';
 $all= $logic->getallDepartments(); 
