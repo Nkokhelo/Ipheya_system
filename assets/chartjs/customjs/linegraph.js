@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $(document).ready(function() {
     $.ajax({
         url: "/ipheya/core/sub/target-chart-sub.php",
@@ -9,6 +10,20 @@ $(document).ready(function() {
             var firstvisit = [];
             var lastvisit = [];
             var totalvisits = [];
+=======
+//21539288 POLELA AL
+$(document).ready(function(){
+  $.ajax({
+    url : "/ipheya/core/sub/target-chart-sub.php",
+    type : "GET",
+    success : function(data){
+      //console.log(data);
+      var targetid = [];
+      var ipaddress = [];
+      var firstvisit = [];
+      var lastvisit  = [];
+      var totalvisits = [];
+>>>>>>> bec65a2119fb5dad88eb5b5905279959b699debf
 
             for (var i in data) {
                 ipaddress.push(data[i].ip_address);

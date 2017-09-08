@@ -38,7 +38,8 @@
             <hr class="bhr"/>
             <div class="col-xs-12">
               <div class="col-xs-4 col-xs-offset-4">
-                <a class="btn btn-block btn-default" href="services.php"><i class="fa fa-plus-square-o"></i> Add Service</a>
+                <a class="btn btn-block btn-default" 
+                href="services.php"><i class="fa fa-plus-square-o"></i> Add Service</a>
               </div>
             </div>
           </div>

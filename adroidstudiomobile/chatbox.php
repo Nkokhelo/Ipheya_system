@@ -1,4 +1,5 @@
 <?php
+ #21539288 POLELA AL
  include('includes/header.php');
  session_start();
  if(!isset($_SESSION['chat_employee']))
@@ -16,11 +17,10 @@
     <?php #if(!isset($_SESSION['chat_client'])){echo 'display: none;';}?>
     /*margin-right: 2px;
     margin-bottom: -1%;*/
-    bottom: 0;
+    top: 0;
     z-index: 2;
     cursor: pointer;
-    min-height: 575px;
-    height: 100%;
+    height: 90%;
 }
 .chat
   {
@@ -137,7 +137,7 @@
          $(document).ready(function(){
            var interval = setInterval(function () {
              $.ajax({
-               url: 'components/processes/load-messages-handler.php',
+               url: '/components/processes/load-messages-handler.php',
                success: function(data){
                  $('#chat').html(data);
                  $('#chat-panel').scrollTop($('#chat-panel')[0].scrollHeight);

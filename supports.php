@@ -144,7 +144,7 @@
 							<div class="col-md-4">
 								<ul>
 									<li>Hardware and Software Maintanance</li>
-									<li>Internet Solution</li>
+									<li>digital signage</li>
 									<li>Lease Equipment</li>
 									<li>IT Solution</li>
 									<li>Confrence</li>
