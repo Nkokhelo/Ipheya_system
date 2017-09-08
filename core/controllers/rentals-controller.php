@@ -2,12 +2,12 @@
 
     $logic = new Logic();
     $feedback="";
-    $allevents="";
+    $allrentals="";
     $emailfeed='';
     $rentals =$logic->getallevents();
     while ($all = mysqli_fetch_assoc($rentals))
     {
-        $Allrentals .='	<div class="col-xs-3" id="event" style="border:1px #999 solid; max-height:340px; margin:1%; box-shadow:6px 6px 6px #eee;">
+        $allrentals .='	<div class="col-xs-3" id="event" style="border:1px #999 solid; max-height:340px; margin:1%; box-shadow:6px 6px 6px #eee;">
                     <div style="width:95%;  margin-left:-15px; height:150px;">
                         <img src="data:image/*;base64,'.$all['image'].'" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
                     </div>
@@ -29,7 +29,7 @@
     }
    if(isset($_POST['save_rentals']))
     {
-        
+       
         $asset_code= $_POST['asset_code'];
         $catergory= $_POST['catergory'];  
         $name= htmlspecialchars($_POST['name'], ENT_QUOTES);
@@ -37,7 +37,7 @@
         $purchase_date= $_POST['purchase_date'];  
         $charge= $_POST['charge'];  
         $visibility= $_POST['visibility'];  
-        $eventimage= $_POST['rentalimage'];  
+        $rentalimage= $_POST['rentalimage'];  
 
         $image=addslashes($_FILES['rentalimage']['tmp_name']);
         if(!isset($image))

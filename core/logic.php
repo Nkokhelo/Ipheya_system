@@ -750,6 +750,24 @@ public function getEventbyID($id)
     }
     return mysqli_fetch_assoc($qey);
 }
+#rentals
+public function getAllrentals()
+{
+    $sql="SELECT * FROM rentals";
+    $rent =mysqli_query($this->connect(),$sql);
+    return $rent;
+}
+
+public function getRentalbyID($id)
+{
+    $sql ="SELECT * FROM rentals WHERE id=$id";
+    $rent =mysqli_query($this->connect(),$sql);
+    if(!$rent)
+    {
+        die("Error".mysqli_error($this->connect()));
+    }
+    return mysql_fetch_assoc($rent);
+}
 #error 
         public function display_error($message)
         {

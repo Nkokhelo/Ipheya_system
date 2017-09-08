@@ -18,7 +18,7 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-10 b'>
-              <form class="form-horizontal" action="rentals.php" method="POST">
+              <form class="form-horizontal"enctype="multipart/form-data" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">
                     <?php if(isset($_GET['prog'])) { ?>
@@ -73,7 +73,7 @@
                    </div>
                     <div class="form-group col-xs-3">
                        <label  for="">Select image to upload:</label>
-                            <input type="file" name="eventimage" id="eventimage"/>
+                            <input type="file" name="rentalimage" id="rentalimage"/>
                         </div>
                      
                     <div class="form-group col-xs-12">
