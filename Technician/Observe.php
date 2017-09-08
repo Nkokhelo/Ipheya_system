@@ -1,4 +1,5 @@
 <?php
+# 21408789 Zulu NP
 $con=mysqli_connect('localhost','root','');
 if(!$con)
 	die('Could not connect'.mysqli_error());

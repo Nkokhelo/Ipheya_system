@@ -41,6 +41,8 @@
                           }
 
           mysqli_close($con);
+
+
 /*#CREATE TABLE clients
    $sql = "CREATE TABLE clients
            (
