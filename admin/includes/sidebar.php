@@ -53,18 +53,17 @@
       <li><a href="allfaqs.php">FAQ</a></li>
     </ul>
   </li>
-  
   <li>
     <a href="inventorys.php">
       <i class='fa fa-cubes'></i>
-      Inventory
+     
     </a>
   </li>
-    <li>
+  <li>
     <a href="rentals.php">
-      <i class='fa fa-cubes'></i>
+      <i class='fa fa-bullseye'></i>
       rentals
-    </a>
+    </a> 
   </li>
   <li>
     <a href="targets.php">
