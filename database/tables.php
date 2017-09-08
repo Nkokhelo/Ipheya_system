@@ -585,7 +585,6 @@
                 else{
                   echo '{{chat not created: '.mysqli_error($con).'}}<br>';
                 }
-
                 #message table
                 $sql = "CREATE TABLE message
                 (
@@ -621,4 +620,107 @@
                 else{
                   echo '{{feedback not created: '.mysqli_error($con).'}}<br>';
                 }
+                #programs
+          $sql="CREATE TABLE `programs`
+          (
+            `id` int(5) NOT NULL,
+            `program_no` varchar(11) NOT NULL,
+            `program_name` varchar(50) NOT NULL,
+            `description` varchar(150) NOT NULL,
+            `client_no` varchar(11) DEFAULT NULL,
+            `archive` tinyint(1) DEFAULT NULL
+          )";
+
+          #project
+          $sql="
+          CREATE TABLE `projects` (
+            `id` int(5) NOT NULL,
+            `project_no` varchar(11) NOT NULL,
+            `program_no` varchar(11) NOT NULL,
+            `project_name` varchar(50) NOT NULL,
+            `description` varchar(150) NOT NULL,
+            `start_date` datetime DEFAULT NULL,
+            `end_date` datetime DEFAULT NULL,
+            `employee_no` varchar(11) NOT NULL,
+            `quotation` varchar(11) NOT NULL,
+            `duration` int(3) NOT NULL,
+            `duration_type` varchar(15) NOT NULL,
+            `department` varchar(15) NOT NULL,
+            `service` varchar(15) NOT NULL,
+            `budget` double DEFAULT '0',
+            `no_of_emp` int(4) NOT NULL,
+            `patner` varchar(30) NOT NULL,
+            `visibility` int(11) NOT NULL,
+            `daily_hours` int(3) NOT NULL,
+            `charge` float NOT NULL,
+            `status` varchar(11) NOT NULL DEFAULT 'not stated',
+            `archive` int(11) DEFAULT '0'
+          )";
+          #events
+          $sql="CREATE TABLE `events` (
+            `id` int(11) NOT NULL,
+            `title` varchar(255) NOT NULL,
+            `color` varchar(7) DEFAULT NULL,
+            `start` datetime NOT NULL,
+            `end` datetime DEFAULT NULL,
+            `description` text,
+            `category` varchar(100) DEFAULT NULL,
+            `image` longblob
+          )";
+   #meetings
+
+    $sql="CREATE TABLE `meetings` (
+      `meeting_id` int(3) NOT NULL,
+      `name` varchar(50) NOT NULL,
+      `email` varchar(50) NOT NULL,
+      `m_title` varchar(150) NOT NULL,
+      `m_description` text NOT NULL,
+      `color` varchar(7) NOT NULL DEFAULT 'yellow',
+      `m_start` datetime NOT NULL,
+      `m_end` datetime NOT NULL,
+      `is_client` tinyint(4) NOT NULL,
+      `is_notified` tinyint(1) NOT NULL DEFAULT '1'
+    )";
+    #FAQs
+    $sql="CREATE TABLE `faqs` (
+      `f_id` int(11) NOT NULL,
+      `department_id` int(11) DEFAULT NULL,
+      `question` text,
+      `answer` text,
+      `category` varchar(50) DEFAULT NULL,
+      `name` varchar(50) NOT NULL,
+      `email` varchar(50) NOT NULL
+    )";
+    #Expense_income
+    $sql="CREATE TABLE `expense_income` (
+      `id` int(5) NOT NULL,
+      `ei_name` varchar(50) NOT NULL,
+      `ei_type` char(1) DEFAULT NULL,
+      `ei_description` varchar(300) DEFAULT NULL,
+      `ei_date` datetime NOT NULL,
+      `ei_payment_type` varchar(50) NOT NULL,
+      `ref_no` varchar(15) DEFAULT NULL,
+      `ei_amount` varchar(50) NOT NULL,
+      `other` varchar(50) DEFAULT NULL,
+      `supplier_no` varchar(10) DEFAULT NULL,
+      `client_no` varchar(11) DEFAULT NULL,
+      `project_no` varchar(11) DEFAULT NULL,
+      `category_id` int(11) NOT NULL,
+      `e_or_i` char(1) DEFAULT NULL,
+      `file` longblob NOT NULL
+    )";
+    #purchase
+    $sql="CREATE TABLE `purchases` (
+      `item_no` int(11) NOT NULL,
+      `item_code` varchar(11) NOT NULL,
+      `supplier_no` varchar(10) NOT NULL,
+      `purchase_date` datetime DEFAULT NULL,
+      `arrival_date` date DEFAULT NULL,
+      `quantity` int(11) DEFAULT NULL,
+      `unit_price` double DEFAULT NULL,
+      `total_price` double DEFAULT NULL,
+      `item_image` longblob
+    )";
+    #message
+
 ?>
