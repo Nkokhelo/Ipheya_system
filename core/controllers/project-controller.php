@@ -20,9 +20,9 @@
         $budget= $_POST['budget'];
         $no_of_emp=$_POST['no_of_emp'];
         $patner=$_POST['patner'];
-        $visibility=$_POST['visibility']; 
+        $visibility=$_POST['visibility'];
         $daily_hour=$_POST['daily_hour'];
-        $charge=$_POST['charge'];   
+        $charge=$_POST['charge'];
 
         $client_unique = uniqid();
         $project_no ="P00".strtoupper(substr($client_unique,6,4));
@@ -38,15 +38,15 @@
         {
               $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> Project saved !');
         }
-    } 
- 
+    }
+
  #get all projets
   $query_result = $logic->getallProjets();
   $proj_list ='';
   $error='';
 
   while($proj = mysqli_fetch_assoc($query_result))
-  
+
   {
     if($proj['status']=='complete')
     {
@@ -146,7 +146,7 @@ if(isset($_GET['pview']))
         $feedback =array('alert'=>'', 'message'=>'');
         $project_name =$_POST['project_name'];
         $description =$_POST['description'];
-        $duration =$_POST['duration']; 
+        $duration =$_POST['duration'];
         $start_date =$_POST['start_date'];
         $patner =$_POST['patner'];
         $budget =$_POST['budget'];
@@ -160,14 +160,10 @@ if(isset($_GET['pview']))
         }
         else
         {
-<<<<<<< HEAD
-            $query = mysqli_query($db,"UPDATE projects SET project_name = '$project_name',description='$description', duration='$duration', sdate='$start_date', patner='$patner', budget='$budget', charge='$charge', daily_hours='$daily_hours', visibility='$visibility' WHERE project_no= '$pid'");
-=======
             $query = mysqli_query($db,"UPDATE `projects` SET `project_name` ='$project_name',`description`='$description', `duration`='$duration', `start_date`='$start_date', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hours`='$daily_hours', `visibility`='$visibility' WHERE project_no='$pid'");
->>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
             if(!$query)
             {
-                
+
                 $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again'.mysqli_error($db));
             }
             else
