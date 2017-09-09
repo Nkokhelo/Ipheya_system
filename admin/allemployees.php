@@ -19,7 +19,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 col-xs-offset-1 b'>
+            <div class='col-xs-11 col-xs-offset-1 b'>
             <h2>All Employees</h2>
             <hr class="bhr"/>
             <div class="" id="errors"><?=((isset($tbl_display))?$tbl_display:'');?></div>

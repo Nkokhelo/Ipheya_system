@@ -159,7 +159,7 @@ if(isset($_GET['pview']))
         }
         else
         {
-            $query = mysqli_query($db,"UPDATE projects SET project_name = '$project_name',description='$description', duration='$duration', sdate='$sdate', patner='$patner', budget='$budget', charge='$charge', daily_hours='$daily_hours', visibility='$visibility' WHERE project_no= '$pid'");
+            $query = mysqli_query($db,"UPDATE projects SET project_name = '$project_name',description='$description', duration='$duration', sdate='$start_date', patner='$patner', budget='$budget', charge='$charge', daily_hours='$daily_hours', visibility='$visibility' WHERE project_no= '$pid'");
             if(!$query)
             {
                 

@@ -137,7 +137,7 @@ session_start();
   function getItem(id) {
     $.ajax({
                   type:"get",
-                  url:"http://localhost:81/Ipheya/stock-counter/includes/getitems.php",
+                  url:"/ipheya/stock-counter/includes/getitems.php",
                   data:"item_no="+id,
                   success:function(data){
                   data =JSON.parse(data);

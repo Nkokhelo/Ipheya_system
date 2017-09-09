@@ -20,7 +20,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
+            <div class='col-xs-11 b'>
                   <form class="form" action="employees.php<?=((isset($_GET['edit']))?'?edit='.$_GET['edit']:'');?>" method="post">
                     <fieldset>
                       <legend class="thelegend inlegend"><?=((isset($_GET['edit']))?'Edit':'Add');?> Employee</legend>

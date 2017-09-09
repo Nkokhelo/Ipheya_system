@@ -18,7 +18,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-          <div class="col-xs-10 b">
+          <div class="col-xs-11 b">
               <h2><?=$program['program_name']?></h2>
               <hr class='bhr'/>
               <div class='col-xs-12'>

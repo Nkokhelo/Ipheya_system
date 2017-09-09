@@ -4,9 +4,7 @@ if(isset($_SESSION['Client']))
 {
 			include'../core/init.php';
 			include('../core/logic.php');
-			include('../includes/head.php');
-			include('../includes/top-nav.php');
-			include('../includes/sidebar.php');
+			include('includes/head.php');
 			$email   = $_SESSION['Client'];
 			$amount  = $_SESSION['amount'];
 			$message = $_SESSION['message'];
@@ -17,6 +15,41 @@ else
 	header('Location: ../login.php');
 }
 ?>
+<body>
+  <div class="wrapper">
+    <?php include 'includes/sidebar.php'; ?>
+      <div id='content'>
+        <div class='row'>
+            <div class='col-xs-12'>
+              <div class="col-xs-11 b">
+															<h2>Payment Verification</h2>
+														<hr class="bhr"/>
+															<h1 class="text-center"><?=$message;?></h1>
+														<div class='web'>
+																<p>Pay to: Ipheya IT Solutions</p>
+																<p>Payment type: <?=$name?></p>
+																<p>Amount:R<?=number_format($amount,2,","," ");?></p>
+																<p>Date of payment : <?php echo date("d-F-Y");?></p>
+																<form name="pay" action="payments.php?Verification=1" method="POST">
+																	<script src="https://checkout.stripe.com/checkout.js" 
+																	class="stripe-button" 
+																	data-key="pk_test_TyOhbjfLozte9N18heMMjOSC" 
+																	data-image="Ipheya.log" 
+																	data-name="Ipheya IT Solution" 
+																	data-description="<?=$name?> <?=$amount;?>"
+																	data-amount="<?=$amount;?>" />
+																	</script>
+																</form>
+															</div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  <?php include('includes/footer.php'); ?>
+</body>
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,25 +58,10 @@ else
 </head>
 <body>
 <div class="col-sm-12"  style="margin-top:2%;">
-<div class='web'>
-	<h1><?=$message;?></h1>
-	<p>Price: <?=$amount;?></p>
-	<p>Name: <?=$name?></p>
-	<form name="pay" action="payments.php?Verification=1" method="POST">
-		<script src="https://checkout.stripe.com/checkout.js" 
-		class="stripe-button" 
-		data-key="pk_test_TyOhbjfLozte9N18heMMjOSC" 
-		data-image="Ipheya.log" 
-		data-name="Ipheya IT Solution" 
-		data-description="<?=$name?> <?=$amount;?>"
-		data-amount="<?=$amount;?>" />
-		</script>
-	</form>
 
 </div>
-</div>
 </body>
-</html>
+</html>-->
 <style>
 .web{
 	font-family:tahoma;
@@ -56,7 +74,7 @@ else
 	margin:auto;
 	height:auto;
 }
-h1, h2{
+h1{
 	margin:3px 0;
 	font-size:13px;
 	text-decoration:underline;
@@ -85,4 +103,4 @@ h1, h2{
 	font-size:12px;
 }
 
-</style>
+</style> 

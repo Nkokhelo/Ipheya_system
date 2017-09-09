@@ -25,6 +25,7 @@
         $Iquants =$_SESSION['quants'];
         $Iunits =$_SESSION['units'];
         $IpriceQ =$_SESSION['pricequants'];
+        $qoute_no =$_SESSION['qoute_no'];
 
 #logo
  $pdf->SetFont("Arial","B",12);
@@ -46,7 +47,7 @@
      $pdf->Ln();
  $pdf->SetX(168);
  $pdf->Cell(10,5,"Qoute-No :",0,0,'R');
- $pdf->Cell(30,5,"004",0,0,'L');
+ $pdf->Cell(30,5,$qoute_no,0,0,'L');
      $pdf->Ln();
  $pdf->SetX(168);
  $pdf->Cell(10,5,"Qoute Title :",0,0,'R');
@@ -57,7 +58,7 @@
  $pdf->Cell(30,5,"05 Wallnut Road",0,1);
  $pdf->Cell(30,5,"Smartxchange",0,1);
  $pdf->Cell(30,5,"Durban 4001",0,1);
- $pdf->Cell(30,5,"Call: 0318240515/0832774984",0,1);
+ $pdf->Cell(30,5,"Call: 0318240515 / 0832774984",0,1);
 
 #the Qoutation Sumarry
  $pdf->SetXY(120,40);

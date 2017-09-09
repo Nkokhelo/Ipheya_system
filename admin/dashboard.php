@@ -37,6 +37,3 @@ session_start();
 <script src='../assets/fullcalendar/js/moment.min.js'></script>
 <script src='../assets/fullcalendar/js/fullcalendar.js'></script>
 
-<script>
-	$(".table").dataTable();
-</script>

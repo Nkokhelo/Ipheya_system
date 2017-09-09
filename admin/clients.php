@@ -21,7 +21,7 @@ session_start();
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
+            <div class='col-xs-11 b'>
               <h2 class="text-center">All Clients</h2></h2><hr class="bhr">
 							<table class=" table table-bordered" >
 								<thead>

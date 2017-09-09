@@ -25,7 +25,7 @@ else
       <div id='content'>
         <div class='row'>
             <div class='col-xs-12'>
-              <div class="col-xs-10 b">
+              <div class="col-xs-11 b">
                 <h3 class="text-center" style="color:#888">Rate our service</h1><hr class="bhr"/>
                 <div class="col-xs-12" id="shop"></div>
             </div>
@@ -44,7 +44,7 @@ else
 
             $.ajax({
             type : "get",
-             url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+             url : "/ipheya/manager/includes/getjs.php",
             data : "service=allservice",
             success:function(data)
             {
@@ -89,7 +89,7 @@ else
                 var callback = function(rating) {
                     $.ajax({
                     type : "get",
-                    url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+                    url : "/ipheya/manager/includes/getjs.php",
                     data : "service_id="+service.service_id+"&client_id="+id+"&rating="+rating,
                     success:function(data)
                     {

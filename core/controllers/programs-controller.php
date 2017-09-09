@@ -154,7 +154,7 @@
         {
             if($all['project_no']!= $_GET['pview'])
             {
-                $proj .="<li><a href='viewproject?pview=".$all['project_no']."'><b>".$all['project_name']."</b></a></li>"; 
+                $proj .="<li><a href='viewproject.php?pview=".$all['project_no']."'><b>".$all['project_name']."</b></a></li>"; 
             }
             
         }
@@ -164,7 +164,7 @@
         {
             if($all['project_no']!= $_GET['pview'])
             {
-                $proj .="<li><a href='viewproject?pview=".$all['project_no']."'><b>".$all['project_name']."</b></a></li>"; 
+                $proj .="<li><a href='viewproject.php?pview=".$all['project_no']."'><b>".$all['project_name']."</b></a></li>"; 
                 
             }
         }

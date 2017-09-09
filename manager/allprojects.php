@@ -19,7 +19,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
+            <div class='col-xs-11 b'>
               <h1 style="color:#999">All Projects</h1>
               <hr class="bhr"/>
                 <?php if($proj_list ==''){ ?>

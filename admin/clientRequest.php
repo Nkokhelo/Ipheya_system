@@ -17,7 +17,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
+            <div class='col-xs-11 b'>
               <h2>Client Requests</h2><hr class="bhr"/>
                 <table class="table" id="cRequest">
                     <thead>
@@ -44,6 +44,6 @@
 
     function getInfor(rId,rT,cId)
     {
-        $('#dataData').load('http://localhost:81/ipheya/core/sub/getRequestInfo.php?ri='+rId+'&RType='+rT+'&ci='+cId);
+        $('#dataData').load('/ipheya/core/sub/getRequestInfo.php?ri='+rId+'&RType='+rT+'&ci='+cId);
     }
 </script>

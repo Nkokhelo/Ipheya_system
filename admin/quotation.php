@@ -8,7 +8,6 @@
      include('includes/head2.php');
 	 include('../core/logic.php');
      require_once("../core/controllers/qoutation-controller.php");
-    //  include('includes/navigation.php');
    }
    else
    {
@@ -25,7 +24,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-          <div class="col-xs-10 b">
+          <div class="col-xs-11 b">
             <div class="col-xs-12">
               <form method="POST" class='form' action="quotation.php">
 			   			<div class="col-xs-12">
@@ -66,7 +65,7 @@
 																</div>
 																<div class="input-group">
 																	<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-																	<input name="clientid"class="form-control"  id="clients" value="<?=$client_no?>" disabled/>
+																	<input name="clientid"class="form-control"  id="clients" value="<?=$client_no?>" readonly/>
 																</div>
 																<div class="input-group">
 																	<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -91,24 +90,24 @@
 											</div>
 										</div>
 										<hr class="bhr" style="width:100%;margin-top:15px; margin-bottom:15px"/>
-																<div class="col-xs-12">
 													<div class="col-xs-12">
-														<div class="col-xs-8">
-														<h4>Qoutation Items</h4>
-													</div>
-													<div class="btn-group btn-group-xs btn-group-justified col-xs-3" style="width:30%">
-														<a class="btn btn-xs btn-default" onClick='addItem()' id='AddItem'>Add new Item</a>
-														<a class="btn btn-xs btn-default" onClick='removeItem()' id='AddItem'>remove row</a>
-													</div>
-													<div class="col-xs-12" style="width:120%; margin-left:-60px;">
+														<div class="col-xs-12" style="width:120%; margin-left:-10%;">
+															<div class="col-xs-8">
+																<h4>Add Items</h4>
+															</div>
+															<div class="btn-group btn-group-xs btn-group-justified col-xs-3" style="width:30%">
+																<a class="btn btn-xs btn-default" onClick='addItem()' id='AddItem'>add new row</a>
+																<a class="btn btn-xs btn-default" onClick='removeItem()' id='AddItem'>delete last row</a>
+															</div>
+															<div class="col-xs-12">
 														<div class="table-responsive">
-															<table id="ItemTable">
+															<table class="table table-bordered" id="ItemTable">
 															<thead>
 																<th>Name</th>
 																<th>Description</th>
 																<th>Quantity</th>
 																<th>UnitPrice</th>
-																<th>Price x Quan</th>
+																<th>Amount</th>
 															</thead> 
 															<tbody class="form-group" id="items">
 																<tr>
@@ -121,23 +120,28 @@
 															</tbody>
 															<tfoot>
 																<tr>
+																	<td colspan="4"><b style="float:right"><i>TOTAL VAT : </i></b></td>
+																	<td><input type="text" class="form-control" name="vat" id="vat" value="" style="width:100px;border-radius:0;" readonly required/></td>
+																	</tr>
+																<tr>
 																	<td colspan="4"><b style="float:right"><i>TOTAL PRICE : </i></b></td>
-																	<td><input type="text" class="form-control" name="TotalPrice" id="TotalPrice" value="" style="width:100px;border-radius:0;" required/></td>
-																</tr>
+																	<td><input type="text" class="form-control" name="TotalPrice" id="TotalPrice" value="" style="width:100px;border-radius:0;" readonly required/></td>
+																	</tr>
 															</tfoot>
 														</table>
 														</div>
 													</div>
 												</div>
 											</div>
-											<div class="col-xs-6">
+											<div class="col-xs-12">
 												<hr/>
-												Payment Method 
-												<select class='form-control' name="paymentmethod">
+												<label for="paymentmethod" style="width:60%; display:inline;" >Payment Method </label>
+												<select class='form-control' style="width:20%;  display:inline;" name="paymentmethod">
 													<option value="10">10 % deposit</option>
 													<option value="15">15 % deposit</option>
 													<option value="30">30 % deposit</option>
 												</select>
+												<label for="paymentmethod" style="width:60%; display:inline;" >before job begins </label>
 												<br/>
 												<input name="serviceType" type="hidden" value="<?=$serviceT?>"/>
 												<input name="Req_id" type="hidden" value="<?=$req_id?>"/>
@@ -262,11 +266,12 @@
 							totP += Number($('#txtPQ_'+v).val());
 					}
 					$('#TotalPrice').val(totP);
-					
+					vat(totP);
 				}
-				$("#TotalPrice").attr('readonly','readonly');
-
-				
+				function vat(tot)
+				{
+					$('#vat').val(tot*14/100);
+				}
 				$('#clients').change(function()
 				{
 					var id = $(this).val();

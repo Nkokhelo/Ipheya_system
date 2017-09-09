@@ -17,7 +17,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-md-10 b'>
+            <div class='col-md-11 b'>
               <form class="form" action="" enctype="multipart/form-data" class="form" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">

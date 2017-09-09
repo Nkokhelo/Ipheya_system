@@ -23,7 +23,7 @@
       <?php include 'includes/sidebar.php';?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
+            <div class='col-xs-11 b'>
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active" data-toggle="tab"><a href="#suppliers" data-toggle="tab">Supplier</a></li>
                     <li><a href="#purchases" data-toggle="tab">Purchases and Sales</a></li>

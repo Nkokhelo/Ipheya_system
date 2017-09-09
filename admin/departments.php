@@ -17,7 +17,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-          <div class="col-sm-offset-1 col-sm-10 b">
+          <div class="col-sm-offset-1 col-sm-11 b">
             <form class="form-inline" action="departments.php<?=((isset($_GET['edit']))?'?edit='.$edit_id:'');?>" method="post" novalidate>
               <fieldset>
                 <legend class='thelegend'>List of all department</legend>

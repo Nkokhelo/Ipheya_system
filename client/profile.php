@@ -68,7 +68,7 @@
                     </fieldset>
               </form>
             </div>
-            <div class='col-xs-8 col-xs-offset-1 cb'>
+            <div class='col-xs-10 col-xs-offset-1 cb'>
               <form class="form" method="post">
                 <fieldset>
                   <legend class='thelegend'>Reset password ?</legend>

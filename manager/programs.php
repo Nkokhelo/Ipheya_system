@@ -63,7 +63,7 @@
           desc.removeAttribute('disabled');
         $.ajax({
             type : "get",
-             url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+             url : "/ipheya/manager/includes/getjs.php",
             data : "id="+id,
             success:function(data)
             {
@@ -92,7 +92,7 @@
           desc.setAttribute('disabled','true');
         $.ajax({
             type : "get",
-             url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+             url : "/Ipheya/manager/includes/getjs.php",
             data : "id="+id,
             success:function(data)
             {
@@ -125,10 +125,10 @@
 
     function getClient(client_no)
     {
-        $('#cInfo').load('http://localhost:81/Ipheya/manager/includes/getjs.php?clientInfor='+client_no);
+        $('#cInfo').load('/Ipheya/manager/includes/getjs.php?clientInfor='+client_no);
         // $.ajax({ that was a log methord
         //     type : "get",
-        //      url : "http://localhost:81/Ipheya/manager/includes/getjs.php",
+        //      url : "/Ipheya/manager/includes/getjs.php",
         //     data : "clientInfor="+client_no,
         //     success:function(data)
         //     {

@@ -42,7 +42,7 @@
                         <?=$allServicesDDL;?>
                       </select>
                     </div>
-                    <div class="form-group col-xs-7">
+                    <div class="form-group col-xs-12">
                       <label for="description">Additional information</label>
                       <textarea name="description" class="form-control" id="description" rows="5"></textarea>
                     </div>
@@ -92,7 +92,7 @@
                         <option value="24">24 months</option>
                       </select>
                     </div>
-                    <div class="form-group col-xs-8">
+                    <div class="form-group col-xs-12">
                       <label for="desc">Additional information</label>
                       <textarea name="desc" class="form-control" id="desc" rows="5"></textarea>
                     </div>

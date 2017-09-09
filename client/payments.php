@@ -57,7 +57,7 @@ if(isset($_GET['Verification']))
 			#$to = $email;
 			$date = date('Y-m-d H:i:s');
 			$headers = '[Ipheya] Payment notification';
-			$message = 'Your Payment with ipheya was successfull info will be sent to you using email' ;
+			$message = 'Your payment was successfull' ;
 			$refid = "SELECT payment_id FROM payments ORDER BY payment_id DESC LIMIT 1";
 			$valu = mysqli_query($log->connect(),$refid);
 			while($arr =mysqli_fetch_row($valu))

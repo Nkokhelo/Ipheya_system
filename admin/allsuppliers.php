@@ -20,7 +20,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-             <div class="col-xs-offset-2 col-xs-10 b">
+             <div class="col-xs-offset-1 col-xs-11 b">
               <h2 class="text-center">All Suppliers</h2><hr class="bhr">
               <table class="table" id="supplierTable">
                 <thead style="border-top:#eee 2px solid">
