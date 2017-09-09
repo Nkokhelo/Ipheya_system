@@ -280,11 +280,7 @@
         Event[2] = end;
 
         $.ajax({
-<<<<<<< HEAD
             url: '/ipheya/client/import/editEventDate.php',
-=======
-            url: 'http://www.invest4living.com/Ipheya/client/import/editEventDate.php',
->>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
             type: "POST",
             data: {Event:Event},
             success: function(rep) {

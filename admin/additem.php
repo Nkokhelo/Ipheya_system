@@ -12,7 +12,7 @@ session_start();
     {
       header("Location:../login.php");
     }
-     
+
 ?>
 
 <body>
@@ -50,7 +50,7 @@ session_start();
 					    <input type="file" class="form-control" id="item_img_name"  name="item_image" />
 				    </div>
 	        </div> <!-- /form-group-->
-          
+
 	        <div class="form-group">
 	        	<label for="item_code" class="col-sm-4 control-label">Item Name         : </label>
 				    <div class="col-sm-6">
@@ -137,11 +137,7 @@ session_start();
   function getItem(id) {
     $.ajax({
                   type:"get",
-<<<<<<< HEAD
                   url:"/ipheya/stock-counter/includes/getitems.php",
-=======
-                  url:"http://www.invest4living.com/Ipheya/stock-counter/includes/getitems.php",
->>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
                   data:"item_no="+id,
                   success:function(data){
                   data =JSON.parse(data);

@@ -32,7 +32,7 @@
                     </tbody>
                 </table>
             </div>
-            <?php include('includes/RequestInfo.php');?>            
+            <?php include('includes/RequestInfo.php');?>
         </div>
         <?php include('includes/footer.php'); ?>
       </div>
@@ -44,10 +44,6 @@
 
     function getInfor(rId,rT,cId)
     {
-<<<<<<< HEAD
         $('#dataData').load('/ipheya/core/sub/getRequestInfo.php?ri='+rId+'&RType='+rT+'&ci='+cId);
-=======
-        $('#dataData').load('http://www.invest4living.com/ipheya/core/sub/getRequestInfo.php?ri='+rId+'&RType='+rT+'&ci='+cId);
->>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
     }
 </script>

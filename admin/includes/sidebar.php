@@ -28,14 +28,14 @@
     <ul class="collapse list-unstyled" id="stakeholders">
         <li><a  href="allemployees.php">Employees</a></li>
         <li><a  href="allsuppliers.php">Suppliers</a></li>
-        <li><a id="Eve" href="create_events.php">Events</a></li>                        
+        <li><a id="Eve" href="create_events.php">Events</a></li>
         <li><a  href="roles.php">Roles</a></li>
     </ul>
   </li>
   <li>
     <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-group'/></i>
-      Clients 
+      Clients
     </a>
     <ul class="collapse list-unstyled" id="clientMenu">
       <li><a  href="clients.php">All clients</a></li>
@@ -45,7 +45,7 @@
   <li  >
     <a href="#requestsMenu" data-toggle="collapse" aria-expanded="false">
         <i class='fa fa-copy'></i>
-      Request & Tickets 
+      Request & Tickets
     </a>
     <ul class="collapse list-unstyled" id="requestsMenu">
       <li><a  href="clientRequest.php">Requests</a></li>
@@ -56,14 +56,14 @@
   <li>
     <a href="inventorys.php">
       <i class='fa fa-cubes'></i>
-     
+
     </a>
   </li>
   <li>
     <a href="rentals.php">
       <i class='fa fa-bullseye'></i>
       rentals
-    </a> 
+    </a>
   </li>
   <li>
     <a href="targets.php">
@@ -142,14 +142,14 @@ function getno()
               alert(error);
               }
             });
-} 
+}
 
 $("#sidebar .components li").click(function() {
   $("#sidebar .components li.active a").removeClass("active");
   $(this).addClass("active");
 });
 $('#sidebar .components li a').click(function(){
-  $(this).parent().addClass('active').siblings().removeClass('active');	
+  $(this).parent().addClass('active').siblings().removeClass('active');
 });
 
 
@@ -163,4 +163,3 @@ $('#sidebar .components li ul li a').filter(function()
 
 });
 </script>
-
