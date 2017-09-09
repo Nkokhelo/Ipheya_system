@@ -171,7 +171,11 @@
 	<script>
 		function loadevent(id)
 		{
+<<<<<<< HEAD
 				$('#event-data').load('/ipheya/core/sub/finatialR.php?uevent_data='+id);
+=======
+				$('#event-data').load('http://www.invest4living.com/ipheya/core/sub/finatialR.php?uevent_data='+id);
+>>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
 		}
 
 	

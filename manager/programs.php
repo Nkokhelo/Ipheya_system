@@ -63,7 +63,11 @@
           desc.removeAttribute('disabled');
         $.ajax({
             type : "get",
+<<<<<<< HEAD
              url : "/ipheya/manager/includes/getjs.php",
+=======
+             url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
+>>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
             data : "id="+id,
             success:function(data)
             {
@@ -92,7 +96,11 @@
           desc.setAttribute('disabled','true');
         $.ajax({
             type : "get",
+<<<<<<< HEAD
              url : "/Ipheya/manager/includes/getjs.php",
+=======
+             url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
+>>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
             data : "id="+id,
             success:function(data)
             {
@@ -125,10 +133,17 @@
 
     function getClient(client_no)
     {
+<<<<<<< HEAD
         $('#cInfo').load('/Ipheya/manager/includes/getjs.php?clientInfor='+client_no);
         // $.ajax({ that was a log methord
         //     type : "get",
         //      url : "/Ipheya/manager/includes/getjs.php",
+=======
+        $('#cInfo').load('http://www.invest4living.com/Ipheya/manager/includes/getjs.php?clientInfor='+client_no);
+        // $.ajax({ that was a log methord
+        //     type : "get",
+        //      url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
+>>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
         //     data : "clientInfor="+client_no,
         //     success:function(data)
         //     {

@@ -1,4 +1,4 @@
-<?php 
+<?php
 // error_reporting(0);
 #Connection
    $con = mysqli_connect('localhost','root','');
@@ -23,7 +23,7 @@
         // echo '{--Connected--}';
      }
    }
-   
+
    #select database
   mysqli_select_db($con,"ipheya");
   $sqli="CREATE TABLE serviceHistory
@@ -41,7 +41,13 @@
                           }
 
           mysqli_close($con);
+<<<<<<< HEAD
+
+
 /*#CREATE TABLE clients
+=======
+#CREATE TABLE clients
+>>>>>>> bec65a2119fb5dad88eb5b5905279959b699debf
    $sql = "CREATE TABLE clients
            (
              client_id int NOT NULL AUTO_INCREMENT,
@@ -247,7 +253,7 @@
              PRIMARY KEY(RequestID),
              ClientID int(11),
              FOREIGN KEY(ClientID) REFERENCES clients(
-               
+
              ),
              ServiceID int,
              FOREIGN KEY(ServiceID) REFERENCES services(service_id),
@@ -429,14 +435,14 @@
           DatePosted DateTime,
           request_id int(11) not null,
           foreign key(request_id) references serviceRequest(RequestID),
-          foreign key(request_id) references RepairRequest(RequestID) 
+          foreign key(request_id) references RepairRequest(RequestID)
         )";
 
         if(!mysqli_query($con,$sql))
         {
           die("Error Task".mysqli_error($con));
         }
-         /* $sql="Create Table employeetask
+          $sql="Create Table employeetask
           (
             employee_id int(11) NOT NULL,
             task_id int(11) NOT NULL,
@@ -487,5 +493,240 @@
                 else
                 {
                   echo '<<[CREATE TABLE Payments FAILED: '.mysqli_error($con).']>>';
-                }*/
+                }
+                $sql = "CREATE TABLE suppliers
+                (
+                  supplier_id int NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY(supplier_id),
+                  supplier_no varchar(50),
+                  company_name varchar(50),
+                  address varchar(50),
+                  line2 varchar(50),
+                  line3 varchar(50),
+                  line4 varchar(50),
+                  post_code varchar(10),
+                  contact_name varchar(50),
+                  telephone varchar(11),
+                  mobile varchar(11),
+                  fax varchar(11),
+                  email varchar(175),
+                  web varchar(175)
+                )";
+                if(mysqli_query($db,$sql))
+                {
+                  echo '--Table suppliers has been created successfully--<br>';
+                }
+                else{
+                  echo 'Table supplier not created: '.mysqli_error($db).'<br>';
+                }
+                $sql = "CREATE TABLE supplier_contact
+                (
+                  scontact_id int NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY(scontact_id),
+                  supplier_id int,
+                  FOREIGN KEY(supplier_id) REFERENCES suppliers(supplier_id),
+                  postal_address text,
+                  telephone varchar(10),
+                  mobile varchar(10),
+                  fax varchar(10),
+                  web varchar(75),
+                  email varchar(175)
+                )";
+                if(mysqli_query($db,$sql))
+                {
+                 echo '--Table supplier_contact has been created successfully--<br>';
+                }
+                else{
+                  echo 'Table supplier_contact not created: '.mysqli_error($db).'<br>';
+                }
+                $sql = "CREATE TABLE supplier_agreement
+                (
+                  sagreement_id int NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY(sagreement_id),
+                  supplier_no varchar(20),
+                  deposit varchar(10),
+                  liability_clause text,
+                  discount varchar(10),
+                  delivery_fee varchar(10),
+                  start_date date,
+                  end_date date,
+                  warranty varchar(50)
+                )";
+                if(mysqli_query($db,$sql))
+                {
+                 echo '--Table supplier_agreement has been created successfully--<br>';
+                }
+                else{
+                  echo 'Table supplier_agreement not created: '.mysqli_error($db).'<br>';
+                }
+                #temporary client account
+                $sql = "CREATE TABLE tc_account
+                (
+                  tc_id int NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY(tc_id),
+                  email varchar(175),
+                  name  varchar(75),
+                  surname varchar(75)
+                )";
+                if(mysqli_query($con, $sql))
+                {
+                  echo '{{tc_account Created}}<br>';
+                }
+                else{
+                  echo '{{tc_account not created: '.mysqli_error($con).'}}<br>';
+                }
+
+                #chat
+                $sql = "CREATE TABLE chat
+                (
+                  chat_id int NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY(chat_id),
+                  client_email varchar(175),
+                  employee_id varchar(20)
+                ) ENGINE=InnoDB AUTO_INCREMENT=20170000 DEFAULT CHARSET=latin1";
+                if(mysqli_query($con, $sql))
+                {
+                  echo '{{chat Created}}<br>';
+                }
+                else{
+                  echo '{{chat not created: '.mysqli_error($con).'}}<br>';
+                }
+                #message table
+                $sql = "CREATE TABLE message
+                (
+                  message_id int NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY(message_id),
+                  chat_id int,
+                  message_time DateTime,
+                  message_from varchar(100),
+                  message_to varchar(100),
+                  message_body text
+                ) ENGINE=InnoDB AUTO_INCREMENT=21790000 DEFAULT CHARSET=latin1";
+                if(mysqli_query($con, $sql))
+                {
+                  echo '{{message Created}}<br>';
+                }
+                else{
+                  echo '{{message not created: '.mysqli_error($con).'}}<br>';
+                }
+
+                #feedback
+                $sql = "CREATE TABLE feedback
+                (
+                  feedback_id int NOT NULL AUTO_INCREMENT,
+                  PRIMARY KEY(feedback_id),
+                  client_email varchar(175),
+                  rating decimal,
+                  feedback_time DateTime
+                ) ENGINE=InnoDB AUTO_INCREMENT=170000 DEFAULT CHARSET=latin1";
+                if(mysqli_query($con, $sql))
+                {
+                  echo '{{feedback Created}}<br>';
+                }
+                else{
+                  echo '{{feedback not created: '.mysqli_error($con).'}}<br>';
+                }
+                #programs
+          $sql="CREATE TABLE `programs`
+          (
+            `id` int(5) NOT NULL,
+            `program_no` varchar(11) NOT NULL,
+            `program_name` varchar(50) NOT NULL,
+            `description` varchar(150) NOT NULL,
+            `client_no` varchar(11) DEFAULT NULL,
+            `archive` tinyint(1) DEFAULT NULL
+          )";
+
+          #project
+          $sql="
+          CREATE TABLE `projects` (
+            `id` int(5) NOT NULL,
+            `project_no` varchar(11) NOT NULL,
+            `program_no` varchar(11) NOT NULL,
+            `project_name` varchar(50) NOT NULL,
+            `description` varchar(150) NOT NULL,
+            `start_date` datetime DEFAULT NULL,
+            `end_date` datetime DEFAULT NULL,
+            `employee_no` varchar(11) NOT NULL,
+            `quotation` varchar(11) NOT NULL,
+            `duration` int(3) NOT NULL,
+            `duration_type` varchar(15) NOT NULL,
+            `department` varchar(15) NOT NULL,
+            `service` varchar(15) NOT NULL,
+            `budget` double DEFAULT '0',
+            `no_of_emp` int(4) NOT NULL,
+            `patner` varchar(30) NOT NULL,
+            `visibility` int(11) NOT NULL,
+            `daily_hours` int(3) NOT NULL,
+            `charge` float NOT NULL,
+            `status` varchar(11) NOT NULL DEFAULT 'not stated',
+            `archive` int(11) DEFAULT '0'
+          )";
+          #events
+          $sql="CREATE TABLE `events` (
+            `id` int(11) NOT NULL,
+            `title` varchar(255) NOT NULL,
+            `color` varchar(7) DEFAULT NULL,
+            `start` datetime NOT NULL,
+            `end` datetime DEFAULT NULL,
+            `description` text,
+            `category` varchar(100) DEFAULT NULL,
+            `image` longblob
+          )";
+   #meetings
+
+    $sql="CREATE TABLE `meetings` (
+      `meeting_id` int(3) NOT NULL,
+      `name` varchar(50) NOT NULL,
+      `email` varchar(50) NOT NULL,
+      `m_title` varchar(150) NOT NULL,
+      `m_description` text NOT NULL,
+      `color` varchar(7) NOT NULL DEFAULT 'yellow',
+      `m_start` datetime NOT NULL,
+      `m_end` datetime NOT NULL,
+      `is_client` tinyint(4) NOT NULL,
+      `is_notified` tinyint(1) NOT NULL DEFAULT '1'
+    )";
+    #FAQs
+    $sql="CREATE TABLE `faqs` (
+      `f_id` int(11) NOT NULL,
+      `department_id` int(11) DEFAULT NULL,
+      `question` text,
+      `answer` text,
+      `category` varchar(50) DEFAULT NULL,
+      `name` varchar(50) NOT NULL,
+      `email` varchar(50) NOT NULL
+    )";
+    #Expense_income
+    $sql="CREATE TABLE `expense_income` (
+      `id` int(5) NOT NULL,
+      `ei_name` varchar(50) NOT NULL,
+      `ei_type` char(1) DEFAULT NULL,
+      `ei_description` varchar(300) DEFAULT NULL,
+      `ei_date` datetime NOT NULL,
+      `ei_payment_type` varchar(50) NOT NULL,
+      `ref_no` varchar(15) DEFAULT NULL,
+      `ei_amount` varchar(50) NOT NULL,
+      `other` varchar(50) DEFAULT NULL,
+      `supplier_no` varchar(10) DEFAULT NULL,
+      `client_no` varchar(11) DEFAULT NULL,
+      `project_no` varchar(11) DEFAULT NULL,
+      `category_id` int(11) NOT NULL,
+      `e_or_i` char(1) DEFAULT NULL,
+      `file` longblob NOT NULL
+    )";
+    #purchase
+    $sql="CREATE TABLE `purchases` (
+      `item_no` int(11) NOT NULL,
+      `item_code` varchar(11) NOT NULL,
+      `supplier_no` varchar(10) NOT NULL,
+      `purchase_date` datetime DEFAULT NULL,
+      `arrival_date` date DEFAULT NULL,
+      `quantity` int(11) DEFAULT NULL,
+      `unit_price` double DEFAULT NULL,
+      `total_price` double DEFAULT NULL,
+      `item_image` longblob
+    )";
+    #message
+
 ?>

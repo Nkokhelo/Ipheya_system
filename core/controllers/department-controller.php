@@ -1,4 +1,5 @@
 <?php
+#21539288 POLELA AL
 #retrieve departments from Database
 $sql = "SELECT * FROM departments ORDER BY department";
 $query = mysqli_query($db, $sql);

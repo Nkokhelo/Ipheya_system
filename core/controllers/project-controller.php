@@ -1,4 +1,5 @@
 <?php
+#21401824 ME Zenzile
 #get logic class
  $logic = new Logic();
  $feedback ='';
@@ -9,7 +10,7 @@
         $project_name =$_POST['project_name'];
         $program_no =$_POST['program_no'];
         $description =$_POST['description'];
-        $sdate =$_POST['sdate'];
+        $start_date =$_POST['start_date'];
         $employee_no =$_POST['employee_no'];
         $qno =$_POST['q_id'];
         $duration =$_POST['duration'];
@@ -27,7 +28,7 @@
         $project_no ="P00".strtoupper(substr($client_unique,6,4));
 
         $query ="INSERT INTO `projects` (`id`, `project_no`, `program_no`, `project_name`, `description`, `start_date`, `employee_no`, `duration`, `duration_type`, `department`,`service`,`budget`,`no_of_emp`,`patner`,`visibility`,`daily_hours`,`charge`,`quotation`)
-        VALUES(NULL,'$project_no','$program_no','$project_name','$description','$sdate','$employee_no','$duration','$duration_type','$department','$service','$budget','$no_of_emp','$patner','$visibility','$daily_hour','$charge','$qno')";
+        VALUES(NULL,'$project_no','$program_no','$project_name','$description','$start_date','$employee_no','$duration','$duration_type','$department','$service','$budget','$no_of_emp','$patner','$visibility','$daily_hour','$charge','$qno')";
         $result = mysqli_query($db,$query);
         if(!$result)
         {
@@ -146,7 +147,7 @@ if(isset($_GET['pview']))
         $project_name =$_POST['project_name'];
         $description =$_POST['description'];
         $duration =$_POST['duration']; 
-        $sdate =$_POST['sdate'];
+        $start_date =$_POST['start_date'];
         $patner =$_POST['patner'];
         $budget =$_POST['budget'];
         $charge =$_POST['charge'];
@@ -159,7 +160,11 @@ if(isset($_GET['pview']))
         }
         else
         {
+<<<<<<< HEAD
             $query = mysqli_query($db,"UPDATE projects SET project_name = '$project_name',description='$description', duration='$duration', sdate='$start_date', patner='$patner', budget='$budget', charge='$charge', daily_hours='$daily_hours', visibility='$visibility' WHERE project_no= '$pid'");
+=======
+            $query = mysqli_query($db,"UPDATE `projects` SET `project_name` ='$project_name',`description`='$description', `duration`='$duration', `start_date`='$start_date', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hours`='$daily_hours', `visibility`='$visibility' WHERE project_no='$pid'");
+>>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
             if(!$query)
             {
                 
@@ -167,7 +172,7 @@ if(isset($_GET['pview']))
             }
             else
             {
-                $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> Program saved succesfull');
+                $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> Project updated succesfull');
             }
         }
     }

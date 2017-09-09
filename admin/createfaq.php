@@ -20,7 +20,7 @@
                   <?=$feedback?>
                 </div>
                 <div class="col-xs-6">
-                 <label for="question">Department : </label>
+                 <label for="question">Department:</label>
                  <select class="form-control" name="d_id">
                   <option>--Select--</option>
                   <?=$alldepartment?>

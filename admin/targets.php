@@ -1,4 +1,5 @@
 <?php
+   #21539288 POLELA AL
    session_start();
    if(isset($_SESSION['Employee']))
    {
@@ -17,7 +18,7 @@
 
 <body>
   <div class="wrapper">
-      <?php include 'includes/sidebar.php'?>
+      <?php include('includes/sidebar.php');?>
       <div id='content'>
         <div class='row'>
             <div class='col-xs-11 b'>

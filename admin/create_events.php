@@ -55,7 +55,7 @@
                             </select>
                         </div>
  
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-11">
                             <label  for="">Select image to upload:</label>
                             <input type="file" name="eventimage" id="eventimage"/>
                         </div>
@@ -65,7 +65,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-6" id='change'>
-                            <input  type="submit" id='save' name="Create_Event" class="btn btn-block btn-success" value="Create Event"/>
+                            <input  type="submit" id='save' name="Add" class="btn btn-block btn-success" value="Add"/>
                         </div>
                     </div>
                 </div>

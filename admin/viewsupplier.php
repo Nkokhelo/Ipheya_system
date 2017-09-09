@@ -187,8 +187,8 @@
                                   <h4 style="color:#aaa">Draft Agreement</h4>
                                   <hr class="bhr"/>
                                   <div class="col-xs-12 col-md-12">
-                                      <input name="sup_no" type="hidden" value="<?=$_GET['view'];?>" />
-                                      <p style="color:#0094ff; position:absolute; top:5px;">Supplier number : #<?= $_GET['view'];?></p>
+                                      <input name="sup_no" type="hidden" value="<?=((isset($_GET['view']))?:$_GET['edit']);?>" />
+                                      <p style="color:#0094ff; position:absolute; top:5px;">Supplier number : #<?= ((isset($_GET['view']))?:$_GET['edit']);?></p>
                                   <hr class="bhr"/>
                                   </div>
 
@@ -215,9 +215,9 @@
                                             <div class="col-xs-8">
                                               <select required class="form-control" name="warrantytype" id="warrantytype">
                                                 <option value="<?=((isset($warrantyArr[1]))?$warrantyArr[1]:'');?>"><?=((isset($warrantyArr[1]))?$warrantyArr[1]:'Warranty type');?></option>
-                                                <option value="days">days</option>
-                                                <option value="weeks">weeks</option>
-                                                <option value="months">months</option>
+                                                <option value="day(s)">day(s)</option>
+                                                <option value="week(s)">week(s)</option>
+                                                <option value="month(s)">month(s)</option>
                                               </select>
                                             </div>
                                           </div>
@@ -259,7 +259,7 @@
                                   <div class="form-group col-xs-6 col-xs-offset-3">
                                       <button type="submit" name="<?=((isset($agreementresult['deposit']))?'Update_Agreement':'Agreement');?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-floppy-save"></span> <?=((isset($agreementresult['deposit']))?'Update Draft':'Save Draft');?></button>
                                       <a href="viewsupplier?view=<?=$_GET['view'];?>" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-open-file"></span> View supplier</a>
-                                      <?=((isset($agreementresult['deposit']))?'<a href="print-agreement.php?agrid='.$sup_no.'" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-print"></span> Print Agreement</a>':'Agreement');?>
+                                      <?=((isset($agreementresult['deposit']))?'<a href="print-agreement.php?agrid='.$sup_no.'" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-print"></span> Print Agreement</a>':'');?>
                                   </div>
                               </form>
                           </div>

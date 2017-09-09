@@ -1,4 +1,6 @@
 <?php
+#21401824 ME Zenzile
+    #21539288 POLELA AL
     #fetch all clients
     $client_query = "SELECT * FROM clients WHERE archived = 1 ORDER BY name";
     $client_exe = mysqli_query($db,$client_query);

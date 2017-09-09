@@ -1,4 +1,5 @@
 <?php
+# 21401824 ME Zenzile
 $logic = new Logic();
 $alldepartment='';
 $all= $logic->getallDepartments(); 
@@ -19,8 +20,8 @@ while($f = mysqli_fetch_assoc($allf))
 }
 
 $ratequery ="SELECT service_id, AVG(rating) as rating FROM s_ratings GROUP BY service_id";
-$result = mysqli_query($logic->connect(), $ratequery);
-while($rate = mysqli_fetch_assoc($result))
+$result =mysqli_query($logic->connect(), $ratequery);
+while($rate =mysqli_fetch_assoc($result))
 {
   $stars ='';
   for($i=0; $i<5;$i++)
@@ -41,7 +42,7 @@ while($rate = mysqli_fetch_assoc($result))
 }
 if(isset($_GET['an']))
 {
-  $faqs='';  
+  $faqs=null;  
   $allf = $logic->getallfaqs();
   
   while($f = mysqli_fetch_assoc($allf))

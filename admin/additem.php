@@ -137,7 +137,11 @@ session_start();
   function getItem(id) {
     $.ajax({
                   type:"get",
+<<<<<<< HEAD
                   url:"/ipheya/stock-counter/includes/getitems.php",
+=======
+                  url:"http://www.invest4living.com/Ipheya/stock-counter/includes/getitems.php",
+>>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
                   data:"item_no="+id,
                   success:function(data){
                   data =JSON.parse(data);

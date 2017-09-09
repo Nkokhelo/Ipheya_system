@@ -33,7 +33,7 @@
                    <tr>
                     <td><a href="allfaqs.php">All Questions</a></td>
                     <td><a href="allfaqs.php?u=faqs">Unanswered questions</a></td>
-                    <td><a href="allfaqs.php?an=faqs">Answered Question</a></td>
+                    <td><a href="allfaqs.php?an=faqs">Answered Questions</a></td>
                    </tr>
                   </tfoot>
                  </table>

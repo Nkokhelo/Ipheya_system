@@ -1,4 +1,5 @@
 <?php
+
    session_start();
    if(isset($_SESSION['Employee']))
    {
@@ -54,9 +55,11 @@
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="history">
                             <div class="col-xs-12">
-                                <?php if($history_view !=''){ ?>
+                                <?php #21408789 Zulu NP
+                                 if($history_view !=''){ ?>
                                     <table class="table">
                                         <thead>
+                                            
                                             <th>Service Name</th><th style="max-width:70%;">Description</th><th>Date</th>
                                         </thead>
                                         <tbody>

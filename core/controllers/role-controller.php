@@ -1,4 +1,5 @@
 <?php
+#21539288 POLELA AL
 #to be removed
 $log = new Logic();
 #add roles
@@ -24,7 +25,7 @@ $log = new Logic();
       {
         $errors[] .= 'Role already exists please choose another name';
       }
-      else 
+      else
       {
         $insert_new_role = "INSERT INTO roles(name) VALUES('{$role}')";
         mysqli_query($db,$insert_new_role);
@@ -137,7 +138,7 @@ $log = new Logic();
         {
           echo display_errors($errors);
         }
-        else 
+        else
         {
           $update_role = "UPDATE roles SET name = '$role' WHERE Role_Id = '$edit_id'";
           mysqli_query($db,$update_role);

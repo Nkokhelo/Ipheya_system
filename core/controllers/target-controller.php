@@ -1,4 +1,5 @@
 <?php
+    #21539288 POLELA AL
     #retrieve target log
     $allTargets = '';
     $target_sql = "SELECT * FROM targets ORDER BY last_visit DESC";

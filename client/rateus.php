@@ -44,7 +44,11 @@ else
 
             $.ajax({
             type : "get",
+<<<<<<< HEAD
              url : "/ipheya/manager/includes/getjs.php",
+=======
+             url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
+>>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
             data : "service=allservice",
             success:function(data)
             {
@@ -89,7 +93,11 @@ else
                 var callback = function(rating) {
                     $.ajax({
                     type : "get",
+<<<<<<< HEAD
                     url : "/ipheya/manager/includes/getjs.php",
+=======
+                    url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
+>>>>>>> f8ff3efd7eb1d626d0f9cdb6bc83d285961c9084
                     data : "service_id="+service.service_id+"&client_id="+id+"&rating="+rating,
                     success:function(data)
                     {
