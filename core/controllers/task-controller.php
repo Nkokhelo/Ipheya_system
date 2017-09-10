@@ -1,7 +1,7 @@
 <?php
 $log = new Logic();
 
-#add task View 
+#add task View
 		$assign=mysqli_query($db,'select * from Employees');
 		$task="";$task_error='';
 		$descr="";$descr_error='';
@@ -26,7 +26,7 @@ $log = new Logic();
 		{
 			$req = $log->getServiceRequestById($rid);
 		}
-		else 
+		else
 		{
 			$req = $log->getMaintananceRequestById($rid);
 		}
@@ -47,8 +47,8 @@ $log = new Logic();
 			$rid = $_POST['ri'];
 			$descr = mysqli_real_escape_string($db, $_POST["descr"]);
       		$descr = sanitize($descr);
-			
-			#this are the calculations of the end date... "HINT: You can add them by week or day or months"... 
+
+			#this are the calculations of the end date... "HINT: You can add them by week or day or months"...
 			if($duraType=="day")
 			{
 				$Edate = (new DateTime($Sdate.'+'.$dura.'day'))->format('Y-m-d');
@@ -63,17 +63,18 @@ $log = new Logic();
 			}
 			$insert ="INSERT INTO task (`task_id`, `Name`, `Duration`, `DurationType`, `Location`, `StartDate`, `EndDate`, `Description`, `DatePosted`, `request_id`)
 			 VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}', '{$rid}')";
-			
+
 			if(!mysqli_query($db,$insert))
 		    {
-				$feedback="<p class='alert alert-warning'>Error ".mysqli_error($log->connect())."</p>"; 
+					die($insert);
+				$feedback="<p class='alert alert-warning'>Error ".mysqli_error($log->connect())."</p>";
 				$clientQR = $log->getClientsById($cid);
 				$client=mysqli_fetch_assoc($clientQR);
 				if($type=="Service")
 				{
 					$req = $log->getServiceRequestById($rid);
 				}
-				else 
+				else
 				{
 					$req = $log->getMaintananceRequestById($rid);
 				}
@@ -88,6 +89,7 @@ $log = new Logic();
 		$alltasklist ='';
 		$alltask=$log->getallTasks();
 		$tasksAll='';
+		$alltasks='';
 		while($alltasks =mysqli_fetch_row($alltask))
 		{
 			$alltasklist.="<div class='col-sm-12'><input type='radio' name='task' value='".$alltasks[0]."' />".$alltasks[1]."</div>";
@@ -100,8 +102,8 @@ $log = new Logic();
 				 	<div class='col-sm-6'>
 					 	<b>Title</b> $alltasks[1]<br/>
 						<i><h4>$alltasks[7]</h4></i>
-						<b>Date</b>".(new DateTime($alltasks[5]))->format("d-M-Y")."
-					 </div> 
+						<b>Date</b>".date_format(date_create($alltasks[6]),"d F Y")."
+					 </div>
 					 <div class='col-sm-2'>
 					 	<b>Duration</b>
 						 <h5>$alltasks[2] $alltasks[3]</h5>
@@ -145,7 +147,7 @@ $log = new Logic();
 				if(!$log->isEmployeeAssigned($allemployees['employee_id']))
 				{   #TODO this code is unfinished all you have to do is check employees by date or do date calculations!!
 					$freeemployees.="<div class='col-sm-12' id='".$allemployees['employee_id']."_".$allemployees['name']."_".$allemployees['email']."_".$log->getDepartmentNameByID($allemployees['department'])."_".$taskid."'><div class='col-sm-4' id='empname'>".$allemployees['name']."</div><div class='col-sm-4' id='email'>".$allemployees['email']."</div><div class='col-sm-4' id='department'>".$log->getDepartmentNameByID($allemployees['department'])."</div></div>";;
-				} 
+				}
 			}
 		}
 #if remove employee from taks on assing use case not update use case#display all employee task
@@ -172,7 +174,7 @@ $log = new Logic();
 				$task_empl = mysqli_fetch_row($task_empl);
 				if(count($task_empl)>0)
 				{
-				
+
 					$errort.="<div class='alert alert-danger alert-dismissable' style='opacity:1;'>  <a  class='close' data-dismiss='alert' aria-label='close'>&times;</a>Unable to assign ".$log->getEmployeeNameById($empid)." in the same task more than once!</div>";
 				}
 				else
@@ -213,7 +215,7 @@ $log = new Logic();
 							 <td>".(new Datetime($task[5]))->format("d M")." to ". (new DateTime($task[6]))->format("d M Y") ."</td>
 							 <td><a href='../'><span class='glyphicon glyphicon-open-file'></span> View </a> || <a href='../'><span class='glyphicon glyphicon-edit'></span> Edit </a></td>
 							 </tr>";
-							 
+
 		}
 #Delete Task
 		if(isset($_GET['delete']))
@@ -225,7 +227,7 @@ $log = new Logic();
 				$error ="Error ".mysqli_error($log->connect());
 				return $error;
 			}
-			
+
 		$alltasklist ='';
 		$alltask=$log->getallTasks();
 		$tasksAll='';
@@ -242,7 +244,7 @@ $log = new Logic();
 					 	<b>Title</b> $alltasks[1]<br/>
 						<i><h4>$alltasks[7]</h4></i>
 						<b>Date</b> $alltasks[5]
-					 </div> 
+					 </div>
 					 <div class='col-sm-2'>
 					 	<b>Duration</b>
 						 <h5>$alltasks[2] $alltasks[3]</h5>
@@ -263,5 +265,3 @@ $log = new Logic();
 		}
 
 ?>
-
-

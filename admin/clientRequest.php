@@ -14,7 +14,7 @@
  ?>
 <body>
   <div class="wrapper">
-      <?php include 'includes/sidebar.php'?>
+    <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
             <div class='col-xs-11 b'>
@@ -27,7 +27,7 @@
                         <th>Request for</th>
                         <th>Status</th>
                     </thead>
-                    <tbody>
+                    <tbody style="cursor:pointer;">
                         <?= $allRequest; ?>
                     </tbody>
                 </table>

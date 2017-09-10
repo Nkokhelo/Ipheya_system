@@ -56,13 +56,19 @@
   <li>
     <a href="inventorys.php">
       <i class='fa fa-cubes'></i>
-
+      Inventory
+    </a>
+  </li>
+  <li>
+    <a href="alltasks.php">
+      <i class='fa fa-task'></i>
+      Task
     </a>
   </li>
   <li>
     <a href="rentals.php">
       <i class='fa fa-bullseye'></i>
-      rentals
+      Item
     </a>
   </li>
   <li>
@@ -87,15 +93,11 @@
 <!-- The notifications panel -->
 <div class="notification-container hide-not">
 <div class="col-lg-12" style="padding-right:0; padding-left:0;">
-  <h4 class="text-center" style="line-height:30%"><p class="notcount" style="display:inline"></p><p class="fa fa-bell" style="font-size:20px"></p> Notifications</h4>
+  <h4 class="text-center" style="line-height:30%"><b><p class="notcount" style="display:inline"></p></b><p class="fa fa-bell" style="font-size:20px"></p> Notifications</h4>
   <hr class="bhr" style="margin-bottom:0;">
   <div class="body-con">
     <ul class="notif">
-      <li><b>Nhlaka has requested for a new car</b></li>
-      <li><b>Nhlaka has requested for a new car</b></li>
-      <li><b>Nhlaka has requested for a new car</b></li>
-      <li><b>Nhlaka has requested for a new car</b></li>
-      <li><b>Nhlaka has requested for a new car</b></li>
+
     </ul>
   </div>
   <hr class="bhr" style="margin-top:0;">
@@ -117,7 +119,7 @@ $(function(){
   setInterval(() => {
     getno();
     console.log("Notification action");
-  }, 1000);
+  }, 5000);
 });
 
 function getno()

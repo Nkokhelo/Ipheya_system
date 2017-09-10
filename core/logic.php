@@ -530,6 +530,7 @@
             $allQ=mysqli_query($this->connect(),$select);
             return $allQ;
         }
+
         public function getallQoutationByRid($id)
         {
             $select = "SELECT * FROM qoutation WHERE RequestID ='$id'";
@@ -578,6 +579,50 @@
         $sql ="SELECT * FROM expense_income where e_or_i = 'i'";
         $qey =mysqli_query($this->connect(),$sql);
         return $qey;
+    }
+
+    public function updateStatusS($status,$id)
+    {
+        $execute ="UPDATE `servicerequest` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
+        $qey =mysqli_query($this->connect(),$execute);
+        if(!$qey)
+        {
+            die('Error'.$execute);
+        }
+        return "success";
+    }
+    
+    public function updateStatusM($status,$id)
+    {
+        $execute ="UPDATE `maintenancerequest` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
+        $qey =mysqli_query($this->connect(),$execute);
+        if(!$qey)
+        {
+            die('Error'.$execute);
+        }
+        return "success";
+    }
+
+    public function updateStatusR($status,$id)
+    {
+        $execute ="UPDATE `repairrequest` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
+        $qey =mysqli_query($this->connect(),$execute);
+        if(!$qey)
+        {
+            die('Error'.$execute);
+        }
+        return "success";
+    }
+
+    public function updateStatusO($status,$id)
+    {
+        $execute ="UPDATE `technicalobservation` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
+        $qey =mysqli_query($this->connect(),$execute);
+        if(!$qey)
+        {
+            die('Error'.$execute);
+        }
+        return "success";
     }
 
 #suppliers 

@@ -20,7 +20,7 @@ session_start();
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class="col-sm-10 b">
+            <div class="col-sm-11 b">
             <h2 class="text-center">Inventory</h2><hr class="bhr">
             <div class="col-xs-12">
               <div class="col-xs-12">
@@ -130,8 +130,8 @@ session_start();
   var old_q=0;
   $('#items').dataTable();
   $('#arrival_date').datepicker({
-						minDate:0,
-						dateFormat: 'yy-mm-dd'
+			minDate:0,
+			dateFormat: 'yy-mm-dd'
   });
 
   function getItem(id) {
