@@ -44,7 +44,7 @@ if(isset ($_GET['ri']))
    $id = $Rrequest["RequestID"];
    if($Rrequest['RequestStatus'] == 'unread'|| $Rrequest['RequestStatus'] == 'readed' )
    {
-        $a ='<a href="CreateTask.php?ci='.$_GET['ci'].'&ri='.$_GET['ri'].'&type='.$_GET['RType'].'" class="btn btn-default"><span class="fa fa-eye-open"></span> Send Surveyor</a>
+        $a ='<a href="obsevation.php?ci='.$_GET['ci'].'&ri='.$_GET['ri'].'&type='.$_GET['RType'].'" class="btn btn-default"><span class="fa fa-eye-open"></span> Send Surveyor</a>
         ';
    }
    else if($Rrequest['RequestStatus'] == 'observed')

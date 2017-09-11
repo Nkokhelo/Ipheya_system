@@ -41,6 +41,7 @@ $log = new Logic();
 			$dura=$_POST["dura"];
 			$Sdate=$_POST["Sdate"];
 			$Edate="";
+			$phase=0;
 			$loca =$_POST['location'];
 			$sum_date = "";
 			$cid = $_POST['ci'];
@@ -61,8 +62,8 @@ $log = new Logic();
 			{
 				$Edate = (new DateTime($Sdate.'+'.$dura.'month'))->format('Y-m-d');
 			}
-			$insert ="INSERT INTO task (`task_id`, `Name`, `Duration`, `DurationType`, `Location`, `StartDate`, `EndDate`, `Description`, `DatePosted`, `request_id`)
-			 VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}', '{$rid}')";
+			$insert ="INSERT INTO task (`task_id`, `Name`, `Duration`, `DurationType`, `Location`, `StartDate`, `EndDate`, `Description`, `DatePosted`, `request_id`,`phase`)
+			 VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}', '{$rid}',0)";
 
 			if(!mysqli_query($db,$insert))
 		    {
@@ -90,7 +91,7 @@ $log = new Logic();
 		$alltask=$log->getallTasks();
 		$tasksAll='';
 		$alltasks='';
-		while($alltasks =mysqli_fetch_row($alltask))
+		while($alltasks =mysqli_fetch_assoc($alltask))
 		{
 			$alltasklist.="<div class='col-sm-12'><input type='radio' name='task' value='".$alltasks[0]."' />".$alltasks[1]."</div>";
 			$tasksAll.="
@@ -100,13 +101,13 @@ $log = new Logic();
 					 	<h1>$alltasks[0]</h1>
 					 </div>
 				 	<div class='col-sm-6'>
-					 	<b>Title</b> $alltasks[1]<br/>
+					 	<b>Title</b> $alltasks[2]<br/>
 						<i><h4>$alltasks[7]</h4></i>
 						<b>Date</b>".date_format(date_create($alltasks[6]),"d F Y")."
 					 </div>
 					 <div class='col-sm-2'>
 					 	<b>Duration</b>
-						 <h5>$alltasks[2] $alltasks[3]</h5>
+						 <h5>$alltasks[3] $alltasks[4](s) </h5>
 					 </div>
 					 <div class='col-sm-3'>
 					 	<b> </b><br/>

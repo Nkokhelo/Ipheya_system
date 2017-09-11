@@ -27,9 +27,9 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
       }
       else
       {
-          $ip = $_SERVER['REMOTE_ADDR'];
-          #$emailpar = $result['email'];
-          $log->AssociateTarget($ip,$email);
+            $ip = $_SERVER['REMOTE_ADDR'];
+            #$emailpar = $result['email'];
+            $log->AssociateTarget($ip,$email);
             $_SESSION['Employee'] = 'Employee';
             $UserRole =$log->getUserRoleByUserId($result[0]);
           //   echo $UserRole;

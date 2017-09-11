@@ -1,6 +1,14 @@
 <?php
 # 21401824 ME Zenzile
     $log = new Logic();
+    $feedback='';
+    $result = $log->getallDepartments();
+    $allDepartments ='';
+    while($department = mysqli_fetch_assoc($result))
+    {
+    
+        $allDepartments .= '<option value="'.$department['department_id'].'" >'.$department['department'].'</option>';
+    }
 #add employee
     if(isset($_POST['Add']))
     {
@@ -168,6 +176,22 @@
       $identity = $employee_res['identity_number'];
       $residential = $employee_res['residential_address'];
       $postal = $employee_res['postal_address'];
+      $image = $employee_res['profile_pic'];
+      $oldimage = $employee_res['profile_pic'];
+      #fetch all departments
+      $result = $log->getallDepartments();      
+      $allDepartments ='';
+      while($department = mysqli_fetch_assoc($result))
+      {
+        if($employee_res['department'] == $department['department_id'] )
+        {
+          $allDepartments .= '<option value="'.$department['department_id'].'" selected="selected">'.$department['department'].'</option>';
+        }
+        else
+        {
+          $allDepartments .= '<option value="'.$department['department_id'].'" >'.$department['department'].'</option>';
+        }
+      }
 
       if(isset($_POST['Edit']))
       {
@@ -193,6 +217,8 @@
         $postal = sanitize($postal);
         $residential = mysqli_real_escape_string($db, $_POST['residential']);
         $residential = sanitize($residential);
+        $image=addslashes($_FILES['profile_pic']['tmp_name']);
+
         #check if no other category matches information
         $query = "SELECT * FROM employees WHERE email='$email' AND identity_number = '$identity' AND employee_id !='$edit_id'";
         $query_result = mysqli_query($db,$query);
@@ -200,6 +226,12 @@
         if($rows>0)
         {
           $errors[] .= 'This employee already exists.';
+          $feedback=$log->display_error("This Employee already exist");
+        }
+        else if((!isset($image))&&($_FILES['profile_pic']['error']))
+        {
+          $errors[].='Attachment error.';
+          $feedback= $log->display_error("Attachment error!");
         }
         if(!empty($errors))
         {
@@ -207,19 +239,26 @@
         }
         else
         {
-        $edit_sql = "UPDATE employees SET name = '$name', surname = '$surname',title = '$title', date_of_birth = '$date',email = '$email',phone_number = '$number',identity_number = '$identity',postal_address = '$postal',residential_address = '$residential',department = '$department' WHERE employee_id = '$edit_id'";
-        mysqli_query($db,$edit_sql);
-        header('Location: employees.php');
+          if($_FILES['profile_pic']['size'] != "")
+          {
+            $image=file_get_contents($image);
+            $image=base64_encode($image);
+          }
+          else
+          {
+            $image =$oldimage;
+          }
+          $edit_sql = "UPDATE employees SET name = '$name', surname = '$surname',title = '$title', date_of_birth = '$date',email = '$email',phone_number = '$number',identity_number = '$identity',postal_address = '$postal',residential_address = '$residential',department = '$department', profile_pic ='$image' WHERE employee_id = $edit_id";
+          $q= mysqli_query($db,$edit_sql);
+          if(!$q)
+          {
+            $feedback = $log->display_error($edit_sql);
+          }
+          // header('Location: employees.php');
         }
       }
     }
 
-    #fetch all departments
-    $result = $log->getallDepartments();
-    $allDepartments ='';
-    while($department = mysqli_fetch_assoc($result)) :
-      $allDepartments .= '<option value="'.$department['department_id'].'" >'.$department['department'].'</option>';
-    endwhile;
 
 #fetch all employees
     $employee_exe = $log->getallEmployees();

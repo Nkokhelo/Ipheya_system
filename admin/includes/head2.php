@@ -20,7 +20,10 @@
     <link ral = "stylesheet" href = "../assets/plugins/datatables/jquery.dataTables.css" type = "text/css"/>
     <script type = "text/javascript" src = "../assets/plugins/datatables/jquery.dataTables.js"></script>
     <script type = "text/javascript" src = "../assets/plugins/datatables/dataTables.bootstrap.js"></script>
+    <link rel = "stylesheet" href = "../assets/select2/css/select2.min.css" type = "text/css"/>
+    <script type = "text/javascript" src = "../assets/select2/js/select2.min.js"></script>
 
     <link rel = "stylesheet" href = "../assets/Site.css" type = "text/css"/>
     <link rel = "stylesheet" href = "../assets/font-awesome/css/font-awesome.min.css" type = "text/css"/>
-    </head>
+    
+  </head>
