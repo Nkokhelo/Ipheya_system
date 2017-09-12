@@ -18,7 +18,7 @@ else
         <div class='row'>
             <div class='col-xs-12'>
               <div class="col-xs-11 b">
-                <h1>Welcome to Ipheya IT Solutions</h1>
+                <h2>Welcome to Ipheya IT Solutions</h2><hr class="bhr">
               </div>
             </div>
         </div>
@@ -26,4 +26,3 @@ else
   </div>
   <?php include('includes/footer.php'); ?>
 </body>
-

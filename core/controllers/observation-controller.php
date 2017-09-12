@@ -12,40 +12,45 @@ $log = new Logic();
 		$Dposted=date('Y-m-d H:i:s');$Dposted_error='';
 		$feedback='';
 		$removed ='';
+		$table ='';
+		$client ='';
 		// $cid=$rid ='';
-
 #find basic client info before a form can be viewed
-  if(isset ($_GET['ri']))	
+  if(isset ($_GET['ri']))
      {
         $cid = $_GET['ci'];
         $rid = $_GET['ri'];
-								$type = $_GET['type'];
+				$type = $_GET['type'];
         $clientQR = $log->getClientsById($cid);
-								$client=mysqli_fetch_assoc($clientQR);
-								$allList=$log->getallEmployees();
-								$allemp ='';
-								while($empl = mysqli_fetch_assoc($allList))
-								{
-									$allemp.="<option value='".$empl['employee_id']."'>".$empl['name']."</option>";
-								}
-								if($type=="Service")
-								{
-									$req = $log->getServiceRequestById($rid);
-								}
-								else
-								{
-									$req = $log->getMaintananceRequestById($rid);
-								}
-														$request=mysqli_fetch_assoc($req);
-								$name =$log->getServiceNameByID($request['ServiceID']);
-								}
+				$client=mysqli_fetch_assoc($clientQR);
+				$allList=$log->getallEmployees();
+				$allemp ='';
+				while($empl = mysqli_fetch_assoc($allList))
+				{
+					$allemp.="<option value='".$empl['employee_id']."'>".$empl['name']."</option>";
+				}
+				if($type=="Service")
+				{
+					$req = $log->getServiceRequestById($rid);
+					$table ='servicerequest';
+				}
+				else
+				{
+					$req = $log->getMaintananceRequestById($rid);
+					$table ='maintenancerequest';
+
+				}
+				$request=mysqli_fetch_assoc($req);
+				$name =$log->getServiceNameByID($request['ServiceID']);
+			}
 			#Saving a task
-					if(isset($_POST["submit"]))
-					{
+			if(isset($_POST["submit"]))
+			{
 						$task=$_POST["task"];
 						$duraType=$_POST["duraType"];
 						$dura=$_POST["dura"];
 						$Sdate=$_POST["Sdate"];
+						$emp_id = $_POST['employee'];
 						$Edate="";
 						$phase=0;
 						$loca =$_POST['location'];
@@ -54,7 +59,6 @@ $log = new Logic();
 						$rid = $_POST['ri'];
 						$descr = mysqli_real_escape_string($db, $_POST["descr"]);
 						$descr = sanitize($descr);
-
 						#this are the calculations of the end date... "HINT: You can add them by week or day or months"...
 						if($duraType=="day")
 						{
@@ -68,40 +72,33 @@ $log = new Logic();
 						{
 							$Edate = (new DateTime($Sdate.'+'.$dura.'month'))->format('Y-m-d');
 						}
-						$insert ="INSERT INTO `observation_task` (`task_id`, `t_name`, `duration`, `d_type`, `location`, `s_date`, `e_date`, `description`, `date_posted`, `request_id`, `complete`, `status`) VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}', '{$rid}',0,'created')";
-
-			if(!mysqli_query($db,$insert))
-		   {
-								die($insert);
-								$feedback=$log->display_error("Error".mysqli_error($log->connect()));
-								$clientQR = $log->getClientsById($cid);
-								$client=mysqli_fetch_assoc($clientQR);
-								if($type=="Service")
-								{
-									$req = $log->getServiceRequestById($rid);
+						$insert ="INSERT INTO `observation_task` (`task_id`, `t_name`, `duration`, `d_type`, `location`, `s_date`, `e_date`, `description`, `date_posted`, `request_id`,`r_type`, `complete`, `status`,`employee_id`)
+						VALUES (NULL, '{$task}', '{$dura}', '{$duraType}', '{$loca}', '{$Sdate}', '{$Edate}', '{$descr}', '{$Dposted}', '{$rid}','{$type}',0,'created',{$emp_id})";
+						if(!mysqli_query($db,$insert))
+					   {
+											die($insert);
+											$feedback=$log->display_error("Error".mysqli_error($log->connect()));
+											$clientQR = $log->getClientsById($cid);
+											$client=mysqli_fetch_assoc($clientQR);
+											if($type=="Service")
+											{
+												$req = $log->getServiceRequestById($rid);
+											}
+											else
+											{
+												$req = $log->getMaintananceRequestById($rid);
+											}
+											$request=mysqli_fetch_assoc($req);
 								}
 								else
 								{
-									$req = $log->getMaintananceRequestById($rid);
+									$log->notify('Admin',$client['email'],'Obsever has been sent for '.$name.' request' ,'/ipheya/client/history.php');
+									$log->updateStatus('observation',$rid,$table);
 								}
-								$request=mysqli_fetch_assoc($req);
-					}
-			else
-			{
-				
-				$task_id = mysqli_insert_id($log->connect());
-				foreach($_POST['employees'] as $employee_id)
-				{
-					$insert ="INSERT INTO `o_e` (`oemp_id`, `employee_id`, `task_id`) VALUES (NULL, $employee_id, $task_id)";
-					if(!mysqli_query($db,$insert))
-					{
-						$feedback =$display_error("Error".mysqli_error($db));
-					}
 
-				}
-				header("Location:alltasks.php");
+				header("Location:allobsevartions.php");
 			}
-		}
+
 
 
 #add employees to task

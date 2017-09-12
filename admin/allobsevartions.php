@@ -3,8 +3,9 @@ session_start();
 if(isset($_SESSION['Employee']))
 {
   include('../core/init.php');
-  include('includes/head.php');
-  include('../core/controllers/obsevation-controller.php');
+  include('../core/logic.php');
+  include('includes/head2.php');
+  include('../core/controllers/observation-controller.php');
 }
 else
 {
@@ -18,7 +19,8 @@ else
         <div class='row'>
             <div class='col-xs-12'>
               <div class="col-xs-11 b">
-                <h1></h1>
+                <h2>Obsevations</h2>
+                
               </div>
             </div>
         </div>
@@ -26,4 +28,3 @@ else
   </div>
   <?php include('includes/footer.php'); ?>
 </body>
-

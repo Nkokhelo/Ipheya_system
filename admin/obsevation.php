@@ -101,7 +101,7 @@ else
 																		<a class="btn btn-default">
 																			<i class="fa fa-plus" onclick="showdropdown()"></i>
 																		</a>
-																		<select class="form-control" id="select" name='employees[]' style="width:60%; display:inline;" multiple="multiple">
+																		<select class="form-control" id="select" name='employee' style="width:60%; display:inline;" >
 																			<?=$allemp?>
 																		</select>
 																	</div>
@@ -185,4 +185,3 @@ $('#select').select2();
 
 	</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWOMyEmxZVyeidLLRrsdIH-Mb_zAaF7cM&callback=myMap"></script>
-

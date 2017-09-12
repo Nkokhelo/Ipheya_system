@@ -1,14 +1,30 @@
 <?php
     class Logic
     {
+        public function __construct()
+        {
+
+        }
         public function Logic()
         {
-            return true;
+            return __construct();
         }
-        
+
         public function connect()
         {
             return mysqli_connect('localhost','root','','ipheya');
+        }
+#sort arrays
+        function m_sortbydate($array, $col, $dir = SORT_ASC)
+        {
+            $dates = array();
+            foreach ($array as $key=> $row)
+            {
+                $dates[$key] = strtotime($row[$col]);
+            }
+            array_multisort($dates, $dir, $array);
+            // print_r($array);
+            return $array;
         }
 
 # Employees
@@ -50,6 +66,13 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+        public function getByEById($id)
+        {
+            $sql ="Select * from employees where employee_id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            return mysqli_fetch_assoc($qey);
+        }
+
         public function getEmployeeNameById($id)
         {
             $sql ="Select * from employees where employee_id='$id'";
@@ -103,18 +126,18 @@
         }
         public function getClientByNo($no)
         {
-            
+
             $sql ="Select * from clients where client_no='$no'";
             $qey =mysqli_query($this->connect(),$sql);
             return mysqli_fetch_assoc($qey);
-        }        
+        }
         public function getClientByIdNo($no)
         {
             $result = $this->getallClients();
             $client ='';
             while($clientdata = mysqli_fetch_assoc($result))
             {
-                if($no = $clientdata['client_id'])
+                if($no == $clientdata['client_id'])
                 {
                     $client = $clientdata;
                 }
@@ -265,7 +288,7 @@
             $sql ="SELECT * FROM departments";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
-            
+
         }
         public function getDepartmentById($id)
         {
@@ -305,7 +328,7 @@
             $qey =mysqli_query($this->connect(),$query);
             if(!$qey)
             {
-                    die('Error !'.mysqli_error($this->connect()));
+                    die('getallMaintananceRequest() error in logic class !');
             }
             return $qey;
         }
@@ -315,7 +338,7 @@
             $qey =mysqli_query($this->connect(),$query);
             if(!$qey)
             {
-                    die('Error !'.mysqli_error($this->connect()));
+                    die('getallSurveyRequest() error in logic class !');
             }
             return $qey;
         }
@@ -325,7 +348,7 @@
             $qey =mysqli_query($this->connect(),$query);
             if(!$qey)
             {
-                    die('Error !'.mysqli_error($this->connect()));
+                    die('error in logic class !');
             }
             return $qey;
         }
@@ -335,7 +358,7 @@
             $qey =mysqli_query($this->connect(),$query);
             if(!$qey)
             {
-                    die('Error !'.mysqli_error($this->connect()));
+                    die('getServiceRequestById() error in logic class !');
             }
             return $qey;
         }
@@ -345,7 +368,7 @@
             $qey =mysqli_query($this->connect(),$query);
             if(!$qey)
             {
-                    die('Error !'.mysqli_error($this->connect()));
+                    die('getMaintananceRequestById() error in logic class !');
             }
             return $qey;
         }
@@ -355,7 +378,7 @@
             $qey =mysqli_query($this->connect(),$query);
             if(!$qey)
             {
-                    die('Error !'.mysqli_error($this->connect()));
+                    die('getSurveyRequestById() error in logic class !');
             }
             return $qey;
         }
@@ -365,7 +388,7 @@
             $qey =mysqli_query($this->connect(),$query);
             if(!$qey)
             {
-                    die('Error !'.mysqli_error($this->connect()));
+                    die('getRepairRequestById() error in logic class !');
             }
             return $qey;
         }
@@ -446,7 +469,7 @@
           }
         }
 
-        
+
 #Surveying information
     function getallSuveyingInfo()
     {
@@ -469,7 +492,7 @@
     }
     public function countTasks($id)
     {
-        
+
         $sql ="SELECT COUNT(*) FROM `task` WHERE `project_no`='$id'";
         $qey =mysqli_query($this->connect(),$sql);
         return $qey;
@@ -543,7 +566,7 @@
             $allQ=mysqli_query($this->connect(),$select);
             if(!$allQ)
             {
-                die("Error ".mysqli_error($this->connect()));
+                die("getQoutationById() error in logic class ");
             }
             return $allQ;
         }
@@ -553,7 +576,7 @@
             $items_restult=mysqli_query($this->connect(),$select);
             if(!$items_restult)
             {
-                die("Error ".mysqli_error($this->connect()));
+                die("getallQoutationItemsByQid() error in logic class ");
             }
             return $items_restult;
         }
@@ -563,7 +586,7 @@
             $items_restult=mysqli_query($this->connect(),$select);
             if(!$items_restult)
             {
-                die("Error ".mysqli_error($this->connect()));
+                die("getQuantity() error in logic class ");
             }
             return $items_restult;
         }
@@ -581,51 +604,19 @@
         return $qey;
     }
 
-    public function updateStatusS($status,$id)
+    public function updateStatus($status,$id,$table)
     {
-        $execute ="UPDATE `servicerequest` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
+        $execute ="UPDATE `$table` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
         $qey =mysqli_query($this->connect(),$execute);
         if(!$qey)
         {
-            die('Error'.$execute);
-        }
-        return "success";
-    }
-    
-    public function updateStatusM($status,$id)
-    {
-        $execute ="UPDATE `maintenancerequest` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
-        $qey =mysqli_query($this->connect(),$execute);
-        if(!$qey)
-        {
-            die('Error'.$execute);
+            die('updateStatus() error in logic class'.$execute);
         }
         return "success";
     }
 
-    public function updateStatusR($status,$id)
-    {
-        $execute ="UPDATE `repairrequest` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
-        $qey =mysqli_query($this->connect(),$execute);
-        if(!$qey)
-        {
-            die('Error'.$execute);
-        }
-        return "success";
-    }
 
-    public function updateStatusO($status,$id)
-    {
-        $execute ="UPDATE `technicalobservation` SET `RequestStatus`='{$status}' WHERE `RequestStatus`!='{$status}' AND `RequestID`=$id";
-        $qey =mysqli_query($this->connect(),$execute);
-        if(!$qey)
-        {
-            die('Error'.$execute);
-        }
-        return "success";
-    }
-
-#suppliers 
+#suppliers
  public function getallSuppliers()
         {
             $sql ="SELECT * FROM suppliers";
@@ -654,7 +645,7 @@
             $qey =mysqli_query($this->connect(),$sql);
             if(!$qey)
             {
-                die("Error".mysqli_error($this->connect()));
+                die("getProjectByNo() error in logic class");
             }
             return mysqli_fetch_assoc($qey);
         }
@@ -701,7 +692,7 @@
                 $feedback="Email sent!!!";
             }
             return $feedback;
-           
+
         }
 #email body
         public function emailBodyLink($name, $message, $btnLink)
@@ -744,7 +735,7 @@
             <tr>
                 <td style="width:80%; padding:5%;background: #fff;border: 2px solid #ddd; color:#000; text-align:center;font-size: 1.5vw;font-family: &#39;Gill Sans&#39;, &#39;Gill Sans MT;&#39;, Calibri, &#39;Trebuchet MS&#39;, sans-serif;">
                     Hy '.$name.',<br><br>'.$message.'<br/><br/> Regard<br/> Ipheya Team.
-                    
+
                 </td>
             </tr>
             <tr align="center" style="padding-top:2% ">
@@ -767,66 +758,88 @@
             return '<a id="button" href="'.$href.'" style="padding: 2%;background-color: rgba(45, 76, 204, 0.94);display: block;width: 50%;border: rgba(45, 76, 204, 0.94);border-radius: 2px;font-weight: bolder;color: #fff;align-self: center;margin: 3% auto;text-align: center;font-size: 2vw;cursor: pointer;">'.$message.'</a>';
         }
 #faqs
-public function getfaqbyId($id)
-{
-    $sql ="SELECT * FROM faqs WHERE f_id= '$id' ";
-    $qey =mysqli_query($this->connect(),$sql);
-    if(!$qey)
-    {
-        die("Error".mysqli_error($this->connect()));
-    }
-    return mysqli_fetch_assoc($qey);
-}
+        public function getfaqbyId($id)
+        {
+            $sql ="SELECT * FROM faqs WHERE f_id= '$id' ";
+            $qey =mysqli_query($this->connect(),$sql);
+            if(!$qey)
+            {
+                die("getfaqbyId() in logic class");
+            }
+            return mysqli_fetch_assoc($qey);
+        }
+        #obsevation task
+        public function geto_taskbyID($id)
+        {
+          $sql ="SELECT * FROM observation_task WHERE task_id=$id";
+          $o_task =mysqli_query($this->connect(),$sql);
+          if(!$o_task)
+          {
+              die("geto_taskbyID() error in logic class");
+          }
+          return mysqli_fetch_assoc($o_task);
+        }
 
-#event 
-public function getallevents()
-{
-    $sql ="SELECT * FROM events";
-    $qey =mysqli_query($this->connect(),$sql);
-    return $qey;
-}
+        public function viewOTask($rid,$type)
+        {
+          $sql ="SELECT * FROM observation_task WHERE request_id=$rid AND r_type= '$type'";
+          $o_task =mysqli_query($this->connect(),$sql);
+          if(!$o_task)
+          {
+              die("viewOTask() in logic".$sql);
+          }
+          return mysqli_fetch_assoc($o_task);
+        }
+#event
+        public function getallevents()
+        {
+            $sql ="SELECT * FROM events";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
+        }
 
-public function getEventbyID($id)
-{
-    $sql ="SELECT * FROM events WHERE id=$id";
-    $qey =mysqli_query($this->connect(),$sql);
-    if(!$qey)
-    {
-        die("Error".mysqli_error($this->connect()));
-    }
-    return mysqli_fetch_assoc($qey);
-}
+        public function getEventbyID($id)
+        {
+            $sql ="SELECT * FROM events WHERE id=$id";
+            $qey =mysqli_query($this->connect(),$sql);
+            if(!$qey)
+            {
+                die("getEventbyID() error in logic class");
+            }
+            return mysqli_fetch_assoc($qey);
+        }
 #rentals
-public function getAllrentals()
-{
-    $sql="SELECT * FROM rentals";
-    $rent =mysqli_query($this->connect(),$sql);
-    return $rent;
-}
+        public function getAllrentals()
+        {
+            $sql="SELECT * FROM rentals";
+            $rent =mysqli_query($this->connect(),$sql);
+            return $rent;
+        }
 
-public function getRentalbyID($id)
-{
-    $sql ="SELECT * FROM rentals WHERE id=$id";
-    $rent =mysqli_query($this->connect(),$sql);
-    if(!$rent)
-    {
-        die("Error".mysqli_error($this->connect()));
-    }
-    return mysql_fetch_assoc($rent);
-}
-#error 
+        public function getRentalbyID($id)
+        {
+            $sql ="SELECT * FROM rentals WHERE id=$id";
+            $rent =mysqli_query($this->connect(),$sql);
+            if(!$rent)
+            {
+                die("getRentalbyID() error in logic class");
+            }
+            return mysqli_fetch_assoc($rent);
+        }
+
+#error
         public function display_error($message)
         {
             $mes = '<div class="alert alert-danger"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-alert"></span> <strong>Error!</strong> '.$message.'</div>';
             return $mes;
         }
-#success 
+#success
         public function display_success($message)
         {
             $mes = '<div class="alert alert-success"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> '.$message.'</div>';
             return $mes;
         }
-#info 
+#info
         public function display_info($message)
         {
             $mes = '<div class="alert alert-info"><button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-info-sign"></span> <strong>info!</strong> '.$message.'</div>';
@@ -857,6 +870,13 @@ public function getRentalbyID($id)
         public function close()
         {
             mysqli_close($this->connect());
+        }
+
+        public function notify($from,$to,$message,$link)
+        {
+            $sql ="INSERT INTO `notifications` (`not_id`, `n_from`, `n_to`, `n_message`, `unread`, `n_link`) VALUES (NULL, '$from', '$to', '$message', 1, '$link')";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
         }
     }
 

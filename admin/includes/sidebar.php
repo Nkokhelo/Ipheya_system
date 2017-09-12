@@ -145,6 +145,28 @@ function getno()
               }
             });
 }
+function updatenot(id,link)
+{
+  $.ajax({
+    type: "get",
+    url: "/ipheya/core/sub/notifications.php",
+    data: "updatenot="+id,
+    success: function(data) {
+      data = JSON.parse(data);
+        if(data>0)
+        {
+          window.location.href = link;
+        }
+        else
+        {
+          alert("Error");
+        }
+      },
+    error:function(error){
+        alert("The error"+error);
+        }
+      });
+}
 
 $("#sidebar .components li").click(function() {
   $("#sidebar .components li.active a").removeClass("active");
