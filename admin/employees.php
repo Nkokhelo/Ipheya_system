@@ -15,11 +15,6 @@
    }
 ?>
 <style>
-  #imageUpload
-{
-    display: none;
-}
-
 #profileImage
 {
     cursor: pointer;
