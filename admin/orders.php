@@ -3,8 +3,9 @@ session_start();
 if(isset($_SESSION['Employee']))
 {
   include('../core/init.php');
+  include('../core/logic.php');
   include('includes/head2.php');
-  // include('../core/controllers/chat-controller.php');
+  include('../core/controllers/order-controller.php');
 }
 else
 {
@@ -27,19 +28,26 @@ else
                       Manage Orders<b class="caret"></b>
                       </a>
                       <ul class="dropdown-menu">
-                          <li><a href="manageproducts.php">Orders</a></li>
-                          <li><a href="inventorys.php">Qoutation Orders</a></li>
+                          <li><a href="purchaseorder.php">Purchase Orders</a></li>
+                          <li><a href="salesorder.php">Sales Orders</a></li>
                       </ul>
                   </li>
                 </ol>
               </div><!-- /col-xs-6-->
 
+
               <div class="col-xs-11 b">
                 <h2>Manage Orders</h2><hr class="bhr">
-              </div>
+                <div class="col-xs-12">
+
+                </div>
             </div>
         </div>
       </div>
   </div>
+
   <?php include('includes/footer.php'); ?>
 </body>
+<script>
+  $('#supplier').select2();
+</script>
