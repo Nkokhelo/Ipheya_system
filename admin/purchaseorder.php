@@ -35,18 +35,17 @@ else
 
                 </ol>
               </div><!-- /col-xs-6-->
+     
 
-
-              <div class="col-xs-11 b">
+              <div class="col-xs-11 b"> 
                 <h2>Manage Orders</h2><hr class="bhr">
                 <div class="col-xs-12">
-
-                  <form class="form-horizontal" method="POST" action="/ipheya/core/sub/php_action/createOrder.php" id="createOrderForm">
-
+                  <div class="col col-xs-12 success-messages"></div>
+                  <form class="form-horizontal" method="POST" action="/ipheya/core/sub/php_action/createOrder.php" id="createOrderForm"> 
+   
                   <div class="col-xs-1">
                     <h1><span class="fa fa-user-circle-o"></span></h1>
                   </div>
-
                   <div class="form-group col-xs-4">
                     <label for="supplier">Supplier</label>
                     <select name="supplier" onchange="getSupplier()" class="form-control" id="supplier" required>
@@ -85,7 +84,7 @@ else
                           </thead>
                           <tbody>
 
-                          
+                             
                             <?php
                             $arrayNumber = 0;
                             for($x = 1; $x < 4; $x++) { ?>

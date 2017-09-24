@@ -1,9 +1,10 @@
-var manageOrderTable;
-var supplier_id;
-//GET SUUPILER
+var manageOrderTable = null;
+var supplier_id = null;
+
+// GET SUUPILER
 function getSupplier() {
     supplier_id = $('#supplier').val();
-    if (isNaN(supplier_id) == false) {
+    if (isNaN(supplier_id) === false) {
         $.ajax({
             url: '/ipheya/core/sub/php_action/findSupplier.php',
             type: 'post',
@@ -106,7 +107,6 @@ $(document).ready(function() {
                     $("#" + productNameId + "").closest('.form-group').addClass('has-success');
                 }
             } // for
-
             for (var x = 0; x < productName.length; x++) {
                 if (productName[x].value) 
                 {
@@ -122,7 +122,6 @@ $(document).ready(function() {
             var quantity = document.getElementsByName('quantity[]');
             var validateQuantity;
             var order_quality = 0;
-            
             for (var x = 0; x < quantity.length; x++) 
             {
                 var quantityId = quantity[x].id;
@@ -149,13 +148,12 @@ $(document).ready(function() {
                 }
             } // for
 
-
             var unitPrice = document.getElementsByName('unitprice[]');
             var validateUnitprice;
-            for (var x = 0; x < unitprice.length; x++) 
+            for (var x = 0; x < unitPrice.length; x++) 
             {
-                var unitpriceId = unitprice[x].id;
-                if (unitprice[x].value == '') 
+                var unitpriceId = unitPrice[x].id;
+                if (unitPrice[x].value == '') 
                 {
                     $("#" + unitpriceId + "").after('<p class="text-danger"> Product Name Field is required!! </p>');
                     $("#" + unitpriceId + "").closest('.form-group').addClass('has-error');
@@ -166,9 +164,9 @@ $(document).ready(function() {
                     // order_quality += quantity[x];
                 }
             } // for
-            for (var x = 0; x < unitprice.length; x++) 
+            for (var x = 0; x < unitPrice.length; x++) 
             {
-                if (unitprice[x].value) 
+                if (unitPrice[x].value) 
                 {
                     validateUnitprice = true;
                 } else 
@@ -176,17 +174,16 @@ $(document).ready(function() {
                     validateUnitprice = false;
                 }
             } // for
+
             $("#orderdate").val(order_date);
-            $("#order_quantity").val(order_date);
-            alert("after unit price");
-            return false;
-            alert(supplier+" edate : "+expected_date+" discoun "+ discount);
-            if (supplier && expected_date  && discount)
+            $("#totalQuantity").val(order_quality);
+            
+            if (supplier != null && expected_date != null  && discount != null)
             {
-                
                 if (validateProduct == true && validateQuantity == true &&  validateUnitprice) 
                 {
                     // create order button
+                    var form = $('form');
                     $.ajax({
                         url: form.attr('action'),
                         type: form.attr('method'),
@@ -194,22 +191,19 @@ $(document).ready(function() {
                         dataType: 'json',
                         success: function(response) 
                         {
-                            alert(response);
-                                console.log(response);
                                 // reset button
-
                                 $(".text-danger").remove();
                                 $('.form-group').removeClass('has-error').removeClass('has-success');
 
                                 if (response.success == true) 
                                 {
 
-                                    // create order button
+                                    // create order button 
                                     $(".success-messages").html('<div class="alert alert-success">' +
                                         '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
                                         '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> ' + response.messages +
                                         ' <br /> <br /> <a type="button" onclick="printOrder(' + response.order_id + ')" class="btn btn-primary"> <i class="glyphicon glyphicon-print"></i> Print </a>' +
-                                        '<a href="orders.php?o=add" class="btn btn-default" style="margin-left:10px;"> <i class="glyphicon glyphicon-plus-sign"></i> Add New Order </a>' +
+                                        '<a href="purchaseorder.php" class="btn btn-default" style="margin-left:10px;"> <i class="glyphicon glyphicon-plus-sign"></i> Add New Order </a>' +
 
                                         '</div>');
 
@@ -220,22 +214,15 @@ $(document).ready(function() {
                                     // remove the product row
                                     $(".removeProductRowBtn").addClass('div-hide');
                                 } 
-                                else 
-                                {
-                                    alert(response.messages);
-                                }
-                            } // /response
+                            }, // /response
+                            error:function (res) 
+                            {
+                                alert(res.responseText);
+                            }
                     }); // /ajax
                 } // if array validate is true
-                else
-                {
-                    return false; // if array validate is false
-                }
+
             } // /if field validate is true
-            else
-            {
-                return false;// field validate is false
-            }
 
             return false;
         }); // /create order form function
@@ -245,8 +232,10 @@ $(document).ready(function() {
 
 
 // print order function
-function printOrder(orderId = null) {
-    if (orderId) {
+function printOrder(orderId) 
+{
+    if (orderId) 
+    {
 
         $.ajax({
             url: '/ipheya/core/sub/php_action/printOrder.php',
@@ -341,7 +330,7 @@ function addRow() {
 
 } // /add row
 
-function removeProductRow(row = null) {
+function removeProductRow(row) {
     if (row) {
         $("#row" + row).remove();
 
@@ -353,7 +342,7 @@ function removeProductRow(row = null) {
 }
 
 // select on product data
-function getProductData(row = null) {
+function getProductData(row) {
     if (row) {
         var productId = $("#productName" + row).val();
 
@@ -427,7 +416,7 @@ function getProductData(row = null) {
 } // /select on product data
 
 // table total
-function getTotal(row = null) {
+function getTotal(row) {
     if (row) {
         var total = Number($("#unitprice" + row).val()) * Number($("#quantity" + row).val());
         total = total.toFixed(2);
@@ -459,7 +448,7 @@ function subAmount() {
     $("#subTotalValue").val(totalSubAmount);
 
     // vat
-    var vat = (Number($("#subTotal").val()) / 100) * 13;
+    var vat = (Number($("#subTotal").val()) / 100) * 14;
     vat = vat.toFixed(2);
     $("#vat").val(vat);
     $("#vatValue").val(vat);
@@ -547,7 +536,7 @@ function resetOrderForm() {
 
 
 // remove order from server
-function removeOrder(orderId = null) {
+function removeOrder(orderId) {
     if (orderId) {
         $("#removeOrderBtn").unbind('click').bind('click', function() {
 
@@ -604,7 +593,7 @@ function removeOrder(orderId = null) {
 // /remove order from server
 
 // Payment ORDER
-function paymentOrder(orderId = null) {
+function paymentOrder(orderId) {
     if (orderId) {
 
         $("#supplier").datepicker();

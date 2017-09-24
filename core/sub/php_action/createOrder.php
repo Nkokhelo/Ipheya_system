@@ -4,63 +4,61 @@ require_once 'core.php';
 
 $valid['success'] = array('success' => false, 'messages' => array(), 'order_id' => '');
 // print_r($valid);
-if($_POST) {	
+$success ='';
+$message ='';
+if($_POST) 
+{	
 
-	$orderDate 						= date('Y-m-d', strtotime($_POST['orderDate']));	
-  $clientName 					= $_POST['clientName'];
-  $clientContact 				= $_POST['clientContact'];
-  $subTotalValue 				= $_POST['subTotalValue'];
-  $vatValue 						=	$_POST['vatValue'];
-  $totalAmountValue     = $_POST['totalAmountValue'];
-  $discount 						= $_POST['discount'];
-  $grandTotalValue 			= $_POST['grandTotalValue'];
-  $paid 								= $_POST['paid'];
-  $dueValue 						= $_POST['dueValue'];
-  $paymentType 					= $_POST['paymentType'];
-  $paymentStatus 				= $_POST['paymentStatus'];
-
+	$supplier_id = addslashes($_POST['supplier']);
+	$order_date = date('Y-m-d', strtotime($_POST['orderdate']));	
+	$expected_date = addslashes($_POST['expected_date']);
+	$order_quantity = addslashes($_POST['order_quantity']);
+	$order_vat =addslashes($_POST['vatValue']);
+	$order_amount = $_POST['totalAmountValue'];
+	$discount = $_POST['discount'];
+	$amount_a_disc = $_POST['grandTotalValue'];
 				
-	$sql = "INSERT INTO orders (order_date, client_name, client_contact, sub_total, vat, total_amount, discount, grand_total, paid, due, payment_type, payment_status, order_status) VALUES ('$orderDate', '$clientName', '$clientContact', '$subTotalValue', '$vatValue', '$totalAmountValue', '$discount', '$grandTotalValue', '$paid', '$dueValue', $paymentType, $paymentStatus, 1)";
-	
+	$sql = "INSERT INTO `purchase_orders` (`order_id`, `supplier_id`, `order_date`, `expected_date`, `order_quantity`, `order_vat`, `order_amount`, `discount`, `amount_a_disc`, `status`) VALUES (null,$supplier_id, '$order_date', '$expected_date', '$order_quantity', '$order_vat', '$order_amount', '$discount', '$amount_a_disc', 0);";
 	
 	$order_id;
 	$orderStatus = false;
-	if($connect->query($sql) === true) {
+	$success = false;
+	if($connect->query($sql)==true) 
+	{
 		$order_id = $connect->insert_id;
 		$valid['order_id'] = $order_id;	
-
 		$orderStatus = true;
+
+		$productids = $_POST['productName'];
+		$quantities = $_POST['quantity'];
+		$unitprices = $_POST['unitprice'];
+		$onhand = false;
+		$success = false;
+			for($x = 0; $x < count($productids); $x++) 
+			{			
+				$product_id	= $productids[$x];
+				$quantity = $quantities[$x];
+				$unitprice = $unitprices[$x];
+
+				$query ="INSERT INTO `inventories` (`inventry_id`, `quantity`, `unit_price`, `product_id`, `order_id`, `is_on_hand`) 
+				VALUES (NULL, $quantity, $unitprice, $product_id, $order_id, '0')";
+				if($connect->query($query)==true)
+				{
+					$success = true;
+					$message ="Purchase order was saved!";
+				}else
+				{
+					$message ="Error".$connect->error." ".$query;					
+				}
+			} // /for quantity
+	}
+	else
+	{
+		$message ="Error".$connect->error;
 	}
 
-		
-	// echo $_POST['productName'];
-	$orderItemStatus = false;
-
-	for($x = 0; $x < count($_POST['productName']); $x++) {			
-		$updateProductQuantitySql = "SELECT product.quantity FROM product WHERE product.product_id = ".$_POST['productName'][$x]."";
-		$updateProductQuantityData = $connect->query($updateProductQuantitySql);
-		
-		
-		while ($updateProductQuantityResult = $updateProductQuantityData->fetch_row()) {
-			$updateQuantity[$x] = $updateProductQuantityResult[0] - $_POST['quantity'][$x];							
-				// update product table
-				$updateProductTable = "UPDATE product SET quantity = '".$updateQuantity[$x]."' WHERE product_id = ".$_POST['productName'][$x]."";
-				$connect->query($updateProductTable);
-
-				// add into order_item
-				$orderItemSql = "INSERT INTO order_item (order_id, product_id, quantity, rate, total, order_item_status) 
-				VALUES ('$order_id', '".$_POST['productName'][$x]."', '".$_POST['quantity'][$x]."', '".$_POST['rateValue'][$x]."', '".$_POST['totalValue'][$x]."', 1)";
-
-				$connect->query($orderItemSql);		
-
-				if($x == count($_POST['productName'])) {
-					$orderItemStatus = true;
-				}		
-		} // while	
-	} // /for quantity
-
-	$valid['success'] = true;
-	$valid['messages'] = "Successfully Added";		
+	$valid['success'] = $success;
+	$valid['messages'] = $message;		
 	
 	$connect->close();
 

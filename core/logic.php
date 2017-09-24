@@ -177,6 +177,13 @@
             $supplierName = mysqli_fetch_row($qey)[1];
             return $supplierName;
         }
+        public function getSupplierName($id)
+        {
+            $sql ="Select * from suppliers where supplier_id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            $supplierName = mysqli_fetch_row($qey)[1];
+            return $supplierName;
+        }
         public function Login($email,$password)
         {
             #since we hashed a password we have to verify a user password with a hashed one
