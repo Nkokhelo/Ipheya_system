@@ -146,7 +146,7 @@ $(document).ready(function() {
                                     });
                                 }); // /.alert
 
-                                // reload the manage student table
+                                // reload the manage product table
                                 manageProductTable.ajax.reload(null, true);
 
                                 // remove text-error
@@ -198,7 +198,7 @@ function editProduct(productId = null)
             success: function(response) {
                     // alert(response.product_image);
                     // modal spinner
-                    $('.div-loading').addClass('div-hide');
+                    $('.div-loading').css('display',"none");
                     // modal div
                     $('.div-result').removeClass('div-hide');
 

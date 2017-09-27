@@ -23,7 +23,7 @@ session_start();
 
                     <div class="col-xs-6">
                     <ol class="breadcrumb">
-                    <li><a href="dashboard.php">Home</a></li>
+                    <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
                     <li class="dropdown active">
                         <a href="#manageproduct" class="dropdown-toggle" style="color:#888; text-decoration:none" data-toggle="dropdown">
                         Manage Qoutation Products<b class="caret"></b>
