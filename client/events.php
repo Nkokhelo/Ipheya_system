@@ -48,9 +48,8 @@ if(isset($_SESSION['Client']))
 <script>
 		function loadevent(id)
 		{
-				$('#event-data').load('http://www.invest4living.com/ipheya/core/sub/finatialR.php?event_data='+id);
+				$('#event-data').load('/ipheya/core/sub/finatialR.php?event_data='+id);
 		}
 
-	
-	</script>
 
+	</script>

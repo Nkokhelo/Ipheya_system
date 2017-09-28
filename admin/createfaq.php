@@ -11,7 +11,7 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-12'>
-              <div class="col-xs-10 b">
+              <div class="col-xs-11 b">
                <h3 class="text-center">Create a FAQ</h3><hr class="bhr"/>
                <form  method="post" action="createfaq.php">
                 <div class="row">

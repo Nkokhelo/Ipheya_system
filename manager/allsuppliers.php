@@ -19,7 +19,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
+            <div class='col-xs-11 b'>
               <form class="form-inline" action="departments.php<?=((isset($_GET['edit']))?'?edit='.$edit_id:'');?>" method="post" novalidate>
                 <table class="table" style="padding:2%;" id="suppliers">
                   <thead>

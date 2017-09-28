@@ -19,7 +19,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
+            <div class='col-xs-11 b'>
               <div class="col-lg-8" style="">
                 <ul class="nav nav-tabs" id="iptab">
                     <li class="active"><a href="#table">Table</a></li>

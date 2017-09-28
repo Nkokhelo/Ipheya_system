@@ -20,7 +20,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class="col-xs-10 b">
+            <div class="col-xs-11 b">
             <?php if($id == 0){ ?>
                 <ul class="nav nav-tabs" id="myTab">
                     <li class="active" data-toggle="tab"><a href="#new" data-toggle="tab">New</a></li>

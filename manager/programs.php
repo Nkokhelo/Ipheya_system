@@ -63,7 +63,7 @@
           desc.removeAttribute('disabled');
         $.ajax({
             type : "get",
-             url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
+             url : "/ipheya/manager/includes/getjs.php",
             data : "id="+id,
             success:function(data)
             {
@@ -74,12 +74,12 @@
                 $('#label').text('Edit '+data.program_name+' program');
                 // getClient(data.client_no);
                 getClient(data.client_no);
-                
-            },error:function (err) 
+
+            },error:function (err)
             {
                 console.log("Result"+err);
             }});
-             
+
     }
      function deleteprogram(id){
           $('#delete').show();
@@ -92,7 +92,7 @@
           desc.setAttribute('disabled','true');
         $.ajax({
             type : "get",
-             url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
+             url : "/ipheya/manager/includes/getjs.php",
             data : "id="+id,
             success:function(data)
             {
@@ -100,8 +100,8 @@
                 $('#id').val(data.id);
                 $('#title').val(data.program_name);
                 $('#description').val(data.description);
-                $('#label').text('Archive '+data.program_name+' program?');    
-            },error:function (err) 
+                $('#label').text('Archive '+data.program_name+' program?');
+            },error:function (err)
             {
                 console.log("Result"+err);
             }});
@@ -125,17 +125,17 @@
 
     function getClient(client_no)
     {
-        $('#cInfo').load('http://www.invest4living.com/Ipheya/manager/includes/getjs.php?clientInfor='+client_no);
+        $('#cInfo').load('/ipheya/manager/includes/getjs.php?clientInfor='+client_no);
         // $.ajax({ that was a log methord
         //     type : "get",
-        //      url : "http://www.invest4living.com/Ipheya/manager/includes/getjs.php",
+        //      url : "/Ipheya/manager/includes/getjs.php",
         //     data : "clientInfor="+client_no,
         //     success:function(data)
         //     {
         //         data =JSON.parse(data);
         //         document.getElementById("cInfo").innerHTML= "<h3 class='text-left' style='color:#888'>Client Information</h3>"+data;
-                
-        //     },error:function (err) 
+
+        //     },error:function (err)
         //     {
         //         console.log("Result"+err);
         //     }});

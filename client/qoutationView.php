@@ -3,60 +3,70 @@
    if(isset($_SESSION['Client']))
    {
       require_once('../core/init.php');
-      include('../includes/head.php');
+      include('includes/head.php');
       include ('../core/logic.php');
       include '../core/controllers/qoutation-controller.php';
+      include('../core/controllers/client-controller.php');
    }
    else 
    {
      header('Location: ../login.php');
    }
-   include('../core/controllers/client-controller.php');
-   $profile_page = 'selected';
  ?>
-  <body id="client-dashboard">
-    <?php  include('../includes/top-nav.php'); ?>
-    <div class="col-xs-12" style="padding:1%;">
-        <?php include('../includes/sidebar.php'); ?>
-        <div class="col-sm-8 b">
-            <h2>Qoute</h2>
-            <hr class="bhr"/>
-            <div class="col-sm-6">
-              <table class="table">
-                  <tr><td>Title</td><td><?=$Title?></td></tr>
-                  <tr><td>Qoute Date</td><td><?=$QoutationDate?><td></td></tr>
-                  <tr><td>Exp-Date</td><td><?=$ExpiringDate?></td></tr>
-
-              </table>
-            </div>
-            <div class="col-sm-6">
-              <b>Summary</b> 
-              <div class="col-sm-12">
-                plase
+<body>
+  <div class="wrapper">
+    <?php include 'includes/sidebar.php'; ?>
+      <div id='content'>
+        <div class='row'>
+            <div class='col-xs-12'>
+              <div class="col-xs-11 b">
+                <div class="col-sm-12">
+                  <h1 class="text-center" style="color:#888">Qoute</h1>
+                  <hr class="bhr"/>
+                  <div class="col-sm-6">
+                    <div class="row"><div class="col-xs-6"><b>Title</b></div><div class="col-xs-6"><b>:</b><?=$Title?></div></div>
+                    <div class="row"><div class="col-xs-6"><b>Date Issued</b></div><div class="col-xs-6"><b>:</b><?=$QoutationDate?></div></div>
+                    <div class="row"><div class="col-xs-6"><b>Exp-Date</b></div><div class="col-xs-6"><b>:</b><?=$ExpiringDate?></div></div>
+                  </div>
+                  <div class="col-sm-12">
+                      <hr style="width:100%"/>
+                    <b>Summary</b> 
+                    <div class="col-sm-12">
+                      <textarea class="form-control" readonly rows="5"><?=$Summary?></textarea>
+                    </div>
+                    <hr style="width:100%"/>
+                  </div>
+                  <div class="col-sm-12">
+                      <table class="table">
+                        <thead>
+                              <th>item </th>
+                              <th>description</th>
+                              <th>unit price</th>
+                              <th>quantity</th>
+                              <th>amount</th>
+                        </thead>
+                        <tbody>
+                            <?=$allQItems?>
+                        </tbody>
+                      </table>
+                      <div class="col-xs-12">
+                        <p><b>Qoutation T & C</b></p>
+                      </div>
+                      <hr class="bhr"/>
+                      <form method="POST">
+                          <div class="col-sm-6 col-xs-offset-3">
+                            <button type="submit" class="btn btn-success" style="width:49%" ><span class="glyphicon glyphicon-ok"></span> Accept</button>
+                            <button type="button" class="btn btn-warning" style="width:49%" ><span class="glyphicon glyphicon-ok"></span> Decline</button>
+                            <input name="deposit" type="hidden" value="<?=$deposit?>"/>
+                          </div>
+                      </form>
+                  </div>
+              </div>
               </div>
             </div>
-            <div class="col-sm-12">
-                <h4>Items</h4>
-                <table class="table">
-                  <thead>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Qouant</th>
-                        <th>Tot-Price</th>
-                  </thead>
-                  <tbody>
-                      <?=$allQItems?>
-                  </tbody>
-                </table>
-                <hr class="bhr"/>
-                <form method="POST">
-                    <div class="col-sm-12">
-                      <button type="hidden" class="btn btn-success"  ><span class="glyphicon glyphicon-ok"></span> Accept</button>
-                      <input name="deposit" type="hidden" value="<?=$deposit?>"/>
-                    </div>
-                </form>
-            </div>
         </div>
-    </div>
+      </div>
+  </div>
+  <?php include('includes/footer.php'); ?>
 </body>
+

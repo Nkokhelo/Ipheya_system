@@ -1,4 +1,5 @@
 <?php
+#21401824 ME Zenzile
 #get logic class
  $logic = new Logic();
  $feedback ='';
@@ -19,9 +20,9 @@
         $budget= $_POST['budget'];
         $no_of_emp=$_POST['no_of_emp'];
         $patner=$_POST['patner'];
-        $visibility=$_POST['visibility']; 
+        $visibility=$_POST['visibility'];
         $daily_hour=$_POST['daily_hour'];
-        $charge=$_POST['charge'];   
+        $charge=$_POST['charge'];
 
         $client_unique = uniqid();
         $project_no ="P00".strtoupper(substr($client_unique,6,4));
@@ -37,38 +38,45 @@
         {
               $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> Project saved !');
         }
-    } 
- 
+    }
+
  #get all projets
   $query_result = $logic->getallProjets();
   $proj_list ='';
   $error='';
-
+  $status ='';
   while($proj = mysqli_fetch_assoc($query_result))
-  
+
   {
     if($proj['status']=='complete')
     {
-      $proj_list.="<tr class='success'><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+        $status = "<label class='label label-success'>".$proj['status']."</label>";
+        $status1 = "<label class='label label-success' title='status: complete'>-</label>";
     }
     else if($proj['status']=='inprogress')
     {
-      $proj_list.="<tr class='info'><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+        $status = "<label class='label label-info'>".$proj['status']."</label>";
+        $status1 = "<label class='label label-info' title='status: progress'>-</label>";
     }
     else if($proj['status']=='overdue')
     {
-      $proj_list.="<tr class='warning'><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+        $status = "<label class='label label-warning'>".$proj['status']."</label>";
+        $status1 = "<label class='label label-warning' title='status: overdue'>-</label>";
+        
     }
     else if($proj['status']=='canceled')
     {
-      $proj_list.="<tr class='warning'><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+        $status = "<label class='label label-danger'>".$proj['status']."</label>";
+        $status1 = "<label class='label label-danger' title='status: canceled'>-</label>";
+        
     }
     else
     {
-      $proj_list.="<tr><td>".$proj['project_no']."</td><td>".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td>".$proj['status']."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+        $status = "<label class='label label-default'>".$proj['status']."</label>";
+        $status1 = "<label class='label label-default' title='status: not stated'>-</label>";
+        
     }
-
-
+    $proj_list.="<tr><td>".$proj['project_no']."</td><td>".$status1." ".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
   }
   if($proj_list == '')
   {
@@ -145,7 +153,7 @@ if(isset($_GET['pview']))
         $feedback =array('alert'=>'', 'message'=>'');
         $project_name =$_POST['project_name'];
         $description =$_POST['description'];
-        $duration =$_POST['duration']; 
+        $duration =$_POST['duration'];
         $start_date =$_POST['start_date'];
         $patner =$_POST['patner'];
         $budget =$_POST['budget'];
@@ -162,7 +170,7 @@ if(isset($_GET['pview']))
             $query = mysqli_query($db,"UPDATE `projects` SET `project_name` ='$project_name',`description`='$description', `duration`='$duration', `start_date`='$start_date', `patner`='$patner', `budget`='$budget', `charge`='$charge', `daily_hours`='$daily_hours', `visibility`='$visibility' WHERE project_no='$pid'");
             if(!$query)
             {
-                
+
                 $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><strong><span class="glyphicon glyphicon-warning-sign"></span>Success :</strong> occured during execution<br/>Please try again'.mysqli_error($db));
             }
             else

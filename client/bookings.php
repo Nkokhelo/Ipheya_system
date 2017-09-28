@@ -19,7 +19,7 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-10 b'>
+            <div class='col-xs-11 b'>
               <form class="form-horizontal" action="bookings.php" method="POST">
                 <fieldset>
                   <legend class="inlegend thelegend">

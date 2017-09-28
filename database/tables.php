@@ -41,7 +41,13 @@
                           }
 
           mysqli_close($con);
+<<<<<<< HEAD
+
+
+/*#CREATE TABLE clients
+=======
 #CREATE TABLE clients
+>>>>>>> bec65a2119fb5dad88eb5b5905279959b699debf
    $sql = "CREATE TABLE clients
            (
              client_id int NOT NULL AUTO_INCREMENT,

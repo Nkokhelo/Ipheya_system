@@ -25,9 +25,12 @@
         $QoutationDate=$_POST['qdate'];
         $RequestID= $_POST['Req_id'];
         $RequestType = $_POST['serviceType'];
+        $date = date('Y-m-d');//we take a date
+        $qoute_unique = uniqid();//generate unique id
+        $qoute_no ="Q".substr($date,2,2).substr($date,0,2).strtoupper(substr($qoute_unique,4,4));
 #you cannot view quotaion page without the request
         $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`) VALUES 
-                                        (NULL, '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
+                                        ({$qoute_no}, '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
         
         if(!mysqli_query($db,$addInsert))
         {
@@ -35,7 +38,6 @@
         }
         else
         {
-            $QouteId= mysqli_insert_id($db);
             $names = $_POST['IName'];
             $descrs = $_POST['IDescription'];
             $quants = $_POST['IQuantiy'];
@@ -44,7 +46,7 @@
 #test
 
 #end-test
-            if(!mysqli_query($db,"INSERT INTO client_r_q VALUES('$RequestID','$QouteId','$RequestType')"))
+            if(!mysqli_query($db,"INSERT INTO client_r_q VALUES('$RequestID','$qoute_no','$RequestType')"))
             {
                 die("Error in clientRQ".mysqli_error($db));
             }
@@ -57,66 +59,84 @@
                     die('Error Item'.mysqli_error($db));
                 }
             }
-            header('Location:Qoutations.php');
+            header('Location : Qoutations.php');
+            exit();
         }
    }
 
     if(isset($_POST['pdf_con']))
    {
-        session_start();
-        $_SESSION['title']=$_POST['title'];
-        $_SESSION['Summary']=$_POST['summary'];
-        $_SESSION['PaymentMethord']	=$_POST['paymentmethod'];
-        $_SESSION['AmountDue']=$_POST['TotalPrice'];
-        $_SESSION['ExpiringDate']	=$_POST['edate'];
-        $_SESSION['QoutationDate']=$_POST['qdate'];
-        $_SESSION['RequestID']= 2;/*$_POST['r_id'];*/
-        $_SESSION['RequestType'] = $_POST['serviceType'];/*$_POST['r_type'];*/
-        $_SESSION['names'] = $_POST['IName'];
-        $_SESSION['descrs'] = $_POST['IDescription'];
-        $_SESSION['quants'] = $_POST['IQuantiy'];
-        $_SESSION['units'] = $_POST['IUnitPrice'];
-        $_SESSION['pricequants'] = $_POST['IPQ'];
-        $_SESSION['clientID']=$_POST['clientid'];
-        $_SESSION['client_no']=$logic->getClientNo($_POST['clientid']);
+  
         $Title=$_POST['title'];
         $Summary=$_POST['summary'];	
         $PaymentMethord	=$_POST['paymentmethod'];
         $AmountDue=$_POST['TotalPrice'];
         $ExpiringDate	=$_POST['edate'];
         $QoutationDate=$_POST['qdate'];
-        $RequestID= 2;/*$_POST['r_id'];*/
-        $RequestType = 'Service';/*$_POST['r_type'];*/
- 
-#you cannot view quotaion page without the request
-       $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`) VALUES 
-                                        (NULL, '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
-         if(!mysqli_query($db,$addInsert))
+        $RequestID= $_POST['Req_id'];
+        $RequestType = $_POST['serviceType'];
+        $date = date('Y-m-d');//we take a date
+        $qoute_unique = uniqid();//generate unique id
+        $qoute_no ="Q".substr($date,2,2).substr($date,0,2).strtoupper(substr($qoute_unique,4,4));
+
+        #you cannot view quotaion page without the request
+       $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`) VALUES ('{$qoute_no}', '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
+        if(!mysqli_query($db,$addInsert))
         {
-            echo 'Error! Inserting';
+            die('Error! Inserting'.mysqli_error($db));
         }
         else
         {
-                $QouteId= mysqli_insert_id($db);
                 $names = $_POST['IName'];
                 $descrs = $_POST['IDescription'];
                 $quants = $_POST['IQuantiy'];
                 $units = $_POST['IUnitPrice'];
                 $pricequants = $_POST['IPQ'];
-                if(!mysqli_query($db,"INSERT INTO client_r_q VALUES('$RequestID','$QouteId','$RequestType')"))
+                $success =1;
+                if(!mysqli_query($db,"INSERT INTO client_r_q VALUES('$RequestID','$qoute_no','$RequestType')"))
                 {
                     die("Error in clientRQ".mysqli_error($db));
                 }
-
-                for($i=0; $i<count($names); $i++)
+                else
                 {
-                    $quert ="INSERT INTO qoutationitems VALUES(NULL,'$names[$i]','$descrs[$i]','$units[$i]','$quants[$i]','$pricequants[$i]','$QouteId')";
-                    if(!mysqli_query($db,$quert))
+                    for($i=0; $i<count($names); $i++)
                     {
-                        die('Error Item'.mysqli_error($db));
+                        $quert ="INSERT INTO `qoutationitems`(`QoutationItemID`,`Name`,`Description`,`UnitPrice`,`Quantity`,`TotalPrice`,`Status`,`QoutationID`) VALUES(NULL,'$names[$i]','$descrs[$i]','$units[$i]','$quants[$i]','$pricequants[$i]','N','$qoute_no')";
+                        if(!mysqli_query($db,$quert))
+                        {
+                            die('Error in Item'.mysqli_error($db)."\n {$quert}");
+                            $success=0;
+                        }
+                        else
+                        {
+                            $success=1;
+                        }
+                    }
+
+                    if($success==1)
+                    {
+                        // session_start();
+                        $_SESSION['title']=$_POST['title'];
+                        $_SESSION['qoute_no']=$qoute_no;
+                        $_SESSION['Summary']=$_POST['summary'];
+                        $_SESSION['PaymentMethord']	=$_POST['paymentmethod'];
+                        $_SESSION['AmountDue']=$_POST['TotalPrice'];
+                        $_SESSION['ExpiringDate']	=$_POST['edate'];
+                        $_SESSION['QoutationDate']=$_POST['qdate'];
+                        $_SESSION['RequestID']= $_POST['Req_id'];
+                        $_SESSION['RequestType'] = $_POST['serviceType'];
+                        $_SESSION['names'] = $_POST['IName'];
+                        $_SESSION['descrs'] = $_POST['IDescription'];
+                        $_SESSION['quants'] = $_POST['IQuantiy'];
+                        $_SESSION['units'] = $_POST['IUnitPrice'];
+                        $_SESSION['pricequants'] = $_POST['IPQ'];
+                        $_SESSION['clientID']=$_POST['clientid'];
+                        $_SESSION['client_no']=$_POST['clientid'];
+                        echo "<script> location.replace('QoutePDF.php'); </script>";
+                        // header("Location : QoutePDF.php");
+                        exit();
                     }
                 }
-               header('Location:QoutePDF.php');
             }
         }
         //  $options.="<option value='$id'>$name</option>";
@@ -196,14 +216,15 @@
        {
          $allQItems.="<tr><td>".$items['Name']."</td><td>".$items['Description']."</td><td>".$items['UnitPrice']."</td><td>".$items['Quantity']."</td><td>".$items['TotalPrice']."</td></tr>";
        }
-         $allQItems.="<tr><td></td><td></td><td></td><td>Amount Due</td><td>".$AmountDue."</td></tr>";
+         $allQItems.="<tr><td></td><td></td><td></td><td><b>Amount Due</b></td><td>".$AmountDue."</td></tr>";
 
          if(isset($_POST['deposit']))
          {
-            $_SESSION['message']="Quotation Payament";
+            $_SESSION['message']="10% Quotation Deposit";
 		    $_SESSION['amount']=$deposit;
 		    $_SESSION['payament-status']="Qoutation Deposit";
-            header('Location:indexes.php');
+            header('Location : indexes.php');
+            exit();
          }
   }
 

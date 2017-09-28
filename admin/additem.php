@@ -12,7 +12,7 @@ session_start();
     {
       header("Location:../login.php");
     }
-     
+
 ?>
 
 <body>
@@ -20,14 +20,38 @@ session_start();
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class="col-sm-10 b">
-            <h2 class="text-center">Inventory</h2><hr class="bhr">
+            
             <div class="col-xs-12">
-              <div class="col-xs-12">
-                <?=$qitems?>
-              </div>
-            </div>
-          </div>
+
+
+            <div class="col-xs-6">
+            <ol class="breadcrumb">
+            <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="orders.php">Manager Orders</a></li>
+              <li class="dropdown active">
+                  <a href="#manageproduct" class="dropdown-toggle" style="color:#888; text-decoration:none" data-toggle="dropdown">
+                  Qoutation Orders<b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="purchaseorder.php">Purchase Orders</a></li>
+                      <li><a href="salesorder.php">Sales Orders</a></li>
+
+                  </ul>
+              </li>
+
+            </ol>
+          </div><!-- /col-xs-6-->
+
+              <div class="col-sm-11 b">
+                <h2 class="text-center">Qoutation Orders</h2><hr class="bhr">
+                <div class="col-xs-12">
+                  <div class="col-xs-12">
+                    <?=$qitems?>
+                  </div>
+                </div>
+              </div><!--/b-->
+            </div><!--/col-xs-12-->
+
         </div>
       </div>
   </div>
@@ -50,7 +74,7 @@ session_start();
 					    <input type="file" class="form-control" id="item_img_name"  name="item_image" />
 				    </div>
 	        </div> <!-- /form-group-->
-          
+
 	        <div class="form-group">
 	        	<label for="item_code" class="col-sm-4 control-label">Item Name         : </label>
 				    <div class="col-sm-6">
@@ -130,14 +154,14 @@ session_start();
   var old_q=0;
   $('#items').dataTable();
   $('#arrival_date').datepicker({
-						minDate:0,
-						dateFormat: 'yy-mm-dd'
+			minDate:0,
+			dateFormat: 'yy-mm-dd'
   });
 
   function getItem(id) {
     $.ajax({
                   type:"get",
-                  url:"http://www.invest4living.com/Ipheya/stock-counter/includes/getitems.php",
+                  url:"/ipheya/stock-counter/includes/getitems.php",
                   data:"item_no="+id,
                   success:function(data){
                   data =JSON.parse(data);

@@ -28,14 +28,14 @@
     <ul class="collapse list-unstyled" id="stakeholders">
         <li><a  href="allemployees.php">Employees</a></li>
         <li><a  href="allsuppliers.php">Suppliers</a></li>
-        <li><a id="Eve" href="create_events.php">Events</a></li>                        
+        <li><a id="Eve" href="create_events.php">Events</a></li>
         <li><a  href="roles.php">Roles</a></li>
     </ul>
   </li>
   <li>
     <a href="#clientMenu" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-group'/></i>
-      Clients 
+      Clients
     </a>
     <ul class="collapse list-unstyled" id="clientMenu">
       <li><a  href="clients.php">All clients</a></li>
@@ -45,7 +45,7 @@
   <li  >
     <a href="#requestsMenu" data-toggle="collapse" aria-expanded="false">
         <i class='fa fa-copy'></i>
-      Request & Tickets 
+      Request & Tickets
     </a>
     <ul class="collapse list-unstyled" id="requestsMenu">
       <li><a  href="clientRequest.php">Requests</a></li>
@@ -53,17 +53,25 @@
       <li><a href="allfaqs.php">FAQ</a></li>
     </ul>
   </li>
-  
   <li>
-    <a href="inventorys.php">
+  <a href="#Inventory" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-cubes'></i>
-      Inventory
+      Stock
     </a>
+    <ul class="collapse list-unstyled" id="Inventory">
+      <li><a  href="brand.php">Brand</a></li>
+      <li><a  href="category.php">Category</a></li>
+      <li><a  href="manageproducts.php">Products</a></li>
+      <li><a href="orders.php">Orders</a></li>
+      <li><a href="inventories.php">Inventory</a></li>
+      <li><a href="sales.php">Sales</a></li>
+      <li><a href="rentals.php">Rentals</a></li>
+    </ul>
   </li>
-    <li>
-    <a href="rentals.php">
-      <i class='fa fa-cubes'></i>
-      rentals
+  <li>
+    <a href="alltasks.php">
+      <i class='fa fa-task'></i>
+      Task
     </a>
   </li>
   <li>
@@ -80,49 +88,97 @@
   </li>
 </ul>
 </nav>
-<!-- Notification Panel Hidden
-<div class="notification-container hide-not"style="color:white">
-<div class="col-lg-12">
-<div class="col-lg-12" style="boder-bottom:1px white solid;">
-  <h2 style="color:#fff"><p class="glyphicon glyphicon-bell" style="font-size:20px"></p> Notifications<p class="badge" style="background-color:red; font-size: 20px;left:80%; top:3%">6</p> </h2>
+<!-- The bell -->
+  <div class="">
+    <b id="count" class="count notcount"></b>
+    <p class="fa fa-bell-o thebell" style="padding-top:5px;" onclick="show()"></p>
+  </div>
+<!-- The notifications panel -->
+<div class="notification-container hide-not">
+<div class="col-lg-12" style="padding-right:0; padding-left:0;">
+  <h4 class="text-center" style="line-height:30%"><b><p class="notcount" style="display:inline"></p></b><p class="fa fa-bell" style="font-size:20px"></p> Notifications</h4>
+  <hr class="bhr" style="margin-bottom:0;">
+  <div class="body-con">
+    <ul class="notif">
+
+    </ul>
+  </div>
+  <hr class="bhr" style="margin-top:0;">
+  <div class="col-xs-12 text-center">
+    <a href="clearall"><i class="fa fa-okay"></i>Mark all as read</a>
+  </div>
 </div>
-<hr class="bhr"/>
-<div class="col-lg-12">
-      <h5>4 unread client request</h>
-  <hr />
 </div>
-<div class="col-lg-12">
-      <h5>3 clients has been regesterd</h>
-  <hr />
-</div>
-<div class="col-lg-12">
-      <h5>Would you like to assign task??</h5>
-  <hr />
-</div>
-</div>
-</div>
-<p class="badge not-num" id="not" style="">6</p>
-<div class="notification" onclick="show">
-<p class="not-bell glyphicon glyphicon-bell" ></p>
-</div>
--->
+
+
 <script>
-$(document).ready(function(){
-// $(".notification").click(function(){
-//         $(".notification").toggleClass("move");
-//         // $(".notification-container").toggleClass("show-not");
-//         // $(".notification-container").toggleClass("hide-not");
-//         // $("#not").toggleClass("hide-not");
-//         $("#not").toggle(300);
-//         $(".notification-container").toggle(300);
-// });
-// $("#sidebar .components li").click(function() {
-//   $("#sidebar .components li.active a").removeClass("active");
-//   $(this).addClass("active");
-// });
-// $('#sidebar .components li a').click(function(){
-//   $(this).parent().addClass('active').siblings().removeClass('active');	
-// });
+function show()
+{
+  $(".notification-container").toggle();
+  $(".notif").load("/ipheya/core/sub/notifications.php?load=<?php echo($_SESSION['Employee']) ?>");
+}
+
+$(function(){
+  setInterval(() => {
+    getno();
+    console.log("Notification action");
+  }, 5000);
+});
+
+function getno()
+{
+  $.ajax({
+          type: "get",
+          url: "/ipheya/core/sub/notifications.php",
+          data: "count=<?php echo($_SESSION['Employee']);?>",
+          success: function(data) {
+            data = JSON.parse(data);
+              if(data>0)
+              {
+                $('.notcount').text(data);
+                $('.notcount').show();
+              }
+              else
+              {
+                $('#count').hide();
+              }
+            },
+          error:function(error){
+              alert(error);
+              }
+            });
+}
+function updatenot(id,link)
+{
+  $.ajax({
+    type: "get",
+    url: "/ipheya/core/sub/notifications.php",
+    data: "updatenot="+id,
+    success: function(data) {
+      data = JSON.parse(data);
+        if(data>0)
+        {
+          window.location.href = link;
+        }
+        else
+        {
+          alert("Error");
+        }
+      },
+    error:function(error){
+        alert("The error"+error);
+        }
+      });
+}
+
+$("#sidebar .components li").click(function() {
+  $("#sidebar .components li.active a").removeClass("active");
+  $(this).addClass("active");
+});
+$('#sidebar .components li a').click(function(){
+  $(this).parent().addClass('active').siblings().removeClass('active');
+});
+
 
 $(function()
 {
@@ -133,6 +189,4 @@ $('#sidebar .components li ul li a').filter(function()
 {return this.href==location.href}).parents('ul').addClass('in').siblings('a').attr("aria-expanded","true").parent().addClass('active').siblings().removeClass('active').attr("aria-expanded","flase");
 
 });
-});
 </script>
-
