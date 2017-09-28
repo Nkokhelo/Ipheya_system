@@ -1,17 +1,18 @@
 <?php
 $logic =new logic();
 $feedback="";
-if(isset($_POST['submit']))
+if(isset($_POST['save']))
 {
 $timeline=$_POST['timeline'];
-$query="INSERT INTO timelines('timeline_id','timeline') VALUES(NULL,'$timeline')";
+$query="INSERT INTO `timelines` (`timeline_id`, `timeline`) VALUES (NULL, 'weekly');";
+$result = mysqli_query($db,$query);
 if(!$result)
 {
-        $feedback =array('alert'=>'alert alert-danger', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Error!</strong>'.mysqli_error($db));
+        $feedback =$logic->display_error("Error!".mysqli_error($db).$query);
 }
 else
 {
-      $feedback =array('alert'=>'alert alert-success', 'message'=>'<button type="button" class="close" style="color:red"data-dismiss="alert">&times;</button><span class="glyphicon glyphicon-ok"></span> <strong>Success!</strong> Project saved !');
+      $feedback =$logic->display_success("Sucess! Setting saved");
 }
 
 }

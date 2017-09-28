@@ -36,7 +36,8 @@
            
             <div class='col-xs-11 b'>
                 <h2>Create TimeLine</h2><hr class="bhr">
-                <form action="" post="" class="form-horizontal">
+                <?= $feedback ?>
+                <form action="" method="POST" class="form-horizontal">
                     <div class="form-group">
                         <div class="col-xs-4">
                             <label for="timeline control-label" >Timeline:</label>
