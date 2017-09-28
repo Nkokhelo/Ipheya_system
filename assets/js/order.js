@@ -1,16 +1,39 @@
-var manageOrderTable = null;
+var purchaseOrderTable = null;
 var supplier_id = null;
 
+purchaseOrderTable = $('#purchaseOrderTable').DataTable({
+    'ajax': '/ipheya/core/sub/php_action/fetchOrder.php',
+    'order': []
+});
+
+function addInventory(id)
+{
+    $.ajax({
+        url: '/ipheya/core/sub/php_action/findSupplier.php',
+        type: 'post',
+        data:{inventory_id: id},
+        dataType: 'json',
+        success: function(response)
+        {
+            if(response.success==true)
+            {
+                purchaseOrderTable.ajax.reload(null, true);
+                $('#feedback').html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> ' + response.messages +
+                '</div>');
+            }
+
+        } //success
+    });
+}
 // GET SUUPILER
 function getSupplier() {
-    supplier_id = $('#supplier').val();
-    if (isNaN(supplier_id) === false) {
+    id = Number($('#supplier').val());
+    if (isNaN(id) === false) {
         $.ajax({
             url: '/ipheya/core/sub/php_action/findSupplier.php',
             type: 'post',
-            data: {
-                supplier_id: supplier_id,
-            },
+            data: {supplier_id: id},
             dataType: 'json',
             success: function(response)
             {
@@ -454,29 +477,35 @@ function subAmount() {
     $("#vatValue").val(vat);
 
     // total amount
-    var totalAmount = (Number($("#subTotal").val()) + Number($("#vat").val()));
+    var totalAmount = (Number($("#subTotal").val()) - Number($("#vat").val()));
     totalAmount = totalAmount.toFixed(2);
     $("#totalAmount").val(totalAmount);
     $("#totalAmountValue").val(totalAmount);
 
     var discount = $("#discount").val();
-    if (discount) {
+    if (discount) 
+    {
         var grandTotal = Number($("#totalAmount").val()) - Number(discount);
         grandTotal = grandTotal.toFixed(2);
         $("#grandTotal").val(grandTotal);
         $("#grandTotalValue").val(grandTotal);
-    } else {
+    } 
+    else 
+    {
         $("#grandTotal").val(totalAmount);
         $("#grandTotalValue").val(totalAmount);
     } // /else discount
 
     var paidAmount = $("#paid").val();
-    if (paidAmount) {
+    if (paidAmount) 
+    {
         paidAmount = Number($("#grandTotal").val()) - Number(paidAmount);
         paidAmount = paidAmount.toFixed(2);
         $("#due").val(paidAmount);
         $("#dueValue").val(paidAmount);
-    } else {
+    } 
+    else 
+    {
         $("#due").val($("#grandTotal").val());
         $("#dueValue").val($("#grandTotal").val());
     } // else

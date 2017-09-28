@@ -1027,3 +1027,7 @@ padding:0;
     margin-top: 0.5px;
 }
 
+.alert
+{
+    border-radius: 0;
+}

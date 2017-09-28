@@ -75,25 +75,25 @@
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Created</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#000">
-                            <span class="count"><?= $np ?></span>
+                            <?= $np ?>
                             </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Progress</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#86c0d6">
-                            <span class="count"><?= $pp ?></span>
+                            <?= $pp ?>
                             </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Complete</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#86d6a4">
-                            <span class="count"><?= $pc ?></span>
+                            <?= $pc ?>
                             </h1><hr class="bhr"/>
                         </div>
                         <div class="col-xs-3">
                             <h4 class="text-center" style="color:#888">Over due</h4><hr class="bhr"/>
                             <h1 class="text-center" style="color:#fc8c7e">
-                            <span class="count"><?= $po ?></span>
+                            <?= $po ?>
                             </h1><hr class="bhr"/>
                         </div>
                         <hr class="bhr"/>

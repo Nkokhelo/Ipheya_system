@@ -56,16 +56,16 @@
   <li>
   <a href="#Inventory" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-cubes'></i>
-      Inventory
+      Stock
     </a>
     <ul class="collapse list-unstyled" id="Inventory">
       <li><a  href="brand.php">Brand</a></li>
       <li><a  href="category.php">Category</a></li>
       <li><a  href="manageproducts.php">Products</a></li>
       <li><a href="orders.php">Orders</a></li>
-      <!-- <li><a href="inventorys.php">Quotation Product</a></li> -->
-      <li><a href="allfaqs.php">Sales</a></li>
-      <li><a href="allfaqs.php">Rentals</a></li>
+      <li><a href="inventories.php">Inventory</a></li>
+      <li><a href="sales.php">Sales</a></li>
+      <li><a href="rentals.php">Rentals</a></li>
     </ul>
   </li>
   <li>

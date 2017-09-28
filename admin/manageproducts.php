@@ -21,14 +21,14 @@ else
 
              <div class="col-xs-6">
               <ol class="breadcrumb">
-                <li><a href="dashboard.php">Home</a></li>
+                <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
                 <li class="dropdown active">
                     <a href="#manageproduct" class="dropdown-toggle" style="color:#888; text-decoration:none" data-toggle="dropdown">
                     Manage Product<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="manageproducts.php">Product</a></li>
-                        <li><a href="inventorys.php">Qoutation Products</a></li>
+                        <li><a href="qoutationproducts.php">Qoutation Products</a></li>
                     </ul>
                 </li>
               </ol>
