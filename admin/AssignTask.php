@@ -1,4 +1,4 @@
-<?php 
+<?php
    session_start();
     if(isset($_SESSION['Employee']))
     {
@@ -16,7 +16,7 @@
 ?>
 <body>
   <div class="wrapper">
-      <?php include 'includes/sidebar.php'?>
+      <?php include('includes/sidebar.php');?>
       <div id='content'>
         <div class='row'>
             <div class="col-xs-11 b">
@@ -50,11 +50,11 @@
                         <div class="col-sm-12">
                             <div class="col-sm-12">
                                 <div class="col-sm-12">
-                                    <div class="col-sm-4"><b> Name</b></div> <div class="col-sm-4"><b>Email</b></div> <div class="col-sm-4"><b>Department</b></div>   
+                                    <div class="col-sm-4"><b> Name</b></div> <div class="col-sm-4"><b>Email</b></div> <div class="col-sm-4"><b>Department</b></div>
                                 </div>
                             </div>
                             <div class="col-sm-12" id="allemp">
-                                <?=$freeemployees;?>    
+                                <?=$freeemployees;?>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
   <?php include('includes/footer.php'); ?>
 </body>
 <script>
-   $(document).ready(function() 
+   $(document).ready(function()
    {
        var id, empname, email, department, task="";
 
@@ -88,7 +88,7 @@
 
        });
       $( "#dropemployee" ).droppable({
-            drop: function(e, ui) 
+            drop: function(e, ui)
             {
                 var employee =ui.draggable.attr('id').split("_");
                 id=employee[0];
@@ -99,18 +99,18 @@
                 $('#dropemployee').append('<div id="emplist" class="alert alert-success alert-dismissable" style="opacity:1;">  <a href="AssignTask?assign='+task+'&remove='+id+'" class="close" data-dismiss="alert" aria-label="close">&times;</a><b>'+empname+' </b> from '+ department+' department is assigned !<input type="hidden" name="EmpId[]" value="'+id+'"/><input type="hidden" name="Task" value="'+task+'"/></div>');
                 ui.draggable.remove().html();
                 $('#dropemployee h4').remove();
-                
+
             },cursor:'move'
 
       });
       function employee(event,ui)
-      { 
+      {
         return '<div class="alert alert-info">Employee is dragged !</div>';
       }
       $("#dropemployee div").dblclick(function()
       {
           alert("The paragraph was double-clicked");
       });
-        
+
    });
 </script>
