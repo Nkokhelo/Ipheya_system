@@ -24,10 +24,10 @@
                 <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>		  
                 <li class="dropdown active">
                     <a href="#manageproduct" class="dropdown-toggle" style="color:#888; text-decoration:none" data-toggle="dropdown">
-                    Rentals<b class="caret"></b>
+                  Rental<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="timeline.php">Rental Settings</a></li>
+                        <li><a href="timelines.php">Rental Settings</a></li>
                     </ul>
                 </li>
             </ol>
@@ -35,14 +35,26 @@
 
            
             <div class='col-xs-11 b'>
-                <h2>Rental Items</h2>
+                <h2>Create TimeLine</h2><hr class="bhr">
+                <form action="" post="" class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-xs-4">
+                            <label for="timeline control-label" >Timeline:</label>
+                            <input class="form-control" type="text" name="timeline" id="timeline">
+                        </div>
+                    </div>
+                    <div>
+                   <input type="submit" name="save" class="btn btn-primary"></input>
+                 </div>
+                </form>
             </div>
-              
+           
             </div>
         </div>
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
+ 
   <script>
 
   </script>
