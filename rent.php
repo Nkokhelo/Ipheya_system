@@ -1,7 +1,7 @@
 <?php
 				require('core/init.php');
 				require('core/logic.php');
-				require('core/controllers/event-controller.php');
+				require('core/controllers/rent-controller.php');
 	 ?>
 <!DOCTYPE HTML>
 <html lang="en-US">
@@ -91,7 +91,7 @@
 						</div>
 						<div class="col-xs-11 col-xs-offset-1">
 								<hr class="bhr" style="margin-left:-105px;">
-										<?=$allevents?>
+										<?=$inventories?>
 								</div>
 						</div>
 			</div><!-- /.row -->
