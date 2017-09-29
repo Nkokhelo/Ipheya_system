@@ -135,7 +135,8 @@ else
     <div class="modal fade" id="rentalModal" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
-            <form action="/ipheya/core/sub/php_action/sellProduct.php" method="post" class="form-horizontal">
+            <?= $feedback ?>
+            <form action="" method="POST" class="form-horizontal">
 
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -207,7 +208,7 @@ else
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-default" onclick="addRentalI()">Add Duration Rule</button>
-                        <button type="submit" class="btn btn-primary" id="createBrandBtn" name="save" onclick="saveRental()" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
+                        <button type="submit" class="btn btn-primary" id="createBrandBtn" name="Save" onclick="saveRental()" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
                       </div>
                 <!-- /modal-footer -->
                 </form>
