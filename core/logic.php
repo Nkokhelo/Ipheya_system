@@ -90,7 +90,13 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-
+      # get time Line 
+     public function getalltimelinesNamebyId($timeline_id)
+     {
+     $sql="SELECT * FROM timelines WHERE timeline_id=$timeline_id";
+     $qey=mysqli_query($this->connect(),$sql);
+     return mysqli_fetch_row($qey);
+     }
 # Client
         public function getallClients()
         {

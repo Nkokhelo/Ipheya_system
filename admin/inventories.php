@@ -2,8 +2,11 @@
 session_start();
 if(isset($_SESSION['Employee']))
 {
+  
   include('../core/init.php');
+  include('../core/logic.php');
   include('includes/head2.php');
+  include('../core/controllers/rentals-controller.php');
 }
 else
 {
@@ -66,8 +69,8 @@ else
                   <div class="col-xs-12">
                     <label class="col-xs-6" for="">Product Name :</label>
                     <div class="col-xs-8">
-                      <input type="text" class="form-control" id="productName" name="productName">
-                      <input type="hidden" class="form-control" id="poductId" name="productId">
+                      <input type="text" class="form-control" id="sproductName" name="productName">
+                      <input type="hidden" class="form-control" id="spoductId" name="productId">
                     </div>
                   </div>
 
@@ -76,14 +79,14 @@ else
                   <div class="col-xs-6">
                     <label class="col-xs-6" for="">Inventory  :</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="quantity" name="quantity">
+                      <input type="text" class="form-control" id="squantity" name="quantity">
                     </div>
                   </div>
                   <div class="row"></div>
                   <div class="col-xs-6">
                     <label class="col-xs-6" for="">Quantity :</label>
                     <div class="col-xs-10">
-                      <input type="text" class="form-control" id="quantity" name="quantity">
+                      <input type="text" class="form-control" id="squantity" name="quantity">
                     </div>
                   </div>
 
@@ -176,7 +179,7 @@ else
                                 <div class="col-xs-12">
                                   <select type="text" class="form-control" id="duration" name="duration[]">
                                     <option>--Select--</option>
-                                    <?= $timelines ?>
+                                    <?= $alltimelines ?>
                                   </select>
                                 </div>
                               </div>
@@ -204,7 +207,7 @@ else
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-default" onclick="addRentalI()">Add Duration Rule</button>
-                        <button type="submit" class="btn btn-primary" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
+                        <button type="submit" class="btn btn-primary" id="createBrandBtn" name="save" onclick="saveRental()" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
                       </div>
                 <!-- /modal-footer -->
                 </form>
