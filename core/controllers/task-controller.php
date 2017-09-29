@@ -93,7 +93,7 @@ $log = new Logic();
 		$alltasks='';
 		while($alltasks =mysqli_fetch_assoc($alltask))
 		{
-			$alltasklist.="<div class='col-sm-12'><input type='radio' name='task' value='".$alltasks[0]."' />".$alltasks[1]."</div>";
+			$alltasklist.="<div class='col-sm-12'><input type='radio' name='task' value='".$alltasks['task_id']."' />".$alltasks['project_no']."</div>";
 			$tasksAll.="
 			<form action='CreateTask.php' method='GET'>
 				<div class='col-sm-12 bhr' style='padding-top:10px;'>
