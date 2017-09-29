@@ -44,21 +44,21 @@
       }
   </style>
   <div class="wrapper">
-      <?php include('includes/sidebar.php');?>
+      <?php include('includes/sidebar2.php');?>
       <div id='content'>
         <div class="container-fluid" style="margin-top:40px">
           <div class="row">
             <div id="wrap">
                 <div class="panel panel-info panel-horizontal">
                     <div class="panel-heading">
-                         <h3 class="panel-title col-md-4">Panel title</h3>
+                         <h3 class="panel-title col-md-4">Team Location</h3>
                     </div>
-                    <div class="panel-body col-md-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque saepe iusto nulla molestias quis esse incidunt veritatis exercitationem dolore officiis. Nam quos iusto officiis ullam itaque voluptatum fuga assumenda culpa!</div>
+                    <div class="panel-body col-md-8">Task information</div>
                 </div>
             </div>
             <?=$locations;?>
        </div>
-
+       div.hello>ul#list>li*5
       </div>
   </div>
   <script src = "../assets/lib/jquery-2.1.3.min.js"></script>
@@ -75,8 +75,8 @@
       var lat = "<?=$lat[$x];?>";//position.coords.latitude;
       var long = "<?=$long[$x];?>";//position.coords.longitude;
 
-      //$('latitude').html(lat);
-      //$('longitude').html(long);
+      $('latitude').html(lat);
+      $('longitude').html(long);
 
       var latlon = new google.maps.LatLng(lat,long);
       //create map
