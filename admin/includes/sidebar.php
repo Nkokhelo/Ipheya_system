@@ -56,7 +56,7 @@
   <li>
   <a href="#Inventory" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-cubes'></i>
-      Stock
+      Equipment
     </a>
     <ul class="collapse list-unstyled" id="Inventory">
       <li><a  href="brand.php">Brand</a></li>
@@ -67,12 +67,6 @@
       <li><a href="sales.php">Sales</a></li>
       <li><a href="rentals.php">Rentals</a></li>
     </ul>
-  </li>
-  <li>
-    <a href="alltasks.php">
-      <i class='fa fa-task'></i>
-      Task
-    </a>
   </li>
   <li>
     <a href="targets.php">

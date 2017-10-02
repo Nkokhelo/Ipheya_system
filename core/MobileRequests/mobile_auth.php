@@ -18,9 +18,5 @@
                   $data = $user;
               }
              echo json_encode($data);
-
-
         }
-
-
 ?>

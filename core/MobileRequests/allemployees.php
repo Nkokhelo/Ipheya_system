@@ -1,10 +1,10 @@
 <?php
     header('Access-Control-Allow-Origin: *');
+    include '../logic.php';
+    $logic = new Logic();
 
  if(isset($_GET['allemp']))
 {
-    include '../logic.php';
-    $logic = new Logic();
     $data='';
     $responce = $logic->getallEmployees();
     while ($th = mysqli_fetch_assoc($responce))
