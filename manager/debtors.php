@@ -92,7 +92,7 @@
                             </div>
                           <!-- Transaction Description-->
                             <div class="form-group col-xs-12">
-                              <label class="col-xs-2 control-label" for="details"> Service Details: </label>
+                              <label class="col-xs-2 control-label" for="details"> Service details: </label>
                               <div class="col-xs-10">
                               <textarea required placeholder="Mr John Sith- 50 A4 pack Deliviries" class="form-control" id='details' type="text" name ="ei_description" rows="5" cols="10"></textarea>
                             </div>                              
@@ -112,6 +112,7 @@
                               <option style="background:#aaa" value="">--None--</option>
                               <option value="cash">Overdue Payment</option>
                               <option value="card">Letter Of Demand</option>
+                              <option value="cash">Debt Collection Notice</option>
                             </select>
                             </div>
                           </div>
