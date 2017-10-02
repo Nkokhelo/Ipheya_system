@@ -20,14 +20,38 @@ session_start();
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
-            <div class="col-sm-11 b">
-            <h2 class="text-center">Inventory</h2><hr class="bhr">
+            
             <div class="col-xs-12">
-              <div class="col-xs-12">
-                <?=$qitems?>
-              </div>
-            </div>
-          </div>
+
+
+            <div class="col-xs-6">
+            <ol class="breadcrumb">
+            <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="orders.php">Manager Orders</a></li>
+              <li class="dropdown active">
+                  <a href="#manageproduct" class="dropdown-toggle" style="color:#888; text-decoration:none" data-toggle="dropdown">
+                  Qoutation Orders<b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a href="purchaseorder.php">Purchase Orders</a></li>
+                      <li><a href="salesorder.php">Sales Orders</a></li>
+
+                  </ul>
+              </li>
+
+            </ol>
+          </div><!-- /col-xs-6-->
+
+              <div class="col-sm-11 b">
+                <h2 class="text-center">Qoutation Orders</h2><hr class="bhr">
+                <div class="col-xs-12">
+                  <div class="col-xs-12">
+                    <?=$qitems?>
+                  </div>
+                </div>
+              </div><!--/b-->
+            </div><!--/col-xs-12-->
+
         </div>
       </div>
   </div>

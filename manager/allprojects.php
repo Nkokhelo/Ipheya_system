@@ -6,14 +6,19 @@
         include('../core/logic.php');
         include('includes/head.php');
         require_once('../core/controllers/project-controller.php');
-        // include('includes/navigation.php');
    }
    else
    {
      header("Location:../login.php");
    }
 ?>
+<style>
+  .label
+  {
+    border-radius: 50%;
 
+  }
+</style>
 <body>
   <div class="wrapper">
       <?php include 'includes/sidebar.php'?>
@@ -27,7 +32,7 @@
                 <?php } else { ?>
                   <table class="table table-bordered table-hover" id="projectTable">
                   <thead>
-                    <th>#</th><th>Project Name</th><th>Duration</th><th>Project Due</th><th>status</th><th>...</th>
+                    <th>#</th><th>Project Name</th><th>Duration</th><th>Project Due</th><th>...</th>
                   </thead>
                   <tbody>
                     <?=$proj_list?>

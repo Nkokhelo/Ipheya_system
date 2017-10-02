@@ -6,7 +6,7 @@
     $allDepartments ='';
     while($department = mysqli_fetch_assoc($result))
     {
-    
+
         $allDepartments .= '<option value="'.$department['department_id'].'" >'.$department['department'].'</option>';
     }
 #add employee
@@ -179,7 +179,7 @@
       $image = $employee_res['profile_pic'];
       $oldimage = $employee_res['profile_pic'];
       #fetch all departments
-      $result = $log->getallDepartments();      
+      $result = $log->getallDepartments();
       $allDepartments ='';
       while($department = mysqli_fetch_assoc($result))
       {

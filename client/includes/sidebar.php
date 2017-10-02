@@ -65,7 +65,7 @@
             <!-- The bell -->
               <div class="">
                 <b id="count" class="count notcount"></b>
-                <p class="fa fa-bell-o thebell" onclick="show()"></p>
+                <p class="fa fa-bell-o thebell" style="padding-top:5px;" onclick="show()"></p>
               </div>
               <!-- The notifications panel -->
               <div class="notification-container hide-not">

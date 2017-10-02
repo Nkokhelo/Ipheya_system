@@ -20,7 +20,6 @@ else
             <div class='col-xs-12'>
               <div class="col-xs-11 b">
                 <h2>Obsevations</h2>
-                
               </div>
             </div>
         </div>

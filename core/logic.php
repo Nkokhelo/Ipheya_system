@@ -3,7 +3,6 @@
     {
         public function __construct()
         {
-
         }
         public function Logic()
         {
@@ -91,7 +90,13 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-
+      # get time Line 
+     public function getalltimelinesNamebyId($timeline_id)
+     {
+     $sql="SELECT * FROM timelines WHERE timeline_id=$timeline_id";
+     $qey=mysqli_query($this->connect(),$sql);
+     return mysqli_fetch_row($qey);
+     }
 # Client
         public function getallClients()
         {
@@ -178,6 +183,30 @@
             $supplierName = mysqli_fetch_row($qey)[1];
             return $supplierName;
         }
+        public function getSupplierName($id)
+        {
+            $sql ="Select * from suppliers where supplier_id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            $supplierName = mysqli_fetch_row($qey)[2];
+            return $supplierName;
+        }
+
+        public function getSupplier($id)
+        {
+            $sql ="Select * from suppliers where supplier_id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            $supplier = mysqli_fetch_assoc($qey);
+            return $supplier;
+        }
+
+        public function getProduct($id)
+        {
+            $sql ="Select * from product where product_id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            $product = mysqli_fetch_assoc($qey);
+            return $product;
+        }
+
         public function Login($email,$password)
         {
             #since we hashed a password we have to verify a user password with a hashed one

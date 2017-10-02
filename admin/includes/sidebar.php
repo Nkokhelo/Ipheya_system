@@ -54,21 +54,24 @@
     </ul>
   </li>
   <li>
-    <a href="inventorys.php">
+  <a href="#Inventory" data-toggle="collapse" aria-expanded="false">
       <i class='fa fa-cubes'></i>
-      Inventory
+      Stock
     </a>
+    <ul class="collapse list-unstyled" id="Inventory">
+      <li><a  href="brand.php">Brand</a></li>
+      <li><a  href="category.php">Category</a></li>
+      <li><a  href="manageproducts.php">Products</a></li>
+      <li><a href="orders.php">Orders</a></li>
+      <li><a href="inventories.php">Inventory</a></li>
+      <li><a href="sales.php">Sales</a></li>
+      <li><a href="rentals.php">Rentals</a></li>
+    </ul>
   </li>
   <li>
     <a href="alltasks.php">
       <i class='fa fa-task'></i>
       Task
-    </a>
-  </li>
-  <li>
-    <a href="rentals.php">
-      <i class='fa fa-bullseye'></i>
-      Item
     </a>
   </li>
   <li>
@@ -88,7 +91,7 @@
 <!-- The bell -->
   <div class="">
     <b id="count" class="count notcount"></b>
-    <p class="fa fa-bell-o thebell" onclick="show()"></p>
+    <p class="fa fa-bell-o thebell" style="padding-top:5px;" onclick="show()"></p>
   </div>
 <!-- The notifications panel -->
 <div class="notification-container hide-not">
