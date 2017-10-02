@@ -118,8 +118,7 @@ else
             
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-              <button type="submit" class="btn btn-primary" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
+              <button type="submit" class="btn btn-primary" id="createSaleBtn" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
             </div>
             <!-- /modal-footer -->
             </form>
@@ -131,12 +130,14 @@ else
     </div>
     <!-- / add modal -->
 
-    <!-- Seles Modals-->
+
+
+    <!-- Rental Modals-->
     <div class="modal fade" id="rentalModal" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <?= $feedback ?>
-            <form action="" method="POST" class="form-horizontal">
+            <form action="/ipheya/core/sub/php_action/createRentals.php" id="rentalForm" method="POST" class="form-horizontal">
 
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -144,10 +145,10 @@ else
               </div>
 
               <div class="modal-body">
-                <div class="removeProductMessages"></div>
+                <div class="addproductMessage"></div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                              <label class="col-xs-6" for="">Product Name :</label>
+                              <label class="col-xs-6" for="productName">Product Name :</label>
                               <div class="col-xs-8">
                                 <input disabled type="text" class="form-control" id="productName" name="productName">
                                 <input type="hidden" class="form-control" id="inventoryId" name="inventoryId">
@@ -156,7 +157,7 @@ else
                           </div>
                           <div class="form-group">
                             <div class="col-xs-6">
-                                <label class="col-xs-6" for="">Quantity :</label>
+                                <label class="col-xs-6" for="quantity">Quantity :</label>
                                 <div class="col-xs-12">
                                   <input type="text" class="form-control" id="quantity" name="quantity">
                                 </div>
@@ -178,7 +179,7 @@ else
                               <div class="col-xs-4">
                                 <label class="col-xs-12" for="">Duration :</label>
                                 <div class="col-xs-12">
-                                  <select type="text" class="form-control" id="duration" name="duration[]">
+                                  <select type="text" class="form-control" id="timeline1" name="timeline[]">
                                     <option>--Select--</option>
                                     <?= $alltimelines ?>
                                   </select>
@@ -187,16 +188,16 @@ else
                               <div class="col-xs-4">
                                 <label class="col-xs-12" for="">Product Charge :</label>
                                 <div class="col-xs-12">
-                                  <input type="text" class="form-control" id="charge" name="charge[]">
+                                  <input type="text" class="form-control" id="charge1" name="charge[]">
                                 </div>
                               </div>
                               <div class="col-xs-4">
                                 <label class="col-xs-12" for="">Penalty charge:</label>
                                 <div class="col-xs-8">
-                                  <input type="text" class="form-control" id="penalty" name="penalty[]">
+                                  <input type="text" class="form-control" id="penalty1" name="penalty[]">
                                 </div>
                                 <div class="col-xs-1">
-                                  <button type="button" onclick="removeI('+id+')" disabled class="btn btn-default"><i class="fa fa-trash-o"></i></button>
+                                  <button type="button" id="remove1" onclick="removeI(1)" disabled class="btn btn-default"><i class="fa fa-trash-o"></i></button>
                                 </div>
                               </div>
                              </div>
@@ -208,7 +209,7 @@ else
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-default" onclick="addRentalI()">Add Duration Rule</button>
-                        <button type="submit" class="btn btn-primary" id="createBrandBtn" name="Save" onclick="saveRental()" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
+                        <button type="submit" class="btn btn-primary" id="createRentBtn" name="Save" onclick='addTorental()' data-loading-text="Loading..." autocomplete="off">Save Changes</button>
                       </div>
                 <!-- /modal-footer -->
                 </form>

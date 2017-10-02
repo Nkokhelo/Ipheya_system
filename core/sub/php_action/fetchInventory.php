@@ -19,8 +19,8 @@ if($result->num_rows > 0)
 	     <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a type="button" data-toggle="modal" data-target="#salesModal" onclick="sellProduct('.$i_id.')"> <i class="fa fa-money"></i> Sell Product</a></li>
-	    <li><a type="button" data-toggle="modal" data-target="#rentalModal" onclick="lease('.$i_id.')"> <i class="fa fa-handshake-o"></i> Lease Product</a></li>
+	    <li><a type="button" id="" data-toggle="modal" data-target="#salesModal" onclick="sellProduct('.$i_id.')"> <i class="fa fa-money"></i> Sell Product</a></li>
+	    <li><a type="button" id="leaseInventoryBtn" data-toggle="modal" data-target="#rentalModal" onclick="lease('.$i_id.')"> <i class="fa fa-handshake-o"></i> Lease Product</a></li>
 	  </ul>
 	</div>';
 
