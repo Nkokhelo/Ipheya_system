@@ -58,7 +58,6 @@
             </div>
             <?=$locations;?>
        </div>
-       div.hello>ul#list>li*5
       </div>
   </div>
   <script src = "../assets/lib/jquery-2.1.3.min.js"></script>
@@ -81,7 +80,7 @@
       var latlon = new google.maps.LatLng(lat,long);
       //create map
       var mapOptions = {
-         zoom: 14,
+         zoom: 16,
          center: latlon,
          mapTypeId: google.maps.MapTypeId.ROADMAP
       };
@@ -94,6 +93,25 @@
         draggable: true,
         animation: google.maps.Animation.BOUNCE
       });
+            var latlng = new google.maps.LatLng(<?=$lat[$x];?>, <?=$long[$x];?>);
+            //var infowindow = new google.maps.InfoWindow;
+            var geocoder = new google.maps.Geocoder;
+
+            geocoder.geocode({'latLng': latlng}, function(results, status) {
+                if(status == google.maps.GeocoderStatus.OK) {
+                    if(results[0]) {
+                        $('#address<?=$y;?>').text(results[0].formatted_address);
+                    } else {
+                        alert("No results found");
+                    }
+                } else {
+                    var error = {
+                        'ZERO_RESULTS': 'Kunde inte hitta adress'
+                    }
+                    // alert('Geocoder failed due to: ' + status);
+                    $('#address<?=$y;?>').html('<span class="color-red">' + error[status] + '</span>');
+                }
+            });
     }
     function error(){
       $('maps<?=$y;?>').html("Your network connection was interrupted");
