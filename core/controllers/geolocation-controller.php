@@ -9,6 +9,9 @@
                           <div class="panel-heading" id="maps'.$id.'" style="height:200px;">
                           </div>
                           <div class="panel-body col-md-8">
+                            <address id="address'.$id.'">
+
+                            </address>
                           </div>
                       </div>
                   </div>';
