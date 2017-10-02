@@ -56,7 +56,7 @@ else
       <div class="modal fade" id="salesModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
-        <form action="/ipheya/core/sub/php_action/sellProduct.php" method="post" class="form-horizontal">
+        <form action="/ipheya/core/sub/php_action/sellProduct.php" id="salesForm" method="post" class="form-horizontal">
 
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -69,19 +69,13 @@ else
                   <div class="col-xs-12">
                     <label class="col-xs-6" for="">Product Name :</label>
                     <div class="col-xs-8">
-                      <input type="text" class="form-control" id="sproductName" name="productName">
-                      <input type="hidden" class="form-control" id="spoductId" name="productId">
+                      <input type="text" class="form-control" id="sproductName" disabled name="sproductName">
+                      <input type="hidden" class="form-control" id="sinventoryId" name="sinventoryId">
                     </div>
                   </div>
 
                 </div>
                 <div class="form-group">
-                  <div class="col-xs-6">
-                    <label class="col-xs-6" for="">Inventory  :</label>
-                    <div class="col-xs-10">
-                      <input type="text" class="form-control" id="squantity" name="quantity">
-                    </div>
-                  </div>
                   <div class="row"></div>
                   <div class="col-xs-6">
                     <label class="col-xs-6" for="">Quantity :</label>
@@ -90,13 +84,12 @@ else
                     </div>
                   </div>
 
-
                 </div>
                 <div class="form-group">
                   <div class="col-xs-4">
                     <label class="col-xs-12" for="">Unit Price</label>
                     <div class="col-xs-12">
-                      <input type="text" class="form-control" id="unitPrice" name="unitPrice">
+                      <input type="text" class="form-control" id="sunitPrice" name="sunitPrice">
                     </div>
                   </div>
                   <div class="col-xs-4">
@@ -137,7 +130,7 @@ else
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <?= $feedback ?>
-            <form action="/ipheya/core/sub/php_action/createRentals.php" id="rentalForm" method="POST" class="form-horizontal">
+            <form action="/ipheya/core/sub/php_action/createRentals.php" id="rentalForm" method="POST"  class="form-horizontal">
 
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -145,7 +138,7 @@ else
               </div>
 
               <div class="modal-body">
-                <div class="addproductMessage"></div>
+                <div id="addrentalMessage"></div>
                         <div class="form-group">
                             <div class="col-xs-12">
                               <label class="col-xs-6" for="productName">Product Name :</label>
