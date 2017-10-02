@@ -93,28 +93,28 @@ $log = new Logic();
 		$alltasks='';
 		while($alltasks =mysqli_fetch_assoc($alltask))
 		{
-			$alltasklist.="<div class='col-sm-12'><input type='radio' name='task' value='".$alltasks[0]."' />".$alltasks[1]."</div>";
+			$alltasklist.="<div class='col-sm-12'><input type='radio' name='task' value='".$alltasks['task_id']."' />".$alltasks['project_no']."</div>";
 			$tasksAll.="
 			<form action='CreateTask.php' method='GET'>
 				<div class='col-sm-12 bhr' style='padding-top:10px;'>
 				 	<div class='col-sm-1'>
-					 	<h1>$alltasks[0]</h1>
+					 	<h1>".$alltasks['task_id']."</h1>
 					 </div>
 				 	<div class='col-sm-6'>
-					 	<b>Title</b> $alltasks[2]<br/>
-						<i><h4>$alltasks[7]</h4></i>
-						<b>Date</b>".date_format(date_create($alltasks[6]),"d F Y")."
+					 	<b>Title</b> ".$alltasks['Name']."<br/>
+						<i><h4>".$alltasks['Description']."</h4></i>
+						<b>Date</b>".date_format(date_create($alltasks['StartDate']),"d F Y")."
 					 </div>
 					 <div class='col-sm-2'>
 					 	<b>Duration</b>
-						 <h5>$alltasks[3] $alltasks[4](s) </h5>
+						 <h5>".$alltasks['Duration']." ".$alltasks['DurationType']."(s) </h5>
 					 </div>
 					 <div class='col-sm-3'>
 					 	<b> </b><br/>
 						 <div class='form-group'>
 						 	<div class='btn-group-vertical'>
-								<a type='submit' href='AssignTask.php?assign=".$alltasks[0]."' name='assign' class='btn btn-xs btn-success ' value='$alltasks[0]'><span class='glyphicon glyphicon-plus'></span> Assign</a>
-								<a type='submit' href='alltasks.php?delete=".$alltasks[0]."' name='delete' class='btn btn-xs btn-danger ' value='$alltasks[0]'><span class='glyphicon glyphicon-trash'></span> Delete</a>
+								<a type='submit' href='AssignTask.php?assign=".$alltasks['task_id']."' name='assign' class='btn btn-xs btn-success ' value='".$alltasks['task_id']."'><span class='glyphicon glyphicon-plus'></span> Assign</a>
+								<a type='submit' href='alltasks.php?delete=".$alltasks['task_id']."' name='delete' class='btn btn-xs btn-danger ' value='".$alltasks['task_id']."'><span class='glyphicon glyphicon-trash'></span> Delete</a>
 							 </div>
 						 </div>
 					 </div>

@@ -137,7 +137,7 @@
          $(document).ready(function(){
            var interval = setInterval(function () {
              $.ajax({
-               url: '/components/processes/load-messages-handler.php',
+               url: 'components/processes/load-messages-handler.php',
                success: function(data){
                  $('#chat').html(data);
                  $('#chat-panel').scrollTop($('#chat-panel')[0].scrollHeight);
@@ -149,7 +149,7 @@
          {
            $.ajax({
              type:'POST',
-             url:'components/processes/insert-message-handler.php',
+             url: 'components/processes/insert-message-handler.php',
              data:$('#chatBox').serialize(),
              success:function(response){
                $('#chat-panel').html(response);

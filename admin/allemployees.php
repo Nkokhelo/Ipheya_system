@@ -16,7 +16,7 @@
 ?>
 <body>
   <div class="wrapper">
-      <?php include 'includes/sidebar.php'?>
+      <?php include ('includes/sidebar.php');?>
       <div id='content'>
         <div class='row'>
             <div class='col-xs-11 col-xs-offset-1 b'>
