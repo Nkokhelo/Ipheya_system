@@ -22,11 +22,11 @@
         <div class='row'>
             <div class="col-sm-10 b">
                 <ul class="nav nav-tabs" id="myTab">
-                    <li class="active" data-toggle="tab"><a href="#client" data-toggle="tab">Cient Personal Details</a></li>
+                    <li class="active" data-toggle="tab"><a href="#client" data-toggle="tab">Personal Details</a></li>
                     <li><a href="#history" data-toggle="tab">Client History</a></li>
                     <li><a href="#bar" data-toggle="tab">Reports</a></li>
                 </ul>
-                <div class="col-md-12" style="padding:2%;min-height:500px;">
+                <div class="col-md-12" style="padding:2%;min-height:20px;">
                     <div class="tab-content" >
                         <div role="tabpanel" class="tab-pane fade in active" id="client" style="font-size:12px">
                             <div class="col-xs-12">
@@ -71,22 +71,26 @@
                                 <?php } ?>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade in" id="bar">
-                            <div class="col-md-5">
-                            <fieldset>
-                                <legend class="thelegend">Most Requested Service</legend>
+                        <div role="tabpanel" class="tab-pane fade in" id="bar" style="width:100%">
+                            <div class="row">
                                 <div class="col-xs-12">
-                                    <canvas id="barcanvas"></canvas>
+                                    <div class="col-xs-6">
+                                    <fieldset>
+                                        <legend class="thelegend">Most Requested Service</legend>
+                                        <div class="col-xs-12">
+                                            <canvas id="barcanvas"></canvas>
+                                        </div>
+                                    </fieldset>
+                                    </div>
+                                    <div class="col-xs-6">
+                                    <fieldset>
+                                        <legend class="thelegend">Most Requested Service Pie</legend>
+                                        <div class="col-xs-12">
+                                            <canvas id="piecanvas"></canvas>
+                                        </div>
+                                    </fieldset>
+                                    </div>
                                 </div>
-                            </fieldset>
-                            </div>
-                            <div class="col-md-5">
-                            <fieldset>
-                                <legend class="thelegend">Most Requested Service Pie</legend>
-                                <div class="col-xs-12">
-                                    <canvas id="piecanvas"></canvas>
-                                </div>
-                            </fieldset>
                             </div>
                         </div>
                     </div>    

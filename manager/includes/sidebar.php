@@ -16,26 +16,25 @@
                           <i class='fa fa-line-chart'></i>
                         Income
                       </a>
-                    </li>
-                  <!-- <li>
-                      <a href="employee_training.php">
-                          <i class='fa fa-line-chart'></i>
-                      Trainees
-                      </a>
-                    </li> -->
+                  </li>
                   <li>
                       <a href="allexpence.php">
                           <i class='fa fa-money'></i>
                         Expense
                       </a>
+                  </li>
+                  <li>
+                      <a href="allchats.php">
+                          <i class='fa fa-users'></i>
+                      Labour
+                      </a>
                     </li>
-
                   <li>
                       <a href="programs.php">
                           <i class='fa fa-folder-o'></i>
                         Programs
                       </a>
-                    </li>
+                  </li>
                   <li>
                       <a href="allprojects.php">
                           <i class='fa fa-folder-open-o'></i>

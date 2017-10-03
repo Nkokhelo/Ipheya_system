@@ -197,7 +197,7 @@ else
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                           <h4 class="modal-title"><i class="fa fa-edit"></i> Edit Product</h4>
                         </div>
-                        <div class="modal-body" style="max-height:450px; overflow:auto;">
+                        <div class="modal-body" style="max-height:450px; overflow:auto; padding-top:0">
 
                          <div class="div-loading">
                           <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
@@ -207,7 +207,7 @@ else
                          <div class="div-result">
 
                        <!-- Nav tabs -->
-                       <ul class="nav nav-tabs" role="tablist">
+                       <ul class="nav nav-tabs" role="tablist" style="">
                          <li role="presentation" class="active"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Photo</a></li>
                          <li role="presentation"><a href="#productInfo" aria-controls="profile" role="tab" data-toggle="tab">Product Info</a></li>
                        </ul>

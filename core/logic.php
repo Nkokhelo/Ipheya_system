@@ -40,7 +40,7 @@
             $qey =mysqli_query($this->connect(),$sql);
             while($all = mysqli_fetch_assoc($qey))
             {
-                $allemployees = $all;
+                $allemployees[] = $all;
             }
             return $allemployees;
         }
@@ -570,6 +570,28 @@
         $qey =mysqli_query($this->connect(),$sql);
         return $qey;
     }
+    public function allTasks()
+    {
+      $alltask='';
+      $sql ="SELECT * FROM task";
+      $result = $this->connect()->query($sql);
+      while($data = $result->fetch_assoc())
+      {
+        $alltask[] = $data;
+      }
+      return $alltask;
+    }
+    public function allObsevations()
+    {
+      $allObsevations='';
+      $sql ="SELECT * FROM observation_task";
+      $result = $this->connect()->query($sql);
+      while($data = $result->fetch_assoc())
+      {
+        $allObsevations[] = $data;
+      }
+      return $allObsevations;
+    }
     public function getTaskNameById($id)
     {
         $sql ="Select * from task where task_id='$id'";
@@ -925,6 +947,8 @@
 
 #testing -------------------------------------
     // $log = new Logic();
+    // $log->allTasks();
+    // echo(json_encode($log->allObsevations()));
     // echo mysqli_fetch_row($log->countTasks('P005A5A'))[0];
     // while($th = mysqli_fetch_assoc($all))
     // {
@@ -932,4 +956,5 @@
     // }
 
 #end of testing--------------------------
+
 ?>

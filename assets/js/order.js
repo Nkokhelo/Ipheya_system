@@ -44,6 +44,7 @@ function getSupplier() {
                     $("#weblink").attr("href", response.web);
             } //success
         });
+        supplier_id = id;
     } else
     {
         $("#sup_email").text("");
@@ -61,21 +62,20 @@ $(document).ready(function() {
         dateFormat: 'yy-mm-dd'
     });
 
-    var divRequest ="add"
+    var divRequest ='add';
     // top nav bar
     $("#navOrder").addClass('active');
 
-    if (divRequest == 'add') 
+    if (divRequest == 'add')
     {
         // add order
         // top nav child bar
         $('#topNavAddOrder').addClass('active');
 
         // create order form function
-        $("#createOrderForm").unbind('submit').bind('submit', function() 
+        $("#createOrderForm").unbind('submit').bind('submit', function()
         {
             var form = $(this);
-
 
             $('.form-group').removeClass('has-error').removeClass('has-success');
             $('.text-danger').remove();
@@ -90,7 +90,8 @@ $(document).ready(function() {
             {
                 $("#supplier").after('<p class="text-danger"> Please select supplier </p>');
                 $('#supplier').closest('.form-group').addClass('has-error');
-            } else 
+            }
+            else
             {
                 $('#supplier').closest('.form-group').addClass('has-success');
             } // /else
@@ -108,8 +109,7 @@ $(document).ready(function() {
 
             if (discount == "")
             {
-                $("#discount").after('<p class="text-danger"> The Discount field is required </p>');
-                $('#discount').closest('.form-group').addClass('has-error');
+                discount =0;
             }
             else
             {
@@ -121,21 +121,21 @@ $(document).ready(function() {
             for (var x = 0; x < productName.length; x++)
             {
                 var productNameId = productName[x].id;
-                if (productName[x].value == '') 
+                if (productName[x].value == '')
                 {
                     $("#" + productNameId + "").after('<p class="text-danger"> Product Name Field is required!! </p>');
                     $("#" + productNameId + "").closest('.form-group').addClass('has-error');
-                } else 
+                } else
                 {
                     $("#" + productNameId + "").closest('.form-group').addClass('has-success');
                 }
             } // for
             for (var x = 0; x < productName.length; x++) {
-                if (productName[x].value) 
+                if (productName[x].value)
                 {
                     validateProduct = true;
-                } 
-                else 
+                }
+                else
                 {
                     validateProduct = false;
                 }
@@ -145,27 +145,27 @@ $(document).ready(function() {
             var quantity = document.getElementsByName('quantity[]');
             var validateQuantity;
             var order_quality = 0;
-            for (var x = 0; x < quantity.length; x++) 
+            for (var x = 0; x < quantity.length; x++)
             {
                 var quantityId = quantity[x].id;
-                if (quantity[x].value == '') 
+                if (quantity[x].value == '')
                 {
-                    $("#" + quantityId + "").after('<p class="text-danger"> Product Name Field is required!! </p>');
+                    $("#" + quantityId + "").after('<p class="text-danger">Enter the order quality </p>');
                     $("#" + quantityId + "").closest('.form-group').addClass('has-error');
-                } 
-                else 
+                }
+                else
                 {
                     $("#" + quantityId + "").closest('.form-group').addClass('has-success');
                     order_quality += Number(quantity[x].value);
                 }
             } // for
 
-            for (var x = 0; x < quantity.length; x++) 
+            for (var x = 0; x < quantity.length; x++)
             {
-                if (quantity[x].value) 
+                if (quantity[x].value)
                 {
                     validateQuantity = true;
-                } else 
+                } else
                 {
                     validateQuantity = false;
                 }
@@ -173,26 +173,26 @@ $(document).ready(function() {
 
             var unitPrice = document.getElementsByName('unitprice[]');
             var validateUnitprice;
-            for (var x = 0; x < unitPrice.length; x++) 
+            for (var x = 0; x < unitPrice.length; x++)
             {
                 var unitpriceId = unitPrice[x].id;
-                if (unitPrice[x].value == '') 
+                if (unitPrice[x].value == '')
                 {
-                    $("#" + unitpriceId + "").after('<p class="text-danger"> Product Name Field is required!! </p>');
+                    $("#" + unitpriceId + "").after('<p class="text-danger"> Enter product unit price </p>');
                     $("#" + unitpriceId + "").closest('.form-group').addClass('has-error');
-                } 
-                else 
+                }
+                else
                 {
                     $("#" + unitpriceId + "").closest('.form-group').addClass('has-success');
                     // order_quality += quantity[x];
                 }
             } // for
-            for (var x = 0; x < unitPrice.length; x++) 
+            for (var x = 0; x < unitPrice.length; x++)
             {
-                if (unitPrice[x].value) 
+                if (unitPrice[x].value)
                 {
                     validateUnitprice = true;
-                } else 
+                } else
                 {
                     validateUnitprice = false;
                 }
@@ -200,10 +200,10 @@ $(document).ready(function() {
 
             $("#orderdate").val(order_date);
             $("#totalQuantity").val(order_quality);
-            
+
             if (supplier != null && expected_date != null  && discount != null)
             {
-                if (validateProduct == true && validateQuantity == true &&  validateUnitprice) 
+                if (validateProduct == true && validateQuantity == true &&  validateUnitprice)
                 {
                     // create order button
                     var form = $('form');
@@ -212,16 +212,16 @@ $(document).ready(function() {
                         type: form.attr('method'),
                         data: form.serialize(),
                         dataType: 'json',
-                        success: function(response) 
+                        success: function(response)
                         {
                                 // reset button
                                 $(".text-danger").remove();
                                 $('.form-group').removeClass('has-error').removeClass('has-success');
 
-                                if (response.success == true) 
+                                if (response.success == true)
                                 {
 
-                                    // create order button 
+                                    // create order button
                                     $(".success-messages").html('<div class="alert alert-success">' +
                                         '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
                                         '<strong><i class="glyphicon glyphicon-ok-sign"></i></strong> ' + response.messages +
@@ -236,9 +236,9 @@ $(document).ready(function() {
                                     $(".submitButtonFooter").addClass('div-hide');
                                     // remove the product row
                                     $(".removeProductRowBtn").addClass('div-hide');
-                                } 
+                                }
                             }, // /response
-                            error:function (res) 
+                            error:function (res)
                             {
                                 alert(res.responseText);
                             }
@@ -250,14 +250,14 @@ $(document).ready(function() {
             return false;
         }); // /create order form function
 
-    } 
+    }
 }); // /documernt
 
 
 // print order function
-function printOrder(orderId) 
+function printOrder(orderId)
 {
-    if (orderId) 
+    if (orderId)
     {
 
         $.ajax({
@@ -353,17 +353,32 @@ function addRow() {
 
 } // /add row
 
-function removeProductRow(row) {
-    if (row) {
+function removeProductRow(row)
+{
+    if (row)
+    {
         $("#row" + row).remove();
-
-
         subAmount();
-    } else {
+        validateRows();
+    }
+    else
+    {
         alert('error! Refresh the page again');
     }
 }
 
+function validateRows()
+{
+    var rows = $('#productTable>tbody>tr');
+    if(rows.length ==1)
+    {
+        $('.removeProductRowBtn').attr('disabled','disabled');
+    }
+    else
+    {
+        $('.removeProductRowBtn').removeAttr('disabled');
+    }
+}
 // select on product data
 function getProductData(row) {
     if (row) {
@@ -431,6 +446,7 @@ function getProductData(row) {
                         subAmount();
                     } // /success
             }); // /ajax function to fetch the product data
+            $('.removeProductRowBtn').removeAttr('disabled');
         }
 
     } else {
@@ -483,28 +499,28 @@ function subAmount() {
     $("#totalAmountValue").val(totalAmount);
 
     var discount = $("#discount").val();
-    if (discount) 
+    if (discount)
     {
         var grandTotal = Number($("#totalAmount").val()) - Number(discount);
         grandTotal = grandTotal.toFixed(2);
         $("#grandTotal").val(grandTotal);
         $("#grandTotalValue").val(grandTotal);
-    } 
-    else 
+    }
+    else
     {
         $("#grandTotal").val(totalAmount);
         $("#grandTotalValue").val(totalAmount);
     } // /else discount
 
     var paidAmount = $("#paid").val();
-    if (paidAmount) 
+    if (paidAmount)
     {
         paidAmount = Number($("#grandTotal").val()) - Number(paidAmount);
         paidAmount = paidAmount.toFixed(2);
         $("#due").val(paidAmount);
         $("#dueValue").val(paidAmount);
-    } 
-    else 
+    }
+    else
     {
         $("#due").val($("#grandTotal").val());
         $("#dueValue").val($("#grandTotal").val());

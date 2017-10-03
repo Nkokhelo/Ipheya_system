@@ -92,7 +92,11 @@
                             </div>
                           <!-- Transaction Description-->
                             <div class="form-group col-xs-12">
+<<<<<<< HEAD
                               <label class="col-xs-2 control-label" for="details"> Service Details: </label>
+=======
+                              <label class="col-xs-2 control-label" for="details"> Service details: </label>
+>>>>>>> 6e980a07a19041e7875fd3885fb7cff62f3608f5
                               <div class="col-xs-10">
                               <textarea required placeholder="Mr John Sith- 50 A4 pack Deliviries" class="form-control" id='details' type="text" name ="ei_description" rows="5" cols="10"></textarea>
                             </div>                              
@@ -112,6 +116,10 @@
                               <option style="background:#aaa" value="">--None--</option>
                               <option value="cash">Overdue Payment</option>
                               <option value="card">Letter Of Demand</option>
+<<<<<<< HEAD
+=======
+                              <option value="cash">Debt Collection Notice</option>
+>>>>>>> 6e980a07a19041e7875fd3885fb7cff62f3608f5
                             </select>
                             </div>
                           </div>
