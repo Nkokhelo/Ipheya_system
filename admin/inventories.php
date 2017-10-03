@@ -122,9 +122,6 @@ else
       <!-- /modal-dailog -->
     </div>
     <!-- / add modal -->
-
-
-
     <!-- Rental Modals-->
     <div class="modal fade" id="rentalModal" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-lg">
