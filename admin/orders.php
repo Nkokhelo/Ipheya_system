@@ -30,7 +30,7 @@ else
                       <ul class="dropdown-menu">
                         <li><a href="purchaseorder.php">Purchase Orders</a></li>
                         <li><a href="salesorder.php">Sales Orders</a></li>
-                        <li><a href="additem.php?purchase">Qoutation Orders</a></li>
+                        <li><a href="rentalorders.php">Rental Orders</a></li>
                       </ul>
                   </li>
                 </ol>
@@ -46,7 +46,7 @@ else
                         <th>Supplier</th>
                         <th>Product</th>
                         <th>Expexted Date</th>
-                        <th>Qouantity</th>
+                        <th>Quantity</th>
                         <th>Unit Price</th>
                         <th>14% Vat</th>
                         <th>Total Price</th>
