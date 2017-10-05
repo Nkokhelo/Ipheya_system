@@ -1055,3 +1055,11 @@ video {
 .btn-group>.dropdown-menu>li>a {
     cursor: pointer;
 }
+.panel
+{
+    border-radius: 0;
+}
+.panel-heading
+{
+    border-radius: 0;
+}
