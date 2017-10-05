@@ -124,7 +124,9 @@ $log = new Logic();
 			while($allemployees = mysqli_fetch_assoc($allList))
 			{
 				if(!$log->isEmployeeAssigned($allemployees['employee_id']))
-				{   #TODO this code is unfinished all you have to do is check employees by date or do date calculations!!
+				{   
+					#TODO this code is unfinished all you have to do is check employees by date or do date calculations!!
+
 					$freeemployees.="<div class='col-sm-12' id='".$allemployees['employee_id']."_".$allemployees['name']."_".$allemployees['email']."_".$log->getDepartmentNameByID($allemployees['department'])."_".$taskid."'><div class='col-sm-4' id='empname'>".$allemployees['name']."</div><div class='col-sm-4' id='email'>".$allemployees['email']."</div><div class='col-sm-4' id='department'>".$log->getDepartmentNameByID($allemployees['department'])."</div></div>";;
 				}
 			}
@@ -187,6 +189,7 @@ $log = new Logic();
 		while($arr = mysqli_fetch_row($emptask))
 		{
 			#TODO>@FIXIT you have an error here it should show only one task and the number of emlpoyees within that task!!!
+			
 			$task = mysqli_fetch_row($log->getTaskById($arr[1]));
 			$taskInfo .="<tr><td>".$arr[1]."</td>
 							 <td>".$log->no_ofEmployees($arr[0])."</td>

@@ -58,8 +58,8 @@
         $('#dataData').load('/ipheya/core/sub/getRequestInfo.php?ri='+rId+'&RType='+rT+'&ci='+cId);
         progress();
     }
-    function progress(){
+    function progress()
+    {
 
     }
-
 </script>

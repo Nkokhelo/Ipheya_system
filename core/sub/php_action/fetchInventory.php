@@ -4,7 +4,7 @@ require_once 'core.php';
 include("../../logic.php");
 $log = new Logic();
 
-$sql = "SELECT * FROM inventories WHERE is_on_hand = 1";
+$sql = "SELECT * FROM inventories WHERE is_on_hand = 1 AND quantity >0";
 $result = $connect->query($sql);
 $output = array('data' => array());
 
@@ -19,8 +19,8 @@ if($result->num_rows > 0)
 	     <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a type="button" data-toggle="modal" data-target="#salesModal" onclick="sellProduct('.$i_id.')"> <i class="fa fa-money"></i> Sell Product</a></li>
-	    <li><a type="button" data-toggle="modal" data-target="#rentalModal" onclick="lease('.$i_id.')"> <i class="fa fa-handshake-o"></i> Lease Product</a></li>
+	    <li><a type="button" id="" data-toggle="modal" data-target="#salesModal" onclick="sellProduct('.$i_id.')"> <i class="fa fa-money"></i> Sell Product</a></li>
+	    <li><a type="button" id="leaseInventoryBtn" data-toggle="modal" data-target="#rentalModal" onclick="lease('.$i_id.')"> <i class="fa fa-handshake-o"></i> Lease Product</a></li>
 	  </ul>
 	</div>';
 

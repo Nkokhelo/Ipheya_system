@@ -45,7 +45,6 @@ $(document).ready(function() {
         if (brandName && brandStatus) {
             var form = $(this);
             // button loading
-            // $("#createBrandBtn").button('loading');
 
             $.ajax({
                 url: form.attr('action'),
@@ -54,7 +53,6 @@ $(document).ready(function() {
                 dataType: 'json',
                 success: function(response) {
                         // button loading
-                        // $("#createBrandBtn").button('reset');
 
                         if (response.success == true) {
                             // reload the manage member table
@@ -109,9 +107,10 @@ function editBrands(brandId = null) {
             type: 'post',
             data: { brandId: brandId },
             dataType: 'json',
-            success: function(response) {
+            success: function(response) 
+            {
                     // modal loading
-                    $('.modal-loading').addClass('div-hide');
+                    $('.modal-loading').addClass('div-hide');                    
                     // modal result
                     $('.edit-brand-result').removeClass('div-hide');
                     // modal footer
@@ -125,8 +124,8 @@ function editBrands(brandId = null) {
                     $(".editBrandFooter").after('<input type="hidden" name="brandId" id="brandId" value="' + response.brand_id + '" />');
 
                     // update brand form
-                    $('#editBrandForm').unbind('submit').bind('submit', function() {
-
+                    $('#editBrandForm').unbind('submit').bind('submit', function() 
+                    {
                         // remove the error text
                         $(".text-danger").remove();
                         // remove the form error
@@ -156,7 +155,8 @@ function editBrands(brandId = null) {
                             $("#editBrandStatus").closest('.form-group').addClass('has-success');
                         }
 
-                        if (brandName && brandStatus) {
+                        if (brandName && brandStatus) 
+                        {
                             var form = $(this);
 
                             // submit btn

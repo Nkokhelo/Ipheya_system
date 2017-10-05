@@ -20,6 +20,8 @@ else
             <div class='col-xs-12'>
               <div class="col-xs-11 b">
                 <h2>Send surveyor </h2><hr class="bhr"/>
+
+                <!--Obsevations Form start-->
                 <form action="" method="post">
 																	<div class="col-sm-6">
 																		<h4 style="color:#888"><i class="fa fa-wpforms"></i> - Fill in task information</h4>
@@ -79,6 +81,7 @@ else
 																				src="http://forecast.io/embed/#lat=-29.850148&lon=31.007463&name=South-Africa:Durban">
 																			</iframe>
 																		</div>
+                                    
 																		<!--Map-->
 																		<div class="col-sm-12 col-md-12  " id='con'>
 																			<div id="googleMap" style="width:100%; height:300px; margin:1%; margin-bottom:50px;">
@@ -182,6 +185,11 @@ else
 				});
 //select 2
 $('#select').select2();
-
+$('#select').click(function(){
+				$("#task").hide();
+				$('#client').fadeInRight();
+				$('#googleMap').fadeOutLeft();
+})
+$('#client')
 	</script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWOMyEmxZVyeidLLRrsdIH-Mb_zAaF7cM&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWOMyEmxZVyeidLLRrsdIH-Mb_zAaF7cM&callback=myMap"></script>

@@ -18,6 +18,12 @@ session_start();
       <?php include 'includes/sidebar.php';?>
       <div id='content'>
         <div class='row'>
+
+        <div class='col-xs-12'>
+            <ol class="breadcrumb">
+            <li class="active"><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            </ol>
+          </div><!-- /col-xs-6-->
          <div class='col-xs-11 b'>
          <h3 class="text-center">Welcome </h3>
          <hr class="bhr"/>
@@ -86,11 +92,25 @@ session_start();
                   <p> <i class="glyphicon glyphicon-usd"></i> Total Revenue</p>
                 </div>
               </div> 
+<br>
+              <div class="card">
+                <div class="cardHeader" style="background-color:red;">
+                  <h1><?php if($totalRevenue) {
+                    echo $totalRevenue;
+                    } else {
+                      echo '0';
+                      } ?></h1>
+                </div>
+
+                <div class="cardContainer">
+                  <p> <i class="glyphicon glyphicon-usd"></i> Total Expenses</p>
+                </div>
+              </div> 
 
             </div>
 
             <div class="col-xs-8">
-              <div class="panel panel-default">
+              <div class="panel panel-primary">
                 <div class="panel-heading"> <i class="glyphicon glyphicon-calendar"></i> Calendar</div>
                 <div class="panel-body">
                   <div id="calendar"></div>
