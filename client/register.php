@@ -1,9 +1,16 @@
 <?php
    require_once('../core/init.php');
    include('../core/logic.php');
+
+   #retrieves sms dependencies
+   // Require the bundled autoload file - the path may need to change
+   // based on where you downloaded and unzipped the SDK
+   require __DIR__ . '/twilio-php-master/Twilio/autoload.php';
+   #end sms
+
    include('../core/controllers/register-controller.php');
    include('../core/controllers/login-controller.php');
- ?> 
+ ?>
 <!DOCTYPE html>
 <html >
 <head>
@@ -58,7 +65,7 @@
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script type="text/javascript">
-  $(document).ready(function() 
+  $(document).ready(function()
   {
       // Toggle function
       $('.toggle').click(function(){
@@ -73,7 +80,7 @@
         }, "slow");
       });
 
-//    
+//
         };
   </script>
 </body>
