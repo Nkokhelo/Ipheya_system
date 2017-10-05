@@ -59,7 +59,7 @@ if(isset ($_GET['ri']))
    }
    else if($Rrequest['RequestStatus'] == 'observed')
    {
-     $a =' <a href="quotation.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> View Job Proccess</a>
+     $a =' <a href="quotation.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> Create a qoutation</a>
      <a href="quotation.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a qoutation</a>
      ';
      $height='450px';
@@ -84,7 +84,7 @@ if(isset ($_GET['ri']))
    }
    else
    {
-     $a='<a href="quotation.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View job process</a>
+     $a='<a href="obsevationtask.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View job process</a>
      ';
      $height='450px';
      $taskInfor ='<div class ="col-xs-12">
@@ -112,6 +112,7 @@ $data='<div class="modal-header">
          <button type="button" class="close" data-dismiss="modal">&times;</button>
          <h2 class="modal-title text-center" style="color:#888">Request Information</h2>
         </div>
+
         <div class="modal-body" style="min-height:'.$height.';">
          <div class="col-xs-12">
            <div class="col-xs-6">
@@ -142,10 +143,7 @@ $data='<div class="modal-header">
     '.$a.'
     </div>
     </div>
-   </div>
-   <script>$("#progress").percircle();</script>
-
-';
+   </div>';
    echo $data;
 }
 ?>
