@@ -4,7 +4,7 @@ require_once 'core.php';
 include("../../logic.php");
 $log = new Logic();
 
-$sql = "SELECT * FROM inventories WHERE is_on_hand = 1";
+$sql = "SELECT * FROM inventories WHERE is_on_hand = 1 AND quantity >0";
 $result = $connect->query($sql);
 $output = array('data' => array());
 

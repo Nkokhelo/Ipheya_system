@@ -17,6 +17,14 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
+
+        <div class='col-xs-12'>
+            <ol class="breadcrumb">
+            <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active"><i class="fa fa-pencil"></i> Events </li>
+            </ol>
+          </div><!-- /col-xs-6-->
+
             <div class='col-md-11 b'>
               <form class="form" action="" enctype="multipart/form-data" class="form" method="POST">
                 <fieldset>

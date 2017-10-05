@@ -18,6 +18,12 @@ session_start();
       <?php include 'includes/sidebar.php';?>
       <div id='content'>
         <div class='row'>
+
+        <div class='col-xs-12'>
+            <ol class="breadcrumb">
+            <li class="active"><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            </ol>
+          </div><!-- /col-xs-6-->
          <div class='col-xs-11 b'>
          <h3 class="text-center">Welcome </h3>
          <hr class="bhr"/>

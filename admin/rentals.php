@@ -36,16 +36,20 @@
              <div class="col-xs-offset-1 col-xs-11 b">
                  
               <h2 class="text-center">All Rentals</h2><hr class="bhr">
-              <table class="table" id="rentals">
-                <thead style="border-top:#eee 2px solid">
-                <tr><th>#</th><th>Name</th><th>Phone</th><th>Verified</th><th>Equipment-Name</th><th>Quantity</th><th>PickUp-date</th><th>Return-Date</th><th>Status</th><th>Action</th></tr>
+              <table class="table table-bordered " id="rentals">
+                <thead>
+                <tr>
+                  <th>Rental ID</th>
+                  <th>Product Name</th>
+                  <th>Quantity</th>
+                  <th>Deposit per item</th>
+                  <th>Options</th>
+                  <th>...</th>
+                </tr>
                 </thead>
                 <tbody>
-                 <?= $rental_list;?>
-              
                 </tbody>
                 <tfoot>
-                  
                 </tfoot>
               </table>
               <hr class="bhr"/>
@@ -59,13 +63,6 @@
         </div>
         <?php include('includes/footer.php'); ?>
       </div>
+      <script src="../assets/js/rental.js"></script>
   </div>
 </body>
-<script>
-  $(document).ready(function(){
-    $('#rentals').dataTable({
-      "scrollY": "200px",
-      "scrollCollapse": true,
-    });
-  });
-</script>

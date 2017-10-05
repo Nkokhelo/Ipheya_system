@@ -23,13 +23,13 @@ while ($orderResult = $orderQuery->fetch_assoc())
 	$totalRevenue += $orderResult['paid'];
 }
 
-$lowStockSql = "SELECT * FROM product WHERE reorder <= 3 AND status = 1";
+$lowStockSql = "SELECT COUNT(*) as low FROM inventories as i JOIN product as p ON p.product_id = i.product_id WHERE i.quantity < p.reorder; ";
 $lowStockQuery = $connect->query($lowStockSql);
-$countLowStock = $lowStockQuery->num_rows;
+$countLowStock = $lowStockQuery->fetch_assoc()['low'];
 
-if($countLowStock==null)
-{
- $countLowStock =0;
-}
+// if($countLowStock==null)
+// {
+//  $countLowStock =0;
+// }
 
 ?>

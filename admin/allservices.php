@@ -19,6 +19,14 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
+
+        <div class='col-xs-12'>
+            <ol class="breadcrumb">
+            <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active"><i class="fa fa-list"></i> Services</li>
+            </ol>
+          </div><!-- /col-xs-6-->
+
           <div class="col-xs-11 col-xs-offset-1 b">
             <h2>All Services</h2>
             <hr class="bhr"/>
