@@ -1,7 +1,9 @@
 <?php
+
 				require('core/init.php');
 				require('core/logic.php');
 				require('core/controllers/rent-controller.php');
+
 	 ?>
 <!DOCTYPE HTML>
 <html lang="en-US">
@@ -172,7 +174,7 @@
 															<label class="col-xs-3" for="">Pick-Date :</label>
 																<div class="col-xs-6  input-group input-append " style='padding-left:15px; float: inherit;'>
 																<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-																<input name="qdate" class="form-control"style="width:100%" placeholder="Pick Date" id="pdate" type="text" value="" required/>
+																<input name="pickup_date" class="form-control"style="width:100%" placeholder="Pick Date" id="pdate" type="text" value="" required/>
 															</div>
 													</div>
 											</div>
@@ -184,33 +186,34 @@
 																<input type="text" required  placeholder="Return Date" class="form-control " id='rdate' name ="return_date"/>
 															</div>
 													</div>
+											</div>
+											<div class="form-group">
 													<div class="row"></div>
-													<div class="col-xs-6">
-															<label class="col-xs-6" for="">Quantity :</label>
-															<div class="col-xs-10">
+													<div class="col-xs-12">
+															<label class="col-xs-3" for="">Quantity :</label>
+															<div class="col-xs-4">
 																	<input type="text" class="form-control" id="squantity" name="quantity">
 															</div>
 													</div>
-
-
 											</div>
+<hr/>
 											<div class="form-group">
 													<div class="col-xs-4">
 															<label class="col-xs-12" for="">Total Charge:</label>
 															<div class="col-xs-12">
-																	<input type="text" class="form-control" id="total_charge" name="total_charge">
+																	<input readonly type="text" class="form-control" id="total_charge" name="total_charge"/>
 															</div>
 													</div>
 													<div class="col-xs-4">
 													<label class="col-xs-12" for="">Total Deposit:</label>
 													<div class="col-xs-12">
-															<input type="text" class="form-control" id="total_deposit" name="total_deposit">
+															<input readonly type="text" class="form-control" id="total_deposit" name="total_deposit"/>
 													</div>
 													</div>
 													<div class="col-xs-4">
 															<label class="col-xs-12" for="">Total Amount:</label>
 															<div class="col-xs-12">
-																	<input type="text" class="form-control" id="total_amount" name="total_amount">
+																	<input readonly type="text" class="form-control" id="total_amount" name="total_amount"/>
 															</div>
 													</div>
 													
@@ -220,9 +223,10 @@
 							<!-- /modal body -->
 							
 							<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 									<button type="submit" class="btn btn-primary" name="Submit" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
+									
 							</div>
 						<!-- /modal-footer -->
 						</form>

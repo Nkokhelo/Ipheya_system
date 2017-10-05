@@ -1,6 +1,8 @@
 <?php
    $logic =new Logic();
    $feedback="";
+   $alloders ='';
+   $alloders = array();
    $sql =  mysqli_query($db, "SELECT p.product_image, p.product_description, p.product_name, r.product_deposit, r.quantity FROM rentals as r JOIN inventories i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id;");
    if(!$sql)
    {
@@ -27,23 +29,17 @@
    #add Timelines
    if(isset($_POST['Submit']))
    {
-   $pickup_date=$_POST['pickup_date'];
-   $return_date=$_POST['return_date'];   
-   $quantity=$_POST['quantity'];   
-   $total_charge=$_POST['total_charge'];
-   $total_deposit=$_POST['total_deposit'];
-   $total_amount=$_POST['total_amount'];
-   $query="INSERT INTO client_rentals(client_rental,client_id,pickup_date,return_date,quantity,total_charge,total_deposit,total_amount,payed_amount,is_payed) VALUES (NULL,Null,'$pickup_date','$return_date','$quantity','$total_charge',' $total_deposit','$total_amount',Null,Null);";
-   $result = mysqli_query($db,$query);
-   if(!$result)
-   {
-           $feedback =$logic->display_error("Error!".mysqli_error($db).$query);
-   }
-   else
-   {
-         $feedback =$logic->display_success("Sucess! your is Bookings saved");
-   }
-   
+      $pickup_date=$_POST['pickup_date'];
+      $return_date=$_POST['return_date'];   
+      $quantity=$_POST['quantity'];   
+      $total_charge=$_POST['total_charge'];
+      $total_deposit=$_POST['total_deposit'];
+      $total_amount=$_POST['total_amount'];
+      $order[] = array("pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount);   
+      
+        die(json_encode($order));
+      
+      
    }
    
    $query_result = $logic->getAllRental();
@@ -59,6 +55,10 @@
      {
        $error = '<div class="alert alert-info"><i class="glyphicon glyphicon-info-sign"></i> No Project at the moment<br/> <a href="createproject.php">Create Project</a></div>';
      }
+
+     #get all deposit amount
+     $rental_id=0;
+    $deposit= "SELECT product_deposit FROM `rentals` WHERE rental_id='$rental_id'"
    ?>
 
 
