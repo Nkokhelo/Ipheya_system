@@ -26,7 +26,7 @@
                  </div>
              </div>';
    endwhile;
-   #add Timelines
+ #add Rental Order
    if(isset($_POST['Submit']))
    {
       $pickup_date=$_POST['pickup_date'];
@@ -35,11 +35,13 @@
       $total_charge=$_POST['total_charge'];
       $total_deposit=$_POST['total_deposit'];
       $total_amount=$_POST['total_amount'];
-      $order[] = array("pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount);   
-      
-        die(json_encode($order));
-      
-      
+     $order[] = array("pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount);   
+      $thisarr[] = $order;
+      if(count($thisarr)>=3)
+      {
+       die(json_encode($thisarr));
+      }
+     
    }
    
    $query_result = $logic->getAllRental();
