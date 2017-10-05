@@ -11,7 +11,7 @@
           $mobileData = json_decode(file_get_contents('php://input'));
 
           $data = $mobileData;
-          $query = $connect->query("UPDATE observation_task SET complete = $data");
+          $query = $connect->query("UPDATE observation_task SET complete = $data->complete WHERE task_id = $data->id");
           if($query == true)
           {
            $valid['success'] = true;
