@@ -9,7 +9,7 @@
 <!-- Mirrored from demo.shapedtheme.com/Ipheya-html/slider/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 May 2017 12:43:17 GMT -->
 <head>
 	<meta charset="UTF-8">
-	<title>Rental Equipment</title>
+	<title>events</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="assets/index/css/bootstrap.min.css" />
@@ -24,16 +24,15 @@
 	<link rel="alternate stylesheet" href="assets/index/css/colors/yellow.css" title="yellow">
 	<link rel="alternate stylesheet" href="assets/index/css/colors/red.css" title="red">
 	<link rel="alternate stylesheet" href="assets/index/css/colors/blue-munsell.css" title="blue-munsell">
-	<link rel="alternate stylesheet" href="assets/plugins/datepicker/css/datepicker">
 
 	<!-- STYLE SWITCH STYLESHEET ONLY FOR DEMO -->
 	<link rel="stylesheet" href="assets/index/demo/demo.css">
 	<link rel="stylesheet" href="css/custom.css">
-	
+	<link rel="stylesheet" href="assets/Site.css">
+
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="assets/index/images/favicon.gif">
-	
-	<link rel="stylesheet" href="assets/Site.css">
+
 	<!--[if lt IE 9]>
 		<script src="js/html5shiv.js"></script>
 		<script src="js/respond.js"></script>
@@ -58,13 +57,14 @@
        <li><a  href="#service-page" target="_top">Services</a></li>
        <li><a  href="#about-page" target="_top">About-us</a></li>
        <li><a  href="#contact-page" target="_top">Contact-us</a></li>
-       <li><a  href="events.php" target="_top">Events</a></li>
+							<li><a  href="events.php" target="_top">Events</a></li>
+							<li><a href="rent.php" target="_top">Rentals</a></li>
        <li><a  href="supports.php" target="_top">Support</a></li>
       </ul>
      </div>
      </div>
 					<div class="main-logo">
-						<h2 class="text-center" style="font-size:68px;">Rental Equipment</h2>
+						<h2 class="text-center" style="font-size:68px;">Events</h2>
 					</div>
 					<div class="col-sm-12 social-shear text-center">
 						<a href="#"><i class="fa fa-facebook"></i></a>
@@ -83,7 +83,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="service-title">Rental Equipment</h1>
+					<h1 class="service-title">Upcomming events</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
 							<i class="fa fa-calendar-o"></i>
@@ -91,8 +91,10 @@
 					</div>
 					<div class="service-aro-icon">
 						</div>
+						
 						<div class="col-xs-11 col-xs-offset-1">
 								<hr class="bhr" style="margin-left:-105px;">
+								<?=$feedback?>
 										<?=$inventories?>
 								</div>
 						</div>
@@ -101,86 +103,13 @@
 	</section><!-- /#service-page -->
 
 <!-- Modal -->
-<div class="modal fade" id="salesModal" tabindex="-1" role="dialog">
-<div class="modal-dialog">
-		<div class="modal-content">
-		<?= $feedback ?>
-		<form action="" method="post" class="form-horizontal">
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modpal-content" id="event-data">
 
-				<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title"><i class="fa fa-exchange"></i>Rental-Booking</h4>
-				</div>
-
-				<div class="modal-body">
-						<div class="removeProductMessages"></div>
-										<div class="form-group">
-												<div class="col-xs-12">
-														<label class="col-xs-3" for="">Pick-Date :</label>
-														<div class="col-xs-4  input-group input-append " style='padding-left:15px; float: inherit;'>
-														<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-														<input name="qdate" class="form-control"style="width:100%" placeholder="Qoute date" id="pdate" type="text" value="" required/>
-										</div>
-												</div>
-											
-												
-										</div>
-										<div class="form-group">
-												<div class="col-xs-12">
-														<label class="col-xs-3" for="">Return-Date  :</label>
-														<div class="col-xs-4  input-group input-append " style='padding-left:15px; float: inherit;'>
-															<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
-															<input type="text" required  placeholder="2017-08-09" class="form-control " id='rdate' name ="return_date"/>
-														</div>
-												</div>
-												<div class="row"></div>
-												<div class="col-xs-6">
-														<label class="col-xs-6" for="">Quantity :</label>
-														<div class="col-xs-10">
-																<input type="text" class="form-control" id="squantity" name="quantity">
-														</div>
-												</div>
-
-
-										</div>
-										<div class="form-group">
-												<div class="col-xs-4">
-														<label class="col-xs-12" for="">Total Charge:</label>
-														<div class="col-xs-12">
-																<input type="text" class="form-control" id="total_charge" name="total_charge">
-														</div>
-												</div>
-												<div class="col-xs-4">
-												<label class="col-xs-12" for="">Total Deposit:</label>
-												<div class="col-xs-12">
-														<input type="text" class="form-control" id="total_deposit" name="total_deposit">
-												</div>
-												</div>
-												<div class="col-xs-4">
-														<label class="col-xs-12" for="">Total Amount:</label>
-														<div class="col-xs-12">
-																<input type="text" class="form-control" id="total_amount" name="total_amount">
-														</div>
-												</div>
-										</div>
-										
-						</div>
-						<!-- /modal body -->
-						
-						<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-								<button type="submit" class="btn btn-primary" name="Submit" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
-						</div>
-						<!-- /modal-footer -->
-						</form>
-
-		</div>
-		<!-- /modal-content -->
-</div>
-<!-- /modal-dailog -->
-</div>
-<!-- / add modal -->
+    </div>
+  </div>
 </div>
 	<footer class="footer">
 		<div class="container">
@@ -222,33 +151,130 @@
 			</div>
 		</div>
 	</footer><!-- /.footer -->
-	
-	<script type="text/javascript" src="assets/jquery/jquery-1.10.2.js"></script>
-	<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="assets/plugins/datepicker/js/bootstrap-datepicker.js"></script>
 
+	   	<!--Modal-->
+<div class="modal fade" id="rentalModal" tabindex="-1" role="modal">
+<div class="modal-dialog">
+		<div class="modal-content">
+		<?= $feedback ?>
+		<form action="" method="post" class="form-horizontal">
+
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title"><i class="fa fa-exchange"></i>Rental-Booking</h4>
+					</div>
+
+					<div class="modal-body">
+
+							<div class="removeProductMessages"></div>
+											<div class="form-group">
+													<div class="col-xs-12">
+															<label class="col-xs-3" for="">Pick-Date :</label>
+																<div class="col-xs-6  input-group input-append " style='padding-left:15px; float: inherit;'>
+																<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+																<input name="qdate" class="form-control"style="width:100%" placeholder="Pick Date" id="pdate" type="text" value="" required/>
+															</div>
+													</div>
+											</div>
+											<div class="form-group">
+													<div class="col-xs-12">
+															<label class="col-xs-3" for="">Return-Date  :</label>
+															<div class="col-xs-6  input-group input-append " style='padding-left:15px; float: inherit;'>
+																<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
+																<input type="text" required  placeholder="Return Date" class="form-control " id='rdate' name ="return_date"/>
+															</div>
+													</div>
+													<div class="row"></div>
+													<div class="col-xs-6">
+															<label class="col-xs-6" for="">Quantity :</label>
+															<div class="col-xs-10">
+																	<input type="text" class="form-control" id="squantity" name="quantity">
+															</div>
+													</div>
+
+
+											</div>
+											<div class="form-group">
+													<div class="col-xs-4">
+															<label class="col-xs-12" for="">Total Charge:</label>
+															<div class="col-xs-12">
+																	<input type="text" class="form-control" id="total_charge" name="total_charge">
+															</div>
+													</div>
+													<div class="col-xs-4">
+													<label class="col-xs-12" for="">Total Deposit:</label>
+													<div class="col-xs-12">
+															<input type="text" class="form-control" id="total_deposit" name="total_deposit">
+													</div>
+													</div>
+													<div class="col-xs-4">
+															<label class="col-xs-12" for="">Total Amount:</label>
+															<div class="col-xs-12">
+																	<input type="text" class="form-control" id="total_amount" name="total_amount">
+															</div>
+													</div>
+													
+											</div>
+											
+							</div>
+							<!-- /modal body -->
+							
+							<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+									<button type="submit" class="btn btn-primary" name="Submit" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
+							</div>
+						<!-- /modal-footer -->
+						</form>
+
+		</div>
+		<!-- /modal-content -->
+</div>
+<!-- /modal-dailog -->
+</div>
+
+<!-- JS -->
+<script type="text/javascript" src="assets/index/js/jquery.min.js"></script><!-- jQuery -->
+	<script type="text/javascript" src="assets/index/js/bootstrap.min.js"></script><!-- Bootstrap -->
+	<script type="text/javascript" src="assets/index/js/countdown.js"></script><!-- Countdown -->
+	<script type="text/javascript" src="assets/index/js/jquery.backstretch.min.js"></script><!-- Backstretch -->
+	<script type="text/javascript" src="assets/index/js/jquery.ajaxchimp.js"></script><!-- ajaxchimp -->
+	<script type="text/javascript" src="assets/index/js/scripts.js"></script><!-- Scripts -->
+
+	<!-- =========================================================
+	     STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
+	============================================================== -->
+	<script type="text/javascript" src="assets/index/demo/demo.js"></script>
+<link rel="stylesheet" href="assets/plugins/jquery-ui/jquery-ui.css">	<script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.js"></script>
+	
 	<style>
 		#view:hover{
 			cursor :pointer;
 		}
-</style>
 
+	</style>
+
+<!-- / add modal -->
 <script>
 		function loadevent(id)
 		{
 				$('#event-data').load('/ipheya/core/sub/finatialR.php?uevent_data='+id);
 		}
+		$(document).ready(function(){
 
-		$("#pdate").datepicker({
-						minDate:+20,
-						dateFormat: 'yy-mm-dd'
-					});
-
-		$('#rdate').datepicker({
-			minDate:0,
-			dateFormat: 'yy-mm-dd'
-  });
+			$('#pdate').datepicker(
+							{
+							minDate:0,
+							dateFormat: 'yy-mm-dd'
+							}
+			);
+			$('#rdate').datepicker(
+							{
+							minDate:+7,
+							dateFormat: 'yy-mm-dd'
+							}
+			);
+		});
 	</script>
-
 </body>
 </html>
