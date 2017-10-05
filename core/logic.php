@@ -111,6 +111,7 @@
         $qey =mysqli_query($this->connect(),$sql);
         return $qey;
      }
+     
 # Client
         public function getallClients()
         {
