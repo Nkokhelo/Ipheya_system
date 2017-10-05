@@ -56,7 +56,7 @@ else
       <div class="modal fade" id="salesModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
-        <form action="/ipheya/core/sub/php_action/sellProduct.php" id="salesForm" method="post" class="form-horizontal">
+        <form action="/ipheya/core/sub/php_action/sellProduct.php" id="salesForm" method="POST"  class="form-horizontal">
 
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -178,13 +178,13 @@ else
                               <div class="col-xs-4">
                                 <label class="col-xs-12" for="">Product Charge :</label>
                                 <div class="col-xs-12">
-                                  <input type="text" class="form-control" id="charge1" name="charge[]">
+                                  <input type="text" class="form-control" id="charge1" name="charge[]"/>
                                 </div>
                               </div>
                               <div class="col-xs-4">
                                 <label class="col-xs-12" for="">Penalty charge:</label>
                                 <div class="col-xs-8">
-                                  <input type="text" class="form-control" id="penalty1" name="penalty[]">
+                                  <input type="text" class="form-control" id="penalty1" name="penalty[]"/>
                                 </div>
                                 <div class="col-xs-1">
                                   <button type="button" id="remove1" onclick="removeI(1)" disabled class="btn btn-default"><i class="fa fa-trash-o"></i></button>

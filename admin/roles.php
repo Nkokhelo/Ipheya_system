@@ -19,6 +19,14 @@ session_start();
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
+
+        <div class='col-xs-12'>
+            <ol class="breadcrumb">
+            <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active"><i class="fa fa-user-secret"></i> Roles </li>
+            </ol>
+          </div><!-- /col-xs-6-->
+
             <div class='col-xs-11 b'>
             <?php if(isset($_GET['edit']) || isset($_GET['add'])){ ?>
               <h2>Roles Management</h2>

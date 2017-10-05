@@ -10,7 +10,7 @@ if($_GET['timelines'])
  
  while($d =$res->fetch_assoc())
  {
-  $data.= "<option id='".$d['timeline_id']."'>".$d['timeline']."</option>";
+  $data.= "<option value='".$d['timeline_id']."'>".$d['timeline']."</option>";
  }
  echo json_encode($data);
 }

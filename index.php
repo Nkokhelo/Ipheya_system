@@ -61,7 +61,8 @@
 								<li><a  href="#about-page" target="_top">About-us</a></li>
 								<li><a  href="#contact-page" target="_top">Contact-us</a></li>
 								<li><a  href="events.php" target="_top">Events</a></li>
-								<li><a href="rent.php">Rentals</a></li>
+								<li><a href="rent.php" target="_top">Rentals</a></li>
+								<li><a href="RENT2.php" target="_top">Test</a></li>
 								<li><a  href="supports.php" target="_top">Support</a></li>
 							</ul>
 						</div>

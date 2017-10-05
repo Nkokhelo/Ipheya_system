@@ -24,14 +24,16 @@
 	<link rel="alternate stylesheet" href="assets/index/css/colors/yellow.css" title="yellow">
 	<link rel="alternate stylesheet" href="assets/index/css/colors/red.css" title="red">
 	<link rel="alternate stylesheet" href="assets/index/css/colors/blue-munsell.css" title="blue-munsell">
+	<link rel="alternate stylesheet" href="assets/plugins/datepicker/css/datepicker">
 
 	<!-- STYLE SWITCH STYLESHEET ONLY FOR DEMO -->
 	<link rel="stylesheet" href="assets/index/demo/demo.css">
 	<link rel="stylesheet" href="css/custom.css">
-
+	
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="assets/index/images/favicon.gif">
-
+	
+	<link rel="stylesheet" href="assets/Site.css">
 	<!--[if lt IE 9]>
 		<script src="js/html5shiv.js"></script>
 		<script src="js/respond.js"></script>
@@ -115,19 +117,21 @@
 										<div class="form-group">
 												<div class="col-xs-12">
 														<label class="col-xs-3" for="">Pick-Date :</label>
-														<div class="col-xs-4  input-group input-append " id='dsdate'style='padding-left:15px; float: inherit;'>
-														<input required placeholder="2017-08-09" class="form-control " id='pdate' type="date" name ="pickup_date" rows="5" cols="10"></input>
-														<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
+														<div class="col-xs-4  input-group input-append " style='padding-left:15px; float: inherit;'>
+														<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+														<input name="qdate" class="form-control"style="width:100%" placeholder="Qoute date" id="pdate" type="text" value="" required/>
 										</div>
 												</div>
+											
+												
 										</div>
 										<div class="form-group">
 												<div class="col-xs-12">
 														<label class="col-xs-3" for="">Return-Date  :</label>
-														<div class="col-xs-4  input-group input-append " id='dsdate'style='padding-left:15px; float: inherit;'>
-														<input required placeholder="2017-08-09" class="form-control " id='rdate' type="date" name ="return_date" rows="5" cols="10"></input>
-														<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
-										</div>
+														<div class="col-xs-4  input-group input-append " style='padding-left:15px; float: inherit;'>
+															<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
+															<input type="text" required  placeholder="2017-08-09" class="form-control " id='rdate' name ="return_date"/>
+														</div>
 												</div>
 												<div class="row"></div>
 												<div class="col-xs-6">
@@ -218,50 +222,33 @@
 			</div>
 		</div>
 	</footer><!-- /.footer -->
+	
+	<script type="text/javascript" src="assets/jquery/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/datepicker/js/bootstrap-datepicker.js"></script>
 
-	<!-- JS -->
-	<script type="text/javascript" src="assets/index/js/jquery.min.js"></script><!-- jQuery -->
-	<script type="text/javascript" src="assets/index/js/bootstrap.min.js"></script><!-- Bootstrap -->
-	<script type="text/javascript" src="assets/index/js/countdown.js"></script><!-- Countdown -->
-	<script type="text/javascript" src="assets/index/js/jquery.backstretch.min.js"></script><!-- Backstretch -->
-	<script type="text/javascript" src="assets/index/js/jquery.ajaxchimp.js"></script><!-- ajaxchimp -->
-	<script type="text/javascript" src="assets/index/js/scripts.js"></script><!-- Scripts -->
-
-	<!-- =========================================================
-	     STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
-	============================================================== -->
-	<script type="text/javascript" src="assets/index/demo/styleswitcher.js"></script>
-	<script type="text/javascript" src="assets/index/demo/demo.js"></script>
 	<style>
 		#view:hover{
 			cursor :pointer;
 		}
+</style>
 
-	</style>
-	<script>
-   $(document).ready(function(){
-
-        $('#pdate').datepicker(
-            {
-            minDate:0,
-            dateFormat: 'yy-mm-dd'
-            }
-        );
-			});
-			$(document).ready(function){
-				$('#rdate').datepicker(
-					{
-						minDate:0;
-						dateFormart: 'yy-mm-dd'
-					}
-				);
-			});
+<script>
 		function loadevent(id)
 		{
 				$('#event-data').load('/ipheya/core/sub/finatialR.php?uevent_data='+id);
 		}
-		
 
+		$("#pdate").datepicker({
+						minDate:+20,
+						dateFormat: 'yy-mm-dd'
+					});
+
+		$('#rdate').datepicker({
+			minDate:0,
+			dateFormat: 'yy-mm-dd'
+  });
 	</script>
+
 </body>
 </html>

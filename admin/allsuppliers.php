@@ -20,6 +20,14 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
+        
+        <div class='col-xs-12'>
+            <ol class="breadcrumb">
+            <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active"><i class="fa fa-users"></i> All suppliers</li>
+            </ol>
+          </div><!-- /col-xs-6-->
+
              <div class="col-xs-offset-1 col-xs-11 b">
               <h2 class="text-center">All Suppliers</h2><hr class="bhr">
               <table class="table" id="supplierTable">

@@ -56,7 +56,8 @@
        <li><a  href="#service-page" target="_top">Services</a></li>
        <li><a  href="#about-page" target="_top">About-us</a></li>
        <li><a  href="#contact-page" target="_top">Contact-us</a></li>
-       <li><a  href="events.php" target="_top">Events</a></li>
+							<li><a  href="events.php" target="_top">Events</a></li>
+							<li><a href="rent.php" target="_top">Rentals</a></li>
        <li><a  href="supports.php" target="_top">Support</a></li>
       </ul>
      </div>
@@ -103,7 +104,7 @@
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
-    <div class="modal-content" id="event-data">
+    <div class="modpal-content" id="event-data">
 
     </div>
   </div>
@@ -173,7 +174,6 @@
 		{
 				$('#event-data').load('/ipheya/core/sub/finatialR.php?uevent_data='+id);
 		}
-
 
 	</script>
 </body>

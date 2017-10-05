@@ -1,12 +1,10 @@
 <?php
    $logic =new Logic();
    $feedback="";
-   $sql =  mysqli_query($db, "SELECT * FROM inventories");
+   $sql =  mysqli_query($db, "SELECT p.product_image, p.product_description, p.product_name, r.product_deposit, r.quantity FROM rentals as r JOIN inventories i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id;");
    $inventories = '';
-   while($inv = mysqli_fetch_Assoc($sql)):
-     $query = mysqli_query($db, "SELECT product_name,product_image FROM product WHERE product_id = '$inv[product_id]'");
-     $prod = mysqli_fetch_assoc($query);
-     $inventories .= '	<div class="col-xs-3" id="event" style="border:1px #999 solid; max-height:340px; margin:1%; box-shadow:6px 6px 6px #eee;">
+   while($prod = mysqli_fetch_Assoc($sql)):
+     $inventories .= '	<div class="col-xs-3" id="event" style="border:1px #999 solid; max-height:400px; margin:1%; box-shadow:6px 6px 6px #eee;">
                  <div style="width:95%;  margin-left:-15px; height:150px;">
                      <img src="data:image/*;base64,'.$prod['product_image'].'" style="display:block; padding-left:-6px;" width="120%" height="100%"/>
                  </div>
@@ -16,8 +14,9 @@
                      overflow : hidden;
                      text-overflow: ellipsis;
                      -webkit-line-clamp: 3;
-                     -webkit-box-orient: vertical; ">Description</p>
-                     <p class="text-right"><a data-toggle="modal" data-target="#salesModal">View</a> </p>
+                     -webkit-box-orient: vertical; ">'.$prod['product_description'].'</p>
+                     <p style="font-size:11px">Available: '.$prod['quantity'].'| Deposit: R '.number_format($prod['product_deposit'],2,","," ").'</p>
+                     <p class="text-right"><a data-toggle="modal" class="btn btn-primary btn-sm" data-target="#salesModal">Rent</a> </p>
                  </div>
              </div>';
    endwhile;

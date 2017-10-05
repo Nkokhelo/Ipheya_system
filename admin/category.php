@@ -37,7 +37,7 @@ else
                      <tr>
                       <th>Categories Name</th>
                       <th>Status</th>
-                      <th style="width:15%;">Options</th>
+                      <th style="width:15%;"></th>
                      </tr>
                     </thead>
                    </table>
@@ -187,3 +187,8 @@ else
 
   <?php include('includes/footer.php'); ?>
 </body>
+<style>
+  td>.btn-group>.dropdown-menu {
+    left: -110%;
+}
+</style>

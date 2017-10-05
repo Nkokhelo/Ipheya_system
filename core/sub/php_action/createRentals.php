@@ -25,36 +25,37 @@ if($_POST)
   
   if($connect->query($sql)==true)
   {
-   $timeline_id = $_POST['timeline'];
-   $charge = $_POST['charge'];
-   $penalty = $_POST['penalty'];
+   $timeline_ids = $_POST['timeline'];
+   $charges = $_POST['charge'];
+   $penalties = $_POST['penalty'];
 
    $success = false;
    $rental_id = $connect->insert_id;
    $valid['rental_id'] = $rental_id;
    
-			for($x = 0; $x < count($timeline_id); $x++) 
+			for($x = 0; $x < count($timeline_ids); $x++) 
 			{
-     $timeline_id	= $timeline_id[$x];
-     $charge = $charge[$x];
-     $penalty = $penalty[$x];
-     $query ="INSERT INTO `timeline_rental` (`tr_id`, `timeline_id`, `rental_id`, `rental_charge`, `penalty`) VALUES (NULL, $timeline_id, $rental_id, $charge, $penalty);";
-     if($connect->query($query)==true)
-     {
-      $sql = "UPDATE `inventories` set `quantity` = `quantity`- $quantity WHERE `inventry_id`=$inventory_id";
-      if($connect->query($sql)==true)
-      {
-       $success = true;
-       $message ="Rental item was saved!";
-      }
-      else
-      {
-       $message ="Error! Occured ";
-      }
-     }else
-     {
-       $message ="Error".$connect->error." ".$query;					
-     }
+        $timeline_id	= $timeline_ids[$x];
+        $charge = $charges[$x];
+        $penalty = $penalties[$x];
+        $query ="INSERT INTO `timeline_rental` (`tr_id`, `timeline_id`, `rental_id`, `rental_charge`, `penalty`) 
+        VALUES (NULL, $timeline_id, $rental_id, $charge, $penalty);";
+        if($connect->query($query)==true)
+        {
+          $sql = "UPDATE `inventories` set `quantity` = `quantity`- $quantity WHERE `inventry_id`=$inventory_id";
+          if($connect->query($sql)==true)
+          {
+          $success = true;
+          $message ="Rental item was saved!";
+          }
+          else
+          {
+          $message ="Error! Occured ";
+          }
+        }else
+        {
+          $message ="Error".$connect->error." ".$query;					
+        }
    } // /for quantity
 	}
 	else

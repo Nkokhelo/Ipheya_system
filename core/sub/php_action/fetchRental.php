@@ -25,18 +25,18 @@ if($result->num_rows > 0)
   </ul>
 </div>';
 
-  $sql1 = "SELECT t.timeline FROM timeline_rental as tr JOIN timelines as t ON t.timeline_id = tr.timeline_id WHERE tr.rental_id = 39 ";
+  $sql1 = "SELECT t.timeline FROM timeline_rental as tr JOIN timelines as t ON t.timeline_id = tr.timeline_id WHERE tr.rental_id =". $order['rental_id'];
   $options ="";
   if($connect->query($sql1)==true)
   {
    $result1 = $connect->query($sql1);
    while($timelines = $result1->fetch_assoc())
    {
-     $options .= $timelines['timeline'].",";
+     $options .= $timelines['timeline'].", ";
    }
    if($options != "")
    {
-    $options = rtrim($options,",");
+    $options = rtrim($options,", ");
    }
   }
 

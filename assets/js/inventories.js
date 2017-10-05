@@ -39,7 +39,7 @@ function addRentalI() {
         url: '/ipheya/core/sub/php_action/timelines.php?timelines=1',
         success: function(response) {
                 response = JSON.parse(response);
-                timelineRental.append('<div class="form-group" id="duration' + id + '"><div class="col-xs-4"><div class="col-xs-12"><select type="text" class="form-control" id="timeline' + id + '" name="timeline[]"><option>--Select--</option>' + response + '</select></div></div><div class="col-xs-4"><div class="col-xs-12"><input type="text" class="form-control" id="charge' + id + '" name="charge[]"></div></div><div class="col-xs-4"><div class="col-xs-8"><input type="text" class="form-control" id="penalty' + id + '" name="penalty[]"></div> <div class="col-xs-1"><button id="remove' + id + '" type="button" onclick="removeI(' + id + ')" class="btn btn-default"><i class="fa fa-trash-o"></i></button></div></div></div>');
+                timelineRental.append('<div class="form-group" id="duration' + id + '"><div class="col-xs-4"><div class="col-xs-12"><select type="text" class="form-control" id="timeline' + id + '" name="timeline[]"><option>--Select--</option>' + response + '</select></div></div><div class="col-xs-4"><div class="col-xs-12"><input type="text" class="form-control" id="charge' + id + '" name="charge[]"/></div></div><div class="col-xs-4"><div class="col-xs-8"><input type="text" class="form-control" id="penalty' + id + '" name="penalty[]"/></div> <div class="col-xs-1"><button id="remove' + id + '" type="button" onclick="removeI(' + id + ')" class="btn btn-default"><i class="fa fa-trash-o"></i></button></div></div></div>');
             } //success
     });
 
@@ -120,7 +120,7 @@ function addTorental() {
             } else {
                 $("#" + timelinesId + "").closest('.form-group').addClass('has-success');
             }
-        } // for
+        } // forrent
         for (var x = 0; x < timelines.length; x++) {
             if (timelines[x].value) {
                 validateTimeline = true;
@@ -175,15 +175,11 @@ function addTorental() {
                 // check if all arrays are valdated good
                 var form = $(this);
                 var formData = new FormData(this);
-
                 $.ajax({
                     url: form.attr('action'),
                     type: form.attr('method'),
-                    data: formData,
+                    data: form.serialize(),
                     dataType: 'json',
-                    cache: false,
-                    contentType: false,
-                    processData: false,
                     success: function(response) {
 
                             console.log(response);

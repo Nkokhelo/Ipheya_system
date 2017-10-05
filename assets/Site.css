@@ -1048,7 +1048,7 @@ video {
     display: none;
 }
 
-td>.btn-group>.dropdown-menu {
+.btn-group>.dropdown-menu {
     left: -440%;
 }
 
