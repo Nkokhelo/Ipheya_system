@@ -97,6 +97,20 @@
      $qey=mysqli_query($this->connect(),$sql);
      return mysqli_fetch_row($qey);
      }
+     #get All rentals
+     public function getAllRental()
+     {
+         $sql="SELECT * FROM client_rentals";
+         $qey =mysqli_query($this->connect(),$sql);
+         return $qey;
+     }
+     #get all rental infomation
+     public function getClientNameNo()
+     {
+        $sql="SELECT client_no,name FROM clients WHERE client_id = (SELECT client_id FROM client_rentals WHERE client_rental = 1)";
+        $qey =mysqli_query($this->connect(),$sql);
+        return $qey;
+     }
 # Client
         public function getallClients()
         {
