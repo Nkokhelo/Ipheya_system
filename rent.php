@@ -1,10 +1,10 @@
 <?php
 
-				require('core/init.php');
-				require('core/logic.php');
+   require_once('/core/init.php');
+			require('/core/logic.php');
 				require('core/controllers/rent-controller.php');
-
-		
+			
+	  
 			
 		?>
 
@@ -92,7 +92,7 @@
 					<h1 class="service-title">Rental EquipMent</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
-							<i class="fa fa-calendar-o"></i>
+      <button type="button" name="proceed" class="btn btn fa fa" href="login.php">Proceed</button>
 						<div class="service-aro-right"></div>
 					</div>
 					<div class="service-aro-icon">
@@ -197,7 +197,7 @@
 													<div class="col-xs-12">
 															<label class="col-xs-3" for="">Quantity :</label>
 															<div class="col-xs-4">
-																	<input type="number" required class="form-control" id="squantity" name="quantity" >
+																	<input type="number" onkeyup="totalCharge()" required class="form-control" id="squantity" name="quantity" >
 															</div>
 													</div>
 											</div>
@@ -271,55 +271,142 @@
 				rental = <?php echo json_encode($rental) ?>;
 				jsrentals.push(rental);
 <?php }?>
-console.log(jsrentals);
+
 		function loadevent(id)
 		{
 				$('#event-data').load('/ipheya/core/sub/finatialR.php?uevent_data='+id);
 		}
-		$(document).ready(function(){
 
-			$('#pdate').datepicker(
-							{
-							minDate:0,
-							dateFormat: 'yy-mm-dd',
-							onSelect: function (date) {
-                var date2 = $('#pdate').datepicker('getDate');
-                date2.setDate(date2.getDate() + 7);
-                $('#rdate').datepicker('setDate', date2);
-                //sets minDate to dt1 date + 1
-                $('#rdate').datepicker('option', 'minDate', date2);
-            }
+
+		$(document).ready(function(){
+			$('#pdate').datepicker({
+								minDate:0,
+								dateFormat: 'yy-mm-dd',
+								onSelect: function (date) {
+																	var date2 = $('#pdate').datepicker('getDate');
+																	date2.setDate(date2.getDate() + 7);
+																	$('#rdate').datepicker('setDate', date2);
+																	$('#rdate').datepicker('option', 'minDate', date2);
+													}
 							}
 			);
-			$('#rdate').datepicker(
-							{
+			var diffDays =0;
+
+			$('#rdate').datepicker({
 							minDate:+7,
-							dateFormat: 'yy-mm-dd'
+							dateFormat: 'yy-mm-dd',
+							onSelect:	function (days) {
+																	var a = $("#pdate").datepicker('getDate').getTime();
+																	var b = $("#rdate").datepicker('getDate').getTime();
+																	var c = 24*60*60*1000;
+																	diffDays = Math.round(Math.abs((a - b)/(c)));
+																	totalCharge(diffDays);
+        }
 							}
-			);
+     );
 		});
+
+		var rental = new Object();
 		function rent(q)
 		{
-			var rent = new Object();
 			for(var x=0; x< jsrentals.length; x++)
 			{
 				if(jsrentals[x].rental_id == q)
 				{
-					rent = jsrentals[x];
-					console.log("equal");
+					rental = jsrentals[x];
 				}
 			}
-
-			$('#squantity').attr('max',rent.quantity);
-			$('#total_deposit').val(rent.product_deposit);
+			$('#squantity').attr('max',rental.quantity);
+			$('#total_deposit').val(rental.product_deposit);
 		}
 
-		function closeModal(){
+
+		function closeModal()
+		{
     $('#rentalModal').modal('hide');
     setTimeout(function(){
-      $('#rentalModal').remove();
+      									$('#rentalModal').remove();
     },500);
   }
+  
+		var totC=0;
+		
+	 function totalCharge(days)
+		{
+				var quantity = $('#quantity').val();
+				var timeline ="";
+				if(quantity == null)
+				{
+					quantity =0;
+				}
+				alert(days);
+				
+				console.log(rental.rental_id);
+
+				$.ajax({
+						type:"post",
+						url:"/ipheya/core/sub/php_action/fetchTimeline.php",
+						data:{ rentId: rental.rental_id },
+						success:function(data)
+						{
+									data = JSON.parse(data);
+									var timeList = data.timelines;
+									var charge;
+									// console.log(timeList[0].timeline)
+									//calculate a charge
+									var calc =false;
+									for(var x=0; x<timeList.length; x++ )
+									{
+											if(days <7)
+											{
+												if(timeList[x].timeline =="Daily")
+												{
+														var charge = (timeList[x].rental_charge* days);
+														console.log("Charge:"+charge+", time: daily, No of Days "+ days);	
+												}
+											}
+											else if ((days<30) && (days=>7) )
+											{
+												if(timeList[x].timeline =="Weekly")
+												{
+														var charge = (timeList[x].rental_charge* days);
+														var weeks;
+														if(days%7 == 0)
+														{
+																weeks = days/7;
+																console.log("Charge:"+charge+", time: Weekly, No of Days "+ days+"Weeks "+weeks);	
+															}
+															else
+															{
+																weeks = parseInt((days/7), 10);
+																var day = days%7;
+																console.log("Charge:"+charge+", time: Weekly, No of Days "+ days+"Weeks "+weeks+" and "+ day+" days");	
+														}
+													}
+											}
+											else
+											{
+												if(timeList[x].timeline =="Monthly")
+												{
+														var charge = (timeList[x].rental_charge* days);
+														var months;
+														if(days%30 == 0)
+														{
+																months = days/30;
+																console.log("Charge:"+charge+", time: monthly, No of Days "+ days+"months "+months);	
+															}
+															else
+															{
+																months = parseInt((days/30),10);
+																var day = days%30;
+																console.log("Charge:"+charge+", time: monthly, No of Days "+ days+" months "+months+" and "+ day+"days");	
+														}
+													}
+											}
+									}
+						}});
+		// 		$("#total_charge").val(totC);
+		}
 	</script>
 </body>
 </html>

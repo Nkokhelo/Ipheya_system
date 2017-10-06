@@ -60,7 +60,8 @@
        $error = '<div class="alert alert-info"><i class="glyphicon glyphicon-info-sign"></i> No Project at the moment<br/> <a href="createproject.php">Create Project</a></div>';
      }
   
-   
+    
+      
    ?>
 
 

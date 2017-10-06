@@ -83,6 +83,12 @@
             }
             return $name;
         }
+       public function getItemCharge($rental_id)
+        {
+          $sql="SELECT rental_charge FROM timeline_rental where rental_id='$rental_id'";
+          $qey=mysqli_query($this->connect(),$sql);
+           return $qey;
+        }
 
         public function getEmployeeByEmail($email)
         {
