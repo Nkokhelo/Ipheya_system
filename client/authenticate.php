@@ -12,9 +12,9 @@
    $client = new Client($sid, $token);
 
    session_start();
-   if(isset($_SESSION['client']))
+   if(isset($_SESSION['Client']))
    {
-     $email = $_SESSION['client'];
+     $email = $_SESSION['Client'];
      $sql = mysqli_query($db, "SELECT * FROM authenticate WHERE client_email = '$email' AND authenticate=1");
      $count = mysqli_num_rows($sql);
      if($count<1)
