@@ -4,14 +4,18 @@
 				require('core/logic.php');
 				require('core/controllers/rent-controller.php');
 
-	 ?>
+		
+			
+		?>
+
+	 
 <!DOCTYPE HTML>
 <html lang="en-US">
 
 <!-- Mirrored from demo.shapedtheme.com/Ipheya-html/slider/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 May 2017 12:43:17 GMT -->
 <head>
 	<meta charset="UTF-8">
-	<title>events</title>
+	<title>rentals</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="assets/index/css/bootstrap.min.css" />
@@ -66,7 +70,7 @@
      </div>
      </div>
 					<div class="main-logo">
-						<h2 class="text-center" style="font-size:68px;">Events</h2>
+						<h2 class="text-center" style="font-size:68px;">Rentals</h2>
 					</div>
 					<div class="col-sm-12 social-shear text-center">
 						<a href="#"><i class="fa fa-facebook"></i></a>
@@ -85,7 +89,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 class="service-title">Upcomming events</h1>
+					<h1 class="service-title">Rental EquipMent</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
 							<i class="fa fa-calendar-o"></i>
@@ -154,7 +158,8 @@
 		</div>
 	</footer><!-- /.footer -->
 
-	   	<!--Modal-->
+					<!--Modal-->
+		<?php ob_start(); ?>
 <div class="modal fade" id="rentalModal" tabindex="-1" role="modal">
 <div class="modal-dialog">
 		<div class="modal-content">
@@ -183,7 +188,7 @@
 															<label class="col-xs-3" for="">Return-Date  :</label>
 															<div class="col-xs-6  input-group input-append " style='padding-left:15px; float: inherit;'>
 																<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
-																<input type="text" required  placeholder="Return Date" class="form-control " id='rdate' name ="return_date"/>
+																<input required type="text"   placeholder="Return Date" class="form-control " id='rdate' name ="return_date"/>
 															</div>
 													</div>
 											</div>
@@ -192,7 +197,7 @@
 													<div class="col-xs-12">
 															<label class="col-xs-3" for="">Quantity :</label>
 															<div class="col-xs-4">
-																	<input type="text" class="form-control" id="squantity" name="quantity">
+																	<input type="number" required class="form-control" id="squantity" name="quantity" >
 															</div>
 													</div>
 											</div>
@@ -207,7 +212,7 @@
 													<div class="col-xs-4">
 													<label class="col-xs-12" for="">Total Deposit:</label>
 													<div class="col-xs-12">
-															<input readonly type="text" class="form-control" id="total_deposit" name="total_deposit"/>
+															<input readonly type="text"  class="form-control" id="total_deposit" name="total_deposit" />
 													</div>
 													</div>
 													<div class="col-xs-4">
@@ -226,7 +231,7 @@
 
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 									<button type="submit" class="btn btn-primary" name="Submit" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
-									
+
 							</div>
 						<!-- /modal-footer -->
 						</form>
@@ -260,6 +265,13 @@
 
 <!-- / add modal -->
 <script>
+	var jsrentals = new Array();
+	var rental = new Object();
+	<?php foreach($rentals as $rental){?>
+				rental = <?php echo json_encode($rental) ?>;
+				jsrentals.push(rental);
+<?php }?>
+console.log(jsrentals);
 		function loadevent(id)
 		{
 				$('#event-data').load('/ipheya/core/sub/finatialR.php?uevent_data='+id);
@@ -269,7 +281,14 @@
 			$('#pdate').datepicker(
 							{
 							minDate:0,
-							dateFormat: 'yy-mm-dd'
+							dateFormat: 'yy-mm-dd',
+							onSelect: function (date) {
+                var date2 = $('#pdate').datepicker('getDate');
+                date2.setDate(date2.getDate() + 7);
+                $('#rdate').datepicker('setDate', date2);
+                //sets minDate to dt1 date + 1
+                $('#rdate').datepicker('option', 'minDate', date2);
+            }
 							}
 			);
 			$('#rdate').datepicker(
@@ -279,6 +298,29 @@
 							}
 			);
 		});
+		function rent(q)
+		{
+			var rent = new Object();
+			for(var x=0; x< jsrentals.length; x++)
+			{
+				if(jsrentals[x].rental_id == q)
+				{
+					rent = jsrentals[x];
+					console.log("equal");
+				}
+			}
+
+			$('#squantity').attr('max',rent.quantity);
+			$('#total_deposit').val(rent.product_deposit);
+		}
+
+		function closeModal(){
+    $('#rentalModal').modal('hide');
+    setTimeout(function(){
+      $('#rentalModal').remove();
+    },500);
+  }
 	</script>
 </body>
 </html>
+<?php echo ob_get_clean(); ?>

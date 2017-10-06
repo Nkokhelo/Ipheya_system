@@ -1,5 +1,6 @@
 <?php
-    #add client to database
+    // Your Account SID and Auth Token from twilio.com/console
+    use Twilio\Rest\Client;
     if(isset($_POST['Register']))
     {
       session_start();
@@ -79,7 +80,27 @@
             {
               die("Error RolesU".mysqli_error($db));
             }
-            header('Location: login.php?success=1');
+
+            //sends sms
+            $sid = 'ACdfe47878ff8fac9687667328ad171012';
+            $token = 'c5ad2f19607f819f3362683af66f8732';
+            $client = new Client($sid, $token);
+            $num = '+27'.substr($number,1);
+
+            // Use the REST API Client to make requests to the Twilio REST API
+             $client->messages->create(
+                    // the number you'd like to send the message to
+                    $num,
+                    array(
+                        // A Twilio phone number you purchased at twilio.com/console
+                        'from' => '+12606455511 ',
+                        // the body of the text message you'd like to send
+                        'body' => "1555"
+                    )
+                );
+              $_SESSION['number'] = $num;
+              //end sms
+            header('Location: verify-number.php?success=1');
         }
         else
         {
