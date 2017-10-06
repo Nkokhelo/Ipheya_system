@@ -29,8 +29,8 @@
         $qoute_unique = uniqid();//generate unique id
         $qoute_no ="Q".substr($date,2,2).substr($date,0,2).strtoupper(substr($qoute_unique,4,4));
 #you cannot view quotaion page without the request
-        $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`) VALUES 
-                                        ({$qoute_no}, '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
+        $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`,`RequestType`) VALUES 
+                                        ({$qoute_no}, '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}',,'{$RequestType}')";
         
         if(!mysqli_query($db,$addInsert))
         {
@@ -80,7 +80,7 @@
         $qoute_no ="Q".substr($date,2,2).substr($date,0,2).strtoupper(substr($qoute_unique,4,4));
 
         #you cannot view quotaion page without the request
-       $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`) VALUES ('{$qoute_no}', '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}')";
+       $addInsert = "INSERT INTO `qoutation` (`QoutationID`, `Title`, `Summary`, `PaymentMethord`, `AmountDue`, `ExpiringDate`, `QoutationDate`, `RequestID`,`RequestType`) VALUES ('{$qoute_no}', '{$Title}', '{$Summary}', '{$PaymentMethord}', '{$AmountDue}', '{$ExpiringDate}', '{$QoutationDate}', '{$RequestID}','{$RequestType}')";
         if(!mysqli_query($db,$addInsert))
         {
             die('Error! Inserting'.mysqli_error($db));
@@ -156,10 +156,10 @@
         $phone = $client['contact_number'];
         $client_no = $client['client_no'];
          $client_information = "<table>
-										<tr><td><span style='color:#808080'>Name</strong> </td><td>: $name</td></tr>
-										<tr><td><span style='color:#808080'>Address</strong> </td><td>: $address</td></tr>
-										<tr><td><span style='color:#808080'>Email</strong> </td><td>: $email</td></tr>
-										<tr><td><span style='color:#808080'>Phone</strong> </td><td>: $phone</td></tr>
+										<tr><th>Name </th><td>: $name</td></tr>
+										<tr><th>Address </th><td>: $address</td></tr>
+										<tr><th>Email </th><td>: $email</td></tr>
+										<tr><th>Phone </th><td>: $phone</td></tr>
 									</table>";
 
     // $idg=$_GET['cid'];

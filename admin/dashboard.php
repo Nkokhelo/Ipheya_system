@@ -116,9 +116,7 @@ session_start();
                   <div id="calendar"></div>
                 </div>	
               </div>
-              
             </div>
-
             
           </div> <!--/row-->
 

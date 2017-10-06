@@ -125,7 +125,7 @@ $log = new Logic();
 			{
 				if(!$log->isEmployeeAssigned($allemployees['employee_id']))
 				{   
-					#TODO this code is unfinished all you have to do is check employees by date or do date calculations!!
+					# TODO this code is unfinished all you have to do is check employees by date or do date calculations!!
 
 					$freeemployees.="<div class='col-sm-12' id='".$allemployees['employee_id']."_".$allemployees['name']."_".$allemployees['email']."_".$log->getDepartmentNameByID($allemployees['department'])."_".$taskid."'><div class='col-sm-4' id='empname'>".$allemployees['name']."</div><div class='col-sm-4' id='email'>".$allemployees['email']."</div><div class='col-sm-4' id='department'>".$log->getDepartmentNameByID($allemployees['department'])."</div></div>";;
 				}
@@ -244,6 +244,14 @@ $log = new Logic();
 				 </form>
 			";
 		}
+		}
+
+		if(isset($_GET['id']))
+		{
+			$query ="SELECT * FROM observation_task WHERE task_id =".$_GET['id'];
+			$result = $log->connect()->query($query);
+			$observation = $result->fetch_assoc();
+			$employee = $log->getByEById($observation['employee_id']);
 		}
 
 ?>
