@@ -85,7 +85,7 @@
             $sid = 'ACdfe47878ff8fac9687667328ad171012';
             $token = 'c5ad2f19607f819f3362683af66f8732';
             $client = new Client($sid, $token);
-            $num = '+27'.substr($number,1)
+            $num = '+27'.substr($number,1);
 
             // Use the REST API Client to make requests to the Twilio REST API
              $client->messages->create(
