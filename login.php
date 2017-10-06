@@ -27,11 +27,13 @@
         <div class="tooltip">register</div>
       </div>
       <div class="form">
+      <script src='https://www.google.com/recaptcha/api.js'></script>
         <h2>Login to your account</h2>
         <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
         <form method="post">
           <input type="email" name="log-email" placeholder="Email"/>
           <input type="password" name="log-password" placeholder="Password"/>
+          <div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div><br/>
           <button type="submit" name="Login">Login</button>
         </form>
       </div>

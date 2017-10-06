@@ -13,6 +13,26 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
       $_SESSION['Employee'] ='';
       $email = mysqli_real_escape_string($db,$_POST['log-email']);
       $password = mysqli_real_escape_string($db,$_POST['log-password']);
+      
+      if(isset($_POST['g-recaptcha-response'])&&$_POST['g-recaptcha-response'])
+      {
+        var_dump($_POST);
+        $secret="6LcKVzMUAAAAAFaTVArInEV4h-rVowh4hFK9ADYF";
+        $ip=$_SERVER['REMOTE_ADDR'];
+        $captcha=$_POST['g-recaptcha-response']."dsa";
+        $rsp="https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha&remoteip=$ip";
+        var_dump($rsp);
+        $arr=json_decode($rsp,TRUE);
+        
+        if ($captcha == ""){
+          echo "You can't proceed!";
+      } 
+      else 
+      {
+          echo "Thank you";
+      }
+        
+      }
 
       $login_exe =$log->Login($email,$password);
       $result = mysqli_fetch_row($login_exe);
