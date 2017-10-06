@@ -4,7 +4,11 @@
 				require('core/logic.php');
 				require('core/controllers/rent-controller.php');
 
-	 ?>
+		
+			
+		?>
+
+	 
 <!DOCTYPE HTML>
 <html lang="en-US">
 
@@ -154,7 +158,8 @@
 		</div>
 	</footer><!-- /.footer -->
 
-	   	<!--Modal-->
+					<!--Modal-->
+		<?php ob_start(); ?>
 <div class="modal fade" id="rentalModal" tabindex="-1" role="modal">
 <div class="modal-dialog">
 		<div class="modal-content">
@@ -183,7 +188,7 @@
 															<label class="col-xs-3" for="">Return-Date  :</label>
 															<div class="col-xs-6  input-group input-append " style='padding-left:15px; float: inherit;'>
 																<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
-																<input type="text" required  placeholder="Return Date" class="form-control " id='rdate' name ="return_date"/>
+																<input required type="text"   placeholder="Return Date" class="form-control " id='rdate' name ="return_date"/>
 															</div>
 													</div>
 											</div>
@@ -192,7 +197,7 @@
 													<div class="col-xs-12">
 															<label class="col-xs-3" for="">Quantity :</label>
 															<div class="col-xs-4">
-																	<input type="text" class="form-control" id="squantity" name="quantity">
+																	<input type="number" required class="form-control" id="squantity" name="quantity" >
 															</div>
 													</div>
 											</div>
@@ -207,7 +212,7 @@
 													<div class="col-xs-4">
 													<label class="col-xs-12" for="">Total Deposit:</label>
 													<div class="col-xs-12">
-															<input readonly type="text" class="form-control" id="total_deposit" name="total_deposit"/>
+															<input readonly type="text"  class="form-control" id="total_deposit" name="total_deposit" />
 													</div>
 													</div>
 													<div class="col-xs-4">
@@ -260,6 +265,13 @@
 
 <!-- / add modal -->
 <script>
+	var jsrentals = new Array();
+	var rental = new Object();
+	<?php foreach($rentals as $rental){?>
+				rental = <?php echo json_encode($rental) ?>;
+				jsrentals.push(rental);
+<?php }?>
+console.log(jsrentals);
 		function loadevent(id)
 		{
 				$('#event-data').load('/ipheya/core/sub/finatialR.php?uevent_data='+id);
@@ -286,6 +298,29 @@
 							}
 			);
 		});
+		function rent(q)
+		{
+			var rent = new Object();
+			for(var x=0; x< jsrentals.length; x++)
+			{
+				if(jsrentals[x].rental_id == q)
+				{
+					rent = jsrentals[x];
+					console.log("equal");
+				}
+			}
+
+			$('#squantity').attr('max',rent.quantity);
+			$('#total_deposit').val(rent.product_deposit);
+		}
+
+		function closeModal(){
+    $('#rentalModal').modal('hide');
+    setTimeout(function(){
+      $('#rentalModal').remove();
+    },500);
+  }
 	</script>
 </body>
 </html>
+<?php echo ob_get_clean(); ?>

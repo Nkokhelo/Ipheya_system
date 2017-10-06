@@ -3,12 +3,13 @@
    $feedback="";
    $alloders ='';
    $alloders = array();
-   $sql =  mysqli_query($db, "SELECT p.product_image, p.product_description, p.product_name, r.product_deposit, r.quantity FROM rentals as r JOIN inventories i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id;");
+   $sql =  mysqli_query($db, "SELECT r.rental_id, p.product_image, p.product_description, p.product_name, r.product_deposit, r.quantity FROM rentals as r JOIN inventories i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id;");
    if(!$sql)
    {
      die("Error");
    }
    $inventories = '';
+   $rentals =array();
    while($prod = mysqli_fetch_assoc($sql)):
      $inventories .= '	<div class="col-xs-3" id="event" style="border:1px #999 solid; max-height:400px; margin:1%; box-shadow:6px 6px 6px #eee;">
                  <div style="width:95%;  margin-left:-15px; height:150px;">
@@ -22,9 +23,10 @@
                      -webkit-line-clamp: 3;
                      -webkit-box-orient: vertical; ">'.$prod['product_description'].'</p>
                      <p style="font-size:11px">Available: '.$prod['quantity'].'| Deposit: R '.number_format($prod['product_deposit'],2,","," ").'</p>
-                     <p class="text-right"><a data-toggle="modal" class="btn btn-primary btn-sm" data-target="#rentalModal">Rent</a> </p>
+                     <p class="text-right"><a onclick="rent('.$prod['rental_id'].')" data-toggle="modal" class="btn btn-primary btn-sm" data-target="#rentalModal">Rent</a> </p>
                  </div>
              </div>';
+             array_push($rentals,$prod);
    endwhile;
  #add Rental Order
    if(isset($_POST['Submit']))
@@ -57,10 +59,8 @@
      {
        $error = '<div class="alert alert-info"><i class="glyphicon glyphicon-info-sign"></i> No Project at the moment<br/> <a href="createproject.php">Create Project</a></div>';
      }
-
-     #get all deposit amount
-     $rental_id=0;
-    $deposit= "SELECT product_deposit FROM `rentals` WHERE rental_id='$rental_id'"
+  
+   
    ?>
 
 
