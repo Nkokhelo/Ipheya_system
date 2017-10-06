@@ -59,50 +59,54 @@ if(isset ($_GET['ri']))
    }
    else if($Rrequest['RequestStatus'] == 'observed')
    {
-     $a =' <a href="quotation.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> Create a qoutation</a>
-     <a href="quotation.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a qoutation</a>
+     $a =' <a href="viewobservation.php?id='.$obsevation['task_id'].'" class="btn btn-default"><span class="glyphicon glyphicon-eye-open"></span> View Observation</a>
+     <a href="quotation.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create Qoute</a>
      ';
      $height='450px';
      $taskInfor ='<div class ="col-xs-12">
-                    <h4 style="color:#70747a"><span class="fa fa-clock-o"></span><b> Obsevation Progress</b></h4>
+                    <h4 style="color:#70747a"><span class="fa fa-clock-o"></span><b> Obsevation Details</b></h4>
                     <hr class="bhr"/>
                     <div class="col-xs-12">
                     <div class="col-xs-6">
-                      <b>Employee Name:</b> '.$employee['name'].'<br/>
-                      <b>Email:</b> '.$employee['email'].'<br/>
-                      <b>Assigned date:</b>'.date_format(date_create($obsevation['s_date']),'d F Y-l').'<br/>
-                      <b>Job Status :</b>'.$obsevation['status'].'
+                      <table>
+                        <tr><td><b>Employee Name</b></td><td>: '.$employee['name'].'<td></tr>
+                        <tr><td><b>Email</b></td><td>: '.$employee['email'].'<td></tr>
+                        <tr><td><b>Assigned date</b></td><td>: '.date_format(date_create($obsevation['s_date']),'d F Y-l').'<td></tr>
+                        <tr><td><b>Job Status </b></td><td>: '.$obsevation['status'].'<td></tr>
+                      </table>
                     </div>
-                    <div class="col-xs-6">
-                    <p>
-                    <b>Job Progress</b>
-                    </p>
-                     <h1>'.$obsevation['complete'].'%</h1>
+                    <div class="col-xs-3">
+
+                   <div class="panel panel-default">
+                        <div class="panel-heading"><b>Job Progress '.$obsevation['complete'].'%</b></div>
+                    </div>
+
                     </div>
                     </div>
                 </div>';
    }
    else
    {
-     $a='<a href="obsevationtask.php?id='.$id.'&Type='.$_GET['RType'].'&cid='.$_GET['ci'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View job process</a>
+     $a='<a href="viewobservation.php?id='.$obsevation['task_id'].'" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> View job process</a>
      ';
      $height='450px';
      $taskInfor ='<div class ="col-xs-12">
                     <hr class="bhr"/>
-                    <h4 style="color:#70747a"><span class="fa fa-clock-o"></span><b> Obsevation Progress</b></h4>
+                    <h4 style="color:#70747a"><span class="fa fa-clock-o"></span><b> Obsevation Details</b></h4>
                     <hr class="bhr"/>
                     <div class="col-xs-12">
                     <div class="col-xs-6">
-                      <b>Employee Name:</b> '.$employee['name'].'<br/>
-                      <b>Email:</b> '.$employee['email'].'<br/>
-                      <b>Assigned date:</b>'.date_format(date_create($obsevation['s_date']),'d F Y-l').'<br/>
-                      <b>Job Status :</b>'.$obsevation['status'].'
+                        <table>
+                            <tr><td><b>Employee Name</b></td><td>: '.$employee['name'].'<td></tr>
+                            <tr><td><b>Email</b></td><td>: '.$employee['email'].'<td></tr>
+                            <tr><td><b>Assigned date</b></td><td>: '.date_format(date_create($obsevation['s_date']),'d F Y-l').'<td></tr>
+                            <tr><td><b>Job Status </b></td><td>: '.$obsevation['status'].'<td></tr>
+                        </table>
                     </div>
                     <div class="col-xs-6">
-                    <p>
-                    <b>Job Progress</b>
-                    </p>
-                     <h1>'.$obsevation['complete'].'%</h1>
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><b>Job Progress :'.$obsevation['complete'].'%</b></div>
+                    </div>
                     </div>
                     </div>
                     </div>';
@@ -119,10 +123,13 @@ $data='<div class="modal-header">
             <h4 style="color:#70747a"><span class="fa fa-user"></span><b>  Client Information</b></h4>
             <hr class="bhr"/>
             <div class="col-xs-12">
-            <b>Name :</b>'.$client_name.'<br/>
-            <b>Phone Number : </b>'.$client['contact_number'].'<br/>
-            <b>Email : </b>'.$client['email'].'<br><br>
-            <b><a href="viewclient.php?view='.$_GET['ci'].'" >View '.$client['name'].'?</a></b><br/>
+                <table>
+                    <tr><td><b>Initials & Surname</b></td><td>: '.$client_name.'<td></tr>
+                    <tr><td><b>Cell</b></td><td>: '.$client['contact_number'].'<td></tr>
+                    <tr><td><b>Email</b></td><td>: '.$client['email'].'<td></tr>
+                    <tr><td colspan=2><br></td></tr>
+                    <tr><td colspan=2><i><a href="viewclient.php?view='.$_GET['ci'].'" >View this client?</a></i><td></tr>
+                </table>
             </div>
            </div>
            <div class ="col-xs-6">

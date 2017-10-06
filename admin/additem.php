@@ -46,7 +46,11 @@ session_start();
                 <h2 class="text-center">Qoutation Orders</h2><hr class="bhr">
                 <div class="col-xs-12">
                   <div class="col-xs-12">
-                    <?=$qitems?>
+                    <table style="width:100%">
+                      <tbody>
+                        <?=$qitems?>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div><!--/b-->
@@ -148,7 +152,16 @@ session_start();
 </div>
 
 </body>
-
+<style>
+.panel-group:first-child>.panel-heading
+{
+    max-height:80px;
+}
+.panel-heading>.table
+{
+  margin-bottom:0;
+}
+</style>
 
 <script>
   var old_q=0;
@@ -200,4 +213,3 @@ session_start();
     }
   }
 </script>
-<?php include('includes/footer.php'); ?>
