@@ -1,7 +1,7 @@
 <?php
 require_once '_db.php';
 
-$stmt = $pdo->prepare('SELECT * FROM task where id = :id');
+$stmt = $pdo->prepare('SELECT * FROM task where task_id = :id');
 $stmt->bindParam(':id', $_GET['task_id']);
 $stmt->execute();
 
@@ -12,7 +12,7 @@ if (!$data) {
 }
 
 $stmt = $pdo->prepare('SELECT count(*) FROM task where parent_id = :id');
-$stmt->bindParam(':id', $_GET['task_id']);
+$stmt->bindParam(':id', $_GET['project_id']);
 $stmt->execute();
 $isparent = $stmt->fetchColumn(0);
 
