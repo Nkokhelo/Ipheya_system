@@ -62,11 +62,26 @@ else
 																		<div class="col-sm-12" id="client">
 																			<h4 style="color:#888"><span class="fa fa-user"></span> - Client Infomation</h4>
 																			<hr/>
-																				<label>Name :</label> <?=$client['name']?><br>
-																				<label>Email :</label> <?=$client['email']?> <br>
-																				<label>Phone Number : </label> <?=$client['contact_number']?><br>
-																				<label for="">Postal Address :</label> <?=$client['postal_address']?><br>
-																				<label for="">Physical Address : </label> <?=$client['postal_address']?><br><hr>
+																			<table>
+																				<tr>
+																					<td><label>Name </label> </td>
+																					<td>: <?=$client['name']?></td>
+																				</tr>
+																				<tr>
+																					<td><label>Email </label></td>
+																					<td>: <?=$client['email']?></td>
+																				</tr>
+																				<tr>
+																					<td><label>Phone Number </label></td>
+																					<td>: <?=$client['contact_number']?></td>
+																				</tr>
+																				<tr>
+																					<td><label for="">Postal Address </label> </td>
+																					<td>: <?=$client['postal_address']?></td>
+																				</tr>
+
+																			</table>
+																				 <br><hr>
 																				<h4 style="color:#888"><span class="fa fa-send"></span> - Request Infomation</h4>
 																				<?=$type?> request for  <?=$name?>
 																				<p style="border:#888 solid 1px; padding:2px; padding-left:-12px; margin:1px;"><?=$request['Description'];?></p>

@@ -1,34 +1,47 @@
 <?php
     $logic = new Logic();
+    $qitems="";
 #items to be purchased
     if(isset($_GET['purchase']))
     {
 
         
-        $qitems="";
+        
         $feedback1 = array('success'=>'','error'=>'','info'=>'');
         $query = "SELECT * FROM qoutation WHERE status ='A'";
         $result = mysqli_query($db,$query);
+        $x =0; $head='';
+
             while($qoute = mysqli_fetch_assoc($result)):
                 $id = $qoute["QoutationID"];
-                $qitems .= "
-                        <div id='according' class='panel-group'>
-                            <div class='panel panel-default'>
-                                <div class='panel-heading'>
-                                    <h5 class='panel-title'>
-                                    <small>
-                                        <a href='#panelBodyOne".$qoute["QoutationID"]."' data-toggle='collapse' data-parent='#according'>".
-                                            "".$qoute["QoutationID"]
-                                        ."</a>
-                                    </small> | 
-                                        <small>
-                                            ". $qoute['Title']."
-                                        </small> - 
-                                        <small style='alignt:right'>  ".date("d F Y",time($qoute['QoutationDate']))."
-                                        </small> 
+                if($x == 0)
+                {
+                    $head = "<thead><tr>
+                    <th>Qoute No</th>
+                    <th>Title</th>
+                    <th>Qoute Date</th>
+                    </tr></thead>";
+                }
+               
 
-                                    </h5>
-                                    
+                $qitems .= "<tr><td colspan=3>
+                        <div id='according' class='panel-group'>
+                            <div class='panel'>
+                                <div class='panel-heading'>
+                                    <table class='table' style='width:150%'>
+                                    ".$head."
+                                        <tbody>
+                                            <tr>
+                                                <th><a href='#panelBodyOne".$qoute["QoutationID"]."' data-toggle='collapse' data-parent='#according'>".
+                                                "".$qoute["QoutationID"]
+                                            ."</a></th>
+                                            
+                                                <td> ". $qoute['Title']."</td>
+                                            
+                                                <td> ".date("d F Y",time($qoute['QoutationDate']))."</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div id='panelBodyOne".$qoute["QoutationID"]."' class='panel-collapse collapse'>
                                     <div class='panel-body'>
@@ -60,7 +73,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><hr>";
+                        </div></td></tr>"; $x++;$head='';
             endwhile;
             $supplierOptions="";
             $result = $logic->getallSuppliers();
