@@ -31,11 +31,11 @@
                 </li>
             </ol>
             </div><!-- /col-xs-6-->
-             <div class="col-xs-offset-1 col-xs-11 b">
-
+             <div class="col-xs-offset-1 col-xs-11 b" id="viewClientInfo">
+            
               <h2 class="text-center">Client Information</h2><hr class="bhr">
                 <div class="col-md-12" style="padding:2%;min-height:20px;">
-                    <div class="tab-content" >
+                    <div class="tab-content" > 
                         <div role="tabpanel" class="tab-pane fade in active" id="client" style="font-size:12px">
                             <div class="col-xs-12">
                                     <h4><p style="color:#888; position:absolute; top:5px;"><?= $client['name']?></p></h4><br/>
