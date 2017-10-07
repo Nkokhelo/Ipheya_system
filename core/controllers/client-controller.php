@@ -60,11 +60,11 @@
           $feed=mysqli_query($db,$client_update);
           if(!$feed)
           {
-            $feedback = $logic->display_error("Unable to update you profile");          
+            $feedback = $logic->display_error("Unable to update you profile");
           }
           else
           {
-            $feedback = $logic->display_success("Your Profile was succesfully updated");          
+            $feedback = $logic->display_success("Your Profile was succesfully updated");
           }
           // header('Location: profile.php');
         }
@@ -84,9 +84,9 @@
           {
             $pass_error = display_errors($errors);
           }
-          else 
+          else
           {
-            $password = password_hash($password, PASSWORD_DEFAULT);                      
+            $password = password_hash($password, PASSWORD_DEFAULT);
             $change_p_sql = "UPDATE users SET password = '$password' WHERE email = '$sess_client'";
             if(mysqli_query($db,$change_p_sql))
             {
@@ -105,7 +105,14 @@
           }
         }
    }
-
+   if(isset($_GET['client']))
+   {
+     $query= $logic->getRentalClientInfo($get['view']);
+     while($mydata=mysqli_fetch_assoc($query))
+     {
+       $client=$mydata;
+     }
+   }
    if(isset($_GET['view']))
    {
      $query = $logic->getClientsById($_GET['view']);
@@ -123,13 +130,13 @@
        if($_GET['view']== $req['ClientID'])
        {
         //  die($req['ServiceID']);
-          $history_view.="<tr><td>".$logic->getServiceNameByID($req['ServiceID'])."</td><td style='width:70%'>".$req['Description']."</td><td>".$req['DueDate']."</td></tr>"; 
+          $history_view.="<tr><td>".$logic->getServiceNameByID($req['ServiceID'])."</td><td style='width:70%'>".$req['Description']."</td><td>".$req['DueDate']."</td></tr>";
        }
     }
      if($history_view == '')
      {
         $history_view_feed = $logic->display_info('No history for this client');
      }
-    
+
    }
  ?>

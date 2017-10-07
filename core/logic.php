@@ -90,7 +90,7 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
-      # get time Line 
+      # get time Line
      public function getalltimelinesNamebyId($timeline_id)
      {
      $sql="SELECT * FROM timelines WHERE timeline_id=$timeline_id";
@@ -104,6 +104,13 @@
          $qey =mysqli_query($this->connect(),$sql);
          return $qey;
      }
+     #client rentered infomation
+     public function getRentalClientInfo()
+     {
+      $sql="SELECT name,client_id,surname,email,contact_number,postal_address FROM clients as c join client_rentals as cs WHERE cs.client_id='1'";
+      $qey=mysqli_query($this->connect(),$sql);
+      return $qey;
+     }
      #get all rental infomation
      public function getClientNameNo()
      {
@@ -111,7 +118,7 @@
         $qey =mysqli_query($this->connect(),$sql);
         return $qey;
      }
-     
+
 # Client
         public function getallClients()
         {

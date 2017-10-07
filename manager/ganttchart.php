@@ -16,7 +16,7 @@
   <div class="wrapper">
     <?php include 'includes/sidebar.php'; ?>
      <!-- demo stylesheet -->
-     <!-- <link type="text/css" rel="stylesheet" href="../assets/ganttchart//layout.css" /> Not sure whether we need this -->
+     <!-- <link type="text/css" rel="stylesheet" href="../assetsganttchart//layout.css" /> Not sure whether we need this -->
      <!-- helper libraries -->
      <script src="../assets/ganttchart/js/jquery-1.9.1.min.js" type="text/javascript"></script>
      <!-- daypilot libraries -->
@@ -44,7 +44,7 @@
 </body>
 <script type="text/javascript">
             var dp = new DayPilot.Gantt("dp");
-            dp.startDate = new DayPilot.Date("2017-01-01");
+            dp.startDate = new DayPilot.Date("2017-10-01");
             dp.days = 31;
 
             dp.linkBottomMargin = 5;
@@ -77,7 +77,7 @@
                     text: "Delete",
                     onclick: function() {
                         var link = this.source;
-                        $.post("backend_link_delete.php", {
+                        $.post("gantt/backend_link_delete.php", {
                             id: link.id()
                         },
                         function(data) {
@@ -88,7 +88,7 @@
             ]);
 
             dp.onRowCreate = function(args) {
-                $.post("backend_create.php", {
+                $.post("gantt/backend_create.php?project_id=<?=$_GET['proj']?>", {
                     name: args.text,
                     start: dp.startDate.toString(),
                     end: dp.startDate.addDays(1).toString()
@@ -99,7 +99,7 @@
             };
 
             dp.onTaskMove = function(args) {
-                $.post("backend_move.php", {
+                $.post("gantt/backend_move.php", {
                     id: args.task.id(),
                     start: args.newStart.toString(),
                     end: args.newEnd.toString()
@@ -110,7 +110,7 @@
             };
 
             dp.onTaskResize = function(args) {
-                $.post("backend_move.php", {
+                $.post("gantt/backend_move.php", {
                     id: args.task.id(),
                     start: args.newStart.toString(),
                     end: args.newEnd.toString()
@@ -122,7 +122,7 @@
 
 
             dp.onRowMove = function(args) {
-                $.post("backend_row_move.php", {
+                $.post("gantt/backend_row_move.php", {
                     source: args.source.id,
                     target: args.target.id,
                     position: args.position
@@ -133,7 +133,7 @@
             };
 
             dp.onLinkCreate = function(args) {
-                $.post("backend_link_create.php", {
+                $.post("gantt/backend_link_create.php", {
                     from: args.from,
                     to: args.to,
                     type: args.type
@@ -148,7 +148,7 @@
                 modal.closed = function() {
                     loadTasks();
                 };
-                modal.showUrl("edit.php?id=" + args.task.id());
+                modal.showUrl("gantt/edit.php?id=" + args.task.id());
             };
 
             dp.init();
@@ -157,14 +157,14 @@
             loadLinks();
 
             function loadTasks() {
-                $.post("backend_tasks.php", function(data) {
+                $.post("gantt/backend_tasks.php", function(data) {
                     dp.tasks.list = data;
                     dp.update();
                 });
             }
 
             function loadLinks() {
-                $.post("backend_links.php", function(data) {
+                $.post("gantt/backend_links.php", function(data) {
                     dp.links.list = data;
                     dp.update();
                 });
@@ -176,7 +176,7 @@
                         text: "Delete",
                         onclick: function() {
                             var task = this.source;
-                            $.post("backend_task_delete.php", {
+                            $.post("gantt/backend_task_delete.php", {
                                 id: task.id()
                             },
                             function(data) {
