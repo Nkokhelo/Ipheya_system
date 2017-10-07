@@ -1,7 +1,7 @@
 <?php
 require_once('_db.php');
 
-db_update_task($_POST["id"], $_POST["start"], $_POST["end"]);
+db_update_task($_POST["task_id"], $_POST["start"], $_POST["end"]);
 
 class Result {}
 

@@ -3,7 +3,7 @@ require_once('_db.php');
 
 class Task {}
 
-$result = tasklist($pdo, db_get_tasks(1));
+$result = tasklist($pdo, db_get_tasks(null));
 
 header('Content-Type: application/json');
 echo json_encode($result);
@@ -15,7 +15,7 @@ function tasklist($pdo, $items) {
       $r = new Task();
 
       // rows
-      $r->id = $item['id'];
+      $r->id = $item['task_id'];
       $r->text = htmlspecialchars($item['name']);
       $r->start = $item['start'];
       $r->end = $item['end'];
@@ -24,9 +24,9 @@ function tasklist($pdo, $items) {
           $r->type = 'Milestone';
       }
 
-      $project = $r->id;
+      $parent = $r->id;
 
-      $children = db_get_tasks($project);
+      $children = db_get_tasks($parent);
 
       if (!empty($children)) {
           $r->children = tasklist($pdo, $children);
