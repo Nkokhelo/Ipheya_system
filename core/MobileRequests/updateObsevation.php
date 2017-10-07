@@ -21,29 +21,15 @@
           {
               $obs = $obsevationq->fetch_assoc();
           }
+          
           if($data->complete == 100)
           {
               $query = $connect->query("UPDATE observation_task SET complete = $data->complete, status = 'observed' WHERE task_id = $data->id");
-              if($obs['r_type']=='Service')
+              $table = strtolower($obs['r_type'])."request";
+              $query = $connect->query("UPDATE $table SET RequestStatus = 'observed' WHERE RequestID = ".$obs['request_id']);
+              if(!$query)
               {
-                $query = $connect->query("UPDATE servicerequest SET RequestStatus = 'observed' WHERE RequestID = ".$obs['request_id']);
-                if(!$query)
-                {
-                    $messages ="Update servicerequest error";
-                }
-                
-              }
-              else
-              {
-                $query = $connect->query("UPDATE maintenancerequest SET RequestStatus = 'observed' WHERE RequestID =".$obs['request_id']);
-                if(!$query)
-                {
-                    $messages ="Update maintenancerequest error";
-                }
-
-
-                
-                
+                  $messages ="Update servicerequest error";
               }
           }
           else
