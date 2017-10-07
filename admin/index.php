@@ -5,7 +5,7 @@
 	{
 		require_once('../core/init.php');
 		include('../core/logic.php');
-		include('includes/head.php');
+		include('includes/head2.php');
 		include('includes/navigation.php');
 		require_once('../core/controllers/role-controller.php');
 		include('includes/employee-session.php');

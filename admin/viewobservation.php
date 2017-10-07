@@ -31,7 +31,7 @@ session_start();
 
               
               <div class="col-xs-6">
-               <h4>Task Details</h4><hr class="bhr"/>
+               <h5>TASK DETAILS</h5><hr class="bhr"/>
                <table>
                 <tr><th>ID</th><td>: #<?= $observation['task_id'] ?></td></tr>
                 <tr><th>Title</th><td>: <?= $observation['t_name'] ?></td></tr>
@@ -59,7 +59,7 @@ session_start();
 
 
               <div class="col-xs-6">
-              <h4>Employee Details</h4><hr class="bhr"/>
+              <h5>EMPLOYEE DETAILS</h5><hr class="bhr"/>
                <table>
                 <tr><th>ID</th><td>: #<?= $employee['emp_no'] ?></td></tr>
                 <tr><th>Name</th><td>: <?= $employee['name']." ".$employee['surname'] ?></td></tr>

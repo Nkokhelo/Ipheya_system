@@ -19,51 +19,40 @@
 			$req_id=$_GET['id'];
 	 }
 ?>
-<body>
+<body style="font-size:12px;">
   <div class="wrapper">
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
 
           <div class="col-xs-11 b">
+											<h2>Create Qoute</h2>
+											<hr class="bhr"/>
+											<div class="col-xs-12"><?=$feedback?></div>
             <div class="col-xs-12">
 
               <form method="POST" class='form' action="quotation.php">
-
-											<div class="col-xs-12">
-											<div class="col-xs-push-8 col-xs-8 btn-group form-group">
-												<button class="btn btn-sm btn-info" name="submit" type="submit" ><span class="glyphicon glyphicon-save-file"></span> Save as draft</button>  
-												<button class="btn btn-sm btn-info" name="email"  type="submit" ><span class="glyphicon glyphicon-send"></span> Email</button> 
-												<button class="btn btn-sm btn-info" name="pdf_con"type="submit" ><span class="glyphicon glyphicon-print"></span> Print</button>
-											</div>
-										</div>
-
-
 										<div class="col-xs-12">
-											<hr class="bhr"/>
-												<div class="col-xs-12">
 													<div class="col-xs-12">
-
-
-																<div class="col-xs-6">
-																<h3 style="color:#808080">Ipheya IT Solution</h3>
+														<div class="row">
+															<div class="col-xs-6">
+																IPHEYA IT SOLUTIONS <hr class="bhr">
 																<div class="col-xs-12">
-																	<address>
-																		05 Wallnut Road<br/>
-																		Smartxchange<br/>
-																		Durban
-																		4001<br/>
-																		Office : 031-824-0515<br/>
-																		Phone : 083-277-4384
-																	</address>
+																	<table style="font-size : 13px;">
+																		<tr><td>05 Wallnut Road</td></tr>
+																		<tr><td>Smartxchange</td></tr>
+																		<tr><td>Durban</td></tr>
+																		<tr><td>4001</td></tr>
+																		<tr><td>Office : 031-824-0515</td></tr>
+																		<tr><td>Phone : 083-277-4384</td></tr>
+																	</table>
 																</div>
-																<br/>
-															</div><!--col-xs-6-->
-
+															<br/>
+														</div><!--col-xs-6-->
 
 															<div class="col-xs-6" style="float:right">
-																<h3 style="float:right;color:#808080">Qoute</h3>
-																<div class="col-xs-8 col-xs-offset-4">
+																QOUTATION DETAILS <hr class="bhr">
+																<div class="col-xs-12 ">
 
 																		<div class="input-group">
 																			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -87,90 +76,123 @@
 
 																</div>
 															</div>
-													</div>
+															</div>
 												</div>
-															<div class="col-xs-12 ">
-												<hr class="bhr"/>
-												<div class="col-xs-12" style="margin-bottom:15px;">
+											<div class="col-xs-12 ">
+												<br class="bhr"/>
+												<div class="row" style="margin-bottom:15px;">
 													<div class="col-xs-6">
-														<h4 style="color:#808080"><u>Customer Information</u></h4>
+														CUSTOMER INFORMATION : <hr class="bhr">
 														<div id="result" style="font-size:11px">
-															<?=$client_information?> 
+															<?=$client_information?> <br>
 														</div>
 													</div>
-
-													<div class="col-xs-6">
-														<h4 style="color:#808080"><u>Qoutation Summary</u></h4>
+												<div class="row">
+													<hr class="bhr">
+													<div class="col-xs-12">
+													<div class="col-xs-12">
+														SUMMARY :
 														<textarea rows="4" class="form-control" name="summary" cols="50"></textarea>
 													</div>
-
+													</div>
 												</div>
-												<hr class="bhr" style="width:100%;margin-top:15px; margin-bottom:15px"/>
-															<div class="col-xs-12">
-																<div class="col-xs-12" style="width:120%; margin-left:-10%;">
+									<div class="row">
+										<hr class="bhr" style="width:100%;margin-top:15px; margin-bottom:15px"/>
+										</div> 
+												</div>
+															<div class="row">
+																<div class="row">
 																	<div class="col-xs-8">
-																		<h4>Add Items</h4>
+																		ITEMS
 																	</div>
+
 																	<div class="btn-group btn-group-xs btn-group-justified col-xs-3" style="width:30%">
 																		<a class="btn btn-xs btn-default" onClick='addItem()' id='AddItem'>add new row</a>
 																		<a class="btn btn-xs btn-default" onClick='removeItem()' id='AddItem'>delete last row</a>
-																	</div>
+																	</div> <!--btn-group-->
+
 																	<div class="col-xs-12">
-																<div class="table-responsive">
-																	<table class="table" id="ItemTable">
-																	<thead>
-																		<th>Name</th>
-																		<th>Description</th>
-																		<th>Quantity</th>
-																		<th>UnitPrice</th>
-																		<th>Amount</th>
-																	</thead> 
-																	<tbody class="form-group" id="items">
-																		<tr>
-																			<td><input type="text"class="form-control" name="IName[]"  id="txtN_0" value="" placeholder="Item Name" required/></td>
-																			<td><input type="text"class="form-control" name="IDescription[]"  id="txtD_0" value="" style="width:350px" placeholder="Description" required/></td>
-																			<td><input type="text"class="form-control" name="IQuantiy[]"  id="txtQ_0" value="" style="width:100px" onkeyup="generateTotals(this)" placeholder="No.of Items" required/></td>
-																			<td><input type="text"class="form-control" name="IUnitPrice[]"  id="txtUP_0"value=""  style="width:80px" onkeyup="generateTotals(this)"  placeholder="Unit Price" required/></td>
-																			<td><input type="text"class="form-control" name="IPQ[]"  id="txtPQ_0"value=""  style="width:100px" required readonly/></td>
-																		</tr>
-																	</tbody>
-																	<tfoot>
-																		<tr>
-																			<td colspan="4"><b style="float:right"><i>TOTAL VAT : </i></b></td>
-																			<td><input type="text" class="form-control" name="vat" id="vat" value="" style="width:100px;border-radius:0;" readonly required/></td>
-																			</tr>
-																		<tr>
-																			<td colspan="4"><b style="float:right"><i>TOTAL PRICE : </i></b></td>
-																			<td><input type="text" class="form-control" name="TotalPrice" id="TotalPrice" value="" style="width:100px;border-radius:0;" readonly required/></td>
-																			</tr>
-																	</tfoot>
-																</table>
+																		<hr class="bhr">
+																	</div>
+
+																		<div class="col-xs-12">
+																			<div class="table-responsive">
+																				<table class="table" id="ItemTable" style="font-size:12px;">
+
+																				<thead>
+																					<th>NAME</th>
+																					<th>DESCRIPTION</th>
+																					<th>QUANTITY</th>
+																					<th>UNITPRICE</th>
+																					<th>AMOUNT</th>
+																				</thead> 
+
+																				<tbody class="form-group" id="items">
+																					<tr>
+																						<td><input type="text"class="form-control" name="IName[]"  id="txtN_0" value="" placeholder="Item Name" required/></td>
+																						<td><input type="text"class="form-control" name="IDescription[]"  id="txtD_0" value="" style="width:350px" placeholder="Description" required/></td>
+																						<td><input type="text"class="form-control" name="IQuantiy[]"  id="txtQ_0" value="" style="width:100px" onkeyup="generateTotals(this)" placeholder="No.of Items" required/></td>
+																						<td><input type="text"class="form-control" name="IUnitPrice[]"  id="txtUP_0"value=""  style="width:80px" onkeyup="generateTotals(this)"  placeholder="Unit Price" required/></td>
+																						<td><input type="text"class="form-control" name="IPQ[]"  id="txtPQ_0"value=""  style="width:100px" required readonly/></td>
+																					</tr>
+																				</tbody>
+
+																				<tfoot>
+																					<tr>
+																						<th colspan="4">TOTAL VAT </th>
+																						<td>
+																							<input type="text" class="form-control" name="vat" id="vat" value="" style="width:100px;border-radius:0;" readonly required/></td>
+																						</tr>
+																					<tr>
+																						<th colspan="4">TOTAL PRICE </th>
+																						<td>
+																							<input type="text" class="form-control" name="TotalPrice" id="TotalPrice" value="" style="width:100px;border-radius:0;" readonly required/></td>
+																						</tr>
+																				</tfoot>
+
+																			</table>
+
+																			</div> <!--table responcive-->
+																		</div> <!--col-xs-12-->
+																		
+																	</div>
 																</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12">
+														<hr style="width:100%"/>
+														<div class="form-group">
+															<label for="paymentmethod" class="control-label col-xs-12">Deposit :</label>
+															<div class="col-xs-12">
+																<select class='form-control' style="width:20%;  display:inline;" name="paymentmethod">
+																	<option value="10">10 %</option>
+																	<option value="15">15 %</option>
+																	<option value="30">30 %</option>
+																</select>
 															</div>
 														</div>
-													</div>
-
-
-													<div class="col-xs-12">
-														<hr/>
-														<label for="paymentmethod" style="width:60%; display:inline;" >Payment Method </label>
-														<select class='form-control' style="width:20%;  display:inline;" name="paymentmethod">
-															<option value="10">10 % deposit</option>
-															<option value="15">15 % deposit</option>
-															<option value="30">30 % deposit</option>
-														</select>
-														<label for="paymentmethod" style="width:60%; display:inline;" >before job begins </label>
-														<br/>
 														<input name="serviceType" type="hidden" value="<?=$serviceT?>"/>
 														<input name="Req_id" type="hidden" value="<?=$req_id?>"/>
 														<br/>
 													</div>
-
-													
+										</div>
+										<hr class="bhr"/>
+											<div class="col-xs-12">
+											<div class="col-xs-8 col-xs-offset-2">
+												<div class="col-xs-4">
+												<button class="btn btn-block btn-info" name="submit" type="submit" ><span class="glyphicon glyphicon-save-file"></span> Save as draft</button> 
+												</div>
+												<div class="col-xs-4">
+												<button class="btn btn-block btn-info" name="send"  type="submit" ><span class="glyphicon glyphicon-send"></span> Send </button> 
+												</div>
+												<div class="col-xs-4">
+												<button class="btn btn-block btn-info" name="pdf_con" type="submit" ><span class="glyphicon glyphicon-print"></span> Print</button>
+												</div>
+													</div>
 											</div>
-																		</div>
-											</form>
-														</div>
+													</form>
+												</div>
 											</div>
 										</div>
 								</div>
@@ -188,6 +210,7 @@
 							var newRow = document.createElement('tr');
 							var newColoum = document.createElement('td');
 							var newInput = document.createElement('input');
+
 
 							for(x=0; x<5; x++)
 							{
@@ -305,11 +328,18 @@
 								});
 							return false;
 						});
-
+						var today = new Date();
 						$("#qdate").datepicker(
 							{
+								setDate: today,
 								minDate:0,
-								dateFormat: 'yy-mm-dd'
+								dateFormat: 'yy-mm-dd',
+								onSelect: function (date) {
+																	var date2 = $('#qdate').datepicker('getDate');
+																	date2.setDate(date2.getDate() + 7);
+																	$('#enddate').datepicker('setDate', date2);
+																	$('#enddate').datepicker('option', 'minDate', date2);
+													}
 							}
 						);
 						$("#enddate").datepicker(

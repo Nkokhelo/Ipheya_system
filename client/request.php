@@ -26,8 +26,6 @@
             <ul class="nav nav-tabs">
               <li class="active"><a href="#SR"  data-toggle="tab">Service</a></li>
               <li><a href="#MR"  data-toggle="tab">Maintanance</a></li>
-              <li><a href="#" data-toggle="tab">Repair</a></li>
-              <li><a href="#"  data-toggle="tab">Survey</a></li>
             </ul>
             <div class="tab-content">
               <div id="SR" class="tab-pane fade in active">

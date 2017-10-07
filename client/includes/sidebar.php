@@ -5,13 +5,13 @@
                 </div>
 
                 <ul class="list-unstyled components">
+                    <li class="active"><a href="home.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                     <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
                             <i class="fa fa-user-circle-o"></i>
                             Account
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="home.php">My dashboard</a></li>
                             <li><a href="profile.php">My profile</a></li>
                             <li><a href="my_order.php">My Order</a></li>
                             <li><a href="CreateTicket.php">Report Faults</a></li>
@@ -20,24 +20,15 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fa fa-money"></i>
-                            Make Payaments
-                        </a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-                            <i class="fa fa-clipboard"></i>
-                            Request
-                        </a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="request.php#MaintananceR">Maintanance</a></li>
-                            <li><a href="request.php#ServiceR">Service</a></li>
-                            <li><a href="request.php#SurvetyR">Survey</a></li>
-                        </ul>
+                        <a href="#"><i class="fa fa-money"></i> Payments </a>
+                    </li>
+                    <li>
+                        <a href="request.php"><i class="fa fa-clipboard"></i> Request</a>
                     </li>
                     <li>
                         <a href="history.php">
                             <i class="fa fa-history"></i>
-                            My history
+                            History
                         </a>
                     </li>
                     <li>
