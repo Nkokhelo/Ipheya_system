@@ -1,18 +1,20 @@
 <?php
 require_once '_db.php';
 
+$id = $_GET['id'];
 $stmt = $pdo->prepare('SELECT * FROM task where task_id = :id');
-$stmt->bindParam(':id', $_GET['task_id']);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
 
 $data = $stmt->fetch();
 
-if (!$data) {
-    die("Not found");
+if(!$data)
+{
+  #die("Not Found");
 }
 
 $stmt = $pdo->prepare('SELECT count(*) FROM task where parent_id = :id');
-$stmt->bindParam(':id', $_GET['project_id']);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
 $isparent = $stmt->fetchColumn(0);
 

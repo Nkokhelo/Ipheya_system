@@ -25,7 +25,7 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-12'>
-                <h2 class="text-center" style="color:#888">Gantt Chart for <?= $logic->getProjectById($_GET['project_id'])['project_name'] ?></h2>
+                <h2 class="text-center" style="color:#888">Gantt Chart for <?= $logic->getProjectNameById($_GET['project_id']); ?></h2>
               <div class="col-xs-12 ">
                 <div class="shadow"></div>
                 <div class="hideSkipLink">
@@ -100,7 +100,7 @@
 
             dp.onTaskMove = function(args) {
                 $.post("gantt/backend_move.php", {
-                    id: args.task.id(),
+                    task_id: args.task.id(),
                     start: args.newStart.toString(),
                     end: args.newEnd.toString()
                 },
@@ -111,7 +111,7 @@
 
             dp.onTaskResize = function(args) {
                 $.post("gantt/backend_move.php", {
-                    id: args.task.id(),
+                    task_id: args.task.id(),
                     start: args.newStart.toString(),
                     end: args.newEnd.toString()
                 },
@@ -148,7 +148,9 @@
                 modal.closed = function() {
                     loadTasks();
                 };
+                //modal.showUrl("gantt/edit.php?id=" + args.task.id());
                 modal.showUrl("gantt/edit.php?id=" + args.task.id());
+                //console.log(args.task.id());
             };
 
             dp.init();
@@ -157,7 +159,7 @@
             loadLinks();
 
             function loadTasks() {
-                $.post("gantt/backend_tasks.php", function(data) {
+                $.post("gantt/backend_tasks.php?project_id=<?=$_GET['project_id']?>", function(data) {
                     dp.tasks.list = data;
                     dp.update();
                 });
@@ -177,7 +179,7 @@
                         onclick: function() {
                             var task = this.source;
                             $.post("gantt/backend_task_delete.php", {
-                                id: task.id()
+                                task_id: task.id()
                             },
                             function(data) {
                                 loadTasks();

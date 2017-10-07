@@ -18,7 +18,7 @@
     function db_get_task($id) {
         global $pdo;
 
-        $str = "SELECT * FROM task WHERE id = :id";
+        $str = "SELECT * FROM task WHERE task_id = :id";
         $stmt = $pdo->prepare($str);
         $stmt->bindParam(":id", $id);
         $stmt->execute();
@@ -30,7 +30,7 @@
 
         $now = (new DateTime("now"))->format('Y-m-d H:i:s');
 
-        $str = "UPDATE task SET parent_id = :parent, ordinal = :ordinal, ordinal_priority = :priority WHERE id = :id";
+        $str = "UPDATE task SET parent_id = :parent, ordinal = :ordinal, ordinal_priority = :priority WHERE task_id = :id";
         $stmt = $pdo->prepare($str);
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":parent", $parent);
@@ -44,7 +44,7 @@
         $size = count($children);
         for ($i = 0; $i < $size; $i++) {
             $row = $children[$i];
-            db_update_task_ordinal($row["id"], $i);
+            db_update_task_ordinal($row["task_id"], $i);
         }
     }
 
@@ -53,7 +53,7 @@
 
         $now = (new DateTime("now"))->format('Y-m-d H:i:s');
 
-        $str = "UPDATE task SET ordinal = :ordinal, ordinal_priority = :priority WHERE id = :id";
+        $str = "UPDATE task SET ordinal = :ordinal, ordinal_priority = :priority WHERE task_id = :id";
         $stmt = $pdo->prepare($str);
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":ordinal", $ordinal);
@@ -64,7 +64,7 @@
     function db_update_task($id, $start, $end) {
         global $pdo;
 
-        $str = "UPDATE task SET start = :start, end = :end WHERE id = :id";
+        $str = "UPDATE task SET start = :start, end = :end WHERE task_id = :id";
         $stmt = $pdo->prepare($str);
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":start", $start);
@@ -75,7 +75,7 @@
     function db_update_task_full($id, $start, $end, $name, $complete, $milestone) {
         global $pdo;
 
-        $str = "UPDATE task SET start = :start, end = :end, name = :name, complete = :complete, milestone = :milestone WHERE id = :id";
+        $str = "UPDATE task SET start = :start, end = :end, name = :name, complete = :complete, milestone = :milestone WHERE task_id = :id";
         $stmt = $pdo->prepare($str);
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":start", $start);
@@ -86,17 +86,17 @@
         $stmt->execute();
     }
 
-    function db_get_tasks($parent) {
+    function db_get_tasks($project) {
         global $pdo;
 
-        $str = 'SELECT * FROM task WHERE parent_id = :parent ORDER BY ordinal, ordinal_priority desc';
-        if ($parent == null) {
-            $str = str_replace("= :parent", "is null", $str);
+        $str = 'SELECT * FROM task WHERE project_id = :project ORDER BY ordinal, ordinal_priority desc';
+        if ($project == null) {
+            $str = str_replace("= :project", "is null", $str);
             $stmt = $pdo->prepare($str);
         }
         else {
             $stmt = $pdo->prepare($str);
-            $stmt->bindParam(':parent', $parent);
+            $stmt->bindParam(':project', $project);
         }
 
         $stmt->execute();

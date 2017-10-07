@@ -13,15 +13,15 @@ $target_ordinal = $target["ordinal"];
 
 switch ($_POST["position"]) {
     case "before":
-        db_update_task_parent($source["task_id"], $target_parent_id, $target_ordinal);
+        db_update_task_parent($source["id:"], $target_parent_id, $target_ordinal);
         break;
     case "after":
-        db_update_task_parent($source["task_id"], $target_parent_id, $target_ordinal + 1);
+        db_update_task_parent($source["id:"], $target_parent_id, $target_ordinal + 1);
         break;
     case "child":
-        echo "child:source/".$source["task_id"]."/target/".$target["task_id"];
-        db_update_task_parent($source["task_id"], $target["task_id"], $max);
-        $target_parent_id = $target["task_id"];
+        echo "child:source/".$source["id:"]."/target/".$target["id:"];
+        db_update_task_parent($source["id:"], $target["id:"], $max);
+        $target_parent_id = $target["id:"];
         break;
     case "forbidden":
         break;
