@@ -4,10 +4,9 @@
 		require('/core/logic.php');
 		require('core/controllers/rent-controller.php');
 
-	if(isset($_POST['proceed']))
-    {
-      header("Location:/login.php");
-    }
+		 session_start();
+		
+		 
 	?>
 <!DOCTYPE HTML>
 <html lang="en-US">
@@ -92,15 +91,16 @@
 					<h1 class="service-title">Rental EquipMent</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
-<div class="text-right"><a onclick="rent('.$prod['rental_id'].')" data-toggle="modal" class="btn btn-primary btn-sm" data-target="#rentalFinal">Proceed</a> </div>
+<div class="text-right"><a onclick="rent('.$prod['rental_id'].')" data-toggle="modal" class="btn btn-primary btn-sm" data-target="#rentalFinal">Proceed</a></div>
 						<div class="service-aro-right"></div>
 					</div>
 					<div class="service-aro-icon">
 						</div>
 						
 						<div class="col-xs-11 col-xs-offset-1">
+						<div class="col-xs-12"><?=$feedback?></div>
 								<hr class="bhr" style="margin-left:-105px;">
-								<?=$feedback?>
+								
 										<?=$inventories?>
 								</div>
 						</div>
@@ -163,7 +163,7 @@
 <div class="modal fade" id="rentalModal" tabindex="-1" role="modal">
 <div class="modal-dialog">
 		<div class="modal-content">
-		<?= $feedback ?>
+		
 		<form action="" method="post" class="form-horizontal">
 
 					<div class="modal-header">
@@ -185,6 +185,7 @@
 											</div>
 											<div class="form-group">
 													<div class="col-xs-12">
+													<input type="hidden" name="rental_id" id="rentalId"/>
 															<label class="col-xs-3" for="">Return-Date  :</label>
 															<div class="col-xs-6  input-group input-append " style='padding-left:15px; float: inherit;'>
 																<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
@@ -255,21 +256,31 @@
 					</div>
 
 					<div class="modal-body">
-
-					                       <table class="table-responsive">
-                                            <tr>
-                                           <td align="left"><h5>Total Quantity  </h5></td><td align="left"> <h5>: </h5></td>
-                                            </tr>
-                                            <tr>
-                                          <td align="left"><h5>Total Price Due  </h5></td><td align="left"></h5>:</td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left"><h5>Pick Date </h5></td><td align="left"> <h5> : </h5></td>
-                                            </tr>
-                                            <tr>
-                                               <td align="left"><h5>ReturnDate  </h5></td><td align="left"> <h5>:</h5></td>
-                                            </tr>
-                                        </table>
+					   <?php
+					   if(isset($_SESSION['clientRenter']))
+					   {
+					   for($x=0;$x<count($_SESSION['clientRenter']);$x++)
+					   {
+						$clientInfo=$_SESSION['clientRenter'][$x];?>
+						<table class="table-responsive">
+						<tr>
+					   <td align="left"><h5>Total Quantity  </h5></td><td align="left"> <h5>:<?=$clientInfo['quantity']?></h5></td>
+						</tr>
+						<tr>
+					  <td align="left"><h5>Total Price Due  </h5></td><td align="left"></h5>:<?=$clientInfo['total_amount']?></td>
+						</tr>
+						<tr>
+							<td align="left"><h5>Pick Date </h5></td><td align="left"> <h5> :<?=$clientInfo['pickup_date']?> </h5></td>
+						</tr>
+						<tr>
+						   <td align="left"><h5>ReturnDate  </h5></td><td align="left"> <h5>:<?=$clientInfo['return_date']?></h5></td>
+						</tr>
+					   </table>
+					 
+					 <?php  }
+					   }
+					     ?>
+					                      
 							<!-- /modal body -->
 							
 							<div class="modal-footer">
@@ -364,6 +375,7 @@
 			}
 			$('#squantity').attr('max',rental.quantity);
 			$('#total_deposit').val(rental.product_deposit);
+			$('#rentalId').val(rental.rental_id);
 		}
 
 
