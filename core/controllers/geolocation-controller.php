@@ -1,5 +1,5 @@
 <?php
-   $sql = mysqli_query($db, "SELECT * FROM geolocation");
+   $sql = mysqli_query($db, "SELECT * FROM location");
    $locations  = ''; $id = 0;
    $mapholderArgs = $lat = $long = array();
    while($loc = mysqli_fetch_assoc($sql)):

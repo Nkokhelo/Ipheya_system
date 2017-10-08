@@ -41,7 +41,7 @@ else
                   <table id="rentaOrderTable" class="table table-bordered">
                    <thead>
                     <tr>
-                     <th>Order No</th>
+                    <th>Order No</th>
                      <th>Product</th>
                      <th>Quantity</th>
                      <th>Pick Date</th>

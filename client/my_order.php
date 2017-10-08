@@ -23,8 +23,8 @@ else
             <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
             <li class="active"><i class="fa fa-shopping-cart"></i> My Order</li>
             </ol>
-          </div><!-- /col-xs-6-->
-
+            </div><!-- /col-xs-6-->
+              
 
               <div class="col-xs-11 b">
                 <h2>My Order</h2><hr class="bhr">
