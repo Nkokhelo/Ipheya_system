@@ -20,7 +20,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-money"></i> Payments </a>
+                        <a href="payments.php"><i class="fa fa-money"></i> Payments </a>
                     </li>
                     <li>
                         <a href="request.php"><i class="fa fa-clipboard"></i> Request</a>

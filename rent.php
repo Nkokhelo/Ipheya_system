@@ -92,7 +92,7 @@
 					<h1 class="service-title">Rental EquipMent</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
-                       <button type="button" name="proceed" class="btn btn fa fa">Proceed</button>
+<div class="text-right"><a onclick="rent('.$prod['rental_id'].')" data-toggle="modal" class="btn btn-primary btn-sm" data-target="#rentalFinal">Proceed</a> </div>
 						<div class="service-aro-right"></div>
 					</div>
 					<div class="service-aro-icon">
@@ -241,7 +241,52 @@
 </div>
 <!-- /modal-dailog -->
 </div>
+<!--/New Modal For Product-->
+<?php ob_start(); ?>
+<div class="modal fade" id="rentalFinal" tabindex="-1" role="modal">
+<div class="modal-dialog">
+		<div class="modal-content">
+		<?= $feedback ?>
+		<form action="" method="post" class="form-horizontal">
 
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title"><i class="fa fa-exchange"></i>Continue</h4>
+					</div>
+
+					<div class="modal-body">
+
+					                       <table class="table-responsive">
+                                            <tr>
+                                           <td align="left"><h5>Total Quantity  </h5></td><td align="left"> <h5>: </h5></td>
+                                            </tr>
+                                            <tr>
+                                          <td align="left"><h5>Total Price Due  </h5></td><td align="left"></h5>:</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left"><h5>Pick Date </h5></td><td align="left"> <h5> : </h5></td>
+                                            </tr>
+                                            <tr>
+                                               <td align="left"><h5>ReturnDate  </h5></td><td align="left"> <h5>:</h5></td>
+                                            </tr>
+                                        </table>
+							<!-- /modal body -->
+							
+							<div class="modal-footer">
+
+									<button type="button" class="btn btn-default-danger" data-dismiss="modal">Cancel</button>
+									<button type="submit" class="btn btn-primary" name="Submit" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Cornfirm</button>
+
+							</div>
+						<!-- /modal-footer -->
+						</form>
+
+		</div>
+		<!-- /modal-content -->
+</div>
+<!-- /modal-dailog -->
+</div>
+<!-- End Modal new Modal-->
 <!-- JS -->
 <script type="text/javascript" src="assets/index/js/jquery.min.js"></script><!-- jQuery -->
 	<script type="text/javascript" src="assets/index/js/bootstrap.min.js"></script><!-- Bootstrap -->
@@ -254,7 +299,8 @@
 	     STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
 	============================================================== -->
 	<script type="text/javascript" src="assets/index/demo/demo.js"></script>
-<link rel="stylesheet" href="assets/plugins/jquery-ui/jquery-ui.css">	<script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.js"></script>
+<link rel="stylesheet" href="assets/plugins/jquery-ui/jquery-ui.css">	
+<script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.js"></script>
 	
 	<style>
 		#view:hover{
@@ -296,11 +342,11 @@
 							minDate:+7,
 							dateFormat: 'yy-mm-dd',
 							onSelect:	function (days) {
-																	var a = $("#pdate").datepicker('getDate').getTime();
-																	var b = $("#rdate").datepicker('getDate').getTime();
-																	var c = 24*60*60*1000;
-																	diffDays = Math.round(Math.abs((a - b)/(c)));
-																	totalCharge(diffDays);
+								var a = $("#pdate").datepicker('getDate').getTime();
+					        	var b = $("#rdate").datepicker('getDate').getTime();
+								var c = 24*60*60*1000;
+								diffDays = Math.round(Math.abs((a - b)/(c)));
+								totalCharge(diffDays);
         }
 							}
      );
