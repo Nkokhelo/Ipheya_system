@@ -61,7 +61,7 @@ else
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
-  <script src="../assets/js/rentalorder.js"></script>
+  <script src="../assets/js/rentalorder.js"
 
 </body>
 <script>

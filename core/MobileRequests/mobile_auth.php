@@ -10,9 +10,8 @@
             $log = new Logic();
             $data ="";
             $mobileData = json_decode(file_get_contents('php://input'));
-
             $query = $log->Login($mobileData->username,$mobileData->password);
-            // $query = $log->Login("Admin@gmail.com","Admn@2017");
+            // // $query = $log->Login("Admin@gmail.com","Admn@2017");
               while($user =  mysqli_fetch_assoc($query))
               {
                   $data = $user;

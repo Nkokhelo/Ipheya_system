@@ -33,8 +33,10 @@
         <form method="post">
           <input type="email" name="log-email" placeholder="Email"/>
           <input type="password" name="log-password" placeholder="Password"/>
-          <div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div><br/>
+          <div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div>
           <button type="submit" name="Login">Login</button>
+         <label for="acc" class="col-1">Accept Terms:</label><input type="checkbox" id="chk" name="chk"/>
+         <label for="cr">Don't have account:</label><a href="">Create Account</a>
         </form>
       </div>
       <div class="form">
@@ -50,7 +52,7 @@
           <button type="submit" name="Register">Register</button>
         </form>
       </div>
-      <div class="cta">Forgot your password?</div>
+      <div class="cta" ><a href="">Forgot your password?</a></div>
     </div>
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
