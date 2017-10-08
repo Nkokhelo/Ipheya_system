@@ -3,7 +3,7 @@ require_once('_db.php');
 
 class Task {}
 
-$result = tasklist($pdo, db_get_tasks(null));
+$result = tasklist($pdo, db_get_tasks($_GET['project_id']));
 
 header('Content-Type: application/json');
 echo json_encode($result);
