@@ -105,9 +105,10 @@
           }
         }
    }
-   if(isset($_GET['client']))
+ 
+   if(isset($_GET['cliente']))
    {
-     $query= $logic->getRentalClientInfo($get['view']);
+     $query= $logic->getRentalClientInfo();
      while($mydata=mysqli_fetch_assoc($query))
      {
        $client=$mydata;

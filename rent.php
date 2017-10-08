@@ -405,7 +405,7 @@
 											}
 									}
 						}});
-		// 		$("#total_charge").val(totC);
+		//	$("#total_charge").val(totC);
 		}
 	</script>
 </body>
