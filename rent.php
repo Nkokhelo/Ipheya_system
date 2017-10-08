@@ -415,14 +415,16 @@
 									
 						}});	
 		}
+		var totalC=0;
 		function totalDaily(days)
 		{
 			var quantity=$('#quantity').val();
 			var charge=$('#total_deposit').val();
 		    var totalC=	(quantity*charge);
 			console.log("Total_Amount is :R"+totalC);
+			$('#total_amount').val(totalC);
 		}
-		$('#total_amount').val(totalC);
+	
 	</script>
 </body>
 </html>
