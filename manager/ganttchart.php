@@ -25,7 +25,7 @@
       <div id='content'>
         <div class='row'>
             <div class='col-xs-12'>
-                <h2 class="text-center" style="color:#888">Gantt Chart for <?= $logic->getProjectByNo($_GET['proj'])['project_name'] ?></h2>
+                <h2 class="text-center" style="color:#888">Gantt Chart for <?= $logic->getProjectById($_GET['project_id'])['project_name'] ?></h2>
               <div class="col-xs-12 ">
                 <div class="shadow"></div>
                 <div class="hideSkipLink">
@@ -88,7 +88,7 @@
             ]);
 
             dp.onRowCreate = function(args) {
-                $.post("gantt/backend_create.php?project_id=<?=$_GET['proj']?>", {
+                $.post("gantt/backend_create.php?project_id=<?=$_GET['project_id']?>", {
                     name: args.text,
                     start: dp.startDate.toString(),
                     end: dp.startDate.addDays(1).toString()

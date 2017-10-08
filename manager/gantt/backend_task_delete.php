@@ -1,8 +1,8 @@
 <?php
 require_once('_db.php');
 
-$stmt = $pdo->prepare("DELETE from task WHERE id = :id");
-$stmt->bindParam(':id', $_POST['id']);
+$stmt = $pdo->prepare("DELETE from task WHERE task_id = :id");
+$stmt->bindParam(':id', $_POST['task_id']);
 $stmt->execute();
 
 class Result {}

@@ -58,19 +58,19 @@
                                         </div>
                                         <div class="col-xs-12">
                                         <div class="form-group col-md-12">
-                                            <label for="line2">Line-2 :</label>
+                                            <label for="line2">Apartment/Building :</label>
                                             <input required type="text" name="line2" id="line2" class="form-control" value="<?=((isset($line2))?$line2:'');?>" placeholder="Address 2">
                                         </div>
                                         </div>
                                         <div class="col-xs-12">
                                         <div class="form-group col-md-12">
-                                            <label for="line3">Line-3 :</label>
+                                            <label for="line3">Suburb :</label>
                                             <input required type="text" name="line3" id="line2" class="form-control" value="<?=((isset($line3))?$line3:'');?>" placeholder="Address 3">
                                         </div>
                                         </div>
                                         <div class="col-xs-12">
                                         <div class="form-group col-md-12">
-                                            <label for="line4">Line-4 :</label>
+                                            <label for="line4">City :</label>
                                             <input required type="text" name="line4" id="line4" class="form-control" value="<?=((isset($line4))?$line4:'');?>" placeholder="Address 4">
                                         </div>
                                         </div>
@@ -135,9 +135,9 @@
                                     <div class="col-xs-6" style="text-align:right">
                                             <p>Supplier name :</p>
                                             <p>Address :</p>
-                                            <p>Line 2 :</p>
-                                            <p>Line 3 :</p>
-                                            <p>Line 4 :</p>
+                                            <p>Apartment/Building :</p>
+                                            <p>Suburb :</p>
+                                            <p>City :</p>
                                             <p>Postal Code :</p>
                                     </div>
                                     <div class="col-xs-6" style="text-align:left">

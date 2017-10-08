@@ -728,6 +728,16 @@
             }
             return mysqli_fetch_assoc($qey);
         }
+        public function getProjectById($id)
+        {
+            $sql ="SELECT * FROM projects WHERE id='$id'";
+            $qey =mysqli_query($this->connect(),$sql);
+            if(!$qey)
+            {
+                die("getProjectByNo() error in logic class");
+            }
+            return mysqli_fetch_assoc($qey);
+        }
         public function getRelatedProject($proj)
         {
             $result =$this->getProjectByNo($proj)['program_no'];

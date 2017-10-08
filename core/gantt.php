@@ -25,6 +25,7 @@ $sql = "CREATE TABLE task
            name TEXT,
            start DATETIME,
            end DATETIME,
+           parent_id INTEGER,
            date_posted DATETIME,
            location varchar(100),
            milestone BOOLEAN  DEFAULT '0' NOT NULL,

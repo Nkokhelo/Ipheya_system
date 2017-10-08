@@ -26,7 +26,7 @@ else
         <div class='row'>
             <div class='col-xs-12'>
               <div class="col-xs-11 b">
-                <h3 class="text-center" style="color:#888">Rate our service</h1><hr class="bhr"/>
+                <h2>Rate our service</h2><hr class="bhr"/>
                 <div class="col-xs-12" id="shop"></div>
             </div>
         </div>

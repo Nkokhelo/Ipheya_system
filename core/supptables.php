@@ -26,7 +26,8 @@
    else{
      echo 'Table supplier not created: '.mysqli_error($db).'<br>';
    }
-   $sql = "CREATE TABLE supplier_contact
+
+   /*$sql = "CREATE TABLE supplier_contact
    (
      scontact_id int NOT NULL AUTO_INCREMENT,
      PRIMARY KEY(scontact_id),
@@ -45,7 +46,7 @@
    }
    else{
      echo 'Table supplier_contact not created: '.mysqli_error($db).'<br>';
-   }
+   }*/
    $sql = "CREATE TABLE supplier_agreement
    (
      sagreement_id int NOT NULL AUTO_INCREMENT,
