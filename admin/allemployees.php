@@ -23,7 +23,14 @@
         <div class='col-xs-12'>
             <ol class="breadcrumb">
             <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-            <li class="active"><i class="fa fa-users"></i> Employees</li>
+            <li class="dropdown active">
+            <i class="fa fa-users"></i> <a href="#hr" class="dropdown-toggle" style="color:#888; text-decoration:none" data-toggle="dropdown">
+                        Employees<b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a href="alltrainings.php">Training</a></li>
+                      </ul>
+                  </li>
             </ol>
           </div><!-- /col-xs-6-->
 

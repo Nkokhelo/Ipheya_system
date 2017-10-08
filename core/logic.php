@@ -345,7 +345,12 @@
             $sql ="SELECT * FROM departments";
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
-
+        }
+         public function getallTrainers()
+        {
+            $sql ="SELECT * FROM trainer";
+            $qey =mysqli_query($this->connect(),$sql);
+            return $qey;
         }
         public function getDepartmentById($id)
         {
@@ -606,6 +611,19 @@
       }
       return $allObsevations;
     }
+
+    public function allTrainings()
+    {
+      $allObsevations='';
+      $sql ="SELECT * FROM training";
+      $result = $this->connect()->query($sql);
+      while($data = $result->fetch_assoc())
+      {
+        $allObsevations[] = $data;
+      }
+      return $allObsevations;
+    }
+    
     public function getTaskNameById($id)
     {
         $sql ="Select * from task where task_id='$id'";

@@ -30,6 +30,7 @@
         <li><a  href="allsuppliers.php">Suppliers</a></li>
         <li><a id="Eve" href="create_events.php">Events</a></li>
         <li><a  href="roles.php">Roles</a></li>
+        <li><a  href="alltrainer.php">Trainers</a></li>
     </ul>
   </li>
   <li>
