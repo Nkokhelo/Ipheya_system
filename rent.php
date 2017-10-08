@@ -420,7 +420,7 @@
 			var quantity=$('#quantity').val();
 			var charge=$('#total_deposit').val();
 		    var totalC=	(quantity*charge);
-			console.log("Total_Amount is :R"+totalC)
+			console.log("Total_Amount is :R"+totalC);
 		}
 		$('#total_amount').val(totalC);
 	</script>
