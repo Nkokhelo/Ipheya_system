@@ -31,8 +31,8 @@
                 </li>
             </ol>
             </div><!-- /col-xs-6-->
-             <div class="col-xs-offset-1 col-xs-11 b">
-
+             <div class="col-xs-offset-1 col-xs-11 b" id="viewClientInfo">
+            
               <h2 class="text-center">Client Information</h2><hr class="bhr">
                 <div class="col-md-12" style="padding:2%;min-height:20px;">
                     <div class="tab-content" > 

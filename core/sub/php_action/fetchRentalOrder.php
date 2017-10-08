@@ -50,4 +50,3 @@ $connect->close();
 
 echo json_encode($output);
 
-?>

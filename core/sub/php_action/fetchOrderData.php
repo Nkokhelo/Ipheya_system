@@ -17,3 +17,4 @@ $valid['order'] = $data;
 $connect->close();
 
 echo json_encode($valid);
+?>
