@@ -1,14 +1,14 @@
 <?php
 
-   require_once('/core/init.php');
-			require('/core/logic.php');
-				require('core/controllers/rent-controller.php');
-			
-	  
-			
-		?>
+		require_once('/core/init.php');
+		require('/core/logic.php');
+		require('core/controllers/rent-controller.php');
 
-	 
+	if(isset($_POST['proceed']))
+    {
+      header("Location:/login.php");
+    }
+	?>
 <!DOCTYPE HTML>
 <html lang="en-US">
 
@@ -92,7 +92,7 @@
 					<h1 class="service-title">Rental EquipMent</h1>
 					<div class="service-aro-icon">
 						<div class="service-aro-left"></div>
-      <button type="button" name="proceed" class="btn btn fa fa" href="login.php">Proceed</button>
+                       <button type="button" name="proceed" class="btn btn fa fa">Proceed</button>
 						<div class="service-aro-right"></div>
 					</div>
 					<div class="service-aro-icon">
