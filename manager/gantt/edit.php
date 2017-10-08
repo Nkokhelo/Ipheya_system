@@ -10,7 +10,7 @@ $data = $stmt->fetch();
 
 if(!$data)
 {
-  #die("Not Found");
+  die("Not Found");
 }
 
 $stmt = $pdo->prepare('SELECT count(*) FROM task where parent_id = :id');
