@@ -37,6 +37,19 @@
       $total_charge=$_POST['total_charge'];
       $total_deposit=$_POST['total_deposit'];
       $total_amount=$_POST['total_amount'];
+
+      $query ="INSERT INTO `client_rentals` (`client_rental`, `client_id`,`rental_id`,`pickup_date`,`return_date`,`quantity`,`total_charge`,`total_deposit`,`total_amount`,`payed_amount`,`is_payed`)
+      VALUES(NULL,null,null,'$pickup_date','$return_date','$quantity','$total_charge','$total_deposit','total_amount',null,null)";
+      $result = mysqli_query($db,$query);
+      if(!$result)
+      {
+              $feedback =$logic->display_error("Error!".mysqli_error($db).$query);
+      }
+      else
+      {
+            $feedback =$logic->display_success("Sucess! Setting saved");
+      }
+
      $order[] = array("pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount);   
       $thisarr[] = $order;
       if(count($thisarr)>=3)

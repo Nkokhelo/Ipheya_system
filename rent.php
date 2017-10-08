@@ -197,7 +197,7 @@
 													<div class="col-xs-12">
 															<label class="col-xs-3" for="">Quantity :</label>
 															<div class="col-xs-4">
-																	<input type="number" onkeyup="totalCharge()" required class="form-control" id="squantity" name="quantity" >
+																	<input type="number" min="0" id="tot-quantity" required class="form-control" id="squantity" name="quantity" >
 															</div>
 													</div>
 											</div>
@@ -328,11 +328,11 @@
       									$('#rentalModal').remove();
     },500);
   }
-  
-		var totC=0;
-		
+
+
 	 function totalCharge(days)
 		{
+	      
 				var quantity = $('#quantity').val();
 				var timeline ="";
 				if(quantity == null)
@@ -340,9 +340,9 @@
 					quantity =0;
 				}
 				alert(days);
-				
+			   
 				console.log(rental.rental_id);
-
+                
 				$.ajax({
 						type:"post",
 						url:"/ipheya/core/sub/php_action/fetchTimeline.php",
@@ -361,8 +361,10 @@
 											{
 												if(timeList[x].timeline =="Daily")
 												{
+												
 														var charge = (timeList[x].rental_charge* days);
-														console.log("Charge:"+charge+", time: daily, No of Days "+ days);	
+														console.log("Charge: v"+charge+", time: daily, No of Days "+ days);	
+														$("#total_charge").val(charge);
 												}
 											}
 											else if ((days<30) && (days=>7) )
@@ -374,13 +376,16 @@
 														if(days%7 == 0)
 														{
 																weeks = days/7;
-																console.log("Charge:"+charge+", time: Weekly, No of Days "+ days+"Weeks "+weeks);	
+																console.log("Charge: w"+charge+", time: Weekly, No of Days "+ days+"Weeks "+weeks);	
+																$("#total_charge").val(charge);
 															}
 															else
 															{
 																weeks = parseInt((days/7), 10);
 																var day = days%7;
-																console.log("Charge:"+charge+", time: Weekly, No of Days "+ days+"Weeks "+weeks+" and "+ day+" days");	
+																console.log("Charge: x"+charge+", time: Weekly, No of Days "+ days+"Weeks "+weeks+" and "+ day+" days");	
+																$("#total_charge").val(charge);
+														        
 														}
 													}
 											}
@@ -393,20 +398,56 @@
 														if(days%30 == 0)
 														{
 																months = days/30;
-																console.log("Charge:"+charge+", time: monthly, No of Days "+ days+"months "+months);	
+																console.log("Charge: y"+charge+", time: monthly, No of Days "+ days+"months "+months);	
+																$("#total_charge").val(2500);
 															}
 															else
 															{
 																months = parseInt((days/30),10);
 																var day = days%30;
-																console.log("Charge:"+charge+", time: monthly, No of Days "+ days+" months "+months+" and "+ day+"days");	
+																console.log("Charge: z"+charge+", time: monthly, No of Days "+ days+" months "+months+" and "+ day+"days");	
+																$("#total_charge").val(charge);
 														}
 													}
 											}
+									
 									}
-						}});
-		// 		$("#total_charge").val(totC);
+									
+						}});	
 		}
+		var totalC=0;
+		function totalAmout(days)
+		{
+            /*var totCharge=$("#total_charge").val();
+			var quantity=$('#quantity').val();
+			var charge=$('#total_deposit').val();
+		    totalC=	(totCharge+(quantity*charge));
+			console.log("Total_Amount is :R"+totalC);
+			$('#total_amount').val(totalC);*/
+			var totCharge=$("#total_charge").val();
+			totalCharge+=$('#total_deposit').val();
+			$("#total_amount").val(totCharge);
+			console.log(totCharge);
+		}
+		$("#tot-quantity").on("keyup change",function(event){
+			if($("#total_amount").val()=="")
+			{
+				var totCharge = parseFloat($("#total_charge").val());
+			}
+			else{
+				var totCharge = parseFloat($("#total_amount").val());
+			}
+			totCharge+=parseFloat($('#total_deposit').val());
+			$("#total_amount").val(totCharge);
+		});
+		$("#tot-quantity").on("keydown change", function(event){
+			if($("#total_amount").val()=="")
+			{
+				var totCharge = parseFloat($("#total_amount").val());
+				totCharge-=parseFloat($('#total_deposit').val());
+				$("#total_amount").val(totCharge);
+			}
+		});
 	</script>
 </body>
 </html>

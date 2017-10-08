@@ -3,7 +3,7 @@ require_once('_db.php');
 
 $milestone = isset($_POST["milestone"]);
 
-db_update_task_full($_POST["id"], $_POST["start"], $_POST["end"], $_POST["name"], $_POST["complete"], $milestone);
+db_update_task_full($_POST["task_id"], $_POST["start"], $_POST["end"], $_POST["name"], $_POST["complete"], $milestone);
 
 class Result {}
 

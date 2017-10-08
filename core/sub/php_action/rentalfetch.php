@@ -11,6 +11,4 @@ require_once 'core.php';
    $data = $d;
   }
   echo json_encode($data);
-
-
 ?>
