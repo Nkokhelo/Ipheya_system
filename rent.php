@@ -197,7 +197,7 @@
 													<div class="col-xs-12">
 															<label class="col-xs-3" for="">Quantity :</label>
 															<div class="col-xs-4">
-																	<input type="number"  required class="form-control" id="squantity" name="quantity" >
+																	<input type="number" min="0" id="tot-quantity" required class="form-control" id="squantity" name="quantity" >
 															</div>
 													</div>
 											</div>
@@ -416,15 +416,38 @@
 						}});	
 		}
 		var totalC=0;
-		function totalDaily(days)
+		function totalAmout(days)
 		{
+            /*var totCharge=$("#total_charge").val();
 			var quantity=$('#quantity').val();
 			var charge=$('#total_deposit').val();
-		    var totalC=	(quantity*charge);
+		    totalC=	(totCharge+(quantity*charge));
 			console.log("Total_Amount is :R"+totalC);
-			$('#total_amount').val(totalC);
+			$('#total_amount').val(totalC);*/
+			var totCharge=$("#total_charge").val();
+			totalCharge+=$('#total_deposit').val();
+			$("#total_amount").val(totCharge);
+			console.log(totCharge);
 		}
-	
+		$("#tot-quantity").on("keyup change",function(event){
+			if($("#total_amount").val()=="")
+			{
+				var totCharge = parseFloat($("#total_charge").val());
+			}
+			else{
+				var totCharge = parseFloat($("#total_amount").val());
+			}
+			totCharge+=parseFloat($('#total_deposit').val());
+			$("#total_amount").val(totCharge);
+		});
+		$("#tot-quantity").on("keydown change", function(event){
+			if($("#total_amount").val()=="")
+			{
+				var totCharge = parseFloat($("#total_amount").val());
+				totCharge-=parseFloat($('#total_deposit').val());
+				$("#total_amount").val(totCharge);
+			}
+		});
 	</script>
 </body>
 </html>

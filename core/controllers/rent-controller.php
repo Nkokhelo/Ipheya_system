@@ -39,7 +39,7 @@
       $total_amount=$_POST['total_amount'];
 
       $query ="INSERT INTO `client_rentals` (`client_rental`, `client_id`,`rental_id`,`pickup_date`,`return_date`,`quantity`,`total_charge`,`total_deposit`,`total_amount`,`payed_amount`,`is_payed`)
-      VALUES(NULL,null,null,'$pickup_date','$return_date','$quantity',null,'$total_deposit',null,null,null)";
+      VALUES(NULL,null,null,'$pickup_date','$return_date','$quantity','$total_charge','$total_deposit','total_amount',null,null)";
       $result = mysqli_query($db,$query);
       if(!$result)
       {
