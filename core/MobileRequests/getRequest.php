@@ -23,4 +23,11 @@
       $data['allobservations'] = $logic->allObsevations();
       echo json_encode($data);
     }
+
+    if (isset($_GET['allPosts']))
+    {
+      $data['trainings'] = '';
+      $data['trainings'] = $logic->allTrainings();
+      echo json_encode($data);
+    }
 ?>
