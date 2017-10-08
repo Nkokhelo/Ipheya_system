@@ -15,7 +15,7 @@
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
   <script src="assets/lib/jquery-2.1.3.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.js"></script>  
+  <script src="assets/bootstrap/js/bootstrap.js"></script>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -35,11 +35,7 @@
           <input type="password" name="log-password" placeholder="Password"/>
           <div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div>
           <button type="submit" name="Login">Login</button>
-<<<<<<< HEAD
-=======
-         <label for="acc" class="col-1">Accept Terms:</label><input type="checkbox" id="chk" name="chk"/>
->>>>>>> a1ff8aa73916e9d661ec4dd54d8b4231b39e3263
-         <label for="cr">Don't have account:</label><a href="">Create Account</a>
+         <label for="cr">Don't have account:</label><a href="client/register.php">Create Account</a>
         </form>
       </div>
       <div class="form">
