@@ -40,6 +40,7 @@
       $total_amount=$_POST['total_amount'];
       
       $order[] = array("rental_id"=>$rentalId,"pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount);   
+     
       $_SESSION['clientRenter'][] = $order;
        if(count($_SESSION['clientRenter'])<1)
        {
@@ -52,7 +53,6 @@
        }
      
    }
-   
    $query_result = $logic->getAllRental();
    $rental_list ='';
    $error='';
@@ -65,10 +65,7 @@
      if($rental_list == '')
      {
        $error = '<div class="alert alert-info"><i class="glyphicon glyphicon-info-sign"></i> No Project at the moment<br/> <a href="createproject.php">Create Project</a></div>';
-     }
-  
-    
-      
+     }   
    ?>
 
 

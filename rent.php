@@ -397,7 +397,7 @@
 				{
 					quantity =0;
 				}
-				alert(days);
+				
 			   
 				console.log(rental.rental_id);
                 
