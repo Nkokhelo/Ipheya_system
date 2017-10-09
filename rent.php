@@ -90,7 +90,7 @@
 				<div class="col-md-12 text-center">
 					<h1 class="service-title">Rental EquipMent</h1>
 					<div class="service-aro-icon">
-           <div class="text-center-col-xs-1"><a onclick="rent('.$prod['rental_id'].')" data-toggle="modal" class="btn btn-primary btn-sm" name="view" data-target="#rentalFinal">Proceed</a></div>
+           <div class="text-center-col-xs-1"><a onclick="rent('.$prod['rental_id'].')" data-toggle="modal" class="btn btn-primary btn-sm" id="ds3" data-target="#rentalFinal">Proceed</a></div>
 					</div>
 					<div class="service-aro-icon">
 						</div>
@@ -254,27 +254,30 @@
 					</div>
 
 					<div class="modal-body">
-					
-					 
+					   <?php
+					   if(isset($_SESSION['clientRenter']))
+					   {
+					   for($x=0;$x<count($_SESSION['clientRenter']);$x++)
+					   {
+						$clientInfo= $_SESSION['clientRenter'][$x];?>
 						<table class="table-responsive">
 						<tr>
-					   <td align="left"><h5>Total Quantity  </h5></td><td align="left"> <h5>:<?= $row['quantity']?></h5></td>
+					   <td align="left"><h5>Total Quantity  </h5></td><td align="left"> <h5>:<?=$clientInfo['quantity']?></h5></td>
 						</tr>
 						<tr>
-					  <td align="left"><h5>Total Price Due  </h5></td><td align="left"></h5>:<?=$row['total_amount']?></td>
+					  <td align="left"><h5>Total Price Due  </h5></td><td align="left"></h5>:<?=$clientInfo['total_amount']?></td>
 						</tr>
 						<tr>
-							<td align="left"><h5>Pick Date </h5></td><td align="left"> <h5> :<?= $row['pickup_date']?> </h5></td>
+							<td align="left"><h5>Pick Date </h5></td><td align="left"> <h5> :<?=$clientInfo['pickup_date']?> </h5></td>
 						</tr>
 						<tr>
-						   <td align="left"><h5>ReturnDate  </h5></td><td align="left"> <h5>:<?= $row['return_date']?></h5></td>
+						   <td align="left"><h5>ReturnDate  </h5></td><td align="left"> <h5>:<?=$clientInfo['return_date']?></h5></td>
 						</tr>
 					   </table>
 					 
-					
-
-				
-					    
+					 <?php  }
+					   }
+					     ?>
 					                      
 							<!-- /modal body -->
 							
@@ -500,6 +503,10 @@
 				totCharge-=parseFloat($('#total_deposit').val());
 				$("#total_amount").val(totCharge);
 			}
+		});
+		$("#rentalFinal").click(function(){
+					 
+			alert($clientInfo);
 		});
 	</script>
 </body>
