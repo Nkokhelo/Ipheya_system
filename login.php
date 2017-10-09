@@ -35,10 +35,6 @@
           <input type="password" name="log-password" placeholder="Password"/>
           <div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div>
           <button type="submit" name="Login">Login</button>
-<<<<<<< HEAD
-=======
-         <label for="acc" class="col-1">Accept Terms:</label><input type="checkbox" id="chk" name="chk"/>
->>>>>>> a1ff8aa73916e9d661ec4dd54d8b4231b39e3263
          <label for="cr">Don't have account:</label><a href="">Create Account</a>
         </form>
       </div>
