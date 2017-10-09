@@ -311,7 +311,12 @@
              $roleID = mysqli_fetch_row($rolequery)[0];
              return $roleID;
         }
-
+       #rental_order_infomation
+       public function getAllOrderedRents()
+       {
+       $sql="SELECT cr.client_id,cr.pickup_date,cr.return_date,cr.quantity,cr.total_amount, r.rental_id, p.product_name,r.product_deposit 
+       FROM rentals as r JOIN inventories as i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id JOIN client_rentals as cr on cr.client_rental=cr.client_rental"; 
+       }
 
         public function getUserRoleByUserEmail($email)
         {

@@ -1,8 +1,10 @@
 <?php
+
    $logic =new Logic();
    $feedback="";
    $alloders ='';
    $alloders = array();
+   $RentOrder = "<div class='alert alert-warning'><p class='glyphicon glyphicon-info-sign'></p> No Data was found!</div>";
    $sql =  mysqli_query($db, "SELECT r.rental_id, p.product_image, p.product_description, p.product_name, r.product_deposit, r.quantity FROM rentals as r JOIN inventories i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id;");
    if(!$sql)
    {
@@ -28,6 +30,7 @@
              </div>';
              array_push($rentals,$prod);
    endwhile;
+  
  #add Rental Order
    if(isset($_POST['Submit']))
    {
@@ -38,20 +41,42 @@
       $total_charge=$_POST['total_charge'];
       $total_deposit=$_POST['total_deposit'];
       $total_amount=$_POST['total_amount'];
-      
-      $order[] = array("rental_id"=>$rentalId,"pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount);   
+      $query ="INSERT INTO `client_rentals` (`client_rental`, `client_id`,`rental_id`,`pickup_date`,`return_date`,`quantity`,`total_charge`,`total_deposit`,`total_amount`,`payed_amount`,`is_payed`)
+      VALUES(NULL,null,null,'$pickup_date','$return_date','$quantity','$total_charge','$total_deposit','$total_amount',null,null)";
+      $result = mysqli_query($db,$query);
+      if(!$result)
+      {
+              $feedback =$logic->display_error("Error!".mysqli_error($db).$query);
+      }
+      else
+      {
+            $feedback =$logic->display_success("Sucess! Booked Successfully");
+      }
+
+      //die(json_encode($_SESSION['clientRenter']));
+      //$order[] = array("rental_id"=>$rentalId,"pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount);   
      
-      $_SESSION['clientRenter'][] = $order;
-       if(count($_SESSION['clientRenter'])<1)
-       {
-          $feedback =$logic->display_error("The Is an Error");
-       }
-       else
-       {
+      //$_SESSION['clientRenter'][] = $order;
+      // if(count($_SESSION['clientRenter'])<1)
+      // {
+      //    $feedback =$logic->display_error("The Is an Error");
+      // }
+      //else
+       //{
          
-          $feedback =$logic->display_success("succesfully");
-       }
+       //   $feedback =$logic->display_success("succesfully");
+       //}
+
      
+   }
+   $row="";
+    $sql="SELECT cr.client_id,cr.pickup_date,cr.return_date,cr.quantity,cr.total_amount, r.rental_id, p.product_name,r.product_deposit 
+   FROM rentals as r JOIN inventories as i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id JOIN client_rentals as cr on cr.client_rental='48'"; 
+   
+  	$query = mysqli_query($db,$sql); 
+   while ($Rent=mysqli_fetch_assoc($query))
+   {
+     $row=$Rent;
    }
    $query_result = $logic->getAllRental();
    $rental_list ='';
