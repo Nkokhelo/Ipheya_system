@@ -499,6 +499,7 @@
 		$("#tot-quantity").on("keydown change", function(event){
 			if($("#total_amount").val()=="")
 			{
+				
 				var totCharge = parseFloat($("#total_amount").val());
 				totCharge-=parseFloat($('#total_deposit').val());
 				$("#total_amount").val(totCharge);

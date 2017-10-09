@@ -96,6 +96,12 @@
             $qey =mysqli_query($this->connect(),$sql);
             return $qey;
         }
+        public function getByEmailEmployee($email)
+        {
+            $sql ="Select * from employees where email='$email'";
+            $qey =mysqli_query($this->connect(),$sql);
+            return mysqli_fetch_assoc($qey);
+        }
       # get time Line
      public function getalltimelinesNamebyId($timeline_id)
      {

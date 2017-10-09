@@ -41,9 +41,13 @@
       $total_charge=$_POST['total_charge'];
       $total_deposit=$_POST['total_deposit'];
       $total_amount=$_POST['total_amount'];
+<<<<<<< HEAD
     
 
      
+=======
+      
+>>>>>>> a1ff8aa73916e9d661ec4dd54d8b4231b39e3263
       $order[] = array("rental_id"=>$rentalId,"pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount);   
      
       $_SESSION['clientRenter'][] = $order;
@@ -51,11 +55,16 @@
        {
           $feedback =$logic->display_error("The Is an Error");
        }
+<<<<<<< HEAD
       else
+=======
+       else
+>>>>>>> a1ff8aa73916e9d661ec4dd54d8b4231b39e3263
        {
          
           $feedback =$logic->display_success("succesfully");
        }
+<<<<<<< HEAD
 
      
    }
@@ -68,6 +77,10 @@
    {
      $row=$Rent;
    }
+=======
+     
+   }
+>>>>>>> a1ff8aa73916e9d661ec4dd54d8b4231b39e3263
    $query_result = $logic->getAllRental();
    $rental_list ='';
    $error='';
