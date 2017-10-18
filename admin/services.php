@@ -22,7 +22,7 @@
               <form class="form" action="services.php<?=((isset($_GET['edit']))?'?edit='.$_GET['edit']:'');?>" method="post">
                 <fieldset>
                   <legend class="thelegend inlegend">Add new service</legend>
-                    <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
+                    <?=$display?>
                     <div class="form-group col-xs-6">
                       <label for="service">Service</label>
                       <input required type="text" name="service" id="service" class="form-control" value="<?=((isset($service_name))?$service_name:'');?>" placeholder="service name" <?=((isset($_GET['view']))?'readonly':'');?>>
@@ -36,7 +36,6 @@
                     <label for="min-duration" class="text-center">Duration Type</label>
                       <select class="form-control col-md-4" name="type" <?=((isset($_GET['view']))?'readonly':'');?>>
                         <option value="<?=((isset($type))?$type:'');?>"><?=((isset($type))?$type:'--Select--');?></option>
-
                         <?=((isset($_GET['view']))?'':'<option value="day(s)">day(s)</option>');?>
                         <?=((isset($_GET['view']))?'':'<option value="week(s)">week(s)</option>');?>
                         <?=((isset($_GET['view']))?'':'<option value="month(s)">month(s)</option>');?>
@@ -64,7 +63,7 @@
                         </div>
                         <?php } else{ ?>
                           <div class="col-xs-4 col-xs-offset-4">
-                            <button class="btn btn-block btn-default" name="Add"><i class="fa fa-floppy-o"></i> Save</button>
+                            <button class="btn btn-block btn-default" type="submit" name="Add"><i class="fa fa-floppy-o"></i> Save</button>
                           </div>
                         <?php } ?>
                     </div>

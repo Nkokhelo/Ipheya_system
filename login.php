@@ -15,7 +15,7 @@
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
   <script src="assets/lib/jquery-2.1.3.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.js"></script>  
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -38,7 +38,8 @@
             <label><input type="checkbox" name="auth" value="">Enable sms authentication</label>
           </div>
           <button type="submit" name="Login">Login</button>
-         <label for="cr">Don't have account:</label><a href="client/register.php">Create Account</a>
+         <label for="acc" class="col-1">Accept Terms:</label><input type="checkbox" id="chk" name="chk"/>
+         <label for="cr">Don't have account:</label><a href="">Create Account</a>
         </form>
       </div>
       <div class="form">
@@ -59,6 +60,7 @@
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
+
 <script type="text/javascript">
 // Toggle Function
 $('.toggle').click(function(){
@@ -74,3 +76,10 @@ $('.toggle').click(function(){
 });
 </script>
 </html>
+
+<style>
+.rc-anchor-normal {
+    height: 74px;
+    width: 78%;
+}
+</style>

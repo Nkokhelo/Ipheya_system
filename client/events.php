@@ -15,7 +15,14 @@ if(isset($_SESSION['Client']))
     <?php include 'includes/sidebar.php'; ?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-12'>
+
+        <div class='col-xs-6'>
+                <ol class="breadcrumb">
+                    <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="active"><i class="fa fa-arrow-circle-up"></i> Events</li>
+                </ol>
+            </div><!-- /col-xs-6-->
+
               <div class="col-xs-11 b">
                 <h1 style="color:#888;" class="text-center">Up comming events</h1><hr class="bhr"/>
                 <?=$feedback?>
@@ -29,7 +36,6 @@ if(isset($_SESSION['Client']))
                     </form>
                   </div>
               </div>
-            </div>
         </div>
       </div>
   </div>

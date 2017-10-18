@@ -1,6 +1,7 @@
 <?php
  $logic = new Logic();
  $connect = $logic->connect();
+ $method = $logic->connect();
  $feedback = "";
  $alld = $allt ='';
  $deparmentslist = $logic->getallDepartments();
@@ -58,5 +59,24 @@ if(!$connect->query($sql))
  return TRUE;
 }
  $feedback = $logic->display_success("Added Successfully");
+ }
+
+
+ if(isset($_POST['add-test']))
+ {
+   $method = $logic->connect();
+     $name = $_POST['test-name'];
+     $date = $_POST['test-date'];
+     $trainingid = $_POST['training-id'];
+
+     $res = $method->query("INSERT INTO `test`(`test_id`, `training_id`, `test_name`, `test_date`) VALUES (NULL,'$trainingid','$name','$date')");
+     if($res)
+     {
+       $feedback = $logic->display_success("Test Added");
+     }else
+     {
+      $feedback = $logic->display_error("Could not add test. Try again");
+      
+     }
  }
 ?>

@@ -2,6 +2,10 @@
 session_start();
     if(isset($_SESSION['Employee']))
     {
+      if($_SESSION['Employee']=="Employee")
+      {
+        header("Location:../login.php");        
+      }
       require_once('../core/init.php');
       include('../core/logic.php');
       include('includes/head2.php');

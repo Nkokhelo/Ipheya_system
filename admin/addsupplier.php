@@ -19,7 +19,16 @@
       <?php include 'includes/sidebar.php';?>
       <div id='content'>
         <div class='row'>
-            <div class="col-sm-10 col-sm-offset-1 b" >
+
+        <div class='col-xs-6'>
+             <ol class="breadcrumb">
+                <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+                <li class="active"><i class="fa fa-users"></i> Suppliers</li>
+             </ol>
+        </div><!-- /col-xs-6-->
+
+
+            <div class="col-sm-11 col-sm-offset-1 b" >
             <form class="form" action="addsupplier.php" method="post">
               <fieldset>
                 <legend class='thelegend'>Supplier</legend>

@@ -19,6 +19,14 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
+
+        <div class='col-xs-6'>
+            <ol class="breadcrumb">
+            <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
+            <li class="active"><i class="fa fa-list"></i> All Tasks</li>
+            </ol>
+          </div><!-- /col-xs-6-->
+
             <div class="col-md-10 col-sm-offset-2 b " id='task' style="margin-bottom:10px padding-bottom:10px; height:510px; overflow-x:hidden;">
 							<h2>All Task</h2> <hr class="bhr"/>
 							<div class="col-md-12" style='overflow-y:scroll;width:105%; height:290px'>

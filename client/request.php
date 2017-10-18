@@ -4,6 +4,11 @@
    session_start();
    if(isset($_SESSION['Client']))
    {
+     if($_SESSION['Client'] =="")
+     {
+      header('Location: ../login.php');      
+     }
+    //  die($_SESSION['Client']);
       include('../core/logic.php');
       include('includes/head.php');
       include('../core/controllers/client-controller.php');
@@ -22,6 +27,12 @@
 
       <div id='content'>
         <div class='row'>
+        <div class='col-xs-6'>
+                <ol class="breadcrumb">
+                    <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="active"><i class="fa fa-send"></i> Send Request</li>
+                </ol>
+            </div><!-- /col-xs-6-->
           <div class="col-xs-10 col-xs-offset-1 cb">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#SR"  data-toggle="tab">Service</a></li>

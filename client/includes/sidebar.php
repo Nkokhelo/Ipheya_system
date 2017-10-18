@@ -1,8 +1,8 @@
 <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3 style='font-weight:900'>IPHEYA</h3>
-                </div>
+<nav id="sidebar">
+<div class="sidebar-header">
+    <h3 style='font-weight:900'>IPHEYA</h3>
+</div>
 
                 <ul class="list-unstyled components">
                     <li class="active"><a href="home.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -68,40 +68,40 @@
                 <div class="body-con">
                   <ul class="notif">
 
-                  </ul>
-                </div>
-                <hr class="bhr" style="margin-top:0;">
-                <div class="col-xs-12 text-center">
-                  <a href="clearall"><i class="fa fa-okay"></i>Mark all as read</a>
-                </div>
-              </div>
-            </div>
+  </ul>
+</div>
+<hr class="bhr" style="margin-top:0;">
+<div class="col-xs-12 text-center">
+  <a href="clearall"><i class="fa fa-okay"></i>Mark all as read</a>
+</div>
+</div>
+</div>
 
 
 <script>
-    $(document).ready(function(){
-        $(function()
-        {
-        $('#sidebar .components li a').filter(function()
-        {return this.href==location.href}).parent().addClass('active').css('border-left','3px rgb(169, 176, 187) solid').siblings().removeClass('active').attr("aria-expanded","flase");
+$(document).ready(function(){
+$(function()
+{
+$('#sidebar .components li a').filter(function()
+{return this.href==location.href}).parent().addClass('active').css('border-left','3px rgb(169, 176, 187) solid').siblings().removeClass('active').attr("aria-expanded","flase");
 
-        $('#sidebar .components li ul li a').filter(function()
-        {return this.href==location.href}).parents('ul').addClass('in').siblings('a').attr("aria-expanded","true").parent().addClass('active').siblings().removeClass('active').attr("aria-expanded","flase");
+$('#sidebar .components li ul li a').filter(function()
+{return this.href==location.href}).parents('ul').addClass('in').siblings('a').attr("aria-expanded","true").parent().addClass('active').siblings().removeClass('active').attr("aria-expanded","flase");
 
-        });
-    });
-    function show()
-    {
-      $(".notification-container").toggle();
-      $(".notif").load("/ipheya/core/sub/notifications.php?load=<?php echo($_SESSION['Client']) ?>");
-    }
+});
+});
+function show()
+{
+$(".notification-container").toggle();
+$(".notif").load("/ipheya/core/sub/notifications.php?load=<?php echo($_SESSION['Client']) ?>");
+}
 
-    $(function(){
-      setInterval(() => {
-        getno();
-        console.log("Notification action");
-      }, 5000);
-    });
+$(function(){
+setInterval(() => {
+getno();
+console.log("Notification action");
+}, 5000);
+});
 
     function getno()
     {
@@ -122,7 +122,7 @@
                   }
                 },
               error:function(error){
-                  alert(error);
+                  console.log(error);
                   }
                 });
     }
@@ -141,11 +141,11 @@
             }
             else
             {
-              alert("Error");
+              console.log("Error");
             }
           },
         error:function(error){
-            alert("The error"+error);
+            console.log("The error"+error);
             }
           });
     }

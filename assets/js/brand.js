@@ -158,7 +158,7 @@ function editBrands(brandId = null) {
                         if (brandName && brandStatus) 
                         {
                             var form = $(this);
-
+                            // console.log(form);
                             // submit btn
                             // $('#editBrandBtn').button('loading');
 
