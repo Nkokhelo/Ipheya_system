@@ -57,6 +57,7 @@
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
+
 <script type="text/javascript">
 // Toggle Function
 $('.toggle').click(function(){
@@ -72,3 +73,10 @@ $('.toggle').click(function(){
 });
 </script>
 </html>
+
+<style>
+.rc-anchor-normal {
+    height: 74px;
+    width: 78%;
+}
+</style>
