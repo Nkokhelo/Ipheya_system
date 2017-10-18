@@ -81,7 +81,7 @@
               die("Error RolesU".mysqli_error($db));
             }
             echo '<script>alert("'.$adduser.'");</script>';
-            header('Location: ../login.php');
+            header('Location:login.php');
         }
         else{
           echo '<script>alert("'.mysqli_error($db).'");</script>';
