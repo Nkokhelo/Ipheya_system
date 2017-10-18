@@ -102,7 +102,6 @@ console.log("Notification action");
 }, 5000);
 });
 
-<<<<<<< HEAD
     function getno()
     {
       $.ajax({
@@ -149,52 +148,4 @@ console.log("Notification action");
             }
           });
     }
-=======
-function getno()
-{
-$.ajax({
-type: "get",
-url: "/ipheya/core/sub/notifications.php",
-data: "count=<?php echo($_SESSION['Client']);?>",
-success: function(data) {
-data = JSON.parse(data);
-  if(data>0)
-  {
-    $('.notcount').text(data);
-    $('.notcount').show();
-  }
-  else
-  {
-    $('#count').hide();
-  }
-},
-error:function(error){
-  console.log(error);
-  }
-});
-}
-
-function updatenot(id,link)
-{
-$.ajax({
-type: "get",
-url: "/ipheya/core/sub/notifications.php",
-data: "updatenot="+id,
-success: function(data) {
-data = JSON.parse(data);
-if(data>0)
-{
-window.location.href = link;
-}
-else
-{
-console.log("Error");
-}
-},
-error:function(error){
-console.log("The error"+error);
-}
-});
-}
->>>>>>> 7d897ec6580a0719cf2986bcdf920210a1717bf7
 </script>
