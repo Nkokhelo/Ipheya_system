@@ -1,13 +1,14 @@
 <?php
 
-		require_once('/core/init.php');
-		require('/core/logic.php');
-		require('core/controllers/rent-controller.php');
+   require_once('/core/init.php');
+			require('/core/logic.php');
+				require('core/controllers/rent-controller.php');
+			
+	  
+			
+		?>
 
-		 session_start();
-		
-		 
-	?>
+	 
 <!DOCTYPE HTML>
 <html lang="en-US">
 
@@ -130,9 +131,8 @@
 					<div class="service-aro-icon"></div>
 						
 						<div class="col-xs-11 col-xs-offset-1">
-						<div class="col-xs-12"><?=$feedback?></div>
 								<hr class="bhr" style="margin-left:-105px;">
-								
+								<?=$feedback?>
 										<?=$inventories?>
 								</div>
 						</div>
@@ -219,7 +219,6 @@
 											</div>
 											<div class="form-group">
 													<div class="col-xs-12">
-													<input type="hidden" name="rental_id" id="rentalId"/>
 															<label class="col-xs-3" for="">Return-Date  :</label>
 															<div class="col-xs-6  input-group input-append " style='padding-left:15px; float: inherit;'>
 																<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
@@ -286,62 +285,7 @@
 </div>
 <!-- /modal-dailog -->
 </div>
-<!--/New Modal For Product-->
-<?php ob_start(); ?>
-<div class="modal fade" id="rentalFinal" tabindex="-1" role="modal">
-<div class="modal-dialog">
-		<div class="modal-content">
-		<?= $feedback ?>
-		<form action="" method="post" class="form-horizontal">
 
-					<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title"><i class="fa fa-exchange"></i>Continue</h4>
-					</div>
-
-					<div class="modal-body">
-					   <?php
-					   if(isset($_SESSION['clientRenter']))
-					   {
-					   for($x=0;$x<count($_SESSION['clientRenter']);$x++)
-					   {
-						$clientInfo= $_SESSION['clientRenter'][$x];?>
-						<table class="table-responsive">
-						<tr>
-					   <td align="left"><h5>Total Quantity  </h5></td><td align="left"> <h5>:<?=$clientInfo['quantity']?></h5></td>
-						</tr>
-						<tr>
-					  <td align="left"><h5>Total Price Due  </h5></td><td align="left"></h5>:<?=$clientInfo['total_amount']?></td>
-						</tr>
-						<tr>
-							<td align="left"><h5>Pick Date </h5></td><td align="left"> <h5> :<?=$clientInfo['pickup_date']?> </h5></td>
-						</tr>
-						<tr>
-						   <td align="left"><h5>ReturnDate  </h5></td><td align="left"> <h5>:<?=$clientInfo['return_date']?></h5></td>
-						</tr>
-					   </table>
-					 
-					 <?php  }
-					   }
-					     ?>
-					                      
-							<!-- /modal body -->
-							
-							<div class="modal-footer">
-
-									<button type="button" class="btn btn-default-danger" data-dismiss="modal">Cancel</button>
-									<button type="submit" class="btn btn-primary" name="Submit" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Cornfirm</button>
-
-							</div>
-						<!-- /modal-footer -->
-						</form>
-
-		</div>
-		<!-- /modal-content -->
-</div>
-<!-- /modal-dailog -->
-</div>
-<!-- End Modal new Modal-->
 <!-- JS -->
 <script type="text/javascript" src="assets/index/js/jquery.min.js"></script><!-- jQuery -->
 	<script type="text/javascript" src="assets/index/js/bootstrap.min.js"></script><!-- Bootstrap -->
@@ -354,8 +298,7 @@
 	     STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
 	============================================================== -->
 	<script type="text/javascript" src="assets/index/demo/demo.js"></script>
-<link rel="stylesheet" href="assets/plugins/jquery-ui/jquery-ui.css">	
-<script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.js"></script>
+<link rel="stylesheet" href="assets/plugins/jquery-ui/jquery-ui.css">	<script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.js"></script>
 	
 	<style>
 		#view:hover
