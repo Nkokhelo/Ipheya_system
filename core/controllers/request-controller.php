@@ -1,6 +1,8 @@
 <?php
   // include('../logic.php');
   $logic = new Logic();
+  $date = date("Y-m-d");
+  
 #general requests
     if(isset($_POST['Request-service']))
     {
@@ -9,6 +11,9 @@
       $description = mysqli_real_escape_string($db,$_POST['description']);
       $description = sanitize($description);
       $client_id = $logic->getClientIdByEmail($_SESSION['Client']);
+      $client_name = $logic->getByEmail($_SESSION['Client'])['name'];
+      $service_name = $logic->getServiceById($service_id)['service'];
+      // die($service_name);
       // echo $service.$description.$user_id;
       if(empty($service_id))
       {
@@ -21,14 +26,17 @@
       else
       {
         #remember due_date for live server
-        $gr_query = "INSERT INTO ServiceRequest(RequestID,ClientID,ServiceID,Description,RequestDate,RequestStatus,SurveyingDate,Duration,Warrant,DueDate,RequestType)
-                                         VALUES(NULL,{$client_id},{$service_id},'{$description}',NOW(),'unread',NOW(),0,0,NOW(),'Service')";
+        $gr_query="INSERT INTO `servicerequest` (`RequestID`, `ClientID`, `ServiceID`, `Description`, `RequestDate`, `RequestStatus`, `SurveyingDate`, `Duration`, `Warrant`, `DueDate`, `RequestType`) 
+        VALUES (NULL, {$client_id}, {$service_id}, '{$description}', '$date', 'unread', '$date', 0, 0, '$date', 'Service')";
+
        if(!mysqli_query($db,$gr_query))
        {
-         die('Error'.mysqli_error($db));
+         die('Error'.mysqli_error($db)."\n $gr_query");
        }
        else
        {
+         //make a notification
+         $logic->notify($client_name,"Admin@gmail.com",$client_name." has requested for ".$service_name,"/ipheya/admin/clientrequest.php");
           header('Location: home.php');
           $_SESSION['message'] =" Hy there, Your request is being proccesed!!!<br/> We will call you back within 24 hrs.";
        }

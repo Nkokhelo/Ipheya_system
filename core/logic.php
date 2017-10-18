@@ -13,6 +13,101 @@
         {
             return mysqli_connect('localhost','root','','ipheya');
         }
+
+        public function moment($today,$date2)
+        {
+            $diff = date_diff(date_create($today),date_create($date2));
+            $moment ='';
+            if($diff->y != 0)
+            {
+                if($diff->y>1)
+                {
+                    $moment .=$diff->y." year(s) ago";
+                }
+                else
+                {
+                    $moment .=$diff->y." year ago";
+                }
+            }
+            else if($diff->m != 0)
+            {
+                if($diff->m>1)
+                {
+                    $moment .=$diff->m." month(s) ago";
+                }
+                else
+                {
+                    $moment .=$diff->m." month ago";
+                }
+            }
+            else if($diff->d != 0)
+            {
+               if($diff->d >= 7 )
+               {
+                   (number_format(($diff->d/7),0)>1)?$moment .=number_format(($diff->d/7),0)." week(s) ago": $moment .=number_format(($diff->d/7),0)." week ago";
+               }
+               $moment .=$diff->d." day(s) ago";
+            }
+            else if($diff->h != 0)
+            {
+                if($diff->h>1)
+                {
+                    $moment .=$diff->h." hour(s) ago";
+                }
+                else
+                {
+                    $moment .=$diff->h." hour ago";
+                }
+            }
+            else if($diff->i != 0)
+            {
+                if($diff->i>1)
+                {
+                    $moment .=$diff->i." minute(s) ago";    
+                }
+                else
+                {
+                    $moment .=$diff->i." minute ago";    
+                }
+            }
+            else if($diff->s != 0)
+            {
+                if($diff->s>1)
+                {
+                    $moment .=$diff->s." seconds(s) ago";    
+                }
+                else
+                {
+                    $moment .=$diff->s." seconds ago";    
+                }
+            }
+            else
+            {
+                $moment .="just now";
+            }
+           return $moment;
+        }
+        public function query($query) 
+        {
+            // Connect to the database
+            $connection = $this -> connect();
+            // Query the database
+            $result = $connection -> query($query);
+    
+            return $result;
+        }
+
+        public function select($query) {
+            $rows = array();
+            $result = $this -> query($query);
+            if($result === false) {
+                return false;
+            }
+            while ($row = $result -> fetch_assoc()) {
+                $rows[] = $row;
+            }
+            return $rows;
+        }
 #sort arrays
         function m_sortbydate($array, $col, $dir = SORT_ASC)
         {
@@ -595,6 +690,7 @@
         $qey =mysqli_query($this->connect(),$sql);
         return $qey;
     }
+
     public function allTasks()
     {
       $alltask='';

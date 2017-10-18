@@ -44,9 +44,13 @@
     <?php include 'includes/sidebar.php'; ?>
       <div id='content'>
         <div class='row'>
-									<div class="container">
-										<div class="row">
-											<div class="col-lg-12 b text-center">
+				<div class='col-xs-6'>
+                <ol class="breadcrumb">
+                    <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="active"><i class="fa fa-users"></i> Meeting-Booking</li>
+                </ol>
+            </div><!-- /col-xs-6-->
+											<div class="col-xs-11 b text-center">
 													<h3 style="color:#888" >Request for Meeting</h3><hr class="bhr"/>
                           <?=$feedback?>
                           <div class="col-xs-7">
@@ -55,8 +59,7 @@
                           <div class="col-xs-5">
                           </div>
                       </div>
-										</div>
-									</div>
+
 										<!-- /.row -->
 										<!-- Modal -->
 										<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

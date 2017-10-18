@@ -14,14 +14,15 @@ $log = new Logic();
 		$removed ='';
 		$table ='';
 		$client ='';
+		$allobsevations ='';
 		// $cid=$rid ='';
 #find basic client info before a form can be viewed
   if(isset ($_GET['ri']))
-     {
-        $cid = $_GET['ci'];
-        $rid = $_GET['ri'];
+  {
+				$cid = $_GET['ci'];
+				$rid = $_GET['ri'];
 				$type = $_GET['type'];
-        $clientQR = $log->getClientsById($cid);
+				$clientQR = $log->getClientsById($cid);
 				$client=mysqli_fetch_assoc($clientQR);
 				$allList=$log->getallEmployees();
 				$allemp ='';
@@ -43,6 +44,7 @@ $log = new Logic();
 				$request=mysqli_fetch_assoc($req);
 				$name =$log->getServiceNameByID($request['ServiceID']);
 			}
+
 			#Saving a task
 			if(isset($_POST["submit"]))
 			{
@@ -92,7 +94,7 @@ $log = new Logic();
 								}
 								else
 								{
-									$log->notify('Admin',$client['email'],'Obsever has been sent for '.$name.' request' ,'/ipheya/client/history.php');
+									$log->notify('Ipheya',$client['email'],'Obsever has been sent to observe your place','/ipheya/client/history.php');
 									$log->updateStatus('observation',$rid,$table);
 								}
 
@@ -253,5 +255,18 @@ $log = new Logic();
 			$observation = $result->fetch_assoc();
 			$employee = $log->getByEById($observation['employee_id']);
 		}
+
+		$list = $log->allObsevations();
+		foreach($list as $observation)
+		{
+			$allobsevations .="<tr>
+			<td>".$observation['t_name']."</td>
+			<td>".$observation['duration']." ".$observation['d_type']."(s)</td>
+			<td>".date_format(date_create($observation['s_date']),"d-M-Y")." to ".date_format(date_create($observation['e_date']),"d-M-Y")."</td>
+			<td>".$log->getEmployeeNameById($observation['employee_id'])."</td>
+			<td align=right>".$observation['complete']."% </td>
+			</tr>";
+		}
+
 
 ?>

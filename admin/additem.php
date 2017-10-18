@@ -21,9 +21,6 @@ session_start();
       <div id='content'>
         <div class='row'>
             
-            <div class="col-xs-12">
-
-
             <div class="col-xs-6">
             <ol class="breadcrumb">
             <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
@@ -54,7 +51,6 @@ session_start();
                   </div>
                 </div>
               </div><!--/b-->
-            </div><!--/col-xs-12-->
 
         </div>
       </div>

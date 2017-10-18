@@ -17,11 +17,11 @@ else
     <?php include 'includes/sidebar.php'; ?>
       <div id='content'>
         <div class='row'>
-            <div class='col-xs-12'>
 
             <div class="col-xs-6">
               <ol class="breadcrumb">
-                <li><a href="dashboard.php">Home</a></li>		  
+                <li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>		  
+                <li class="active"> <i class="fa fa-yelp"></i> Trainers</li>		  
               </ol>
             </div><!-- /col-xs-6-->
 
@@ -30,7 +30,6 @@ else
                 <h2>All Trainers</h2><hr class="bhr">
                 <div class="col-xs-12"><?=$feedback?></div>
                 <div class="col-md-12">
-                        
                             <div class="header">
                                 <button type="submit" class="btn btn-info btn-fill pull-right" data-target="#new-trainer" data-toggle="modal">Add New</button>
                                 <div class="clearfix"></div>
@@ -69,7 +68,6 @@ else
 
 
               </div>
-            </div>
         </div>
       </div>
   </div>

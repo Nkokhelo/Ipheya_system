@@ -35,7 +35,7 @@
       <a href='javascript:updatenot(".$number['not_id'].","."&#39".$number['n_link']."&#39".");'>
       ".$number['n_message']."
       </a>
-      </b><br/><p style='color:#aaa; font-size:13px; text-align:right;' class='text-right'>".date_format(date_create($number['n_date']),"h:m A ")."</p></li>";
+      </b><br/><p style='color:#aaa; font-size:13px; text-align:right;' class='text-right'>".$logic->moment(date('y-m-d H:i:s'),$number['n_date'])."</p></li>";
      }
      echo $data;
     }
