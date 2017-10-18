@@ -305,6 +305,7 @@ function Checkout()
   data: {clientRentals : rentlist},
   success: function(data){
    console.log(data);
+   window.location.href="/ipheya/login.php";
   }
  })
 }
