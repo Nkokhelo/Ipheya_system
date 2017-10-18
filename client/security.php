@@ -34,6 +34,9 @@ else
                  </p>
                    <div class="col-sm-6">
                        <?=((isset($disabled))?'<a href="security.php?enable=1" class="btn btn-info">Click to enable 2FA</a>':'<a href="security.php?enable=1" class="btn btn-warning">Click to disable 2FA</a>');?>
+                   </div><br>
+                   <div class="col-sm-12">
+                     <?=((isset($feedback))?$feedback:'');?>
                    </div>
               </div>
             </div>
@@ -41,4 +44,7 @@ else
       </div>
   </div>
   <?php include('includes/footer.php'); ?>
+  <script type="text/javascript">
+    $('#alert').fadeIn('fast').delay(2000).fadeOut('slow');
+  </script>
 </body>

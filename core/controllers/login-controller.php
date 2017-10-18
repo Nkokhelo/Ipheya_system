@@ -30,7 +30,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
         $rsp="https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$captcha."&remoteip=".$ip;
         // var_dump($rsp);
         // $arr=json_decode($rsp,TRUE);
-        */
+
 
         if ($captcha == "")
         {
@@ -41,7 +41,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
             }
         }
         else
-        {
+        {*/
             $login_exe =$log->Login($email,$password);
             $result = mysqli_fetch_row($login_exe);
             if(count($result)< 1)
@@ -83,7 +83,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                       header('Location: stock-counter/inventorys.php');//stockcounter url
                   }
             }
-        }
+        #}
 
-      } 
+      }
 ?>

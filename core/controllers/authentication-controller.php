@@ -13,7 +13,15 @@
     }
     if(isset($_GET['enable']))
     {
-      $query = mysqli_query($db, "UPDATE authentication SET authenticate=1 WHERE client_email = '$user'");
+      $sql = mysqli_query($db, "SELECT * FROM authentication WHERE client_email = '$user'");
+      $count = mysqli_num_rows($sql);
+      if($count<1)
+      {
+        $query = mysqli_query($db, "INSERT INTO authentication(client_email,authenticate) VALUES('{$user}',1)");
+      }
+      else{
+        $query = mysqli_query($db, "UPDATE authentication SET authenticate=1 WHERE client_email = '$user'");
+      }
       if(!$query)
       {
         echo '<script>alert("'.mysqli_error($db).'")</script>';
@@ -36,6 +44,8 @@
 
     if(isset($_GET['auth']))
     {
-      $feedback = '';
+      $feedback = '<div class="alert alert-info" id="alert">
+                    Your two factor authentication was disabled successfully
+                  </div>';
     }
  ?>

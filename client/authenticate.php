@@ -46,7 +46,7 @@
      }
    }
    else{
-     #header('Location: ../login.php');
+     header('Location: ../login.php');
    }
    if(isset($_POST['Confirm']))
    {
@@ -113,33 +113,17 @@
       <div class="form" id="loginFrom">
         <h2>2 Factor Authentication</h2>
         <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
-        <form action="register.php" method="post">
+        <form action="" method="post">
           <input type="tel" name="otp" placeholder="one time pin"/>
           <button type="submit" name="Confirm" style="margin-bottom:2%;">Confirm Cell number</button>
-        </form>
       </div>
-      <button type="submit" name="Resend" style="background-color:e51515;">Resend (OTP)</button>
+      <button type="submit" name="Resend">Resend (OTP)</button>
+      </form>
     </div>
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script type="text/javascript">
-  $(document).ready(function()
-  {
-      // Toggle function
-      $('.toggle').click(function(){
-        // Switches the Icon
-        $(this).children('i').toggleClass('fa-sign-in');
-        // Switches the forms
-        $('.form').animate({
-          height: "toggle",
-          'padding-top': 'toggle',
-          'padding-bottom': 'toggle',
-          opacity: "toggle"
-        }, "slow");
-      });
-
-//
-        };
+   console.log('user: <?=$_SESSION['Client'];?> code: <?=$_SESSION['code'];?> number: <?=$_SESSION['number'];?>');
   </script>
 </body>
 </html>
