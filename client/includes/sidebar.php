@@ -13,6 +13,7 @@
                         </a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">
                             <li><a href="profile.php">My profile</a></li>
+                            <li><a href="security.php">Security</a></li>
                             <li><a href="my_order.php">My Order</a></li>
                             <li><a href="CreateTicket.php">Report Faults</a></li>
                             <li><a href="contact.php">Contact us</a></li>

@@ -1,20 +1,27 @@
 <?php
+error_reporting(0);
 $log = new Logic();
 session_start();
 unset($_SESSION["Client"]);
 unset($_SESSION['Employee']);
 session_destroy();
 $_SESSION["Client"]= $_SESSION['Employee'] = '';
-    #login
+    session_start();
     if(isset($_POST['Login']))
     {
-      session_start();
+      #session_start();
       $_SESSION['Client'] = '';
       $_SESSION['Employee'] ='';
       $email = mysqli_real_escape_string($db,$_POST['log-email']);
       $password = mysqli_real_escape_string($db,$_POST['log-password']);
 
-      if(isset($_POST['g-recaptcha-response'])&&$_POST['g-recaptcha-response'])
+      /*if(isset($_POST['auth']))
+      {
+        mysqli_query($db, "INSERT INTO authentication(client_email,authenticate) VALUES('{$email}',1)");
+        header('Location: ');
+      }*/
+
+      /*if(isset($_POST['g-recaptcha-response'])&&$_POST['g-recaptcha-response'])
       {
         var_dump($_POST);
         $secret="6LcKVzMUAAAAAFaTVArInEV4h-rVowh4hFK9ADYF";
@@ -32,9 +39,13 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
           echo "Thank you";
       }
 
-      }
+    }*/
 
       $login_exe =$log->Login($email,$password);
+      if(!$login_exe)
+      {
+        echo '<script>alert("'.mysqli_error($db).'")</script>';
+      }
       $result = mysqli_fetch_row($login_exe);
       if(count($result)< 1)
       {

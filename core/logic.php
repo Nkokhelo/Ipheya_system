@@ -13,6 +13,27 @@
         {
             return mysqli_connect('localhost','root','','ipheya');
         }
+
+        public function query($query) {
+            // Connect to the database
+            $connection = $this -> connect();
+            // Query the database
+            $result = $connection -> query($query);
+
+            return $result;
+        }
+
+        public function select($query) {
+            $rows = array();
+            $result = $this -> query($query);
+            if($result === false) {
+                return false;
+            }
+            while ($row = $result -> fetch_assoc()) {
+                $rows[] = $row;
+            }
+            return $rows;
+        }
 #sort arrays
         function m_sortbydate($array, $col, $dir = SORT_ASC)
         {
@@ -317,12 +338,7 @@
              $roleID = mysqli_fetch_row($rolequery)[0];
              return $roleID;
         }
-       #rental_order_infomation
-       public function getAllOrderedRents()
-       {
-       $sql="SELECT cr.client_id,cr.pickup_date,cr.return_date,cr.quantity,cr.total_amount, r.rental_id, p.product_name,r.product_deposit 
-       FROM rentals as r JOIN inventories as i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id JOIN client_rentals as cr on cr.client_rental=cr.client_rental"; 
-       }
+
 
         public function getUserRoleByUserEmail($email)
         {
@@ -634,7 +650,7 @@
       }
       return $allObsevations;
     }
-    
+
     public function getTaskNameById($id)
     {
         $sql ="Select * from task where task_id='$id'";

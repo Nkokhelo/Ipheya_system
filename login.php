@@ -33,7 +33,10 @@
         <form method="post">
           <input type="email" name="log-email" placeholder="Email"/>
           <input type="password" name="log-password" placeholder="Password"/>
-          <div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div>
+          <!--<div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div>-->
+          <div class="checkbox">
+            <label><input type="checkbox" name="auth" value="">Enable sms authentication</label>
+          </div>
           <button type="submit" name="Login">Login</button>
          <label for="cr">Don't have account:</label><a href="client/register.php">Create Account</a>
         </form>
