@@ -86,14 +86,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
         }
 
       }
-      else
-      {
-        $errors[] .= 'Please specify if your not a robot';
-        if(!empty($errors))
-        {
-          $display = display_errors($errors);
-        }
-      }
+     
 
 
     
