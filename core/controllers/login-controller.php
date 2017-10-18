@@ -3,12 +3,12 @@ $log = new Logic();
 session_start();
 unset($_SESSION["Client"]);
 unset($_SESSION['Employee']);
-session_destroy();
+// session_destroy();
 $_SESSION["Client"]= $_SESSION['Employee'] = '';
     #login
     if(isset($_POST['Login']))
     {
-      session_start();
+     
       $_SESSION['Client'] = '';
       $_SESSION['Employee'] ='';
       $email = mysqli_real_escape_string($db,$_POST['log-email']);
@@ -62,7 +62,15 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                       break;
                       case 'Client':
                       $_SESSION['Client'] = $email;
-                      header('Location: client/authenticate.php');//client url
+                      if(isset($_SESSION['rent_items']))
+                      {
+                          header('Location: client/rentalProcess.php');//rental url                        
+                      }
+                      else
+                      {
+                          header('Location: client/authenticate.php');//client url
+                      }
+                     
                       break;
                       case 'Employee':
                       $_SESSION['Employee']=$email;
