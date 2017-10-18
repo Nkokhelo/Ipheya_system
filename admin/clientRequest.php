@@ -50,7 +50,7 @@
 </body>
 <script type="text/javascript">
     $('#cRequest').DataTable({
-      order:  [ 2, 'asc' ]
+      order:  [ 2, 'des' ]
     });
 
     function getInfor(rId,rT,cId)

@@ -121,7 +121,7 @@
                   }
                 },
               error:function(error){
-                  alert(error);
+                  console.log(error);
                   }
                 });
     }
@@ -140,11 +140,11 @@
             }
             else
             {
-              alert("Error");
+              console.log("Error");
             }
           },
         error:function(error){
-            alert("The error"+error);
+            console.log("The error"+error);
             }
           });
     }

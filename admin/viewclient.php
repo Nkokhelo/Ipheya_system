@@ -35,18 +35,18 @@
                                     <hr class="bhr"/>
                                     <div class="col-xs-12">
                                     <div class="col-xs-12" style="text-align:right">
-                                        <table class="table-responsive">
+                                        <table >
                                             <tr>
-                                                <td align="left"><h5>Full name </h5></td><td align="left"> <h5> : <?=$client['name']?> <?=$client['surname']?></h5></td>
+                                                <td align="left">Full name </td><td align="left">  : <?=$client['name']?> <?=$client['surname']?></td>
                                             </tr>
                                             <tr>
-                                                <td align="left"><h5>Email  </h5></td><td align="left"> <h5> : <?=$client['email']?></h5></td>
+                                                <td align="left">Email  </td><td align="left">  : <?=$client['email']?></td>
                                             </tr>
                                             <tr>
-                                                <td align="left"><h5>Phone number </h5></td><td align="left"> <h5> : <?=$client['contact_number']?></h5></td>
+                                                <td align="left">Phone number </td><td align="left">  : <?=$client['contact_number']?></td>
                                             </tr>
                                             <tr>
-                                                <td align="left"><h5>Postal Address </h5></td><td align="left"> <h5> : <?=$client['postal_address']?></h5></td>
+                                                <td align="left">Postal Address </td><td align="left">  : <?=$client['postal_address']?></td>
                                             </tr>
                                         </table>
                                     </div>           

@@ -19,6 +19,15 @@
       <?php include 'includes/sidebar.php'?>
       <div id='content'>
         <div class='row'>
+          
+            <div class="col-xs-6">
+              <ol class="breadcrumb">
+                <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>		  
+                <li class="active"><i class="fa fa-user"></i> My profile</li>		  
+              </ol>
+            </div><!-- /col-xs-6-->
+
+
             <div class='col-xs-10 col-xs-offset-1 cb'>
               <form class="form" method="post">
                 <fieldset>

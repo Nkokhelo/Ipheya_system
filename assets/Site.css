@@ -1073,3 +1073,7 @@ video {
 {
     font-weight: 12px;
 }
+div.card
+{
+    border-color: #fff;
+}

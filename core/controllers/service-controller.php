@@ -2,55 +2,43 @@
     // include('../logic.php');
     $logic = new Logic();
     $feedback="";
+    $display ="";
 #add Service
-    if(isset($_POST['Add']) && !empty($_POST['Add']))
-    {
-      $departmentID = sanitize($_POST['department']);
-      $service = mysqli_real_escape_string($db , $_POST['service']);
-      $service = $service_name = sanitize($service);
-      $num = mysqli_real_escape_string($db , $_POST['number']);
-      $type = mysqli_real_escape_string($db , $_POST['type']);
-      $min_duration = sanitize($num);
-      $type = sanitize($type);
-      $min_duration = sanitize($min_duration);
-      $description = mysqli_real_escape_string($db, $_POST['description']);
-      $description = sanitize($description);
 
-      #fetch department for data retention
-      $dep_result = $logic->getDepartmentById($departmentID);
-      $depart_id = $dep_result['department_id'];
-      $dep_name = $dep_result['department'];
-      die('this is add');
+if(isset($_POST['Add']))
+{
+  $departmentID = sanitize($_POST['department']);
+  $service = mysqli_real_escape_string($db , $_POST['service']);
+  $service = $service_name = sanitize($service);
+  $num = mysqli_real_escape_string($db , $_POST['number']);
+  $type = mysqli_real_escape_string($db , $_POST['type']);
+  $min_duration = sanitize($num);
+  $type = sanitize($type);
+  $min_duration = sanitize($min_duration);
+  $description = mysqli_real_escape_string($db, $_POST['description']);
+  $description = sanitize($description);
+  
+  #fetch department for data retention
+  $dep_result = $logic->getDepartmentById($departmentID);
+  $depart_id = $dep_result['department_id'];
+  $dep_name = $dep_result['department'];
+  // die("24 this is add $depart_id and name is $dep_name");
       #form validation
-      if($departmentID=='')
-      {
-        $errors[] .= 'Please select a department';
-      }
-      if($service=='')
-      {
-        $errors[] .= 'Service name cannot be left blank.';
-      }
-      if($num=='')
-      {
-        $errors[] .= 'Please enter a value for min duration';
-      }
-      if($type=='')
-      {
-        $errors[] .= 'Please select a type for min duration';
-      }
+      
       #if service already exists
       $services  = "SELECT * FROM services WHERE service='$service' AND department='$depart_id'";
       $service_query = mysqli_query($db,$services);
+      if(!$service_query)
+      {
+        die($service);
+      }
       $count = mysqli_num_rows($service_query);
       if($count>0)
       {
-        $errors[] .= '<strong>'.$service.'</strong> already exists. Please choose another service or change department';
+        $display .= $logic->display_error('<strong>'.$service.'</strong> already exists. Please choose another service or change department');
       }
       #display errors or add category
-      if(!empty($errors))
-      {
-        $display  = display_errors($errors);
-      }
+      
       else
       {
         $feedback=$logic->display_success("Service saved!");
@@ -73,6 +61,7 @@
       $description = $service_res['description'];
       $num = $service_res['min_duration'];
       $type = $service_res['durationType'];
+      // die($type);
       $service = $service_name = $service_res['service'];
       $depart_id = $service_res['department'];
       $department_sql = "SELECT * FROM departments WHERE department_id = '$depart_id'";
@@ -86,7 +75,7 @@
         $service = sanitize($service);
         $num = mysqli_real_escape_string($db , $_POST['number']);
         $type = mysqli_real_escape_string($db , $_POST['type']);
-        $min_duration = $num.':'.$type;
+        $min_duration = $num;
         $min_duration = sanitize($min_duration);
         $description = mysqli_real_escape_string($db, $_POST['description']);
         $description = sanitize($description);

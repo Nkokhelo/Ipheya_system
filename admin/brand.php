@@ -20,8 +20,8 @@ else
 
             <div class="col-xs-6">
               <ol class="breadcrumb">
-                <li><a href="dashboard.php">Home</a></li>
-                <li class="active">Brand Management</li>
+                <li><a href="dashboard.php"> <i class="fa fa-home"></i> Home</a></li>
+                <li class="active"> <i class="fa fa-bitcoin"></i> Brand Management</li>
               </ol>
             </div><!-- /col-xs-6-->
 

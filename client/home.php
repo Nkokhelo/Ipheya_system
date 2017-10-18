@@ -20,7 +20,7 @@ else
 
             <div class="col-xs-6">
               <ol class="breadcrumb">
-                <li><a href="dashboard.php">Home</a></li>		  
+                <li><a href="home.php"><i class="fa fa-home"></i> Home</a></li>		  
               </ol>
             </div><!-- /col-xs-6-->
 

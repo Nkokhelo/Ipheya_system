@@ -139,7 +139,7 @@ function getno()
               }
             },
           error:function(error){
-              alert(error);
+              console.log(error);
               }
             });
 }
@@ -157,11 +157,11 @@ function updatenot(id,link)
         }
         else
         {
-          alert("Error");
+          console.log("Error");
         }
       },
     error:function(error){
-        alert("The error"+error);
+        console.log("The error"+error);
         }
       });
 }
