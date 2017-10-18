@@ -1,14 +1,13 @@
 <?php
 
-   require_once('/core/init.php');
-			require('/core/logic.php');
-				require('core/controllers/rent-controller.php');
-			
-	  
-			
-		?>
+		require_once('/core/init.php');
+		require('/core/logic.php');
+		require('core/controllers/rent-controller.php');
 
-	 
+		 session_start();
+		
+		 
+	?>
 <!DOCTYPE HTML>
 <html lang="en-US">
 
@@ -91,6 +90,7 @@
 				<div class="col-md-12 text-center">
 					<h1 class="service-title">Rental EquipMent</h1>
 					<div class="service-aro-icon">
+<<<<<<< HEAD
 						<div class="service-aro-left"></div>
       <button type="button" id="cart" name="proceed" onclick="showlist()" class="btn btn-primary"><i class="glyphicon glyphicon-shopping-cart"></i> </button>
 						<div class="service-aro-right"></div>
@@ -122,6 +122,11 @@
 							<div class="panel-footer">
 								<button class="btn btn-primary" id="checkout" onclick="Checkout()" title="checkout"><i class="fa fa-check-circle-o"></i></button>
 							</div>
+=======
+           <div class="text-center-col-xs-1"><a onclick="rent('.$prod['rental_id'].')" data-toggle="modal" class="btn btn-primary btn-sm" id="ds3" data-target="#rentalFinal">Proceed</a></div>
+					</div>
+					<div class="service-aro-icon">
+>>>>>>> ae43d2a861d42064b13a0413fb503028e1d7eb9a
 						</div>
 
 <!--Panel End -->
@@ -131,8 +136,9 @@
 					<div class="service-aro-icon"></div>
 						
 						<div class="col-xs-11 col-xs-offset-1">
+						<div class="col-xs-12"><?=$feedback?></div>
 								<hr class="bhr" style="margin-left:-105px;">
-								<?=$feedback?>
+								
 										<?=$inventories?>
 								</div>
 						</div>
@@ -196,8 +202,13 @@
 <div class="modal fade" id="rentalModal" tabindex="-1" role="modal">
 <div class="modal-dialog">
 		<div class="modal-content">
+<<<<<<< HEAD
 		<?= $feedback ?>
 		<form action="" method="post" id="rentForm" class="form-horizontal">
+=======
+		
+		<form action="" method="post" class="form-horizontal">
+>>>>>>> ae43d2a861d42064b13a0413fb503028e1d7eb9a
 
 					<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -219,6 +230,7 @@
 											</div>
 											<div class="form-group">
 													<div class="col-xs-12">
+													<input type="hidden" name="rental_id" id="rentalId"/>
 															<label class="col-xs-3" for="">Return-Date  :</label>
 															<div class="col-xs-6  input-group input-append " style='padding-left:15px; float: inherit;'>
 																<span class="input-group-addon" id=''><i class='glyphicon glyphicon-calendar'></i></span>
@@ -274,7 +286,11 @@
 							<div class="modal-footer">
 
 									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<<<<<<< HEAD
 									<button type="button" class="btn btn-primary" data-dismiss="modal" name="Submit" id="rentButton" onclick="saveChanges()" data-loading-text="Loading..." autocomplete="off">Save Changes</button>
+=======
+									<button type="submit" class="btn btn-primary" name="Submit" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Submit</button>
+>>>>>>> ae43d2a861d42064b13a0413fb503028e1d7eb9a
 
 							</div>
 						<!-- /modal-footer -->
@@ -285,7 +301,62 @@
 </div>
 <!-- /modal-dailog -->
 </div>
+<!--/New Modal For Product-->
+<?php ob_start(); ?>
+<div class="modal fade" id="rentalFinal" tabindex="-1" role="modal">
+<div class="modal-dialog">
+		<div class="modal-content">
+		<?= $feedback ?>
+		<form action="" method="post" class="form-horizontal">
 
+					<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title"><i class="fa fa-exchange"></i>Continue</h4>
+					</div>
+
+					<div class="modal-body">
+					   <?php
+					   if(isset($_SESSION['clientRenter']))
+					   {
+					   for($x=0;$x<count($_SESSION['clientRenter']);$x++)
+					   {
+						$clientInfo= $_SESSION['clientRenter'][$x];?>
+						<table class="table-responsive">
+						<tr>
+					   <td align="left"><h5>Total Quantity  </h5></td><td align="left"> <h5>:<?=$clientInfo['quantity']?></h5></td>
+						</tr>
+						<tr>
+					  <td align="left"><h5>Total Price Due  </h5></td><td align="left"></h5>:<?=$clientInfo['total_amount']?></td>
+						</tr>
+						<tr>
+							<td align="left"><h5>Pick Date </h5></td><td align="left"> <h5> :<?=$clientInfo['pickup_date']?> </h5></td>
+						</tr>
+						<tr>
+						   <td align="left"><h5>ReturnDate  </h5></td><td align="left"> <h5>:<?=$clientInfo['return_date']?></h5></td>
+						</tr>
+					   </table>
+					 
+					 <?php  }
+					   }
+					     ?>
+					                      
+							<!-- /modal body -->
+							
+							<div class="modal-footer">
+
+									<button type="button" class="btn btn-default-danger" data-dismiss="modal">Cancel</button>
+									<button type="submit" class="btn btn-primary" name="Submit" id="createBrandBtn" data-loading-text="Loading..." autocomplete="off">Cornfirm</button>
+
+							</div>
+						<!-- /modal-footer -->
+						</form>
+
+		</div>
+		<!-- /modal-content -->
+</div>
+<!-- /modal-dailog -->
+</div>
+<!-- End Modal new Modal-->
 <!-- JS -->
 <script type="text/javascript" src="assets/index/js/jquery.min.js"></script><!-- jQuery -->
 	<script type="text/javascript" src="assets/index/js/bootstrap.min.js"></script><!-- Bootstrap -->
@@ -298,7 +369,8 @@
 	     STYLE SWITCHER | ONLY FOR DEMO NOT INCLUDED IN MAIN FILES
 	============================================================== -->
 	<script type="text/javascript" src="assets/index/demo/demo.js"></script>
-<link rel="stylesheet" href="assets/plugins/jquery-ui/jquery-ui.css">	<script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.js"></script>
+<link rel="stylesheet" href="assets/plugins/jquery-ui/jquery-ui.css">	
+<script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.js"></script>
 	
 	<style>
 		#view:hover
@@ -336,17 +408,58 @@ function namebyId(id)
 				name = jsrentals[x].product_name;
 			}
 		}
+<<<<<<< HEAD
 		return name;
 }
 function picturebyId(id)
 {
 	var image ="";
 	for(var x=0; x< jsrentals.length; x++)
+=======
+
+
+		$(document).ready(function(){
+			$('#pdate').datepicker({
+								minDate:0,
+								dateFormat: 'yy-mm-dd',
+								onSelect: function (date) {
+																	var date2 = $('#pdate').datepicker('getDate');
+																	date2.setDate(date2.getDate() + 7);
+																	$('#rdate').datepicker('setDate', date2);
+																	$('#rdate').datepicker('option', 'minDate', date2);
+													}
+							}
+			);
+			var diffDays =0;
+
+			$('#rdate').datepicker({
+							minDate:+7,
+							dateFormat: 'yy-mm-dd',
+							onSelect:	function (days) {
+								var a = $("#pdate").datepicker('getDate').getTime();
+					        	var b = $("#rdate").datepicker('getDate').getTime();
+								var c = 24*60*60*1000;
+								diffDays = Math.round(Math.abs((a - b)/(c)));
+								totalCharge(diffDays);
+        }
+							}
+     );
+		});
+
+		var rental = new Object();
+		function rent(q)
+>>>>>>> ae43d2a861d42064b13a0413fb503028e1d7eb9a
 		{
 			if(jsrentals[x].rental_id == id)
 			{
 				image = jsrentals[x].product_image;
 			}
+<<<<<<< HEAD
+=======
+			$('#squantity').attr('max',rental.quantity);
+			$('#total_deposit').val(rental.product_deposit);
+			$('#rentalId').val(rental.rental_id);
+>>>>>>> ae43d2a861d42064b13a0413fb503028e1d7eb9a
 		}
 		return "<img src='data:image/*;base64,"+image+"' style='height:60px; width:60px;'/>";
 }
@@ -382,6 +495,133 @@ function showlist()
 
 <script src="/ipheya/assets/js/rent.js"></script>
 
+<<<<<<< HEAD
+=======
+	 function totalCharge(days)
+		{
+	      
+				var quantity = $('#quantity').val();
+				var timeline ="";
+				if(quantity == null)
+				{
+					quantity =0;
+				}
+				
+			   
+				console.log(rental.rental_id);
+                
+				$.ajax({
+						type:"post",
+						url:"/ipheya/core/sub/php_action/fetchTimeline.php",
+						data:{ rentId: rental.rental_id },
+						success:function(data)
+						{
+									data = JSON.parse(data);
+									var timeList = data.timelines;
+									var charge;
+									// console.log(timeList[0].timeline)
+									//calculate a charge
+									var calc =false;
+									for(var x=0; x<timeList.length; x++ )
+									{
+											if(days <7)
+											{
+												if(timeList[x].timeline =="Daily")
+												{
+												
+														var charge = (timeList[x].rental_charge* days);
+														console.log("Charge: v"+charge+", time: daily, No of Days "+ days);	
+														$("#total_charge").val(charge);
+												}
+											}
+											else if ((days<30) && (days=>7) )
+											{
+												if(timeList[x].timeline =="Weekly")
+												{
+														var charge = (timeList[x].rental_charge* days);
+														var weeks;
+														if(days%7 == 0)
+														{
+																weeks = days/7;
+																console.log("Charge: w"+charge+", time: Weekly, No of Days "+ days+"Weeks "+weeks);	
+																$("#total_charge").val(charge);
+															}
+															else
+															{
+																weeks = parseInt((days/7), 10);
+																var day = days%7;
+																console.log("Charge: x"+charge+", time: Weekly, No of Days "+ days+"Weeks "+weeks+" and "+ day+" days");	
+																$("#total_charge").val(charge);
+														        
+														}
+													}
+											}
+											else
+											{
+												if(timeList[x].timeline =="Monthly")
+												{
+														var charge = (timeList[x].rental_charge* days);
+														var months;
+														if(days%30 == 0)
+														{
+																months = days/30;
+																console.log("Charge: y"+charge+", time: monthly, No of Days "+ days+"months "+months);	
+																$("#total_charge").val(2500);
+															}
+															else
+															{
+																months = parseInt((days/30),10);
+																var day = days%30;
+																console.log("Charge: z"+charge+", time: monthly, No of Days "+ days+" months "+months+" and "+ day+"days");	
+																$("#total_charge").val(charge);
+														}
+													}
+											}
+									
+									}
+									
+						}});	
+		}
+		var totalC=0;
+		function totalAmout(days)
+		{
+            /*var totCharge=$("#total_charge").val();
+			var quantity=$('#quantity').val();
+			var charge=$('#total_deposit').val();
+		    totalC=	(totCharge+(quantity*charge));
+			console.log("Total_Amount is :R"+totalC);
+			$('#total_amount').val(totalC);*/
+			var totCharge=$("#total_charge").val();
+			totalCharge+=$('#total_deposit').val();
+			$("#total_amount").val(totCharge);
+			console.log(totCharge);
+		}
+		$("#tot-quantity").on("keyup change",function(event){
+			if($("#total_amount").val()=="")
+			{
+				var totCharge = parseFloat($("#total_charge").val());
+			}
+			else{
+				var totCharge = parseFloat($("#total_amount").val());
+			}
+			totCharge+=parseFloat($('#total_deposit').val());
+			$("#total_amount").val(totCharge);
+		});
+		$("#tot-quantity").on("keydown change", function(event){
+			if($("#total_amount").val()=="")
+			{
+				
+				var totCharge = parseFloat($("#total_amount").val());
+				totCharge-=parseFloat($('#total_deposit').val());
+				$("#total_amount").val(totCharge);
+			}
+		});
+		$("#rentalFinal").click(function(){
+					 
+			alert($clientInfo);
+		});
+	</script>
+>>>>>>> ae43d2a861d42064b13a0413fb503028e1d7eb9a
 </body>
 </html>
 <?php echo ob_get_clean(); ?>
