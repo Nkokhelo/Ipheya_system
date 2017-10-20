@@ -1,7 +1,7 @@
 <?php
     $user = $_SESSION['Client'];
 
-    $sql = mysqli_query($db, "SELECT * FROM authentication WHERE client_email = '$user'");
+    $sql = mysqli_query($db, "SELECT * FROM authentication WHERE client_email = '$user' AND authenticate = 1");
     $count = mysqli_num_rows($sql);
     if($count<1)
     {
