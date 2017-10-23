@@ -29,7 +29,7 @@ else
           </div><!-- /col-xs-6-->
           
           <div class="col-xs-11 b">
-            <h2>Cart Infomation</h2><hr class="bhr">
+            <h2>Rental Infomation</h2><hr class="bhr">
             
           <table class="table">
             <thead>
@@ -45,14 +45,17 @@ else
             </thead>
             <tbody>
             <?php 
-            
+            $totals = '';
             foreach($_SESSION['rent_items'] as $rent)
              {
-              echo "<tr><td>null</td><td>Name</td><td>".$rent['quantity']."</td><td>".number_format($rent['totalcharge'])."</td><td>".$rent['totaldeposit']."</td><td>".$rent['totalamount']."</td></tr>";
-             }?>
+              $q ="SELECT p.product_image, p.product_name FROM rentals as r JOIN inventories i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id WHERE r.rental_id =".$rent['rental_id'];
+              $p = $log->connect()->query($q)->fetch_assoc();
+              echo "<tr><td><img src='data:image/*;base64,".$p['product_image']."' style='height:60px; width:60px;'/></td><td>".$p['product_name']."</td><td>".$rent['quantity']."</td><td>".number_format($rent['totalcharge'])."</td><td>".$rent['totaldeposit']."</td><td>".$rent['totalamount']."</td></tr>";
+               $totals += $rent['totalamount'];
+              }?>
             </tbody>
             <tfoot>
-              <tr><td colspan="6" align="right"><b >Total</b></td><td align="left">R <?= number_format($rent['totalamount']+$rent['totalamount'],2,",","")?></td></tr>
+              <tr><td colspan="6" align="right"><b >Total</b></td><td align="left">R <?= number_format($totals,2,",","")?></td></tr>
             </tfoot>
           </table>
           
