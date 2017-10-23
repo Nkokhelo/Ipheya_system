@@ -29,6 +29,7 @@ else
           </div><!-- /col-xs-6-->
           
           <div class="col-xs-11 b">
+            	<?= $feedback ?>
             <h2>Rental Infomation</h2><hr class="bhr">
             
           <table class="table">
@@ -40,7 +41,6 @@ else
                 <th>Charge</th>
                 <th>Deposit</th>
                 <th>Total Price</th>
-             
               </tr>
             </thead>
             <tbody>

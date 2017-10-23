@@ -64,7 +64,7 @@
     $total_charge=$_SESSION['total_charge'];
     $total_deposit=$_SESSION['total_deposit'];
     $total_amount=$_SESSION['total_amount'];
-
+    $order[] = array("rental_id"=>$rentalId,"pickup_date"=>$pickup_date,"return_date"=>$return_date,"quantity"=>$quantity,"total_charge"=>$total_charge,"total_deposit"=>$total_deposit,"total_amount"=>$total_amount); 
     $_SESSION['clientRenter'][] = $order;
     if(count($_SESSION['clientRenter'])<1)
     {
