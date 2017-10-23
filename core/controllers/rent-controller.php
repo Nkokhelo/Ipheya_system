@@ -54,6 +54,16 @@
        }
      
    }
+   if(isset($_POST['order']))
+   {
+    $rentalId=$_SESSION['rental_id'];
+    $pickup_date=$_SESSION['pickup_date'];
+    $return_date=$_SESSION['return_date'];   
+    $quantity=$_SESSION['quantity'];   
+    $total_charge=$_SESSION['total_charge'];
+    $total_deposit=$_SESSION['total_deposit'];
+    $total_amount=$_SESSION['total_amount'];
+   }
    $query_result = $logic->getAllRental();
    $rental_list ='';
    $error='';
