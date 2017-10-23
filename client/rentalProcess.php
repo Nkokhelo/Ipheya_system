@@ -1,10 +1,12 @@
 <?php
+include'../core/logic.php';
+$log=new logic();
 session_start();
 if(isset($_SESSION['Employee']))
 {
   include('../core/init.php');
   include('includes/head.php');
-  
+
  
   // include('../core/controllers/chat-controller.php');
 }
@@ -43,6 +45,7 @@ else
             </thead>
             <tbody>
             <?php 
+            
             foreach($_SESSION['rent_items'] as $rent)
              {
               echo "<tr><td>null</td><td>Name</td><td>".$rent['quantity']."</td><td>".number_format($rent['totalcharge'])."</td><td>".$rent['totaldeposit']."</td><td>".$rent['totalamount']."</td></tr>";
