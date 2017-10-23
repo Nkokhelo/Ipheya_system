@@ -4,6 +4,7 @@
    $feedback="";
    $alloders ='';
    $alloders = array();
+   $feedback="";
    $sql =  mysqli_query($db, "SELECT r.rental_id, p.product_image, p.product_description, p.product_name, r.product_deposit, r.quantity FROM rentals as r JOIN inventories i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id;");
    if(!$sql)
    {
@@ -63,7 +64,18 @@
     $total_charge=$_SESSION['total_charge'];
     $total_deposit=$_SESSION['total_deposit'];
     $total_amount=$_SESSION['total_amount'];
+
+    $_SESSION['clientRenter'][] = $order;
+    if(count($_SESSION['clientRenter'])<1)
+    {
+       $feedback =$logic->display_error("The Is an Error");
+    }
+    else
+    {
+       $feedback =$logic->display_success("Order Succesfully you will be notified about aproval");
+    }
    }
+  
    $query_result = $logic->getAllRental();
    $rental_list ='';
    $error='';

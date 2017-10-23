@@ -6,7 +6,7 @@ if(isset($_SESSION['Employee']))
 {
   include('../core/init.php');
   include('includes/head.php');
-
+  include('../core/controllers/rent-controller.php');
  
   // include('../core/controllers/chat-controller.php');
 }
@@ -77,7 +77,8 @@ console.log(<?=json_encode($_SESSION['rent_items'])?>);
 <div class="modal fade" id="rentalModal" tabindex="-1" role="modal">
 <div class="modal-dialog">
 		<div class="modal-content">
-
+		<?= $feedback ?>
+		<form action="" method="post" id="renting" class="form-horizontal">
 					<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<h4 class="modal-title text-center" ><i class="fa fa-check"></i>Terms Of Leasing</h4>
