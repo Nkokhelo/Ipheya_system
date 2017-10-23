@@ -722,5 +722,5 @@ $sql="CREATE TABLE `purchases` (
   `item_image` longblob
 )";
 #message
-
+       }
 ?>
