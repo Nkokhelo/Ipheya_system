@@ -15,7 +15,7 @@
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
   <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
   <script src="assets/lib/jquery-2.1.3.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.js"></script>  
+  <script src="assets/bootstrap/js/bootstrap.js"></script>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -34,9 +34,6 @@
           <input type="email" name="log-email" placeholder="Email"/>
           <input type="password" name="log-password" placeholder="Password"/>
           <!--<div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div>-->
-          <div class="checkbox">
-            <label><input type="checkbox" name="auth" value="">Enable sms authentication</label>
-          </div>
           <button type="submit" name="Login">Login</button>
          <label for="cr">Don't have account:</label><a href="">Create Account</a>
         </form>

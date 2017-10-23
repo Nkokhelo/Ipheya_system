@@ -7,8 +7,8 @@
    #end sms
    use Twilio\Rest\Client;
    //sends sms
-   $sid = 'ACdfe47878ff8fac9687667328ad171012';
-   $token = 'c5ad2f19607f819f3362683af66f8732';
+   $sid = 'AC2b62d7a561e2594e697b3c743dcf9357';//'ACdfe47878ff8fac9687667328ad171012';
+   $token = '01eafc81bbb612e612385742f63ac78d';//'c5ad2f19607f819f3362683af66f8732';
    $client = new Client($sid, $token);
    $code = substr(md5(microtime()),0,5);
 
@@ -34,7 +34,7 @@
                $num,
                array(
                    // A Twilio phone number you purchased at twilio.com/console
-                   'from' => '+12606455511 ',
+                   'from' => '+14804705211',//'+12606455511 ',
                    // the body of the text message you'd like to send
                    'body' => $code
                )
@@ -46,17 +46,18 @@
      }
    }
    else{
-     #header('Location: ../login.php');
+     header('Location: ../login.php');
    }
    if(isset($_POST['Confirm']))
    {
-     $auth = mysqli_real_escape_string($db, $_POST['otp']);
-     if($_SESSION['code']== $auth)
+     $otp = mysqli_real_escape_string($db, $_POST['otp']);
+     $code = mysqli_real_escape_string($db, $_POST['code']);
+     if($code== $otp)
      {
        header('Location: home.php');
      }
      else{
-       echo '<script>alert("Incorrect one time pin")</script>';
+       #echo '<script>alert("Incorrect one time pin")</script>';
      }
    }
    if(isset($_POST['Resend']))
@@ -113,33 +114,18 @@
       <div class="form" id="loginFrom">
         <h2>2 Factor Authentication</h2>
         <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
-        <form action="register.php" method="post">
-          <input type="tel" name="otp" placeholder="one time pin"/>
-          <button type="submit" name="Confirm" style="margin-bottom:2%;">Confirm Cell number</button>
-        </form>
+        <form action="" method="post">
+          <input type="text" name="otp" placeholder="one time pin"/>
+          <input type="hidden" name="code" value="<?=$_SESSION['code'];?>">
+          <button type="submit" name="Confirm" style="margin-bottom:2%;">Confirm access</button>
       </div>
-      <button type="submit" name="Resend" style="background-color:e51515;">Resend (OTP)</button>
+      <button type="submit" name="Resend">Resend (OTP)</button>
+      </form>
     </div>
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script type="text/javascript">
-  $(document).ready(function()
-  {
-      // Toggle function
-      $('.toggle').click(function(){
-        // Switches the Icon
-        $(this).children('i').toggleClass('fa-sign-in');
-        // Switches the forms
-        $('.form').animate({
-          height: "toggle",
-          'padding-top': 'toggle',
-          'padding-bottom': 'toggle',
-          opacity: "toggle"
-        }, "slow");
-      });
-
-//
-        };
+   console.log('user: <?=$_SESSION['Client'];?> code: <?=$_SESSION['code'];?> number: <?=$_SESSION['number'];?>');
   </script>
 </body>
 </html>

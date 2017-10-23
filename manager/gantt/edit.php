@@ -134,7 +134,6 @@ $isparent = $stmt->fetchColumn(0);
         if (isparent) {
             $(".section-milestone").hide();
         }
-
     });
 
     var startPicker =  new DayPilot.DatePicker({
