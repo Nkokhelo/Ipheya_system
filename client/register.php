@@ -57,6 +57,9 @@
         <form action="register.php" method="post">
           <input type="email" name="log-email" placeholder="Email"/>
           <input type="password" name="log-password" placeholder="Password"/>
+          <div class="checkbox">
+            <label><input type="checkbox" name="auth" value="">Enable sms authentication</label>
+          </div>
           <button type="submit" name="Login">Login</button>
         </form>
       </div>

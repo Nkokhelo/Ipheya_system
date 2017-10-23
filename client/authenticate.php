@@ -10,19 +10,20 @@
    $sid = 'ACdfe47878ff8fac9687667328ad171012';
    $token = 'c5ad2f19607f819f3362683af66f8732';
    $client = new Client($sid, $token);
+   $code = substr(md5(microtime()),0,5);
 
    session_start();
    if(isset($_SESSION['Client']))
    {
      $email = $_SESSION['Client'];
-     $sql = mysqli_query($db, "SELECT * FROM authenticate WHERE client_email = '$email' AND authenticate=1");
+     $sql = mysqli_query($db, "SELECT * FROM authentication WHERE client_email = '$email' AND authenticate=1");
      $count = mysqli_num_rows($sql);
      if($count<1)
      {
        header('Location: home.php');
      }
      else{
-       $user =  mysqli_query($db, "SELECT contact_number FROM Clients WHERE email = '$email'");
+       $user =  mysqli_query($db, "SELECT contact_number FROM clients WHERE email = '$email'");
        $result = mysqli_fetch_assoc($user);
        $number = $result['contact_number'];
        $num = '+27'.substr($number,1);
@@ -35,16 +36,51 @@
                    // A Twilio phone number you purchased at twilio.com/console
                    'from' => '+12606455511 ',
                    // the body of the text message you'd like to send
-                   'body' => "1555"
+                   'body' => $code
                )
            );
          $_SESSION['number'] = $num;
+         $_SESSION['code'] = $code;
          //end sms
-       header('Location: verify-number.php?success=1');
+       //header('Location: verify-number.php?success=1');
      }
    }
    else{
-     header('Location: ../login.php');
+     #header('Location: ../login.php');
+   }
+   if(isset($_POST['Confirm']))
+   {
+     $auth = mysqli_real_escape_string($db, $_POST['otp']);
+     if($_SESSION['code']== $auth)
+     {
+       header('Location: home.php');
+     }
+     else{
+       echo '<script>alert("Incorrect one time pin")</script>';
+     }
+   }
+   if(isset($_POST['Resend']))
+   {
+     $user =  mysqli_query($db, "SELECT contact_number FROM clients WHERE email = '$email'");
+     $result = mysqli_fetch_assoc($user);
+     $number = $result['contact_number'];
+     $num = '+27'.substr($number,1);
+
+     // Use the REST API Client to make requests to the Twilio REST API
+      $client->messages->create(
+             // the number you'd like to send the message to
+             $num,
+             array(
+                 // A Twilio phone number you purchased at twilio.com/console
+                 'from' => '+12606455511 ',
+                 // the body of the text message you'd like to send
+                 'body' => $code
+             )
+         );
+       $_SESSION['number'] = $num;
+       $_SESSION['code'] = $code;
+       echo '<script>alert("One time pin has been sent succesfully");</script>';
+     //header('Location: verify-number.php?success=1');
    }
  ?>
 <!DOCTYPE html>
@@ -82,7 +118,7 @@
           <button type="submit" name="Confirm" style="margin-bottom:2%;">Confirm Cell number</button>
         </form>
       </div>
-      <button type="submit" name="button" style="background-color:e51515;">Resend (OTP)</button>
+      <button type="submit" name="Resend" style="background-color:e51515;">Resend (OTP)</button>
     </div>
   </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
