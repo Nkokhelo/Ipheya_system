@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ipheya-Manager</title>  
+    <title>Ipheya-Manager</title>
     <meta charset="utf-8">
     <meta name="viewport" content = "width=device-width, initial-scale=1, user-scalable=no">
 
@@ -20,6 +20,8 @@
     <link ral = "stylesheet" href = "../assets/plugins/datatables/jquery.dataTables.css" type = "text/css"/>
     <script type = "text/javascript" src = "../assets/plugins/datatables/jquery.dataTables.js"></script>
     <script type = "text/javascript" src = "../assets/plugins/datatables/dataTables.bootstrap.js"></script>
+    <link rel = "stylesheet" href = "../assets/select2/css/select2.min.css" type = "text/css"/>
+    <script type = "text/javascript" src = "../assets/select2/js/select2.min.js"></script>
     <link rel = "stylesheet" href = "../assets/Site.css" type = "text/css"/>
   </head>
   <body>

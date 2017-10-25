@@ -5,7 +5,7 @@
 		require_once('../core/init.php');
 		include('../core/logic.php');
 		include('includes/head2.php');
-		require('../core/controllers/task-controller.php');
+		#require('../core/controllers/task-controller.php');
 }
 else
 {

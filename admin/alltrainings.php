@@ -3,7 +3,7 @@ session_start();
 if(isset($_SESSION['Employee']))
 {
   include('../core/init.php');
-  include('../core/logic.php');  
+  include('../core/logic.php');
   include('includes/head2.php');
   include('../core/controllers/training-controller.php');
 }
@@ -55,7 +55,7 @@ else
                            {
                                $count = $logic->connect()->query("select count(*) as a from training_employee where training_id =".$training['trainingId'])->fetch_assoc();
                                ?> <tr>
-                           
+
                         <td><?php echo $training['tname']?></td>
                         <td><?php echo date_format(date_create($training['startdate']),"d-F-Y H:m-A")?></td>
                         <td><?php echo date_format(date_create($training['enddate']),"d-F-Y H:m-A")?></td>
@@ -181,7 +181,7 @@ else
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    
+
 
     <div class="modal fade" tabindex="-1" role="dialog" id="Applications">
 	  <div class="modal-dialog" role="document">
@@ -204,7 +204,7 @@ else
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 </body>
-    <link rel="stylesheet" href="../assets/plugins/datetimepicker/css/bootstrap-datetimepicker.css">	
+    <link rel="stylesheet" href="../assets/plugins/datetimepicker/css/bootstrap-datetimepicker.css">
     <script type="text/javascript" src="../assets/plugins/datetimepicker/js/bootstrap-datetimepicker.js"></script>
 
 <script>

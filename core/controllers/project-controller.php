@@ -76,7 +76,7 @@
         $status1 = "<label class='label label-default' title='status: not stated'>-</label>";
 
     }
-    $proj_list.="<tr><td>".$proj['project_no']."</td><td>".$status1." ".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a> <a href='ganttchart.php.php?project_id=".$proj['id']."'class='btn btn-sm btn-default'>Schedule <i class='fa fa-trash-o'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
+    $proj_list.="<tr><td>".$proj['project_no']."</td><td>".$status1." ".$proj['project_name']."</td><td>".$proj['duration']."-".$proj['duration_type']."</td><td>".date_format(date_create($proj['end_date']),'d F Y')."</td><td><a href='viewproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>View <i class='fa fa-eye'></i></a> <a href='ganttchart.php?project_id=".$proj['id']."'class='btn btn-sm btn-default'>Schedule <i class='glyphicon glyphicon-th-list'></i></a>  <a href='editproject.php?pview=".$proj['project_no']."' class='btn btn-sm btn-default'>Edit <i class='fa fa-pencil'></i></a> <a href='allProjects.php?restore=".$proj['project_no']."'class='btn btn-sm btn-default'>Delete <i class='fa fa-trash-o'></i></a></td></tr>";
   }
   if($proj_list == '')
   {

@@ -149,7 +149,8 @@
                     loadTasks();
                 };
                 //modal.showUrl("gantt/edit.php?id=" + args.task.id());
-                modal.showUrl("gantt/edit.php?id=" + args.task.id());
+                //modal.showUrl("gantt/edit.php?id=" + args.task.id());
+                window.location.href="gantttaskupdate.php?project_id=<?=$_GET['project_id']?>&task_id=" + args.task.id();
                 //console.log(args.task.id());
             };
 
