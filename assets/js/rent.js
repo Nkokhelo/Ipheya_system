@@ -264,4 +264,6 @@ function Checkout() {
             window.location.href = "/ipheya/login.php";
         }
     })
+
+
 }
