@@ -26,12 +26,12 @@
                           Task information
                     </legend>
                     <div class="form-group col-sm-6">
-                      <label for=""></label>
-                      <input type="text" class="form-control" name="name" value="<?=((isset($name))?$name:'');?>" placeholder="Task name">
+                      <label for="name">Task title</label>
+                      <input type="text" class="form-control" name="name" id="name" value="<?=((isset($name))?$name:'');?>" placeholder="Task name" required>
                     </div>
                     <div class="form-group col-sm-6">
-                      <label for=""></label>
-                      <input type="text" id="location" onkeyup='search_place()' class="form-control" name="location" placeholder="Pick a location!" required>
+                      <label for="location">Task location</label>
+                      <input type="text" id="location" onkeyup='search_place()' class="form-control" value="<?=((isset($location))?$location:'');?>" name="location" placeholder="Pick a location!" required>
                     </div>
                     <!--Weather has to be fixed-->
                     <div id="weather" class="col-sm-12 gllpMap  " style=" height:300px; ">
@@ -40,7 +40,7 @@
                       </iframe>
                     </div>
                     <!--Map-->
-                    <div class="col-sm-12 col-md-12 " id='con'>
+                    <div class="col-sm-12 col-md-12 form-group" id='con'>
                       <div id="googleMap" style="width:100%; height:300px; margin:1%; margin-bottom:50px;">
                         <fieldset class="gllpLatlonPicker" style="margin-bottom:12px" id="custom_id">
                           <div class="gllpMap" id="map" style="width:100%; height:300px; margin-bottom:10px; margin-right:50px; border:1px #808080 solid;">Google Maps</div>
@@ -54,6 +54,9 @@
                         </fieldset>
                       </div>
                     </div>
+                    <div class="form-group col-sm-12">
+                      <input type="submit" class="btn btn-info form-control" name="Update" value="Update task">
+                    </div>
                </form>
               </div>
               <div class="col-xs-4">
@@ -62,6 +65,7 @@
                   </legend>
                   <form method="post">
                   <div class="form-group">
+                    <label for="select">Select employee(s)</label>
                     <select name="employee[]" id="select" class="form-control" multiple>
                       <?=$selectemp;?>
                     </select>
@@ -70,6 +74,18 @@
                     <input type="submit" class="btn btn-info form-control" name="Assign" value="Assign Employees">
                   </div>
                 </form>
+                <table class="table table-striped">
+                  <thead>Employees on task</thead>
+                  <thead>
+                    <td></td>
+                    <td>Name</td>
+                    <td>Surname</td>
+                    <td>Remove</td>
+                  </thead>
+                  <tbody>
+                    <?=$emplist;?>
+                  </tbody>
+                </table>
                   <!--<nav id="">
                     <ul class="list-unstyled components">
                       <li><a href="">list</a></li>
