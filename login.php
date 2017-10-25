@@ -33,14 +33,14 @@
         <form method="post">
           <input type="email" name="log-email" placeholder="Email"/>
           <input type="password" name="log-password" placeholder="Password"/>
-          <!--<div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div>-->
+          <div class="g-recaptcha" data-sitekey="6LcKVzMUAAAAAHZW5azejqnbBQWibIUX_jLxHp0B"></div>
           <button type="submit" name="Login">Login</button>
-         <label for="cr">Don't have account:</label><a href="">Create Account</a>
+         <label for="cr">Don't have account:</label><a class="cr" >Create Account</a>
         </form>
       </div>
       <div class="form">
         <h2>Create an account</h2>
-        <div class="" id="errors"><?=((isset($displayR))?$displayR:'');?></div>
+        <div class="" id="errors"><?=((isset($display))?$display:'');?></div>
         <form method="post" action="login.php">
           <input type="text" name="name" placeholder="Name"/>
           <input type="text" name="surname" placeholder="Surname"/>
@@ -70,6 +70,21 @@ $('.toggle').click(function(){
     opacity: "toggle"
   }, "slow");
 });
+
+// Toggle Function
+$('.cr').click(function(){
+  // Switches the Icon
+  $(this).children('i').toggleClass('fa-pencil');
+  // Switches the forms
+  $('.form').animate({
+    height: "toggle",
+    'padding-top': 'toggle',
+    'padding-bottom': 'toggle',
+    opacity: "toggle"
+  }, "slow");
+});
+
+
 </script>
 </html>
 
@@ -77,5 +92,8 @@ $('.toggle').click(function(){
 .rc-anchor-normal {
     height: 74px;
     width: 78%;
+}
+.cr{
+  cursor:pointer;
 }
 </style>

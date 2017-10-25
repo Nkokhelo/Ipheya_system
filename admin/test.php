@@ -6,6 +6,8 @@ if(isset($_SESSION['Employee']))
   include('../core/logic.php');  
   include('includes/head2.php');
   include('../core/controllers/training-controller.php');
+  unset($_SESSION['count']);
+  unset($_SESSION['score']);
 }
 else
 {
@@ -112,7 +114,7 @@ else
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Test Date</label>
-                            <input type="date" class="form-control" name="test-date" required/>
+                            <input type="date" class="form-control" name="test-date" min="<?php echo date("Y-m-d") ?>" required/>
                         </div>
                     </div>
                 </div>

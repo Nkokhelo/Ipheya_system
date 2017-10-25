@@ -1,8 +1,10 @@
 <?php
+
    $logic =new Logic();
    $feedback="";
    $alloders ='';
    $alloders = array();
+   $feedback="";
    $sql =  mysqli_query($db, "SELECT r.rental_id, p.product_image, p.product_description, p.product_name, r.product_deposit, r.quantity FROM rentals as r JOIN inventories i ON i.inventry_id = r.inventory_id JOIN product as p ON p.product_id = i.product_id;");
    if(!$sql)
    {
@@ -53,19 +55,54 @@
        }
      
    }
+   if(isset($_POST['order']))
+   {
+     $email = $_SESSION['Client'];
+     $client = $logic->getByEmail($email);
+     $is_saved= false;
+     foreach($_SESSION['rent_items'] as $rent)
+     {
+        $rentalId=$rent['rental_id'];
+        $pickup_date=$rent['pickdate'];
+        $return_date=$rent['returndate'];   
+        $quantity=$rent['quantity'];   
+        $total_charge=$rent['totalcharge'];
+        $total_deposit=$rent['totaldeposit'];
+        $total_amount=$rent['totalamount'];
+        $period =$rent['period'];
+        
+        $sql="INSERT INTO client_rentals (client_rental,client_id,rental_id,pickup_date,return_date,quantity,total_charge,total_deposit,total_amount,period,payed_amount,is_payed) VALUES(null,".$client['client_id'].",$rentalId,'$pickup_date','$return_date','$quantity','$total_charge','$total_deposit','$total_amount','$period',0,false)";
+        $result = mysqli_query($db,$sql);
+        if(!$result)
+        {
+           $feedback =mysqli_error($db);
+           die(mysqli_error($db)."\n".$sql);
+           $is_saved = false;
+          }
+          else{
+            $is_saved = true;
+        }
+     }
+    if($is_saved == true)
+    {
+       $feedback =$logic->display_success("Order Succesfully you will be notified about aproval");
+    }
+    unset($_SESSION['rent_items']);
+    header("Location:home.php");    
+  }
+  
    $query_result = $logic->getAllRental();
    $rental_list ='';
    $error='';
    $status ='';
    while($rent = mysqli_fetch_assoc($query_result))
- 
    {
-     $rental_list.="<tr><td>".date_format(date_create($rent['pickup_date']),'d F Y')."</td><td>".date_format(date_create($rent['return_date']),'d F Y')."</td></tr>";
+      $rental_list.="<tr><td>".date_format(date_create($rent['pickup_date']),'d F Y')."</td><td>".date_format(date_create($rent['return_date']),'d F Y')."</td></tr>";
     }
-     if($rental_list == '')
-     {
-       $error = '<div class="alert alert-info"><i class="glyphicon glyphicon-info-sign"></i> No Project at the moment<br/> <a href="createproject.php">Create Project</a></div>';
-     }   
+    if($rental_list == '')
+    {
+      $error = '<div class="alert alert-info"><i class="glyphicon glyphicon-info-sign"></i> No Project at the moment<br/> <a href="createproject.php">Create Project</a></div>';
+    }
    ?>
 
 

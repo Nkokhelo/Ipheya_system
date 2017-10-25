@@ -56,7 +56,7 @@
               <hr class="bhr"/>
               <div class="form-group col-xs-12">
                 <div class="col-xs-4 col-xs-offset-4">
-                    <a href="addsupplier.php" class="btn btn-default form-control"><span class="glyphicon glyphicon-plus"></span> Add Rentals</a>
+                    <a href="inventories.php" class="btn btn-default form-control"><span class="glyphicon glyphicon-plus"></span> Add Rentals</a>
                     
                 </div>
               </div>

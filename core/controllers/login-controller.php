@@ -4,24 +4,24 @@ $log = new Logic();
 session_start();
 unset($_SESSION["Client"]);
 unset($_SESSION['Employee']);
-session_destroy();
+// session_destroy();
 $_SESSION["Client"]= $_SESSION['Employee'] = '';
-    session_start();
-    if(isset($_POST['Login']))
-    {
-      #session_start();
-      $_SESSION['Client'] = '';
-      $_SESSION['Employee'] ='';
-      $email = mysqli_real_escape_string($db,$_POST['log-email']);
-      $password = mysqli_real_escape_string($db,$_POST['log-password']);
 
-      /*if(isset($_POST['auth']))
+if(isset($_POST['Login']))
+{
+    $_SESSION['Client'] = '';
+    $_SESSION['Employee'] ='';
+    $email = mysqli_real_escape_string($db,$_POST['log-email']);
+    $password = mysqli_real_escape_string($db,$_POST['log-password']);
+
+// die("post  is fine");
+/*if(isset($_POST['auth']))
       {
         mysqli_query($db, "INSERT INTO authentication(client_email,authenticate) VALUES('{$email}',1)");
         header('Location: ');
       }*/
 
-      /*if(isset($_POST['g-recaptcha-response'])&&$_POST['g-recaptcha-response'])
+     if(isset($_POST['g-recaptcha-response'])&&$_POST['g-recaptcha-response'])
       {
         // var_dump($_POST);
         $secret="6LcKVzMUAAAAAFaTVArInEV4h-rVowh4hFK9ADYF";
@@ -30,7 +30,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
         $rsp="https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$captcha."&remoteip=".$ip;
         // var_dump($rsp);
         // $arr=json_decode($rsp,TRUE);
-
+        
 
         if ($captcha == "")
         {
@@ -41,7 +41,7 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
             }
         }
         else
-        {*/
+        {
             $login_exe =$log->Login($email,$password);
             $result = mysqli_fetch_row($login_exe);
             if(count($result)< 1)
@@ -58,7 +58,6 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                   $ip = $_SERVER['REMOTE_ADDR'];
                   #$emailpar = $result['email'];
                   $log->AssociateTarget($ip,$email);
-                  $_SESSION['Employee'] = 'Employee';
                   $UserRole =$log->getUserRoleByUserId($result[0]);
                 //   echo $UserRole;
                   switch($UserRole)
@@ -69,7 +68,14 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                       break;
                       case 'Client':
                       $_SESSION['Client'] = $email;
-                      header('Location: client/authenticate.php');//client url
+                        if(isset($_SESSION['rent_items']))
+                        {
+                            header('Location: client/rentalProcess.php');//rental url                        
+                        }
+                        else
+                        {
+                            header('Location: client/authenticate.php');//client url
+                        }
                       break;
                       case 'Employee':
                       $_SESSION['Employee']=$email;
@@ -79,11 +85,14 @@ $_SESSION["Client"]= $_SESSION['Employee'] = '';
                       $_SESSION['Manager']=$email;
                       header('Location: manager/dashboard.php');//manager url
                       break;
-                      case 'Stock Counter':
-                      header('Location: stock-counter/inventorys.php');//stockcounter url
                   }
             }
-        #}
-
-      }
+        }
+    }
+    else
+    {
+        $errors[] .= 'Specify if your are not a robot';        
+        $display = display_errors($errors);
+    }
+}
 ?>
