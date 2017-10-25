@@ -19,7 +19,7 @@ if($result->num_rows > 0)
   <i class="fa fa-caret-down"></i>
   </button>
   <ul class="dropdown-menu">
-    <li><a type="button" data-toggle="modal" id="viewRental" data-target="#editProductModal" onclick="viewRentalOrder('.$order["order_id"].')"> <i class="glyphicon glyphicon-eye-open"></i> View</a></li>
+    <li><a href="view_rent.php" type="button" id="viewRental" > <i  class="glyphicon glyphicon-eye-open"></i> View</a></li>
     <li><a type="button" data-toggle="modal" data-target="#removeProductModal" id="removeProductModalBtn" onclick="removeProduct('.$order["order_id"].')"> <i class="glyphicon glyphicon-ok-sign"></i> Cofirm order</a></li>
     <li><a type="button" data-toggle="modal" data-target="#removeProductModal" id="removeProductModalBtn" onclick="removeProduct('.$order["order_id"].')"> <i class="glyphicon glyphicon-thumbs-down"></i> Decline order</a></li>
     <li><a type="button" data-toggle="modal" data-target="#removeProductModal" id="removeProductModalBtn" onclick="removeProduct('.$order["order_id"].')"> <i class="glyphicon glyphicon-ok-circle"></i> Mark as returned</a></li>
