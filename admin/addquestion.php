@@ -54,12 +54,14 @@
                     $choices[2] = $_POST['choice2'];
                     $choices[3] = $_POST['choice3'];
                     $choices[4] = $_POST['choice4'];
-                    
+                    $success = false;
+                    $x =0;
                     foreach($choices as $choice=>$value)
                     {
+                        $x++;
                         if($value!= '')
                         {
-                            if($correct == $value)
+                            if($correct == $x)
                             {
                                 $is_correct = 1;
                             }
@@ -68,15 +70,19 @@
                                 $is_correct = 0;
                             }
                            $res = $method->query("INSERT INTO `choices`(`choice_id`, `question_id`, `choice_text`, `is_correct`) VALUES (NULL,'$question_id','$value','$is_correct')");
-                            if($res)
-                            {
-                                echo $logic->display_success("Question Added");
-                            }
-                            else
-                            {
-                                echo $logic->display_error("Could not add choices. try again.");
-                            }
+                           if($res)
+                           {
+                               $success = true;
+                           }
                         }
+                    }
+                    if($success)
+                    {
+                        echo $logic->display_success("Question Added");
+                    }
+                    else
+                    {
+                        echo $logic->display_error("Could not add choices. try again.");
                     }
                 }
                ?>
